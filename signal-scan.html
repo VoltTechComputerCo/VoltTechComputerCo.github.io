@@ -40,11 +40,15 @@
     display:flex; align-items:center; justify-content:space-between;
     margin-bottom:18px;
   }
+  .brand-left{ display:flex; align-items:center; gap:10px; }
+  .brand-left img{ height:28px; width:auto; display:block; }
   .brand-name{
-    font-family:var(--mono); font-size:12px; letter-spacing:0.16em;
-    color:var(--signal); text-transform:uppercase;
-    transition: color 0.4s ease;
+    font-family:var(--mono); font-size:12px; letter-spacing:0.06em;
+    text-transform:uppercase; font-weight:700;
   }
+  .brand-name .volt{ color:#f3c51e; }
+  .brand-name .tech{ color:#4e96e4; }
+  .brand-name .co{ color:#f3c51e; font-weight:500; margin-left:2px; }
   .brand-tag{
     font-family:var(--mono); font-size:10px; color:var(--muted);
     letter-spacing:0.08em;
@@ -107,8 +111,8 @@
     letter-spacing:0.16em; text-transform:uppercase; margin-bottom:6px; position:relative;
   }
   .alert-text{
-    font-family:var(--mono); font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
-    font-size:22px; display:inline-block; position:relative; will-change:transform;
+    font-family:var(--mono); font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    font-size:19px; line-height:1.3; display:inline-block; position:relative; will-change:transform;
   }
 
   .panel{
@@ -201,6 +205,7 @@
     cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;
   }
   .cta-wa:hover{ background:#3ee07b; }
+  .wa-icon{ width:17px; height:17px; display:block; }
   .cta-secondary{
     background:transparent; border:1px solid var(--panel-line); color:var(--muted);
     padding:13px; border-radius:3px; font-family:var(--mono); font-size:11px;
@@ -217,7 +222,10 @@
 <div class="wrap">
 
   <div class="brand">
-    <div class="brand-name" id="brandName">⚡ VOLTTECH COMPUTER CO.</div>
+    <div class="brand-left">
+      <img src="logo-badge.png" alt="VoltTech Computer Co.">
+      <div class="brand-name" id="brandName"><span class="volt">Volt</span><span class="tech">Tech</span> <span class="co">Computer Co.</span></div>
+    </div>
     <div class="brand-tag">PRETORIA / JHB</div>
   </div>
 
@@ -230,7 +238,7 @@
   <div class="alert-banner" id="alertBanner">
     <canvas class="grain-canvas" id="grainCanvas"></canvas>
     <div class="alert-sub">FAULT SEVERITY</div>
-    <div class="alert-text" id="alertText">STABLE</div>
+    <div class="alert-text" id="alertText">SYSTEM STABLE</div>
   </div>
 
   <div class="meter" id="meter"></div>
@@ -268,16 +276,14 @@ function setTension(v){ targetTension = Math.max(0, Math.min(1, v)); }
 
 function updateReadout(){
   const label = document.getElementById('scopeReading');
-  const brand = document.getElementById('brandName');
   const scopeLabel = document.getElementById('scopeLabel');
   const scopeBox = document.getElementById('scopeBox');
   const col = lerpColor(tension);
   if(tension < 0.35){ label.textContent = 'STABLE'; }
-  else if(tension < 0.65){ label.textContent = 'ELEVATED'; }
+  else if(tension < 0.65){ label.textContent = 'MOD. UNSTABLE'; }
   else if(tension < 0.85){ label.textContent = 'UNSTABLE'; }
-  else { label.textContent = 'OVERLOAD'; }
+  else { label.textContent = 'SEVERE'; }
   label.style.color = col;
-  brand.style.color = col;
   scopeLabel.style.color = col;
   scopeBox.style.borderColor = tension > 0.6 ? col : 'var(--panel-line)';
 }
@@ -309,10 +315,10 @@ function updateAlertBanner(){
   const col = lerpColor(tension);
 
   let label;
-  if(tension < 0.35) label = 'STABLE';
-  else if(tension < 0.65) label = 'ELEVATED SIGNAL';
-  else if(tension < 0.85) label = 'UNSTABLE FAULT';
-  else label = 'CRITICAL OVERLOAD';
+  if(tension < 0.35) label = 'SYSTEM STABLE';
+  else if(tension < 0.65) label = 'SYSTEM MODERATELY UNSTABLE';
+  else if(tension < 0.85) label = 'SYSTEM UNSTABLE';
+  else label = 'SYSTEM SEVERELY UNSTABLE';
   el.textContent = label;
   el.style.color = col;
 
@@ -625,8 +631,8 @@ function renderResult(panel){
     <div class="price">R${low} – R${high}</div>
     <div class="price-note">Estimated range · confirmed after free hands-on diagnostic</div>
     <div class="cta-stack">
-      <button class="cta-wa" id="waBtn">💬 Book via WhatsApp</button>
-      <button class="cta-secondary" id="emailBtn">Email VoltTech instead</button>
+      <button class="cta-wa" id="waBtn"><img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" class="wa-icon"> Book via WhatsApp</button>
+      <a class="cta-secondary" id="emailBtn" href="#" style="text-align:center; display:block; text-decoration:none;">Email VoltTech instead</a>
       <button class="cta-secondary" id="restartBtn">Run another scan</button>
     </div>
   `;
@@ -636,11 +642,9 @@ function renderResult(panel){
     const msg = `Hi VoltTech! I ran the Signal Scan on your site.%0A%0AName: ${encodeURIComponent(state.name)}%0AIssue: ${encodeURIComponent(SYMPTOMS.find(s=>s.id===state.symptom)?.label||'')}%0ADuration: ${encodeURIComponent(DURATIONS.find(s=>s.id===state.duration)?.label||'')}%0APC age: ${encodeURIComponent(AGES.find(s=>s.id===state.age)?.label||'')}%0AUse: ${encodeURIComponent(USAGES.find(s=>s.id===state.usage)?.label||'')}%0AEstimated: R${low}-R${high}`;
     window.open(`https://wa.me/27618435775?text=${msg}`, '_blank');
   };
-  document.getElementById('emailBtn').onclick = ()=>{
-    const subject = encodeURIComponent('Signal Scan result — ' + d.label);
-    const body = encodeURIComponent(`Name: ${state.name}\nPhone: ${state.phone}\nIssue: ${SYMPTOMS.find(s=>s.id===state.symptom)?.label}\nDuration: ${DURATIONS.find(s=>s.id===state.duration)?.label}\nPC age: ${AGES.find(s=>s.id===state.age)?.label}\nUse: ${USAGES.find(s=>s.id===state.usage)?.label}\nEstimated: R${low}-R${high}`);
-    window.location.href = `mailto:volttechcomputerco@gmail.com?subject=${subject}&body=${body}`;
-  };
+  const subject = encodeURIComponent('Signal Scan result — ' + d.label);
+  const body = encodeURIComponent(`Name: ${state.name}\nPhone: ${state.phone}\nIssue: ${SYMPTOMS.find(s=>s.id===state.symptom)?.label}\nDuration: ${DURATIONS.find(s=>s.id===state.duration)?.label}\nPC age: ${AGES.find(s=>s.id===state.age)?.label}\nUse: ${USAGES.find(s=>s.id===state.usage)?.label}\nEstimated: R${low}-R${high}`);
+  document.getElementById('emailBtn').setAttribute('href', `mailto:volttechcomputerco@gmail.com?subject=${subject}&body=${body}`);
   document.getElementById('restartBtn').onclick = ()=>{
     state.symptom=null; state.duration=null; state.age=null; state.usage=null;
     setTension(0.06);
