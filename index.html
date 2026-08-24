@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VoltTech Computer Co. — PC Repair & Performance Optimisation</title>
-<meta name="description" content="VoltTech Computer Co. — PC repair, performance optimisation, hardware upgrades, virus removal and custom builds in Pretoria & Johannesburg.">
-<link rel="icon" type="image/png" href="favicon-512.png">
-<style>
+  <head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VoltTech Computer Co. — PC Repair & Performance Optimisation</title>
+        <meta name="description" content="VoltTech Computer Co. — PC repair, performance optimisation, hardware upgrades, virus removal and custom builds in Pretoria & Johannesburg.">
+          <link rel="icon" type="image/png" href="favicon-512.png">
+            <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
   :root{
@@ -152,6 +152,8 @@
     color:var(--signal); display:inline-flex; align-items:center; gap:6px;
   }
   .service .quote-link:hover{ color:#54f0d5; }
+  .service .email-link{ margin-left:14px; color:var(--muted); }
+  .service .email-link:hover{ color:var(--text); }
 
   .scan-sweep{
     position:absolute; top:0; left:-40%; width:40%; height:100%;
@@ -231,264 +233,395 @@
     .brand-text{ font-size:10.5px; }
   }
 </style>
-</head>
-<body>
-
-<nav>
-  <div class="wrap">
-    <div class="brand"><img src="logo-badge.png" alt="VoltTech Computer Co."><span class="brand-text"><span class="volt">Volt</span><span class="tech">Tech</span> <span class="co">Computer Co.</span></span></div>
-    <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#toolkit">Toolkit</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
-
-<div class="wrap">
-
-  <header class="hero">
-    <div class="eyebrow">// PRETORIA & JOHANNESBURG</div>
-    <h1>PC repair, done <span>properly.</span></h1>
-    <p class="sub">VoltTech Computer Co. diagnoses, repairs, and optimises PCs with real hands-on discipline — thermals, power delivery, and performance dialed in properly, not guessed at.</p>
-  </header>
-
-  <div class="scan-feature">
-    <div class="scan-badge"><span class="dot"></span> Free Diagnostic Tool</div>
-    <h3>Not sure what's wrong? Run the Signal Scan.</h3>
-    <p>An interactive diagnostic that reads your PC's symptoms and gives you an instant fault estimate and price range — before you commit to anything.</p>
-    <div class="scan-perks">
-      <span>Takes under 60 seconds</span>
-      <span>Instant price estimate</span>
-      <span>No obligation</span>
-    </div>
-    <a class="btn btn-primary" href="signal-scan.html">⚡ Run the Signal Scan →</a>
-  </div>
-
-  <div class="cta-row secondary-row">
-    <a class="btn btn-ghost" href="https://wa.me/27618435775" target="_blank"><img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="" class="wa-icon"> Or chat on WhatsApp</a>
-    <a class="btn btn-ghost" href="#services">See Services ↓</a>
-  </div>
-
-  <section id="services">
-    <div class="section-label">WHAT WE DO</div>
-    <h2>Services</h2>
-    <p style="font-family:var(--mono); font-size:10.5px; color:var(--muted); letter-spacing:0.06em; margin-bottom:18px;">Tap a service to see more →</p>
-    <div class="services" id="servicesGrid">
-      <div class="service" data-service="PC Repair">
-        <div class="scan-sweep"></div>
-        <div class="icon"><span>01</span><span class="chev">+</span></div>
-        <h3>PC Repair</h3>
-        <p>Full diagnostics and repair for desktops and laptops — hardware and software faults alike.</p>
-        <div class="more"><div class="more-inner">
-          <p>Covers boot failures, crashes, failing components, liquid damage triage, and full hardware/software fault-finding — diagnosed properly before any work starts.</p>
-          <a class="quote-link" href="#" data-wa="PC Repair"><img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa-icon"> Get a quote for this →</a>
-        </div></div>
-      </div>
-      <div class="service" data-service="Performance Optimisation">
-        <div class="scan-sweep"></div>
-        <div class="icon"><span>02</span><span class="chev">+</span></div>
-        <h3>Performance Optimisation</h3>
-        <p>Startup, storage, thermal, and power tuning to get your machine running the way it should.</p>
-        <div class="more"><div class="more-inner">
-          <p>Startup bloat cleanup, storage health checks, thermal repasting, and power-profile tuning — a full pass to get an ageing PC feeling responsive again.</p>
-          <a class="quote-link" href="#" data-wa="Performance Optimisation"><img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa-icon"> Get a quote for this →</a>
-        </div></div>
-      </div>
-      <div class="service" data-service="Hardware Upgrades">
-        <div class="scan-sweep"></div>
-        <div class="icon"><span>03</span><span class="chev">+</span></div>
-        <h3>Hardware Upgrades</h3>
-        <p>RAM, storage, GPU, and cooling upgrades — benchmarked before and after.</p>
-        <div class="more"><div class="more-inner">
-          <p>RAM, SSD/NVMe storage, GPU, and cooling upgrades — every install is benchmarked before and after so you can see the real-world difference.</p>
-          <a class="quote-link" href="#" data-wa="Hardware Upgrades"><img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa-icon"> Get a quote for this →</a>
-        </div></div>
-      </div>
-      <div class="service" data-service="Virus & Malware Removal">
-        <div class="scan-sweep"></div>
-        <div class="icon"><span>04</span><span class="chev">+</span></div>
-        <h3>Virus & Malware Removal</h3>
-        <p>Full infection removal and system hardening so it doesn't come back.</p>
-        <div class="more"><div class="more-inner">
-          <p>Complete infection removal, credential-risk checks, and system hardening afterward — so the same problem doesn't come straight back.</p>
-          <a class="quote-link" href="#" data-wa="Virus & Malware Removal"><img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa-icon"> Get a quote for this →</a>
-        </div></div>
-      </div>
-      <div class="service" data-service="Custom Gaming PC Builds">
-        <div class="scan-sweep"></div>
-        <div class="icon"><span>05</span><span class="chev">+</span></div>
-        <h3>Custom Gaming PC Builds</h3>
-        <p>Builds spec'd and tuned around your budget and what you actually play.</p>
-        <div class="more"><div class="more-inner">
-          <p>Builds spec'd around your budget and what you actually play or run — parts sourced, assembled, and tuned for stable performance out the gate.</p>
-          <a class="quote-link" href="#" data-wa="Custom Gaming PC Build"><img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa-icon"> Get a quote for this →</a>
-        </div></div>
-      </div>
-      <div class="service" data-service="Windows Installation">
-        <div class="scan-sweep"></div>
-        <div class="icon"><span>06</span><span class="chev">+</span></div>
-        <h3>Windows Installation</h3>
-        <p>Clean installs and setup, done right the first time.</p>
-        <div class="more"><div class="more-inner">
-          <p>Clean Windows installs with drivers, updates, and essential setup handled properly — no leftover bloat from the old install.</p>
-          <a class="quote-link" href="#" data-wa="Windows Installation"><img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa-icon"> Get a quote for this →</a>
-        </div></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="toolkit">
-    <div class="section-label">HOW WE DIAGNOSE</div>
-    <h2>The Toolkit</h2>
-    <p class="toolkit-intro">Every repair is backed by real diagnostic and benchmark data — not guesswork. Here's what we actually run, and why. Tap a tool to see a sample readout.</p>
-    <div class="services" id="toolkitGrid">
-
-      <div class="service" data-service="3DMark">
-        <div class="scan-sweep"></div>
-        <div class="tag">GPU / Gaming</div>
-        <div class="icon"><span>T1</span><span class="chev">+</span></div>
-        <h3>3DMark</h3>
-        <p>The industry-standard synthetic benchmark for raw GPU performance across DirectX 12 and ray-tracing workloads.</p>
-        <div class="more"><div class="more-inner">
-          <p>We run this after GPU upgrades, driver changes, or thermal work to confirm real performance gains and rule out bottlenecks elsewhere in the system.</p>
-          <div class="bench-demo">
-            <div class="bench-label">Example Output</div>
-            <div class="bench-readout"><span class="bench-score" data-target="9500">0</span><span class="bench-unit">pts · Time Spy</span></div>
-            <div class="bench-bar"><div class="bench-bar-fill" data-target="78"></div></div>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="service" data-service="Cinebench">
-        <div class="scan-sweep"></div>
-        <div class="tag">CPU / Rendering</div>
-        <div class="icon"><span>T2</span><span class="chev">+</span></div>
-        <h3>Cinebench</h3>
-        <p>Maxon's CPU benchmark, built on the Cinema 4D render engine — a reliable read on multi-core processing power.</p>
-        <div class="more"><div class="more-inner">
-          <p>We use it to verify CPU performance and check for thermal throttling under sustained full-load rendering — a good stand-in for real heavy workloads.</p>
-          <div class="bench-demo">
-            <div class="bench-label">Example Output</div>
-            <div class="bench-readout"><span class="bench-score" data-target="18240">0</span><span class="bench-unit">pts · Multi-Core</span></div>
-            <div class="bench-bar"><div class="bench-bar-fill" data-target="85"></div></div>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="service" data-service="CrystalDiskMark">
-        <div class="scan-sweep"></div>
-        <div class="tag">Storage</div>
-        <div class="icon"><span>T3</span><span class="chev">+</span></div>
-        <h3>CrystalDiskMark</h3>
-        <p>Measures sequential and random read/write speeds on SSDs and HDDs.</p>
-        <div class="more"><div class="more-inner">
-          <p>Confirms a new drive is actually hitting its rated speed, or flags a failing/throttled drive as the real cause behind slow load times.</p>
-          <div class="bench-demo">
-            <div class="bench-label">Example Output</div>
-            <div class="bench-readout"><span class="bench-score" data-target="3480">0</span><span class="bench-unit">MB/s · Seq Read</span></div>
-            <div class="bench-bar"><div class="bench-bar-fill" data-target="92"></div></div>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="service" data-service="AIDA64">
-        <div class="scan-sweep"></div>
-        <div class="tag">Stability / Sensors</div>
-        <div class="icon"><span>T4</span><span class="chev">+</span></div>
-        <h3>AIDA64</h3>
-        <p>Deep system diagnostics and stress-testing suite covering CPU, memory, and live sensor data.</p>
-        <div class="more"><div class="more-inner">
-          <p>Our go-to for extended stress tests — it catches instability, voltage issues, or thermal problems before they turn into random crashes for you.</p>
-          <div class="bench-demo">
-            <div class="bench-label">Example Output</div>
-            <div class="bench-readout"><span class="bench-score" data-target="60">0</span><span class="bench-unit">min stable · 0 errors</span></div>
-            <div class="bench-bar"><div class="bench-bar-fill" data-target="100"></div></div>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="service" data-service="MemTest86">
-        <div class="scan-sweep"></div>
-        <div class="tag">RAM Diagnostics</div>
-        <div class="icon"><span>T5</span><span class="chev">+</span></div>
-        <h3>MemTest86</h3>
-        <p>Boots outside Windows to run exhaustive memory pattern tests, catching faulty RAM that the OS won't flag.</p>
-        <div class="more"><div class="more-inner">
-          <p>Standard check on any PC with random crashes or blue screens, and always run after a RAM upgrade before we call the job done.</p>
-          <div class="bench-demo">
-            <div class="bench-label">Example Output</div>
-            <div class="bench-readout"><span class="bench-score" data-target="4">0</span><span class="bench-unit">passes · 0 errors</span></div>
-            <div class="bench-bar"><div class="bench-bar-fill" data-target="100"></div></div>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="service" data-service="FurMark">
-        <div class="scan-sweep"></div>
-        <div class="tag">GPU Thermal Stress</div>
-        <div class="icon"><span>T6</span><span class="chev">+</span></div>
-        <h3>FurMark</h3>
-        <p>A demanding GPU stress test designed to push temperatures and power draw to their worst-case limits.</p>
-        <div class="more"><div class="more-inner">
-          <p>We use it to prove out cooling and thermal-paste work — if it holds steady under FurMark, it'll hold steady under anything you throw at it day-to-day.</p>
-          <div class="bench-demo">
-            <div class="bench-label">Example Output</div>
-            <div class="bench-readout"><span class="bench-score" data-target="74">0</span><span class="bench-unit">°C sustained peak</span></div>
-            <div class="bench-bar"><div class="bench-bar-fill" data-target="60"></div></div>
-          </div>
-        </div></div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="section-label">ABOUT</div>
-    <h2>Why VoltTech</h2>
-    <div class="about-text">
-      <p>VoltTech Computer Co. brings <b>over 25 years of hands-on technical experience</b> to every repair, upgrade, and build.</p>
-      <p>Every job is <b>properly diagnosed</b> before any work begins — thermals, power delivery, and system stability are checked thoroughly, so problems are fixed at the root rather than patched over.</p>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="section-label">GET IN TOUCH</div>
-    <h2>Contact</h2>
-    <div class="contact-grid">
-      <div class="contact-row">
-        <div>
-          <div class="label">WhatsApp</div>
-          <div class="value">+27 061 843 5775</div>
-        </div>
-        <a class="go" href="https://wa.me/27618435775" target="_blank">Message →</a>
-      </div>
-      <div class="contact-row">
-        <div>
-          <div class="label">Email</div>
-          <div class="value">volttechcomputerco@gmail.com</div>
-        </div>
-        <a class="go" href="mailto:volttechcomputerco@gmail.com">Email →</a>
-      </div>
-    </div>
-
-    <div style="height:24px"></div>
-
-    <div class="socials">
-      <a class="social" href="https://instagram.com/volttechcomputerco" target="_blank"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram" class="social-icon"> @volttechcomputerco</a>
-      <a class="social" href="https://tiktok.com/@volttechcomputerco" target="_blank"><img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="TikTok" class="social-icon"> @volttechcomputerco</a>
-      <a class="social" href="https://www.facebook.com/share/1MEoYu4i8N/" target="_blank"><img src="https://cdn.simpleicons.org/facebook/1877F2" alt="Facebook" class="social-icon"> Facebook</a>
-    </div>
-  </section>
-
-</div>
-
-<footer>
-  <p>⚡ VOLTTECH COMPUTER CO. · PRETORIA / JHB · © 2026</p>
-</footer>
-
-<script>
+          </head>
+          <body>
+            <nav>
+              <div class="wrap">
+                <div class="brand">
+                  <img src="logo-badge.png" alt="VoltTech Computer Co.">
+                    <span class="brand-text">
+                      <span class="volt">Volt</span>
+                      <span class="tech">Tech</span> <span class="co">Computer Co.</span>
+                    </span>
+                  </div>
+                  <div class="nav-links">
+                    <a href="#services">Services</a>
+                    <a href="#toolkit">Toolkit</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                  </div>
+                </div>
+              </nav>
+              <div class="wrap">
+                <header class="hero">
+                  <div class="eyebrow">// PRETORIA & JOHANNESBURG</div>
+                  <h1>PC repair, done <span>properly.</span>
+                </h1>
+                <p class="sub">VoltTech Computer Co. diagnoses, repairs, and optimises PCs with real hands-on discipline — thermals, power delivery, and performance dialed in properly, not guessed at.</p>
+              </header>
+              <div class="scan-feature">
+                <div class="scan-badge">
+                  <span class="dot">
+                  </span> Free Diagnostic Tool</div>
+                  <h3>Not sure what's wrong? Run the Signal Scan.</h3>
+                  <p>An interactive diagnostic that reads your PC's symptoms and gives you an instant fault estimate and price range — before you commit to anything.</p>
+                  <div class="scan-perks">
+                    <span>Takes under 60 seconds</span>
+                    <span>Instant price estimate</span>
+                    <span>No obligation</span>
+                  </div>
+                  <a class="btn btn-primary" href="signal-scan.html">⚡ Run the Signal Scan →</a>
+                </div>
+                <div class="cta-row secondary-row">
+                  <a class="btn btn-ghost" id="generalWaBtn" href="#">
+                    <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="" class="wa-icon"> Or chat on WhatsApp</a>
+                    <a class="btn btn-ghost" href="#services">See Services ↓</a>
+                  </div>
+                  <section id="services">
+                    <div class="section-label">WHAT WE DO</div>
+                    <h2>Services</h2>
+                    <p style="font-family:var(--mono); font-size:10.5px; color:var(--muted); letter-spacing:0.06em; margin-bottom:18px;">Tap a service to see more →</p>
+                    <div class="services" id="servicesGrid">
+                      <div class="service" data-service="PC Repair">
+                        <div class="scan-sweep">
+                        </div>
+                        <div class="icon">
+                          <span>01</span>
+                          <span class="chev">+</span>
+                        </div>
+                        <h3>PC Repair</h3>
+                        <p>Full diagnostics and repair for desktops and laptops — hardware and software faults alike.</p>
+                        <div class="more">
+                          <div class="more-inner">
+                            <p>Covers boot failures, crashes, failing components, liquid damage triage, and full hardware/software fault-finding — diagnosed properly before any work starts.</p>
+                            <a class="quote-link" href="#" data-wa="PC Repair" data-message="Hi VoltTech!
+                              I'd like to enquire about your PC Repair service.
+                              I'm having an issue with my PC and would like to have it properly diagnosed and repaired. Could you please let me know what information you need from me and how I can arrange the diagnostic?
+                              Thanks!">
+                              <img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa-icon"> WhatsApp quote →</a>
+                              <a class="quote-link email-link" href="#" data-email="PC Repair">Email quote →</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="service" data-service="Performance Optimisation">
+                          <div class="scan-sweep">
+                          </div>
+                          <div class="icon">
+                            <span>02</span>
+                            <span class="chev">+</span>
+                          </div>
+                          <h3>Performance Optimisation</h3>
+                          <p>Startup, storage, thermal, and power tuning to get your machine running the way it should.</p>
+                          <div class="more">
+                            <div class="more-inner">
+                              <p>Startup bloat cleanup, storage health checks, thermal repasting, and power-profile tuning — a full pass to get an ageing PC feeling responsive again.</p>
+                              <a class="quote-link" href="#" data-wa="Performance Optimisation" data-message="Hi VoltTech!
+                                I'd like to enquire about your Performance Optimisation service.
+                                I'd like to have my PC checked and optimised for better performance, including things like startup, storage, thermals and system settings. Could you please let me know what you need from me to get started?
+                                Thanks!">
+                                <img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa-icon"> WhatsApp quote →</a>
+                                <a class="quote-link email-link" href="#" data-email="Performance Optimisation">Email quote →</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="service" data-service="Hardware Upgrades">
+                            <div class="scan-sweep">
+                            </div>
+                            <div class="icon">
+                              <span>03</span>
+                              <span class="chev">+</span>
+                            </div>
+                            <h3>Hardware Upgrades</h3>
+                            <p>RAM, storage, GPU, and cooling upgrades — benchmarked before and after.</p>
+                            <div class="more">
+                              <div class="more-inner">
+                                <p>RAM, SSD/NVMe storage, GPU, and cooling upgrades — every install is benchmarked before and after so you can see the real-world difference.</p>
+                                <a class="quote-link" href="#" data-wa="Hardware Upgrades" data-message="Hi VoltTech!
+                                  I'd like to enquire about your Hardware Upgrades service.
+                                  I'm interested in upgrading my PC and would like some advice on which components would make the most sense for my system and budget. Could you please let me know what information you need from me?
+                                  Thanks!">
+                                  <img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa-icon"> WhatsApp quote →</a>
+                                  <a class="quote-link email-link" href="#" data-email="Hardware Upgrades">Email quote →</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="service" data-service="Virus & Malware Removal">
+                              <div class="scan-sweep">
+                              </div>
+                              <div class="icon">
+                                <span>04</span>
+                                <span class="chev">+</span>
+                              </div>
+                              <h3>Virus & Malware Removal</h3>
+                              <p>Full infection removal and system hardening so it doesn't come back.</p>
+                              <div class="more">
+                                <div class="more-inner">
+                                  <p>Complete infection removal, credential-risk checks, and system hardening afterward — so the same problem doesn't come straight back.</p>
+                                  <a class="quote-link" href="#" data-wa="Virus & Malware Removal" data-message="Hi VoltTech!
+                                    I'd like to enquire about your Virus &amp; Malware Removal service.
+                                    I suspect my PC may have a virus or other malware and would like it properly checked, cleaned and secured. Could you please let me know how I can arrange this?
+                                    Thanks!">
+                                    <img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa-icon"> WhatsApp quote →</a>
+                                    <a class="quote-link email-link" href="#" data-email="Virus & Malware Removal">Email quote →</a>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="service" data-service="Custom Gaming PC Builds">
+                                <div class="scan-sweep">
+                                </div>
+                                <div class="icon">
+                                  <span>05</span>
+                                  <span class="chev">+</span>
+                                </div>
+                                <h3>Custom Gaming PC Builds</h3>
+                                <p>Builds spec'd and tuned around your budget and what you actually play.</p>
+                                <div class="more">
+                                  <div class="more-inner">
+                                    <p>Builds spec'd around your budget and what you actually play or run — parts sourced, assembled, and tuned for stable performance out the gate.</p>
+                                    <a class="quote-link" href="#" data-wa="Custom Gaming PC Build" data-message="Hi VoltTech!
+                                      I'd like to enquire about a Custom Gaming PC Build.
+                                      I'm interested in having a gaming PC built around my budget and the games I play. I'd like some advice on the best parts and configuration. Could you please let me know what information you need from me?
+                                      Thanks!">
+                                      <img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa-icon"> WhatsApp quote →</a>
+                                      <a class="quote-link email-link" href="#" data-email="Custom Gaming PC Build">Email quote →</a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="service" data-service="Windows Installation">
+                                  <div class="scan-sweep">
+                                  </div>
+                                  <div class="icon">
+                                    <span>06</span>
+                                    <span class="chev">+</span>
+                                  </div>
+                                  <h3>Windows Installation</h3>
+                                  <p>Clean installs and setup, done right the first time.</p>
+                                  <div class="more">
+                                    <div class="more-inner">
+                                      <p>Clean Windows installs with drivers, updates, and essential setup handled properly — no leftover bloat from the old install.</p>
+                                      <a class="quote-link" href="#" data-wa="Windows Installation" data-message="Hi VoltTech!
+                                        I'd like to enquire about your Windows Installation service.
+                                        I'd like to have Windows cleanly installed and properly set up, including drivers and updates. Could you please let me know what you need from me and how I can arrange the installation?
+                                        Thanks!">
+                                        <img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa-icon"> WhatsApp quote →</a>
+                                        <a class="quote-link email-link" href="#" data-email="Windows Installation">Email quote →</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </section>
+                              <section id="toolkit">
+                                <div class="section-label">HOW WE DIAGNOSE</div>
+                                <h2>The Toolkit</h2>
+                                <p class="toolkit-intro">Every repair is backed by real diagnostic and benchmark data — not guesswork. Here's what we actually run, and why. Tap a tool to see a sample readout.</p>
+                                <div class="services" id="toolkitGrid">
+                                  <div class="service" data-service="3DMark">
+                                    <div class="scan-sweep">
+                                    </div>
+                                    <div class="tag">GPU / Gaming</div>
+                                    <div class="icon">
+                                      <span>T1</span>
+                                      <span class="chev">+</span>
+                                    </div>
+                                    <h3>3DMark</h3>
+                                    <p>The industry-standard synthetic benchmark for raw GPU performance across DirectX 12 and ray-tracing workloads.</p>
+                                    <div class="more">
+                                      <div class="more-inner">
+                                        <p>We run this after GPU upgrades, driver changes, or thermal work to confirm real performance gains and rule out bottlenecks elsewhere in the system.</p>
+                                        <div class="bench-demo">
+                                          <div class="bench-label">Example Output</div>
+                                          <div class="bench-readout">
+                                            <span class="bench-score" data-target="9500">0</span>
+                                            <span class="bench-unit">pts · Time Spy</span>
+                                          </div>
+                                          <div class="bench-bar">
+                                            <div class="bench-bar-fill" data-target="78">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="service" data-service="Cinebench">
+                                    <div class="scan-sweep">
+                                    </div>
+                                    <div class="tag">CPU / Rendering</div>
+                                    <div class="icon">
+                                      <span>T2</span>
+                                      <span class="chev">+</span>
+                                    </div>
+                                    <h3>Cinebench</h3>
+                                    <p>Maxon's CPU benchmark, built on the Cinema 4D render engine — a reliable read on multi-core processing power.</p>
+                                    <div class="more">
+                                      <div class="more-inner">
+                                        <p>We use it to verify CPU performance and check for thermal throttling under sustained full-load rendering — a good stand-in for real heavy workloads.</p>
+                                        <div class="bench-demo">
+                                          <div class="bench-label">Example Output</div>
+                                          <div class="bench-readout">
+                                            <span class="bench-score" data-target="18240">0</span>
+                                            <span class="bench-unit">pts · Multi-Core</span>
+                                          </div>
+                                          <div class="bench-bar">
+                                            <div class="bench-bar-fill" data-target="85">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="service" data-service="CrystalDiskMark">
+                                    <div class="scan-sweep">
+                                    </div>
+                                    <div class="tag">Storage</div>
+                                    <div class="icon">
+                                      <span>T3</span>
+                                      <span class="chev">+</span>
+                                    </div>
+                                    <h3>CrystalDiskMark</h3>
+                                    <p>Measures sequential and random read/write speeds on SSDs and HDDs.</p>
+                                    <div class="more">
+                                      <div class="more-inner">
+                                        <p>Confirms a new drive is actually hitting its rated speed, or flags a failing/throttled drive as the real cause behind slow load times.</p>
+                                        <div class="bench-demo">
+                                          <div class="bench-label">Example Output</div>
+                                          <div class="bench-readout">
+                                            <span class="bench-score" data-target="3480">0</span>
+                                            <span class="bench-unit">MB/s · Seq Read</span>
+                                          </div>
+                                          <div class="bench-bar">
+                                            <div class="bench-bar-fill" data-target="92">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="service" data-service="AIDA64">
+                                    <div class="scan-sweep">
+                                    </div>
+                                    <div class="tag">Stability / Sensors</div>
+                                    <div class="icon">
+                                      <span>T4</span>
+                                      <span class="chev">+</span>
+                                    </div>
+                                    <h3>AIDA64</h3>
+                                    <p>Deep system diagnostics and stress-testing suite covering CPU, memory, and live sensor data.</p>
+                                    <div class="more">
+                                      <div class="more-inner">
+                                        <p>Our go-to for extended stress tests — it catches instability, voltage issues, or thermal problems before they turn into random crashes for you.</p>
+                                        <div class="bench-demo">
+                                          <div class="bench-label">Example Output</div>
+                                          <div class="bench-readout">
+                                            <span class="bench-score" data-target="60">0</span>
+                                            <span class="bench-unit">min stable · 0 errors</span>
+                                          </div>
+                                          <div class="bench-bar">
+                                            <div class="bench-bar-fill" data-target="100">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="service" data-service="MemTest86">
+                                    <div class="scan-sweep">
+                                    </div>
+                                    <div class="tag">RAM Diagnostics</div>
+                                    <div class="icon">
+                                      <span>T5</span>
+                                      <span class="chev">+</span>
+                                    </div>
+                                    <h3>MemTest86</h3>
+                                    <p>Boots outside Windows to run exhaustive memory pattern tests, catching faulty RAM that the OS won't flag.</p>
+                                    <div class="more">
+                                      <div class="more-inner">
+                                        <p>Standard check on any PC with random crashes or blue screens, and always run after a RAM upgrade before we call the job done.</p>
+                                        <div class="bench-demo">
+                                          <div class="bench-label">Example Output</div>
+                                          <div class="bench-readout">
+                                            <span class="bench-score" data-target="4">0</span>
+                                            <span class="bench-unit">passes · 0 errors</span>
+                                          </div>
+                                          <div class="bench-bar">
+                                            <div class="bench-bar-fill" data-target="100">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="service" data-service="FurMark">
+                                    <div class="scan-sweep">
+                                    </div>
+                                    <div class="tag">GPU Thermal Stress</div>
+                                    <div class="icon">
+                                      <span>T6</span>
+                                      <span class="chev">+</span>
+                                    </div>
+                                    <h3>FurMark</h3>
+                                    <p>A demanding GPU stress test designed to push temperatures and power draw to their worst-case limits.</p>
+                                    <div class="more">
+                                      <div class="more-inner">
+                                        <p>We use it to prove out cooling and thermal-paste work — if it holds steady under FurMark, it'll hold steady under anything you throw at it day-to-day.</p>
+                                        <div class="bench-demo">
+                                          <div class="bench-label">Example Output</div>
+                                          <div class="bench-readout">
+                                            <span class="bench-score" data-target="74">0</span>
+                                            <span class="bench-unit">°C sustained peak</span>
+                                          </div>
+                                          <div class="bench-bar">
+                                            <div class="bench-bar-fill" data-target="60">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </section>
+                              <section id="about">
+                                <div class="section-label">ABOUT</div>
+                                <h2>Why VoltTech</h2>
+                                <div class="about-text">
+                                  <p>VoltTech Computer Co. brings <b>over 25 years of hands-on technical experience</b> to every repair, upgrade, and build.</p>
+                                  <p>Every job is <b>properly diagnosed</b> before any work begins — thermals, power delivery, and system stability are checked thoroughly, so problems are fixed at the root rather than patched over.</p>
+                                </div>
+                              </section>
+                              <section id="contact">
+                                <div class="section-label">GET IN TOUCH</div>
+                                <h2>Contact</h2>
+                                <div class="contact-grid">
+                                  <div class="contact-row">
+                                    <div>
+                                      <div class="label">WhatsApp</div>
+                                      <div class="value">+27 061 843 5775</div>
+                                    </div>
+                                    <a class="go" href="https://wa.me/27618435775" target="_blank">Message →</a>
+                                  </div>
+                                  <div class="contact-row">
+                                    <div>
+                                      <div class="label">Email</div>
+                                      <div class="value">volttechcomputerco@gmail.com</div>
+                                    </div>
+                                    <a class="go" href="mailto:volttechcomputerco@gmail.com">Email →</a>
+                                  </div>
+                                </div>
+                                <div style="height:24px">
+                                </div>
+                                <div class="socials">
+                                  <a class="social" href="https://instagram.com/volttechcomputerco" target="_blank">
+                                    <img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram" class="social-icon"> @volttechcomputerco</a>
+                                    <a class="social" href="https://tiktok.com/@volttechcomputerco" target="_blank">
+                                      <img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="TikTok" class="social-icon"> @volttechcomputerco</a>
+                                      <a class="social" href="https://www.facebook.com/share/1MEoYu4i8N/" target="_blank">
+                                        <img src="https://cdn.simpleicons.org/facebook/1877F2" alt="Facebook" class="social-icon"> Facebook</a>
+                                      </div>
+                                    </section>
+                                  </div>
+                                  <footer>
+                                    <p>⚡ VOLTTECH COMPUTER CO. · PRETORIA / JHB · © 2026</p>
+                                  </footer>
+                                  <script>
   document.querySelectorAll('.services').forEach(grid => {
     const cards = grid.querySelectorAll('.service');
     cards.forEach(card => {
@@ -537,15 +670,105 @@
     requestAnimationFrame(tick);
   }
 
-  document.querySelectorAll('.quote-link').forEach(link => {
+  const serviceEmailDetails = {
+    'PC Repair': {
+      subject: 'PC Repair Enquiry — VoltTech Computer Co.',
+      body: `Hi VoltTech,
+
+I'd like to enquire about your PC Repair service.
+
+I'm having an issue with my PC and would like to have it properly diagnosed and repaired. Could you please let me know what information you need from me and how I can arrange the diagnostic?
+
+Thanks!`
+    },
+    'Performance Optimisation': {
+      subject: 'Performance Optimisation Enquiry — VoltTech Computer Co.',
+      body: `Hi VoltTech,
+
+I'd like to enquire about your Performance Optimisation service.
+
+I'd like to have my PC checked and optimised for better performance, including things like startup, storage, thermals and system settings. Could you please let me know what you need from me to get started?
+
+Thanks!`
+    },
+    'Hardware Upgrades': {
+      subject: 'Hardware Upgrade Enquiry — VoltTech Computer Co.',
+      body: `Hi VoltTech,
+
+I'd like to enquire about your Hardware Upgrades service.
+
+I'm interested in upgrading my PC and would like some advice on which components would make the most sense for my system and budget. Could you please let me know what information you need from me?
+
+Thanks!`
+    },
+    'Virus & Malware Removal': {
+      subject: 'Virus & Malware Removal Enquiry — VoltTech Computer Co.',
+      body: `Hi VoltTech,
+
+I'd like to enquire about your Virus & Malware Removal service.
+
+I suspect my PC may have a virus or other malware and would like it properly checked, cleaned and secured. Could you please let me know how I can arrange this?
+
+Thanks!`
+    },
+    'Custom Gaming PC Build': {
+      subject: 'Custom Gaming PC Build Enquiry — VoltTech Computer Co.',
+      body: `Hi VoltTech,
+
+I'd like to enquire about a Custom Gaming PC Build.
+
+I'm interested in having a gaming PC built around my budget and the games I play. I'd like some advice on the best parts and configuration. Could you please let me know what information you need from me?
+
+Thanks!`
+    },
+    'Windows Installation': {
+      subject: 'Windows Installation Enquiry — VoltTech Computer Co.',
+      body: `Hi VoltTech,
+
+I'd like to enquire about your Windows Installation service.
+
+I'd like to have Windows cleanly installed and properly set up, including drivers and updates. Could you please let me know what you need from me and how I can arrange the installation?
+
+Thanks!`
+    }
+  };
+
+  document.querySelectorAll('.quote-link[data-wa]').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
       const service = link.getAttribute('data-wa');
-      const msg = encodeURIComponent(`Hi VoltTech! I'd like a quote for: ${service}`);
+      const customMessage = link.getAttribute('data-message');
+      const msg = encodeURIComponent(customMessage || serviceEmailDetails[service]?.body || `Hi VoltTech! I'd like to enquire about ${service}.`);
       window.open(`https://wa.me/27618435775?text=${msg}`, '_blank');
     });
   });
+
+  document.querySelectorAll('.email-link[data-email]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const service = link.getAttribute('data-email');
+      const details = serviceEmailDetails[service];
+      if(!details) return;
+      window.location.href = `mailto:volttechcomputerco@gmail.com?subject=${encodeURIComponent(details.subject)}&body=${encodeURIComponent(details.body)}`;
+    });
+  });
+
+  const generalWaBtn = document.getElementById('generalWaBtn');
+  if(generalWaBtn){
+    generalWaBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const msg = encodeURIComponent(`Hi VoltTech!
+
+I'd like to enquire about your PC services. I'm not sure which service I need and would like some assistance.
+
+Please let me know what information you need from me to get started.
+
+Thanks!`);
+      window.open(`https://wa.me/27618435775?text=${msg}`, '_blank');
+    });
+  }
 </script>
-</body>
-                                    </html>
+                                </body>
+                                      </html>
