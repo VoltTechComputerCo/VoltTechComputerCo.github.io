@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VoltTech Signal Scan — PC Diagnostic</title>
-<style>
+  <head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VoltTech Signal Scan — PC Diagnostic</title>
+        <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
   :root{
@@ -52,6 +52,23 @@
   .brand-tag{
     font-family:var(--mono); font-size:10px; color:var(--muted);
     letter-spacing:0.08em;
+  }
+  .back-home{
+    display:inline-flex; align-items:center; gap:7px;
+    margin-bottom:18px;
+    padding:9px 12px;
+    border:1px solid var(--panel-line);
+    border-radius:3px;
+    color:var(--muted);
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    transition:all 0.15s ease;
+  }
+  .back-home:hover{
+    color:var(--text);
+    border-color:var(--muted);
   }
 
   .scope{
@@ -217,38 +234,39 @@
 
   @media (max-width:480px){ .panel{ padding:22px 18px; } h1{ font-size:22px; } }
 </style>
-</head>
-<body>
-<div class="wrap">
-
-  <div class="brand">
-    <div class="brand-left">
-      <img src="logo-badge.png" alt="VoltTech Computer Co.">
-      <div class="brand-name" id="brandName"><span class="volt">Volt</span><span class="tech">Tech</span> <span class="co">Computer Co.</span></div>
-    </div>
-    <div class="brand-tag">PRETORIA / JHB</div>
-  </div>
-
-  <div class="scope" id="scopeBox">
-    <div class="scope-label" id="scopeLabel">SIGNAL SCAN</div>
-    <div class="scope-reading" id="scopeReading">STABLE</div>
-    <canvas id="scopeCanvas"></canvas>
-  </div>
-
-  <div class="alert-banner" id="alertBanner">
-    <canvas class="grain-canvas" id="grainCanvas"></canvas>
-    <div class="alert-sub">FAULT SEVERITY</div>
-    <div class="alert-text" id="alertText">SYSTEM STABLE</div>
-  </div>
-
-  <div class="meter" id="meter"></div>
-
-  <div class="panel" id="panel"></div>
-
-  <footer>NO OBLIGATION · FREE ESTIMATE · WHATSAPP +27 061 843 5775</footer>
-</div>
-
-<script>
+      </head>
+      <body>
+        <div class="wrap">
+          <div class="brand">
+            <div class="brand-left">
+              <img src="logo-badge.png" alt="VoltTech Computer Co.">
+                <div class="brand-name" id="brandName">
+                  <span class="volt">Volt</span>
+                  <span class="tech">Tech</span> <span class="co">Computer Co.</span>
+                </div>
+              </div>
+              <div class="brand-tag">PRETORIA / JHB</div>
+            </div>
+            <a class="back-home" href="index.html">← Back to VoltTech</a>
+            <div class="scope" id="scopeBox">
+              <div class="scope-label" id="scopeLabel">SIGNAL SCAN</div>
+              <div class="scope-reading" id="scopeReading">STABLE</div>
+              <canvas id="scopeCanvas">
+              </canvas>
+            </div>
+            <div class="alert-banner" id="alertBanner">
+              <canvas class="grain-canvas" id="grainCanvas">
+              </canvas>
+              <div class="alert-sub">FAULT SEVERITY</div>
+              <div class="alert-text" id="alertText">SYSTEM STABLE</div>
+            </div>
+            <div class="meter" id="meter">
+            </div>
+            <div class="panel" id="panel">
+            </div>
+            <footer>NO OBLIGATION · FREE ESTIMATE · WHATSAPP +27 061 843 5775</footer>
+          </div>
+          <script>
 /* ---------- Oscilloscope ---------- */
 const canvas = document.getElementById('scopeCanvas');
 const ctx = canvas.getContext('2d');
@@ -654,5 +672,5 @@ function renderResult(panel){
 
 render();
 </script>
-</body>
-</html>
+        </body>
+      </html>
