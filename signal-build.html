@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VoltTech Signal Build — Custom PC Configurator</title>
+<title>VoltTech PC Builder — Custom PC Configurator</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
@@ -278,7 +278,7 @@ const BUILD_FEE = 1200; // assembly, cable management, benchmarking & burn-in
 
 function partTotal(parts){
   let sum = BUILD_FEE;
-  for(const cat in parts){ sum += PRICES[cat][parts[cat]].price; }
+  for(const cat of Object.keys(CAT_LABELS)){ sum += PRICES[cat][parts[cat]].price; }
   return sum;
 }
 function fmtR(n){ return 'R' + Math.round(n).toLocaleString(); }
@@ -534,10 +534,10 @@ function renderGResult(panel){
 
   const specText = fmtSpecList(parts);
   document.getElementById('gWaBtn').onclick = ()=>{
-    const msg = `Hi VoltTech! I used the Signal Build configurator.%0A%0AName: ${encodeURIComponent(gState.name)}%0AUse case: ${encodeURIComponent(useCase.label)}%0ABudget: ${encodeURIComponent(budget.label)}%0APriority: ${encodeURIComponent(gState.priority)}%0A%0ARecommended build:%0A${encodeURIComponent(specText)}%0A%0AEstimated total: ${encodeURIComponent(fmtR(total))}`;
+    const msg = `Hi VoltTech! I used the PC Builder.%0A%0AName: ${encodeURIComponent(gState.name)}%0AUse case: ${encodeURIComponent(useCase.label)}%0ABudget: ${encodeURIComponent(budget.label)}%0APriority: ${encodeURIComponent(gState.priority)}%0A%0ARecommended build:%0A${encodeURIComponent(specText)}%0A%0AEstimated total: ${encodeURIComponent(fmtR(total))}`;
     window.open(`https://wa.me/27618435775?text=${msg}`, '_blank');
   };
-  const subject = encodeURIComponent('Signal Build enquiry — ' + useCase.label);
+  const subject = encodeURIComponent('PC Builder enquiry — ' + useCase.label);
   const body = encodeURIComponent(`Name: ${gState.name}\nPhone: ${gState.phone}\nUse case: ${useCase.label}\nBudget: ${budget.label}\nPriority: ${gState.priority}\n\nRecommended build:\n${specText}\n\nEstimated total: ${fmtR(total)}`);
   document.getElementById('gEmailBtn').setAttribute('href', `mailto:volttechcomputerco@gmail.com?subject=${subject}&body=${body}`);
   document.getElementById('gRestartBtn').onclick = ()=>{
@@ -601,14 +601,14 @@ function renderExpert(){
   document.getElementById('eWaBtn').onclick = ()=>{
     const specText = fmtSpecList(eState);
     const total = partTotal(eState);
-    const msg = `Hi VoltTech! I configured a build using Signal Build Expert Mode.%0A%0A${encodeURIComponent(specText)}%0A%0ATotal: ${encodeURIComponent(fmtR(total))}%0ATarget budget: ${encodeURIComponent(fmtR(eState.targetBudget))}`;
+    const msg = `Hi VoltTech! I configured a build using PC Builder Expert Mode.%0A%0A${encodeURIComponent(specText)}%0A%0ATotal: ${encodeURIComponent(fmtR(total))}%0ATarget budget: ${encodeURIComponent(fmtR(eState.targetBudget))}`;
     window.open(`https://wa.me/27618435775?text=${msg}`, '_blank');
   };
   document.getElementById('eEmailBtn').addEventListener('click', function(e){
     const specText = fmtSpecList(eState);
     const total = partTotal(eState);
-    const subject = encodeURIComponent('Signal Build (Expert Mode) enquiry');
-    const body = encodeURIComponent(`Custom build configured via Signal Build Expert Mode:\n\n${specText}\n\nTotal: ${fmtR(total)}\nTarget budget: ${fmtR(eState.targetBudget)}`);
+    const subject = encodeURIComponent('PC Builder (Expert Mode) enquiry');
+    const body = encodeURIComponent(`Custom build configured via PC Builder Expert Mode:\n\n${specText}\n\nTotal: ${fmtR(total)}\nTarget budget: ${fmtR(eState.targetBudget)}`);
     this.setAttribute('href', `mailto:volttechcomputerco@gmail.com?subject=${subject}&body=${body}`);
   });
 
