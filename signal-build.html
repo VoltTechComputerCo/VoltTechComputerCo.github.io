@@ -41,9 +41,9 @@
   .brand-left{ display:flex; align-items:center; gap:10px; }
   .brand-left img{ height:28px; width:auto; display:block; }
   .brand-name{ font-family:var(--mono); font-size:12px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; }
-  .brand-name .volt{ color:#f3c51e; }
-  .brand-name .tech{ color:#4e96e4; }
-  .brand-name .co{ color:#f3c51e; font-weight:500; margin-left:2px; }
+  .brand-name .volt{ color:#2fe6c8; }
+  .brand-name .tech{ color:#ffffff; }
+  .brand-name .co{ color:#2fe6c8; font-weight:500; margin-left:2px; }
   .brand-tag{ font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.08em; }
 
   .back-home{
@@ -213,65 +213,70 @@
 
 <script>
 /* ================= PRICE DATABASE (ZAR) =================
-   Starting-point estimates based on general SA market research.
-   Adjust these numbers to match your actual supplier costs. */
+   Starting-point estimates based on South African retailer research (Aug 2026).
+   Adjust these numbers to match your actual supplier costs — prices move fast
+   on current-gen GPUs especially, so treat this as a base to keep updated. */
 const PRICES = {
   cpu: {
-    ryzen5_5500:      { label:'AMD Ryzen 5 5500',              price:2200 },
-    i5_12400f:         { label:'Intel Core i5-12400F',          price:3400 },
-    ryzen5_7600:       { label:'AMD Ryzen 5 7600',               price:4200 },
-    i5_14400f:         { label:'Intel Core i5-14400F',          price:4000 },
-    ryzen7_7700:       { label:'AMD Ryzen 7 7700',               price:6200 },
-    ryzen7_9700x:      { label:'AMD Ryzen 7 9700X',              price:7800 },
-    core_ultra7_265kf: { label:'Intel Core Ultra 7 265KF',       price:9500 },
-    ryzen7_9800x3d:    { label:'AMD Ryzen 7 9800X3D',            price:11500 },
+    ryzen5_8500g:      { label:'AMD Ryzen 5 8500G (w/ iGPU)',     price:3600 },
+    ryzen5_5500:       { label:'AMD Ryzen 5 5500',                price:2200 },
+    ryzen5_9600x:      { label:'AMD Ryzen 5 9600X',               price:4800 },
+    ryzen7_9700x:      { label:'AMD Ryzen 7 9700X',               price:6800 },
+    core_ultra5_245k:  { label:'Intel Core Ultra 5 245K',         price:7500 },
+    ryzen7_9800x3d:    { label:'AMD Ryzen 7 9800X3D',             price:8500 },
+    core_ultra7_265k:  { label:'Intel Core Ultra 7 265K',         price:9800 },
+    ryzen7_9850x3d:    { label:'AMD Ryzen 7 9850X3D',             price:10500 },
+    ryzen9_9900x:      { label:'AMD Ryzen 9 9900X',               price:11000 },
+    ryzen9_9950x3d:    { label:'AMD Ryzen 9 9950X3D',             price:16500 },
   },
   gpu: {
-    integrated:        { label:'Integrated Graphics (no dGPU)', price:0 },
-    gtx1650:           { label:'GTX 1650 4GB',                  price:3200 },
-    rtx4060:           { label:'RTX 4060 8GB',                  price:7800 },
-    rtx4060ti:         { label:'RTX 4060 Ti 8GB',                price:9800 },
-    rx7700xt:          { label:'RX 7700 XT 12GB',                price:11500 },
-    rtx4070:           { label:'RTX 4070 12GB',                  price:14500 },
-    rx7800xt:          { label:'RX 7800 XT 16GB',                price:13500 },
-    rtx4070ti_super:   { label:'RTX 4070 Ti Super 16GB',         price:18500 },
-    rtx4080_super:     { label:'RTX 4080 Super 16GB',            price:25000 },
-    rtx4090class:      { label:'RTX 4090-class 24GB',            price:38000 },
+    integrated:        { label:'Integrated Graphics (no dGPU)',        price:0 },
+    rtx5060:           { label:'NVIDIA RTX 5060 8GB',                  price:6700 },
+    rtx5060ti:         { label:'ASUS Dual RTX 5060 Ti 16GB',           price:9800 },
+    rtx5070:           { label:'MSI RTX 5070 Ventus 12GB',             price:14000 },
+    rtx5070ti:         { label:'Gigabyte RTX 5070 Ti Gaming OC 16GB',  price:18500 },
+    rtx5080:           { label:'MSI RTX 5080 Ventus 3X OC 16GB',       price:32500 },
+    rtx5080_strix:     { label:'ASUS ROG Strix RTX 5080 OC 16GB',      price:39000 },
+    rtx5090:           { label:'NVIDIA RTX 5090 32GB (reference)',     price:64000 },
+    rtx5090_strix:     { label:'ASUS ROG Strix RTX 5090 OC 32GB',      price:74000 },
   },
   ram: {
-    r8:  { label:'8GB DDR5',        price:700 },
-    r16: { label:'16GB (2x8) DDR5', price:1300 },
-    r32: { label:'32GB (2x16) DDR5',price:2400 },
-    r64: { label:'64GB (2x32) DDR5',price:4800 },
+    r8:  { label:'8GB DDR5-6000',         price:750 },
+    r16: { label:'16GB (2x8) DDR5-6000',  price:1400 },
+    r32: { label:'32GB (2x16) DDR5-6000', price:2600 },
+    r64: { label:'64GB (2x32) DDR5-6000', price:5200 },
   },
   storage: {
-    s500:  { label:'500GB NVMe SSD', price:850 },
-    s1tb:  { label:'1TB NVMe SSD',   price:1400 },
-    s2tb:  { label:'2TB NVMe SSD',   price:2600 },
+    s500:  { label:'500GB NVMe Gen4 SSD', price:800 },
+    s1tb:  { label:'1TB NVMe Gen4 SSD',   price:1350 },
+    s2tb:  { label:'2TB NVMe Gen4 SSD',   price:2500 },
   },
   psu: {
-    p550: { label:'550W Bronze',  price:1100 },
-    p650: { label:'650W Bronze',  price:1400 },
-    p750: { label:'750W Gold',    price:1900 },
-    p850: { label:'850W Gold',    price:2400 },
+    p550:  { label:'550W Bronze',              price:1100 },
+    p650:  { label:'650W Bronze',              price:1450 },
+    p750:  { label:'750W Gold ATX 3.0',        price:2000 },
+    p850:  { label:'850W Gold ATX 3.0',        price:2500 },
+    p1000: { label:'1000W Gold ATX 3.1 (12V-2x6)', price:3200 },
   },
   case: {
     budget:  { label:'Budget Micro-ATX',       price:900 },
-    mid:     { label:'Mid-Tower',               price:1400 },
-    mid_rgb: { label:'Mid-Tower RGB / Airflow', price:1900 },
-    premium: { label:'Premium Tempered Glass',  price:2600 },
+    mid:     { label:'Mid-Tower',               price:1450 },
+    mid_rgb: { label:'Mid-Tower RGB / Airflow', price:2000 },
+    premium: { label:'Premium Tempered Glass',  price:2700 },
   },
   cool: {
-    stock:     { label:'Stock Cooler',      price:0 },
-    air_budget:{ label:'Budget Air Tower',  price:550 },
-    air_perf:  { label:'Performance Air Tower', price:950 },
-    aio240:    { label:'240mm AIO Liquid Cooler', price:1600 },
-    aio360:    { label:'360mm AIO Liquid Cooler', price:2200 },
+    stock:     { label:'Stock Cooler',            price:0 },
+    air_budget:{ label:'Budget Air Tower',        price:600 },
+    air_perf:  { label:'Performance Air Tower',   price:1000 },
+    aio240:    { label:'240mm AIO Liquid Cooler', price:1700 },
+    aio360:    { label:'360mm AIO Liquid Cooler', price:2300 },
+    aio420:    { label:'420mm AIO Liquid Cooler', price:2900 },
   },
   mobo: {
-    budget: { label:'Budget Chipset Board', price:2200 },
-    mid:    { label:'Mid-Range Board',      price:3200 },
-    high:   { label:'High-End Board',       price:5500 },
+    budget_am4: { label:'Budget AM4 Board',              price:1700 },
+    budget:     { label:'Budget AM5 / LGA1851 Board',    price:2400 },
+    mid:        { label:'Mid-Range Board (better VRM)',  price:3600 },
+    high:       { label:'High-End Board (X870 / Z890)',  price:6000 },
   },
 };
 const BUILD_FEE = 1200; // assembly, cable management, benchmarking & burn-in
@@ -293,11 +298,11 @@ const USE_CASES = [
 ];
 
 const BUDGETS = [
-  { id:'t1', label:'R10,000 – R15,000', sub:'Entry-level, reliable daily driver' },
-  { id:'t2', label:'R15,000 – R22,000', sub:'Solid mid-range performance' },
-  { id:'t3', label:'R22,000 – R32,000', sub:'High performance, future-proofed' },
-  { id:'t4', label:'R32,000 – R45,000', sub:'Enthusiast-grade build' },
-  { id:'t5', label:'R45,000+', sub:'No-compromise dream build' },
+  { id:'t1', label:'R11,000 – R16,000', sub:'Entry-level, reliable daily driver' },
+  { id:'t2', label:'R16,000 – R23,000', sub:'Solid mid-range performance' },
+  { id:'t3', label:'R23,000 – R33,000', sub:'High performance, future-proofed' },
+  { id:'t4', label:'R33,000 – R48,000', sub:'Enthusiast-grade build' },
+  { id:'t5', label:'R48,000+', sub:'No-compromise dream build' },
 ];
 
 const PRIORITIES = [
@@ -310,29 +315,29 @@ const PRIORITIES = [
 // tier + variant -> parts (all verified to land inside their budget bracket)
 const BUILD_LIBRARY = {
   t1: {
-    office:  { cpu:'ryzen5_5500', gpu:'integrated', ram:'r8',  storage:'s1tb', psu:'p550', case:'mid',     cool:'stock',      mobo:'budget' },
-    gaming:  { cpu:'ryzen5_5500', gpu:'gtx1650',     ram:'r8',  storage:'s500', psu:'p550', case:'budget',  cool:'stock',      mobo:'budget' },
-    creator: { cpu:'ryzen5_5500', gpu:'integrated', ram:'r16', storage:'s500', psu:'p550', case:'mid',     cool:'stock',      mobo:'budget' },
+    office:  { cpu:'ryzen5_8500g', gpu:'integrated', ram:'r16', storage:'s1tb', psu:'p550', case:'mid',    cool:'stock', mobo:'budget' },
+    gaming:  { cpu:'ryzen5_5500',  gpu:'rtx5060',     ram:'r8',  storage:'s500', psu:'p550', case:'budget', cool:'stock', mobo:'budget_am4' },
+    creator: { cpu:'ryzen5_8500g', gpu:'integrated', ram:'r16', storage:'s500', psu:'p550', case:'mid',    cool:'stock', mobo:'budget' },
   },
   t2: {
-    office:  { cpu:'ryzen5_7600', gpu:'integrated', ram:'r32', storage:'s2tb', psu:'p750', case:'mid',     cool:'air_budget', mobo:'mid' },
-    gaming:  { cpu:'ryzen5_7600', gpu:'rtx4060',     ram:'r16', storage:'s1tb', psu:'p650', case:'mid',     cool:'stock',      mobo:'mid' },
-    creator: { cpu:'ryzen5_7600', gpu:'integrated', ram:'r32', storage:'s1tb', psu:'p650', case:'mid',     cool:'air_budget', mobo:'mid' },
+    office:  { cpu:'ryzen5_9600x', gpu:'integrated', ram:'r32', storage:'s2tb', psu:'p650', case:'mid', cool:'air_budget', mobo:'mid' },
+    gaming:  { cpu:'ryzen5_9600x', gpu:'rtx5060',     ram:'r16', storage:'s1tb', psu:'p650', case:'mid', cool:'stock',      mobo:'mid' },
+    creator: { cpu:'ryzen5_9600x', gpu:'integrated', ram:'r32', storage:'s1tb', psu:'p650', case:'mid', cool:'air_budget', mobo:'mid' },
   },
   t3: {
-    office:  { cpu:'ryzen7_7700', gpu:'rtx4060',     ram:'r32', storage:'s2tb', psu:'p750', case:'mid_rgb', cool:'air_perf',   mobo:'high' },
-    gaming:  { cpu:'ryzen7_7700', gpu:'rtx4060ti',   ram:'r16', storage:'s1tb', psu:'p750', case:'mid_rgb', cool:'air_perf',   mobo:'mid' },
-    creator: { cpu:'ryzen7_7700', gpu:'rtx4060',     ram:'r32', storage:'s2tb', psu:'p750', case:'mid',     cool:'air_perf',   mobo:'mid' },
+    office:  { cpu:'ryzen7_9700x', gpu:'rtx5060',    ram:'r32', storage:'s2tb', psu:'p750', case:'mid_rgb', cool:'air_perf', mobo:'high' },
+    gaming:  { cpu:'ryzen7_9700x', gpu:'rtx5060ti',  ram:'r16', storage:'s1tb', psu:'p750', case:'mid_rgb', cool:'air_perf', mobo:'mid' },
+    creator: { cpu:'ryzen7_9700x', gpu:'rtx5060',    ram:'r32', storage:'s2tb', psu:'p750', case:'mid',     cool:'air_perf', mobo:'mid' },
   },
   t4: {
-    office:  { cpu:'ryzen7_9700x', gpu:'rtx4060ti',       ram:'r32', storage:'s2tb', psu:'p850', case:'premium', cool:'aio240', mobo:'high' },
-    gaming:  { cpu:'ryzen7_9700x', gpu:'rtx4070',          ram:'r32', storage:'s1tb', psu:'p750', case:'mid_rgb', cool:'aio240', mobo:'high' },
-    creator: { cpu:'ryzen7_9700x', gpu:'rx7700xt',         ram:'r32', storage:'s2tb', psu:'p750', case:'mid',     cool:'aio240', mobo:'high' },
+    office:  { cpu:'ryzen7_9800x3d',   gpu:'rtx5060ti', ram:'r32', storage:'s2tb', psu:'p850', case:'premium', cool:'aio240', mobo:'high' },
+    gaming:  { cpu:'ryzen7_9800x3d',   gpu:'rtx5070',   ram:'r32', storage:'s1tb', psu:'p750', case:'mid_rgb', cool:'aio240', mobo:'high' },
+    creator: { cpu:'core_ultra7_265k', gpu:'rtx5070',   ram:'r32', storage:'s2tb', psu:'p750', case:'mid',     cool:'aio240', mobo:'high' },
   },
   t5: {
-    office:  { cpu:'ryzen7_9800x3d', gpu:'rtx4070ti_super', ram:'r32', storage:'s2tb', psu:'p850', case:'premium', cool:'aio360', mobo:'high' },
-    gaming:  { cpu:'ryzen7_9800x3d', gpu:'rtx4080_super',   ram:'r32', storage:'s2tb', psu:'p850', case:'premium', cool:'aio360', mobo:'high' },
-    creator: { cpu:'core_ultra7_265kf', gpu:'rtx4080_super',ram:'r64', storage:'s2tb', psu:'p850', case:'premium', cool:'aio360', mobo:'high' },
+    office:  { cpu:'ryzen7_9850x3d', gpu:'rtx5070ti',      ram:'r32', storage:'s2tb', psu:'p850',  case:'premium', cool:'aio360', mobo:'high' },
+    gaming:  { cpu:'ryzen7_9850x3d', gpu:'rtx5080',        ram:'r32', storage:'s2tb', psu:'p1000', case:'premium', cool:'aio360', mobo:'high' },
+    creator: { cpu:'ryzen9_9950x3d', gpu:'rtx5080_strix',  ram:'r64', storage:'s2tb', psu:'p1000', case:'premium', cool:'aio420', mobo:'high' },
   },
 };
 
@@ -547,7 +552,7 @@ function renderGResult(panel){
 }
 
 /* ================= EXPERT MODE ================= */
-const eState = { cpu:'ryzen5_7600', gpu:'rtx4060', ram:'r16', storage:'s1tb', psu:'p650', case:'mid', cool:'stock', mobo:'mid', targetBudget:20000 };
+const eState = { cpu:'ryzen5_9600x', gpu:'rtx5060', ram:'r16', storage:'s1tb', psu:'p650', case:'mid', cool:'stock', mobo:'mid', targetBudget:20000 };
 
 function renderExpert(){
   const panel = document.getElementById('panel');
