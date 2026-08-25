@@ -270,11 +270,28 @@ color:var(--muted); margin-bottom:8px; display:flex; align-items:center; gap:6px
 .bench-score{ font-family:var(--mono); font-size:24px; font-weight:700; color:var(--signal); }
 .bench-unit{ font-family:var(--mono); font-size:10.5px; color:var(--muted); }
 .bench-bar{ height:5px; background:var(--panel-line); border-radius:3px; overflow:hidden; }
+.tool-dot{ width:8px; height:8px; border-radius:50%; background:var(--tc); box-shadow:0 0 6px var(--tc); display:inline-block; margin-right:6px; }
 .bench-bar-fill{
 height:100%; width:0%; background:linear-gradient(90deg, var(--signal-dim), var(--signal));
 border-radius:3px; box-shadow:0 0 8px rgba(47,230,200,0.5);
 transition:width 1.1s cubic-bezier(0.16,0.9,0.35,1);
 }
+/* per-tool brand accents (toolkit section only) */
+#toolkitGrid .service{ --tc: var(--signal); --tc-dim: var(--signal-dim); }
+#toolkitGrid .service:hover{ border-color: var(--tc-dim); }
+#toolkitGrid .service.active{ border-color: var(--tc); box-shadow:0 0 24px var(--tc-dim); }
+#toolkitGrid .service .icon{ color: var(--tc); }
+#toolkitGrid .service .tag{ color: var(--tc); border-color: var(--tc-dim); background: color-mix(in srgb, var(--tc) 12%, var(--bg-alt)); }
+#toolkitGrid .service .bench-label::before{ background: var(--tc); box-shadow:0 0 5px var(--tc); }
+#toolkitGrid .service .bench-score{ color: var(--tc); }
+#toolkitGrid .service .bench-bar-fill{ background:linear-gradient(90deg, var(--tc-dim), var(--tc)); box-shadow:0 0 8px color-mix(in srgb, var(--tc) 50%, transparent); }
+#toolkitGrid .service .scan-sweep{ background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--tc) 22%, transparent), transparent); }
+#toolkitGrid .service[data-service="3DMark"]{ --tc:#ff5a1f; --tc-dim:#7a3216; }
+#toolkitGrid .service[data-service="Cinebench"]{ --tc:#3d8ef8; --tc-dim:#1f4c8c; }
+#toolkitGrid .service[data-service="CrystalDiskMark"]{ --tc:#29c1f0; --tc-dim:#166a85; }
+#toolkitGrid .service[data-service="AIDA64"]{ --tc:#8ed136; --tc-dim:#4c721e; }
+#toolkitGrid .service[data-service="MemTest86"]{ --tc:#4d7cf5; --tc-dim:#2a428c; }
+#toolkitGrid .service[data-service="FurMark"]{ --tc:#ff7a2e; --tc-dim:#8a3f16; }
 @media (max-width:520px){
 h1{ font-size:30px; }
 .services{ grid-template-columns:1fr; }
@@ -439,7 +456,7 @@ Thanks!"><img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa
 <div class="scan-sweep"></div>
 <div class="tag">GPU / Gaming</div>
 <div class="icon"><span>T1</span><span class="chev">+</span></div>
-<h3>3DMark</h3>
+<h3><span class="tool-dot"></span>3DMark</h3>
 <p>The industry-standard synthetic benchmark for raw GPU performance across DirectX 12 and ray-tracing workloads.</p>
 <div class="more"><div class="more-inner">
 <p>We run this after GPU upgrades, driver changes, or thermal work to confirm real performance gains and rule out bottlenecks elsewhere in the system.</p>
@@ -454,7 +471,7 @@ Thanks!"><img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa
 <div class="scan-sweep"></div>
 <div class="tag">CPU / Rendering</div>
 <div class="icon"><span>T2</span><span class="chev">+</span></div>
-<h3>Cinebench</h3>
+<h3><span class="tool-dot"></span>Cinebench</h3>
 <p>Maxon's CPU benchmark, built on the Cinema 4D render engine — a reliable read on multi-core processing power.</p>
 <div class="more"><div class="more-inner">
 <p>We use it to verify CPU performance and check for thermal throttling under sustained full-load rendering — a good stand-in for real heavy workloads.</p>
@@ -469,7 +486,7 @@ Thanks!"><img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa
 <div class="scan-sweep"></div>
 <div class="tag">Storage</div>
 <div class="icon"><span>T3</span><span class="chev">+</span></div>
-<h3>CrystalDiskMark</h3>
+<h3><span class="tool-dot"></span>CrystalDiskMark</h3>
 <p>Measures sequential and random read/write speeds on SSDs and HDDs.</p>
 <div class="more"><div class="more-inner">
 <p>Confirms a new drive is actually hitting its rated speed, or flags a failing/throttled drive as the real cause behind slow load times.</p>
@@ -484,7 +501,7 @@ Thanks!"><img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa
 <div class="scan-sweep"></div>
 <div class="tag">Stability / Sensors</div>
 <div class="icon"><span>T4</span><span class="chev">+</span></div>
-<h3>AIDA64</h3>
+<h3><span class="tool-dot"></span>AIDA64</h3>
 <p>Deep system diagnostics and stress-testing suite covering CPU, memory, and live sensor data.</p>
 <div class="more"><div class="more-inner">
 <p>Our go-to for extended stress tests — it catches instability, voltage issues, or thermal problems before they turn into random crashes for you.</p>
@@ -499,7 +516,7 @@ Thanks!"><img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa
 <div class="scan-sweep"></div>
 <div class="tag">RAM Diagnostics</div>
 <div class="icon"><span>T5</span><span class="chev">+</span></div>
-<h3>MemTest86</h3>
+<h3><span class="tool-dot"></span>MemTest86</h3>
 <p>Boots outside Windows to run exhaustive memory pattern tests, catching faulty RAM that the OS won't flag.</p>
 <div class="more"><div class="more-inner">
 <p>Standard check on any PC with random crashes or blue screens, and always run after a RAM upgrade before we call the job done.</p>
@@ -514,7 +531,7 @@ Thanks!"><img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa
 <div class="scan-sweep"></div>
 <div class="tag">GPU Thermal Stress</div>
 <div class="icon"><span>T6</span><span class="chev">+</span></div>
-<h3>FurMark</h3>
+<h3><span class="tool-dot"></span>FurMark</h3>
 <p>A demanding GPU stress test designed to push temperatures and power draw to their worst-case limits.</p>
 <div class="more"><div class="more-inner">
 <p>We use it to prove out cooling and thermal-paste work — if it holds steady under FurMark, it'll hold steady under anything you throw at it day-to-day.</p>
@@ -563,7 +580,7 @@ Thanks!"><img src="https://cdn.simpleicons.org/whatsapp/2fe6c8" alt="" class="wa
 </section>
 </div>
 <footer>
-<p>⚡ VOLTTECH COMPUTER CO. · PRETORIA / WONDERBOOM / JHB · © 2026 · <a href="privacy-policy.html" style="color:var(--muted);">Privacy Policy</a></p>
+<p>⚡ VOLTTECH COMPUTER CO. · PRETORIA / WONDERBOOM / JHB · © 2026</p>
 </footer>
 <script>
 document.querySelectorAll('.services').forEach(grid => {
