@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VoltTech PC Builder — Custom PC Configurator</title>
-<style>
+  <head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Custom Gaming PC Builder Pretoria | VoltTech Computer Co.</title>
+        <meta name="description" content="Build a custom PC around your budget and workload with VoltTech. Configure a gaming, work or content-creation PC and get an estimated build price. Serving Pretoria, Wonderboom and Johannesburg.">
+          <link rel="canonical" href="https://volttechcomputerco.github.io/signal-build.html">
+            <meta name="robots" content="index, follow">
+              <meta name="theme-color" content="#05080a">
+                <meta property="og:title" content="Custom Gaming PC Builder Pretoria | VoltTech Computer Co.">
+                  <meta property="og:description" content="Configure a custom gaming, work or content-creation PC around your budget with VoltTech.">
+                    <meta property="og:type" content="website">
+                      <meta property="og:url" content="https://volttechcomputerco.github.io/signal-build.html">
+                        <meta property="og:image" content="https://volttechcomputerco.github.io/logo-full.png">
+                          <meta property="og:site_name" content="VoltTech Computer Co.">
+                            <meta name="twitter:card" content="summary_large_image">
+                              <meta name="twitter:title" content="Custom Gaming PC Builder Pretoria | VoltTech Computer Co.">
+                                <meta name="twitter:description" content="Configure a custom PC around your budget and workload with VoltTech.">
+                                  <meta name="twitter:image" content="https://volttechcomputerco.github.io/logo-full.png">
+                                    <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"Custom Gaming PC Builder Pretoria",
+  "url":"https://volttechcomputerco.github.io/signal-build.html",
+  "description":"Interactive custom PC builder for gaming, work, content creation and workstation builds.",
+  "isPartOf":{"@type":"WebSite","url":"https://volttechcomputerco.github.io/","name":"VoltTech Computer Co."},
+  "about": {"@type":"Service","name":"Custom PC Builds","areaServed":["Pretoria","Wonderboom","Johannesburg"]}
+}
+</script>
+                                    <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
   :root{
@@ -61,6 +86,10 @@
     transition:all 0.15s ease;
   }
   .back-home:hover{ color:var(--text); border-color:var(--muted); }
+
+  .seo-intro{ margin-bottom:22px; }
+  .seo-intro h1{ font-size:28px; line-height:1.2; font-weight:700; margin:0 0 8px; letter-spacing:-0.01em; }
+  .seo-intro .lead{ color:var(--muted); font-size:13.5px; line-height:1.6; margin:0; }
 
   .mode-toggle{ display:flex; gap:8px; margin-bottom:20px; }
   .mode-btn{
@@ -185,33 +214,38 @@
 
   @media (max-width:480px){ .panel{ padding:22px 18px; } h1{ font-size:21px; } }
 </style>
-</head>
-<body>
-<div class="wrap">
-
-  <div class="brand">
-    <div class="brand-left">
-      <img src="logo-badge.png" alt="VoltTech Computer Co.">
-      <div class="brand-name" id="brandName"><span class="volt">Volt</span><span class="tech">Tech</span> <span class="co">Computer Co.</span></div>
-    </div>
-    <div class="brand-tag">PRETORIA / JHB</div>
-  </div>
-
-  <a class="back-home" href="index.html">← Back to VoltTech</a>
-
-  <div class="mode-toggle">
-    <div class="mode-btn active" id="guidedTab">Guided Build<small>New to PCs</small></div>
-    <div class="mode-btn" id="expertTab">Expert Mode<small>Pick your own parts</small></div>
-  </div>
-
-  <div class="meter" id="meter"></div>
-
-  <div class="panel" id="panel"></div>
-
-  <footer>ESTIMATES ONLY · FINAL QUOTE CONFIRMED ON ENQUIRY · +27 061 843 5775</footer>
-</div>
-
-<script>
+                                  </head>
+                                  <body>
+                                    <div class="wrap">
+                                      <div class="brand">
+                                        <div class="brand-left">
+                                          <img src="logo-badge.png" alt="VoltTech Computer Co.">
+                                            <div class="brand-name" id="brandName">
+                                              <span class="volt">Volt</span>
+                                              <span class="tech">Tech</span> <span class="co">Computer Co.</span>
+                                            </div>
+                                          </div>
+                                          <div class="brand-tag">PRETORIA / JHB</div>
+                                        </div>
+                                        <a class="back-home" href="index.html">← Back to VoltTech</a>
+                                        <section class="seo-intro" aria-labelledby="pc-builder-heading">
+                                          <div class="eyebrow">// PRETORIA / WONDERBOOM / JOHANNESBURG</div>
+                                          <h1 id="pc-builder-heading">Custom PC Builder</h1>
+                                          <p class="lead">Configure a gaming, work, content-creation or workstation PC around your budget, then send the recommended build to VoltTech for a final quote.</p>
+                                        </section>
+                                        <div class="mode-toggle">
+                                          <div class="mode-btn active" id="guidedTab">Guided Build<small>New to PCs</small>
+                                        </div>
+                                        <div class="mode-btn" id="expertTab">Expert Mode<small>Pick your own parts</small>
+                                      </div>
+                                    </div>
+                                    <div class="meter" id="meter">
+                                    </div>
+                                    <div class="panel" id="panel">
+                                    </div>
+                                    <footer>ESTIMATES ONLY · FINAL QUOTE CONFIRMED ON ENQUIRY · PRETORIA / WONDERBOOM / JHB · +27 061 843 5775</footer>
+                                  </div>
+                                  <script>
 /* ================= PRICE DATABASE (ZAR) =================
    Starting-point estimates based on South African retailer research (Aug 2026).
    Adjust these numbers to match your actual supplier costs — prices move fast
@@ -414,7 +448,7 @@ function renderGIntro(panel){
   el.style.cssText = 'display:flex;flex-direction:column;height:100%';
   el.innerHTML = `
     <div class="intro-icon">// BUILD CONFIGURATOR</div>
-    <h1>Let's spec out your next PC.</h1>
+    <h2>Let's spec out your next PC.</h2>
     <p class="lead">Answer four quick questions and we'll put together a complete, accurately priced build that matches your budget and what you'll actually use it for.</p>
     <div class="spacer"></div>
     <div class="nav"><button class="btn btn-primary" id="gStart">Start Building →</button></div>
@@ -647,5 +681,5 @@ function updateExpertTotal(){
 /* ================= INIT ================= */
 renderGuided();
 </script>
-</body>
-</html>
+                                </body>
+                              </html>
