@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VoltTech Signal Scan — PC Diagnostic</title>
-<style>
+  <head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Free PC Diagnostic Tool | Signal Scan | VoltTech Pretoria</title>
+        <meta name="description" content="Not sure what is wrong with your PC? Use VoltTech's free Signal Scan to identify common PC problems and get an estimated repair range. Serving Pretoria, Wonderboom and Johannesburg.">
+          <link rel="canonical" href="https://volttechcomputerco.github.io/signal-scan.html">
+            <meta name="robots" content="index, follow">
+              <meta name="theme-color" content="#05080a">
+                <meta property="og:title" content="Free PC Diagnostic Tool | Signal Scan | VoltTech Pretoria">
+                  <meta property="og:description" content="Find out what may be wrong with your PC and get an estimated repair range before contacting VoltTech.">
+                    <meta property="og:type" content="website">
+                      <meta property="og:url" content="https://volttechcomputerco.github.io/signal-scan.html">
+                        <meta property="og:image" content="https://volttechcomputerco.github.io/logo-full.png">
+                          <meta property="og:site_name" content="VoltTech Computer Co.">
+                            <meta name="twitter:card" content="summary_large_image">
+                              <meta name="twitter:title" content="Free PC Diagnostic Tool | Signal Scan | VoltTech Pretoria">
+                                <meta name="twitter:description" content="Use VoltTech's free Signal Scan to identify common PC problems and get an estimated repair range.">
+                                  <meta name="twitter:image" content="https://volttechcomputerco.github.io/logo-full.png">
+                                    <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"Free PC Diagnostic Tool | Signal Scan",
+  "url":"https://volttechcomputerco.github.io/signal-scan.html",
+  "description":"Free interactive PC diagnostic tool for identifying common computer problems and estimating repair needs.",
+  "isPartOf":{"@type":"WebSite","url":"https://volttechcomputerco.github.io/","name":"VoltTech Computer Co."},
+  "about": {"@type":"Service","name":"PC Diagnostics","areaServed":["Pretoria","Wonderboom","Johannesburg"]}
+}
+</script>
+                                    <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
   :root{
@@ -193,6 +218,10 @@
   .btn-primary:hover{ background:#54f0d5; color:#04120f; }
   .btn-primary:disabled{ background:var(--panel-line); border-color:var(--panel-line); color:var(--muted); cursor:not-allowed; }
 
+  .seo-intro{ margin-bottom:22px; }
+  .seo-intro h1{ font-size:28px; line-height:1.2; font-weight:700; margin:0 0 8px; letter-spacing:-0.01em; }
+  .seo-intro .lead{ margin-bottom:0; }
+
   .intro-icon{ font-family:var(--mono); color:var(--signal); font-size:11px; letter-spacing:0.1em; margin-bottom:14px; }
 
   .result-badge{
@@ -234,40 +263,44 @@
 
   @media (max-width:480px){ .panel{ padding:22px 18px; } h1{ font-size:22px; } }
 </style>
-</head>
-<body>
-<div class="wrap">
-
-  <div class="brand">
-    <div class="brand-left">
-      <img src="logo-badge.png" alt="VoltTech Computer Co.">
-      <div class="brand-name" id="brandName"><span class="volt">Volt</span><span class="tech">Tech</span> <span class="co">Computer Co.</span></div>
-    </div>
-    <div class="brand-tag">PRETORIA / JHB</div>
-  </div>
-
-  <a class="back-home" href="index.html">← Back to VoltTech</a>
-
-  <div class="scope" id="scopeBox">
-    <div class="scope-label" id="scopeLabel">SIGNAL SCAN</div>
-    <div class="scope-reading" id="scopeReading">STABLE</div>
-    <canvas id="scopeCanvas"></canvas>
-  </div>
-
-  <div class="alert-banner" id="alertBanner">
-    <canvas class="grain-canvas" id="grainCanvas"></canvas>
-    <div class="alert-sub">FAULT SEVERITY</div>
-    <div class="alert-text" id="alertText">SYSTEM STABLE</div>
-  </div>
-
-  <div class="meter" id="meter"></div>
-
-  <div class="panel" id="panel"></div>
-
-  <footer>NO OBLIGATION · FREE ESTIMATE · WHATSAPP +27 061 843 5775</footer>
-</div>
-
-<script>
+                                  </head>
+                                  <body>
+                                    <div class="wrap">
+                                      <div class="brand">
+                                        <div class="brand-left">
+                                          <img src="logo-badge.png" alt="VoltTech Computer Co.">
+                                            <div class="brand-name" id="brandName">
+                                              <span class="volt">Volt</span>
+                                              <span class="tech">Tech</span> <span class="co">Computer Co.</span>
+                                            </div>
+                                          </div>
+                                          <div class="brand-tag">PRETORIA / JHB</div>
+                                        </div>
+                                        <a class="back-home" href="index.html">← Back to VoltTech</a>
+                                        <section class="seo-intro" aria-labelledby="signal-scan-heading">
+                                          <div class="eyebrow">// PRETORIA / WONDERBOOM / JOHANNESBURG</div>
+                                          <h1 id="signal-scan-heading">Free PC Diagnostic Tool</h1>
+                                          <p class="lead">Not sure what is wrong with your computer? The VoltTech Signal Scan checks common PC symptoms and gives you an estimated repair range before you contact us.</p>
+                                        </section>
+                                        <div class="scope" id="scopeBox">
+                                          <div class="scope-label" id="scopeLabel">SIGNAL SCAN</div>
+                                          <div class="scope-reading" id="scopeReading">STABLE</div>
+                                          <canvas id="scopeCanvas">
+                                          </canvas>
+                                        </div>
+                                        <div class="alert-banner" id="alertBanner">
+                                          <canvas class="grain-canvas" id="grainCanvas">
+                                          </canvas>
+                                          <div class="alert-sub">FAULT SEVERITY</div>
+                                          <div class="alert-text" id="alertText">SYSTEM STABLE</div>
+                                        </div>
+                                        <div class="meter" id="meter">
+                                        </div>
+                                        <div class="panel" id="panel">
+                                        </div>
+                                        <footer>NO OBLIGATION · FREE ESTIMATE · PRETORIA / WONDERBOOM / JHB · WHATSAPP +27 061 843 5775</footer>
+                                      </div>
+                                      <script>
 /* ---------- Oscilloscope ---------- */
 const canvas = document.getElementById('scopeCanvas');
 const ctx = canvas.getContext('2d');
@@ -471,7 +504,7 @@ function renderIntro(panel){
   el.style.display='flex'; el.style.flexDirection='column'; el.style.height='100%';
   el.innerHTML = `
     <div class="intro-icon">// DIAGNOSTIC PROTOCOL v1</div>
-    <h1>Let's find out what's wrong with your PC.</h1>
+    <h2>Let's find out what's wrong with your PC.</h2>
     <p class="lead">Answer five quick questions about what your machine is doing. We'll run it against common fault signatures and give you an instant estimate — before you commit to anything.</p>
     <div class="spacer"></div>
     <div class="nav"><button class="btn btn-primary" id="startBtn">Begin Scan →</button></div>
@@ -673,5 +706,5 @@ function renderResult(panel){
 
 render();
 </script>
-</body>
-</html>
+                                    </body>
+                                  </html>
