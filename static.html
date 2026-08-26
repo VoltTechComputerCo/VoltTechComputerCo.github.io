@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STATIC | Tech, Gaming & Nerd Culture — by VoltTech Computer Co.</title>
+<meta name="description" content="STATIC is a blog for gamers, nerds and tech people everywhere — PC repair explainers, build guides and gaming culture, from the team at VoltTech Computer Co.">
+<link rel="canonical" href="https://volttechcomputerco.github.io/static.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#05080a">
+<meta property="og:title" content="STATIC | Tech, Gaming & Nerd Culture">
+<meta property="og:description" content="A blog for gamers, nerds and tech people everywhere — PC repair explainers, build guides and gaming culture, from VoltTech Computer Co.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://volttechcomputerco.github.io/static.html">
+<meta property="og:image" content="https://volttechcomputerco.github.io/logo-full.png">
+<meta property="og:site_name" content="STATIC">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="STATIC | Tech, Gaming & Nerd Culture">
+<meta name="twitter:description" content="A blog for gamers, nerds and tech people everywhere, from VoltTech Computer Co.">
+<meta name="twitter:image" content="https://volttechcomputerco.github.io/logo-full.png">
+<link rel="icon" type="image/png" href="favicon-512.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "STATIC",
+  "url": "https://volttechcomputerco.github.io/static.html",
+  "description": "A blog for gamers, nerds and tech people everywhere — PC repair explainers, build guides and gaming culture.",
+  "publisher": {"@id":"https://volttechcomputerco.github.io/#organization"},
+  "blogPost": [
+    {"@type":"BlogPosting","headline":"Why Your PC Throttles Under Load — And How to Actually Fix It","url":"https://volttechcomputerco.github.io/static-pc-throttling.html"},
+    {"@type":"BlogPosting","headline":"Building a PC in 2026: What Actually Matters","url":"https://volttechcomputerco.github.io/static-building-a-pc-2026.html"},
+    {"@type":"BlogPosting","headline":"The Quiet Return of LAN Culture","url":"https://volttechcomputerco.github.io/static-lan-culture.html"}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #05080a;
+  --bg-alt: #0a1114;
+  --panel: #0d1517;
+  --panel-line: #172526;
+  --static: #ffb454;
+  --static-dim: #7a5a2a;
+  --text: #e7f1ee;
+  --muted: #5f7c78;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --display: 'Space Grotesk', sans-serif;
+}
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  background:
+    radial-gradient(ellipse 80% 40% at 50% -10%, #241708 0%, transparent 60%),
+    var(--bg);
+  color:var(--text);
+  font-family:var(--display);
+  line-height:1.5;
+}
+a{ color:inherit; text-decoration:none; }
+.wrap{ max-width:760px; margin:0 auto; padding:0 20px; }
+nav{
+  position:sticky; top:0; z-index:10;
+  background:rgba(5,8,10,0.9); backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--panel-line);
+}
+nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:60px; }
+.masthead-brand{ font-family:var(--display); font-weight:800; font-size:19px; letter-spacing:-0.01em; display:flex; align-items:center; gap:8px; }
+.masthead-brand .dot{ width:7px; height:7px; border-radius:50%; background:var(--static); box-shadow:0 0 8px var(--static); }
+.nav-links{ display:flex; gap:18px; font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
+.nav-links a:hover{ color:var(--static); }
+.hero{ padding:56px 0 40px; border-bottom:1px solid var(--panel-line); }
+.eyebrow{ font-family:var(--mono); font-size:11px; color:var(--static); letter-spacing:0.16em; text-transform:uppercase; margin-bottom:14px; }
+.hero h1{ font-size:40px; line-height:1.1; font-weight:800; letter-spacing:-0.02em; margin-bottom:14px; }
+.hero .tagline{ color:var(--muted); font-size:15px; line-height:1.65; max-width:480px; margin-bottom:6px; }
+.hero .byline{ font-family:var(--mono); font-size:10.5px; color:var(--panel-line); letter-spacing:0.06em; margin-top:18px; }
+.hero .byline a{ color:var(--muted); }
+.hero .byline a:hover{ color:var(--static); }
+.featured{
+  display:block; margin:40px 0 48px; padding:28px;
+  background:
+    radial-gradient(140% 100% at 0% 0%, rgba(255,180,84,0.08) 0%, transparent 55%),
+    var(--panel);
+  border:1px solid var(--static-dim); border-radius:6px;
+  transition:border-color 0.2s ease;
+}
+.featured:hover{ border-color:var(--static); }
+.featured .kicker{ font-family:var(--mono); font-size:9.5px; color:var(--static); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:12px; }
+.featured h2{ font-size:26px; font-weight:700; letter-spacing:-0.01em; margin-bottom:10px; line-height:1.2; }
+.featured p{ color:var(--muted); font-size:14px; line-height:1.6; max-width:520px; margin-bottom:16px; }
+.meta-row{ display:flex; gap:14px; font-family:var(--mono); font-size:10.5px; color:var(--muted); letter-spacing:0.04em; }
+section.archive{ padding:8px 0 56px; }
+.section-label{ font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.16em; text-transform:uppercase; margin-bottom:20px; }
+.article-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.card{
+  display:block; background:var(--panel); border:1px solid var(--panel-line); border-radius:4px;
+  padding:20px; transition:border-color 0.2s ease;
+}
+.card:hover{ border-color:var(--static-dim); }
+.card .kicker{ font-family:var(--mono); font-size:9px; color:var(--static); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:10px; }
+.card h3{ font-size:16px; font-weight:700; line-height:1.3; margin-bottom:8px; }
+.card p{ color:var(--muted); font-size:12.5px; line-height:1.55; margin-bottom:14px; }
+.card .meta-row{ font-size:9.5px; }
+footer{ padding:32px 0 60px; text-align:center; border-top:1px solid var(--panel-line); }
+footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); letter-spacing:0.08em; }
+.footer-link{ margin-top:10px; }
+.footer-link a{ font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
+.footer-link a:hover{ color:var(--static); }
+@media (max-width:560px){
+  .hero h1{ font-size:30px; }
+  .article-grid{ grid-template-columns:1fr; }
+  .nav-links{ display:none; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="masthead-brand" href="static.html"><span class="dot"></span>STATIC.</a>
+    <div class="nav-links">
+      <a href="index.html">VoltTech ↗</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">// SIGNAL IN THE NOISE</div>
+    <h1>Tech, gaming &amp; nerd culture — no fluff.</h1>
+    <p class="tagline">STATIC covers the stuff that actually matters to gamers, builders and tech people: real explanations, real buying advice, and the culture around the hardware — for a global, endlessly online, Gen-whatever audience.</p>
+    <p class="byline">An offshoot of <a href="index.html">VoltTech Computer Co.</a> — the people who actually fix and build this stuff.</p>
+  </header>
+
+  <a class="featured" href="static-pc-throttling.html">
+    <div class="kicker">Featured // Hardware</div>
+    <h2>Why Your PC Throttles Under Load — And How to Actually Fix It</h2>
+    <p>Your frame rate tanks ten minutes into a session and you assume the GPU just isn't good enough. It's usually not that. Here's what's actually happening inside your case, and what to do about it.</p>
+    <div class="meta-row"><span>6 MIN READ</span><span>HARDWARE</span></div>
+  </a>
+
+  <section class="archive">
+    <div class="section-label">LATEST</div>
+    <div class="article-grid">
+      <a class="card" href="static-building-a-pc-2026.html">
+        <div class="kicker">Buying Guide</div>
+        <h3>Building a PC in 2026: What Actually Matters</h3>
+        <p>Spec sheets are marketing. Here's how to actually spend a build budget, and what to ignore entirely.</p>
+        <div class="meta-row"><span>7 MIN READ</span></div>
+      </a>
+      <a class="card" href="static-lan-culture.html">
+        <div class="kicker">Culture</div>
+        <h3>The Quiet Return of LAN Culture</h3>
+        <p>Why a generation raised on cloud gaming and Discord is dragging towers to a mate's house again.</p>
+        <div class="meta-row"><span>5 MIN READ</span></div>
+      </a>
+    </div>
+  </section>
+</div>
+<footer>
+  <p>⚡ STATIC · A VOLTTECH COMPUTER CO. PUBLICATION · © 2026</p>
+  <p class="footer-link"><a href="index.html">VoltTech Computer Co.</a> · <a href="privacy-policy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>
