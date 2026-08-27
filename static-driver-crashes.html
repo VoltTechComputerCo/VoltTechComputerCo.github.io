@@ -97,6 +97,11 @@ footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); lett
 .footer-link a{ font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
 .footer-link a:hover{ color:var(--static); }
 @media (max-width:560px){ h1{ font-size:26px; } }
+.kicker{ display:flex; align-items:center; gap:7px; }
+.kicker-icon{ display:inline-flex; flex-shrink:0; color:var(--static); }
+.hero-art{ margin:6px 0 32px; border:1px solid var(--panel-line); border-radius:6px; overflow:hidden; background:var(--panel); }
+.hero-art svg{ display:block; width:100%; height:auto; }
+.hero-caption{ font-family:var(--mono); font-size:9.5px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; border-top:1px solid var(--panel-line); background:var(--bg-alt); text-align:center; }
 </style>
 </head>
 <body>
@@ -108,9 +113,26 @@ footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); lett
 </nav>
 <div class="wrap">
 <article>
-  <div class="kicker">Hardware // Troubleshooting</div>
+  <div class="kicker"><svg class="kicker-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="7" y="7" width="10" height="10" rx="1"/><line x1="9" y1="3" x2="9" y2="7"/><line x1="12" y1="3" x2="12" y2="7"/><line x1="15" y1="3" x2="15" y2="7"/><line x1="9" y1="17" x2="9" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="15" y1="17" x2="15" y2="21"/><line x1="3" y1="9" x2="7" y2="9"/><line x1="3" y1="12" x2="7" y2="12"/><line x1="3" y1="15" x2="7" y2="15"/><line x1="17" y1="9" x2="21" y2="9"/><line x1="17" y1="12" x2="21" y2="12"/><line x1="17" y1="15" x2="21" y2="15"/></svg>Hardware // Troubleshooting</div>
   <h1>Your GPU Isn't Dying — Your Drivers Are Lying to You</h1>
   <div class="meta-row"><span>VOLTTECH COMPUTER CO.</span><span>7 MIN READ</span><span>27 AUG 2026</span></div>
+
+  <div class="hero-art">
+    <svg viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="grid-tdr" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0 0 0 0 20" fill="none" stroke="#172526" stroke-width="1"/></pattern></defs>
+      <rect width="680" height="160" fill="url(#grid-tdr)"/>
+      <text x="24" y="28" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.05em" fill="#5f7c78">WHAT A TDR EVENT ACTUALLY IS</text>
+      <path d="M24 90 L300 90" stroke="#ffb454" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M300 90 L300 60 M300 60 L300 120" stroke="#5f7c78" stroke-width="1" stroke-dasharray="2,3"/>
+      <rect x="300" y="76" width="90" height="28" fill="#0a1114" stroke="#7a5a2a" stroke-dasharray="3,3"/>
+      <text x="310" y="94" font-family="JetBrains Mono, monospace" font-size="9" fill="#7a5a2a">DRIVER HANGS</text>
+      <path d="M390 90 L420 90" stroke="#5f7c78" stroke-width="1.5" stroke-dasharray="2,3"/>
+      <text x="392" y="122" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#5f7c78">~2 SEC TIMEOUT</text>
+      <path d="M420 90 L432 90 L436 40 L440 90 L656 90" stroke="#ffb454" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <text x="440" y="30" font-family="JetBrains Mono, monospace" font-size="9" fill="#5f7c78">WINDOWS RESETS THE DRIVER — RECOVERS</text>
+    </svg>
+    <div class="hero-caption">The "black screen, then it's fine" pattern — that's Windows catching the driver, not your GPU failing</div>
+  </div>
 
   <p class="lede">Screen goes black for two seconds. Comes back. A little "display driver stopped responding and has recovered" toast pops up like nothing happened. You immediately start mentally drafting the eBay listing for your GPU. Don't. That notification is Windows' TDR system doing exactly what it's supposed to — and nine times out of ten, the problem living rent-free on your PC is software, not silicon.</p>
 

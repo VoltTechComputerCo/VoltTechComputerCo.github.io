@@ -97,6 +97,11 @@ footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); lett
 .footer-link a{ font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
 .footer-link a:hover{ color:var(--static); }
 @media (max-width:560px){ h1{ font-size:26px; } }
+.kicker{ display:flex; align-items:center; gap:7px; }
+.kicker-icon{ display:inline-flex; flex-shrink:0; color:var(--static); }
+.hero-art{ margin:6px 0 32px; border:1px solid var(--panel-line); border-radius:6px; overflow:hidden; background:var(--panel); }
+.hero-art svg{ display:block; width:100%; height:auto; }
+.hero-caption{ font-family:var(--mono); font-size:9.5px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; border-top:1px solid var(--panel-line); background:var(--bg-alt); text-align:center; }
 </style>
 </head>
 <body>
@@ -108,9 +113,35 @@ footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); lett
 </nav>
 <div class="wrap">
 <article>
-  <div class="kicker">Explainer // Myth-Busting</div>
+  <div class="kicker"><svg class="kicker-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,12 6,12 8,5 11,19 14,9 16,12 22,12"/></svg>Explainer // Myth-Busting</div>
   <h1>The Great RAM Myth: Why More Isn't Always Better</h1>
   <div class="meta-row"><span>VOLTTECH COMPUTER CO.</span><span>6 MIN READ</span><span>27 AUG 2026</span></div>
+
+  <div class="hero-art">
+    <svg viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="grid-ram" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0 0 0 0 20" fill="none" stroke="#172526" stroke-width="1"/></pattern></defs>
+      <rect width="680" height="170" fill="url(#grid-ram)"/>
+      <text x="24" y="24" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.05em" fill="#5f7c78">TYPICAL GAMING USAGE VS CAPACITY INSTALLED</text>
+      <line x1="60" y1="140" x2="660" y2="140" stroke="#172526"/>
+      <rect x="90" y="60" width="60" height="80" fill="#0a1114" stroke="#7a5a2a"/>
+      <rect x="90" y="60" width="60" height="80" fill="#ffb454" opacity="0.9"/>
+      <text x="95" y="155" font-family="JetBrains Mono, monospace" font-size="9" fill="#e7f1ee">8GB</text>
+      <text x="88" y="52" font-family="JetBrains Mono, monospace" font-size="8" fill="#7a5a2a">OFTEN MAXED</text>
+      <rect x="230" y="45" width="60" height="95" fill="#0a1114" stroke="#172526"/>
+      <rect x="230" y="90" width="60" height="50" fill="#ffb454" opacity="0.9"/>
+      <text x="235" y="155" font-family="JetBrains Mono, monospace" font-size="9" fill="#e7f1ee">16GB</text>
+      <text x="222" y="37" font-family="JetBrains Mono, monospace" font-size="8" fill="#5f7c78">COMFORTABLE</text>
+      <rect x="370" y="30" width="60" height="110" fill="#0a1114" stroke="#172526"/>
+      <rect x="370" y="95" width="60" height="45" fill="#ffb454" opacity="0.6"/>
+      <text x="375" y="155" font-family="JetBrains Mono, monospace" font-size="9" fill="#e7f1ee">32GB</text>
+      <text x="352" y="22" font-family="JetBrains Mono, monospace" font-size="8" fill="#5f7c78">SAME GAME, SAME USAGE</text>
+      <rect x="510" y="20" width="60" height="120" fill="#0a1114" stroke="#172526"/>
+      <rect x="510" y="100" width="60" height="40" fill="#ffb454" opacity="0.4"/>
+      <text x="515" y="155" font-family="JetBrains Mono, monospace" font-size="9" fill="#e7f1ee">64GB</text>
+      <text x="497" y="12" font-family="JetBrains Mono, monospace" font-size="8" fill="#5f7c78">MOSTLY UNUSED, FOR GAMING</text>
+    </svg>
+    <div class="hero-caption">Same game, same usage — most of that extra capacity just sits there</div>
+  </div>
 
   <p class="lede">Somewhere along the way, "more RAM" became the internet's default answer to almost any PC performance question, regardless of what was actually wrong. Game running rough? More RAM. PC feels sluggish? More RAM. Word taking a second longer to open than it did last Tuesday? You already know. It's the duct tape of PC advice — sounds reasonable, rarely the actual fix.</p>
 

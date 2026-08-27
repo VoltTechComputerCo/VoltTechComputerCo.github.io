@@ -84,6 +84,11 @@ footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); lett
 .footer-link a{ font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
 .footer-link a:hover{ color:var(--static); }
 @media (max-width:560px){ h1{ font-size:26px; } }
+.kicker{ display:flex; align-items:center; gap:7px; }
+.kicker-icon{ display:inline-flex; flex-shrink:0; color:var(--static); }
+.hero-art{ margin:6px 0 32px; border:1px solid var(--panel-line); border-radius:6px; overflow:hidden; background:var(--panel); }
+.hero-art svg{ display:block; width:100%; height:auto; }
+.hero-caption{ font-family:var(--mono); font-size:9.5px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; border-top:1px solid var(--panel-line); background:var(--bg-alt); text-align:center; }
 </style>
 </head>
 <body>
@@ -95,9 +100,26 @@ footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); lett
 </nav>
 <div class="wrap">
 <article>
-  <div class="kicker">Culture</div>
+  <div class="kicker"><svg class="kicker-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg>Culture</div>
   <h1>A Brief, Enraging History of Gamers Getting Screwed by GPU Prices</h1>
   <div class="meta-row"><span>VOLTTECH COMPUTER CO.</span><span>7 MIN READ</span><span>27 AUG 2026</span></div>
+
+  <div class="hero-art">
+    <svg viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="grid-gpu-history" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0 0 0 0 20" fill="none" stroke="#172526" stroke-width="1"/></pattern></defs>
+      <rect width="680" height="170" fill="url(#grid-gpu-history)"/>
+      <text x="24" y="24" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.05em" fill="#5f7c78">"NORMAL PRICING," A TIMELINE</text>
+      <path d="M24 130 L120 128 L165 45 L210 120 L280 122 L330 100 L370 30 L420 118 L470 116 L520 60 L560 118 L610 40 L656 115" fill="none" stroke="#ffb454" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="165" y1="45" x2="165" y2="145" stroke="#7a5a2a" stroke-width="1" stroke-dasharray="2,3"/>
+      <text x="130" y="158" font-family="JetBrains Mono, monospace" font-size="8" fill="#7a5a2a">CRYPTO '17</text>
+      <line x1="370" y1="30" x2="370" y2="145" stroke="#7a5a2a" stroke-width="1" stroke-dasharray="2,3"/>
+      <text x="340" y="158" font-family="JetBrains Mono, monospace" font-size="8" fill="#7a5a2a">PANDEMIC '20</text>
+      <line x1="610" y1="40" x2="610" y2="145" stroke="#7a5a2a" stroke-width="1" stroke-dasharray="2,3"/>
+      <text x="586" y="158" font-family="JetBrains Mono, monospace" font-size="8" fill="#7a5a2a">AI BOOM</text>
+      <text x="24" y="42" font-family="JetBrains Mono, monospace" font-size="8" fill="#5f7c78">MSRP</text>
+    </svg>
+    <div class="hero-caption">The line never really goes flat. It just changes which crisis is pushing it up.</div>
+  </div>
 
   <p class="lede">Somewhere out there is a parallel universe where GPU prices just... followed normal consumer electronics logic. Newer generation launches, older generation gets cheaper, everyone moves on with their lives. We do not live in that universe. We live in the one where graphics cards have spent roughly a decade taking turns being held hostage by an ever-rotating cast of reasons that have almost nothing to do with gaming.</p>
 

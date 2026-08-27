@@ -84,6 +84,11 @@ footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); lett
 .footer-link a{ font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
 .footer-link a:hover{ color:var(--static); }
 @media (max-width:560px){ h1{ font-size:26px; } }
+.kicker{ display:flex; align-items:center; gap:7px; }
+.kicker-icon{ display:inline-flex; flex-shrink:0; color:var(--static); }
+.hero-art{ margin:6px 0 32px; border:1px solid var(--panel-line); border-radius:6px; overflow:hidden; background:var(--panel); }
+.hero-art svg{ display:block; width:100%; height:auto; }
+.hero-caption{ font-family:var(--mono); font-size:9.5px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; border-top:1px solid var(--panel-line); background:var(--bg-alt); text-align:center; }
 </style>
 </head>
 <body>
@@ -95,9 +100,30 @@ footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); lett
 </nav>
 <div class="wrap">
 <article>
-  <div class="kicker">Culture // Opinion</div>
+  <div class="kicker"><svg class="kicker-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg>Culture // Opinion</div>
   <h1>Windows vs Linux for Gaming: An Honest Take</h1>
   <div class="meta-row"><span>VOLTTECH COMPUTER CO.</span><span>6 MIN READ</span><span>27 AUG 2026</span></div>
+
+  <div class="hero-art">
+    <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid-spectrum" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0 0 0 0 20" fill="none" stroke="#172526" stroke-width="1"/></pattern>
+        <linearGradient id="spectrum-fill" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#7a5a2a"/><stop offset="100%" stop-color="#ffb454"/></linearGradient>
+      </defs>
+      <rect width="680" height="150" fill="url(#grid-spectrum)"/>
+      <text x="24" y="26" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.05em" fill="#5f7c78">LINUX GAMING COMPATIBILITY, ROUGHLY, IN 2026</text>
+      <rect x="24" y="60" width="632" height="16" fill="url(#spectrum-fill)" rx="2"/>
+      <circle cx="90" cy="68" r="6" fill="#0d1517" stroke="#e7f1ee" stroke-width="1.5"/>
+      <text x="60" y="102" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#e7f1ee">ANTI-CHEAT TITLES</text>
+      <circle cx="330" cy="68" r="6" fill="#0d1517" stroke="#e7f1ee" stroke-width="1.5"/>
+      <text x="270" y="102" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#e7f1ee">DAY-ONE RELEASES</text>
+      <circle cx="560" cy="68" r="6" fill="#0d1517" stroke="#e7f1ee" stroke-width="1.5"/>
+      <text x="480" y="102" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#e7f1ee">SINGLE-PLAYER LIBRARY</text>
+      <text x="24" y="130" font-family="JetBrains Mono, monospace" font-size="8" fill="#5f7c78">HARD NO</text>
+      <text x="600" y="130" font-family="JetBrains Mono, monospace" font-size="8" fill="#5f7c78">JUST WORKS</text>
+    </svg>
+    <div class="hero-caption">Not one verdict — a spectrum, and where your library actually falls on it matters more than the OS war</div>
+  </div>
 
   <p class="lede">Every "Linux gaming is finally ready" post has been written roughly annually since 2015, and every single one of them has been a little bit right and a little bit lying to you. This isn't going to be another one. Linux gaming genuinely is in a different place than it used to be — but "different" and "you should switch today" aren't the same sentence, and most of the discourse treats them like they are.</p>
 

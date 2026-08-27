@@ -97,6 +97,11 @@ footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); lett
 .footer-link a{ font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
 .footer-link a:hover{ color:var(--static); }
 @media (max-width:560px){ h1{ font-size:26px; } }
+.kicker{ display:flex; align-items:center; gap:7px; }
+.kicker-icon{ display:inline-flex; flex-shrink:0; color:var(--static); }
+.hero-art{ margin:6px 0 32px; border:1px solid var(--panel-line); border-radius:6px; overflow:hidden; background:var(--panel); }
+.hero-art svg{ display:block; width:100%; height:auto; }
+.hero-caption{ font-family:var(--mono); font-size:9.5px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; border-top:1px solid var(--panel-line); background:var(--bg-alt); text-align:center; }
 </style>
 </head>
 <body>
@@ -108,9 +113,30 @@ footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); lett
 </nav>
 <div class="wrap">
 <article>
-  <div class="kicker">Buying Guide</div>
+  <div class="kicker"><svg class="kicker-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16a8 8 0 0 1 16 0"/><line x1="12" y1="16" x2="16" y2="10"/><circle cx="12" cy="16" r="1.2" fill="currentColor" stroke="none"/></svg>Buying Guide</div>
   <h1>Building a PC in 2026: What Actually Matters</h1>
   <div class="meta-row"><span>VOLTTECH COMPUTER CO.</span><span>7 MIN READ</span><span>26 AUG 2026</span></div>
+
+  <div class="hero-art">
+    <svg viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="grid-budget" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0 0 0 0 20" fill="none" stroke="#172526" stroke-width="1"/></pattern></defs>
+      <rect width="680" height="160" fill="url(#grid-budget)"/>
+      <text x="24" y="28" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.05em" fill="#5f7c78">WHERE A GAMING BUILD BUDGET SHOULD ACTUALLY GO</text>
+      <rect x="24" y="70" width="632" height="34" fill="#0a1114" stroke="#172526"/>
+      <rect x="24" y="70" width="252" height="34" fill="#ffb454"/>
+      <text x="30" y="92" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#1a0f00">GPU 40%</text>
+      <rect x="276" y="70" width="151" height="34" fill="#c98a3e"/>
+      <text x="282" y="92" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#1a0f00">CPU 24%</text>
+      <rect x="427" y="70" width="101" height="34" fill="#7a5a2a"/>
+      <text x="433" y="92" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#e7f1ee">PSU 16%</text>
+      <rect x="528" y="70" width="76" height="34" fill="#5a4322"/>
+      <text x="534" y="92" font-family="JetBrains Mono, monospace" font-size="9" fill="#e7f1ee">RAM 12%</text>
+      <rect x="604" y="70" width="52" height="34" fill="#3a2c16"/>
+      <text x="609" y="92" font-family="JetBrains Mono, monospace" font-size="8" fill="#e7f1ee">SSD 8%</text>
+      <text x="24" y="130" font-family="JetBrains Mono, monospace" font-size="9" fill="#5f7c78">ROUGH SPLIT FOR A GAMING-FOCUSED BUILD — ADJUST FOR YOUR ACTUAL WORKLOAD</text>
+    </svg>
+    <div class="hero-caption">Component marketing sells specs. This is what the money should actually chase.</div>
+  </div>
 
   <p class="lede">Every build guide on the internet leads with a parts list. This one won't, because the parts list is the easy part — the thing that actually determines whether your build feels great or feels like a waste of money is how you split the budget between components before you buy anything.</p>
 

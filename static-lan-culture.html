@@ -81,6 +81,11 @@ footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); lett
 .footer-link a{ font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
 .footer-link a:hover{ color:var(--static); }
 @media (max-width:560px){ h1{ font-size:26px; } }
+.kicker{ display:flex; align-items:center; gap:7px; }
+.kicker-icon{ display:inline-flex; flex-shrink:0; color:var(--static); }
+.hero-art{ margin:6px 0 32px; border:1px solid var(--panel-line); border-radius:6px; overflow:hidden; background:var(--panel); }
+.hero-art svg{ display:block; width:100%; height:auto; }
+.hero-caption{ font-family:var(--mono); font-size:9.5px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; border-top:1px solid var(--panel-line); background:var(--bg-alt); text-align:center; }
 </style>
 </head>
 <body>
@@ -92,9 +97,30 @@ footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); lett
 </nav>
 <div class="wrap">
 <article>
-  <div class="kicker">Culture</div>
+  <div class="kicker"><svg class="kicker-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg>Culture</div>
   <h1>The Quiet Return of LAN Culture</h1>
   <div class="meta-row"><span>VOLTTECH COMPUTER CO.</span><span>5 MIN READ</span><span>26 AUG 2026</span></div>
+
+  <div class="hero-art">
+    <svg viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="grid-lan" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0 0 0 0 20" fill="none" stroke="#172526" stroke-width="1"/></pattern></defs>
+      <rect width="680" height="160" fill="url(#grid-lan)"/>
+      <g stroke="#7a5a2a" stroke-width="1.2">
+        <line x1="120" y1="30" x2="330" y2="80"/><line x1="90" y1="120" x2="330" y2="80"/>
+        <line x1="560" y1="35" x2="330" y2="80"/><line x1="590" y1="130" x2="330" y2="80"/>
+        <line x1="250" y1="130" x2="330" y2="80"/><line x1="420" y1="125" x2="330" y2="80"/>
+      </g>
+      <circle cx="120" cy="30" r="7" fill="#0d1517" stroke="#ffb454" stroke-width="1.6"/>
+      <circle cx="90" cy="120" r="7" fill="#0d1517" stroke="#ffb454" stroke-width="1.6"/>
+      <circle cx="560" cy="35" r="7" fill="#0d1517" stroke="#ffb454" stroke-width="1.6"/>
+      <circle cx="590" cy="130" r="7" fill="#0d1517" stroke="#ffb454" stroke-width="1.6"/>
+      <circle cx="250" cy="130" r="7" fill="#0d1517" stroke="#ffb454" stroke-width="1.6"/>
+      <circle cx="420" cy="125" r="7" fill="#0d1517" stroke="#ffb454" stroke-width="1.6"/>
+      <circle cx="330" cy="80" r="11" fill="#ffb454"/>
+      <text x="260" y="24" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.05em" fill="#5f7c78">SIGNAL, IN ONE ROOM, FOR ONCE</text>
+    </svg>
+    <div class="hero-caption">Everyone online, all the time — occasionally choosing the same room anyway</div>
+  </div>
 
   <p class="lede">Somewhere in the last few years, a generation that grew up with cloud saves, cross-play and voice chat on tap started doing something their setup was never built for: unplugging the tower, wrapping the cables around it, and carrying the whole thing to someone else's house.</p>
 
