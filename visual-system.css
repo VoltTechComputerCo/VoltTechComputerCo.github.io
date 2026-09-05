@@ -1,0 +1,33 @@
+/* VoltTech site-wide visual system — photography remains naturally coloured; only darkened. */
+:root{--vt-photo-overlay:rgba(3,6,8,.72)}
+
+/* Homepage service cards */
+.service{background-image:linear-gradient(145deg,rgba(3,6,8,.64),rgba(3,6,8,.82) 62%,rgba(5,8,10,.95)),var(--vt-card-image)!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+.service:hover,.service:focus-visible{background-image:linear-gradient(145deg,rgba(3,6,8,.54),rgba(3,6,8,.76) 62%,rgba(5,8,10,.94)),var(--vt-card-image)!important}
+.service.repair{--vt-card-image:url('vt-repair.webp')}.service.performance{--vt-card-image:url('vt-performance.webp')}.service.upgrades{--vt-card-image:url('vt-upgrades.webp')}.service.malware{--vt-card-image:url('vt-malware.webp')}.service.windows{--vt-card-image:url('vt-windows.webp')}.service.signal{--vt-card-image:url('vt-signal.webp')}.service.streaming{--vt-card-image:url('vt-streaming.webp')}
+.service p{color:#9aafab!important;text-shadow:0 1px 10px rgba(0,0,0,.8)}.service h3,.service small,.service .card-link{position:relative;z-index:1}
+
+/* Main service pages: natural photo behind the upper page, protected by a strong black overlay. */
+body.vt-page-repair main,body.vt-page-performance main,body.vt-page-upgrades main,body.vt-page-malware main,body.vt-page-windows main,body.vt-page-streaming main{background-image:linear-gradient(180deg,rgba(5,8,10,.48) 0,rgba(5,8,10,.78) 330px,rgba(5,8,10,.98) 720px),var(--vt-page-image);background-size:100% auto,100% auto;background-position:top center;background-repeat:no-repeat}
+body.vt-page-repair{--vt-page-image:url('vt-repair.webp')}body.vt-page-performance{--vt-page-image:url('vt-performance.webp')}body.vt-page-upgrades{--vt-page-image:url('vt-upgrades.webp')}body.vt-page-malware{--vt-page-image:url('vt-malware.webp')}body.vt-page-windows{--vt-page-image:url('vt-windows.webp')}body.vt-page-streaming{--vt-page-image:url('vt-streaming.webp')}
+body.vt-page-repair main>.wrap>h1,body.vt-page-performance main>.wrap>h1,body.vt-page-upgrades main>.wrap>h1,body.vt-page-malware main>.wrap>h1,body.vt-page-windows main>.wrap>h1,body.vt-page-streaming main>.wrap>h1{text-shadow:0 2px 20px rgba(0,0,0,.9)}
+body.vt-page-repair main>.wrap>.lead,body.vt-page-performance main>.wrap>.lead,body.vt-page-upgrades main>.wrap>.lead,body.vt-page-malware main>.wrap>.lead,body.vt-page-windows main>.wrap>.lead,body.vt-page-streaming main>.wrap>.lead{color:#9db0ad;text-shadow:0 2px 14px rgba(0,0,0,.95)}
+
+/* Signal Scan and Stream Scan: restrained full-page diagnostic backdrop. */
+body.vt-page-signal{background-image:linear-gradient(rgba(5,8,10,.86),rgba(5,8,10,.97)),url('vt-signal.webp')!important;background-size:cover!important;background-position:center top!important;background-attachment:scroll!important}
+body.vt-page-streamscan{background-image:linear-gradient(rgba(8,7,13,.84),rgba(8,7,13,.97)),url('vt-streaming.webp')!important;background-size:cover!important;background-position:center top!important;background-attachment:scroll!important}
+body.vt-page-signal .panel,body.vt-page-signal .scope,body.vt-page-signal .alert{background:rgba(13,21,23,.94)!important;backdrop-filter:blur(5px)}
+body.vt-page-streamscan .panel,body.vt-page-streamscan .scope,body.vt-page-streamscan .alert{background:rgba(18,16,26,.94)!important;backdrop-filter:blur(5px)}
+
+/* Keep panels crisp and readable above photography. */
+body[class*='vt-page-'] .panel{box-shadow:0 14px 34px rgba(0,0,0,.16)}
+
+@media(max-width:560px){
+ .service{background-position:center 42%!important}
+ body.vt-page-repair main,body.vt-page-performance main,body.vt-page-upgrades main,body.vt-page-malware main,body.vt-page-windows main,body.vt-page-streaming main{background-size:auto 620px;background-position:top center}
+}
+@media(prefers-reduced-data:reduce){
+ .service{background-image:linear-gradient(145deg,rgba(var(--accent-rgb),.09),rgba(var(--accent-rgb),.025) 52%,var(--panel) 100%)!important}
+ body[class*='vt-page-']{background-image:none!important}
+ body[class*='vt-page-'] main{background-image:none!important}
+}
