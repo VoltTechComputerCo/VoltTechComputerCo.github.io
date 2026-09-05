@@ -1,0 +1,35 @@
+/* VoltTech service-card image backgrounds
+   Source photography selected from the connected VoltTech Google Drive library.
+   Keep this file beside index.html and the seven bg-*.webp files. */
+
+.service{
+  background-image:
+    linear-gradient(145deg,rgba(5,8,10,.72),rgba(5,8,10,.84) 58%,rgba(13,21,23,.96)),
+    var(--bgimg);
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+.service:hover,.service:focus-visible{
+  background-image:
+    linear-gradient(145deg,rgba(var(--accent-rgb),.12),rgba(5,8,10,.78) 48%,rgba(13,21,23,.94)),
+    var(--bgimg);
+}
+.service.repair{--bgimg:url('bg-repair.webp')}
+.service.performance{--bgimg:url('bg-performance.webp')}
+.service.upgrades{--bgimg:url('bg-upgrades.webp')}
+.service.malware{--bgimg:url('bg-malware.webp')}
+.service.windows{--bgimg:url('bg-windows.webp')}
+.service.signal{--bgimg:url('bg-signal.webp')}
+.service.streaming{--bgimg:url('bg-streaming.webp')}
+
+@media(max-width:560px){
+  .service{
+    background-position:center 42%;
+  }
+}
+@media(prefers-reduced-data:reduce){
+  .service,.service:hover,.service:focus-visible{
+    background-image:linear-gradient(145deg,rgba(var(--accent-rgb),.09),rgba(var(--accent-rgb),.025) 52%,var(--panel) 100%);
+  }
+}
