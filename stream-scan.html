@@ -32,6 +32,8 @@ fps:['Game + stream resource contention','The game and streaming workload may be
 audio:['Audio chain needs tuning','Gain, noise control, compression, limiting, routing or source balance may need adjustment.','Stream Check / Tune','R299–R449'],
 setup:['Complete creator setup','A clean first-time setup avoids stacking random presets, conflicting sources and unsuitable output settings.','Stream Setup','R649']
 };
+const preselected=new URLSearchParams(window.location.search).get('issue');
+if(preselected && symptoms.some(x=>x[0]===preselected)){S.symptom=preselected;step=1;target=.2}
 const panel=document.getElementById('panel'),meter=document.getElementById('meter');
 function track(n,p={}){try{if(typeof gtag==='function')gtag('event',n,p)}catch(e){}}
 function label(arr,v){return arr.find(x=>x[0]===v)?.[1]||'Not sure'}
@@ -81,34 +83,13 @@ function diagRows(){
 }
 function result(){
   const r=recommendation(),rows=diagRows(),extra=contextNote();
-  const msgLines=[
-    'Hi VoltTech, I ran Stream Scan.',
-    '',
-    `Name: ${S.name||'Not provided'}`,
-    `Issue: ${label(symptoms,S.symptom)}`,
-    ...rows.map(x=>`${x[0]}: ${x[1]}`),
-    `Likely category: ${r[0]}`,
-    `Recommended service: ${r[2]}`,
-    `Estimated launch price: ${r[3]}`,
-    '',
-    'Please help us with the next step.'
-  ];
+  const msgLines=['Hi VoltTech, I ran Stream Scan.','',`Name: ${S.name||'Not provided'}`,`Issue: ${label(symptoms,S.symptom)}`,...rows.map(x=>`${x[0]}: ${x[1]}`),`Likely category: ${r[0]}`,`Recommended service: ${r[2]}`,`Estimated launch price: ${r[3]}`,'','Please help us with the next step.'];
   const msg=encodeURIComponent(msgLines.join('\n'));
   panel.innerHTML=`<span class="badge">LIKELY STREAM ISSUE</span><h2>${r[0]}</h2><p class="lead">${r[1]}</p>${rows.map(x=>`<div class="diag"><span>${x[0]}</span><span>${x[1]}</span></div>`).join('')}<div class="diag"><span>Recommended</span><span>${r[2]}</span></div>${extra?`<div class="context"><b>Why this matters:</b> ${extra}</div>`:''}<div class="price">${r[3]}</div><div class="note">Launch-price estimate only, not a guaranteed final quotation. This is symptom-based triage, not a full remote diagnosis. Final scope can change after we inspect the actual OBS configuration, hardware and connection behaviour. Parts or unrelated PC repairs are separate.</div><div class="security"><b>Security:</b> VoltTech never needs your Twitch/YouTube password, 2FA code or stream key.</div><a class="wa" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=${msg}">Send result on WhatsApp →</a><a class="secondary" href="streaming-setup-south-africa.html">Streaming & Creator Support</a><button class="secondary" id="restart">Run another scan</button>`;
   document.getElementById('restart').onclick=()=>{Object.keys(S).forEach(k=>S[k]=['name','phone','email'].includes(k)?'':null);step=0;target=.08;render()};
   track('signal_scan_result',{mode:'stream',symptom:S.symptom,platform:S.platform,recommendation:r[2]})
 }
-function render(){
-  meters();
-  const q=flow();
-  if(step<q.length){
-    if(q[step].key==='contact')contact();else opts(q[step]);
-  }else result()
-}
+function render(){meters();const q=flow();if(step<q.length){if(q[step].key==='contact')contact();else opts(q[step])}else result()}
 render();
-const c=document.getElementById('scope'),ctx=c.getContext('2d'),reading=document.getElementById('reading'),status=document.getElementById('status');let tt=0;
-function resize(){c.width=c.clientWidth*devicePixelRatio;c.height=c.clientHeight*devicePixelRatio}
-resize();addEventListener('resize',resize);
-function draw(){tension+=(target-tension)*.05;let w=c.width,h=c.height;ctx.clearRect(0,0,w,h);let col=tension>.68?'#ff4057':tension>.42?'#9b6cff':'#2fe6c8';ctx.beginPath();ctx.strokeStyle=col;ctx.lineWidth=1.7*devicePixelRatio;for(let x=0;x<=w;x+=2){let y=h/2+Math.sin(x*(.015+tension*.11)+tt)*(6+tension*26)*devicePixelRatio+(Math.random()-.5)*tension*tension*.3*h;x?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke();tt+=.05;reading.textContent=tension<.35?'STABLE':tension<.65?'DEGRADED':'UNSTABLE';status.textContent=tension<.35?'SIGNAL STABLE':tension<.65?'STREAM DEGRADED':'STREAM UNSTABLE';status.style.color=col;requestAnimationFrame(draw)}
-draw();
+const c=document.getElementById('scope'),ctx=c.getContext('2d'),reading=document.getElementById('reading'),status=document.getElementById('status');let tt=0;function resize(){c.width=c.clientWidth*devicePixelRatio;c.height=c.clientHeight*devicePixelRatio}resize();addEventListener('resize',resize);function draw(){tension+=(target-tension)*.05;let w=c.width,h=c.height;ctx.clearRect(0,0,w,h);let col=tension>.68?'#ff4057':tension>.42?'#9b6cff':'#2fe6c8';ctx.beginPath();ctx.strokeStyle=col;ctx.lineWidth=1.7*devicePixelRatio;for(let x=0;x<=w;x+=2){let y=h/2+Math.sin(x*(.015+tension*.11)+tt)*(6+tension*26)*devicePixelRatio+(Math.random()-.5)*tension*tension*.3*h;x?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke();tt+=.05;reading.textContent=tension<.35?'STABLE':tension<.65?'DEGRADED':'UNSTABLE';status.textContent=tension<.35?'SIGNAL STABLE':tension<.65?'STREAM DEGRADED':'STREAM UNSTABLE';status.style.color=col;requestAnimationFrame(draw)}draw();
 </script></body></html>
