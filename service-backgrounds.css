@@ -23,13 +23,67 @@
 .service.signal{--bgimg:url('bg-signal.webp')}
 .service.streaming{--bgimg:url('bg-streaming.webp')}
 
+/* Homepage hero — Drive photo + official VoltTech logo overlay */
+.hero{
+  position:relative;
+  overflow:hidden;
+  margin-top:22px;
+  padding:310px 30px 42px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:
+    linear-gradient(180deg,rgba(3,8,8,.08) 0%,rgba(3,8,8,.28) 42%,rgba(3,8,8,.90) 76%,rgba(3,8,8,.98) 100%),
+    url('volttech-home-hero.webp') 72% 50% / cover no-repeat;
+  box-shadow:0 18px 50px rgba(0,0,0,.32);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  top:52px;
+  left:50%;
+  width:min(72%,470px);
+  aspect-ratio:3/1;
+  transform:translateX(-50%);
+  background:url('volttech-home-hero-logo.png') center / contain no-repeat;
+  filter:drop-shadow(0 10px 22px rgba(0,0,0,.78));
+  pointer-events:none;
+}
+.hero > *{
+  position:relative;
+  z-index:2;
+}
+.hero .eyebrow{
+  text-shadow:0 2px 12px rgba(0,0,0,.9);
+}
+.hero h1{
+  text-shadow:0 3px 18px rgba(0,0,0,.92);
+}
+.hero .sub{
+  color:#b7c9c5;
+  text-shadow:0 2px 12px rgba(0,0,0,.92);
+}
+
 @media(max-width:560px){
   .service{
     background-position:center 42%;
+  }
+  .hero{
+    margin-top:14px;
+    padding:245px 20px 30px;
+    background-position:76% 50%;
+    border-radius:6px;
+  }
+  .hero::before{
+    top:38px;
+    width:82%;
   }
 }
 @media(prefers-reduced-data:reduce){
   .service,.service:hover,.service:focus-visible{
     background-image:linear-gradient(145deg,rgba(var(--accent-rgb),.09),rgba(var(--accent-rgb),.025) 52%,var(--panel) 100%);
+  }
+  .hero{
+    background:#07100f;
   }
 }
