@@ -27,21 +27,29 @@ const pageMessages={
 '/windows-installation-pretoria.html':"Hi VoltTech! I'd like help with a Windows installation or Windows-related issue. What I need is: "
 };
 
-function loadVisualCSS(){
- if(document.querySelector('link[data-vt-visual-system]'))return;
+function loadCSS(href,key){
+ if(document.querySelector('link[data-vt-'+key+']'))return;
  const l=document.createElement('link');
- l.rel='stylesheet';
- l.href='visual-system.css?v=10.1';
- l.dataset.vtVisualSystem='1';
+ l.rel='stylesheet'; l.href=href; l.dataset['vt'+key.replace(/(^|-)([a-z])/g,(_,a,b)=>b.toUpperCase())]='1';
  document.head.appendChild(l);
-
- const f=document.createElement('link');
- f.rel='stylesheet';
- f.href='visual-block-fix.css?v=2';
- f.dataset.vtVisualFix='1';
- document.head.appendChild(f);
 }
-
+function loadVisualCSS(){
+ loadCSS('visual-system.css?v=10.1','visual-system');
+ loadCSS('visual-block-fix.css?v=2','visual-fix');
+}
+function addContactIcons(){
+ loadCSS('contact-icons.css?v=1','contact-icons');
+ document.querySelectorAll('a[href^="https://wa.me/"],a[href^="mailto:"]').forEach(a=>{
+   if(a.querySelector('.vt-contact-icon'))return;
+   const isWa=a.href.startsWith('https://wa.me/');
+   const img=document.createElement('img');
+   img.className='vt-contact-icon';
+   img.src=isWa?'whatsapp-logo.svg':'gmail-logo.svg';
+   img.alt='';
+   img.setAttribute('aria-hidden','true');
+   a.prepend(img);
+ });
+}
 function enhanceWhatsAppLinks(){
  const msg=pageMessages[location.pathname];
  document.querySelectorAll('a[href^="https://wa.me/27618435775"]').forEach(a=>{
@@ -54,15 +62,14 @@ function enhanceWhatsAppLinks(){
    }));
  });
 }
-
 function init(){
+ addContactIcons();
  if(/\/static(?:-|\.html|\/)/.test(location.pathname))return;
  const cls=pages[location.pathname];
  if(cls)document.body.classList.add(cls);
  loadVisualCSS();
  enhanceWhatsAppLinks();
 }
-
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
 else init();
 })();
