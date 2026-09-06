@@ -1,273 +1,121 @@
+/* VoltTech site-wide photography system v8
+   Natural colours preserved. Dark overlays only.
+   STATIC deliberately excluded by analytics.js.
+   Service cards keep the original approved bg-*.webp photography. */
 
-/* VoltTech site-wide photo system
-   Uses the user's own supplied photography.
-   Natural colours preserved; overlays only darken for readability.
-   No DOM-injected images required. */
-
-:root{
-  --vt-photo-radius:7px;
-  --vt-photo-border:1px solid rgba(95,124,120,.34);
-}
-
-/* Homepage service cards */
+:root{--vt-photo-radius:7px;--vt-photo-border:1px solid rgba(95,124,120,.34)}
 .service{
-  background-image:
-    linear-gradient(145deg,rgba(3,6,8,.54),rgba(3,6,8,.78) 58%,rgba(5,8,10,.95)),
-    var(--vt-card)!important;
-  background-size:cover!important;
-  background-position:center!important;
-  background-repeat:no-repeat!important;
+  background-image:linear-gradient(145deg,rgba(3,6,8,.56),rgba(3,6,8,.80) 58%,rgba(5,8,10,.95)),var(--bgimg)!important;
+  background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important
 }
 .service:hover,.service:focus-visible{
-  background-image:
-    linear-gradient(145deg,rgba(3,6,8,.42),rgba(3,6,8,.69) 58%,rgba(5,8,10,.92)),
-    var(--vt-card)!important;
-}
-.service.repair{--vt-card:url('vt-own-internals.webp')}
-.service.performance{--vt-card:url('vt-own-gpu-installed.webp')}
-.service.upgrades{--vt-card:url('vt-own-hardware.webp')}
-.service.malware{--vt-card:url('vt-own-io.webp')}
-.service.windows{--vt-card:url('vt-own-keyboard.webp')}
-.service.signal{--vt-card:url('vt-own-tuf.webp')}
-.service.streaming{--vt-card:url('vt-own-desk.webp')}
-
-/* Reusable generated photo blocks inside existing page sections.
-   These do not depend on JavaScript creating <img> elements. */
-body[class*="vt-page-"] main .wrap > .panel:nth-of-type(2)::after,
-body[class*="vt-page-"] main .wrap > .panel:nth-of-type(5)::after,
-body.vt-page-streaming main .wrap > .panel:nth-of-type(2)::after,
-body.vt-page-streaming main .wrap > .panel:nth-of-type(5)::after{
-  content:"";
-  display:block;
-  width:100%;
-  height:220px;
-  margin-top:20px;
-  border:var(--vt-photo-border);
-  border-radius:var(--vt-photo-radius);
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  box-shadow:0 12px 30px rgba(0,0,0,.22);
+  background-image:linear-gradient(145deg,rgba(3,6,8,.43),rgba(3,6,8,.70) 58%,rgba(5,8,10,.92)),var(--bgimg)!important
 }
 
-/* Repair */
-body.vt-page-repair main .wrap > .panel:nth-of-type(2)::after{
-  background-image:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.24)),url('vt-own-internals.webp');
+/* Shared image treatment */
+body[class*="vt-page-"] main .wrap>.panel::after,
+body.vt-page-home section::after{
+  content:"";display:block;width:100%;height:220px;margin-top:20px;
+  border:var(--vt-photo-border);border-radius:var(--vt-photo-radius);
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  box-shadow:0 12px 30px rgba(0,0,0,.22);box-sizing:border-box
 }
-body.vt-page-repair main .wrap > .panel:nth-of-type(5)::after{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.24)),url('vt-own-hardware.webp');
-}
+/* Don't force photos into FAQ / link-heavy utility panels */
+body[class*="vt-page-"] main .wrap>.panel.faq::after{display:none}
 
-/* Performance */
-body.vt-page-performance main .wrap > .panel:nth-of-type(2)::after{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.24)),url('vt-own-gpu-installed.webp');
-}
-body.vt-page-performance main .wrap > .panel:nth-of-type(5)::after{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.24)),url('vt-own-tower.webp');
-}
-
-/* Upgrades */
-body.vt-page-upgrades main .wrap > .panel:nth-of-type(2)::after{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.22)),url('vt-own-gpu-product.webp');
-}
-body.vt-page-upgrades main .wrap > .panel:nth-of-type(5)::after{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.24)),url('vt-own-hardware.webp');
-}
-
-/* Malware/security */
-body.vt-page-malware main .wrap > .panel:nth-of-type(2)::after{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.26)),url('vt-own-io.webp');
-}
-body.vt-page-malware main .wrap > .panel:nth-of-type(5)::after{
-  background-image:linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.28)),url('vt-own-tuf.webp');
-}
-
-/* Windows */
-body.vt-page-windows main .wrap > .panel:nth-of-type(2)::after{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.24)),url('vt-own-keyboard.webp');
-}
-body.vt-page-windows main .wrap > .panel:nth-of-type(5)::after{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.24)),url('vt-own-keys.webp');
-}
-
-/* Streaming/creator */
-body.vt-page-streaming main .wrap > .panel:nth-of-type(2)::after{
-  background-image:linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.22)),url('vt-own-desk.webp');
-}
-body.vt-page-streaming main .wrap > .panel:nth-of-type(5)::after{
-  background-image:linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.26)),url('vt-own-gpu-installed.webp');
-}
-
-/* Large page-top photo banners, using existing page structure */
+/* Hero photography on every main service/hub page */
 body.vt-page-repair main .wrap::before,
 body.vt-page-performance main .wrap::before,
 body.vt-page-upgrades main .wrap::before,
 body.vt-page-malware main .wrap::before,
 body.vt-page-windows main .wrap::before,
 body.vt-page-streaming main .wrap::before{
-  content:"";
-  display:block;
-  width:100%;
-  height:clamp(220px,40vw,390px);
-  margin:0 0 28px;
-  border:var(--vt-photo-border);
-  border-radius:var(--vt-photo-radius);
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  box-shadow:0 14px 34px rgba(0,0,0,.26);
+  content:"";display:block;width:100%;height:clamp(230px,42vw,400px);margin:0 0 28px;
+  border:var(--vt-photo-border);border-radius:var(--vt-photo-radius);background-size:cover;
+  background-position:center;background-repeat:no-repeat;box-shadow:0 14px 34px rgba(0,0,0,.26);box-sizing:border-box
 }
+body.vt-page-repair main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-own-internals.webp')}
+body.vt-page-performance main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-stock-rtx-aio.webp')}
+body.vt-page-upgrades main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-stock-modern-build.webp')}
+body.vt-page-malware main .wrap::before{background-image:linear-gradient(#0002,#0006),url('vt-own-io.webp')}
+body.vt-page-windows main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-own-keyboard.webp')}
+body.vt-page-streaming main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-own-desk.webp')}
 
-body.vt-page-repair main .wrap::before{
-  background-image:linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.28)),url('vt-own-internals.webp');
-}
-body.vt-page-performance main .wrap::before{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.27)),url('vt-own-gpu-installed.webp');
-}
-body.vt-page-upgrades main .wrap::before{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.24)),url('vt-own-hardware.webp');
-}
-body.vt-page-malware main .wrap::before{
-  background-image:linear-gradient(rgba(0,0,0,.06),rgba(0,0,0,.32)),url('vt-own-io.webp');
-}
-body.vt-page-windows main .wrap::before{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.27)),url('vt-own-keyboard.webp');
-}
-body.vt-page-streaming main .wrap::before{
-  background-image:linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.28)),url('vt-own-desk.webp');
-}
+/* REPAIR — hardware, internals, diagnostic detail */
+body.vt-page-repair .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-hardware.webp')}
+body.vt-page-repair .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-motherboard-cpu.webp')}
+body.vt-page-repair .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-io.webp')}
+body.vt-page-repair .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-internals.webp')}
+body.vt-page-repair .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-tuf.webp')}
+body.vt-page-repair .panel:nth-of-type(9)::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-modern-build.webp')}
 
-/* Homepage gets real photos between existing sections */
-body.vt-page-home #services::after,
-body.vt-page-home #services + section::after,
-body.vt-page-home #services + section + section::after{
-  content:"";
-  display:block;
-  width:100%;
-  height:240px;
-  margin-top:28px;
-  border:var(--vt-photo-border);
-  border-radius:var(--vt-photo-radius);
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  box-shadow:0 12px 30px rgba(0,0,0,.22);
-}
-body.vt-page-home #services::after{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.23)),url('vt-own-hardware.webp');
-}
-body.vt-page-home #services + section::after{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.25)),url('vt-own-gpu-product.webp');
-}
-body.vt-page-home #services + section + section::after{
-  background-image:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.25)),url('vt-own-desk.webp');
-}
+/* PERFORMANCE — cooling, GPU, complete systems */
+body.vt-page-performance .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-premium-rig.webp')}
+body.vt-page-performance .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-cooling-rgb.webp')}
+body.vt-page-performance .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-gpu-installed.webp')}
+body.vt-page-performance .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-tower.webp')}
+body.vt-page-performance .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-rtx-aio.webp')}
+body.vt-page-performance .panel:nth-of-type(9)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-internals.webp')}
 
-/* Scan interfaces stay readable */
-body.vt-page-signal{
-  background-image:
-    linear-gradient(rgba(5,8,10,.87),rgba(5,8,10,.97)),
-    url('vt-own-tuf.webp')!important;
-  background-size:cover!important;
-  background-position:center top!important;
-  background-attachment:fixed!important;
-}
-body.vt-page-streamscan{
-  background-image:
-    linear-gradient(rgba(8,7,13,.86),rgba(8,7,13,.97)),
-    url('vt-own-desk.webp')!important;
-  background-size:cover!important;
-  background-position:center top!important;
-  background-attachment:fixed!important;
-}
+/* UPGRADES */
+body.vt-page-upgrades .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-modern-build.webp')}
+body.vt-page-upgrades .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-gpu-product.webp')}
+body.vt-page-upgrades .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-motherboard-cpu.webp')}
+body.vt-page-upgrades .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-hardware.webp')}
+body.vt-page-upgrades .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-rtx-aio.webp')}
+body.vt-page-upgrades .panel:nth-of-type(9)::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-premium-rig.webp')}
 
-/* Make sure card/page text stays readable */
+/* SECURITY / MALWARE */
+body.vt-page-malware .panel:nth-of-type(1)::after{background-image:linear-gradient(#0001,#0005),url('vt-own-io.webp')}
+body.vt-page-malware .panel:nth-of-type(2)::after{background-image:linear-gradient(#0001,#0005),url('vt-own-tuf.webp')}
+body.vt-page-malware .panel:nth-of-type(3)::after{background-image:linear-gradient(#0001,#0005),url('vt-own-keys.webp')}
+body.vt-page-malware .panel:nth-of-type(4)::after{background-image:linear-gradient(#0001,#0005),url('vt-stock-motherboard-cpu.webp')}
+body.vt-page-malware .panel:nth-of-type(6)::after{background-image:linear-gradient(#0001,#0005),url('vt-own-internals.webp')}
+
+/* WINDOWS */
+body.vt-page-windows .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-keyboard.webp')}
+body.vt-page-windows .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-keys.webp')}
+body.vt-page-windows .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-io.webp')}
+body.vt-page-windows .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-modern-build.webp')}
+body.vt-page-windows .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-tuf.webp')}
+
+/* CREATOR / STREAMING */
+body.vt-page-streaming .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-desk.webp')}
+body.vt-page-streaming .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-premium-rig.webp')}
+body.vt-page-streaming .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-gpu-installed.webp')}
+body.vt-page-streaming .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-cooling-rgb.webp')}
+body.vt-page-streaming .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-internals.webp')}
+
+/* Homepage: keep original service cards + photography throughout long-form sections */
+body.vt-page-home #services::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-modern-build.webp')}
+body.vt-page-home #services+section::after{background-image:linear-gradient(#0000,#0004),url('vt-own-hardware.webp')}
+body.vt-page-home #services+section+section::after{background-image:linear-gradient(#0000,#0004),url('vt-stock-rtx-aio.webp')}
+body.vt-page-home #services+section+section+section::after{background-image:linear-gradient(#0000,#0004),url('vt-own-desk.webp')}
+body.vt-page-home #contact::after{background-image:linear-gradient(#0000,#0005),url('vt-stock-premium-rig.webp')}
+
+/* Scan tools: subtle background only — preserve funnel usability */
+body.vt-page-signal{background-image:linear-gradient(rgba(5,8,10,.90),rgba(5,8,10,.98)),url('vt-own-tuf.webp')!important;background-size:cover!important;background-position:center top!important;background-attachment:fixed!important}
+body.vt-page-streamscan{background-image:linear-gradient(rgba(8,7,13,.89),rgba(8,7,13,.98)),url('vt-own-desk.webp')!important;background-size:cover!important;background-position:center top!important;background-attachment:fixed!important}
+
 .service p{color:#a8bab6!important;text-shadow:0 2px 10px rgba(0,0,0,.95)}
+.vt-photo,.vt-photo-grid{display:none!important}
+body[class*="vt-page-"] main .wrap,body.vt-page-home .wrap{overflow-x:clip}
+
+body.vt-page-home .contact{gap:16px;min-width:0}
+body.vt-page-home .contact span{min-width:0;overflow-wrap:anywhere}
+body.vt-page-home .contact a{flex:0 0 auto;white-space:nowrap}
 
 @media(max-width:620px){
-  body[class*="vt-page-"] main .wrap > .panel:nth-of-type(2)::after,
-  body[class*="vt-page-"] main .wrap > .panel:nth-of-type(5)::after,
-  body.vt-page-streaming main .wrap > .panel:nth-of-type(2)::after,
-  body.vt-page-streaming main .wrap > .panel:nth-of-type(5)::after,
-  body.vt-page-home #services::after,
-  body.vt-page-home #services + section::after,
-  body.vt-page-home #services + section + section::after{
-    height:185px;
-  }
-  body.vt-page-repair main .wrap::before,
-  body.vt-page-performance main .wrap::before,
-  body.vt-page-upgrades main .wrap::before,
-  body.vt-page-malware main .wrap::before,
-  body.vt-page-windows main .wrap::before,
-  body.vt-page-streaming main .wrap::before{
-    height:210px;
-    margin-bottom:22px;
-  }
+ body[class*="vt-page-"] main .wrap>.panel::after,body.vt-page-home section::after{height:180px}
+ body.vt-page-repair main .wrap::before,body.vt-page-performance main .wrap::before,body.vt-page-upgrades main .wrap::before,
+ body.vt-page-malware main .wrap::before,body.vt-page-windows main .wrap::before,body.vt-page-streaming main .wrap::before{height:215px;margin-bottom:22px}
 }
-
-@media(prefers-reduced-data:reduce){
-  body[class*="vt-page-"] main .wrap > .panel:nth-of-type(2)::after,
-  body[class*="vt-page-"] main .wrap > .panel:nth-of-type(5)::after,
-  body.vt-page-home #services::after,
-  body.vt-page-home #services + section::after,
-  body.vt-page-home #services + section + section::after,
-  body[class*="vt-page-"] main .wrap::before{
-    display:none!important;
-  }
-}
-
-/* ===== VoltTech mobile visual hotfix v7 =====
-   Remove obsolete JS-injected photo elements from older cached analytics.js.
-   Current photography is rendered by CSS pseudo-elements instead. */
-.vt-photo,
-.vt-photo-grid{
-  display:none!important;
-}
-
-/* Homepage contact cards: prevent long email/phone text colliding with CTA. */
-body.vt-page-home .contact{
-  gap:16px;
-  min-width:0;
-}
-body.vt-page-home .contact span{
-  min-width:0;
-  overflow-wrap:anywhere;
-  word-break:normal;
-}
-body.vt-page-home .contact a{
-  flex:0 0 auto;
-  white-space:nowrap;
-}
-
 @media(max-width:560px){
-  body.vt-page-home .contact{
-    display:grid!important;
-    grid-template-columns:minmax(0,1fr);
-    align-items:start!important;
-    gap:10px!important;
-    padding:18px!important;
-  }
-  body.vt-page-home .contact span{
-    display:block;
-    width:100%;
-    font-size:clamp(15px,5.2vw,21px)!important;
-    line-height:1.4!important;
-    overflow-wrap:anywhere;
-  }
-  body.vt-page-home .contact a{
-    justify-self:start;
-    font-size:11px!important;
-  }
+ body.vt-page-home .contact{display:grid!important;grid-template-columns:minmax(0,1fr);align-items:start!important;gap:10px!important;padding:18px!important}
+ body.vt-page-home .contact span{display:block;width:100%;font-size:clamp(15px,5.2vw,21px)!important;line-height:1.4!important}
+ body.vt-page-home .contact a{justify-self:start;font-size:11px!important}
 }
-
-/* Keep all CSS-rendered photos clipped safely to the content width. */
-body[class*="vt-page-"] main .wrap,
-body.vt-page-home .wrap{
-  overflow-x:clip;
-}
-body[class*="vt-page-"] main .wrap::before,
-body[class*="vt-page-"] main .wrap > .panel::after,
-body.vt-page-home section::after{
-  max-width:100%;
-  box-sizing:border-box;
+@media(prefers-reduced-data:reduce){
+ body[class*="vt-page-"] main .wrap>.panel::after,body.vt-page-home section::after,
+ body[class*="vt-page-"] main .wrap::before{display:none!important}
 }
