@@ -31,13 +31,13 @@ function loadVisualCSS(){
  if(document.querySelector('link[data-vt-visual-system]'))return;
  const l=document.createElement('link');
  l.rel='stylesheet';
- l.href='visual-system.css?v=9';
+ l.href='visual-system.css?v=10.1';
  l.dataset.vtVisualSystem='1';
  document.head.appendChild(l);
 
  const f=document.createElement('link');
  f.rel='stylesheet';
- f.href='visual-block-fix.css?v=1';
+ f.href='visual-block-fix.css?v=2';
  f.dataset.vtVisualFix='1';
  document.head.appendChild(f);
 }
