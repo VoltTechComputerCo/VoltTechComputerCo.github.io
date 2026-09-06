@@ -1,0 +1,28 @@
+/* VoltTech v9 empty-image-block fix
+   Hide pseudo-image blocks unless that placement has an assigned image. */
+
+body[class*="vt-page-"] main .wrap>.panel::after,
+body.vt-page-home section::after{
+  display:none;
+}
+
+/* Repair */
+body.vt-page-repair .panel:is(:nth-of-type(1),:nth-of-type(2),:nth-of-type(3),:nth-of-type(4),:nth-of-type(6),:nth-of-type(9))::after,
+/* Performance */
+body.vt-page-performance .panel:is(:nth-of-type(1),:nth-of-type(2),:nth-of-type(3),:nth-of-type(4),:nth-of-type(6),:nth-of-type(9))::after,
+/* Upgrades */
+body.vt-page-upgrades .panel:is(:nth-of-type(1),:nth-of-type(2),:nth-of-type(3),:nth-of-type(4),:nth-of-type(6),:nth-of-type(9))::after,
+/* Malware */
+body.vt-page-malware .panel:is(:nth-of-type(1),:nth-of-type(2),:nth-of-type(3),:nth-of-type(4),:nth-of-type(6))::after,
+/* Windows */
+body.vt-page-windows .panel:is(:nth-of-type(1),:nth-of-type(2),:nth-of-type(3),:nth-of-type(4),:nth-of-type(6))::after,
+/* Streaming */
+body.vt-page-streaming .panel:is(:nth-of-type(1),:nth-of-type(2),:nth-of-type(3),:nth-of-type(4),:nth-of-type(6))::after,
+/* Homepage */
+body.vt-page-home #services::after,
+body.vt-page-home #services+section::after,
+body.vt-page-home #services+section+section::after,
+body.vt-page-home #services+section+section+section::after,
+body.vt-page-home #contact::after{
+  display:block;
+}
