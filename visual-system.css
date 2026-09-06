@@ -215,3 +215,59 @@ body.vt-page-streamscan{
     display:none!important;
   }
 }
+
+/* ===== VoltTech mobile visual hotfix v7 =====
+   Remove obsolete JS-injected photo elements from older cached analytics.js.
+   Current photography is rendered by CSS pseudo-elements instead. */
+.vt-photo,
+.vt-photo-grid{
+  display:none!important;
+}
+
+/* Homepage contact cards: prevent long email/phone text colliding with CTA. */
+body.vt-page-home .contact{
+  gap:16px;
+  min-width:0;
+}
+body.vt-page-home .contact span{
+  min-width:0;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+body.vt-page-home .contact a{
+  flex:0 0 auto;
+  white-space:nowrap;
+}
+
+@media(max-width:560px){
+  body.vt-page-home .contact{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr);
+    align-items:start!important;
+    gap:10px!important;
+    padding:18px!important;
+  }
+  body.vt-page-home .contact span{
+    display:block;
+    width:100%;
+    font-size:clamp(15px,5.2vw,21px)!important;
+    line-height:1.4!important;
+    overflow-wrap:anywhere;
+  }
+  body.vt-page-home .contact a{
+    justify-self:start;
+    font-size:11px!important;
+  }
+}
+
+/* Keep all CSS-rendered photos clipped safely to the content width. */
+body[class*="vt-page-"] main .wrap,
+body.vt-page-home .wrap{
+  overflow-x:clip;
+}
+body[class*="vt-page-"] main .wrap::before,
+body[class*="vt-page-"] main .wrap > .panel::after,
+body.vt-page-home section::after{
+  max-width:100%;
+  box-sizing:border-box;
+}
