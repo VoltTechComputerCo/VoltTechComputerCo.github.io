@@ -1,0 +1,30 @@
+/* VoltTech contact brand icons — CSS fallback, no JavaScript required */
+a[href^="https://wa.me/"]::before,
+a[href^="mailto:"]::before{
+  content:"";
+  display:inline-block;
+  width:1.35em;
+  height:1.35em;
+  flex:0 0 1.35em;
+  margin-right:.55em;
+  vertical-align:-.3em;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+}
+a[href^="https://wa.me/"]::before{background-image:url('whatsapp-logo.svg')}
+a[href^="mailto:"]::before{background-image:url('gmail-logo.svg')}
+
+/* Keep icon + CTA text aligned inside VoltTech buttons/cards. */
+a.btn[href^="https://wa.me/"],
+a.btn[href^="mailto:"],
+.links a[href^="https://wa.me/"],
+.links a[href^="mailto:"],
+.contact a[href^="https://wa.me/"],
+.contact a[href^="mailto:"]{
+  align-items:center;
+}
+
+/* The older JS icon injector may still run in some cached pages.
+   Hide its injected IMG so there is never a duplicate icon. */
+.vt-contact-icon{display:none!important}
