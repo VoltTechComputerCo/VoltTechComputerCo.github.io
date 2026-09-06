@@ -1,62 +1,15 @@
-// VoltTech shared analytics + conversion helpers
-window.dataLayer = window.dataLayer || [];
-
-function gtag() {
-  window.dataLayer.push(arguments);
-}
-
-gtag('js', new Date());
-gtag('config', 'G-QQ3CC70MBE');
-
-(function () {
-  const whatsappBase = 'https://wa.me/27618435775';
-
-  const pageMessages = {
-    '/': "Hi VoltTech! I'd like some help with my PC. My issue is: ",
-    '/index.html': "Hi VoltTech! I'd like some help with my PC. My issue is: ",
-    '/pc-repair-pretoria.html': "Hi VoltTech! I'd like help with a PC repair or diagnostic. The problem I'm having is: ",
-    '/pc-performance-optimisation.html': "Hi VoltTech! I'd like help improving my PC's performance. The main issue I'm noticing is: ",
-    '/pc-upgrades-pretoria.html': "Hi VoltTech! I'm interested in upgrading my PC. I'm considering: ",
-    '/virus-malware-removal-pretoria.html': "Hi VoltTech! I think my PC may have a virus or malware. The symptoms I'm seeing are: ",
-    '/windows-installation-pretoria.html': "Hi VoltTech! I'd like help with a Windows installation or Windows-related issue. What I need is: "
-  };
-
-  function installVisualSystem() {
-    const path = window.location.pathname;
-    // STATIC deliberately keeps its own editorial identity.
-    if (/\/static(?:-|\.html|\/)/.test(path)) return;
-    if (!document.querySelector('link[data-vt-visual-system]')) {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'visual-system.css';
-      link.dataset.vtVisualSystem = '1';
-      document.head.appendChild(link);
-    }
-    const classes = {
-      '/': 'vt-page-home', '/index.html': 'vt-page-home',
-      '/pc-repair-pretoria.html': 'vt-page-repair',
-      '/pc-performance-optimisation.html': 'vt-page-performance',
-      '/pc-upgrades-pretoria.html': 'vt-page-upgrades',
-      '/virus-malware-removal-pretoria.html': 'vt-page-malware',
-      '/windows-installation-pretoria.html': 'vt-page-windows',
-      '/signal-scan.html': 'vt-page-signal',
-      '/streaming-setup-south-africa.html': 'vt-page-streaming',
-      '/stream-scan.html': 'vt-page-streamscan'
-    };
-    if (classes[path]) document.body.classList.add(classes[path]);
-  }
-
-  function enhanceWhatsAppLinks() {
-    const message = pageMessages[window.location.pathname] || pageMessages['/'];
-    document.querySelectorAll('a[href^="https://wa.me/27618435775"]').forEach((link) => {
-      if (!link.href.includes('text=')) link.href = whatsappBase + '?text=' + encodeURIComponent(message);
-      link.addEventListener('click', () => {
-        gtag('event', 'whatsapp_click', {page_path: window.location.pathname,link_text: (link.textContent || '').trim()});
-      });
-    });
-  }
-
-  function init(){ installVisualSystem(); enhanceWhatsAppLinks(); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
-})();
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-QQ3CC70MBE');
+(function(){const P={
+'/':{c:'vt-page-home',h:['vt-own-desk.webp','VoltTech PC systems'],g:['vt-own-internals.webp','vt-own-gpu-product.webp'],b:['vt-own-keyboard.webp','PC hardware and performance']},
+'/index.html':{c:'vt-page-home',h:['vt-own-desk.webp','VoltTech PC systems'],g:['vt-own-internals.webp','vt-own-gpu-product.webp'],b:['vt-own-keyboard.webp','PC hardware and performance']},
+'/pc-repair-pretoria.html':{c:'vt-page-repair',h:['vt-own-internals.webp','PC diagnostics and repair'],g:['vt-own-io.webp','vt-own-tuf.webp'],b:['vt-own-hardware.webp','Hardware fault-finding']},
+'/pc-performance-optimisation.html':{c:'vt-page-performance',h:['vt-own-gpu-installed.webp','PC performance optimisation'],g:['vt-own-internals.webp','vt-own-tower.webp'],b:['vt-own-keys.webp','Gaming and everyday performance']},
+'/pc-upgrades-pretoria.html':{c:'vt-page-upgrades',h:['vt-own-hardware.webp','PC hardware upgrades'],g:['vt-own-gpu-product.webp','vt-own-gpu-installed.webp'],b:['vt-own-internals.webp','Components, cooling and compatibility']},
+'/virus-malware-removal-pretoria.html':{c:'vt-page-malware',h:['vt-own-io.webp','System checks and cleanup'],g:['vt-own-tuf.webp','vt-own-keyboard.webp'],b:['vt-own-desk.webp','A clean, stable PC']},
+'/windows-installation-pretoria.html':{c:'vt-page-windows',h:['vt-own-keyboard.webp','Windows installation and setup'],g:['vt-own-io.webp','vt-own-keys.webp'],b:['vt-own-desk.webp','Drivers, updates and final checks']},
+'/signal-scan.html':{c:'vt-page-signal'},'/streaming-setup-south-africa.html':{c:'vt-page-streaming',h:['vt-own-desk.webp','Streaming and creator systems'],g:['vt-own-tower.webp','vt-own-gpu-installed.webp'],b:['vt-own-keyboard.webp','Creator hardware and peripherals']},'/stream-scan.html':{c:'vt-page-streamscan'}};
+function css(){if(document.querySelector('link[data-vt-visual-system]'))return;let l=document.createElement('link');l.rel='stylesheet';l.href='visual-system.css?v=5';l.dataset.vtVisualSystem='1';document.head.appendChild(l)}
+function f(i,t,k=''){let x=document.createElement('figure');x.className='vt-photo '+k;x.innerHTML=`<img src="${i}" alt="" loading="${k==='hero'?'eager':'lazy'}" decoding="async"><figcaption class="vt-photo-label">${t}</figcaption>`;return x}
+function g(a,b){let d=document.createElement('div');d.className='vt-photo-grid';d.append(f(a,'Inside the system'));d.append(f(b,'Hardware detail'));return d}
+function v(){let p=location.pathname;if(/\/static(?:-|\.html|\/)/.test(p))return;css();let x=P[p];if(!x)return;document.body.classList.add(x.c);if(!x.h||document.querySelector('.vt-photo.hero'))return;let w=document.querySelector('main .wrap')||document.querySelector('main')||document.querySelector('.wrap');if(!w)return;let lead=w.querySelector('.lead,.sub,p');if(lead)lead.insertAdjacentElement('afterend',f(x.h[0],x.h[1],'hero'));let q=[...w.querySelectorAll('.panel,section')];if(x.g){let a=q[Math.min(1,q.length-1)];a?a.insertAdjacentElement('afterend',g(x.g[0],x.g[1])):w.append(g(x.g[0],x.g[1]))}if(x.b){q=[...w.querySelectorAll('.panel,section')];let a=q[Math.min(4,q.length-1)];if(a)a.insertAdjacentElement('afterend',f(x.b[0],x.b[1],'band'))}}
+function init(){v();document.querySelectorAll('a[href^="https://wa.me/27618435775"]').forEach(a=>a.addEventListener('click',()=>gtag('event','whatsapp_click',{page_path:location.pathname,link_text:(a.textContent||'').trim()})))}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();
