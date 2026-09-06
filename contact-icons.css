@@ -1,0 +1,12 @@
+.vt-contact-icon{
+  width:1.25em;
+  height:1.25em;
+  flex:0 0 auto;
+  object-fit:contain;
+  vertical-align:-0.25em;
+  margin-right:.5em;
+}
+a[href^="https://wa.me/"],
+a[href^="mailto:"]{
+  align-items:center;
+}
