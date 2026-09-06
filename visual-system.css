@@ -1,4 +1,4 @@
-/* VoltTech site-wide photography system v10
+/* VoltTech site-wide photography system v10.1
    Drive-curated refresh: VoltTech originals first, licensed Drive stock where useful.
    STATIC deliberately excluded by analytics.js. */
 
@@ -10,72 +10,85 @@ body[class*="vt-page-"] main .wrap>.panel.faq::after{display:none}
 body.vt-page-repair main .wrap::before,body.vt-page-performance main .wrap::before,body.vt-page-upgrades main .wrap::before,body.vt-page-malware main .wrap::before,body.vt-page-windows main .wrap::before,body.vt-page-streaming main .wrap::before{content:"";display:block;width:100%;height:clamp(230px,42vw,400px);margin:0 0 28px;border:var(--vt-photo-border);border-radius:var(--vt-photo-radius);background-size:cover;background-position:center;background-repeat:no-repeat;box-shadow:0 14px 34px rgba(0,0,0,.26);box-sizing:border-box}
 
 /* PC Repair — real VoltTech workbench + hands-on repair imagery */
-body.vt-page-repair main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-workbench.webp')}
-body.vt-page-repair .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-pc-diagnostics.webp')}
-body.vt-page-repair .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-motherboard.webp')}
-body.vt-page-repair .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-technician-pc.webp')}
-body.vt-page-repair .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-repair-bench.webp')}
-body.vt-page-repair .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-technician-service.webp')}
-body.vt-page-repair .panel:nth-of-type(9)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-service-desk.webp')}
+body.vt-page-repair main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-workbench.webp');background-position:center 58%}
+body.vt-page-repair .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-pc-diagnostics.webp');background-position:center 46%}
+body.vt-page-repair .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-motherboard.webp');background-position:center 44%}
+body.vt-page-repair .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-technician-pc.webp');background-position:center 42%}
+body.vt-page-repair .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-repair-bench.webp');background-position:center 50%}
+body.vt-page-repair .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-technician-service.webp');background-position:center 48%}
+body.vt-page-repair .panel:nth-of-type(9)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-service-desk.webp');background-position:center 44%}
 
 /* Performance — cooling, tuned hardware and completed systems */
-body.vt-page-performance main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-rgb-cooling.webp')}
-body.vt-page-performance .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-premium-pc.webp')}
-body.vt-page-performance .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-rtx-interior.webp')}
-body.vt-page-performance .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-pc-hardware.webp')}
-body.vt-page-performance .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-gaming-rig-2.webp')}
-body.vt-page-performance .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-hardware-detail.webp')}
-body.vt-page-performance .panel:nth-of-type(9)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-creator-desk.webp')}
+body.vt-page-performance main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-rgb-cooling.webp');background-position:center 52%}
+body.vt-page-performance .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-premium-pc.webp');background-position:center 48%}
+body.vt-page-performance .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-rtx-interior.webp');background-position:center 58%}
+body.vt-page-performance .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-pc-hardware.webp');background-position:center 46%}
+body.vt-page-performance .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-gaming-rig-2.webp');background-position:center 50%}
+body.vt-page-performance .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-hardware-detail.webp');background-position:center 50%}
+body.vt-page-performance .panel:nth-of-type(9)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-creator-desk.webp');background-position:72% 50%}
 
 /* Upgrades — real components first */
-body.vt-page-upgrades main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-motherboard.webp')}
-body.vt-page-upgrades .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-workbench.webp')}
-body.vt-page-upgrades .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-rtx-interior.webp')}
-body.vt-page-upgrades .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-pc-hardware.webp')}
-body.vt-page-upgrades .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-tech-workbench.webp')}
-body.vt-page-upgrades .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-hardware-detail.webp')}
-body.vt-page-upgrades .panel:nth-of-type(9)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-premium-pc.webp')}
+body.vt-page-upgrades main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-motherboard.webp');background-position:center 43%}
+body.vt-page-upgrades .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-workbench.webp');background-position:center 58%}
+body.vt-page-upgrades .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-rtx-interior.webp');background-position:center 60%}
+body.vt-page-upgrades .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-pc-hardware.webp');background-position:center 46%}
+body.vt-page-upgrades .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-tech-workbench.webp');background-position:center 48%}
+body.vt-page-upgrades .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-hardware-detail.webp');background-position:center 52%}
+body.vt-page-upgrades .panel:nth-of-type(9)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-premium-pc.webp');background-position:center 48%}
 
 /* Malware — restrained professional support imagery */
-body.vt-page-malware main .wrap::before{background-image:linear-gradient(#0002,#0006),url('vt-px-laptop-tech.webp')}
-body.vt-page-malware .panel:nth-of-type(1)::after{background-image:linear-gradient(#0001,#0005),url('vt-px-tech-support.webp')}
-body.vt-page-malware .panel:nth-of-type(2)::after{background-image:linear-gradient(#0001,#0005),url('vt-px-support-work.webp')}
-body.vt-page-malware .panel:nth-of-type(3)::after{background-image:linear-gradient(#0001,#0005),url('vt-own-keys.webp')}
-body.vt-page-malware .panel:nth-of-type(4)::after{background-image:linear-gradient(#0001,#0005),url('vt-px-computer-support.webp')}
-body.vt-page-malware .panel:nth-of-type(6)::after{background-image:linear-gradient(#0001,#0005),url('vt-px-pc-diagnostics.webp')}
+body.vt-page-malware main .wrap::before{background-image:linear-gradient(#0002,#0006),url('vt-px-laptop-tech.webp');background-position:center 45%}
+body.vt-page-malware .panel:nth-of-type(1)::after{background-image:linear-gradient(#0001,#0005),url('vt-px-tech-support.webp');background-position:center 45%}
+body.vt-page-malware .panel:nth-of-type(2)::after{background-image:linear-gradient(#0001,#0005),url('vt-px-support-work.webp');background-position:center 48%}
+body.vt-page-malware .panel:nth-of-type(3)::after{background-image:linear-gradient(#0001,#0005),url('vt-own-keys.webp');background-position:center 54%}
+body.vt-page-malware .panel:nth-of-type(4)::after{background-image:linear-gradient(#0001,#0005),url('vt-px-computer-support.webp');background-position:center 46%}
+body.vt-page-malware .panel:nth-of-type(6)::after{background-image:linear-gradient(#0001,#0005),url('vt-px-pc-diagnostics.webp');background-position:center 46%}
 
 /* Windows */
-body.vt-page-windows main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-px-pc-workstation.webp')}
-body.vt-page-windows .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-keyboard.webp')}
-body.vt-page-windows .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-laptop-tech.webp')}
-body.vt-page-windows .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-service-desk.webp')}
-body.vt-page-windows .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-tech-support.webp')}
-body.vt-page-windows .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-support-work.webp')}
+body.vt-page-windows main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-px-pc-workstation.webp');background-position:center 44%}
+body.vt-page-windows .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-own-keyboard.webp');background-position:center 52%}
+body.vt-page-windows .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-laptop-tech.webp');background-position:center 45%}
+body.vt-page-windows .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-service-desk.webp');background-position:center 44%}
+body.vt-page-windows .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-tech-support.webp');background-position:center 45%}
+body.vt-page-windows .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-support-work.webp');background-position:center 48%}
 
 /* Streaming / creator — real VoltTech creator setup as the hero */
-body.vt-page-streaming main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-creator-desk.webp')}
-body.vt-page-streaming .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-creator-workstation.webp')}
-body.vt-page-streaming .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-creator-desk.webp')}
-body.vt-page-streaming .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-premium-pc.webp')}
-body.vt-page-streaming .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-desk-rig-2.webp')}
-body.vt-page-streaming .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-gaming-desk.webp')}
+body.vt-page-streaming main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-creator-desk.webp');background-position:72% 50%}
+body.vt-page-streaming .panel:nth-of-type(1)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-creator-workstation.webp');background-position:center 45%}
+body.vt-page-streaming .panel:nth-of-type(2)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-creator-desk.webp');background-position:center 48%}
+body.vt-page-streaming .panel:nth-of-type(3)::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-premium-pc.webp');background-position:center 48%}
+body.vt-page-streaming .panel:nth-of-type(4)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-desk-rig-2.webp');background-position:center 48%}
+body.vt-page-streaming .panel:nth-of-type(6)::after{background-image:linear-gradient(#0000,#0004),url('vt-px-gaming-desk.webp');background-position:center 50%}
 
 /* Homepage — more varied Drive-curated imagery */
-body.vt-page-home #services::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-premium-pc.webp')}
-body.vt-page-home #services+section::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-workbench.webp')}
-body.vt-page-home #services+section+section::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-rgb-cooling.webp')}
-body.vt-page-home #services+section+section+section::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-creator-desk.webp')}
-body.vt-page-home #contact::after{background-image:linear-gradient(#0000,#0005),url('vt-px-service-desk.webp')}
+body.vt-page-home #services::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-premium-pc.webp');background-position:center 48%}
+body.vt-page-home #services+section::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-workbench.webp');background-position:center 58%}
+body.vt-page-home #services+section+section::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-rgb-cooling.webp');background-position:center 52%}
+body.vt-page-home #services+section+section+section::after{background-image:linear-gradient(#0000,#0004),url('vt-drive-creator-desk.webp');background-position:72% 50%}
+body.vt-page-home #contact::after{background-image:linear-gradient(#0000,#0005),url('vt-px-service-desk.webp');background-position:center 44%}
 
 /* Scan tools stay restrained */
-body.vt-page-signal{background-image:linear-gradient(rgba(5,8,10,.90),rgba(5,8,10,.98)),url('vt-drive-motherboard.webp')!important;background-size:cover!important;background-position:center top!important;background-attachment:fixed!important}
-body.vt-page-streamscan{background-image:linear-gradient(rgba(8,7,13,.89),rgba(8,7,13,.98)),url('vt-drive-creator-desk.webp')!important;background-size:cover!important;background-position:center top!important;background-attachment:fixed!important}
+body.vt-page-signal{background-image:linear-gradient(rgba(5,8,10,.90),rgba(5,8,10,.98)),url('vt-drive-motherboard.webp')!important;background-size:cover!important;background-position:center 34%!important;background-attachment:fixed!important}
+body.vt-page-streamscan{background-image:linear-gradient(rgba(8,7,13,.89),rgba(8,7,13,.98)),url('vt-drive-creator-desk.webp')!important;background-size:cover!important;background-position:72% 50%!important;background-attachment:fixed!important}
 .service p{color:#a8bab6!important;text-shadow:0 2px 10px rgba(0,0,0,.95)}
 .vt-photo,.vt-photo-grid{display:none!important}
 body[class*="vt-page-"] main .wrap,body.vt-page-home .wrap{overflow-x:clip}
 body.vt-page-home .contact{gap:16px;min-width:0}
 body.vt-page-home .contact span{min-width:0;overflow-wrap:anywhere}
 body.vt-page-home .contact a{flex:0 0 auto;white-space:nowrap}
-@media(max-width:620px){body[class*="vt-page-"] main .wrap>.panel::after,body.vt-page-home section::after{height:180px}body.vt-page-repair main .wrap::before,body.vt-page-performance main .wrap::before,body.vt-page-upgrades main .wrap::before,body.vt-page-malware main .wrap::before,body.vt-page-windows main .wrap::before,body.vt-page-streaming main .wrap::before{height:215px;margin-bottom:22px}}
+
+/* Mobile composition tuning */
+@media(max-width:620px){
+ body[class*="vt-page-"] main .wrap>.panel::after,body.vt-page-home section::after{height:180px}
+ body.vt-page-repair main .wrap::before,body.vt-page-performance main .wrap::before,body.vt-page-upgrades main .wrap::before,body.vt-page-malware main .wrap::before,body.vt-page-windows main .wrap::before,body.vt-page-streaming main .wrap::before{height:215px;margin-bottom:22px}
+ body.vt-page-repair main .wrap::before{background-position:48% 60%}
+ body.vt-page-upgrades main .wrap::before{background-position:52% 44%}
+ body.vt-page-performance .panel:nth-of-type(2)::after{background-position:center 62%}
+ body.vt-page-upgrades .panel:nth-of-type(2)::after{background-position:center 63%}
+ body.vt-page-streaming main .wrap::before{background-position:76% 50%}
+ body.vt-page-performance .panel:nth-of-type(9)::after,body.vt-page-home #services+section+section+section::after{background-position:76% 50%}
+ body.vt-page-signal{background-attachment:scroll!important;background-position:center 38%!important}
+ body.vt-page-streamscan{background-attachment:scroll!important;background-position:76% 50%!important}
+}
 @media(max-width:560px){body.vt-page-home .contact{display:grid!important;grid-template-columns:minmax(0,1fr);align-items:start!important;gap:10px!important;padding:18px!important}body.vt-page-home .contact span{display:block;width:100%;font-size:clamp(15px,5.2vw,21px)!important;line-height:1.4!important}body.vt-page-home .contact a{justify-self:start;font-size:11px!important}}
 @media(prefers-reduced-data:reduce){body[class*="vt-page-"] main .wrap>.panel::after,body.vt-page-home section::after,body[class*="vt-page-"] main .wrap::before{display:none!important}}
