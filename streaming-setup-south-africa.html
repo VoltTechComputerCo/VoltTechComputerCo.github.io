@@ -31,7 +31,7 @@
 nav{border-bottom:1px solid var(--line);background:rgba(8,7,13,.94);position:sticky;top:0;z-index:20;backdrop-filter:blur(10px)}nav .wrap{min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none}.brand img{height:34px;width:auto}.brand-name{font:700 12px var(--mono);letter-spacing:.05em}.volt,.co{color:var(--teal)}.navlinks{display:flex;gap:16px;font:10px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}.navlinks a{text-decoration:none}.navlinks a:hover{color:var(--text)}
 main{padding:50px 0 76px}.eyebrow,.tag{font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--purple)}h1{font-size:50px;line-height:1.02;margin:17px 0;letter-spacing:-.035em;max-width:820px}h1 .accent{color:var(--purple)}.lead{font-size:17px;color:var(--muted);max-width:760px;margin:0}.hero-note{font:10px var(--mono);color:var(--teal);letter-spacing:.07em;text-transform:uppercase;margin-top:18px}
 .ctas{display:flex;gap:10px;flex-wrap:wrap;margin:27px 0 4px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 19px;border:1px solid var(--line);border-radius:4px;text-decoration:none;font:700 10px var(--mono);letter-spacing:.07em;text-transform:uppercase}.primary{background:var(--purple);border-color:var(--purple);color:#0b0713}.secondary{border-color:var(--teal);color:var(--teal)}
-.route-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0 34px}.route{display:block;border:1px solid var(--line);border-radius:6px;background:rgba(18,16,26,.86);padding:18px;text-decoration:none;min-height:126px;transition:.18s ease}.route:hover,.route:focus-visible{transform:translateY(-2px);border-color:var(--purple);outline:none}.route b{display:block;margin-bottom:6px}.route span{font-size:12px;color:var(--muted)}.route small{display:block;margin-top:12px;color:var(--purple);font:700 9px var(--mono);text-transform:uppercase}
+.route-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:26px 0 34px}.route{display:block;border:1px solid var(--line);border-radius:6px;background:rgba(18,16,26,.86);padding:18px;text-decoration:none;min-height:126px;transition:.18s ease}.route:hover,.route:focus-visible{transform:translateY(-2px);border-color:var(--purple);outline:none}.route b{display:block;margin-bottom:6px}.route span{font-size:12px;color:var(--muted)}.route small{display:block;margin-top:12px;color:var(--purple);font:700 9px var(--mono);text-transform:uppercase}
 .panel{border:1px solid var(--line);background:rgba(18,16,26,.93);border-radius:6px;padding:28px;margin:18px 0}.panel h2{font-size:25px;line-height:1.2;margin:8px 0 9px}.panel>p{color:var(--muted);font-size:14px;margin:0;line-height:1.7;max-width:780px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:17px}
 .support-card{--accent:#9b6cff;position:relative;border:1px solid var(--line);background:var(--bg2);border-radius:5px;padding:17px 18px 16px 20px;min-height:118px}.support-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}.support-card b{display:block;margin-bottom:5px}.support-card span{color:var(--muted);font-size:13px}.support-card:nth-child(2){--accent:#62a8ff}.support-card:nth-child(3){--accent:#ff4057}.support-card:nth-child(4){--accent:#ffb454}.support-card:nth-child(5){--accent:#2fe6c8}.support-card:nth-child(6){--accent:#e772ff}
 .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.package{border:1px solid var(--line);background:var(--bg2);border-radius:5px;padding:19px}.package.featured{border-color:var(--purple2);background:linear-gradient(180deg,rgba(155,108,255,.08),var(--bg2))}.badge{display:inline-block;padding:3px 7px;border:1px solid var(--purple2);border-radius:999px;font:8px var(--mono);letter-spacing:.08em;color:var(--purple);text-transform:uppercase}.package h3{font-size:18px;margin:9px 0 0}.price{font:700 29px var(--display);margin:5px 0}.price small{font:10px var(--mono);color:var(--muted);font-weight:400}.package ul{padding-left:18px;color:var(--muted);font-size:13px;line-height:1.7}.package .btn{width:100%;margin-top:9px}
@@ -50,13 +50,11 @@ footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;colo
 <h1>Your stream should feel as solid as <span class="accent">your game.</span></h1>
 <p class="lead">Remote help for OBS problems, encoder overload, dropped frames, blurry output, audio issues and creator-PC performance. This page is for fixing the technical side of streaming.</p>
 <div class="ctas"><a class="btn primary" href="stream-scan.html">Run Stream Scan →</a><a class="btn secondary" href="https://wa.me/27618435775">Ask VoltTech →</a></div>
-<div class="hero-note">Creator discovery lives separately in the South African Creator Hub.</div>
 </header>
 
-<div class="route-grid" aria-label="Choose where to go">
+<div class="route-grid route-grid-tech" aria-label="Choose technical support path">
 <a class="route" href="stream-scan.html"><b>Something is wrong</b><span>Use the free Stream Scan to narrow down the likely cause before contacting VoltTech.</span><small>Diagnose it →</small></a>
 <a class="route" href="#packages"><b>I want technical help</b><span>See the three simple support starting points and what each one is for.</span><small>View support →</small></a>
-<a class="route" href="creator-hub-south-africa.html"><b>I want to watch SA creators</b><span>Browse South African Twitch creators, see who is live and open the Creator Hub.</span><small>Open Creator Hub →</small></a>
 </div>
 
 <section class="panel" id="support">
@@ -92,13 +90,12 @@ footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;colo
 <details><summary>Do I need to be in Pretoria?</summary><p>No. Streaming and creator technical support is designed to be available remotely across South Africa.</p></details>
 <details><summary>Can you guarantee a specific stream quality?</summary><p>No. Final quality depends on the hardware, game load, internet connection, platform limits and the condition of the system. The aim is to find the best stable configuration the setup can realistically sustain.</p></details>
 <details><summary>Do you need my Twitch or YouTube password?</summary><p>No. Never send passwords, 2FA codes or stream keys. Those credentials are not required for legitimate technical support.</p></details>
-<details><summary>Where did the South African streamer directory go?</summary><p>It now has its own home. Open the <a href="creator-hub-south-africa.html">South African Creator Hub</a> to discover creators and see who is live.</p></details>
 </section>
 
 <section class="panel final-cta" id="contact">
 <div class="tag">// NEED HELP NOW?</div><h2>Start with the problem, not a package.</h2>
 <p>If you are not sure what you need, run Stream Scan or send a short description of what happens when you go live.</p>
-<div class="ctas"><a class="btn primary" href="stream-scan.html">Run Stream Scan →</a><a class="btn secondary" href="https://wa.me/27618435775">WhatsApp VoltTech →</a><a class="btn" href="creator-hub-south-africa.html">Browse Creator Hub →</a></div>
+<div class="ctas"><a class="btn primary" href="stream-scan.html">Run Stream Scan →</a><a class="btn secondary" href="https://wa.me/27618435775">WhatsApp VoltTech →</a></div>
 </section>
 </div></main>
 <footer>VOLTTECH STREAMING TECHNICAL SUPPORT · REMOTE ACROSS SOUTH AFRICA · <a href="creator-hub-south-africa.html">CREATOR HUB</a> · <a href="index.html">VOLTTECH HOME</a></footer>
