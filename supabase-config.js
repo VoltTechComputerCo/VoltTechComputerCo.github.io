@@ -1,0 +1,1 @@
+window.VOLTTECH_SUPABASE={url:"https://qdqhfnvwqvgesfdmocir.supabase.co",publishableKey:"sb_publishable_f6rl6o43iQcwlSGDh9kqWw_mrHlxcN1"};
