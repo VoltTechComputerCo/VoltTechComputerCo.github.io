@@ -89,14 +89,14 @@ function addVoltTechHQ(){
  section.innerHTML=`
    <div class="discord-grid">
      <div class="discord-copy">
-       <div class="tag">// VOLTTECH HQ Â· SA CREATOR COMMUNITY</div>
+       <div class="tag">// VOLTTECH HQ \u00B7 SA CREATOR COMMUNITY</div>
        <h2>Join the community behind the streams.</h2>
        <p>VoltTech HQ is our South African Discord for PC enthusiasts, gamers, viewers and creators. Streamers can join, apply for <strong>Verified Streamer</strong>, get help with their setup and become part of our creator discovery community.</p>
        <div class="discord-note">Verified Streamer is manually approved. LIVE status is handled automatically in Discord when supported.</div>
      </div>
      <div class="discord-actions">
-       <a class="btn discord-join" href="${invite}" target="_blank" rel="noopener" aria-label="Join VoltTech HQ on Discord"><svg class="discord-icon" viewBox="0 0 127.14 96.36" aria-hidden="true" focusable="false"><path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-9.39 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77.09 77.09 0 0 0 6.89 9.38 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 59.95 31 52.9s5.07-12.8 11.43-12.8 11.54 5.79 11.43 12.8c.01 7.05-5.07 12.79-11.41 12.79Zm42.24 0c-6.27 0-11.45-5.74-11.45-12.79s5.07-12.8 11.45-12.8 11.54 5.79 11.43 12.8c0 7.05-5.05 12.79-11.43 12.79Z"/></svg><span>Join VoltTech HQ â†’</span></a>
-       <a class="btn scan" href="stream-scan.html">Run Stream Scan â†’</a>
+       <a class="btn discord-join" href="${invite}" target="_blank" rel="noopener" aria-label="Join VoltTech HQ on Discord"><svg class="discord-icon" viewBox="0 0 127.14 96.36" aria-hidden="true" focusable="false"><path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-9.39 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77.09 77.09 0 0 0 6.89 9.38 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 59.95 31 52.9s5.07-12.8 11.43-12.8 11.54 5.79 11.43 12.8c.01 7.05-5.07 12.79-11.41 12.79Zm42.24 0c-6.27 0-11.45-5.74-11.45-12.79s5.07-12.8 11.45-12.8 11.54 5.79 11.43 12.8c0 7.05-5.05 12.79-11.43 12.79Z"/></svg><span>Join VoltTech HQ \u2192</span></a>
+       <a class="btn scan" href="stream-scan.html">Run Stream Scan \u2192</a>
      </div>
    </div>`;
  hub.insertAdjacentElement('afterend',section);
@@ -112,12 +112,12 @@ function addVoltTechHQ(){
 
  const footer=document.querySelector('footer .wrap');
  if(footer && !footer.querySelector('a[href*="discord.gg/"]')){
-   footer.append(' Â· ');
+   footer.append(' \u00B7 ');
    const a=document.createElement('a');
    a.href=invite;
    a.target='_blank';
    a.rel='noopener';
-   a.textContent='VOLTTECH HQ DISCORD â†—';
+   a.textContent='VOLTTECH HQ DISCORD \u2197';
    a.style.color='var(--teal)';
    a.style.textDecoration='none';
    footer.appendChild(a);
