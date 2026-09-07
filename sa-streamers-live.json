@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T21:54:41.752025Z",
+  "generated_at": "2026-09-07T22:08:17.405606Z",
   "tracked_count": 220,
   "valid_count": 219,
   "streamers": [
@@ -9,24 +9,11 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/bca2c1d7-e2f7-41a8-8f67-41957d3c76d9-profile_image-300x300.png",
       "description": "",
       "live": true,
-      "viewer_count": 181,
+      "viewer_count": 183,
       "game_name": "Always On",
       "title": "Nonstop UFD Stream | 9800X3D + RTX 5080 Giveaway | !giveaway !points !terms",
       "started_at": "2026-09-06T00:13:51Z",
-      "last_live_at": "2026-09-07T21:54:41.752025Z",
-      "activity_score": 100.0
-    },
-    {
-      "login": "zaffa_geek",
-      "display_name": "Zaffa_Geek",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
-      "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
-      "live": true,
-      "viewer_count": 9,
-      "game_name": "Project Zomboid",
-      "title": "[!Pink 0/4] !extend - Help, I have some idea of what I am doing",
-      "started_at": "2026-09-07T13:57:35Z",
-      "last_live_at": "2026-09-07T21:54:41.752025Z",
+      "last_live_at": "2026-09-07T22:08:17.405606Z",
       "activity_score": 100.0
     },
     {
@@ -39,8 +26,8 @@
       "game_name": "Valheim",
       "title": "Going back to where it all started. The Hiem |Raising funds for Schmoopies Birthday and School.  | !blame | 18++",
       "started_at": "2026-09-07T18:14:01Z",
-      "last_live_at": "2026-09-07T21:54:41.752025Z",
-      "activity_score": 86.76
+      "last_live_at": "2026-09-07T22:08:17.405606Z",
+      "activity_score": 89.55
     },
     {
       "login": "slikkdudebroguy",
@@ -48,12 +35,25 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/c8500f68-6f16-453c-819c-1bc563758212-profile_image-300x300.png",
       "description": "Hi everyone! Variety streamer here with a love for old-school and retro shooters. And Sci-Fi. And anime. And fantasy. And, and, and... 😁",
       "live": true,
-      "viewer_count": 5,
+      "viewer_count": 6,
       "game_name": "Monster Hunter Wilds",
       "title": "We hunting or what? 🐲 Come say hi! | !command !discord [EN | 18+]",
       "started_at": "2026-09-07T21:39:57Z",
+      "last_live_at": "2026-09-07T22:08:17.405606Z",
+      "activity_score": 80.63
+    },
+    {
+      "login": "zaffa_geek",
+      "display_name": "Zaffa_Geek",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
+      "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
       "last_live_at": "2026-09-07T21:54:41.752025Z",
-      "activity_score": 77.27
+      "activity_score": 94.0
     },
     {
       "login": "thelemons",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T20:39:00.841472Z",
-      "activity_score": 69.0
+      "activity_score": 64.86
     },
     {
       "login": "zulumachinegaming",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T21:14:52.583524Z",
-      "activity_score": 61.2
+      "activity_score": 57.53
     },
     {
       "login": "virtualgemma",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T18:33:58.170286Z",
-      "activity_score": 39.54
+      "activity_score": 37.17
     },
     {
       "login": "sittingduck01",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T17:49:32.631055Z",
-      "activity_score": 26.47
+      "activity_score": 24.88
     },
     {
       "login": "waldoliveza",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T18:15:38.333565Z",
-      "activity_score": 25.77
+      "activity_score": 24.22
     },
     {
       "login": "viking_237",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T16:12:40.850352Z",
-      "activity_score": 15.69
+      "activity_score": 14.75
     },
     {
       "login": "deathsjokerst",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T16:12:40.850352Z",
-      "activity_score": 15.69
+      "activity_score": 14.75
     },
     {
       "login": "spyro_za",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T14:11:00.717357Z",
-      "activity_score": 10.02
+      "activity_score": 9.42
     },
     {
       "login": "danatdawn",
@@ -170,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T14:48:49.269055Z",
-      "activity_score": 9.66
+      "activity_score": 9.08
     },
     {
       "login": "chickenwingerz",
@@ -183,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T19:54:22.231197Z",
-      "activity_score": 8.9
+      "activity_score": 8.37
     },
     {
       "login": "dead_oryx",
@@ -196,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T13:42:48.489100Z",
-      "activity_score": 5.37
+      "activity_score": 5.05
     },
     {
       "login": "cassieroseza",
@@ -209,7 +209,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T19:40:12.145805Z",
-      "activity_score": 4.32
+      "activity_score": 4.06
     },
     {
       "login": "zurgash",
