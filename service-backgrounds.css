@@ -25,6 +25,16 @@
 .service.signal{--bgimg:url('bg-signal.webp')}
 .service.streaming{--bgimg:url('bg-streaming.webp')}
 
+/* Creator Hub — use existing streaming photo so no extra asset is required */
+.creator-promo{
+  background-image:
+    linear-gradient(90deg,rgba(7,8,12,.94) 0%,rgba(7,8,12,.78) 48%,rgba(7,8,12,.44) 100%),
+    url('bg-streaming.webp');
+  background-size:cover;
+  background-position:center 46%;
+  background-repeat:no-repeat;
+}
+
 /* Homepage hero — Drive photo + official VoltTech logo overlay */
 .hero{
   position:relative;
@@ -51,25 +61,69 @@
   filter:drop-shadow(0 10px 22px rgba(0,0,0,.78));
   pointer-events:none;
 }
-.hero > *{
-  position:relative;
-  z-index:2;
-}
-.hero .eyebrow{
-  text-shadow:0 2px 12px rgba(0,0,0,.9);
-}
-.hero h1{
-  text-shadow:0 3px 18px rgba(0,0,0,.92);
-}
-.hero .sub{
-  color:#b7c9c5;
-  text-shadow:0 2px 12px rgba(0,0,0,.92);
+.hero > *{position:relative;z-index:2}
+.hero .eyebrow{text-shadow:0 2px 12px rgba(0,0,0,.9)}
+.hero h1{text-shadow:0 3px 18px rgba(0,0,0,.92)}
+.hero .sub{color:#b7c9c5;text-shadow:0 2px 12px rgba(0,0,0,.92)}
+
+/* Desktop polish only — mobile behaviour stays unchanged */
+@media(min-width:900px){
+  .wrap{
+    max-width:1040px;
+    padding-left:28px;
+    padding-right:28px;
+  }
+
+  nav .wrap{max-width:1040px}
+
+  .hero{
+    min-height:640px;
+    padding:350px 46px 50px;
+    background-position:68% 48%;
+  }
+
+  .hero::before{
+    top:60px;
+    width:min(56%,520px);
+  }
+
+  .services{gap:18px}
+
+  .service{
+    min-height:280px;
+    padding:24px 22px 20px;
+  }
+
+  .service h3{font-size:18px}
+  .service p{max-width:92%}
+
+  .service.repair{background-position:center 42%}
+  .service.performance{background-position:center 40%}
+  .service.upgrades{background-position:center 46%}
+  .service.malware{background-position:center 44%}
+  .service.windows{background-position:center 40%}
+  .service.signal{background-position:center 48%}
+  .service.streaming{background-position:center 42%}
+
+  .creator-promo{
+    min-height:290px;
+    padding:38px 40px 34px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    background-position:center 42%;
+  }
+
+  .creator-promo>p{
+    max-width:620px;
+    color:#aebfbc;
+  }
+
+  .creator-list{max-width:760px}
 }
 
 @media(max-width:560px){
-  .service{
-    background-position:center 42%;
-  }
+  .service{background-position:center 42%}
   .hero{
     margin-top:14px;
     padding:245px 20px 30px;
@@ -80,12 +134,13 @@
     top:38px;
     width:82%;
   }
+  .creator-promo{background-position:center 44%}
 }
+
 @media(prefers-reduced-data:reduce){
   .service,.service:hover,.service:focus-visible{
     background-image:linear-gradient(145deg,rgba(var(--accent-rgb),.09),rgba(var(--accent-rgb),.025) 52%,var(--panel) 100%);
   }
-  .hero{
-    background:#07100f;
-  }
+  .creator-promo{background:#0d1517}
+  .hero{background:#07100f}
 }
