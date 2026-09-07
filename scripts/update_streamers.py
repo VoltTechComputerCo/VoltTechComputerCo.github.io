@@ -26,12 +26,31 @@ def helix(path, params, bearer):
     return request_json("https://api.twitch.tv/helix/" + path + "?" + qs,
         headers={"Client-Id": CLIENT_ID, "Authorization": "Bearer " + bearer})
 
+def chunks(items, size=100):
+    for i in range(0, len(items), size):
+        yield items[i:i+size]
+
 with open(POOL_FILE, encoding="utf-8") as f:
-    logins = [x.strip() for x in json.load(f)["streamers"] if x.strip()][:100]
+    raw = [x.strip() for x in json.load(f)["streamers"] if x.strip()]
+
+# Twitch logins are case-insensitive. De-duplicate without changing curated order.
+logins = []
+seen = set()
+for login in raw:
+    key = login.lower()
+    if key not in seen:
+        seen.add(key)
+        logins.append(login)
 
 bearer = token()
-streams = helix("streams", [("user_login", x) for x in logins], bearer)["data"]
-users = helix("users", [("login", x) for x in logins], bearer)["data"]
+streams = []
+users = []
+
+# Twitch Helix accepts up to 100 repeated user_login/login parameters per request.
+for batch in chunks(logins):
+    streams.extend(helix("streams", [("user_login", x) for x in batch], bearer)["data"])
+    users.extend(helix("users", [("login", x) for x in batch], bearer)["data"])
+
 live = {x["user_login"].lower(): x for x in streams}
 people = {x["login"].lower(): x for x in users}
 
@@ -48,7 +67,11 @@ ranked = []
 for login in logins:
     key = login.lower()
     s = live.get(key)
-    u = people.get(key, {})
+    u = people.get(key)
+    if not u:
+        # Skip renamed/deleted Twitch accounts rather than publishing broken cards.
+        continue
+
     prev = old.get(key, {})
     prior_activity = float(prev.get("activity_score") or 0)
     activity = min(100.0, prior_activity * 0.94 + (8.0 if s else 0.0))
@@ -60,6 +83,7 @@ for login in logins:
         "login": u.get("login", login),
         "display_name": u.get("display_name", login),
         "profile_image_url": u.get("profile_image_url", ""),
+        "description": (u.get("description") or "").strip(),
         "live": bool(s),
         "viewer_count": viewers,
         "game_name": s.get("game_name", "") if s else "",
@@ -71,13 +95,20 @@ for login in logins:
     })
 
 ranked.sort(key=lambda x: (x["_rank"], x["display_name"].lower()), reverse=True)
+
+# Keep enough ranked creators for discovery while the front-end still renders a compact subset.
 public = []
-for item in ranked[:20]:
+for item in ranked[:100]:
     item.pop("_rank", None)
     public.append(item)
 
 with open(OUT_FILE, "w", encoding="utf-8") as f:
-    json.dump({"generated_at": now, "streamers": public}, f, indent=2, ensure_ascii=False)
+    json.dump({
+        "generated_at": now,
+        "tracked_count": len(logins),
+        "valid_count": len(ranked),
+        "streamers": public
+    }, f, indent=2, ensure_ascii=False)
     f.write("\n")
 
-print(f"{sum(1 for x in public if x['live'])} live creators in current top 20.")
+print(f"Tracking {len(logins)} creators; {sum(1 for x in public if x['live'])} live in current top 100.")
