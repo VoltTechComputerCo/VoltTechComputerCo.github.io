@@ -1,105 +1,245 @@
 {
-  "generated_at": null,
+  "generated_at": "2026-09-07T11:07:08.979119Z",
   "streamers": [
     {
-      "login": "Zaffa_Geek",
-      "display_name": "Zaffa_Geek",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "last_live_at": null,
-      "activity_score": 0
-    },
-    {
-      "login": "ZuluMachineGaming",
-      "display_name": "ZuluMachineGaming",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "last_live_at": null,
-      "activity_score": 0
-    },
-    {
-      "login": "Spyro_ZA",
-      "display_name": "Spyro_ZA",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "last_live_at": null,
-      "activity_score": 0
-    },
-    {
-      "login": "VirtualGemma",
-      "display_name": "VirtualGemma",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "last_live_at": null,
-      "activity_score": 0
-    },
-    {
-      "login": "UFDTech",
+      "login": "ufdtech",
       "display_name": "UFDTech",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/bca2c1d7-e2f7-41a8-8f67-41957d3c76d9-profile_image-300x300.png",
+      "live": true,
+      "viewer_count": 131,
+      "game_name": "Always On",
+      "title": "Nonstop UFD Stream | 9800X3D + RTX 5080 Giveaway | !giveaway !points !terms",
+      "started_at": "2026-09-06T00:13:51Z",
+      "last_live_at": "2026-09-07T11:07:08.979119Z",
+      "activity_score": 8.0
+    },
+    {
+      "login": "spyro_za",
+      "display_name": "Spyro_ZA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dd8b5abe-e947-4d30-bfd1-2682a123a468-profile_image-300x300.png",
+      "live": true,
+      "viewer_count": 25,
+      "game_name": "Onimusha: Way of the Sword",
+      "title": "Starting Onimush Today! Lets see how hard it is?",
+      "started_at": "2026-09-07T08:14:18Z",
+      "last_live_at": "2026-09-07T11:07:08.979119Z",
+      "activity_score": 8.0
+    },
+    {
+      "login": "zurgash",
+      "display_name": "Zurgash",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/aa8afa35-3855-48e7-8e5b-a8d561a19de2-profile_image-300x300.jpg",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
       "title": "",
+      "started_at": null,
       "last_live_at": null,
-      "activity_score": 0
+      "activity_score": 0.0
     },
     {
-      "login": "TheaBeasty",
-      "display_name": "TheaBeasty",
+      "login": "zulumachinegaming",
+      "display_name": "ZuluMachineGaming",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/6c1b8e82-dab1-46de-acd3-8f0231c6e5bd-profile_image-300x300.png",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
       "title": "",
+      "started_at": null,
       "last_live_at": null,
-      "activity_score": 0
+      "activity_score": 0.0
     },
     {
-      "login": "TheLemons",
-      "display_name": "TheLemons",
+      "login": "zlorbz",
+      "display_name": "ZLORBZ",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/2c55ba8e-b192-4405-9ecf-25449ee00cba-profile_image-300x300.jpeg",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
       "title": "",
+      "started_at": null,
       "last_live_at": null,
-      "activity_score": 0
+      "activity_score": 0.0
     },
     {
-      "login": "stephanzas",
-      "display_name": "stephanzas",
+      "login": "zaffa_geek",
+      "display_name": "Zaffa_Geek",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
       "title": "",
+      "started_at": null,
       "last_live_at": null,
-      "activity_score": 0
+      "activity_score": 0.0
     },
     {
-      "login": "ThendoPlays",
+      "login": "zachjames007",
+      "display_name": "Zachjames007",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/c6a95c57-c99c-4f2a-8d52-9e7da8702e3e-profile_image-300x300.png",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": null,
+      "activity_score": 0.0
+    },
+    {
+      "login": "xein_za",
+      "display_name": "Xein_za",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/a5e88de3-c5b9-4c31-9cf4-95bd54a9ed66-profile_image-300x300.png",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": null,
+      "activity_score": 0.0
+    },
+    {
+      "login": "wootdini",
+      "display_name": "Wootdini",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/09750737-e039-4f55-8022-5ac4d5a8d757-profile_image-300x300.png",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": null,
+      "activity_score": 0.0
+    },
+    {
+      "login": "wizardofoz013",
+      "display_name": "WizardOfOz013",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/18d0642d-cfa0-47b8-89e2-c457078241d6-profile_image-300x300.png",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": null,
+      "activity_score": 0.0
+    },
+    {
+      "login": "wimmas_za",
+      "display_name": "Wimmas_ZA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/6c61f0c3-d8f4-442b-bf2e-1c5d5d0f8d3a-profile_image-300x300.png",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": null,
+      "activity_score": 0.0
+    },
+    {
+      "login": "wezza_sa",
+      "display_name": "Wezza_SA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/a8b76723-b1f7-46c5-a550-1234f5d60145-profile_image-300x300.png",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": null,
+      "activity_score": 0.0
+    },
+    {
+      "login": "waldoliveza",
+      "display_name": "WaldoLiveZA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/f51a7788-d7cd-480d-b7fc-eecbb3967d23-profile_image-300x300.png",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": null,
+      "activity_score": 0.0
+    },
+    {
+      "login": "virtualgemma",
+      "display_name": "VirtualGemma",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/6d354de9-cda5-4f1e-aa81-8b1e86d62b2b-profile_image-300x300.png",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": null,
+      "activity_score": 0.0
+    },
+    {
+      "login": "viking_237",
+      "display_name": "Viking_237",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dfc3b3de-bf8b-46aa-ab5d-f8627259da28-profile_image-300x300.png",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": null,
+      "activity_score": 0.0
+    },
+    {
+      "login": "viazuu",
+      "display_name": "viazuu",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/93e8992e-8654-45a9-bf1f-9203acb586fa-profile_image-300x300.png",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": null,
+      "activity_score": 0.0
+    },
+    {
+      "login": "vaano_",
+      "display_name": "Vaano_",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/2331bf61-601c-4551-940b-203d84600f4b-profile_image-300x300.png",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": null,
+      "activity_score": 0.0
+    },
+    {
+      "login": "ugcza",
+      "display_name": "UGCZA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/51120637-1a27-4740-9c51-b3de076ba35e-profile_image-300x300.png",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": null,
+      "activity_score": 0.0
+    },
+    {
+      "login": "thendoplays",
       "display_name": "ThendoPlays",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/4820fda8-00f0-4ee8-bda0-75608c3c290a-profile_image-300x300.png",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
       "title": "",
+      "started_at": null,
       "last_live_at": null,
-      "activity_score": 0
+      "activity_score": 0.0
     },
     {
-      "login": "SyerNide",
-      "display_name": "SyerNide",
+      "login": "thelemons",
+      "display_name": "TheLemons",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/fe4ae28d-9290-4929-91a2-bb2d539306d8-profile_image-300x300.png",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
       "title": "",
+      "started_at": null,
       "last_live_at": null,
-      "activity_score": 0
+      "activity_score": 0.0
     }
   ]
 }
