@@ -1,29 +1,41 @@
 {
-  "generated_at": "2026-09-07T11:12:41.514529Z",
+  "generated_at": "2026-09-07T11:30:44.371646Z",
   "streamers": [
     {
       "login": "ufdtech",
       "display_name": "UFDTech",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/bca2c1d7-e2f7-41a8-8f67-41957d3c76d9-profile_image-300x300.png",
       "live": true,
-      "viewer_count": 139,
+      "viewer_count": 135,
       "game_name": "Always On",
       "title": "Nonstop UFD Stream | 9800X3D + RTX 5080 Giveaway | !giveaway !points !terms",
       "started_at": "2026-09-06T00:13:51Z",
-      "last_live_at": "2026-09-07T11:12:41.514529Z",
-      "activity_score": 15.52
+      "last_live_at": "2026-09-07T11:30:44.371646Z",
+      "activity_score": 22.59
     },
     {
       "login": "spyro_za",
       "display_name": "Spyro_ZA",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dd8b5abe-e947-4d30-bfd1-2682a123a468-profile_image-300x300.png",
       "live": true,
-      "viewer_count": 37,
+      "viewer_count": 38,
       "game_name": "Onimusha: Way of the Sword",
       "title": "Starting Onimush Today! Lets see how hard it is?",
       "started_at": "2026-09-07T08:14:18Z",
-      "last_live_at": "2026-09-07T11:12:41.514529Z",
-      "activity_score": 15.52
+      "last_live_at": "2026-09-07T11:30:44.371646Z",
+      "activity_score": 22.59
+    },
+    {
+      "login": "virtualgemma",
+      "display_name": "VirtualGemma",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/6d354de9-cda5-4f1e-aa81-8b1e86d62b2b-profile_image-300x300.png",
+      "live": true,
+      "viewer_count": 61,
+      "game_name": "Just Chatting",
+      "title": "[DROPS] GRIND TIME - I'm away next week on !vacay !SUBTEMBER Chatting then rivals | !socials !wishlist",
+      "started_at": "2026-09-07T11:17:32Z",
+      "last_live_at": "2026-09-07T11:30:44.371646Z",
+      "activity_score": 8.0
     },
     {
       "login": "zurgash",
@@ -149,18 +161,6 @@
       "login": "waldoliveza",
       "display_name": "WaldoLiveZA",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/f51a7788-d7cd-480d-b7fc-eecbb3967d23-profile_image-300x300.png",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": null,
-      "activity_score": 0.0
-    },
-    {
-      "login": "virtualgemma",
-      "display_name": "VirtualGemma",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/6d354de9-cda5-4f1e-aa81-8b1e86d62b2b-profile_image-300x300.png",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
