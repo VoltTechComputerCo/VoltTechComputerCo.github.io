@@ -7,6 +7,7 @@ POOL_FILE = os.path.join(ROOT, "sa-streamers-pool.json")
 OUT_FILE = os.path.join(ROOT, "sa-streamers-live.json")
 CLIENT_ID = os.environ["TWITCH_CLIENT_ID"]
 CLIENT_SECRET = os.environ["TWITCH_CLIENT_SECRET"]
+BLOCKED_LOGINS = {"ufdtech"}
 
 def request_json(url, headers=None, data=None):
     req = urllib.request.Request(url, headers=headers or {}, data=data)
@@ -31,7 +32,7 @@ def chunks(items, size=100):
         yield items[i:i+size]
 
 with open(POOL_FILE, encoding="utf-8") as f:
-    raw = [x.strip() for x in json.load(f)["streamers"] if x.strip()]
+    raw = [x.strip() for x in json.load(f)["streamers"] if x.strip() and x.strip().lower() not in BLOCKED_LOGINS]
 
 # Twitch logins are case-insensitive. De-duplicate without changing curated order.
 logins = []
