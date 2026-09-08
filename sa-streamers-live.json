@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T23:27:39.459926Z",
+  "generated_at": "2026-09-08T23:39:03.729520Z",
   "tracked_count": 219,
   "valid_count": 218,
   "streamers": [
@@ -9,11 +9,11 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/cfae9189-5b61-40bd-9235-73e34c5e3842-profile_image-300x300.png",
       "description": "Agriops gaming, showing all the faults not just being perfect. If in doubt ask.",
       "live": true,
-      "viewer_count": 8,
+      "viewer_count": 12,
       "game_name": "Valheim",
       "title": "Going back to where it all started. The Hiem |Raising funds for Schmoopies Birthday and School.  | !blame | 18++",
       "started_at": "2026-09-08T17:49:34Z",
-      "last_live_at": "2026-09-08T23:27:39.459926Z",
+      "last_live_at": "2026-09-08T23:39:03.729520Z",
       "activity_score": 100.0
     },
     {
@@ -27,7 +27,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T22:24:19.579837Z",
-      "activity_score": 56.7
+      "activity_score": 53.3
     },
     {
       "login": "deathsjokerst",
@@ -40,7 +40,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T21:07:17.013212Z",
-      "activity_score": 42.18
+      "activity_score": 39.65
     },
     {
       "login": "chickenwingerz",
@@ -53,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T21:20:56.471385Z",
-      "activity_score": 23.74
+      "activity_score": 22.32
     },
     {
       "login": "virtualgemma",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T18:09:58.287383Z",
-      "activity_score": 22.65
+      "activity_score": 21.29
     },
     {
       "login": "derpy_ruby",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T19:54:38.234428Z",
-      "activity_score": 20.98
+      "activity_score": 19.72
     },
     {
       "login": "thelemons",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T18:09:58.287383Z",
-      "activity_score": 18.39
+      "activity_score": 17.29
     },
     {
       "login": "caramel",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T18:29:37.668233Z",
-      "activity_score": 15.85
+      "activity_score": 14.9
     },
     {
       "login": "cassieroseza",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T20:23:15.943571Z",
-      "activity_score": 14.05
+      "activity_score": 13.21
     },
     {
       "login": "sittingduck01",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T17:42:05.510593Z",
-      "activity_score": 14.04
+      "activity_score": 13.2
     },
     {
       "login": "viking_237",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T16:48:41.166192Z",
-      "activity_score": 12.11
+      "activity_score": 11.38
     },
     {
       "login": "syernide",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T16:58:15.298530Z",
-      "activity_score": 10.94
+      "activity_score": 10.28
     },
     {
       "login": "dead_oryx",
@@ -170,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T14:50:30.598092Z",
-      "activity_score": 10.12
+      "activity_score": 9.51
     },
     {
       "login": "chronic_za",
@@ -183,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T18:29:37.668233Z",
-      "activity_score": 8.54
+      "activity_score": 8.03
     },
     {
       "login": "blu3bee",
@@ -196,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T15:57:11.175722Z",
-      "activity_score": 7.4
+      "activity_score": 6.96
     },
     {
       "login": "1handbanditza",
@@ -209,7 +209,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T16:33:23.776802Z",
-      "activity_score": 6.87
+      "activity_score": 6.46
     },
     {
       "login": "spyro_za",
@@ -222,7 +222,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T12:54:03.259643Z",
-      "activity_score": 6.25
+      "activity_score": 5.88
     },
     {
       "login": "waldoliveza",
@@ -235,7 +235,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T16:58:15.298530Z",
-      "activity_score": 3.81
+      "activity_score": 3.58
     },
     {
       "login": "danatdawn",
@@ -248,7 +248,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T12:37:34.039816Z",
-      "activity_score": 2.58
+      "activity_score": 2.43
     },
     {
       "login": "zaffa_geek",
@@ -261,7 +261,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T21:54:41.752025Z",
-      "activity_score": 0.19
+      "activity_score": 0.18
     },
     {
       "login": "slikkdudebroguy",
@@ -274,7 +274,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T22:22:31.505145Z",
-      "activity_score": 0.18
+      "activity_score": 0.17
     },
     {
       "login": "zulumachinegaming",
@@ -287,7 +287,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T21:14:52.583524Z",
-      "activity_score": 0.11
+      "activity_score": 0.1
     },
     {
       "login": "zurgash",
