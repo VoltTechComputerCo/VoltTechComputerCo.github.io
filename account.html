@@ -1,1 +1,128 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>My Account | VoltTech Computer Co.</title><meta name="robots" content="noindex,follow"><link rel="icon" href="favicon-512.png"><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"><style>:root{--bg:#05080a;--panel:#0d1517;--line:#172526;--teal:#2fe6c8;--text:#e7f1ee;--muted:#6f8985;--danger:#ff7272;--mono:'JetBrains Mono',monospace;--display:'Space Grotesk',sans-serif}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 80% 45% at 50% -10%,#0c2320,transparent 60%),var(--bg);color:var(--text);font-family:var(--display);min-height:100vh}a{color:inherit;text-decoration:none}.wrap{width:min(720px,100%);margin:auto;padding:0 20px}nav{border-bottom:1px solid var(--line);background:rgba(5,8,10,.94)}nav .wrap{height:64px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px}.brand img{height:34px}.brand span{font:700 12px var(--mono)}.brand b{color:var(--teal)}.back{font:10px var(--mono);color:var(--teal);text-transform:uppercase}main{padding:58px 0 80px}.eyebrow{font:10px var(--mono);color:var(--teal);letter-spacing:.14em;text-transform:uppercase}h1{font-size:38px;line-height:1.08;margin:14px 0 9px}.lead{color:var(--muted);margin:0 0 28px}.card{border:1px solid var(--line);border-radius:8px;background:rgba(13,21,23,.96);padding:26px}.google{width:100%;min-height:52px;border:1px solid #747775;border-radius:5px;background:#fff;color:#1f1f1f;font:600 14px var(--display);display:flex;align-items:center;justify-content:center;gap:12px;cursor:pointer}.google svg{width:20px;height:20px;flex:none}.divider{display:flex;align-items:center;gap:12px;color:var(--muted);font:9px var(--mono);margin:22px 0}.divider:before,.divider:after{content:"";height:1px;background:var(--line);flex:1}label{display:block;font:10px var(--mono);color:#9bb0ac;margin:14px 0 7px;text-transform:uppercase}input{width:100%;height:48px;border:1px solid #263633;border-radius:4px;background:#08100f;color:var(--text);padding:0 13px;font:14px var(--display);outline:none}input:focus{border-color:var(--teal)}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.btn{min-height:48px;border:1px solid var(--teal);border-radius:4px;background:transparent;color:var(--teal);font:700 10px var(--mono);text-transform:uppercase;cursor:pointer}.btn.primary{background:var(--teal);color:#04120f}.btn:disabled{opacity:.7;cursor:wait}#signedOutStatus,#signedInStatus{min-height:20px;margin-top:16px;font:10px var(--mono);color:var(--muted)}#signedOutStatus[data-type=error],#signedInStatus[data-type=error]{color:var(--danger)}#signedOutStatus[data-type=success],#signedInStatus[data-type=success]{color:var(--teal)}.profile{display:flex;align-items:center;gap:14px;padding-bottom:22px;border-bottom:1px solid var(--line)}.avatar{width:48px;height:48px;border-radius:50%}.profile h2{font-size:20px;margin:0}.profile p{margin:3px 0 0;color:var(--muted);font-size:13px}.profile-form{padding-top:8px}.profile-form h3{font-size:16px;margin:18px 0 2px}.profile-form .hint{font-size:12px;color:var(--muted);margin:0 0 8px}.save{width:100%;margin-top:18px}.signout{width:100%;margin-top:10px;border-color:#33433f;color:#9bb0ac}@media(max-width:560px){main{padding-top:40px}h1{font-size:31px}.card{padding:21px 17px}.actions{grid-template-columns:1fr}.brand span{display:none}}</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script defer src="account.js"></script></head><body><nav><div class="wrap"><a class="brand" href="index.html"><img src="logo-badge.png" alt="VoltTech Computer Co."><span><b>Volt</b>Tech Computer Co.</span></a><a class="back" href="index.html">← Home</a></div></nav><main><div class="wrap"><div class="eyebrow">// VOLTTECH ACCOUNT</div><h1>Your VoltTech account.</h1><p class="lead">Sign in to manage your VoltTech account.</p><section class="card" id="signedOut"><button class="google" id="googleSignIn" type="button" aria-label="Continue with Google"><svg viewBox="0 0 18 18" aria-hidden="true"><path fill="#4285F4" d="M17.64 9.205c0-.638-.057-1.252-.164-1.841H9v3.481h4.844a4.14 4.14 0 0 1-1.797 2.715v2.258h2.909c1.703-1.568 2.684-3.879 2.684-6.613z"/><path fill="#34A853" d="M9 18c2.43 0 4.468-.806 5.956-2.182l-2.909-2.258c-.806.54-1.835.859-3.047.859-2.344 0-4.328-1.585-5.037-3.714H.956v2.332A9 9 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.963 10.705A5.42 5.42 0 0 1 3.682 9c0-.592.102-1.168.281-1.705V4.963H.956A9 9 0 0 0 0 9c0 1.452.347 2.827.956 4.037l3.007-2.332z"/><path fill="#EA4335" d="M9 3.581c1.322 0 2.508.454 3.441 1.346l2.581-2.581C13.463.892 11.425 0 9 0A9 9 0 0 0 .956 4.963l3.007 2.332C4.672 5.166 6.656 3.581 9 3.581z"/></svg><span>Continue with Google</span></button><div class="divider">OR USE EMAIL</div><form id="emailAuth"><label for="email">Email</label><input id="email" type="email" autocomplete="email" required><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" minlength="6" required><div class="actions"><button class="btn primary" type="submit" value="signin">Sign in</button><button class="btn" type="submit" value="signup">Create account</button></div></form><p id="signedOutStatus" role="status" aria-live="polite"></p></section><section class="card" id="signedIn" hidden><div class="profile"><img class="avatar" id="accountAvatar" alt="" hidden><div><h2 id="accountName">VoltTech customer</h2><p id="accountEmail"></p></div></div><form class="profile-form" id="profileForm"><h3>Profile</h3><p class="hint">Keep your contact details up to date.</p><label for="profileName">Name</label><input id="profileName" type="text" autocomplete="name" maxlength="120"><label for="profilePhone">Phone / WhatsApp</label><input id="profilePhone" type="tel" autocomplete="tel" maxlength="40"><label for="profileSuburb">Suburb</label><input id="profileSuburb" type="text" autocomplete="address-level3" maxlength="120"><button class="btn primary save" id="saveProfile" type="submit">Save profile</button></form><button class="btn signout" id="signOut" type="button">Sign out</button><p id="signedInStatus" role="status" aria-live="polite"></p></section></div></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Customer Account | VoltTech Computer Co.</title>
+<meta name="robots" content="noindex,follow">
+<link rel="icon" href="favicon-512.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05080a;--panel:#0b1415;--panel2:#0f1c1d;--line:#1a2b2b;--teal:#2fe6c8;--text:#eaf4f1;--muted:#78918d;--danger:#ff7474;--mono:'JetBrains Mono',monospace;--display:'Space Grotesk',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 80% 40% at 50% -8%,#0c2320,transparent 60%),var(--bg);color:var(--text);font-family:var(--display);min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.wrap{width:min(1100px,100%);margin:auto;padding:0 18px}
+nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(5,8,10,.93);backdrop-filter:blur(12px)}
+nav .wrap{height:64px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px}.brand img{height:34px}.brand span{font:700 12px var(--mono)}.brand b{color:var(--teal)}.home{font:10px var(--mono);color:var(--teal);text-transform:uppercase}
+main{padding:34px 0 76px}.profile-head{display:flex;align-items:center;gap:16px;padding:22px 0 26px}.avatar{width:58px;height:58px;border-radius:50%;border:1px solid var(--line)}.profile-head h1{font-size:27px;margin:0 0 4px}.profile-head p{margin:0;color:var(--muted);font-size:14px}
+.tabs{display:flex;gap:8px;overflow:auto;padding:0 0 14px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{white-space:nowrap;background:#091010;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:10px 14px;font:700 10px var(--mono);text-transform:uppercase}.tab.active{color:#03120f;background:var(--teal);border-color:var(--teal)}
+.panel{border:1px solid var(--line);border-radius:10px;background:rgba(11,20,21,.96);padding:24px}.panel[hidden]{display:none}.section-title{margin:0 0 4px;font-size:20px}.section-copy{margin:0 0 22px;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field.full{grid-column:1/-1}label{display:block;margin:0 0 7px;color:#9bb0ac;font:9px var(--mono);letter-spacing:.08em;text-transform:uppercase}input,select{width:100%;height:48px;border:1px solid #263a38;border-radius:5px;background:#07100f;color:var(--text);padding:0 13px;outline:none}input:focus,select:focus{border-color:var(--teal)}
+.btn{min-height:48px;border:1px solid var(--teal);border-radius:5px;background:transparent;color:var(--teal);padding:0 18px;font:700 10px var(--mono);text-transform:uppercase}.btn.primary{background:var(--teal);color:#04120f}.btn.secondary{border-color:#334643;color:#a3b4b1}.button-row{display:flex;gap:9px;margin-top:18px;flex-wrap:wrap}
+#hubStatus{min-height:20px;margin:15px 0 0;color:var(--muted);font:10px var(--mono)}#hubStatus[data-type=success]{color:var(--teal)}#hubStatus[data-type=error]{color:var(--danger)}
+.subsection{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}.subsection h3{font-size:16px;margin:0 0 14px}
+.history-list{display:grid;gap:12px}.history-card{border:1px solid var(--line);background:#081112;border-radius:7px;padding:17px}.history-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}.history-head h3{font-size:16px;margin:4px 0 0}.mini{color:var(--muted);font:9px var(--mono);text-transform:uppercase}.pill{border:1px solid #35504c;border-radius:999px;padding:6px 9px;color:#a8c3bd;font:8px var(--mono);text-transform:uppercase}.pill.good{color:var(--teal);border-color:#29655c}.empty{color:var(--muted);font-size:13px;border:1px dashed var(--line);padding:18px;border-radius:6px}.empty.error{color:var(--danger)}
+.history-card p,.muted-line{color:var(--muted);font-size:13px;line-height:1.6}.history-lines{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}.history-lines div,.history-total{display:flex;justify-content:space-between;gap:12px;padding:5px 0;font-size:12px}.history-total{border-top:1px solid var(--line);margin-top:8px;padding-top:12px}.job-money{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;color:var(--muted);font-size:11px}.job-money b{color:var(--text)}
+.timeline{margin-top:16px;border-top:1px solid var(--line);padding-top:13px}.timeline-item{display:flex;gap:10px;padding:7px 0}.timeline-item i{width:7px;height:7px;border-radius:50%;background:var(--teal);margin-top:5px;flex:none}.timeline-item b{display:block;font-size:12px}.timeline-item small{display:block;color:var(--muted);margin-top:2px}
+.small-actions{display:flex;gap:12px;margin-top:12px}.text-btn{border:0;background:none;color:var(--teal);padding:0;font:9px var(--mono);text-transform:uppercase}.text-btn.danger{color:#ff9393}
+.check{display:flex;align-items:center;gap:9px;margin-top:12px;color:#a7b8b4;font-size:12px}.check input{width:17px;height:17px}
+.security-card{border:1px solid var(--line);border-radius:7px;padding:17px;margin-top:12px}.security-card h3{margin:0 0 5px;font-size:15px}.security-card p{margin:0 0 13px;color:var(--muted);font-size:12px}
+@media(max-width:700px){main{padding-top:20px}.panel{padding:19px 15px}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.profile-head{padding-top:10px}.profile-head h1{font-size:23px}.brand span{display:none}.history-head{align-items:flex-start}.job-money{gap:10px 16px}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script defer src="account.js"></script>
+</head>
+<body>
+<nav><div class="wrap"><a class="brand" href="index.html"><img src="logo-badge.png" alt="VoltTech Computer Co."><span><b>Volt</b>Tech Computer Co.</span></a><a class="home" href="index.html">← Home</a></div></nav>
+
+<main><div class="wrap">
+<header class="profile-head">
+  <img class="avatar" id="accountAvatar" alt="" hidden>
+  <div><h1 id="accountName">VoltTech customer</h1><p id="accountEmail"></p></div>
+</header>
+
+<div class="tabs" role="tablist">
+  <button class="tab active" data-tab="profile">Profile</button>
+  <button class="tab" data-tab="locations">Delivery locations</button>
+  <button class="tab" data-tab="purchases">Purchases</button>
+  <button class="tab" data-tab="services">Service history</button>
+  <button class="tab" data-tab="security">Account & security</button>
+</div>
+
+<section class="panel" data-panel="profile">
+  <h2 class="section-title">Customer profile</h2>
+  <p class="section-copy">Your contact and billing details.</p>
+  <form id="profileForm">
+    <div class="grid">
+      <div class="field"><label for="profileName">Full name</label><input id="profileName" autocomplete="name" maxlength="120"></div>
+      <div class="field"><label for="companyName">Company name</label><input id="companyName" autocomplete="organization" maxlength="160"></div>
+      <div class="field"><label for="profilePhone">Phone / WhatsApp</label><input id="profilePhone" type="tel" autocomplete="tel" maxlength="40"></div>
+      <div class="field"><label for="profileSuburb">Primary suburb</label><input id="profileSuburb" autocomplete="address-level3" maxlength="120"></div>
+      <div class="field"><label for="billingEmail">Billing / receipt email</label><input id="billingEmail" type="email" autocomplete="email"></div>
+      <div class="field"><label for="preferredContact">Preferred contact</label><select id="preferredContact"><option value="whatsapp">WhatsApp</option><option value="phone">Phone</option><option value="email">Email</option></select></div>
+    </div>
+    <div class="button-row"><button class="btn primary" type="submit">Save profile</button></div>
+  </form>
+</section>
+
+<section class="panel" data-panel="locations" hidden>
+  <h2 class="section-title">Delivery locations</h2>
+  <p class="section-copy">Save delivery and billing locations for orders and on-site service.</p>
+  <div id="addressList" class="history-list"></div>
+
+  <div class="subsection">
+    <h3 id="addressFormTitle">Add delivery location</h3>
+    <form id="addressForm">
+      <input id="addressId" type="hidden">
+      <div class="grid">
+        <div class="field"><label for="addressLabel">Label</label><input id="addressLabel" maxlength="80"></div>
+        <div class="field"><label for="recipientName">Recipient</label><input id="recipientName" autocomplete="name"></div>
+        <div class="field"><label for="addressPhone">Phone</label><input id="addressPhone" type="tel" autocomplete="tel"></div>
+        <div class="field"><label for="addressLine1">Address line 1</label><input id="addressLine1" autocomplete="address-line1" required></div>
+        <div class="field"><label for="addressLine2">Address line 2</label><input id="addressLine2" autocomplete="address-line2"></div>
+        <div class="field"><label for="addressSuburb">Suburb</label><input id="addressSuburb" autocomplete="address-level3"></div>
+        <div class="field"><label for="addressCity">City</label><input id="addressCity" autocomplete="address-level2" required></div>
+        <div class="field"><label for="addressProvince">Province</label><input id="addressProvince" autocomplete="address-level1"></div>
+        <div class="field"><label for="postalCode">Postal code</label><input id="postalCode" autocomplete="postal-code"></div>
+        <div class="field"><label for="addressCountry">Country</label><input id="addressCountry" autocomplete="country-name"></div>
+      </div>
+      <label class="check"><input id="defaultShipping" type="checkbox"> Use as default delivery location</label>
+      <div class="button-row"><button class="btn primary" type="submit">Save location</button><button class="btn secondary" id="cancelAddressEdit" type="button" hidden>Cancel edit</button></div>
+    </form>
+  </div>
+</section>
+
+<section class="panel" data-panel="purchases" hidden>
+  <h2 class="section-title">Purchase history</h2>
+  <p class="section-copy">Products, orders and payment status linked to this account.</p>
+  <div id="ordersList" class="history-list"></div>
+</section>
+
+<section class="panel" data-panel="services" hidden>
+  <h2 class="section-title">Service history</h2>
+  <p class="section-copy">Repair, diagnostics, upgrades and streaming optimisation work linked to this account.</p>
+  <div id="jobsList" class="history-list"></div>
+</section>
+
+<section class="panel" data-panel="security" hidden>
+  <h2 class="section-title">Account & security</h2>
+  <p class="section-copy">Manage your sign-in email and account access.</p>
+  <div class="security-card">
+    <h3>Login email</h3>
+    <p>Changing this may require email confirmation before it takes effect.</p>
+    <form id="emailForm"><label for="loginEmail">Account email</label><input id="loginEmail" type="email" autocomplete="email" required><div class="button-row"><button class="btn primary" type="submit">Change email</button></div></form>
+  </div>
+  <div class="security-card">
+    <h3>Password</h3>
+    <p>Send a secure password reset link to your current account email.</p>
+    <button class="btn secondary" id="passwordReset" type="button">Send password reset</button>
+  </div>
+  <div class="security-card">
+    <h3>Sign out</h3>
+    <button class="btn secondary" id="signOut" type="button">Sign out of VoltTech</button>
+  </div>
+</section>
+
+<p id="hubStatus" role="status" aria-live="polite"></p>
+</div></main>
+</body></html>
