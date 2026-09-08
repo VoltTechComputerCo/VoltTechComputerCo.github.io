@@ -1,0 +1,130 @@
+/* VoltTech mobile navigation system */
+.vt-mobile-menu-btn,
+.vt-mobile-drawer,
+.vt-mobile-backdrop{display:none}
+
+@media(max-width:700px){
+  nav .wrap{height:62px!important;min-height:62px!important;gap:12px!important}
+  nav .brand{min-width:0}
+  nav .brand img{height:38px!important;width:auto}
+  nav .brand-text,
+  nav .brand-name{display:none!important}
+  nav .navlinks{display:none!important}
+
+  .vt-mobile-menu-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    margin-left:auto;
+    min-height:42px;
+    padding:0 14px;
+    border:1px solid rgba(47,230,200,.34);
+    border-radius:999px;
+    background:rgba(47,230,200,.065);
+    color:#dffaf5;
+    font:700 10px 'JetBrains Mono',monospace;
+    letter-spacing:.11em;
+    text-transform:uppercase;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .vt-mobile-menu-btn:focus-visible{outline:2px solid #2fe6c8;outline-offset:2px}
+  .vt-menu-bars{display:grid;gap:3px;width:16px}
+  .vt-menu-bars i{display:block;height:1.5px;background:#2fe6c8;border-radius:4px;transition:.18s ease}
+  .vt-mobile-menu-btn[aria-expanded="true"] .vt-menu-bars i:nth-child(1){transform:translateY(4.5px) rotate(45deg)}
+  .vt-mobile-menu-btn[aria-expanded="true"] .vt-menu-bars i:nth-child(2){opacity:0}
+  .vt-mobile-menu-btn[aria-expanded="true"] .vt-menu-bars i:nth-child(3){transform:translateY(-4.5px) rotate(-45deg)}
+
+  .vt-mobile-backdrop{
+    position:fixed;
+    inset:62px 0 0;
+    z-index:88;
+    background:rgba(0,0,0,.58);
+    backdrop-filter:blur(4px);
+  }
+  .vt-mobile-backdrop.open{display:block}
+
+  .vt-mobile-drawer{
+    position:fixed;
+    top:62px;
+    left:0;
+    right:0;
+    z-index:89;
+    max-height:calc(100dvh - 62px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    padding:14px 16px max(22px,env(safe-area-inset-bottom));
+    border-top:1px solid rgba(47,230,200,.16);
+    border-bottom:1px solid rgba(47,230,200,.2);
+    background:
+      radial-gradient(circle at 90% 0,rgba(47,230,200,.10),transparent 34%),
+      rgba(5,8,10,.985);
+    box-shadow:0 20px 45px rgba(0,0,0,.46);
+  }
+  .vt-mobile-drawer.open{display:block}
+  .vt-mobile-drawer-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:2px 3px 12px;
+    color:#5f7c78;
+    font:9px 'JetBrains Mono',monospace;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
+  .vt-mobile-drawer-head b{color:#2fe6c8}
+  .vt-mobile-links{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .vt-mobile-link{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    min-height:86px;
+    padding:14px;
+    border:1px solid #172526;
+    border-radius:8px;
+    background:#0d1517;
+    text-decoration:none!important;
+    color:#e7f1ee!important;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .vt-mobile-link:active{transform:scale(.985)}
+  .vt-mobile-link small{
+    color:#2fe6c8;
+    font:700 8px 'JetBrains Mono',monospace;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+  .vt-mobile-link span{
+    margin-top:8px;
+    font:600 14px 'Space Grotesk',sans-serif;
+    line-height:1.15;
+  }
+  .vt-mobile-link:after{
+    content:"↗";
+    position:absolute;
+    right:12px;
+    top:10px;
+    color:#49605c;
+    font:12px 'JetBrains Mono',monospace;
+  }
+  .vt-mobile-link.primary{
+    border-color:rgba(47,230,200,.45);
+    background:linear-gradient(145deg,rgba(47,230,200,.12),#0d1517 65%);
+  }
+  .vt-mobile-link.creator{
+    border-color:rgba(215,120,255,.4);
+    background:linear-gradient(145deg,rgba(215,120,255,.11),#0d1517 65%);
+  }
+  .vt-mobile-link.creator small{color:#d778ff}
+  .vt-mobile-link.static small{color:#ffb454}
+  body.vt-menu-open{overflow:hidden}
+}
+@media(max-width:380px){
+  .vt-mobile-links{grid-template-columns:1fr}
+  .vt-mobile-link{min-height:72px}
+}
+@media(prefers-reduced-motion:reduce){
+  .vt-mobile-menu-btn .vt-menu-bars i,
+  .vt-mobile-link{transition:none}
+}
