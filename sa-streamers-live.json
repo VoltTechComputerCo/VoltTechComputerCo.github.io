@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T19:41:02.348168Z",
+  "generated_at": "2026-09-08T19:54:38.234428Z",
   "tracked_count": 220,
   "valid_count": 219,
   "streamers": [
@@ -13,7 +13,7 @@
       "game_name": "Always On",
       "title": "Nonstop UFD Stream | 9800X3D + RTX 5080 Giveaway | !giveaway !points !terms",
       "started_at": "2026-09-07T23:13:51Z",
-      "last_live_at": "2026-09-08T19:41:02.348168Z",
+      "last_live_at": "2026-09-08T19:54:38.234428Z",
       "activity_score": 100.0
     },
     {
@@ -26,8 +26,8 @@
       "game_name": "EVE Online",
       "title": "Good EVEning |!clip |!discord | !lurk | 18+",
       "started_at": "2026-09-08T18:34:16Z",
-      "last_live_at": "2026-09-08T19:41:02.348168Z",
-      "activity_score": 68.54
+      "last_live_at": "2026-09-08T19:54:38.234428Z",
+      "activity_score": 72.43
     },
     {
       "login": "derpy_ruby",
@@ -35,12 +35,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/05e0d7e2-638a-4e97-84f8-c2d5cb683efa-profile_image-300x300.png",
       "description": "Small Derpy Dragon that loves dragons and doing art. Lives in a faraway land called South Africa",
       "live": true,
-      "viewer_count": 14,
+      "viewer_count": 20,
       "game_name": "Art",
       "title": "[DerpyTuber] Silly Derp Drawings & Silly Commission Cuties | !derpy, !dragon, !hug",
       "started_at": "2026-09-08T18:00:42Z",
-      "last_live_at": "2026-09-08T19:41:02.348168Z",
-      "activity_score": 55.41
+      "last_live_at": "2026-09-08T19:54:38.234428Z",
+      "activity_score": 60.09
     },
     {
       "login": "agriopsgaming",
@@ -52,8 +52,8 @@
       "game_name": "Valheim",
       "title": "Going back to where it all started. The Hiem |Raising funds for Schmoopies Birthday and School.  | !blame | 18++",
       "started_at": "2026-09-08T17:49:34Z",
-      "last_live_at": "2026-09-08T19:41:02.348168Z",
-      "activity_score": 53.74
+      "last_live_at": "2026-09-08T19:54:38.234428Z",
+      "activity_score": 58.52
     },
     {
       "login": "cassieroseza",
@@ -62,11 +62,11 @@
       "description": "Hi, I'm Cassie, a transgender woman who loves to game and stream cute and adorable games on Twitch. I enjoy connecting with my community and sharing my love for all things cute. Follow me and join in on the fun!",
       "live": true,
       "viewer_count": 2,
-      "game_name": "Minecraft",
+      "game_name": "House Flipper",
       "title": "🎉🎉🎉It was my Birthday Sunday!!!!!! | Post-Birthday Stream 🎉| [ZA] [18+]",
       "started_at": "2026-09-08T19:28:11Z",
-      "last_live_at": "2026-09-08T19:41:02.348168Z",
-      "activity_score": 15.6
+      "last_live_at": "2026-09-08T19:54:38.234428Z",
+      "activity_score": 22.66
     },
     {
       "login": "thejudgeza",
@@ -78,8 +78,21 @@
       "game_name": "Grand Theft Auto V",
       "title": "ZA/   GTA Roleplay Cadet Kino Green (DreadM)",
       "started_at": "2026-09-08T19:34:08Z",
-      "last_live_at": "2026-09-08T19:41:02.348168Z",
-      "activity_score": 8.0
+      "last_live_at": "2026-09-08T19:54:38.234428Z",
+      "activity_score": 15.52
+    },
+    {
+      "login": "chickenwingerz",
+      "display_name": "ChickenWingerZ",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/95ef6966-e207-4ff6-bcf0-59621c34af57-profile_image-300x300.png",
+      "description": "New South African Streamer Lets have fun Lets all help each other out!",
+      "live": true,
+      "viewer_count": 1,
+      "game_name": "Gotham Knights",
+      "title": "welcome all! young and old! lets do this part 2!",
+      "started_at": "2026-09-08T19:51:31Z",
+      "last_live_at": "2026-09-08T19:54:38.234428Z",
+      "activity_score": 8.08
     },
     {
       "login": "virtualgemma",
@@ -92,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T18:09:58.287383Z",
-      "activity_score": 69.0
+      "activity_score": 64.86
     },
     {
       "login": "thelemons",
@@ -105,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T18:09:58.287383Z",
-      "activity_score": 56.01
+      "activity_score": 52.65
     },
     {
       "login": "caramel",
@@ -118,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T18:29:37.668233Z",
-      "activity_score": 48.32
+      "activity_score": 45.42
     },
     {
       "login": "sittingduck01",
@@ -131,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T17:42:05.510593Z",
-      "activity_score": 42.74
+      "activity_score": 40.18
     },
     {
       "login": "viking_237",
@@ -144,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T16:48:41.166192Z",
-      "activity_score": 36.86
+      "activity_score": 34.65
     },
     {
       "login": "syernide",
@@ -157,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T16:58:15.298530Z",
-      "activity_score": 33.33
+      "activity_score": 31.33
     },
     {
       "login": "dead_oryx",
@@ -170,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T14:50:30.598092Z",
-      "activity_score": 30.87
+      "activity_score": 29.02
     },
     {
       "login": "chronic_za",
@@ -183,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T18:29:37.668233Z",
-      "activity_score": 26.04
+      "activity_score": 24.48
     },
     {
       "login": "blu3bee",
@@ -196,7 +209,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T15:57:11.175722Z",
-      "activity_score": 22.49
+      "activity_score": 21.14
     },
     {
       "login": "1handbanditza",
@@ -209,7 +222,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T16:33:23.776802Z",
-      "activity_score": 20.97
+      "activity_score": 19.71
     },
     {
       "login": "spyro_za",
@@ -222,7 +235,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T12:54:03.259643Z",
-      "activity_score": 19.01
+      "activity_score": 17.87
     },
     {
       "login": "waldoliveza",
@@ -235,7 +248,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T16:58:15.298530Z",
-      "activity_score": 11.57
+      "activity_score": 10.88
     },
     {
       "login": "danatdawn",
@@ -248,7 +261,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-08T12:37:34.039816Z",
-      "activity_score": 7.84
+      "activity_score": 7.37
     },
     {
       "login": "zaffa_geek",
@@ -261,7 +274,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T21:54:41.752025Z",
-      "activity_score": 0.55
+      "activity_score": 0.52
     },
     {
       "login": "slikkdudebroguy",
@@ -274,7 +287,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T22:22:31.505145Z",
-      "activity_score": 0.52
+      "activity_score": 0.49
     },
     {
       "login": "zulumachinegaming",
@@ -287,20 +300,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-07T21:14:52.583524Z",
-      "activity_score": 0.34
-    },
-    {
-      "login": "chickenwingerz",
-      "display_name": "ChickenWingerZ",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/95ef6966-e207-4ff6-bcf0-59621c34af57-profile_image-300x300.png",
-      "description": "New South African Streamer Lets have fun Lets all help each other out!",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": "2026-09-07T19:54:22.231197Z",
-      "activity_score": 0.08
+      "activity_score": 0.32
     },
     {
       "login": "zurgash",
