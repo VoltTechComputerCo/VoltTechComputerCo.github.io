@@ -107,7 +107,7 @@ function initMobileNavigation(){
  const wrap=nav&&nav.querySelector('.wrap');
  if(!nav||!wrap)return;
 
- loadCSS('mobile-nav.css?v=1','mobile-nav');
+ loadCSS('mobile-nav.css?v=2','mobile-nav');
 
  const button=document.createElement('button');
  button.className='vt-mobile-menu-btn';
@@ -126,19 +126,55 @@ function initMobileNavigation(){
  drawer.id='vtMobileDrawer';
  drawer.setAttribute('aria-hidden','true');
  drawer.innerHTML=
-   '<div class="vt-mobile-drawer-head"><span>VoltTech navigation</span><b>Tap to open</b></div>'+
+   '<div class="vt-mobile-drawer-head"><span>VoltTech navigation</span><b>Choose a destination</b></div>'+
    '<div class="vt-mobile-links">'+
-     '<a class="vt-mobile-link" href="index.html"><small>01 · Home</small><span>VoltTech Home</span></a>'+
-     '<a class="vt-mobile-link" href="index.html#services"><small>02 · Services</small><span>PC Services</span></a>'+
-     '<a class="vt-mobile-link primary" href="signal-scan.html"><small>03 · Free Tool</small><span>Signal Scan</span></a>'+
-     '<a class="vt-mobile-link creator" href="creator-hub-south-africa.html"><small>04 · Live</small><span>Creator Hub</span></a>'+
-     '<a class="vt-mobile-link" href="streaming-setup-south-africa.html"><small>05 · Streaming</small><span>Technical Support</span></a>'+
-     '<a class="vt-mobile-link" href="account.html"><small>06 · Account</small><span>My Account</span></a>'+
-     '<a class="vt-mobile-link" href="index.html#contact"><small>07 · Contact</small><span>Contact VoltTech</span></a>'+
-     '<a class="vt-mobile-link static" href="static.html"><small>08 · Editorial</small><span>STATIC ↗</span></a>'+
+     '<a class="vt-mobile-link home" href="index.html"><div class="vt-card-top"><small>01 · Home</small><span class="vt-card-mark">VT</span></div><strong>VoltTech Home</strong><em>PC help, tools & local tech support.</em></a>'+
+     '<a class="vt-mobile-link services" href="index.html#services"><div class="vt-card-top"><small>02 · Services</small><span class="vt-card-mark">+</span></div><strong>PC Services</strong><em>Repairs · upgrades · malware · Windows</em></a>'+
+     '<a class="vt-mobile-link primary scan" href="signal-scan.html"><div class="vt-card-top"><small>03 · Free Tool</small><span class="vt-card-mark">⌁</span></div><strong>Signal Scan</strong><em>Describe the problem. Get an estimate.</em><span class="vt-card-action">START SCAN →</span></a>'+
+     '<a class="vt-mobile-link creator" href="creator-hub-south-africa.html"><div class="vt-card-top"><small>04 · Creator Hub</small><span class="vt-live-pill"><i></i><b id="vtMenuLiveCount">LIVE</b></span></div><strong>South African Creators</strong><em id="vtMenuCreatorMeta">Checking who is live now…</em><div class="vt-creator-strip" id="vtMenuCreatorStrip"></div></a>'+
+     '<a class="vt-mobile-link streaming" href="streaming-setup-south-africa.html"><div class="vt-card-top"><small>05 · Streaming</small><span class="vt-card-mark">◉</span></div><strong>Technical Support</strong><em>OBS, audio, performance & stream setup.</em></a>'+
+     '<a class="vt-mobile-link account" href="account.html"><div class="vt-card-top"><small>06 · Account</small><span class="vt-card-mark">◎</span></div><strong>My Account</strong><em>Your VoltTech profile and tools.</em></a>'+
+     '<a class="vt-mobile-link contact" href="index.html#contact"><div class="vt-card-top"><small>07 · Contact</small><span class="vt-card-mark">↗</span></div><strong>Contact VoltTech</strong><em>WhatsApp or email — get help directly.</em></a>'+
+     '<a class="vt-mobile-link static" href="static.html"><div class="vt-card-top"><small>08 · Editorial</small><span class="vt-static-badge">STATIC</span></div><strong>Tech. Gaming. Hardware.</strong><em>News, analysis & enthusiast culture.</em><span class="vt-card-action">READ STATIC ↗</span></a>'+
    '</div>';
 
  document.body.append(backdrop,drawer);
+
+ async function updateCreatorMenu(){
+   const count=document.getElementById('vtMenuLiveCount');
+   const meta=document.getElementById('vtMenuCreatorMeta');
+   const strip=document.getElementById('vtMenuCreatorStrip');
+   if(!count||!meta||!strip)return;
+   try{
+     const res=await fetch('sa-streamers-live.json?menu=1',{cache:'no-store'});
+     if(!res.ok)throw new Error('feed');
+     const data=await res.json();
+     const creators=Array.isArray(data.streamers)?data.streamers:[];
+     const live=creators.filter(s=>s.live);
+     count.textContent=live.length+' LIVE NOW';
+     meta.textContent=live.length
+       ? live.length+' creator'+(live.length===1?' is':'s are')+' live · '+(data.valid_count||creators.length)+' tracked'
+       : 'No one live right now · '+(data.valid_count||creators.length)+' creators tracked';
+     strip.innerHTML='';
+     live.slice(0,4).forEach(s=>{
+       const img=document.createElement('img');
+       img.src=s.profile_image_url;
+       img.alt='';
+       img.loading='lazy';
+       img.title=s.display_name||s.login||'Live creator';
+       strip.appendChild(img);
+     });
+     if(live.length){
+       const txt=document.createElement('span');
+       txt.textContent=live.slice(0,2).map(s=>s.display_name||s.login).join(' · ');
+       strip.appendChild(txt);
+     }
+   }catch(e){
+     count.textContent='LIVE';
+     meta.textContent='Discover South African creators live on Twitch.';
+   }
+ }
+ updateCreatorMenu();
 
  function setOpen(open){
    button.setAttribute('aria-expanded',String(open));
