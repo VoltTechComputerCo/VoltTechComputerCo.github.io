@@ -1,1 +1,166 @@
-(()=>{const c=window.supabase.createClient(VOLTTECH_SUPABASE.url,VOLTTECH_SUPABASE.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});const q=s=>document.querySelector(s),st=(m,t="")=>{const e=q("#authStatus");if(e){e.textContent=m;e.dataset.type=t}};async function refresh(){const{data:{session}}=await c.auth.getSession(),a=q("#signedOut"),b=q("#signedIn");if(session?.user){a.hidden=true;b.hidden=false;const u=session.user;q("#accountName").textContent=u.user_metadata?.full_name||u.user_metadata?.name||u.email?.split("@")[0]||"VoltTech customer";q("#accountEmail").textContent=u.email||"";const av=q("#accountAvatar"),src=u.user_metadata?.avatar_url||u.user_metadata?.picture;if(src){av.src=src;av.hidden=false}else av.hidden=true}else{a.hidden=false;b.hidden=true}}document.addEventListener("DOMContentLoaded",()=>{q("#googleSignIn").onclick=async()=>{st("Opening Google…");const{error}=await c.auth.signInWithOAuth({provider:"google",options:{redirectTo:`${location.origin}/account.html`}});if(error)st(error.message,"error")};q("#emailAuth").onsubmit=async e=>{e.preventDefault();const email=q("#email").value.trim(),password=q("#password").value,mode=e.submitter?.value;st(mode==="signup"?"Creating account…":"Signing in…");const r=mode==="signup"?await c.auth.signUp({email,password,options:{emailRedirectTo:`${location.origin}/account.html`}}):await c.auth.signInWithPassword({email,password});if(r.error)st(r.error.message,"error");else if(r.data.session){st("Signed in.","success");refresh()}else st("Check your email to confirm your account.","success")};q("#signOut").onclick=async()=>{await c.auth.signOut();refresh()};refresh()});c.auth.onAuthStateChange(()=>setTimeout(refresh,0));window.volttechAuth=c})();
+(() => {
+  const client = window.supabase.createClient(
+    VOLTTECH_SUPABASE.url,
+    VOLTTECH_SUPABASE.publishableKey,
+    { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
+  );
+
+  const q = (s) => document.querySelector(s);
+  const status = (message = "", type = "") => {
+    const el = q("#authStatus");
+    if (!el) return;
+    el.textContent = message;
+    el.dataset.type = type;
+  };
+
+  async function loadProfile(user) {
+    const { data, error } = await client
+      .from("profiles")
+      .select("full_name,phone,suburb")
+      .eq("id", user.id)
+      .maybeSingle();
+
+    if (error) {
+      console.error("VoltTech profile load:", error);
+      status("Account is signed in, but the customer profile could not be loaded.", "error");
+      return;
+    }
+
+    const fallbackName =
+      user.user_metadata?.full_name ||
+      user.user_metadata?.name ||
+      user.email?.split("@")[0] ||
+      "";
+
+    q("#profileName").value = data?.full_name || fallbackName;
+    q("#profilePhone").value = data?.phone || "";
+    q("#profileSuburb").value = data?.suburb || "";
+    q("#accountName").textContent = data?.full_name || fallbackName || "VoltTech customer";
+  }
+
+  async function refresh() {
+    const { data: { session } } = await client.auth.getSession();
+    const signedOut = q("#signedOut");
+    const signedIn = q("#signedIn");
+
+    if (!session?.user) {
+      signedOut.hidden = false;
+      signedIn.hidden = true;
+      return;
+    }
+
+    signedOut.hidden = true;
+    signedIn.hidden = false;
+
+    const user = session.user;
+    const fallbackName =
+      user.user_metadata?.full_name ||
+      user.user_metadata?.name ||
+      user.email?.split("@")[0] ||
+      "VoltTech customer";
+
+    q("#accountName").textContent = fallbackName;
+    q("#accountEmail").textContent = user.email || "";
+
+    const avatar = q("#accountAvatar");
+    const src = user.user_metadata?.avatar_url || user.user_metadata?.picture;
+    if (src) {
+      avatar.src = src;
+      avatar.hidden = false;
+    } else {
+      avatar.hidden = true;
+    }
+
+    await loadProfile(user);
+  }
+
+  async function signInGoogle() {
+    status("Opening Google…");
+    const { error } = await client.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${location.origin}/account.html` }
+    });
+    if (error) status(error.message, "error");
+  }
+
+  async function emailAuth(e) {
+    e.preventDefault();
+    const email = q("#email").value.trim();
+    const password = q("#password").value;
+    const mode = e.submitter?.value;
+
+    status(mode === "signup" ? "Creating account…" : "Signing in…");
+
+    const result = mode === "signup"
+      ? await client.auth.signUp({
+          email,
+          password,
+          options: { emailRedirectTo: `${location.origin}/account.html` }
+        })
+      : await client.auth.signInWithPassword({ email, password });
+
+    if (result.error) {
+      status(result.error.message, "error");
+    } else if (result.data.session) {
+      status("Signed in.", "success");
+      await refresh();
+    } else {
+      status("Check your email to confirm your account.", "success");
+    }
+  }
+
+  async function saveProfile(e) {
+    e.preventDefault();
+    status("Saving…");
+
+    const { data: { user }, error: userError } = await client.auth.getUser();
+    if (userError || !user) {
+      status("Please sign in again.", "error");
+      return;
+    }
+
+    const fullName = q("#profileName").value.trim();
+    const phone = q("#profilePhone").value.trim();
+    const suburb = q("#profileSuburb").value.trim();
+
+    const { error } = await client
+      .from("profiles")
+      .upsert({
+        id: user.id,
+        full_name: fullName || null,
+        phone: phone || null,
+        suburb: suburb || null,
+        updated_at: new Date().toISOString()
+      }, { onConflict: "id" });
+
+    if (error) {
+      console.error("VoltTech profile save:", error);
+      status("Could not save your profile. Please try again.", "error");
+      return;
+    }
+
+    q("#accountName").textContent = fullName || user.email?.split("@")[0] || "VoltTech customer";
+    status("Profile saved.", "success");
+  }
+
+  async function signOut() {
+    const { error } = await client.auth.signOut();
+    if (error) {
+      status(error.message, "error");
+      return;
+    }
+    status("");
+    await refresh();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    q("#googleSignIn")?.addEventListener("click", signInGoogle);
+    q("#emailAuth")?.addEventListener("submit", emailAuth);
+    q("#profileForm")?.addEventListener("submit", saveProfile);
+    q("#signOut")?.addEventListener("click", signOut);
+    refresh();
+  });
+
+  client.auth.onAuthStateChange(() => setTimeout(refresh, 0));
+  window.volttechAuth = client;
+})();
