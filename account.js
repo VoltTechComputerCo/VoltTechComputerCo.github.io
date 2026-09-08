@@ -6,8 +6,10 @@
   );
 
   const q = (s) => document.querySelector(s);
+
   const status = (message = "", type = "") => {
-    const el = q("#authStatus");
+    const signedIn = q("#signedIn");
+    const el = signedIn && !signedIn.hidden ? q("#signedInStatus") : q("#signedOutStatus");
     if (!el) return;
     el.textContent = message;
     el.dataset.type = type;
@@ -111,36 +113,47 @@
 
   async function saveProfile(e) {
     e.preventDefault();
+    const saveButton = q("#saveProfile");
+    if (saveButton) {
+      saveButton.disabled = true;
+      saveButton.textContent = "Saving…";
+    }
     status("Saving…");
 
-    const { data: { user }, error: userError } = await client.auth.getUser();
-    if (userError || !user) {
-      status("Please sign in again.", "error");
-      return;
-    }
+    try {
+      const { data: { user }, error: userError } = await client.auth.getUser();
+      if (userError || !user) throw new Error("Please sign in again.");
 
-    const fullName = q("#profileName").value.trim();
-    const phone = q("#profilePhone").value.trim();
-    const suburb = q("#profileSuburb").value.trim();
+      const fullName = q("#profileName").value.trim();
+      const phone = q("#profilePhone").value.trim();
+      const suburb = q("#profileSuburb").value.trim();
 
-    const { error } = await client
-      .from("profiles")
-      .upsert({
-        id: user.id,
-        full_name: fullName || null,
-        phone: phone || null,
-        suburb: suburb || null,
-        updated_at: new Date().toISOString()
-      }, { onConflict: "id" });
+      const { error } = await client
+        .from("profiles")
+        .upsert({
+          id: user.id,
+          full_name: fullName || null,
+          phone: phone || null,
+          suburb: suburb || null,
+          updated_at: new Date().toISOString()
+        }, { onConflict: "id" });
 
-    if (error) {
+      if (error) throw error;
+
+      q("#accountName").textContent =
+        fullName || user.email?.split("@")[0] || "VoltTech customer";
+      status("Profile saved.", "success");
+
+      if (saveButton) {
+        saveButton.textContent = "Saved ✓";
+        setTimeout(() => { saveButton.textContent = "Save profile"; }, 1800);
+      }
+    } catch (error) {
       console.error("VoltTech profile save:", error);
-      status("Could not save your profile. Please try again.", "error");
-      return;
+      status(`Could not save profile: ${error.message || "Please try again."}`, "error");
+    } finally {
+      if (saveButton) saveButton.disabled = false;
     }
-
-    q("#accountName").textContent = fullName || user.email?.split("@")[0] || "VoltTech customer";
-    status("Profile saved.", "success");
   }
 
   async function signOut() {
@@ -149,7 +162,6 @@
       status(error.message, "error");
       return;
     }
-    status("");
     await refresh();
   }
 
