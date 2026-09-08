@@ -15,10 +15,10 @@ nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);backgro
 nav .wrap{height:64px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px}.brand img{height:34px}.brand span{font:700 12px var(--mono)}.brand b{color:var(--teal)}.home{font:10px var(--mono);color:var(--teal);text-transform:uppercase}
 main{padding:34px 0 76px}.profile-head{display:flex;align-items:center;gap:16px;padding:22px 0 26px}.avatar{width:58px;height:58px;border-radius:50%;border:1px solid var(--line)}.profile-head h1{font-size:27px;margin:0 0 4px}.profile-head p{margin:0;color:var(--muted);font-size:14px}
 .tabs{display:flex;gap:8px;overflow:auto;padding:0 0 14px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{white-space:nowrap;background:#091010;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:10px 14px;font:700 10px var(--mono);text-transform:uppercase}.tab.active{color:#03120f;background:var(--teal);border-color:var(--teal)}
-.panel{border:1px solid var(--line);border-radius:10px;background:rgba(11,20,21,.96);padding:24px}.panel[hidden]{display:none}.section-title{margin:0 0 4px;font-size:20px}.section-copy{margin:0 0 22px;color:var(--muted);font-size:13px}
+.panel{border:1px solid var(--line);border-radius:10px;background:rgba(11,20,21,.96);padding:24px}.panel[hidden],[hidden]{display:none!important}.section-title{margin:0 0 4px;font-size:20px}.section-copy{margin:0 0 22px;color:var(--muted);font-size:13px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field.full{grid-column:1/-1}label{display:block;margin:0 0 7px;color:#9bb0ac;font:9px var(--mono);letter-spacing:.08em;text-transform:uppercase}input,select{width:100%;height:48px;border:1px solid #263a38;border-radius:5px;background:#07100f;color:var(--text);padding:0 13px;outline:none}input:focus,select:focus{border-color:var(--teal)}
 .btn{min-height:48px;border:1px solid var(--teal);border-radius:5px;background:transparent;color:var(--teal);padding:0 18px;font:700 10px var(--mono);text-transform:uppercase}.btn.primary{background:var(--teal);color:#04120f}.btn.secondary{border-color:#334643;color:#a3b4b1}.button-row{display:flex;gap:9px;margin-top:18px;flex-wrap:wrap}
-#hubStatus{min-height:20px;margin:15px 0 0;color:var(--muted);font:10px var(--mono)}#hubStatus[data-type=success]{color:var(--teal)}#hubStatus[data-type=error]{color:var(--danger)}
+#hubStatus,#authStatus,#recoveryStatus{min-height:20px;margin:15px 0 0;color:var(--muted);font:10px var(--mono)}[data-type=success]{color:var(--teal)!important}[data-type=error]{color:var(--danger)!important}
 .subsection{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}.subsection h3{font-size:16px;margin:0 0 14px}
 .history-list{display:grid;gap:12px}.history-card{border:1px solid var(--line);background:#081112;border-radius:7px;padding:17px}.history-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}.history-head h3{font-size:16px;margin:4px 0 0}.mini{color:var(--muted);font:9px var(--mono);text-transform:uppercase}.pill{border:1px solid #35504c;border-radius:999px;padding:6px 9px;color:#a8c3bd;font:8px var(--mono);text-transform:uppercase}.pill.good{color:var(--teal);border-color:#29655c}.empty{color:var(--muted);font-size:13px;border:1px dashed var(--line);padding:18px;border-radius:6px}.empty.error{color:var(--danger)}
 .history-card p,.muted-line{color:var(--muted);font-size:13px;line-height:1.6}.history-lines{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}.history-lines div,.history-total{display:flex;justify-content:space-between;gap:12px;padding:5px 0;font-size:12px}.history-total{border-top:1px solid var(--line);margin-top:8px;padding-top:12px}.job-money{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;color:var(--muted);font-size:11px}.job-money b{color:var(--text)}
@@ -26,7 +26,8 @@ main{padding:34px 0 76px}.profile-head{display:flex;align-items:center;gap:16px;
 .small-actions{display:flex;gap:12px;margin-top:12px}.text-btn{border:0;background:none;color:var(--teal);padding:0;font:9px var(--mono);text-transform:uppercase}.text-btn.danger{color:#ff9393}
 .check{display:flex;align-items:center;gap:9px;margin-top:12px;color:#a7b8b4;font-size:12px}.check input{width:17px;height:17px}
 .security-card{border:1px solid var(--line);border-radius:7px;padding:17px;margin-top:12px}.security-card h3{margin:0 0 5px;font-size:15px}.security-card p{margin:0 0 13px;color:var(--muted);font-size:12px}
-@media(max-width:700px){main{padding-top:20px}.panel{padding:19px 15px}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.profile-head{padding-top:10px}.profile-head h1{font-size:23px}.brand span{display:none}.history-head{align-items:flex-start}.job-money{gap:10px 16px}}
+.auth-shell{width:min(520px,100%);margin:34px auto}.auth-card{border:1px solid var(--line);border-radius:14px;background:rgba(11,20,21,.97);padding:26px}.auth-card h1{margin:0 0 8px;font-size:30px}.auth-card>p{color:var(--muted);line-height:1.55}.auth-card .field{margin-top:14px}.google{width:100%;margin:10px 0 4px}.divider{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--muted);font:9px var(--mono);text-transform:uppercase}.divider:before,.divider:after{content:"";height:1px;background:var(--line);flex:1}.auth-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:16px}.auth-links{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:16px}.auth-links button,.auth-links a{border:0;background:none;padding:0;color:var(--teal);font:9px var(--mono);text-transform:uppercase}.legal-note{font-size:11px!important;margin-top:20px!important}.legal-note a{color:var(--teal);text-decoration:underline}.account-foot{margin-top:24px;color:var(--muted);font-size:11px}.account-foot a{color:var(--teal)}
+@media(max-width:700px){main{padding-top:20px}.panel{padding:19px 15px}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.profile-head{padding-top:10px}.profile-head h1{font-size:23px}.brand span{display:none}.history-head{align-items:flex-start}.job-money{gap:10px 16px}.auth-card{padding:22px 17px}.auth-actions{grid-template-columns:1fr}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
@@ -35,7 +36,37 @@ main{padding:34px 0 76px}.profile-head{display:flex;align-items:center;gap:16px;
 <body>
 <nav><div class="wrap"><a class="brand" href="index.html"><img src="logo-badge.png" alt="VoltTech Computer Co."><span><b>Volt</b>Tech Computer Co.</span></a><a class="home" href="index.html">← Home</a></div></nav>
 
-<main><div class="wrap">
+<main>
+<section id="authGate" class="wrap auth-shell" hidden>
+  <div class="auth-card">
+    <h1>Your VoltTech account</h1>
+    <p>Sign in to review quotations, service history, purchases and saved delivery details.</p>
+    <button class="btn primary google" id="googleSignIn" type="button">Continue with Google</button>
+    <div class="divider">or use email</div>
+    <form id="authForm">
+      <div class="field"><label for="authEmail">Email</label><input id="authEmail" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="authPassword">Password</label><input id="authPassword" type="password" autocomplete="current-password" minlength="8" required></div>
+      <div class="auth-actions"><button class="btn primary" type="submit">Sign in</button><button class="btn secondary" id="createAccount" type="button">Create account</button></div>
+    </form>
+    <div class="auth-links"><button id="forgotPassword" type="button">Forgot password?</button><a href="legal.html">Legal & privacy</a></div>
+    <p id="authStatus" role="status" aria-live="polite"></p>
+    <p class="legal-note">By creating an account you acknowledge our <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Notice</a>.</p>
+  </div>
+</section>
+
+<section id="recoveryGate" class="wrap auth-shell" hidden>
+  <div class="auth-card">
+    <h1>Choose a new password</h1>
+    <p>Enter a new password for your VoltTech account.</p>
+    <form id="recoveryForm">
+      <div class="field"><label for="newPassword">New password</label><input id="newPassword" type="password" autocomplete="new-password" minlength="8" required></div>
+      <div class="button-row"><button class="btn primary" type="submit">Update password</button></div>
+    </form>
+    <p id="recoveryStatus" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<div id="accountHub" class="wrap" hidden>
 <header class="profile-head">
   <img class="avatar" id="accountAvatar" alt="" hidden>
   <div><h1 id="accountName">VoltTech customer</h1><p id="accountEmail"></p></div>
@@ -45,6 +76,7 @@ main{padding:34px 0 76px}.profile-head{display:flex;align-items:center;gap:16px;
   <button class="tab active" data-tab="profile">Profile</button>
   <button class="tab" data-tab="locations">Delivery locations</button>
   <a class="tab" href="quotes.html">Quotes</a>
+  <a class="tab" href="documents.html">Documents</a>
   <button class="tab" data-tab="purchases">Purchases</button>
   <button class="tab" data-tab="services">Service history</button>
   <button class="tab" data-tab="security">Account & security</button>
@@ -70,7 +102,6 @@ main{padding:34px 0 76px}.profile-head{display:flex;align-items:center;gap:16px;
   <h2 class="section-title">Delivery locations</h2>
   <p class="section-copy">Save delivery and billing locations for orders and on-site service.</p>
   <div id="addressList" class="history-list"></div>
-
   <div class="subsection">
     <h3 id="addressFormTitle">Add delivery location</h3>
     <form id="addressForm">
@@ -125,5 +156,7 @@ main{padding:34px 0 76px}.profile-head{display:flex;align-items:center;gap:16px;
 </section>
 
 <p id="hubStatus" role="status" aria-live="polite"></p>
-</div></main>
+<footer class="account-foot"><a href="legal.html">Legal, privacy & customer policies</a></footer>
+</div>
+</main>
 </body></html>
