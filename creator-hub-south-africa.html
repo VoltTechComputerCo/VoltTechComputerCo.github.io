@@ -51,7 +51,7 @@ footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;colo
 </header>
 
 <section class="hub-card" id="live">
-<div class="hub-head"><div><div class="tag">// LIVE NOW</div><h2>South Africa is live.</h2></div><span>Choose a creator to switch the player</span></div>
+<div class="hub-head"><div><div class="tag">// LIVE NOW</div><h2>South Africa is live.</h2></div><span>Featured creator rotates with every live-feed refresh · tap any creator to switch</span></div>
 <div class="stream-layout">
 <div class="player-frame">
 <div class="player-video" id="playerVideo"><div class="player-placeholder">Checking the live feed…</div></div>
@@ -76,6 +76,7 @@ footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;colo
 
 <script>
 (function(){
+const REFRESH_MS=5*60*1000;
 const liveCount=document.getElementById('liveCount');
 const trackedCount=document.getElementById('trackedCount');
 const updatedAt=document.getElementById('updatedAt');
@@ -90,8 +91,11 @@ const profile=document.getElementById('creatorProfile');
 const avatar=document.getElementById('creatorAvatar');
 const profileName=document.getElementById('creatorProfileName');
 const bio=document.getElementById('creatorBio');
+
 let creators=[];
 let selected=null;
+let lastAutoFeatured='';
+let featureQueue=[];
 
 function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function twitchUrl(s){return 'https://www.twitch.tv/'+encodeURIComponent(s.login)}
@@ -100,8 +104,38 @@ function shortTime(v){
  const d=new Date(v); if(Number.isNaN(d.getTime()))return 'unknown';
  return new Intl.RelativeTimeFormat('en',{numeric:'auto'}).format(Math.round((d-Date.now())/3600000),'hour');
 }
-function choose(s){
+function shuffle(items){
+ const a=[...items];
+ for(let i=a.length-1;i>0;i--){
+   const j=Math.floor(Math.random()*(i+1));
+   [a[i],a[j]]=[a[j],a[i]];
+ }
+ return a;
+}
+function refillFeatureQueue(live){
+ const current=lastAutoFeatured.toLowerCase();
+ const smaller=[...live].sort((a,b)=>(a.viewer_count||0)-(b.viewer_count||0));
+ const low=Math.max(1,Math.ceil(smaller.length*.6));
+ const lowerViewers=smaller.slice(0,low);
+ const others=smaller.slice(low);
+ featureQueue=[...shuffle(lowerViewers),...shuffle(others)].filter(s=>s.login.toLowerCase()!==current);
+}
+function nextFeatured(live){
+ if(!live.length)return null;
+ if(live.length===1)return live[0];
+ featureQueue=featureQueue.filter(q=>live.some(s=>s.login===q.login));
+ if(!featureQueue.length)refillFeatureQueue(live);
+ let next=featureQueue.shift()||live.find(s=>s.login!==lastAutoFeatured)||live[0];
+ if(next.login===lastAutoFeatured){
+   next=live.find(s=>s.login!==lastAutoFeatured)||next;
+ }
+ lastAutoFeatured=next.login;
+ return next;
+}
+function choose(s,auto=false){
+ if(!s)return;
  selected=s;
+ if(auto)lastAutoFeatured=s.login;
  document.querySelectorAll('.stream-choice').forEach(b=>b.classList.toggle('active',b.dataset.login===s.login));
  playerName.textContent=s.display_name||s.login;
  playerDetail.textContent=[s.game_name,s.viewer_count?Number(s.viewer_count).toLocaleString()+' viewers':''].filter(Boolean).join(' · ') || 'Twitch creator';
@@ -112,25 +146,39 @@ function choose(s){
  profileName.textContent=s.display_name||s.login;
  bio.textContent=s.description||'South African Twitch creator.';
  if(s.live){
-   const src='https://player.twitch.tv/?channel='+encodeURIComponent(s.login)+'&parent=volttechcomputerco.github.io&autoplay=false&muted=true';
-   playerVideo.innerHTML='<iframe title="'+esc(s.display_name||s.login)+' Twitch stream" src="'+src+'" allowfullscreen></iframe>';
+   const src='https://player.twitch.tv/?channel='+encodeURIComponent(s.login)+'&parent=volttechcomputerco.github.io&autoplay=true&muted=true';
+   playerVideo.innerHTML='<iframe title="'+esc(s.display_name||s.login)+' Twitch stream" src="'+src+'" allow="autoplay; fullscreen" allowfullscreen></iframe>';
  }else{
    playerVideo.innerHTML='<div class="player-placeholder">'+esc(s.display_name||s.login)+' is not live right now.<br>Open the channel on Twitch to follow their next stream.</div>';
  }
- try{if(typeof gtag==='function')gtag('event','creator_select',{creator:s.login,live:!!s.live})}catch(e){}
+ try{if(typeof gtag==='function')gtag('event','creator_select',{creator:s.login,live:!!s.live,automatic:!!auto})}catch(e){}
 }
-function renderLive(){
- const live=creators.filter(s=>s.live).sort((a,b)=>(b.viewer_count||0)-(a.viewer_count||0));
+function renderLive(autoRotate=true){
+ const live=creators.filter(s=>s.live);
  liveCount.textContent=live.length?live.length+' LIVE NOW':'NO TRACKED CREATORS LIVE RIGHT NOW';
+
  if(!live.length){
    liveList.innerHTML='<div class="stream-empty">No tracked creators are live right now. Browse recently active channels below.</div>';
    const recent=creators.find(s=>s.last_live_at)||creators[0];
-   if(recent)choose(recent);
+   if(recent)choose(recent,true);
    return;
  }
- liveList.innerHTML=live.slice(0,6).map(s=>'<button class="stream-choice" type="button" data-login="'+esc(s.login)+'"><span class="stream-choice-top"><b>'+esc(s.display_name||s.login)+'</b><span class="status">LIVE</span></span><span class="detail">'+esc([s.game_name,Number(s.viewer_count||0).toLocaleString()+' viewers'].filter(Boolean).join(' · '))+'</span></button>').join('');
- liveList.querySelectorAll('.stream-choice').forEach(btn=>btn.addEventListener('click',()=>{const s=creators.find(x=>x.login===btn.dataset.login);if(s)choose(s)}));
- choose(live[0]);
+
+ // Keep the side buttons familiar and useful, but do not make viewer count decide the main feature.
+ const sideLive=[...live].sort((a,b)=>(b.activity_score||0)-(a.activity_score||0)||(a.viewer_count||0)-(b.viewer_count||0));
+ liveList.innerHTML=sideLive.slice(0,6).map(s=>'<button class="stream-choice" type="button" data-login="'+esc(s.login)+'"><span class="stream-choice-top"><b>'+esc(s.display_name||s.login)+'</b><span class="status">LIVE</span></span><span class="detail">'+esc([s.game_name,Number(s.viewer_count||0).toLocaleString()+' viewers'].filter(Boolean).join(' · '))+'</span></button>').join('');
+ liveList.querySelectorAll('.stream-choice').forEach(btn=>btn.addEventListener('click',()=>{
+   const s=creators.find(x=>x.login===btn.dataset.login);
+   if(s)choose(s,false);
+ }));
+
+ if(autoRotate){
+   const featured=nextFeatured(live);
+   if(featured)choose(featured,true);
+ }else if(selected){
+   const refreshed=live.find(s=>s.login===selected.login);
+   if(refreshed)choose(refreshed,false);
+ }
 }
 function renderGrid(q=''){
  const term=q.trim().toLowerCase();
@@ -141,24 +189,29 @@ function renderGrid(q=''){
  const filtered=ordered.filter(s=>!term||(s.display_name||s.login).toLowerCase().includes(term)||(s.game_name||'').toLowerCase().includes(term));
  creatorGrid.innerHTML=filtered.slice(0,18).map(s=>'<a class="creator-card '+(s.live?'live':'')+'" href="'+twitchUrl(s)+'" target="_blank" rel="noopener"><img src="'+esc(s.profile_image_url||'logo-badge.png')+'" alt="" loading="lazy"><span><b>'+esc(s.display_name||s.login)+'</b><small>'+(s.live?'LIVE · '+esc(s.game_name||'Twitch'):('Last active '+esc(shortTime(s.last_live_at))))+'</small></span></a>').join('') || '<div class="stream-empty">No creators match that search.</div>';
 }
-fetch('sa-streamers-live.json?ts='+Date.now(),{cache:'no-store'})
-.then(r=>{if(!r.ok)throw new Error('feed');return r.json()})
-.then(data=>{
- creators=Array.isArray(data.streamers)?data.streamers:[];
- trackedCount.textContent=data.valid_count||data.tracked_count||creators.length;
- const d=new Date(data.generated_at);
- updatedAt.textContent=Number.isNaN(d.getTime())?'recently':d.toLocaleString('en-ZA',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
- renderLive();renderGrid();
-})
-.catch(()=>{
- liveCount.textContent='CREATOR FEED TEMPORARILY UNAVAILABLE';
- trackedCount.textContent='—';updatedAt.textContent='—';
- liveList.innerHTML='<div class="stream-empty">The live feed could not be loaded. You can still open Twitch or try again shortly.</div>';
- creatorGrid.innerHTML='<div class="stream-empty">Creator directory unavailable right now.</div>';
- playerVideo.innerHTML='<div class="player-placeholder">The creator feed is temporarily unavailable.</div>';
-});
+async function load(){
+ try{
+   const r=await fetch('sa-streamers-live.json?ts='+Date.now(),{cache:'no-store'});
+   if(!r.ok)throw new Error('feed');
+   const data=await r.json();
+   creators=Array.isArray(data.streamers)?data.streamers:[];
+   trackedCount.textContent=data.valid_count||data.tracked_count||creators.length;
+   const d=new Date(data.generated_at);
+   updatedAt.textContent=Number.isNaN(d.getTime())?'recently':d.toLocaleString('en-ZA',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
+   renderLive(true);
+   renderGrid(search.value);
+ }catch(e){
+   liveCount.textContent='CREATOR FEED TEMPORARILY UNAVAILABLE';
+   trackedCount.textContent='—';updatedAt.textContent='—';
+   liveList.innerHTML='<div class="stream-empty">The live feed could not be loaded. You can still open Twitch or try again shortly.</div>';
+   creatorGrid.innerHTML='<div class="stream-empty">Creator directory unavailable right now.</div>';
+   playerVideo.innerHTML='<div class="player-placeholder">The creator feed is temporarily unavailable.</div>';
+ }
+}
 search.addEventListener('input',()=>renderGrid(search.value));
 document.querySelectorAll('a[href*="discord.gg/"]').forEach(a=>a.addEventListener('click',()=>{try{if(typeof gtag==='function')gtag('event','discord_join_click',{page_path:location.pathname})}catch(e){}}));
+load();
+setInterval(load,REFRESH_MS);
 })();
 </script>
 </body></html>
