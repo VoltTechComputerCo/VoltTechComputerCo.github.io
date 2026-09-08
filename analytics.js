@@ -107,7 +107,7 @@ function initMobileNavigation(){
  const wrap=nav&&nav.querySelector('.wrap');
  if(!nav||!wrap)return;
 
- loadCSS('mobile-nav.css?v=2','mobile-nav');
+ loadCSS('mobile-nav.css?v=3','mobile-nav');
 
  const button=document.createElement('button');
  button.className='vt-mobile-menu-btn';
@@ -126,16 +126,16 @@ function initMobileNavigation(){
  drawer.id='vtMobileDrawer';
  drawer.setAttribute('aria-hidden','true');
  drawer.innerHTML=
-   '<div class="vt-mobile-drawer-head"><span>VoltTech navigation</span><b>Choose a destination</b></div>'+
+   '<div class="vt-mobile-drawer-head"><span>VoltTech navigation</span><b>Menu</b></div>'+
    '<div class="vt-mobile-links">'+
-     '<a class="vt-mobile-link home" href="index.html"><div class="vt-card-top"><small>01 · Home</small><span class="vt-card-mark">VT</span></div><strong>VoltTech Home</strong><em>PC help, tools & local tech support.</em></a>'+
-     '<a class="vt-mobile-link services" href="index.html#services"><div class="vt-card-top"><small>02 · Services</small><span class="vt-card-mark">+</span></div><strong>PC Services</strong><em>Repairs · upgrades · malware · Windows</em></a>'+
-     '<a class="vt-mobile-link primary scan" href="signal-scan.html"><div class="vt-card-top"><small>03 · Free Tool</small><span class="vt-card-mark">⌁</span></div><strong>Signal Scan</strong><em>Describe the problem. Get an estimate.</em><span class="vt-card-action">START SCAN →</span></a>'+
-     '<a class="vt-mobile-link creator" href="creator-hub-south-africa.html"><div class="vt-card-top"><small>04 · Creator Hub</small><span class="vt-live-pill"><i></i><b id="vtMenuLiveCount">LIVE</b></span></div><strong>South African Creators</strong><em id="vtMenuCreatorMeta">Checking who is live now…</em><div class="vt-creator-strip" id="vtMenuCreatorStrip"></div></a>'+
-     '<a class="vt-mobile-link streaming" href="streaming-setup-south-africa.html"><div class="vt-card-top"><small>05 · Streaming</small><span class="vt-card-mark">◉</span></div><strong>Technical Support</strong><em>OBS, audio, performance & stream setup.</em></a>'+
-     '<a class="vt-mobile-link account" href="account.html"><div class="vt-card-top"><small>06 · Account</small><span class="vt-card-mark">◎</span></div><strong>My Account</strong><em>Your VoltTech profile and tools.</em></a>'+
-     '<a class="vt-mobile-link contact" href="index.html#contact"><div class="vt-card-top"><small>07 · Contact</small><span class="vt-card-mark">↗</span></div><strong>Contact VoltTech</strong><em>WhatsApp or email — get help directly.</em></a>'+
-     '<a class="vt-mobile-link static" href="static.html"><div class="vt-card-top"><small>08 · Editorial</small><span class="vt-static-badge">STATIC</span></div><strong>Tech. Gaming. Hardware.</strong><em>News, analysis & enthusiast culture.</em><span class="vt-card-action">READ STATIC ↗</span></a>'+
+     '<a class="vt-mobile-link home" href="index.html"><span class="vt-card-image vt-image-logo"></span><div class="vt-card-copy"><small>Home</small><strong>VoltTech</strong><em>PC help, tools & support</em></div></a>'+
+     '<a class="vt-mobile-link services" href="index.html#services"><span class="vt-card-image vt-image-services"></span><div class="vt-card-copy"><small>Services</small><strong>PC Services</strong><em>Repair, upgrades & Windows</em></div></a>'+
+     '<a class="vt-mobile-link scan" href="signal-scan.html"><span class="vt-card-image vt-image-scan"></span><div class="vt-card-copy"><small>Free tool</small><strong>Signal Scan</strong><em>Diagnose & estimate</em></div></a>'+
+     '<a class="vt-mobile-link creator" href="creator-hub-south-africa.html"><div class="vt-creator-visual" id="vtMenuCreatorVisual"></div><div class="vt-card-copy"><div class="vt-creator-top"><small>Creator Hub</small><span class="vt-live-pill"><i></i><b id="vtMenuLiveCount">LIVE</b></span></div><strong>South African Creators</strong><em id="vtMenuCreatorMeta">Checking live creators…</em><div class="vt-creator-strip" id="vtMenuCreatorStrip"></div></div></a>'+
+     '<a class="vt-mobile-link streaming" href="streaming-setup-south-africa.html"><span class="vt-card-image vt-image-streaming"></span><div class="vt-card-copy"><small>Streaming</small><strong>Tech Support</strong><em>OBS, audio & performance</em></div></a>'+
+     '<a class="vt-mobile-link account" href="account.html"><span class="vt-card-image vt-image-account"></span><div class="vt-card-copy"><small>Account</small><strong>My Account</strong><em>Your VoltTech profile</em></div></a>'+
+     '<a class="vt-mobile-link contact" href="index.html#contact"><span class="vt-card-image vt-image-contact"></span><div class="vt-card-copy"><small>Contact</small><strong>Get Help</strong><em>WhatsApp or email</em></div></a>'+
+     '<a class="vt-mobile-link static" href="static.html"><span class="vt-card-image vt-image-static"></span><div class="vt-card-copy"><small>Editorial</small><strong>STATIC</strong><em>Tech, gaming & hardware</em></div></a>'+
    '</div>';
 
  document.body.append(backdrop,drawer);
@@ -144,6 +144,7 @@ function initMobileNavigation(){
    const count=document.getElementById('vtMenuLiveCount');
    const meta=document.getElementById('vtMenuCreatorMeta');
    const strip=document.getElementById('vtMenuCreatorStrip');
+   const visual=document.getElementById('vtMenuCreatorVisual');
    if(!count||!meta||!strip)return;
    try{
      const res=await fetch('sa-streamers-live.json?menu=1',{cache:'no-store'});
@@ -156,6 +157,12 @@ function initMobileNavigation(){
        ? live.length+' creator'+(live.length===1?' is':'s are')+' live · '+(data.valid_count||creators.length)+' tracked'
        : 'No one live right now · '+(data.valid_count||creators.length)+' creators tracked';
      strip.innerHTML='';
+     if(visual){
+       const featured=live[0]||creators[0];
+       if(featured&&featured.profile_image_url){
+         visual.style.backgroundImage='linear-gradient(90deg,rgba(12,8,16,.02),rgba(12,8,16,.78)),url("'+featured.profile_image_url.replace(/"/g,'%22')+'")';
+       }
+     }
      live.slice(0,4).forEach(s=>{
        const img=document.createElement('img');
        img.src=s.profile_image_url;
