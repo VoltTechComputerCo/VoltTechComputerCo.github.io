@@ -101,3 +101,83 @@
   #contact .contact span{font-size:10px;overflow-wrap:anywhere}
   #contact .contact a{font-size:9px;white-space:nowrap}
 }
+
+
+/* Final mobile polish: readability, tighter spacing, cleaner contact wrapping */
+@media(max-width:560px){
+  /* Slightly tighter lower-page panels */
+  #services ~ section{
+    margin:10px 0;
+    padding:19px 16px;
+  }
+
+  #services ~ section h2{
+    margin:7px 0 10px;
+  }
+
+  /* Improve lower-page body-copy readability */
+  #services ~ section .copy{
+    color:#9fb5b0;
+    font-size:11.5px;
+    line-height:1.58;
+  }
+
+  /* Improve capability-card readability */
+  .trust{
+    min-height:104px;
+    padding:12px 11px 11px;
+  }
+
+  .trust b{
+    font-size:11.5px;
+    line-height:1.28;
+  }
+
+  .trust span{
+    color:#8da49f!important;
+    font-size:9.5px!important;
+    line-height:1.46!important;
+  }
+
+  /* Keep the grid compact */
+  .trust-grid{
+    gap:6px!important;
+    margin-top:16px!important;
+  }
+
+  /* Cleaner contact layout */
+  #contact .contact{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+    padding:12px 11px;
+    gap:8px;
+  }
+
+  #contact .contact span{
+    min-width:0;
+    font-size:10px;
+    line-height:1.35;
+    overflow-wrap:anywhere;
+    word-break:normal;
+  }
+
+  #contact .contact a{
+    font-size:8.5px;
+    white-space:nowrap;
+  }
+
+  /* Let the email sit naturally without splitting @gmail awkwardly */
+  #contact .contact:nth-of-type(2){
+    grid-template-columns:1fr;
+  }
+
+  #contact .contact:nth-of-type(2) a{
+    justify-self:start;
+    margin-top:2px;
+  }
+
+  footer{
+    padding-top:22px;
+  }
+}
