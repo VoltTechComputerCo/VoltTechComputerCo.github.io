@@ -205,3 +205,15 @@
   }
   .creator-promo{background:#0d1517}
 }
+
+/* VoltTech diagnostic process */
+.diagnostic-process{padding-bottom:27px!important}
+.diagnostic-flow{position:relative;margin-top:18px}
+.diagnostic-flow::before{content:"";position:absolute;left:18px;top:20px;bottom:20px;width:1px;background:linear-gradient(var(--teal),rgba(47,230,200,.12))}
+.diagnostic-step{position:relative;display:grid;grid-template-columns:37px 1fr;gap:13px;padding:11px 0;color:inherit}
+.diagnostic-number{position:relative;z-index:2;display:grid;place-items:center;width:37px;height:37px;border:1px solid rgba(47,230,200,.45);background:#071110;color:var(--teal);font:700 9px var(--mono);letter-spacing:.08em}
+.diagnostic-step>div{padding-top:1px}.diagnostic-step b{display:block;color:var(--teal);font:700 8px var(--mono);letter-spacing:.16em;margin-bottom:2px}.diagnostic-step strong{display:block;color:#e7f1ee;font-size:13px;line-height:1.25}.diagnostic-step p{margin-top:3px;color:#8da49f;font-size:9.5px;line-height:1.45}
+.diagnostic-triage .diagnostic-number{background:var(--teal);color:#04120f}.diagnostic-triage strong::after{content:" ↗";color:var(--teal);font:10px var(--mono)}
+.diagnostic-tools{margin-top:12px;padding:11px 12px;border:1px solid rgba(47,230,200,.16);background:rgba(4,10,10,.48)}.diagnostic-tools span{display:block;color:#6e9891;font:700 7px var(--mono);letter-spacing:.15em;margin-bottom:4px}.diagnostic-tools p{color:#a4b8b4;font:8.5px var(--mono);line-height:1.55}
+.diagnostic-rule{margin-top:13px;color:#e7f1ee;font-size:14px;font-weight:700;letter-spacing:-.02em}.diagnostic-rule span{color:var(--teal)}
+@media(min-width:700px){.diagnostic-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.diagnostic-flow::before{left:18px;right:18px;top:18px;bottom:auto;width:auto;height:1px}.diagnostic-step{display:block;padding:0}.diagnostic-step>div{padding-top:11px}}
