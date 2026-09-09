@@ -197,6 +197,59 @@ function initMobileNavigation(){
  document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false)});
  window.addEventListener('resize',()=>{if(innerWidth>700)setOpen(false)});
 }
+
+function enhanceHomepageBrand(){
+ if(location.pathname!=='/'&&location.pathname!=='/index.html')return;
+ const hero=document.querySelector('.hero');
+ if(!hero||hero.querySelector('.vt-hero-brand'))return;
+
+ const style=document.createElement('style');
+ style.id='vt-home-brand-style';
+ style.textContent=`
+ .hero{position:relative;overflow:hidden}
+ .vt-hero-brand{position:relative;z-index:2;display:flex;align-items:center;gap:11px;width:max-content;margin-bottom:20px}
+ .vt-hero-brand-mark{width:38px;height:38px;object-fit:contain;filter:drop-shadow(0 0 14px rgba(47,230,200,.12))}
+ .vt-hero-brand-copy{display:flex;flex-direction:column;line-height:1}
+ .vt-hero-brand-name{font:700 18px 'Space Grotesk',sans-serif;letter-spacing:-.035em;color:#f4f8f7}
+ .vt-hero-brand-name .volt{color:#2fe6c8}
+ .vt-hero-brand-company{margin-top:5px;font:700 7.5px 'JetBrains Mono',monospace;letter-spacing:.28em;color:#78938f;text-transform:uppercase}
+ .vt-hero-watermark{position:absolute;z-index:0;right:-58px;top:13px;width:235px;height:235px;object-fit:contain;opacity:.055;pointer-events:none;user-select:none}
+ .hero>.eyebrow,.hero>h1,.hero>.sub{position:relative;z-index:1}
+ @media(max-width:560px){
+   .hero{padding-top:46px}
+   .vt-hero-brand{margin-bottom:18px}
+   .vt-hero-brand-mark{width:34px;height:34px}
+   .vt-hero-brand-name{font-size:17px}
+   .vt-hero-watermark{width:190px;height:190px;right:-62px;top:20px;opacity:.05}
+ }
+ `;
+ document.head.appendChild(style);
+
+ const brand=document.createElement('div');
+ brand.className='vt-hero-brand';
+ brand.setAttribute('aria-label','VoltTech Computer Co.');
+ brand.innerHTML=
+   '<img class="vt-hero-brand-mark" src="brand/VoltTech_Emblem_Transparent.png" alt="" aria-hidden="true">'+
+   '<span class="vt-hero-brand-copy">'+
+     '<span class="vt-hero-brand-name"><span class="volt">VOLT</span>TECH</span>'+
+     '<span class="vt-hero-brand-company">COMPUTER CO.</span>'+
+   '</span>';
+
+ const watermark=document.createElement('img');
+ watermark.className='vt-hero-watermark';
+ watermark.src='brand/VoltTech_Emblem_Transparent.png';
+ watermark.alt='';
+ watermark.setAttribute('aria-hidden','true');
+
+ const eyebrow=hero.querySelector('.eyebrow');
+ if(eyebrow)hero.insertBefore(brand,eyebrow);
+ else hero.prepend(brand);
+ hero.appendChild(watermark);
+
+ const h1=hero.querySelector('h1');
+ if(h1)h1.innerHTML='PC Repair in Pretoria. <span>Done properly.</span>';
+}
+
 function init(){
  installAppMetadata();
  addContactIcons();
@@ -205,6 +258,7 @@ function init(){
  if(cls)document.body.classList.add(cls);
  loadVisualCSS();
  enhanceWhatsAppLinks();
+ enhanceHomepageBrand();
  initMobileNavigation();
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
