@@ -186,6 +186,28 @@
   opacity:1!important;
 }
 
+
+/* Hero kicker: remove decorative lead-in line and give the text full mobile width */
+.hero-kicker::before,
+.hero .eyebrow::before{
+  display:none!important;
+  content:none!important;
+}
+.hero-kicker,
+.hero .eyebrow{
+  padding-left:0!important;
+  margin-left:0!important;
+}
+@media(max-width:560px){
+  .hero-kicker,
+  .hero .eyebrow{
+    width:100%!important;
+    max-width:none!important;
+    line-height:1.45!important;
+    letter-spacing:.13em!important;
+  }
+}
+
 </style>
 <link rel="stylesheet" href="service-backgrounds.css">
 </head>
