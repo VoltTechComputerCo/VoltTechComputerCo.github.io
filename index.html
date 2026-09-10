@@ -99,6 +99,38 @@
 }
 .diag-card-head .diag-step{position:relative;z-index:2}
 
+
+/* Diagnostic brand marks — high-contrast treatment for dark cards */
+.diag-card-head img{
+  opacity:1!important;
+  filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(var(--dcrgb),.42))!important;
+}
+.diag-aida .diag-card-head img{
+  filter:grayscale(1) brightness(0) invert(1) drop-shadow(0 0 8px rgba(229,57,53,.5))!important;
+}
+.diag-3dmark .diag-card-head img{
+  filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(53,167,255,.55))!important;
+}
+.diag-memtest .diag-card-head img{
+  filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,157,31,.48))!important;
+}
+.cinebench-mark{
+  color:#fff!important;
+  text-shadow:0 0 10px rgba(255,91,87,.5)!important;
+}
+.crystal-mark{
+  color:#f5ffeF!important;
+  text-shadow:0 0 10px rgba(117,232,59,.55)!important;
+}
+.diag-card-head::after{
+  opacity:1!important;
+  background:linear-gradient(270deg,
+    rgba(var(--dcrgb),.36) 0%,
+    rgba(var(--dcrgb),.18) 34%,
+    rgba(var(--dcrgb),.055) 68%,
+    transparent 100%)!important;
+}
+
 </style>
 <link rel="stylesheet" href="service-backgrounds.css">
 </head>
