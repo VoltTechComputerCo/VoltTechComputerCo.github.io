@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T13:39:31.254858Z",
+  "generated_at": "2026-09-10T13:51:52.781139Z",
   "tracked_count": 219,
   "valid_count": 218,
   "streamers": [
@@ -9,11 +9,11 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/20d85e3d-57a0-4b6f-85ae-9112bc1912e4-profile_image-300x300.png",
       "description": "Jumper Streamer with the occasional main games like Warframe, Overwatch and GTA RP.Founder of ZA Gaming Alliance (ZAGA)Gamer since 1996 (Yes Im old....ish)Everyones secret lover.",
       "live": true,
-      "viewer_count": 11,
+      "viewer_count": 9,
       "game_name": "Grand Theft Auto V",
       "title": "ZA/ Rematch, Overwatch and more",
       "started_at": "2026-09-10T07:49:20Z",
-      "last_live_at": "2026-09-10T13:39:31.254858Z",
+      "last_live_at": "2026-09-10T13:51:52.781139Z",
       "activity_score": 100.0
     },
     {
@@ -22,12 +22,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dd8b5abe-e947-4d30-bfd1-2682a123a468-profile_image-300x300.png",
       "description": "Hey there gamers and friends! I'm Spyro, your friendly neighborhood streamer. Join me as we dive into epic adventures, conquer challenges and share some laughs along the way! Business Enquiries: spyro@expansion.gg",
       "live": true,
-      "viewer_count": 62,
+      "viewer_count": 56,
       "game_name": "Valheim",
       "title": "Valheim 1.0 Release Day! Fresh Start And New Server!",
       "started_at": "2026-09-10T08:22:23Z",
-      "last_live_at": "2026-09-10T13:39:31.254858Z",
-      "activity_score": 97.26
+      "last_live_at": "2026-09-10T13:51:52.781139Z",
+      "activity_score": 99.42
     },
     {
       "login": "zlorbz",
@@ -39,8 +39,8 @@
       "game_name": "Apex Legends",
       "title": "movement chudling/part time streamer",
       "started_at": "2026-09-10T11:09:22Z",
-      "last_live_at": "2026-09-10T13:39:31.254858Z",
-      "activity_score": 65.83
+      "last_live_at": "2026-09-10T13:51:52.781139Z",
+      "activity_score": 69.88
     },
     {
       "login": "virtualgemma",
@@ -48,12 +48,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/6d354de9-cda5-4f1e-aa81-8b1e86d62b2b-profile_image-300x300.png",
       "description": "VARIETY QUEEN. MARVEL RIVALS NO.1 RAGEBAITER. 10 X MASTER IN APEX LEGENDS, EX R6 SIEGE COMPETITIVE PLAYER. GOLD GUN OWNER IN COD. VALORANT BETA PLAYER. PRO MNK SOULS GAMER AND ELDEN LORD. ACTUAL GOD OF WAR. DVA MAIN. MARBLES CHAMPION. ALLERGIC TO GRASS. MOTHER OF BABY GRINCH. FOUNDER OF THE GEMPIRE.",
       "live": true,
-      "viewer_count": 326,
+      "viewer_count": 315,
       "game_name": "Marvel Rivals",
       "title": "[DROPS] MR EARLY ACCESS - S10 WAITING ROOM - I'm away next week on !vacay !SUBTEMBER | !socials !wishlist #MarvelRivals #GorrTheGodButcher",
       "started_at": "2026-09-10T11:12:04Z",
-      "last_live_at": "2026-09-10T13:39:31.254858Z",
-      "activity_score": 62.27
+      "last_live_at": "2026-09-10T13:51:52.781139Z",
+      "activity_score": 66.53
     },
     {
       "login": "dead_oryx",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T13:08:10.668603Z",
-      "activity_score": 88.36
+      "activity_score": 83.06
     },
     {
       "login": "derpy_ruby",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T11:54:58.940948Z",
-      "activity_score": 59.31
+      "activity_score": 55.75
     },
     {
       "login": "caramel",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T23:55:19.302106Z",
-      "activity_score": 3.99
+      "activity_score": 3.75
     },
     {
       "login": "agriopsgaming",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T21:41:48.508258Z",
-      "activity_score": 2.14
+      "activity_score": 2.01
     },
     {
       "login": "choppa_herrlof",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T20:59:16.476174Z",
-      "activity_score": 1.78
+      "activity_score": 1.67
     },
     {
       "login": "azuracub",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T21:14:24.867721Z",
-      "activity_score": 1.69
+      "activity_score": 1.59
     },
     {
       "login": "thelemons",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T20:39:14.540521Z",
-      "activity_score": 1.23
+      "activity_score": 1.16
     },
     {
       "login": "zulumachinegaming",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T20:59:16.476174Z",
-      "activity_score": 1.17
+      "activity_score": 1.1
     },
     {
       "login": "sittingduck01",
@@ -170,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T18:10:31.607110Z",
-      "activity_score": 0.67
+      "activity_score": 0.63
     },
     {
       "login": "blu3bee",
@@ -183,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T19:07:54.583489Z",
-      "activity_score": 0.67
+      "activity_score": 0.63
     },
     {
       "login": "syernide",
@@ -196,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T17:42:24.457679Z",
-      "activity_score": 0.55
+      "activity_score": 0.52
     },
     {
       "login": "deathsjokerst",
@@ -209,7 +209,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T16:33:08.559826Z",
-      "activity_score": 0.43
+      "activity_score": 0.4
     },
     {
       "login": "viking_237",
@@ -222,7 +222,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T16:16:14.635918Z",
-      "activity_score": 0.36
+      "activity_score": 0.34
     },
     {
       "login": "danatdawn",
@@ -235,7 +235,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T15:16:41.449867Z",
-      "activity_score": 0.3
+      "activity_score": 0.28
     },
     {
       "login": "waldoliveza",
@@ -248,7 +248,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T18:10:31.607110Z",
-      "activity_score": 0.28
+      "activity_score": 0.26
     },
     {
       "login": "cassieroseza",
@@ -261,7 +261,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T16:33:08.559826Z",
-      "activity_score": 0.22
+      "activity_score": 0.21
     },
     {
       "login": "asananica81",
@@ -274,7 +274,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T13:43:42.393951Z",
-      "activity_score": 0.16
+      "activity_score": 0.15
     },
     {
       "login": "zaffa_geek",
