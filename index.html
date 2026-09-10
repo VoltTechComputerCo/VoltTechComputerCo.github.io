@@ -208,11 +208,30 @@
   }
 }
 
+
+/* Creator Hub is a secondary discovery destination, after the support journey */
+#contact + .creator-promo{
+  margin-top:24px;
+  margin-bottom:44px;
+}
+
+
+/* Dedicated Creator Hub pill beside the mobile Menu control */
+.creator-hub-nav-pill{
+  margin-left:auto;min-height:40px;padding:0 12px;display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(157,123,255,.62);border-radius:999px;
+  background:linear-gradient(135deg,rgba(126,87,194,.14),rgba(47,230,200,.04));
+  color:#ddd2ff;font:700 8px var(--mono);letter-spacing:.09em;white-space:nowrap
+}
+.creator-hub-nav-pill b{color:#a98cff;font-weight:700}
+@media(min-width:701px){.creator-hub-nav-pill{display:none}}
+@media(max-width:420px){.creator-hub-nav-pill span{display:none}.creator-hub-nav-pill{padding:0 11px}}
+
 </style>
 <link rel="stylesheet" href="service-backgrounds.css">
 </head>
 <body>
-<nav><div class="wrap"><a class="brand" href="/" aria-label="VoltTech Computer Co. home"><img src="logo-badge.png" alt=""><span class="brand-text"><span class="v">Volt</span>Tech <span class="c">Computer Co.</span></span></a><div class="navlinks"><a href="#services">Services</a><a class="hub-link" href="creator-hub-south-africa.html">Creator Hub</a><a class="static-link" href="static.html">STATIC ↗</a><a class="account-link" href="account.html">Account</a><a href="#contact">Contact</a></div></div></nav>
+<nav><div class="wrap"><a class="brand" href="/" aria-label="VoltTech Computer Co. home"><img src="logo-badge.png" alt=""><span class="brand-text"><span class="v">Volt</span>Tech <span class="c">Computer Co.</span></span></a><a class="creator-hub-nav-pill" href="creator-hub-south-africa.html" aria-label="Open Creator Hub"><span>CREATOR</span> <b>HUB</b></a><div class="navlinks"><a href="#services">Services</a><a class="hub-link" href="creator-hub-south-africa.html">Creator Hub</a><a class="static-link" href="static.html">STATIC ↗</a><a class="account-link" href="account.html">Account</a><a href="#contact">Contact</a></div></div></nav>
 <div class="wrap">
 <header class="hero"><div class="hero-shell"><div class="hero-copy"><div class="hero-kicker">PC systems · performance · creator tech</div><h1>Technical support. <span>Without the guesswork.</span></h1><p class="sub">PC diagnostics and repair from Pretoria, with nationwide courier-in and remote creator support across South Africa.</p><div class="hero-actions"><a class="btn primary" href="signal-scan.html">⚡ Run Signal Scan</a><a class="btn secondary" href="#services">Explore services</a></div></div></div><div class="scope-grid" aria-label="VoltTech service coverage"><a class="scope-card" href="#services"><small>PC & Hardware Support</small><b>Nationwide South Africa</b><span>Local service in Pretoria · courier-in support nationwide</span></a><a class="scope-card" href="streaming-setup-south-africa.html"><small>Remote Creator Support</small><b>Nationwide South Africa</b><span>OBS · encoding · audio · stream performance</span></a></div></header>
 <section id="services"><div class="label">QUICK ACCESS</div><h2>What do you need help with?</h2><div class="services">
@@ -224,7 +243,6 @@
 <a class="service signal" href="signal-scan.html"><small>06 · DIAGNOSTIC</small><h3>Signal Scan</h3><p>Free symptom-based diagnostic estimate before you contact VoltTech.</p><span class="card-link">Run free scan →</span></a>
 <a class="service streaming" href="streaming-setup-south-africa.html"><small>07 · STREAMING</small><h3>Streaming</h3><p>OBS, encoder, audio and stream-performance support across South Africa.</p><span class="card-link">Explore support →</span></a>
 </div></section>
-<a class="creator-promo" id="creatorHubPromo" href="creator-hub-south-africa.html"><div class="creator-live"><span class="creator-dot"></span><span id="creatorLiveCount">South African Creator Hub</span></div><h2>South Africa is live.</h2><p>Discover South African Twitch creators streaming right now.</p><div class="creator-list" id="creatorLiveList"><span class="creator-empty">Checking who's live…</span></div><span class="creator-enter">Enter Creator Hub →</span></a>
 
 <section class="diagnostic-cards" aria-labelledby="diagnostic-cards-title">
   <div class="label">OUR TOOLKIT</div>
@@ -315,6 +333,8 @@
 <section><div class="label">WHY VOLTTECH</div><h2>Diagnosis before replacement.</h2><p class="copy">Thermals, power, storage health, memory stability, drivers and system behaviour can overlap. VoltTech focuses on identifying the actual fault or bottleneck before recommending work.</p><div class="trust-grid" style="margin-top:20px"><div class="trust"><b>Hands-on diagnostics</b><span>Fault isolation before parts are recommended.</span></div><div class="trust"><b>Benchmark where useful</b><span>Before/after measurements for performance work and upgrades.</span></div><div class="trust"><b>Clear quote scope</b><span>Service/labour and replacement hardware are separated.</span></div><div class="trust"><b>National reach</b><span>Pretoria-based local service with courier-in and remote support available across South Africa.</span></div></div></section>
 <section><div class="label">SOUTH AFRICA · LOCAL + NATIONWIDE</div><h2>PC support across South Africa</h2><p class="copy">VoltTech supports customers across South Africa with PC diagnostics, technical support and eligible remote services. Based in Pretoria, we also provide local support across the surrounding area, while courier-in options make selected hardware services accessible nationwide.</p></section>
 <section id="contact"><div class="label">GET IN TOUCH</div><h2>Contact</h2><div class="contact"><span>WhatsApp · +27 61 843 5775</span><a href="https://wa.me/27618435775">Message →</a></div><div class="contact"><span>volttechcomputerco@gmail.com</span><a href="mailto:volttechcomputerco@gmail.com">Email →</a></div></section>
+
+<a class="creator-promo" id="creatorHubPromo" href="creator-hub-south-africa.html"><div class="creator-live"><span class="creator-dot"></span><span id="creatorLiveCount">FOR SOUTH AFRICAN CREATORS</span></div><h2>See who’s live.</h2><p>Explore the Creator Hub and discover South African Twitch creators streaming right now.</p><div class="creator-list" id="creatorLiveList"><span class="creator-empty">Checking who's live…</span></div><span class="creator-enter">Enter Creator Hub →</span></a>
 </div>
 <footer>⚡ VOLTTECH COMPUTER CO. · SOUTH AFRICA · © 2026 · <a href="creator-hub-south-africa.html">Creator Hub</a> · <a href="static.html">STATIC</a> · <a href="privacy-policy.html">Privacy</a></footer>
 <script>
