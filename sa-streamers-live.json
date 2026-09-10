@@ -1,33 +1,20 @@
 {
-  "generated_at": "2026-09-10T13:51:52.781139Z",
+  "generated_at": "2026-09-10T14:07:18.955380Z",
   "tracked_count": 219,
   "valid_count": 218,
   "streamers": [
-    {
-      "login": "thejudgeza",
-      "display_name": "TheJudgeZA",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/20d85e3d-57a0-4b6f-85ae-9112bc1912e4-profile_image-300x300.png",
-      "description": "Jumper Streamer with the occasional main games like Warframe, Overwatch and GTA RP.Founder of ZA Gaming Alliance (ZAGA)Gamer since 1996 (Yes Im old....ish)Everyones secret lover.",
-      "live": true,
-      "viewer_count": 9,
-      "game_name": "Grand Theft Auto V",
-      "title": "ZA/ Rematch, Overwatch and more",
-      "started_at": "2026-09-10T07:49:20Z",
-      "last_live_at": "2026-09-10T13:51:52.781139Z",
-      "activity_score": 100.0
-    },
     {
       "login": "spyro_za",
       "display_name": "Spyro_ZA",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dd8b5abe-e947-4d30-bfd1-2682a123a468-profile_image-300x300.png",
       "description": "Hey there gamers and friends! I'm Spyro, your friendly neighborhood streamer. Join me as we dive into epic adventures, conquer challenges and share some laughs along the way! Business Enquiries: spyro@expansion.gg",
       "live": true,
-      "viewer_count": 56,
+      "viewer_count": 52,
       "game_name": "Valheim",
       "title": "Valheim 1.0 Release Day! Fresh Start And New Server!",
       "started_at": "2026-09-10T08:22:23Z",
-      "last_live_at": "2026-09-10T13:51:52.781139Z",
-      "activity_score": 99.42
+      "last_live_at": "2026-09-10T14:07:18.955380Z",
+      "activity_score": 100.0
     },
     {
       "login": "zlorbz",
@@ -39,8 +26,8 @@
       "game_name": "Apex Legends",
       "title": "movement chudling/part time streamer",
       "started_at": "2026-09-10T11:09:22Z",
-      "last_live_at": "2026-09-10T13:51:52.781139Z",
-      "activity_score": 69.88
+      "last_live_at": "2026-09-10T14:07:18.955380Z",
+      "activity_score": 73.69
     },
     {
       "login": "virtualgemma",
@@ -48,12 +35,51 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/6d354de9-cda5-4f1e-aa81-8b1e86d62b2b-profile_image-300x300.png",
       "description": "VARIETY QUEEN. MARVEL RIVALS NO.1 RAGEBAITER. 10 X MASTER IN APEX LEGENDS, EX R6 SIEGE COMPETITIVE PLAYER. GOLD GUN OWNER IN COD. VALORANT BETA PLAYER. PRO MNK SOULS GAMER AND ELDEN LORD. ACTUAL GOD OF WAR. DVA MAIN. MARBLES CHAMPION. ALLERGIC TO GRASS. MOTHER OF BABY GRINCH. FOUNDER OF THE GEMPIRE.",
       "live": true,
-      "viewer_count": 315,
+      "viewer_count": 350,
       "game_name": "Marvel Rivals",
       "title": "[DROPS] MR EARLY ACCESS - S10 WAITING ROOM - I'm away next week on !vacay !SUBTEMBER | !socials !wishlist #MarvelRivals #GorrTheGodButcher",
       "started_at": "2026-09-10T11:12:04Z",
+      "last_live_at": "2026-09-10T14:07:18.955380Z",
+      "activity_score": 70.54
+    },
+    {
+      "login": "deathsjokerst",
+      "display_name": "DeathsJokerST",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/47732dbd-fe89-4f75-9f67-db706ce59e36-profile_image-300x300.png",
+      "description": "South African gamer....I play FPS games  mainly and enjoy a variety of other games from the Witcher to total war. I like various topics of discussion so bring your best questions and facts to chat about, no matter the topic! Disclaimer: All jokes made on stream are JOKES",
+      "live": true,
+      "viewer_count": 5,
+      "game_name": "Just Chatting",
+      "title": "The precipice awaits... (very hard every 20 deaths =sour candy) |!clip |!discord | !lurk | 18+",
+      "started_at": "2026-09-10T13:55:01Z",
+      "last_live_at": "2026-09-10T14:07:18.955380Z",
+      "activity_score": 8.38
+    },
+    {
+      "login": "viking_237",
+      "display_name": "Viking_237",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dfc3b3de-bf8b-46aa-ab5d-f8627259da28-profile_image-300x300.png",
+      "description": "Hey!! I'm a full-time variety streamer I love first person shooters, rpg games and survival games. Jump in, say whats up and meet the coolest Horde you will ever encounter :D You can call me Viking or Vike for short :D Even just V",
+      "live": true,
+      "viewer_count": 5,
+      "game_name": "Warhammer 40,000: Space Marine II",
+      "title": "Lets chill for a bit :D | +18 | !socials",
+      "started_at": "2026-09-10T13:55:47Z",
+      "last_live_at": "2026-09-10T14:07:18.955380Z",
+      "activity_score": 8.32
+    },
+    {
+      "login": "thejudgeza",
+      "display_name": "TheJudgeZA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/20d85e3d-57a0-4b6f-85ae-9112bc1912e4-profile_image-300x300.png",
+      "description": "Jumper Streamer with the occasional main games like Warframe, Overwatch and GTA RP.Founder of ZA Gaming Alliance (ZAGA)Gamer since 1996 (Yes Im old....ish)Everyones secret lover.",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
       "last_live_at": "2026-09-10T13:51:52.781139Z",
-      "activity_score": 66.53
+      "activity_score": 94.0
     },
     {
       "login": "dead_oryx",
@@ -66,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T13:08:10.668603Z",
-      "activity_score": 83.06
+      "activity_score": 78.08
     },
     {
       "login": "derpy_ruby",
@@ -79,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T11:54:58.940948Z",
-      "activity_score": 55.75
+      "activity_score": 52.4
     },
     {
       "login": "caramel",
@@ -92,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T23:55:19.302106Z",
-      "activity_score": 3.75
+      "activity_score": 3.52
     },
     {
       "login": "agriopsgaming",
@@ -105,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T21:41:48.508258Z",
-      "activity_score": 2.01
+      "activity_score": 1.89
     },
     {
       "login": "choppa_herrlof",
@@ -118,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T20:59:16.476174Z",
-      "activity_score": 1.67
+      "activity_score": 1.57
     },
     {
       "login": "azuracub",
@@ -131,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T21:14:24.867721Z",
-      "activity_score": 1.59
+      "activity_score": 1.49
     },
     {
       "login": "thelemons",
@@ -144,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T20:39:14.540521Z",
-      "activity_score": 1.16
+      "activity_score": 1.09
     },
     {
       "login": "zulumachinegaming",
@@ -157,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T20:59:16.476174Z",
-      "activity_score": 1.1
+      "activity_score": 1.03
     },
     {
       "login": "sittingduck01",
@@ -170,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T18:10:31.607110Z",
-      "activity_score": 0.63
+      "activity_score": 0.59
     },
     {
       "login": "blu3bee",
@@ -183,7 +209,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T19:07:54.583489Z",
-      "activity_score": 0.63
+      "activity_score": 0.59
     },
     {
       "login": "syernide",
@@ -196,33 +222,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T17:42:24.457679Z",
-      "activity_score": 0.52
-    },
-    {
-      "login": "deathsjokerst",
-      "display_name": "DeathsJokerST",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/47732dbd-fe89-4f75-9f67-db706ce59e36-profile_image-300x300.png",
-      "description": "South African gamer....I play FPS games  mainly and enjoy a variety of other games from the Witcher to total war. I like various topics of discussion so bring your best questions and facts to chat about, no matter the topic! Disclaimer: All jokes made on stream are JOKES",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": "2026-09-09T16:33:08.559826Z",
-      "activity_score": 0.4
-    },
-    {
-      "login": "viking_237",
-      "display_name": "Viking_237",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dfc3b3de-bf8b-46aa-ab5d-f8627259da28-profile_image-300x300.png",
-      "description": "Hey!! I'm a full-time variety streamer I love first person shooters, rpg games and survival games. Jump in, say whats up and meet the coolest Horde you will ever encounter :D You can call me Viking or Vike for short :D Even just V",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": "2026-09-09T16:16:14.635918Z",
-      "activity_score": 0.34
+      "activity_score": 0.49
     },
     {
       "login": "danatdawn",
@@ -235,7 +235,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T15:16:41.449867Z",
-      "activity_score": 0.28
+      "activity_score": 0.26
     },
     {
       "login": "waldoliveza",
@@ -248,7 +248,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T18:10:31.607110Z",
-      "activity_score": 0.26
+      "activity_score": 0.24
     },
     {
       "login": "cassieroseza",
@@ -261,7 +261,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T16:33:08.559826Z",
-      "activity_score": 0.21
+      "activity_score": 0.2
     },
     {
       "login": "asananica81",
@@ -274,7 +274,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T13:43:42.393951Z",
-      "activity_score": 0.15
+      "activity_score": 0.14
     },
     {
       "login": "zaffa_geek",
