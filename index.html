@@ -29,6 +29,27 @@
 :root{--bg:#05080a;--panel:#0d1517;--line:#172526;--teal:#2fe6c8;--teal2:#1a6e62;--text:#e7f1ee;--muted:#5f7c78;--amber:#ffb454;--mono:'JetBrains Mono',monospace;--display:'Space Grotesk',sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}body{background:radial-gradient(ellipse 80% 40% at 50% -10%,#0c2320 0%,transparent 60%),var(--bg);color:var(--text);font-family:var(--display);line-height:1.5}a{color:inherit;text-decoration:none}.wrap{max-width:720px;margin:auto;padding:0 20px}nav{position:sticky;top:0;background:rgba(5,8,10,.9);border-bottom:1px solid var(--line);z-index:20;backdrop-filter:blur(10px)}nav .wrap{height:60px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px}.brand img{height:34px;width:auto}.brand-text{font:700 13px var(--mono)}.brand-text .v,.brand-text .c{color:var(--teal)}.navlinks{display:flex;gap:18px;font:11px var(--mono);color:var(--muted);text-transform:uppercase}.eyebrow,.label{font:10px var(--mono);color:var(--teal);letter-spacing:.16em;text-transform:uppercase}h1{font-size:38px;line-height:1.15}h1 span{color:var(--teal)}.sub{color:var(--muted);font-size:15px;line-height:1.65}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border:1px solid var(--line);font:11px var(--mono);text-transform:uppercase;transition:border-color .18s ease,color .18s ease,background .18s ease}.primary{background:var(--teal);border-color:var(--teal);color:#04120f;font-weight:700}section{padding:48px 0;border-top:1px solid var(--line)}section h2{font-size:24px;margin:8px 0 24px}.services{display:grid;grid-template-columns:1fr 1fr;gap:12px}.service{--accent:var(--teal);--accent-rgb:47,230,200;position:relative;display:flex;flex-direction:column;min-height:205px;background:linear-gradient(145deg,rgba(var(--accent-rgb),.09),rgba(var(--accent-rgb),.025) 52%,var(--panel) 100%);border:1px solid rgba(var(--accent-rgb),.34);border-radius:7px;padding:19px 18px 17px;overflow:hidden;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease}.service:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent)}.service:after{content:"↗";position:absolute;right:16px;top:15px;color:var(--accent);font:15px var(--mono);opacity:.85}.service:hover,.service:focus-visible{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 9px 28px rgba(var(--accent-rgb),.12);outline:none}.service small{color:var(--accent);font:10px var(--mono);letter-spacing:.08em}.service h3{font-size:16px;margin:9px 28px 7px 0}.service p,.copy,.trust span{font-size:13px;color:var(--muted);line-height:1.6}.service .card-link{margin-top:auto;padding-top:16px;color:var(--accent);font:700 10px var(--mono);letter-spacing:.04em;text-transform:uppercase}.service.repair{--accent:#ff6b6b;--accent-rgb:255,107,107}.service.performance{--accent:#ffb454;--accent-rgb:255,180,84}.service.upgrades{--accent:#62a8ff;--accent-rgb:98,168,255}.service.malware{--accent:#b779ff;--accent-rgb:183,121,255}.service.windows{--accent:#42d9ff;--accent-rgb:66,217,255}.service.signal{--accent:#2fe6c8;--accent-rgb:47,230,200}.service.streaming{--accent:#d778ff;--accent-rgb:215,120,255}.creator-promo{position:relative;display:block;margin:0 0 44px;padding:25px 26px 23px;border:1px solid rgba(215,120,255,.5);border-radius:7px;overflow:hidden;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}.creator-promo:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:#d778ff}.creator-promo:hover,.creator-promo:focus-visible{transform:translateY(-2px);border-color:#d778ff;box-shadow:0 10px 30px rgba(215,120,255,.12);outline:none}.creator-live{display:flex;align-items:center;gap:8px;color:#ff6677;font:700 10px var(--mono);letter-spacing:.12em;text-transform:uppercase}.creator-dot{width:8px;height:8px;border-radius:50%;background:#ff4f64;box-shadow:0 0 0 4px rgba(255,79,100,.12)}.creator-promo h2{font-size:25px;margin:10px 0 7px}.creator-promo>p{max-width:520px;color:var(--muted);font-size:13px;line-height:1.6}.creator-list{display:flex;flex-wrap:wrap;gap:7px;margin:17px 0 19px}.creator-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border:1px solid rgba(215,120,255,.22);border-radius:999px;background:rgba(215,120,255,.06);font:9px var(--mono);color:#bba7c4}.creator-chip b{color:#eadff0;font-weight:600}.creator-enter{display:inline-flex;align-items:center;color:#d778ff;font:700 10px var(--mono);letter-spacing:.06em;text-transform:uppercase}.creator-empty{color:#8e7998;font:10px var(--mono)}.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.trust{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:18px}.trust b{display:block;margin-bottom:5px}.contact{display:flex;justify-content:space-between;align-items:center;background:var(--panel);border:1px solid var(--line);padding:16px;margin-bottom:10px}.contact a{color:var(--teal);font:11px var(--mono)}footer{padding:30px;text-align:center;color:#49605c;font:9px var(--mono)}
 @media(max-width:560px){.services,.trust-grid{grid-template-columns:1fr}.navlinks a{display:none}.navlinks .hub-link,.navlinks .static-link,.navlinks .account-link{display:inline}.service{min-height:0}.creator-promo{padding:21px 18px}.creator-promo h2{font-size:22px}.service:active{transform:scale(.99);border-color:var(--accent)}}@media(prefers-reduced-motion:reduce){.service,.creator-promo,.btn{transition:none}}
+
+/* Swipeable diagnostic stack */
+.diagnostic-cards{overflow:hidden!important}
+.diagnostic-intro{max-width:560px}
+.diagnostic-card-rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:20px -16px 0;padding:4px 16px 14px}
+.diagnostic-card-rail::-webkit-scrollbar{display:none}
+.diagnostic-card{--dc:#2fe6c8;--dcrgb:47,230,200;position:relative;flex:0 0 min(82vw,310px);scroll-snap-align:center;min-height:390px;padding:17px;border:1px solid rgba(var(--dcrgb),.42);border-radius:8px;background:linear-gradient(160deg,rgba(var(--dcrgb),.12),rgba(5,9,10,.96) 48%);overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.24)}
+.diagnostic-card::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(var(--dcrgb),.055) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--dcrgb),.055) 1px,transparent 1px);background-size:18px 18px;mask-image:linear-gradient(#000,transparent 70%);opacity:.7}
+.diagnostic-card::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--dc)}
+.diag-aida{--dc:#e53935;--dcrgb:229,57,53}.diag-cinebench{--dc:#ff5b57;--dcrgb:255,91,87}.diag-3dmark{--dc:#35a7ff;--dcrgb:53,167,255}.diag-crystal{--dc:#75e83b;--dcrgb:117,232,59}.diag-memtest{--dc:#ff9d1f;--dcrgb:255,157,31}
+.diag-card-head{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:39px}.diag-step{color:var(--dc);font:700 8px var(--mono);letter-spacing:.12em}.diag-card-head img{display:block;max-width:96px;max-height:34px;object-fit:contain;object-position:right center}.diag-memtest .diag-card-head img{max-width:112px;max-height:40px;object-position:right top}.diag-wordmark{font:800 12px var(--display);letter-spacing:-.03em}.cinebench-mark{color:#fff}.crystal-mark{color:#91ff4d}
+.diag-ui{position:relative;z-index:2;height:145px;margin:14px 0 16px;border:1px solid rgba(var(--dcrgb),.25);border-radius:5px;background:rgba(2,6,7,.78);overflow:hidden}
+.diagnostic-card h3{position:relative;z-index:2;font-size:18px;line-height:1.15;margin:0 0 7px}.diagnostic-card>p{position:relative;z-index:2;color:#91aaa5;font-size:11px;line-height:1.55}.diagnostic-card>small{position:absolute;z-index:2;left:17px;right:17px;bottom:15px;padding-top:10px;border-top:1px solid rgba(var(--dcrgb),.18);color:var(--dc);font:7.5px var(--mono);letter-spacing:.09em}.diagnostic-swipe-hint{text-align:right;margin:0 2px 6px;color:#66827d;font:8px var(--mono);letter-spacing:.12em}
+.aida-ui{padding:11px}.sensor-row{display:grid;grid-template-columns:1fr auto;gap:4px 8px;margin-bottom:8px;color:#aebebb;font:8px var(--mono)}.sensor-row b{color:#fff}.sensor-row i{grid-column:1/3;height:4px;border-radius:3px;background:#251010;overflow:hidden}.sensor-row em{display:block;width:var(--fill);height:100%;background:#e53935;animation:aidaPulse 2.4s ease-in-out infinite alternate}@keyframes aidaPulse{to{filter:brightness(1.45);transform:scaleX(.97);transform-origin:left}}
+.cinebench-ui{padding:10px;background:radial-gradient(circle at 72% 28%,rgba(255,91,87,.22),transparent 35%),#090909}.render-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;height:91px}.render-grid i{background:linear-gradient(135deg,#171717,#3a2020);animation:renderTile 2.4s ease-in-out infinite alternate}.render-grid i:nth-child(2n){animation-delay:.2s}.render-grid i:nth-child(3n){animation-delay:.45s}.render-grid i:nth-child(5n){animation-delay:.7s}@keyframes renderTile{0%{opacity:.18;filter:brightness(.6)}100%{opacity:1;filter:brightness(1.35)}}.render-score{display:flex;justify-content:space-between;align-items:end;margin-top:8px;color:#aaa;font:8px var(--mono)}.render-score strong{color:#fff;font-size:15px}
+.mark-ui{display:grid;grid-template-columns:1fr 72px;align-items:center;padding:11px;background:radial-gradient(circle at 25% 50%,rgba(53,167,255,.18),transparent 45%),#04090d}.score-ring{position:relative;width:110px;height:110px;border-radius:50%;border:8px solid rgba(53,167,255,.12);display:flex;flex-direction:column;align-items:center;justify-content:center}.score-ring::before{content:"";position:absolute;inset:-8px;border-radius:50%;border:8px solid transparent;border-top-color:#35a7ff;border-right-color:#35a7ff;animation:scoreSpin 3.6s linear infinite}@keyframes scoreSpin{to{transform:rotate(360deg)}}.score-ring span,.score-ring small{font:7px var(--mono);color:#88bfe8}.score-ring strong{font-size:18px;line-height:1;color:#fff}.mark-bars{display:flex;align-items:end;gap:7px;height:92px}.mark-bars i{width:12px;height:100%;background:#0e2434;border-radius:2px;display:flex;align-items:end;overflow:hidden}.mark-bars em{width:100%;height:var(--fill);background:linear-gradient(#60c1ff,#247fc2);animation:barFloat 2s ease-in-out infinite alternate}@keyframes barFloat{to{height:calc(var(--fill) - 9%)}}
+.crystal-ui{padding:9px;background:#f4f4f4;color:#111}.crystal-head{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-left:48px;margin-bottom:5px;text-align:center;font:700 8px var(--mono)}.crystal-row{display:grid;grid-template-columns:42px 1fr 1fr;gap:5px;align-items:center;margin-bottom:8px}.crystal-row>b{font:700 8px var(--mono)}.crystal-row i{height:42px;background:#ddd;overflow:hidden}.crystal-row em{display:flex;align-items:center;justify-content:center;height:100%;width:var(--fill);background:linear-gradient(#eaffdf,#76ec3b);color:#111;font:800 14px var(--display);font-style:normal;white-space:nowrap;animation:crystalFill 2.8s ease-in-out infinite alternate}@keyframes crystalFill{from{width:18%}to{width:var(--fill)}}
+.mem-ui{padding:11px;background:#071330}.mem-status{display:flex;justify-content:space-between;color:#ffb33a;font:8px var(--mono);margin-bottom:11px}.mem-status strong{color:#74e884}.mem-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}.mem-grid i{height:25px;border:1px solid #264376;background:#102348;animation:memScan 2.2s linear infinite}.mem-grid i:nth-child(2){animation-delay:.12s}.mem-grid i:nth-child(3){animation-delay:.24s}.mem-grid i:nth-child(4){animation-delay:.36s}.mem-grid i:nth-child(5){animation-delay:.48s}.mem-grid i:nth-child(6){animation-delay:.60s}@keyframes memScan{0%,70%,100%{background:#102348}35%{background:#ff9d1f}}.mem-progress{height:5px;background:#102348;margin-top:12px;overflow:hidden}.mem-progress em{display:block;height:100%;width:72%;background:#ff9d1f;animation:memProgress 3.2s ease-in-out infinite alternate}@keyframes memProgress{from{width:38%}to{width:88%}}
+@media(min-width:700px){.diagnostic-card{flex-basis:300px}.diagnostic-card-rail{margin-left:0;margin-right:0;padding-left:2px;padding-right:2px}}
+@media(prefers-reduced-motion:reduce){.sensor-row em,.render-grid i,.score-ring::before,.mark-bars em,.crystal-row em,.mem-grid i,.mem-progress em{animation:none!important}}
+
 </style>
 <link rel="stylesheet" href="service-backgrounds.css">
 </head>
@@ -46,7 +67,93 @@
 <a class="service streaming" href="streaming-setup-south-africa.html"><small>07 · STREAMING</small><h3>Streaming</h3><p>OBS, encoder, audio and stream-performance support across South Africa.</p><span class="card-link">Explore support →</span></a>
 </div></section>
 <a class="creator-promo" id="creatorHubPromo" href="creator-hub-south-africa.html"><div class="creator-live"><span class="creator-dot"></span><span id="creatorLiveCount">South African Creator Hub</span></div><h2>South Africa is live.</h2><p>Discover South African Twitch creators streaming right now.</p><div class="creator-list" id="creatorLiveList"><span class="creator-empty">Checking who's live…</span></div><span class="creator-enter">Enter Creator Hub →</span></a>
-<section class="diagnostic-process" aria-labelledby="diagnostic-process-title"><div class="label">HOW WE DIAGNOSE</div><h2 id="diagnostic-process-title">The VoltTech Diagnostic Process</h2><div class="diagnostic-flow"><a class="diagnostic-step diagnostic-triage" href="signal-scan.html"><span class="diagnostic-number">00</span><div><b>SIGNAL SCAN</b><strong>Initial triage</strong><p>Symptoms and likely fault direction before hands-on testing begins.</p></div></a><div class="diagnostic-step"><span class="diagnostic-number">01</span><div><b>AIDA64</b><strong>Measure the system</strong><p>Temperatures, voltages, clocks and hardware telemetry establish the evidence.</p></div></div><div class="diagnostic-step"><span class="diagnostic-number">02</span><div><b>3DMARK · CINEBENCH</b><strong>Load &amp; isolate</strong><p>CPU and GPU testing exposes performance loss, thermal limits, instability and bottlenecks.</p></div></div><div class="diagnostic-step"><span class="diagnostic-number">03</span><div><b>MEMTEST86 · CRYSTALDISKMARK</b><strong>Verify system health</strong><p>Memory stability and storage performance checks help confirm the system is healthy.</p></div></div></div><p class="diagnostic-rule">Evidence first. <span>Parts second.</span></p></section>
+
+<section class="diagnostic-cards" aria-labelledby="diagnostic-cards-title">
+  <div class="label">HOW WE DIAGNOSE</div>
+  <h2 id="diagnostic-cards-title">The diagnostic stack.</h2>
+  <p class="copy diagnostic-intro">Swipe through the tools VoltTech uses to test each part of a system. Each card shows the kind of data we look for before recommending a fix.</p>
+
+  <div class="diagnostic-card-rail" aria-label="VoltTech diagnostic tools">
+
+    <article class="diagnostic-card diag-aida">
+      <div class="diag-card-head">
+        <span class="diag-step">01 · SYSTEM TELEMETRY</span>
+        <img src="https://www.aida64.com/sites/default/files/inline-images/aida64logo3a.png" alt="AIDA64" loading="lazy">
+      </div>
+      <div class="diag-ui aida-ui" aria-hidden="true">
+        <div class="sensor-row"><span>CPU Package</span><b>67°C</b><i><em style="--fill:67%"></em></i></div>
+        <div class="sensor-row"><span>GPU Core</span><b>61°C</b><i><em style="--fill:61%"></em></i></div>
+        <div class="sensor-row"><span>CPU Clock</span><b>5.1 GHz</b><i><em style="--fill:82%"></em></i></div>
+        <div class="sensor-row"><span>12V Rail</span><b>12.08 V</b><i><em style="--fill:94%"></em></i></div>
+      </div>
+      <h3>Measure the system</h3>
+      <p>Temperatures, voltages, clock speeds and hardware sensors help establish what the PC is actually doing under load.</p>
+      <small>THERMALS · VOLTAGES · CLOCKS · SENSORS</small>
+    </article>
+
+    <article class="diagnostic-card diag-cinebench">
+      <div class="diag-card-head">
+        <span class="diag-step">02 · CPU PERFORMANCE</span>
+        <b class="diag-wordmark cinebench-mark">MAXON CINEBENCH</b>
+      </div>
+      <div class="diag-ui cinebench-ui" aria-hidden="true">
+        <div class="render-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="render-score"><span>CPU Multi Core</span><strong>1 842 pts</strong></div>
+      </div>
+      <h3>Push the CPU</h3>
+      <p>A sustained rendering workload helps expose weak cooling, unstable boost behaviour and CPU performance that falls below expectation.</p>
+      <small>CPU · RENDER LOAD · THERMALS · SCORE</small>
+    </article>
+
+    <article class="diagnostic-card diag-3dmark">
+      <div class="diag-card-head">
+        <span class="diag-step">03 · GPU / SYSTEM PERFORMANCE</span>
+        <img src="https://www.3dmark.com/proxycon/images/3dmarklogo_new.png" alt="3DMark" loading="lazy">
+      </div>
+      <div class="diag-ui mark-ui" aria-hidden="true">
+        <div class="score-ring"><span>TIME SPY</span><strong>14 286</strong><small>Graphics score</small></div>
+        <div class="mark-bars"><i><em style="--fill:88%"></em></i><i><em style="--fill:74%"></em></i><i><em style="--fill:92%"></em></i></div>
+      </div>
+      <h3>Benchmark graphics performance</h3>
+      <p>3DMark gives us a repeatable score and load profile to compare GPU performance, thermals and stability against expected behaviour.</p>
+      <small>GPU · SCORE · FPS · STABILITY</small>
+    </article>
+
+    <article class="diagnostic-card diag-crystal">
+      <div class="diag-card-head">
+        <span class="diag-step">04 · STORAGE PERFORMANCE</span>
+        <b class="diag-wordmark crystal-mark">CrystalDiskMark</b>
+      </div>
+      <div class="diag-ui crystal-ui" aria-hidden="true">
+        <div class="crystal-head"><span>READ MB/s</span><span>WRITE MB/s</span></div>
+        <div class="crystal-row"><b>SEQ1M</b><i><em style="--fill:92%">7 128</em></i><i><em style="--fill:78%">5 238</em></i></div>
+        <div class="crystal-row"><b>RND4K</b><i><em style="--fill:60%">4 197</em></i><i><em style="--fill:64%">4 389</em></i></div>
+      </div>
+      <h3>Check storage speed</h3>
+      <p>Read and write testing helps identify slow storage, configuration problems and whether an SSD or NVMe drive is performing correctly.</p>
+      <small>SSD · NVME · READ · WRITE</small>
+    </article>
+
+    <article class="diagnostic-card diag-memtest">
+      <div class="diag-card-head">
+        <span class="diag-step">05 · MEMORY STABILITY</span>
+        <img src="https://www.memtest86.com/img/product-memtest.png" alt="PassMark MemTest86" loading="lazy">
+      </div>
+      <div class="diag-ui mem-ui" aria-hidden="true">
+        <div class="mem-status"><span>Pass 2 / 4</span><strong>Errors: 0</strong></div>
+        <div class="mem-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="mem-progress"><em></em></div>
+      </div>
+      <h3>Verify memory stability</h3>
+      <p>Memory testing checks for RAM errors that can cause crashes, corruption, failed boots and intermittent instability.</p>
+      <small>RAM · ERRORS · PASSES · STABILITY</small>
+    </article>
+
+  </div>
+  <div class="diagnostic-swipe-hint">← SWIPE TESTS →</div>
+  <p class="diagnostic-rule">Evidence first. <span>Parts second.</span></p>
+</section>
+
 <section><div class="label">WHY VOLTTECH</div><h2>Diagnosis before replacement.</h2><p class="copy">Thermals, power, storage health, memory stability, drivers and system behaviour can overlap. VoltTech focuses on identifying the actual fault or bottleneck before recommending work.</p><div class="trust-grid" style="margin-top:20px"><div class="trust"><b>Hands-on diagnostics</b><span>Fault isolation before parts are recommended.</span></div><div class="trust"><b>Benchmark where useful</b><span>Before/after measurements for performance work and upgrades.</span></div><div class="trust"><b>Clear quote scope</b><span>Service/labour and replacement hardware are separated.</span></div><div class="trust"><b>National reach</b><span>Pretoria-based local service with courier-in and remote support available across South Africa.</span></div></div></section>
 <section><div class="label">PRETORIA PC SUPPORT</div><h2>PC repair in Pretoria</h2><p class="copy">VoltTech is based in the Wonderboom/Pretoria area, serving Pretoria North, Sinoville, Annlin, Montana and surrounding suburbs. Customers elsewhere in South Africa can enquire about courier-in hardware support or use eligible remote services.</p></section>
 <section id="contact"><div class="label">GET IN TOUCH</div><h2>Contact</h2><div class="contact"><span>WhatsApp · +27 61 843 5775</span><a href="https://wa.me/27618435775">Message →</a></div><div class="contact"><span>volttechcomputerco@gmail.com</span><a href="mailto:volttechcomputerco@gmail.com">Email →</a></div></section>
