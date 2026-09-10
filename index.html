@@ -50,6 +50,33 @@
 @media(min-width:700px){.diagnostic-card{flex-basis:300px}.diagnostic-card-rail{margin-left:0;margin-right:0;padding-left:2px;padding-right:2px}}
 @media(prefers-reduced-motion:reduce){.sensor-row em,.render-grid i,.score-ring::before,.mark-bars em,.crystal-row em,.mem-grid i,.mem-progress em{animation:none!important}}
 
+
+/* Diagnostic rail discoverability */
+@media(max-width:699px){
+  .diagnostic-card-rail{
+    gap:12px!important;
+    margin-right:-20px!important;
+    padding-right:46px!important;
+    scroll-padding-left:16px!important;
+  }
+  .diagnostic-card{
+    flex-basis:76vw!important;
+    max-width:300px!important;
+    scroll-snap-align:start!important;
+  }
+}
+.diagnostic-rail-nav{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:13px;margin:3px 2px 8px}
+.diagnostic-progress{display:flex;align-items:baseline;gap:4px;color:#6f8984;font:700 8px var(--mono);letter-spacing:.08em}
+.diagnostic-progress #diagnosticCurrent{color:var(--teal);font-size:11px}
+.diagnostic-progress i{font-style:normal;color:#3d5551}
+.diagnostic-dots{display:flex;justify-content:center;align-items:center;gap:6px}
+.diagnostic-dots i{display:block;width:5px;height:5px;border-radius:50%;background:#30443f;transition:width .18s ease,background .18s ease}
+.diagnostic-dots i.active{width:16px;border-radius:4px;background:var(--teal)}
+.diagnostic-swipe-hint{margin:0!important;color:#8aa29d!important;font:700 8px var(--mono)!important;letter-spacing:.12em!important;white-space:nowrap}
+.diagnostic-swipe-hint b{display:inline-block;color:var(--teal);font-size:14px;line-height:1;animation:diagArrow 1.25s ease-in-out infinite}
+@keyframes diagArrow{50%{transform:translateX(5px)}}
+@media(prefers-reduced-motion:reduce){.diagnostic-swipe-hint b{animation:none}}
+
 </style>
 <link rel="stylesheet" href="service-backgrounds.css">
 </head>
@@ -150,7 +177,13 @@
     </article>
 
   </div>
-  <div class="diagnostic-swipe-hint">← SWIPE TESTS →</div>
+  <div class="diagnostic-rail-nav" aria-label="Diagnostic card navigation">
+      <div class="diagnostic-progress"><span id="diagnosticCurrent">01</span><i>/</i><span>05</span></div>
+      <div class="diagnostic-dots" aria-hidden="true">
+        <i class="active"></i><i></i><i></i><i></i><i></i>
+      </div>
+      <div class="diagnostic-swipe-hint">SWIPE <b>→</b></div>
+    </div>
   <p class="diagnostic-rule">Evidence first. <span>Parts second.</span></p>
 </section>
 
@@ -162,4 +195,29 @@
 <script>
 (function(){const count=document.getElementById('creatorLiveCount');const list=document.getElementById('creatorLiveList');if(!count||!list)return;function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}fetch('sa-streamers-live.json?ts='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('feed');return r.json()}).then(function(data){const live=(data.streamers||[]).filter(function(s){return s.live});count.textContent=live.length?live.length+' LIVE NOW':'SOUTH AFRICAN CREATOR HUB';if(!live.length){list.innerHTML='<span class="creator-empty">No tracked creators are live right now — explore the hub.</span>';return}list.innerHTML=live.slice(0,3).map(function(s){const detail=s.game_name?' · '+esc(s.game_name):'';return '<span class="creator-chip"><b>'+esc(s.display_name||s.login)+'</b>'+detail+'</span>'}).join('')}).catch(function(){count.textContent='SOUTH AFRICAN CREATOR HUB';list.innerHTML='<span class="creator-empty">Discover active South African creators.</span>'})})();
 </script>
+
+<script>
+(function(){
+  const rail=document.querySelector('.diagnostic-card-rail');
+  if(!rail)return;
+  const cards=[...rail.querySelectorAll('.diagnostic-card')];
+  const dots=[...document.querySelectorAll('.diagnostic-dots i')];
+  const current=document.getElementById('diagnosticCurrent');
+  let ticking=false;
+  function update(){
+    const left=rail.getBoundingClientRect().left;
+    let best=0,dist=Infinity;
+    cards.forEach((card,i)=>{
+      const d=Math.abs(card.getBoundingClientRect().left-left);
+      if(d<dist){dist=d;best=i;}
+    });
+    if(current)current.textContent=String(best+1).padStart(2,'0');
+    dots.forEach((dot,i)=>dot.classList.toggle('active',i===best));
+    ticking=false;
+  }
+  rail.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});
+  update();
+})();
+</script>
+
 </body></html>
