@@ -1,33 +1,20 @@
 {
-  "generated_at": "2026-09-10T15:30:50.651673Z",
+  "generated_at": "2026-09-10T15:47:34.080926Z",
   "tracked_count": 219,
   "valid_count": 218,
   "streamers": [
-    {
-      "login": "zlorbz",
-      "display_name": "ZLORBZ",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/2c55ba8e-b192-4405-9ecf-25449ee00cba-profile_image-300x300.jpeg",
-      "description": "Question Everything. I can't stick to a game for too long so I hope you like some variety. Mostly competitive pvp shooters.",
-      "live": true,
-      "viewer_count": 4,
-      "game_name": "Apex Legends",
-      "title": "movement chudling/part time streamer",
-      "started_at": "2026-09-10T11:09:22Z",
-      "last_live_at": "2026-09-10T15:30:50.651673Z",
-      "activity_score": 89.55
-    },
     {
       "login": "virtualgemma",
       "display_name": "VirtualGemma",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/6d354de9-cda5-4f1e-aa81-8b1e86d62b2b-profile_image-300x300.png",
       "description": "VARIETY QUEEN. MARVEL RIVALS NO.1 RAGEBAITER. 10 X MASTER IN APEX LEGENDS, EX R6 SIEGE COMPETITIVE PLAYER. GOLD GUN OWNER IN COD. VALORANT BETA PLAYER. PRO MNK SOULS GAMER AND ELDEN LORD. ACTUAL GOD OF WAR. DVA MAIN. MARBLES CHAMPION. ALLERGIC TO GRASS. MOTHER OF BABY GRINCH. FOUNDER OF THE GEMPIRE.",
       "live": true,
-      "viewer_count": 372,
+      "viewer_count": 340,
       "game_name": "Marvel Rivals",
       "title": "[DROPS] MR EARLY ACCESS - S10 WAITING ROOM - I'm away next week on !vacay !SUBTEMBER | !socials !wishlist #MarvelRivals #GorrTheGodButcher",
       "started_at": "2026-09-10T11:12:04Z",
-      "last_live_at": "2026-09-10T15:30:50.651673Z",
-      "activity_score": 87.25
+      "last_live_at": "2026-09-10T15:47:34.080926Z",
+      "activity_score": 90.02
     },
     {
       "login": "deathsjokerst",
@@ -39,8 +26,8 @@
       "game_name": "Cyberpunk 2077",
       "title": "The precipice awaits...(6 hour stream) (very hard every 20 deaths =sour candy) |!clip |!discord | !lurk | 18+",
       "started_at": "2026-09-10T13:55:01Z",
-      "last_live_at": "2026-09-10T15:30:50.651673Z",
-      "activity_score": 41.63
+      "last_live_at": "2026-09-10T15:47:34.080926Z",
+      "activity_score": 47.13
     },
     {
       "login": "viking_237",
@@ -52,8 +39,8 @@
       "game_name": "Warhammer 40,000: Space Marine II",
       "title": "Lets chill for a bit :D | +18 | !socials",
       "started_at": "2026-09-10T13:55:47Z",
-      "last_live_at": "2026-09-10T15:30:50.651673Z",
-      "activity_score": 41.59
+      "last_live_at": "2026-09-10T15:47:34.080926Z",
+      "activity_score": 47.09
     },
     {
       "login": "syernide",
@@ -61,12 +48,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/e4f8fd54-3bfd-4b4c-9df9-f368411a696f-profile_image-300x300.png",
       "description": "A friendly otter exploring the virtual world together with a community of explorers waiting for something amazing to happen.",
       "live": true,
-      "viewer_count": 12,
+      "viewer_count": 9,
       "game_name": "A Plague Tale: Innocence",
       "title": "💜SUBtember is HERE💜 - Revisiting an old Gem - Story time",
       "started_at": "2026-09-10T14:37:01Z",
-      "last_live_at": "2026-09-10T15:30:50.651673Z",
-      "activity_score": 29.58
+      "last_live_at": "2026-09-10T15:47:34.080926Z",
+      "activity_score": 35.81
     },
     {
       "login": "zaffa_geek",
@@ -74,12 +61,25 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
       "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
       "live": true,
-      "viewer_count": 4,
+      "viewer_count": 5,
       "game_name": "Project Zomboid",
       "title": "[!Pink 0/4] !extend - Will he survive?",
       "started_at": "2026-09-10T14:43:05Z",
+      "last_live_at": "2026-09-10T15:47:34.080926Z",
+      "activity_score": 29.3
+    },
+    {
+      "login": "zlorbz",
+      "display_name": "ZLORBZ",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/2c55ba8e-b192-4405-9ecf-25449ee00cba-profile_image-300x300.jpeg",
+      "description": "Question Everything. I can't stick to a game for too long so I hope you like some variety. Mostly competitive pvp shooters.",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
       "last_live_at": "2026-09-10T15:30:50.651673Z",
-      "activity_score": 22.66
+      "activity_score": 84.18
     },
     {
       "login": "spyro_za",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T14:07:18.955380Z",
-      "activity_score": 73.4
+      "activity_score": 69.0
     },
     {
       "login": "thejudgeza",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T13:51:52.781139Z",
-      "activity_score": 69.0
+      "activity_score": 64.86
     },
     {
       "login": "dead_oryx",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T13:08:10.668603Z",
-      "activity_score": 57.31
+      "activity_score": 53.87
     },
     {
       "login": "derpy_ruby",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T11:54:58.940948Z",
-      "activity_score": 38.46
+      "activity_score": 36.15
     },
     {
       "login": "caramel",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T23:55:19.302106Z",
-      "activity_score": 2.58
+      "activity_score": 2.43
     },
     {
       "login": "agriopsgaming",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T21:41:48.508258Z",
-      "activity_score": 1.39
+      "activity_score": 1.31
     },
     {
       "login": "choppa_herrlof",
@@ -170,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T20:59:16.476174Z",
-      "activity_score": 1.16
+      "activity_score": 1.09
     },
     {
       "login": "azuracub",
@@ -183,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T21:14:24.867721Z",
-      "activity_score": 1.1
+      "activity_score": 1.03
     },
     {
       "login": "thelemons",
@@ -196,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T20:39:14.540521Z",
-      "activity_score": 0.8
+      "activity_score": 0.75
     },
     {
       "login": "zulumachinegaming",
@@ -209,7 +209,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T20:59:16.476174Z",
-      "activity_score": 0.76
+      "activity_score": 0.71
     },
     {
       "login": "sittingduck01",
@@ -222,7 +222,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T18:10:31.607110Z",
-      "activity_score": 0.43
+      "activity_score": 0.4
     },
     {
       "login": "blu3bee",
@@ -235,7 +235,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T19:07:54.583489Z",
-      "activity_score": 0.43
+      "activity_score": 0.4
     },
     {
       "login": "danatdawn",
@@ -248,7 +248,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T15:16:41.449867Z",
-      "activity_score": 0.2
+      "activity_score": 0.19
     },
     {
       "login": "waldoliveza",
@@ -261,7 +261,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T18:10:31.607110Z",
-      "activity_score": 0.19
+      "activity_score": 0.18
     },
     {
       "login": "cassieroseza",
@@ -274,7 +274,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T16:33:08.559826Z",
-      "activity_score": 0.15
+      "activity_score": 0.14
     },
     {
       "login": "asananica81",
@@ -287,7 +287,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T13:43:42.393951Z",
-      "activity_score": 0.09
+      "activity_score": 0.08
     },
     {
       "login": "slikkdudebroguy",
