@@ -249,6 +249,28 @@ function renderProducts() {
         });
 }
 
+function scrollToCompletedBuild() {
+    const target =
+        elements.total ||
+        document.querySelector(".summary");
+
+    if (!target) {
+        return;
+    }
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                    inline: "nearest"
+                });
+            }, 120);
+        });
+    });
+}
+
 function productCard(product, result) {
     const offer = getBestOffer(product);
     const selected =
