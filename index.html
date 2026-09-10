@@ -179,6 +179,13 @@
   text-shadow:0 0 8px rgba(53,167,255,.28);
 }
 
+
+/* Final 3DMark treatment: clean white official mark */
+.diag-3dmark .diag-card-head img{
+  filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(53,167,255,.55))!important;
+  opacity:1!important;
+}
+
 </style>
 <link rel="stylesheet" href="service-backgrounds.css">
 </head>
@@ -203,10 +210,22 @@
   <p class="copy diagnostic-intro">We use industry-standard diagnostic and benchmarking tools to test your PC, identify faults and uncover instability. This gives us real data to work from, so we can recommend the right fix instead of guessing.</p>
 
   <div class="diagnostic-card-rail" aria-label="VoltTech diagnostic tools">
-
-    <article class="diagnostic-card diag-aida">
+      <article class="diagnostic-card diag-3dmark">
       <div class="diag-card-head">
-        <span class="diag-step">01 · SYSTEM TELEMETRY</span>
+        <span class="diag-step">01 · GPU / SYSTEM PERFORMANCE</span>
+        <img src="https://www.3dmark.com/proxycon/images/3dmarklogo_new.png" alt="3DMark" loading="lazy">
+      </div>
+      <div class="diag-ui mark-ui" aria-hidden="true">
+        <div class="score-ring"><span>TIME SPY</span><strong>14 286</strong><small>Graphics score</small></div>
+        <div class="mark-bars"><i><em style="--fill:88%"></em></i><i><em style="--fill:74%"></em></i><i><em style="--fill:92%"></em></i></div>
+      </div>
+      <h3>Benchmark graphics performance</h3>
+      <p>3DMark gives us a repeatable score and load profile to compare GPU performance, thermals and stability against expected behaviour.</p>
+      <small>GPU · SCORE · FPS · STABILITY</small>
+    </article>
+      <article class="diagnostic-card diag-aida">
+      <div class="diag-card-head">
+        <span class="diag-step">02 · SYSTEM TELEMETRY</span>
         <img src="https://www.aida64.com/sites/default/files/inline-images/aida64logo3a.png" alt="AIDA64" loading="lazy">
       </div>
       <div class="diag-ui aida-ui" aria-hidden="true">
@@ -219,10 +238,9 @@
       <p>Temperatures, voltages, clock speeds and hardware sensors help establish what the PC is actually doing under load.</p>
       <small>THERMALS · VOLTAGES · CLOCKS · SENSORS</small>
     </article>
-
-    <article class="diagnostic-card diag-cinebench">
+      <article class="diagnostic-card diag-cinebench">
       <div class="diag-card-head">
-        <span class="diag-step">02 · CPU PERFORMANCE</span>
+        <span class="diag-step">03 · CPU PERFORMANCE</span>
         <b class="diag-wordmark cinebench-mark">MAXON CINEBENCH</b>
       </div>
       <div class="diag-ui cinebench-ui" aria-hidden="true">
@@ -233,22 +251,7 @@
       <p>A sustained rendering workload helps expose weak cooling, unstable boost behaviour and CPU performance that falls below expectation.</p>
       <small>CPU · RENDER LOAD · THERMALS · SCORE</small>
     </article>
-
-    <article class="diagnostic-card diag-3dmark">
-      <div class="diag-card-head">
-        <span class="diag-step">03 · GPU / SYSTEM PERFORMANCE</span>
-        <img src="https://www.3dmark.com/proxycon/images/3dmarklogo_new.png" alt="3DMark" loading="lazy">
-      </div>
-      <div class="diag-ui mark-ui" aria-hidden="true">
-        <div class="score-ring"><span>TIME SPY</span><strong>14 286</strong><small>Graphics score</small></div>
-        <div class="mark-bars"><i><em style="--fill:88%"></em></i><i><em style="--fill:74%"></em></i><i><em style="--fill:92%"></em></i></div>
-      </div>
-      <h3>Benchmark graphics performance</h3>
-      <p>3DMark gives us a repeatable score and load profile to compare GPU performance, thermals and stability against expected behaviour.</p>
-      <small>GPU · SCORE · FPS · STABILITY</small>
-    </article>
-
-    <article class="diagnostic-card diag-crystal">
+      <article class="diagnostic-card diag-crystal">
       <div class="diag-card-head">
         <span class="diag-step">04 · STORAGE PERFORMANCE</span>
         <b class="diag-wordmark crystal-mark">CrystalDiskMark</b>
@@ -262,8 +265,7 @@
       <p>Read and write testing helps identify slow storage, configuration problems and whether an SSD or NVMe drive is performing correctly.</p>
       <small>SSD · NVME · READ · WRITE</small>
     </article>
-
-    <article class="diagnostic-card diag-memtest">
+      <article class="diagnostic-card diag-memtest">
       <div class="diag-card-head">
         <span class="diag-step">05 · MEMORY STABILITY</span>
         <img src="https://www.memtest86.com/img/product-memtest.png" alt="PassMark MemTest86" loading="lazy">
@@ -277,8 +279,7 @@
       <p>Memory testing checks for RAM errors that can cause crashes, corruption, failed boots and intermittent instability.</p>
       <small>RAM · ERRORS · PASSES · STABILITY</small>
     </article>
-
-  </div>
+    </div>
   <div class="diagnostic-rail-nav" aria-label="Diagnostic card navigation">
       <div class="diagnostic-progress"><span id="diagnosticCurrent">01</span><i>/</i><span>05</span></div>
       <div class="diagnostic-dots" aria-hidden="true">
