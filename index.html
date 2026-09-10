@@ -227,11 +227,65 @@
 @media(min-width:701px){.creator-hub-nav-pill{display:none}}
 @media(max-width:420px){.creator-hub-nav-pill span{display:none}.creator-hub-nav-pill{padding:0 11px}}
 
+
+/* Creator Hub header pill — full label + live indicator on portrait */
+.creator-hub-nav-pill{
+  flex:0 0 auto!important;
+  min-width:92px!important;
+  min-height:40px!important;
+  padding:0 11px!important;
+  gap:7px!important;
+  border-radius:999px!important;
+  font:700 7.5px/1 var(--mono)!important;
+  letter-spacing:.075em!important;
+  color:#ddd2ff!important;
+  white-space:nowrap!important;
+}
+.creator-hub-nav-pill span{
+  display:inline!important;
+  white-space:nowrap!important;
+}
+.creator-hub-live-dot{
+  display:block;
+  flex:0 0 7px;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#ff4f64;
+  box-shadow:0 0 0 3px rgba(255,79,100,.12),0 0 9px rgba(255,79,100,.62);
+  animation:creatorHubLivePulse 1.8s ease-in-out infinite;
+}
+@keyframes creatorHubLivePulse{
+  50%{opacity:.55;box-shadow:0 0 0 5px rgba(255,79,100,.07),0 0 12px rgba(255,79,100,.8)}
+}
+@media(max-width:560px){
+  nav .wrap{gap:7px!important;padding-left:12px!important;padding-right:12px!important}
+  .creator-hub-nav-pill{
+    min-width:88px!important;
+    min-height:38px!important;
+    padding:0 9px!important;
+    gap:6px!important;
+    font-size:7px!important;
+    letter-spacing:.055em!important;
+  }
+}
+@media(max-width:390px){
+  .creator-hub-nav-pill{
+    min-width:84px!important;
+    padding:0 8px!important;
+    font-size:6.7px!important;
+  }
+  .creator-hub-live-dot{flex-basis:6px;width:6px;height:6px}
+}
+@media(prefers-reduced-motion:reduce){
+  .creator-hub-live-dot{animation:none}
+}
+
 </style>
 <link rel="stylesheet" href="service-backgrounds.css">
 </head>
 <body>
-<nav><div class="wrap"><a class="brand" href="/" aria-label="VoltTech Computer Co. home"><img src="logo-badge.png" alt=""><span class="brand-text"><span class="v">Volt</span>Tech <span class="c">Computer Co.</span></span></a><a class="creator-hub-nav-pill" href="creator-hub-south-africa.html" aria-label="Open Creator Hub"><span>CREATOR</span> <b>HUB</b></a><div class="navlinks"><a href="#services">Services</a><a class="hub-link" href="creator-hub-south-africa.html">Creator Hub</a><a class="static-link" href="static.html">STATIC ↗</a><a class="account-link" href="account.html">Account</a><a href="#contact">Contact</a></div></div></nav>
+<nav><div class="wrap"><a class="brand" href="/" aria-label="VoltTech Computer Co. home"><img src="logo-badge.png" alt=""><span class="brand-text"><span class="v">Volt</span>Tech <span class="c">Computer Co.</span></span></a><a class="creator-hub-nav-pill" href="creator-hub-south-africa.html" aria-label="Open Creator Hub"><i class="creator-hub-live-dot" aria-hidden="true"></i><span>CREATOR HUB</span></a><div class="navlinks"><a href="#services">Services</a><a class="hub-link" href="creator-hub-south-africa.html">Creator Hub</a><a class="static-link" href="static.html">STATIC ↗</a><a class="account-link" href="account.html">Account</a><a href="#contact">Contact</a></div></div></nav>
 <div class="wrap">
 <header class="hero"><div class="hero-shell"><div class="hero-copy"><div class="hero-kicker">PC systems · performance · creator tech</div><h1>Technical support. <span>Without the guesswork.</span></h1><p class="sub">PC diagnostics and repair from Pretoria, with nationwide courier-in and remote creator support across South Africa.</p><div class="hero-actions"><a class="btn primary" href="signal-scan.html">⚡ Run Signal Scan</a><a class="btn secondary" href="#services">Explore services</a></div></div></div><div class="scope-grid" aria-label="VoltTech service coverage"><a class="scope-card" href="#services"><small>PC & Hardware Support</small><b>Nationwide South Africa</b><span>Local service in Pretoria · courier-in support nationwide</span></a><a class="scope-card" href="streaming-setup-south-africa.html"><small>Remote Creator Support</small><b>Nationwide South Africa</b><span>OBS · encoding · audio · stream performance</span></a></div></header>
 <section id="services"><div class="label">QUICK ACCESS</div><h2>What do you need help with?</h2><div class="services">
