@@ -26,26 +26,16 @@ import {
 const elements = {
     steps: document.getElementById("steps"),
     search: document.getElementById("search"),
-    compatibleOnly:
-        document.getElementById("compatible-only"),
-    categoryTitle:
-        document.getElementById("category-title"),
-    productCount:
-        document.getElementById("product-count"),
-    products:
-        document.getElementById("products"),
-    buildList:
-        document.getElementById("build-list"),
-    total:
-        document.getElementById("total"),
-    power:
-        document.getElementById("power"),
-    report:
-        document.getElementById("report"),
-    clearBuild:
-        document.getElementById("clear-build"),
-    catalogueNote:
-        document.getElementById("catalogue-note")
+    compatibleOnly: document.getElementById("compatible-only"),
+    categoryTitle: document.getElementById("category-title"),
+    productCount: document.getElementById("product-count"),
+    products: document.getElementById("products"),
+    buildList: document.getElementById("build-list"),
+    total: document.getElementById("total"),
+    power: document.getElementById("power"),
+    report: document.getElementById("report"),
+    clearBuild: document.getElementById("clear-build"),
+    catalogueNote: document.getElementById("catalogue-note")
 };
 
 let catalogue = [];
@@ -59,26 +49,17 @@ async function init() {
     bindEvents();
 
     try {
-        const response =
-            await fetch("./data/products.json", {
-                cache: "no-store"
-            });
+        const response = await fetch("./data/products.json", {
+            cache: "no-store"
+        });
 
         if (!response.ok) {
-            throw new Error(
-                `Catalogue request failed: ${response.status}`
-            );
+            throw new Error(`Catalogue request failed: ${response.status}`);
         }
 
         const data = await response.json();
-
-        catalogue =
-            Array.isArray(data.products)
-                ? data.products
-                : [];
-
-        currency =
-            data.currency || "ZAR";
+        catalogue = Array.isArray(data.products) ? data.products : [];
+        currency = data.currency || "ZAR";
 
         elements.catalogueNote.textContent =
             `${catalogue.length} prototype products loaded · ` +
@@ -87,7 +68,6 @@ async function init() {
         render();
     } catch (error) {
         console.error(error);
-
         elements.catalogueNote.textContent =
             "Prototype catalogue could not be loaded.";
 
@@ -101,25 +81,15 @@ async function init() {
 }
 
 function bindEvents() {
-    elements.search.addEventListener(
-        "input",
-        renderProducts
-    );
+    elements.search.addEventListener("input", renderProducts);
+    elements.compatibleOnly.addEventListener("change", renderProducts);
 
-    elements.compatibleOnly.addEventListener(
-        "change",
-        renderProducts
-    );
-
-    elements.clearBuild.addEventListener(
-        "click",
-        () => {
-            build = clearBuild();
-            activeCategory = CATEGORY_ORDER[0];
-            elements.search.value = "";
-            render();
-        }
-    );
+    elements.clearBuild.addEventListener("click", () => {
+        build = clearBuild();
+        activeCategory = CATEGORY_ORDER[0];
+        elements.search.value = "";
+        render();
+    });
 }
 
 function render() {
@@ -131,82 +101,57 @@ function render() {
 }
 
 function renderSteps() {
-    elements.steps.innerHTML =
-        CATEGORY_ORDER.map(
-            (category, index) => {
-                const selected = build[category];
-                const isActive =
-                    category === activeCategory;
-                const isComplete =
-                    Boolean(selected);
+    elements.steps.innerHTML = CATEGORY_ORDER.map((category, index) => {
+        const selected = build[category];
+        const isActive = category === activeCategory;
+        const isComplete = Boolean(selected);
 
-                const classes = [
-                    "step",
-                    isActive ? "active" : "",
-                    isComplete ? "complete" : ""
-                ]
-                    .filter(Boolean)
-                    .join(" ");
+        const classes = [
+            "step",
+            isActive ? "active" : "",
+            isComplete ? "complete" : ""
+        ].filter(Boolean).join(" ");
 
-                const summary =
-                    selected
-                        ? escapeHtml(
-                            getCategorySummary(selected)
-                        )
-                        : "Not selected";
+        const summary = selected
+            ? escapeHtml(getCategorySummary(selected))
+            : "Not selected";
 
-                return `
-                    <button
-                        class="${classes}"
-                        type="button"
-                        data-category="${category}"
-                    >
-                        <span class="step-index">
-                            ${isComplete ? "✓" : index + 1}
-                        </span>
+        return `
+            <button
+                class="${classes}"
+                type="button"
+                data-category="${category}"
+            >
+                <span class="step-index">
+                    ${isComplete ? "✓" : index + 1}
+                </span>
 
-                        <span class="step-label">
-                            <b>
-                                ${escapeHtml(
-                                    CATEGORY_LABELS[category]
-                                )}
-                            </b>
-
-                            <small>
-                                ${summary}
-                            </small>
-                        </span>
-                    </button>
-                `;
-            }
-        ).join("");
+                <span class="step-label">
+                    <b>${escapeHtml(CATEGORY_LABELS[category])}</b>
+                    <small>${summary}</small>
+                </span>
+            </button>
+        `;
+    }).join("");
 
     elements.steps
         .querySelectorAll("[data-category]")
         .forEach(button => {
-            button.addEventListener(
-                "click",
-                () => {
-                    activeCategory =
-                        button.dataset.category;
+            button.addEventListener("click", () => {
+                activeCategory = button.dataset.category;
+                elements.search.value = "";
+                renderSteps();
+                renderProducts();
 
-                    elements.search.value = "";
-
-                    renderSteps();
-                    renderProducts();
-
-                    if (
-                        window.innerWidth < 701
-                    ) {
-                        document
-                            .querySelector(".catalogue")
-                            ?.scrollIntoView({
-                                behavior: "smooth",
-                                block: "start"
-                            });
-                    }
+                if (window.innerWidth < 701) {
+                    document
+                        .querySelector(".catalogue")
+                        ?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
                 }
-            );
+            });
         });
 }
 
@@ -218,37 +163,21 @@ function renderProducts() {
     elements.categoryTitle.textContent =
         CATEGORY_LABELS[activeCategory];
 
-    let products =
-        getProductsByCategory(
-            catalogue,
-            activeCategory
-        );
+    let products = getProductsByCategory(catalogue, activeCategory);
+    products = searchProducts(products, elements.search.value);
 
-    products =
-        searchProducts(
-            products,
-            elements.search.value
-        );
+    const evaluated = products.map(product => ({
+        product,
+        result: getCompatibility(product, build)
+    }));
 
-    const evaluated =
-        products.map(product => ({
-            product,
-            result:
-                getCompatibility(
-                    product,
-                    build
-                )
-        }));
-
-    const visible =
-        elements.compatibleOnly.checked
-            ? evaluated.filter(
-                item =>
-                    item.result.compatible ||
-                    build[activeCategory]?.id ===
-                        item.product.id
-            )
-            : evaluated;
+    const visible = elements.compatibleOnly.checked
+        ? evaluated.filter(
+            item =>
+                item.result.compatible ||
+                build[activeCategory]?.id === item.product.id
+        )
+        : evaluated;
 
     elements.productCount.textContent =
         `${visible.length} of ${products.length}`;
@@ -261,132 +190,99 @@ function renderProducts() {
                 or changing another component.
             </div>
         `;
-
         return;
     }
 
-    elements.products.innerHTML =
-        visible.map(
-            ({ product, result }) =>
-                productCard(product, result)
-        ).join("");
+    elements.products.innerHTML = visible.map(
+        ({ product, result }) => productCard(product, result)
+    ).join("");
 
     elements.products
         .querySelectorAll("[data-select-product]")
         .forEach(button => {
-            button.addEventListener(
-                "click",
-                () => {
-                    const id =
-                        button.dataset.selectProduct;
+            button.addEventListener("click", () => {
+                const id = button.dataset.selectProduct;
+                const product = catalogue.find(item => item.id === id);
 
-                    const product =
-                        catalogue.find(
-                            item => item.id === id
-                        );
+                if (!product) return;
 
-                    if (!product) return;
+                const currentlySelected =
+                    build[product.type]?.id === product.id;
 
-                    const currentlySelected =
-                        build[product.type]?.id ===
-                        product.id;
+                if (currentlySelected) {
+                    build = removeProduct(build, product.type);
+                } else {
+                    const result = getCompatibility(product, build);
 
-                    if (currentlySelected) {
-                        build =
-                            removeProduct(
-                                build,
-                                product.type
-                            );
-                    } else {
-                        const result =
-                            getCompatibility(
-                                product,
-                                build
-                            );
-
-                        if (!result.compatible) {
-                            return;
-                        }
-
-                        build =
-                            selectProduct(
-                                build,
-                                product
-                            );
-
-                        activeCategory =
-                            getNextCategory(
-                                product.type,
-                                build
-                            );
-
-                        elements.search.value = "";
+                    if (!result.compatible) {
+                        return;
                     }
 
-                    render();
+                    build = selectProduct(build, product);
+
+                    const buildComplete =
+                        getSelectedCount(build) === CATEGORY_ORDER.length;
+
+                    if (!buildComplete) {
+                        activeCategory = getNextCategory(
+                            product.type,
+                            build
+                        );
+                    }
+
+                    elements.search.value = "";
+
+                    if (buildComplete) {
+                        setTimeout(() => {
+                            document
+                                .querySelector(".summary")
+                                ?.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start"
+                                });
+                        }, 100);
+                    }
                 }
-            );
+
+                render();
+            });
         });
 }
 
 function productCard(product, result) {
-    const offer =
-        getBestOffer(product);
-
+    const offer = getBestOffer(product);
     const selected =
-        build[product.type]?.id ===
-        product.id;
+        build[product.type]?.id === product.id;
 
     const classes = [
         "product",
         selected ? "selected" : "",
-        !result.compatible
-            ? "incompatible"
-            : ""
-    ]
-        .filter(Boolean)
-        .join(" ");
+        !result.compatible ? "incompatible" : ""
+    ].filter(Boolean).join(" ");
 
-    const meta =
-        getProductMeta(product)
-            .map(
-                item =>
-                    `<span class="meta">${escapeHtml(item)}</span>`
-            )
-            .join("");
+    const meta = getProductMeta(product)
+        .map(item => `<span class="meta">${escapeHtml(item)}</span>`)
+        .join("");
 
-    const issues =
-        result.issues
-            .map(
-                issue =>
-                    `<div class="product-error">✕ ${escapeHtml(issue)}</div>`
-            )
-            .join("");
+    const issues = result.issues
+        .map(issue =>
+            `<div class="product-error">✕ ${escapeHtml(issue)}</div>`
+        )
+        .join("");
 
-    const warnings =
-        result.warnings
-            .map(
-                warning =>
-                    `<div class="product-warning">⚠ ${escapeHtml(warning)}</div>`
-            )
-            .join("");
+    const warnings = result.warnings
+        .map(warning =>
+            `<div class="product-warning">⚠ ${escapeHtml(warning)}</div>`
+        )
+        .join("");
 
-    const price =
-        offer
-            ? formatMoney(
-                offer.price,
-                currency
-            )
-            : "Price unavailable";
+    const price = offer
+        ? formatMoney(offer.price, currency)
+        : "Price unavailable";
 
-    const supplier =
-        offer
-            ? `${formatSupplier(
-                offer.source
-            )} · ${getStockLabel(
-                offer.stockStatus
-            )}`
-            : "No supplier offer";
+    const supplier = offer
+        ? `${formatSupplier(offer.source)} · ${getStockLabel(offer.stockStatus)}`
+        : "No supplier offer";
 
     return `
         <article class="${classes}">
@@ -395,9 +291,7 @@ function productCard(product, result) {
                     ${escapeHtml(product.brand || "")}
                 </span>
 
-                <h3>
-                    ${escapeHtml(product.name)}
-                </h3>
+                <h3>${escapeHtml(product.name)}</h3>
 
                 <div class="product-meta">
                     ${meta}
@@ -420,9 +314,7 @@ function productCard(product, result) {
                     type="button"
                     class="select-btn ${selected ? "remove" : ""}"
                     data-select-product="${escapeHtml(product.id)}"
-                    ${!result.compatible && !selected
-                        ? "disabled"
-                        : ""}
+                    ${!result.compatible && !selected ? "disabled" : ""}
                 >
                     ${selected
                         ? "Remove"
@@ -436,61 +328,48 @@ function productCard(product, result) {
 }
 
 function renderBuild() {
-    elements.buildList.innerHTML =
-        CATEGORY_ORDER.map(category => {
-            const product =
-                build[category];
+    elements.buildList.innerHTML = CATEGORY_ORDER.map(category => {
+        const product = build[category];
 
-            if (!product) {
-                return `
-                    <div class="build-item">
-                        <span>
-                            ${escapeHtml(
-                                CATEGORY_LABELS[category]
-                            )}
-                        </span>
-
-                        <b>Not selected</b>
-                    </div>
-                `;
-            }
-
+        if (!product) {
             return `
                 <div class="build-item">
-                    <div>
-                        <span>
-                            ${escapeHtml(
-                                CATEGORY_LABELS[category]
-                            )}
-                        </span>
-
-                        <div class="build-price">
-                            ${escapeHtml(
-                                formatMoney(
-                                    getProductPrice(product),
-                                    currency
-                                )
-                            )}
-                        </div>
-                    </div>
-
-                    <b>
-                        ${escapeHtml(product.name)}
-                    </b>
+                    <span>
+                        ${escapeHtml(CATEGORY_LABELS[category])}
+                    </span>
+                    <b>Not selected</b>
                 </div>
             `;
-        }).join("");
+        }
+
+        return `
+            <div class="build-item">
+                <div>
+                    <span>
+                        ${escapeHtml(CATEGORY_LABELS[category])}
+                    </span>
+
+                    <div class="build-price">
+                        ${escapeHtml(
+                            formatMoney(
+                                getProductPrice(product),
+                                currency
+                            )
+                        )}
+                    </div>
+                </div>
+
+                <b>${escapeHtml(product.name)}</b>
+            </div>
+        `;
+    }).join("");
 
     elements.total.textContent =
-        formatMoney(
-            calculateBuildTotal(build),
-            currency
-        );
+        formatMoney(calculateBuildTotal(build), currency);
 }
 
 function renderPower() {
-    const power =
-        estimatePower(build);
+    const power = estimatePower(build);
 
     if (!power.estimated) {
         elements.power.innerHTML = `
@@ -506,7 +385,6 @@ function renderPower() {
                 <strong>—</strong>
             </div>
         `;
-
         return;
     }
 
@@ -517,30 +395,20 @@ function renderPower() {
 
         <div class="power-grid">
             <span>Estimated load</span>
-            <strong>
-                ${power.estimated} W
-            </strong>
+            <strong>${power.estimated} W</strong>
 
             <span>Minimum target</span>
-            <strong>
-                ${power.minimum} W
-            </strong>
+            <strong>${power.minimum} W</strong>
 
             <span>Preferred headroom</span>
-            <strong>
-                ${power.preferred} W
-            </strong>
+            <strong>${power.preferred} W</strong>
         </div>
     `;
 }
 
 function renderReport() {
-    const report =
-        validateBuild(build);
-
-    const selectedCount =
-        getSelectedCount(build);
-
+    const report = validateBuild(build);
+    const selectedCount = getSelectedCount(build);
     const entries = [];
 
     if (!selectedCount) {
@@ -574,52 +442,54 @@ function renderReport() {
         });
     });
 
-    if (
-        selectedCount === CATEGORY_ORDER.length &&
-        report.compatible
-    ) {
-        entries.unshift({
-            type: "good",
-            text:
-                "Core build complete. The selected components " +
-                "pass the compatibility rules currently implemented."
-        });
+    if (selectedCount === CATEGORY_ORDER.length) {
+        if (report.compatible) {
+            entries.unshift({
+                type: "good",
+                text:
+                    "BUILD COMPLETE ✓ — All core components are selected " +
+                    "and no confirmed compatibility conflicts were found. " +
+                    `Current prototype parts total: ${
+                        formatMoney(
+                            calculateBuildTotal(build),
+                            currency
+                        )
+                    }.`
+            });
+        } else {
+            entries.unshift({
+                type: "bad",
+                text:
+                    "BUILD COMPLETE — All component categories are filled, " +
+                    "but compatibility issues still need to be resolved."
+            });
+        }
     }
 
-    elements.report.innerHTML =
-        entries.map(
-            entry => `
-                <div class="report-item ${entry.type}">
-                    ${
-                        entry.type === "good"
-                            ? "✓"
-                            : entry.type === "warn"
-                                ? "⚠"
-                                : "✕"
-                    }
-                    ${escapeHtml(entry.text)}
-                </div>
-            `
-        ).join("");
+    elements.report.innerHTML = entries.map(entry => `
+        <div class="report-item ${entry.type}">
+            ${
+                entry.type === "good"
+                    ? "✓"
+                    : entry.type === "warn"
+                        ? "⚠"
+                        : "✕"
+            }
+            ${escapeHtml(entry.text)}
+        </div>
+    `).join("");
 }
 
 function getProductMeta(product) {
-    const s =
-        product.specs || {};
+    const s = product.specs || {};
 
     switch (product.type) {
         case "cpu":
             return [
                 s.socket,
-                s.cores
-                    ? `${s.cores} cores`
-                    : null,
-                s.threads
-                    ? `${s.threads} threads`
-                    : null,
-                s.tdpWatts
-                    ? `${s.tdpWatts}W TDP`
-                    : null
+                s.cores ? `${s.cores} cores` : null,
+                s.threads ? `${s.threads} threads` : null,
+                s.tdpWatts ? `${s.tdpWatts}W TDP` : null
             ].filter(Boolean);
 
         case "motherboard":
@@ -633,29 +503,17 @@ function getProductMeta(product) {
 
         case "memory":
             return [
-                s.capacityGB
-                    ? `${s.capacityGB}GB`
-                    : null,
-                s.modules
-                    ? `${s.modules} modules`
-                    : null,
+                s.capacityGB ? `${s.capacityGB}GB` : null,
+                s.modules ? `${s.modules} modules` : null,
                 s.memoryType,
-                s.speedMTs
-                    ? `${s.speedMTs} MT/s`
-                    : null
+                s.speedMTs ? `${s.speedMTs} MT/s` : null
             ].filter(Boolean);
 
         case "gpu":
             return [
-                s.vramGB
-                    ? `${s.vramGB}GB VRAM`
-                    : null,
-                s.lengthMm
-                    ? `${s.lengthMm}mm`
-                    : null,
-                s.slots
-                    ? `${s.slots}-slot`
-                    : null,
+                s.vramGB ? `${s.vramGB}GB VRAM` : null,
+                s.lengthMm ? `${s.lengthMm}mm` : null,
+                s.slots ? `${s.slots}-slot` : null,
                 s.recommendedPsuWatts
                     ? `${s.recommendedPsuWatts}W PSU`
                     : null
@@ -664,9 +522,7 @@ function getProductMeta(product) {
         case "storage":
             return [
                 s.capacityGB
-                    ? formatStorage(
-                        s.capacityGB
-                    )
+                    ? formatStorage(s.capacityGB)
                     : null,
                 s.interface,
                 s.formFactor,
@@ -677,9 +533,7 @@ function getProductMeta(product) {
 
         case "psu":
             return [
-                s.wattage
-                    ? `${s.wattage}W`
-                    : null,
+                s.wattage ? `${s.wattage}W` : null,
                 s.efficiency,
                 s.modular,
                 s.atxVersion
@@ -687,8 +541,7 @@ function getProductMeta(product) {
 
         case "case":
             return [
-                s.supportedMotherboardSizes
-                    ?.join(" / "),
+                s.supportedMotherboardSizes?.join(" / "),
                 s.maxGpuLengthMm
                     ? `${s.maxGpuLengthMm}mm GPU`
                     : null,
@@ -728,8 +581,7 @@ function formatSupplier(source) {
 }
 
 function formatStorage(capacityGB) {
-    const gb =
-        Number(capacityGB || 0);
+    const gb = Number(capacityGB || 0);
 
     if (gb >= 1000) {
         const tb = gb / 1000;
@@ -749,4 +601,4 @@ function escapeHtml(value) {
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
-          }
+}
