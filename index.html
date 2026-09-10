@@ -131,6 +131,54 @@
     transparent 100%)!important;
 }
 
+
+/* Requested diagnostic logo corrections */
+.diag-memtest .diag-card-head img{
+  filter:brightness(1.12) contrast(1.05) drop-shadow(0 0 8px rgba(255,157,31,.32))!important;
+  opacity:1!important;
+}
+.diag-3dmark .diag-card-head img{
+  filter:none!important;
+  opacity:1!important;
+}
+/* 3DMark official mark: preserve orange wings; brighten dark wordmark for this dark UI */
+.diag-3dmark .diag-card-head{
+  isolation:isolate;
+}
+.diag-3dmark .diag-card-head img{
+  position:relative;
+  z-index:3;
+}
+
+
+.mark-3d-composite{
+  position:relative;
+  display:block;
+  width:112px;
+  height:38px;
+  overflow:hidden;
+}
+.mark-3d-composite img{
+  position:absolute!important;
+  left:0;
+  top:5px;
+  width:112px!important;
+  max-width:none!important;
+  height:auto!important;
+  filter:none!important;
+}
+/* White wordmark laid over only the text region, leaving the official orange wing untouched */
+.mark-3d-composite::after{
+  content:"3DMARK";
+  position:absolute;
+  right:0;
+  top:9px;
+  color:#fff;
+  font:800 15px/1 var(--display);
+  letter-spacing:-.055em;
+  text-shadow:0 0 8px rgba(53,167,255,.28);
+}
+
 </style>
 <link rel="stylesheet" href="service-backgrounds.css">
 </head>
