@@ -22,55 +22,14 @@ export function getCompatibility(product, build) {
         cooler: candidateType === "cooler" ? product : cooler
     };
 
-    checkCpuMotherboard(
-        selected.cpu,
-        selected.motherboard,
-        issues
-    );
-
-    checkMemoryMotherboard(
-        selected.memory,
-        selected.motherboard,
-        issues
-    );
-
-    checkMotherboardCase(
-        selected.motherboard,
-        selected.case,
-        issues
-    );
-
-    checkGpuCase(
-        selected.gpu,
-        selected.case,
-        issues
-    );
-
-    checkCoolerCpu(
-        selected.cooler,
-        selected.cpu,
-        issues
-    );
-
-    checkCoolerCase(
-        selected.cooler,
-        selected.case,
-        issues
-    );
-
-    checkCoolerCapacity(
-        selected.cooler,
-        selected.cpu,
-        warnings
-    );
-
-    checkPsu(
-        selected.psu,
-        selected.gpu,
-        selected,
-        issues,
-        warnings
-    );
+    checkCpuMotherboard(selected.cpu, selected.motherboard, issues);
+    checkMemoryMotherboard(selected.memory, selected.motherboard, issues);
+    checkMotherboardCase(selected.motherboard, selected.case, issues);
+    checkGpuCase(selected.gpu, selected.case, issues);
+    checkCoolerCpu(selected.cooler, selected.cpu, issues);
+    checkCoolerCase(selected.cooler, selected.case, issues);
+    checkCoolerCapacity(selected.cooler, selected.cpu, warnings);
+    checkPsu(selected.psu, selected.gpu, selected, issues, warnings);
 
     return {
         compatible: issues.length === 0,
@@ -83,55 +42,14 @@ export function validateBuild(build) {
     const issues = [];
     const warnings = [];
 
-    checkCpuMotherboard(
-        build.cpu,
-        build.motherboard,
-        issues
-    );
-
-    checkMemoryMotherboard(
-        build.memory,
-        build.motherboard,
-        issues
-    );
-
-    checkMotherboardCase(
-        build.motherboard,
-        build.case,
-        issues
-    );
-
-    checkGpuCase(
-        build.gpu,
-        build.case,
-        issues
-    );
-
-    checkCoolerCpu(
-        build.cooler,
-        build.cpu,
-        issues
-    );
-
-    checkCoolerCase(
-        build.cooler,
-        build.case,
-        issues
-    );
-
-    checkCoolerCapacity(
-        build.cooler,
-        build.cpu,
-        warnings
-    );
-
-    checkPsu(
-        build.psu,
-        build.gpu,
-        build,
-        issues,
-        warnings
-    );
+    checkCpuMotherboard(build.cpu, build.motherboard, issues);
+    checkMemoryMotherboard(build.memory, build.motherboard, issues);
+    checkMotherboardCase(build.motherboard, build.case, issues);
+    checkGpuCase(build.gpu, build.case, issues);
+    checkCoolerCpu(build.cooler, build.cpu, issues);
+    checkCoolerCase(build.cooler, build.case, issues);
+    checkCoolerCapacity(build.cooler, build.cpu, warnings);
+    checkPsu(build.psu, build.gpu, build, issues, warnings);
 
     if (
         build.cpu &&
@@ -139,7 +57,10 @@ export function validateBuild(build) {
         !build.cooler
     ) {
         warnings.push(
-            "This CPU does not include a cooler. Add a compatible CPU cooler."
+            makeDiagnostic(
+                "This CPU does not include a cooler. Add a compatible CPU cooler.",
+                "cooler"
+            )
         );
     }
 
@@ -160,10 +81,6 @@ export function estimatePower(build) {
                 0
             );
 
-    /*
-     * Base allowance covers board losses, RAM,
-     * fans, USB devices and reasonable transient load.
-     */
     const systemAllowance = 65;
 
     const estimated =
@@ -188,6 +105,14 @@ export function estimatePower(build) {
     };
 }
 
+function makeDiagnostic(text, category, alternateCategory = null) {
+    return {
+        text,
+        category,
+        alternateCategory
+    };
+}
+
 function checkCpuMotherboard(cpu, motherboard, issues) {
     if (!cpu || !motherboard) return;
 
@@ -205,16 +130,16 @@ function checkCpuMotherboard(cpu, motherboard, issues) {
         cpuSocket !== motherboardSocket
     ) {
         issues.push(
-            `CPU socket ${cpuSocket} does not match motherboard socket ${motherboardSocket}.`
+            makeDiagnostic(
+                `CPU socket ${cpuSocket} does not match motherboard socket ${motherboardSocket}.`,
+                "motherboard",
+                "cpu"
+            )
         );
     }
 }
 
-function checkMemoryMotherboard(
-    memory,
-    motherboard,
-    issues
-) {
+function checkMemoryMotherboard(memory, motherboard, issues) {
     if (!memory || !motherboard) return;
 
     const memoryType =
@@ -231,13 +156,16 @@ function checkMemoryMotherboard(
         memoryType !== boardMemory
     ) {
         issues.push(
-            `${memoryType} memory cannot be used with a ${boardMemory} motherboard.`
+            makeDiagnostic(
+                `${memoryType} memory cannot be used with a ${boardMemory} motherboard.`,
+                "memory",
+                "motherboard"
+            )
         );
     }
 
     const modules = Number(memory.specs?.modules || 0);
-    const dimmSlots =
-        Number(motherboard.specs?.dimmSlots || 0);
+    const dimmSlots = Number(motherboard.specs?.dimmSlots || 0);
 
     if (
         modules &&
@@ -245,16 +173,16 @@ function checkMemoryMotherboard(
         modules > dimmSlots
     ) {
         issues.push(
-            `This memory kit requires ${modules} DIMM slots, but the motherboard only has ${dimmSlots}.`
+            makeDiagnostic(
+                `This memory kit requires ${modules} DIMM slots, but the motherboard only has ${dimmSlots}.`,
+                "memory",
+                "motherboard"
+            )
         );
     }
 }
 
-function checkMotherboardCase(
-    motherboard,
-    pcCase,
-    issues
-) {
+function checkMotherboardCase(motherboard, pcCase, issues) {
     if (!motherboard || !pcCase) return;
 
     const formFactor =
@@ -272,7 +200,11 @@ function checkMotherboardCase(
         !supported.includes(formFactor)
     ) {
         issues.push(
-            `${formFactor} motherboard does not fit this case.`
+            makeDiagnostic(
+                `${formFactor} motherboard does not fit this case.`,
+                "case",
+                "motherboard"
+            )
         );
     }
 }
@@ -300,16 +232,16 @@ function checkGpuCase(gpu, pcCase, issues) {
         gpuLength > maxLength
     ) {
         issues.push(
-            `GPU length is ${gpuLength} mm, but this case supports up to ${maxLength} mm.`
+            makeDiagnostic(
+                `GPU length is ${gpuLength} mm, but this case supports up to ${maxLength} mm.`,
+                "case",
+                "gpu"
+            )
         );
     }
 }
 
-function checkCoolerCpu(
-    cooler,
-    cpu,
-    issues
-) {
+function checkCoolerCpu(cooler, cpu, issues) {
     if (!cooler || !cpu) return;
 
     const cpuSocket =
@@ -327,20 +259,19 @@ function checkCoolerCpu(
         !sockets.includes(cpuSocket)
     ) {
         issues.push(
-            `This cooler does not support the CPU's ${cpuSocket} socket.`
+            makeDiagnostic(
+                `This cooler does not support the CPU's ${cpuSocket} socket.`,
+                "cooler",
+                "cpu"
+            )
         );
     }
 }
 
-function checkCoolerCase(
-    cooler,
-    pcCase,
-    issues
-) {
+function checkCoolerCase(cooler, pcCase, issues) {
     if (!cooler || !pcCase) return;
 
-    const coolerType =
-        cooler.specs?.coolerType;
+    const coolerType = cooler.specs?.coolerType;
 
     if (coolerType === "air") {
         const height =
@@ -363,7 +294,11 @@ function checkCoolerCase(
             height > maxHeight
         ) {
             issues.push(
-                `CPU cooler is ${height} mm tall, but this case supports up to ${maxHeight} mm.`
+                makeDiagnostic(
+                    `CPU cooler is ${height} mm tall, but this case supports up to ${maxHeight} mm.`,
+                    "cooler",
+                    "case"
+                )
             );
         }
     }
@@ -387,17 +322,17 @@ function checkCoolerCase(
             !supported.includes(radiator)
         ) {
             issues.push(
-                `${radiator} mm radiator is not listed as supported by this case.`
+                makeDiagnostic(
+                    `${radiator} mm radiator is not listed as supported by this case.`,
+                    "cooler",
+                    "case"
+                )
             );
         }
     }
 }
 
-function checkCoolerCapacity(
-    cooler,
-    cpu,
-    warnings
-) {
+function checkCoolerCapacity(cooler, cpu, warnings) {
     if (!cooler || !cpu) return;
 
     const coolingCapacity =
@@ -416,18 +351,16 @@ function checkCoolerCapacity(
         cpuPower > coolingCapacity
     ) {
         warnings.push(
-            "The cooler may be marginal for this CPU under sustained heavy load."
+            makeDiagnostic(
+                "The cooler may be marginal for this CPU under sustained heavy load.",
+                "cooler",
+                "cpu"
+            )
         );
     }
 }
 
-function checkPsu(
-    psu,
-    gpu,
-    build,
-    issues,
-    warnings
-) {
+function checkPsu(psu, gpu, build, issues, warnings) {
     if (!psu) return;
 
     const psuWatts =
@@ -449,7 +382,10 @@ function checkPsu(
         psuWatts < power.minimum
     ) {
         issues.push(
-            `Estimated system load requires approximately ${power.minimum} W minimum, but the selected PSU is ${psuWatts} W.`
+            makeDiagnostic(
+                `Estimated system load requires approximately ${power.minimum} W minimum, but the selected PSU is ${psuWatts} W.`,
+                "psu"
+            )
         );
     } else if (
         psuWatts &&
@@ -457,7 +393,10 @@ function checkPsu(
         psuWatts < power.preferred
     ) {
         warnings.push(
-            `The ${psuWatts} W PSU is usable by this estimate, but around ${power.preferred} W would provide better headroom.`
+            makeDiagnostic(
+                `The ${psuWatts} W PSU is usable by this estimate, but around ${power.preferred} W would provide better headroom.`,
+                "psu"
+            )
         );
     }
 
@@ -476,7 +415,11 @@ function checkPsu(
         psuWatts < gpuRecommendation
     ) {
         warnings.push(
-            `The GPU manufacturer-class recommendation is ${gpuRecommendation} W; the selected PSU is ${psuWatts} W.`
+            makeDiagnostic(
+                `The GPU manufacturer-class recommendation is ${gpuRecommendation} W; the selected PSU is ${psuWatts} W.`,
+                "psu",
+                "gpu"
+            )
         );
     }
 
@@ -492,11 +435,15 @@ function checkPsu(
         native12V2x6 === false
     ) {
         warnings.push(
-            "This GPU uses a 12V-2x6 power connection, while the PSU does not list a native 12V-2x6 cable."
+            makeDiagnostic(
+                "This GPU uses a 12V-2x6 power connection, while the PSU does not list a native 12V-2x6 cable.",
+                "psu",
+                "gpu"
+            )
         );
     }
 }
 
 function roundUp(value, step) {
     return Math.ceil(value / step) * step;
-      }
+}

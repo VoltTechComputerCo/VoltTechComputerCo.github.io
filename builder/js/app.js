@@ -58,7 +58,11 @@ async function init() {
         }
 
         const data = await response.json();
-        catalogue = Array.isArray(data.products) ? data.products : [];
+
+        catalogue = Array.isArray(data.products)
+            ? data.products
+            : [];
+
         currency = data.currency || "ZAR";
 
         elements.catalogueNote.textContent =
@@ -68,6 +72,7 @@ async function init() {
         render();
     } catch (error) {
         console.error(error);
+
         elements.catalogueNote.textContent =
             "Prototype catalogue could not be loaded.";
 
@@ -89,6 +94,11 @@ function bindEvents() {
         activeCategory = CATEGORY_ORDER[0];
         elements.search.value = "";
         render();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     });
 }
 
@@ -138,19 +148,7 @@ function renderSteps() {
         .querySelectorAll("[data-category]")
         .forEach(button => {
             button.addEventListener("click", () => {
-                activeCategory = button.dataset.category;
-                elements.search.value = "";
-                renderSteps();
-                renderProducts();
-
-                if (window.innerWidth < 701) {
-                    document
-                        .querySelector(".catalogue")
-                        ?.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
-                }
+                openCategory(button.dataset.category);
             });
         });
 }
@@ -163,8 +161,15 @@ function renderProducts() {
     elements.categoryTitle.textContent =
         CATEGORY_LABELS[activeCategory];
 
-    let products = getProductsByCategory(catalogue, activeCategory);
-    products = searchProducts(products, elements.search.value);
+    let products = getProductsByCategory(
+        catalogue,
+        activeCategory
+    );
+
+    products = searchProducts(
+        products,
+        elements.search.value
+    );
 
     const evaluated = products.map(product => ({
         product,
@@ -211,42 +216,58 @@ function renderProducts() {
 
                 if (currentlySelected) {
                     build = removeProduct(build, product.type);
-                } else {
-                    const result = getCompatibility(product, build);
-
-                    if (!result.compatible) {
-                        return;
-                    }
-
-                    build = selectProduct(build, product);
-
-                    const buildComplete =
-                        getSelectedCount(build) === CATEGORY_ORDER.length;
-
-                    if (!buildComplete) {
-                        activeCategory = getNextCategory(
-                            product.type,
-                            build
-                        );
-                    }
-
-                    elements.search.value = "";
-
-                    if (buildComplete) {
-                        setTimeout(() => {
-                            document
-                                .querySelector(".summary")
-                                ?.scrollIntoView({
-                                    behavior: "smooth",
-                                    block: "start"
-                                });
-                        }, 100);
-                    }
+                    render();
+                    return;
                 }
 
+                const result = getCompatibility(product, build);
+
+                if (!result.compatible) {
+                    return;
+                }
+
+                build = selectProduct(build, product);
+
+                const buildComplete =
+                    getSelectedCount(build) ===
+                    CATEGORY_ORDER.length;
+
+                if (!buildComplete) {
+                    activeCategory = getNextCategory(
+                        product.type,
+                        build
+                    );
+                }
+
+                elements.search.value = "";
                 render();
+
+                if (buildComplete) {
+                    scrollToCompletedBuild();
+                }
             });
         });
+}
+
+function openCategory(category) {
+    if (!CATEGORY_ORDER.includes(category)) {
+        return;
+    }
+
+    activeCategory = category;
+    elements.search.value = "";
+
+    renderSteps();
+    renderProducts();
+
+    requestAnimationFrame(() => {
+        document
+            .querySelector(".catalogue")
+            ?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+    });
 }
 
 function scrollToCompletedBuild() {
@@ -273,6 +294,7 @@ function scrollToCompletedBuild() {
 
 function productCard(product, result) {
     const offer = getBestOffer(product);
+
     const selected =
         build[product.type]?.id === product.id;
 
@@ -283,18 +305,21 @@ function productCard(product, result) {
     ].filter(Boolean).join(" ");
 
     const meta = getProductMeta(product)
-        .map(item => `<span class="meta">${escapeHtml(item)}</span>`)
+        .map(
+            item =>
+                `<span class="meta">${escapeHtml(item)}</span>`
+        )
         .join("");
 
     const issues = result.issues
         .map(issue =>
-            `<div class="product-error">✕ ${escapeHtml(issue)}</div>`
+            `<div class="product-error">✕ ${escapeHtml(issue.text || issue)}</div>`
         )
         .join("");
 
     const warnings = result.warnings
         .map(warning =>
-            `<div class="product-warning">⚠ ${escapeHtml(warning)}</div>`
+            `<div class="product-warning">⚠ ${escapeHtml(warning.text || warning)}</div>`
         )
         .join("");
 
@@ -356,9 +381,7 @@ function renderBuild() {
         if (!product) {
             return `
                 <div class="build-item">
-                    <span>
-                        ${escapeHtml(CATEGORY_LABELS[category])}
-                    </span>
+                    <span>${escapeHtml(CATEGORY_LABELS[category])}</span>
                     <b>Not selected</b>
                 </div>
             `;
@@ -367,9 +390,7 @@ function renderBuild() {
         return `
             <div class="build-item">
                 <div>
-                    <span>
-                        ${escapeHtml(CATEGORY_LABELS[category])}
-                    </span>
+                    <span>${escapeHtml(CATEGORY_LABELS[category])}</span>
 
                     <div class="build-price">
                         ${escapeHtml(
@@ -387,7 +408,10 @@ function renderBuild() {
     }).join("");
 
     elements.total.textContent =
-        formatMoney(calculateBuildTotal(build), currency);
+        formatMoney(
+            calculateBuildTotal(build),
+            currency
+        );
 }
 
 function renderPower() {
@@ -453,14 +477,16 @@ function renderReport() {
     report.issues.forEach(issue => {
         entries.push({
             type: "bad",
-            text: issue
+            text: issue.text || String(issue),
+            category: issue.category || null
         });
     });
 
     report.warnings.forEach(warning => {
         entries.push({
             type: "warn",
-            text: warning
+            text: warning.text || String(warning),
+            category: warning.category || null
         });
     });
 
@@ -488,18 +514,60 @@ function renderReport() {
         }
     }
 
-    elements.report.innerHTML = entries.map(entry => `
-        <div class="report-item ${entry.type}">
-            ${
-                entry.type === "good"
-                    ? "✓"
-                    : entry.type === "warn"
-                        ? "⚠"
-                        : "✕"
-            }
-            ${escapeHtml(entry.text)}
-        </div>
-    `).join("");
+    elements.report.innerHTML = entries.map(entry => {
+        const actionable =
+            entry.category &&
+            CATEGORY_ORDER.includes(entry.category);
+
+        return `
+            <div
+                class="report-item ${entry.type}"
+                ${
+                    actionable
+                        ? `data-fix-category="${escapeHtml(entry.category)}" role="button" tabindex="0" aria-label="Change ${escapeHtml(CATEGORY_LABELS[entry.category])}"`
+                        : ""
+                }
+                ${
+                    actionable
+                        ? 'style="cursor:pointer"'
+                        : ""
+                }
+            >
+                ${
+                    entry.type === "good"
+                        ? "✓"
+                        : entry.type === "warn"
+                            ? "⚠"
+                            : "✕"
+                }
+                ${escapeHtml(entry.text)}
+                ${
+                    actionable
+                        ? `<br><strong>Tap to change ${escapeHtml(CATEGORY_LABELS[entry.category])} →</strong>`
+                        : ""
+                }
+            </div>
+        `;
+    }).join("");
+
+    elements.report
+        .querySelectorAll("[data-fix-category]")
+        .forEach(item => {
+            const activate = () =>
+                openCategory(item.dataset.fixCategory);
+
+            item.addEventListener("click", activate);
+
+            item.addEventListener("keydown", event => {
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+                    event.preventDefault();
+                    activate();
+                }
+            });
+        });
 }
 
 function getProductMeta(product) {
