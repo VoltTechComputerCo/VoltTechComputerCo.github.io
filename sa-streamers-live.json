@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:58:24.376288Z",
+  "generated_at": "2026-09-10T21:12:50.507224Z",
   "tracked_count": 219,
   "valid_count": 218,
   "streamers": [
@@ -9,11 +9,11 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
       "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
       "live": true,
-      "viewer_count": 5,
+      "viewer_count": 8,
       "game_name": "Project Zomboid",
       "title": "[!Pink 0/4] !extend - Will he survive?",
       "started_at": "2026-09-10T14:43:05Z",
-      "last_live_at": "2026-09-10T20:58:24.376288Z",
+      "last_live_at": "2026-09-10T21:12:50.507224Z",
       "activity_score": 100.0
     },
     {
@@ -22,12 +22,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/cfae9189-5b61-40bd-9235-73e34c5e3842-profile_image-300x300.png",
       "description": "Agriops gaming, showing all the faults not just being perfect. If in doubt ask.",
       "live": true,
-      "viewer_count": 13,
+      "viewer_count": 12,
       "game_name": "Valheim",
       "title": "1.0 Lets go poke things, PURE VANILLA | NO MODS | Raising funds for Schmoopies Birthday and School.  | !blame | 18++",
       "started_at": "2026-09-10T18:17:42Z",
-      "last_live_at": "2026-09-10T20:58:24.376288Z",
-      "activity_score": 73.97
+      "last_live_at": "2026-09-10T21:12:50.507224Z",
+      "activity_score": 77.53
     },
     {
       "login": "slikkdudebroguy",
@@ -39,8 +39,8 @@
       "game_name": "Valheim",
       "title": "And we're back in Valheim! ⚔️🐲 Let's go! | !command !discord [EN | 18+]",
       "started_at": "2026-09-10T18:52:01Z",
-      "last_live_at": "2026-09-10T20:58:24.376288Z",
-      "activity_score": 65.87
+      "last_live_at": "2026-09-10T21:12:50.507224Z",
+      "activity_score": 69.92
     },
     {
       "login": "thelemons",
@@ -48,12 +48,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/fe4ae28d-9290-4929-91a2-bb2d539306d8-profile_image-300x300.png",
       "description": "Deadlock Streamer | Previously Apex, quit because I got ligamentitis in my fingers | Business email: thelemonsstreams@gmail.com",
       "live": true,
-      "viewer_count": 11,
+      "viewer_count": 13,
       "game_name": "Deadlock",
       "title": "Your favorite Pocket main",
       "started_at": "2026-09-10T19:05:04Z",
-      "last_live_at": "2026-09-10T20:58:24.376288Z",
-      "activity_score": 61.69
+      "last_live_at": "2026-09-10T21:12:50.507224Z",
+      "activity_score": 65.99
     },
     {
       "login": "thejudgeza",
@@ -61,12 +61,25 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/20d85e3d-57a0-4b6f-85ae-9112bc1912e4-profile_image-300x300.png",
       "description": "Jumper Streamer with the occasional main games like Warframe, Overwatch and GTA RP.Founder of ZA Gaming Alliance (ZAGA)Gamer since 1996 (Yes Im old....ish)Everyones secret lover.",
       "live": true,
-      "viewer_count": 0,
+      "viewer_count": 1,
       "game_name": "Grand Theft Auto V",
       "title": "ZA/ RP / DreadM / PD Cadet",
       "started_at": "2026-09-10T20:50:19Z",
-      "last_live_at": "2026-09-10T20:58:24.376288Z",
-      "activity_score": 22.68
+      "last_live_at": "2026-09-10T21:12:50.507224Z",
+      "activity_score": 29.32
+    },
+    {
+      "login": "anotherbrokegeek",
+      "display_name": "AnotherBrokeGeek",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/f5753377-cb8e-43c9-b5ac-35e1974cd3e4-profile_image-300x300.png",
+      "description": "South African streamer. Trash with superior taste. Monster Hunter fan with below average skill. Streams start around 10pm and 11pm SAST",
+      "live": true,
+      "viewer_count": 0,
+      "game_name": "Pokémon Champions",
+      "title": "I won a locals once. Let's see how much worse I've gotten since gen 7",
+      "started_at": "2026-09-10T21:11:44Z",
+      "last_live_at": "2026-09-10T21:12:50.507224Z",
+      "activity_score": 8.0
     },
     {
       "login": "chronic_za",
@@ -79,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T20:21:36.878797Z",
-      "activity_score": 66.99
+      "activity_score": 62.97
     },
     {
       "login": "deathsjokerst",
@@ -92,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T19:25:37.652200Z",
-      "activity_score": 60.97
+      "activity_score": 57.31
     },
     {
       "login": "derpy_ruby",
@@ -105,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T20:07:26.721682Z",
-      "activity_score": 56.21
+      "activity_score": 52.84
     },
     {
       "login": "deosil25",
@@ -118,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T20:21:36.878797Z",
-      "activity_score": 47.29
+      "activity_score": 44.45
     },
     {
       "login": "virtualgemma",
@@ -131,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T17:47:22.304349Z",
-      "activity_score": 39.54
+      "activity_score": 37.17
     },
     {
       "login": "blu3bee",
@@ -144,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T18:59:03.935313Z",
-      "activity_score": 30.77
+      "activity_score": 28.92
     },
     {
       "login": "syernide",
@@ -157,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T17:22:05.497916Z",
-      "activity_score": 24.48
+      "activity_score": 23.01
     },
     {
       "login": "viking_237",
@@ -170,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T16:55:14.943193Z",
-      "activity_score": 21.61
+      "activity_score": 20.31
     },
     {
       "login": "zlorbz",
@@ -183,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T15:30:50.651673Z",
-      "activity_score": 19.06
+      "activity_score": 17.92
     },
     {
       "login": "spyro_za",
@@ -196,7 +209,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T14:07:18.955380Z",
-      "activity_score": 15.62
+      "activity_score": 14.68
     },
     {
       "login": "dead_oryx",
@@ -209,7 +222,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T13:08:10.668603Z",
-      "activity_score": 12.19
+      "activity_score": 11.46
     },
     {
       "login": "cassieroseza",
@@ -222,7 +235,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T17:08:13.870015Z",
-      "activity_score": 2.65
+      "activity_score": 2.49
     },
     {
       "login": "caramel",
@@ -235,7 +248,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T23:55:19.302106Z",
-      "activity_score": 0.55
+      "activity_score": 0.52
     },
     {
       "login": "choppa_herrlof",
@@ -248,7 +261,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T20:59:16.476174Z",
-      "activity_score": 0.24
+      "activity_score": 0.23
     },
     {
       "login": "azuracub",
@@ -261,7 +274,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T21:14:24.867721Z",
-      "activity_score": 0.23
+      "activity_score": 0.22
     },
     {
       "login": "zulumachinegaming",
@@ -274,13 +287,13 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T20:59:16.476174Z",
-      "activity_score": 0.17
+      "activity_score": 0.16
     },
     {
-      "login": "sittingduck01",
-      "display_name": "SittingDuck01",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/a9e785fb-ccdd-48bf-abc1-3bd0e41232a2-profile_image-300x300.png",
-      "description": "Never lose your playfulness. Enjoying the game VS Defeating the game.",
+      "login": "waldoliveza",
+      "display_name": "WaldoLiveZA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/f51a7788-d7cd-480d-b7fc-eecbb3967d23-profile_image-300x300.png",
+      "description": "",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
@@ -290,10 +303,10 @@
       "activity_score": 0.08
     },
     {
-      "login": "waldoliveza",
-      "display_name": "WaldoLiveZA",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/f51a7788-d7cd-480d-b7fc-eecbb3967d23-profile_image-300x300.png",
-      "description": "",
+      "login": "sittingduck01",
+      "display_name": "SittingDuck01",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/a9e785fb-ccdd-48bf-abc1-3bd0e41232a2-profile_image-300x300.png",
+      "description": "Never lose your playfulness. Enjoying the game VS Defeating the game.",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
@@ -1282,19 +1295,6 @@
       "display_name": "CorneliusDaDestroyer",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/73d470b4-3266-41c4-b97c-b1cb5ab00b93-profile_image-300x300.png",
       "description": "Hi I'm Cornelius. Welcome to my stream!I love streaming while gaming, game development using Unity and C#, being part of awesome communities and having a blast with awesome humans. I'm a huge Blizzard junkie but do love to play other games as well.Enjoy the ride :P",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": null,
-      "activity_score": 0.0
-    },
-    {
-      "login": "cordeliathedm",
-      "display_name": "CordeliaTheDM",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/bc2141a6-ed45-4cab-855b-43b1706e45e0-profile_image-300x300.png",
-      "description": "One braincell Cult Leader | Horror Game & D&D enjoyer | 3D Vroid Artist | Your soul is mine now!",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
