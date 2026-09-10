@@ -77,6 +77,28 @@
 @keyframes diagArrow{50%{transform:translateX(5px)}}
 @media(prefers-reduced-motion:reduce){.diagnostic-swipe-hint b{animation:none}}
 
+
+/* Diagnostic logo contrast glow */
+.diag-card-head::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:-14px;
+  right:-17px;
+  width:72%;
+  height:78px;
+  pointer-events:none;
+  background:linear-gradient(270deg,rgba(var(--dcrgb),.28) 0%,rgba(var(--dcrgb),.14) 34%,rgba(var(--dcrgb),.045) 66%,transparent 100%);
+  filter:blur(7px);
+  opacity:.9;
+}
+.diag-card-head img,.diag-card-head .diag-wordmark{
+  position:relative;
+  z-index:2;
+  filter:brightness(1.22) contrast(1.06);
+}
+.diag-card-head .diag-step{position:relative;z-index:2}
+
 </style>
 <link rel="stylesheet" href="service-backgrounds.css">
 </head>
