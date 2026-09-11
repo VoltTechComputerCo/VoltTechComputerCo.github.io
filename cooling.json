@@ -1,0 +1,720 @@
+{
+  "schemaVersion": "0.4.0",
+  "generatedAt": "2026-09-11",
+  "products": [
+    {
+      "id": "vt-cooler-deepcool-ak400",
+      "type": "cooler",
+      "brand": "DeepCool",
+      "manufacturer": "DeepCool",
+      "name": "DeepCool AK400",
+      "model": "AK400",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "air",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 180,
+        "heightMm": 155
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 180,
+        "heightMm": 155
+      },
+      "powerWatts": 5,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-deepcool-ak400",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cooler-cooler-master-hyper-212-halo",
+      "type": "cooler",
+      "brand": "Cooler Master",
+      "manufacturer": "Cooler Master",
+      "name": "Cooler Master Hyper 212 Halo",
+      "model": "Hyper 212 Halo",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "air",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 180,
+        "heightMm": 154
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 180,
+        "heightMm": 154
+      },
+      "powerWatts": 5,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-cooler-master-hyper-212-halo",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cooler-thermalright-peerless-assassin-120",
+      "type": "cooler",
+      "brand": "Thermalright",
+      "manufacturer": "Thermalright",
+      "name": "Thermalright Peerless Assassin 120 SE",
+      "model": "Peerless Assassin 120 SE",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "air",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 240,
+        "heightMm": 155
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 240,
+        "heightMm": 155
+      },
+      "powerWatts": 7,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-thermalright-peerless-assassin-120",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cooler-deepcool-ak620",
+      "type": "cooler",
+      "brand": "DeepCool",
+      "manufacturer": "DeepCool",
+      "name": "DeepCool AK620",
+      "model": "AK620",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "air",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 260,
+        "heightMm": 160
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 260,
+        "heightMm": 160
+      },
+      "powerWatts": 7,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-deepcool-ak620",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cooler-bequiet-dark-rock-5",
+      "type": "cooler",
+      "brand": "be quiet!",
+      "manufacturer": "be quiet!",
+      "name": "be quiet! Dark Rock 5",
+      "model": "Dark Rock 5",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "air",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 260,
+        "heightMm": 161
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 260,
+        "heightMm": 161
+      },
+      "powerWatts": 7,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-bequiet-dark-rock-5",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cooler-noctua-nh-d15-g2",
+      "type": "cooler",
+      "brand": "Noctua",
+      "manufacturer": "Noctua",
+      "name": "Noctua NH-D15 G2",
+      "model": "NH-D15 G2",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "air",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 280,
+        "heightMm": 168
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 280,
+        "heightMm": 168
+      },
+      "powerWatts": 8,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-noctua-nh-d15-g2",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cooler-arctic-liquid-freezer-iii-240",
+      "type": "cooler",
+      "brand": "ARCTIC",
+      "manufacturer": "ARCTIC",
+      "name": "ARCTIC Liquid Freezer III 240",
+      "model": "Liquid Freezer III 240",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "aio",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 260,
+        "radiatorSizeMm": 240
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 260,
+        "radiatorSizeMm": 240
+      },
+      "powerWatts": 12,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-arctic-liquid-freezer-iii-240",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cooler-corsair-nautilus-240-rs",
+      "type": "cooler",
+      "brand": "Corsair",
+      "manufacturer": "Corsair",
+      "name": "Corsair NAUTILUS 240 RS",
+      "model": "NAUTILUS 240 RS",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "aio",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 250,
+        "radiatorSizeMm": 240
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 250,
+        "radiatorSizeMm": 240
+      },
+      "powerWatts": 12,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-corsair-nautilus-240-rs",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cooler-nzxt-kraken-240",
+      "type": "cooler",
+      "brand": "NZXT",
+      "manufacturer": "NZXT",
+      "name": "NZXT Kraken 240",
+      "model": "Kraken 240",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "aio",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 250,
+        "radiatorSizeMm": 240
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 250,
+        "radiatorSizeMm": 240
+      },
+      "powerWatts": 12,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-nzxt-kraken-240",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cooler-arctic-liquid-freezer-iii-280",
+      "type": "cooler",
+      "brand": "ARCTIC",
+      "manufacturer": "ARCTIC",
+      "name": "ARCTIC Liquid Freezer III 280",
+      "model": "Liquid Freezer III 280",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "aio",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 300,
+        "radiatorSizeMm": 280
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 300,
+        "radiatorSizeMm": 280
+      },
+      "powerWatts": 14,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-arctic-liquid-freezer-iii-280",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cooler-arctic-liquid-freezer-iii-360",
+      "type": "cooler",
+      "brand": "ARCTIC",
+      "manufacturer": "ARCTIC",
+      "name": "ARCTIC Liquid Freezer III 360",
+      "model": "Liquid Freezer III 360",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "aio",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 340,
+        "radiatorSizeMm": 360
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 340,
+        "radiatorSizeMm": 360
+      },
+      "powerWatts": 16,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-arctic-liquid-freezer-iii-360",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cooler-corsair-nautilus-360-rs",
+      "type": "cooler",
+      "brand": "Corsair",
+      "manufacturer": "Corsair",
+      "name": "Corsair NAUTILUS 360 RS",
+      "model": "NAUTILUS 360 RS",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "aio",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 320,
+        "radiatorSizeMm": 360
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 320,
+        "radiatorSizeMm": 360
+      },
+      "powerWatts": 16,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-corsair-nautilus-360-rs",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cooler-nzxt-kraken-360",
+      "type": "cooler",
+      "brand": "NZXT",
+      "manufacturer": "NZXT",
+      "name": "NZXT Kraken 360",
+      "model": "Kraken 360",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "aio",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 320,
+        "radiatorSizeMm": 360
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 320,
+        "radiatorSizeMm": 360
+      },
+      "powerWatts": 16,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-nzxt-kraken-360",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cooler-arctic-liquid-freezer-iii-420",
+      "type": "cooler",
+      "brand": "ARCTIC",
+      "manufacturer": "ARCTIC",
+      "name": "ARCTIC Liquid Freezer III 420",
+      "model": "Liquid Freezer III 420",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "aio",
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 380,
+        "radiatorSizeMm": 420
+      },
+      "compatibility": {
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 380,
+        "radiatorSizeMm": 420
+      },
+      "powerWatts": 18,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-arctic-liquid-freezer-iii-420",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    }
+  ]
+}

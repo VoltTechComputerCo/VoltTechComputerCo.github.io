@@ -1,0 +1,800 @@
+{
+  "schemaVersion": "0.4.0",
+  "generatedAt": "2026-09-11",
+  "products": [
+    {
+      "id": "vt-cpu-amd-5500",
+      "type": "cpu",
+      "brand": "AMD",
+      "manufacturer": "AMD",
+      "name": "AMD Ryzen 5 5500",
+      "model": "Ryzen 5 5500",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM4",
+        "cores": 6,
+        "threads": 12,
+        "tdpWatts": 65,
+        "integratedGraphics": false,
+        "coolerIncluded": true,
+        "architecture": "Zen 3"
+      },
+      "compatibility": {
+        "socket": "AM4",
+        "cpuFamily": "Ryzen 5000",
+        "supportedChipsets": [
+          "B550"
+        ],
+        "biosMayRequireUpdateChipsets": []
+      },
+      "powerWatts": 80,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-amd-5500",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-amd-5600",
+      "type": "cpu",
+      "brand": "AMD",
+      "manufacturer": "AMD",
+      "name": "AMD Ryzen 5 5600",
+      "model": "Ryzen 5 5600",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM4",
+        "cores": 6,
+        "threads": 12,
+        "tdpWatts": 65,
+        "integratedGraphics": false,
+        "coolerIncluded": true,
+        "architecture": "Zen 3"
+      },
+      "compatibility": {
+        "socket": "AM4",
+        "cpuFamily": "Ryzen 5000",
+        "supportedChipsets": [
+          "B550"
+        ],
+        "biosMayRequireUpdateChipsets": []
+      },
+      "powerWatts": 85,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-amd-5600",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-amd-5700x",
+      "type": "cpu",
+      "brand": "AMD",
+      "manufacturer": "AMD",
+      "name": "AMD Ryzen 7 5700X",
+      "model": "Ryzen 7 5700X",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM4",
+        "cores": 8,
+        "threads": 16,
+        "tdpWatts": 65,
+        "integratedGraphics": false,
+        "coolerIncluded": false,
+        "architecture": "Zen 3"
+      },
+      "compatibility": {
+        "socket": "AM4",
+        "cpuFamily": "Ryzen 5000",
+        "supportedChipsets": [
+          "B550"
+        ],
+        "biosMayRequireUpdateChipsets": []
+      },
+      "powerWatts": 88,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-amd-5700x",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-amd-5700x3d",
+      "type": "cpu",
+      "brand": "AMD",
+      "manufacturer": "AMD",
+      "name": "AMD Ryzen 7 5700X3D",
+      "model": "Ryzen 7 5700X3D",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM4",
+        "cores": 8,
+        "threads": 16,
+        "tdpWatts": 105,
+        "integratedGraphics": false,
+        "coolerIncluded": false,
+        "architecture": "Zen 3"
+      },
+      "compatibility": {
+        "socket": "AM4",
+        "cpuFamily": "Ryzen 5000",
+        "supportedChipsets": [
+          "B550"
+        ],
+        "biosMayRequireUpdateChipsets": []
+      },
+      "powerWatts": 120,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-amd-5700x3d",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-amd-7600",
+      "type": "cpu",
+      "brand": "AMD",
+      "manufacturer": "AMD",
+      "name": "AMD Ryzen 5 7600",
+      "model": "Ryzen 5 7600",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "cores": 6,
+        "threads": 12,
+        "tdpWatts": 65,
+        "integratedGraphics": true,
+        "coolerIncluded": true,
+        "architecture": "Zen 4"
+      },
+      "compatibility": {
+        "socket": "AM5",
+        "cpuFamily": "Ryzen 7000",
+        "supportedChipsets": [
+          "B650",
+          "X670E",
+          "X870",
+          "X870E"
+        ],
+        "biosMayRequireUpdateChipsets": []
+      },
+      "powerWatts": 88,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-amd-7600",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-amd-7700",
+      "type": "cpu",
+      "brand": "AMD",
+      "manufacturer": "AMD",
+      "name": "AMD Ryzen 7 7700",
+      "model": "Ryzen 7 7700",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "cores": 8,
+        "threads": 16,
+        "tdpWatts": 65,
+        "integratedGraphics": true,
+        "coolerIncluded": true,
+        "architecture": "Zen 4"
+      },
+      "compatibility": {
+        "socket": "AM5",
+        "cpuFamily": "Ryzen 7000",
+        "supportedChipsets": [
+          "B650",
+          "X670E",
+          "X870",
+          "X870E"
+        ],
+        "biosMayRequireUpdateChipsets": []
+      },
+      "powerWatts": 95,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-amd-7700",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-amd-7800x3d",
+      "type": "cpu",
+      "brand": "AMD",
+      "manufacturer": "AMD",
+      "name": "AMD Ryzen 7 7800X3D",
+      "model": "Ryzen 7 7800X3D",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "cores": 8,
+        "threads": 16,
+        "tdpWatts": 120,
+        "integratedGraphics": true,
+        "coolerIncluded": false,
+        "architecture": "Zen 4"
+      },
+      "compatibility": {
+        "socket": "AM5",
+        "cpuFamily": "Ryzen 7000",
+        "supportedChipsets": [
+          "B650",
+          "X670E",
+          "X870",
+          "X870E"
+        ],
+        "biosMayRequireUpdateChipsets": []
+      },
+      "powerWatts": 135,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-amd-7800x3d",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-amd-9600x",
+      "type": "cpu",
+      "brand": "AMD",
+      "manufacturer": "AMD",
+      "name": "AMD Ryzen 5 9600X",
+      "model": "Ryzen 5 9600X",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "cores": 6,
+        "threads": 12,
+        "tdpWatts": 65,
+        "integratedGraphics": true,
+        "coolerIncluded": false,
+        "architecture": "Zen 5"
+      },
+      "compatibility": {
+        "socket": "AM5",
+        "cpuFamily": "Ryzen 9000",
+        "supportedChipsets": [
+          "B650",
+          "X670E",
+          "X870",
+          "X870E"
+        ],
+        "biosMayRequireUpdateChipsets": [
+          "B650",
+          "X670E"
+        ]
+      },
+      "powerWatts": 105,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-amd-9600x",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-amd-9700x",
+      "type": "cpu",
+      "brand": "AMD",
+      "manufacturer": "AMD",
+      "name": "AMD Ryzen 7 9700X",
+      "model": "Ryzen 7 9700X",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "cores": 8,
+        "threads": 16,
+        "tdpWatts": 65,
+        "integratedGraphics": true,
+        "coolerIncluded": false,
+        "architecture": "Zen 5"
+      },
+      "compatibility": {
+        "socket": "AM5",
+        "cpuFamily": "Ryzen 9000",
+        "supportedChipsets": [
+          "B650",
+          "X670E",
+          "X870",
+          "X870E"
+        ],
+        "biosMayRequireUpdateChipsets": [
+          "B650",
+          "X670E"
+        ]
+      },
+      "powerWatts": 120,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-amd-9700x",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-amd-9800x3d",
+      "type": "cpu",
+      "brand": "AMD",
+      "manufacturer": "AMD",
+      "name": "AMD Ryzen 7 9800X3D",
+      "model": "Ryzen 7 9800X3D",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "cores": 8,
+        "threads": 16,
+        "tdpWatts": 120,
+        "integratedGraphics": true,
+        "coolerIncluded": false,
+        "architecture": "Zen 5"
+      },
+      "compatibility": {
+        "socket": "AM5",
+        "cpuFamily": "Ryzen 9000",
+        "supportedChipsets": [
+          "B650",
+          "X670E",
+          "X870",
+          "X870E"
+        ],
+        "biosMayRequireUpdateChipsets": [
+          "B650",
+          "X670E"
+        ]
+      },
+      "powerWatts": 162,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-amd-9800x3d",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-intel-14400f",
+      "type": "cpu",
+      "brand": "Intel",
+      "manufacturer": "Intel",
+      "name": "Intel Core i5-14400F",
+      "model": "Core i5-14400F",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1700",
+        "cores": 10,
+        "threads": 16,
+        "tdpWatts": 65,
+        "integratedGraphics": false,
+        "coolerIncluded": true,
+        "architecture": "Raptor Lake Refresh"
+      },
+      "compatibility": {
+        "socket": "LGA1700",
+        "cpuFamily": "Intel 14th Gen",
+        "supportedChipsets": [
+          "B760",
+          "Z790"
+        ],
+        "biosMayRequireUpdateChipsets": [
+          "B760",
+          "Z790"
+        ]
+      },
+      "powerWatts": 148,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-intel-14400f",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-intel-14600k",
+      "type": "cpu",
+      "brand": "Intel",
+      "manufacturer": "Intel",
+      "name": "Intel Core i5-14600K",
+      "model": "Core i5-14600K",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1700",
+        "cores": 14,
+        "threads": 20,
+        "tdpWatts": 125,
+        "integratedGraphics": true,
+        "coolerIncluded": false,
+        "architecture": "Raptor Lake Refresh"
+      },
+      "compatibility": {
+        "socket": "LGA1700",
+        "cpuFamily": "Intel 14th Gen",
+        "supportedChipsets": [
+          "B760",
+          "Z790"
+        ],
+        "biosMayRequireUpdateChipsets": [
+          "B760",
+          "Z790"
+        ]
+      },
+      "powerWatts": 181,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-intel-14600k",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-intel-14700k",
+      "type": "cpu",
+      "brand": "Intel",
+      "manufacturer": "Intel",
+      "name": "Intel Core i7-14700K",
+      "model": "Core i7-14700K",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1700",
+        "cores": 20,
+        "threads": 28,
+        "tdpWatts": 125,
+        "integratedGraphics": true,
+        "coolerIncluded": false,
+        "architecture": "Raptor Lake Refresh"
+      },
+      "compatibility": {
+        "socket": "LGA1700",
+        "cpuFamily": "Intel 14th Gen",
+        "supportedChipsets": [
+          "B760",
+          "Z790"
+        ],
+        "biosMayRequireUpdateChipsets": [
+          "B760",
+          "Z790"
+        ]
+      },
+      "powerWatts": 253,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-intel-14700k",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-intel-245k",
+      "type": "cpu",
+      "brand": "Intel",
+      "manufacturer": "Intel",
+      "name": "Intel Core Ultra 5 245K",
+      "model": "Core Ultra 5 245K",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1851",
+        "cores": 14,
+        "threads": 14,
+        "tdpWatts": 125,
+        "integratedGraphics": true,
+        "coolerIncluded": false,
+        "architecture": "Arrow Lake"
+      },
+      "compatibility": {
+        "socket": "LGA1851",
+        "cpuFamily": "Core Ultra 200",
+        "supportedChipsets": [
+          "B860",
+          "Z890"
+        ],
+        "biosMayRequireUpdateChipsets": []
+      },
+      "powerWatts": 159,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-intel-245k",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-intel-265k",
+      "type": "cpu",
+      "brand": "Intel",
+      "manufacturer": "Intel",
+      "name": "Intel Core Ultra 7 265K",
+      "model": "Core Ultra 7 265K",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1851",
+        "cores": 20,
+        "threads": 20,
+        "tdpWatts": 125,
+        "integratedGraphics": true,
+        "coolerIncluded": false,
+        "architecture": "Arrow Lake"
+      },
+      "compatibility": {
+        "socket": "LGA1851",
+        "cpuFamily": "Core Ultra 200",
+        "supportedChipsets": [
+          "B860",
+          "Z890"
+        ],
+        "biosMayRequireUpdateChipsets": []
+      },
+      "powerWatts": 250,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-intel-265k",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-cpu-intel-285k",
+      "type": "cpu",
+      "brand": "Intel",
+      "manufacturer": "Intel",
+      "name": "Intel Core Ultra 9 285K",
+      "model": "Core Ultra 9 285K",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1851",
+        "cores": 24,
+        "threads": 24,
+        "tdpWatts": 125,
+        "integratedGraphics": true,
+        "coolerIncluded": false,
+        "architecture": "Arrow Lake"
+      },
+      "compatibility": {
+        "socket": "LGA1851",
+        "cpuFamily": "Core Ultra 200",
+        "supportedChipsets": [
+          "B860",
+          "Z890"
+        ],
+        "biosMayRequireUpdateChipsets": []
+      },
+      "powerWatts": 250,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-intel-285k",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    }
+  ]
+}

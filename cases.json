@@ -1,0 +1,834 @@
+{
+  "schemaVersion": "0.4.0",
+  "generatedAt": "2026-09-11",
+  "products": [
+    {
+      "id": "vt-case-montech-air-100-argb",
+      "type": "case",
+      "brand": "Montech",
+      "manufacturer": "Montech",
+      "name": "Montech AIR 100 ARGB",
+      "model": "AIR 100 ARGB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 330,
+        "maxCpuCoolerHeightMm": 161,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 330,
+        "maxCpuCoolerHeightMm": 161,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280
+        ]
+      },
+      "powerWatts": 20,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-montech-air-100-argb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-case-cooler-master-q300l-v2",
+      "type": "case",
+      "brand": "Cooler Master",
+      "manufacturer": "Cooler Master",
+      "name": "Cooler Master MasterBox Q300L V2",
+      "model": "MasterBox Q300L V2",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 360,
+        "maxCpuCoolerHeightMm": 159,
+        "radiatorSupportMm": [
+          120,
+          240
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 360,
+        "maxCpuCoolerHeightMm": 159,
+        "radiatorSupportMm": [
+          120,
+          240
+        ]
+      },
+      "powerWatts": 18,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-cooler-master-q300l-v2",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-case-deepcool-ch370",
+      "type": "case",
+      "brand": "DeepCool",
+      "manufacturer": "DeepCool",
+      "name": "DeepCool CH370",
+      "model": "CH370",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 320,
+        "maxCpuCoolerHeightMm": 165,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 320,
+        "maxCpuCoolerHeightMm": 165,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280
+        ]
+      },
+      "powerWatts": 20,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-deepcool-ch370",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-case-corsair-4000d-airflow",
+      "type": "case",
+      "brand": "Corsair",
+      "manufacturer": "Corsair",
+      "name": "Corsair 4000D Airflow",
+      "model": "4000D Airflow",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 360,
+        "maxCpuCoolerHeightMm": 170,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 360,
+        "maxCpuCoolerHeightMm": 170,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "powerWatts": 22,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-corsair-4000d-airflow",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-case-nzxt-h5-flow",
+      "type": "case",
+      "brand": "NZXT",
+      "manufacturer": "NZXT",
+      "name": "NZXT H5 Flow",
+      "model": "H5 Flow",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 365,
+        "maxCpuCoolerHeightMm": 165,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 365,
+        "maxCpuCoolerHeightMm": 165,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280
+        ]
+      },
+      "powerWatts": 22,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-nzxt-h5-flow",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-case-fractal-pop-air",
+      "type": "case",
+      "brand": "Fractal Design",
+      "manufacturer": "Fractal Design",
+      "name": "Fractal Design Pop Air",
+      "model": "Pop Air",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 405,
+        "maxCpuCoolerHeightMm": 170,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 405,
+        "maxCpuCoolerHeightMm": 170,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280
+        ]
+      },
+      "powerWatts": 22,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-fractal-pop-air",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-case-lian-li-lancool-216",
+      "type": "case",
+      "brand": "Lian Li",
+      "manufacturer": "Lian Li",
+      "name": "Lian Li LANCOOL 216",
+      "model": "LANCOOL 216",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 392,
+        "maxCpuCoolerHeightMm": 180,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 392,
+        "maxCpuCoolerHeightMm": 180,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "powerWatts": 25,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-lian-li-lancool-216",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-case-phanteks-xt-pro-ultra",
+      "type": "case",
+      "brand": "Phanteks",
+      "manufacturer": "Phanteks",
+      "name": "Phanteks XT Pro Ultra",
+      "model": "XT Pro Ultra",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 415,
+        "maxCpuCoolerHeightMm": 184,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 415,
+        "maxCpuCoolerHeightMm": 184,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "powerWatts": 25,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-phanteks-xt-pro-ultra",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-case-montech-air-903-max",
+      "type": "case",
+      "brand": "Montech",
+      "manufacturer": "Montech",
+      "name": "Montech AIR 903 MAX",
+      "model": "AIR 903 MAX",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 400,
+        "maxCpuCoolerHeightMm": 180,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 400,
+        "maxCpuCoolerHeightMm": 180,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "powerWatts": 25,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-montech-air-903-max",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-case-corsair-5000d-airflow",
+      "type": "case",
+      "brand": "Corsair",
+      "manufacturer": "Corsair",
+      "name": "Corsair 5000D Airflow",
+      "model": "5000D Airflow",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 400,
+        "maxCpuCoolerHeightMm": 170,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 400,
+        "maxCpuCoolerHeightMm": 170,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "powerWatts": 28,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-corsair-5000d-airflow",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-case-fractal-north",
+      "type": "case",
+      "brand": "Fractal Design",
+      "manufacturer": "Fractal Design",
+      "name": "Fractal Design North",
+      "model": "North",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 355,
+        "maxCpuCoolerHeightMm": 170,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 355,
+        "maxCpuCoolerHeightMm": 170,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "powerWatts": 25,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-fractal-north",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-case-nzxt-h7-flow",
+      "type": "case",
+      "brand": "NZXT",
+      "manufacturer": "NZXT",
+      "name": "NZXT H7 Flow",
+      "model": "H7 Flow",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 410,
+        "maxCpuCoolerHeightMm": 185,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 410,
+        "maxCpuCoolerHeightMm": 185,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "powerWatts": 28,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-nzxt-h7-flow",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-case-lian-li-o11-dynamic-evo",
+      "type": "case",
+      "brand": "Lian Li",
+      "manufacturer": "Lian Li",
+      "name": "Lian Li O11 Dynamic EVO",
+      "model": "O11 Dynamic EVO",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "E-ATX",
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 426,
+        "maxCpuCoolerHeightMm": 167,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "E-ATX",
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 426,
+        "maxCpuCoolerHeightMm": 167,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "powerWatts": 30,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-lian-li-o11-dynamic-evo",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-case-fractal-meshify-2-xl",
+      "type": "case",
+      "brand": "Fractal Design",
+      "manufacturer": "Fractal Design",
+      "name": "Fractal Design Meshify 2 XL",
+      "model": "Meshify 2 XL",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "E-ATX",
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 549,
+        "maxCpuCoolerHeightMm": 185,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360,
+          420
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "E-ATX",
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 549,
+        "maxCpuCoolerHeightMm": 185,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360,
+          420
+        ]
+      },
+      "powerWatts": 32,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-fractal-meshify-2-xl",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    }
+  ]
+}
