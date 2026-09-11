@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.2.0",
+  "schemaVersion": "0.3.0",
   "supplier": {
     "id": "mock-evetech",
     "name": "Mock Evetech",
@@ -7,79 +7,1504 @@
   },
   "offers": [
     {
-      "productId": "vt-mb-msi-b650m-gaming-plus-wifi",
-      "supplierSku": "EV-B650M",
+      "productId": "vt-cpu-amd-5500",
+      "supplierSku": "EVETECH-049530",
       "identifiers": {
         "mpn": null,
         "ean": null,
         "upc": null,
         "gtin": null
       },
-      "price": 3499,
+      "price": 1830,
       "currency": "ZAR",
-      "stock": 7,
+      "stock": 15,
       "stockStatus": "in-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
+      "lastChecked": "2026-09-11T10:30:00+02:00"
     },
     {
-      "productId": "vt-ram-corsair-vengeance-ddr5-32-6000",
-      "supplierSku": "EV-CV32",
+      "productId": "vt-cpu-amd-5600",
+      "supplierSku": "EVETECH-601404",
       "identifiers": {
         "mpn": null,
         "ean": null,
         "upc": null,
         "gtin": null
       },
-      "price": 2199,
-      "currency": "ZAR",
-      "stock": 12,
-      "stockStatus": "in-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
-    },
-    {
-      "productId": "vt-gpu-rtx5060ti-16gb",
-      "supplierSku": "EV-5060TI",
-      "identifiers": {
-        "mpn": null,
-        "ean": null,
-        "upc": null,
-        "gtin": null
-      },
-      "price": 10999,
-      "currency": "ZAR",
-      "stock": 4,
-      "stockStatus": "supplier-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
-    },
-    {
-      "productId": "vt-psu-msi-a850gl",
-      "supplierSku": "EV-A850GL",
-      "identifiers": {
-        "mpn": null,
-        "ean": null,
-        "upc": null,
-        "gtin": null
-      },
-      "price": 2499,
+      "price": 2170,
       "currency": "ZAR",
       "stock": 9,
       "stockStatus": "in-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
+      "lastChecked": "2026-09-11T10:30:00+02:00"
     },
     {
-      "productId": "vt-case-montech-air-100",
-      "supplierSku": "EV-AIR100",
+      "productId": "vt-cpu-amd-5700x",
+      "supplierSku": "EVETECH-568557",
       "identifiers": {
         "mpn": null,
         "ean": null,
         "upc": null,
         "gtin": null
       },
-      "price": 1099,
+      "price": 2990,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-5700x3d",
+      "supplierSku": "EVETECH-883918",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4110,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-7700",
+      "supplierSku": "EVETECH-277304",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 5520,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-7800x3d",
+      "supplierSku": "EVETECH-003730",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7190,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-9600x",
+      "supplierSku": "EVETECH-518229",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 5280,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-9700x",
+      "supplierSku": "EVETECH-084288",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6960,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-14400f",
+      "supplierSku": "EVETECH-574656",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3840,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-14600k",
+      "supplierSku": "EVETECH-321679",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6170,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-14700k",
+      "supplierSku": "EVETECH-337987",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7750,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-245k",
+      "supplierSku": "EVETECH-106652",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6530,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-265k",
+      "supplierSku": "EVETECH-206314",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 9010,
+      "currency": "ZAR",
+      "stock": 10,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-285k",
+      "supplierSku": "EVETECH-492458",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 12410,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-prime-b550m-a-wifi-ii",
+      "supplierSku": "EVETECH-392677",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2280,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-b550m-pro-vdh-wifi",
+      "supplierSku": "EVETECH-180651",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2250,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-b650m-gaming-plus-wifi",
+      "supplierSku": "EVETECH-386693",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3620,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-tuf-b650-plus-wifi",
+      "supplierSku": "EVETECH-566233",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3550,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-x670e-gaming-plus-wifi",
+      "supplierSku": "EVETECH-233907",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6270,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-rog-strix-x870e-e",
+      "supplierSku": "EVETECH-979258",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 8860,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-b760m-gaming-plus-wifi",
+      "supplierSku": "EVETECH-969882",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3030,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-prime-b760-plus",
+      "supplierSku": "EVETECH-297284",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3280,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-gigabyte-z790-eagle-ax",
+      "supplierSku": "EVETECH-749409",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4920,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-z790-gaming-plus-wifi",
+      "supplierSku": "EVETECH-689168",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 5220,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asrock-b860m-pro-rs-wifi",
+      "supplierSku": "EVETECH-185880",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3820,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-gigabyte-b860-eagle-wifi6e",
+      "supplierSku": "EVETECH-232713",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4060,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-z890-gaming-plus-wifi",
+      "supplierSku": "EVETECH-257990",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6530,
+      "currency": "ZAR",
+      "stock": 17,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-tuf-z890-plus-wifi",
+      "supplierSku": "EVETECH-231564",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6270,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-beast-16-ddr4-3200",
+      "supplierSku": "EVETECH-220393",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 660,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-renegade-64-ddr4-3600",
+      "supplierSku": "EVETECH-007229",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2570,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-vengeance-32-ddr5-6000",
+      "supplierSku": "EVETECH-598243",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2250,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-flare-x5-32-ddr5-6000",
+      "supplierSku": "EVETECH-854895",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2250,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-beast-32-ddr5-6000",
+      "supplierSku": "EVETECH-627020",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2270,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-teamgroup-tforce-delta-32-ddr5-6000",
+      "supplierSku": "EVETECH-468652",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2250,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-dominator-32-ddr5-6400",
+      "supplierSku": "EVETECH-259677",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2130,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-trident-z5-32-ddr5-7200",
+      "supplierSku": "EVETECH-752727",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2430,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-beast-48-ddr5-6000",
+      "supplierSku": "EVETECH-419455",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3210,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-flare-x5-64-ddr5-6000",
+      "supplierSku": "EVETECH-586913",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4500,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-vengeance-64-ddr5-6000",
+      "supplierSku": "EVETECH-537468",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4500,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-vengeance-96-ddr5-6000",
+      "supplierSku": "EVETECH-547009",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6300,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-trident-z5-128-ddr5-6000",
+      "supplierSku": "EVETECH-694812",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 9010,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asus-rx7600-dual",
+      "supplierSku": "EVETECH-965612",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6210,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-sapphire-rx7800xt-pulse",
+      "supplierSku": "EVETECH-193983",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 12290,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-sapphire-rx9070xt-pulse",
+      "supplierSku": "EVETECH-100941",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 16250,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-msi-rtx4060ti-ventus-2x",
+      "supplierSku": "EVETECH-422648",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 8950,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5060-windforce",
+      "supplierSku": "EVETECH-384163",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 8480,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5060ti-16",
+      "supplierSku": "EVETECH-992367",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 10030,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-msi-rtx5070-ventus",
+      "supplierSku": "EVETECH-342718",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 13850,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asus-rtx5070-prime",
+      "supplierSku": "EVETECH-738627",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 15000,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5070ti-gaming",
+      "supplierSku": "EVETECH-599403",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 18150,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-msi-rtx5080-ventus",
+      "supplierSku": "EVETECH-642133",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 29420,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asus-rtx5080-tuf",
+      "supplierSku": "EVETECH-359894",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 29140,
       "currency": "ZAR",
       "stock": 5,
       "stockStatus": "in-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5090-gaming",
+      "supplierSku": "EVETECH-591279",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 52240,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-intel-arc-b580-limited",
+      "supplierSku": "EVETECH-716867",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7100,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asrock-arc-b580-steel-legend",
+      "supplierSku": "EVETECH-057361",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7030,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-kingston-nv3-1tb",
+      "supplierSku": "EVETECH-955028",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 910,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-blue-sn580-1tb",
+      "supplierSku": "EVETECH-907845",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 880,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-black-sn770-1tb",
+      "supplierSku": "EVETECH-094576",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 920,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-black-sn850x-1tb",
+      "supplierSku": "EVETECH-300110",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1050,
+      "currency": "ZAR",
+      "stock": 17,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-samsung-990-evo-plus-1tb",
+      "supplierSku": "EVETECH-582618",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1000,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-samsung-990-pro-2tb",
+      "supplierSku": "EVETECH-100613",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2080,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-crucial-p3-plus-1tb",
+      "supplierSku": "EVETECH-862093",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 850,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-lexar-nm790-2tb",
+      "supplierSku": "EVETECH-950591",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1760,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-teamgroup-mp44-2tb",
+      "supplierSku": "EVETECH-471702",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1680,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-samsung-870-evo-1tb",
+      "supplierSku": "EVETECH-611339",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 920,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-crucial-bx500-1tb",
+      "supplierSku": "EVETECH-438557",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 970,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-seagate-barracuda-2tb",
+      "supplierSku": "EVETECH-702052",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 880,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-blue-4tb",
+      "supplierSku": "EVETECH-447200",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1690,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-cooler-master-mwe-550-bronze",
+      "supplierSku": "EVETECH-308475",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1050,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-superflower-leadex-iii-750",
+      "supplierSku": "EVETECH-638711",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1710,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-rm750e",
+      "supplierSku": "EVETECH-173686",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1710,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-msi-mag-a850gl",
+      "supplierSku": "EVETECH-089160",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1970,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-rm850e",
+      "supplierSku": "EVETECH-529244",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1890,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-bequiet-pure-power-12m-850",
+      "supplierSku": "EVETECH-463800",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2010,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-rm1000e",
+      "supplierSku": "EVETECH-070421",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2530,
+      "currency": "ZAR",
+      "stock": 17,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-msi-mpg-a1000g-pcie5",
+      "supplierSku": "EVETECH-766057",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2440,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-seasonic-vertex-gx-1000",
+      "supplierSku": "EVETECH-308518",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2320,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-hx1200i",
+      "supplierSku": "EVETECH-977888",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3150,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-bequiet-dark-power-13-1300",
+      "supplierSku": "EVETECH-700384",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3230,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-seasonic-prime-tx-1600",
+      "supplierSku": "EVETECH-189024",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3980,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-montech-air-100-argb",
+      "supplierSku": "EVETECH-873590",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1430,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-cooler-master-q300l-v2",
+      "supplierSku": "EVETECH-227870",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1690,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-fractal-pop-air",
+      "supplierSku": "EVETECH-773646",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2050,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-lian-li-lancool-216",
+      "supplierSku": "EVETECH-741698",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1870,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-montech-air-903-max",
+      "supplierSku": "EVETECH-137330",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2030,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-fractal-north",
+      "supplierSku": "EVETECH-184085",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1570,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-lian-li-o11-dynamic-evo",
+      "supplierSku": "EVETECH-385473",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2100,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-fractal-meshify-2-xl",
+      "supplierSku": "EVETECH-187931",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3250,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-deepcool-ak400",
+      "supplierSku": "EVETECH-672685",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 670,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-cooler-master-hyper-212-halo",
+      "supplierSku": "EVETECH-060397",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 700,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-deepcool-ak620",
+      "supplierSku": "EVETECH-810746",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1280,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-bequiet-dark-rock-5",
+      "supplierSku": "EVETECH-512167",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1350,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-noctua-nh-d15-g2",
+      "supplierSku": "EVETECH-126117",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1430,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-liquid-freezer-iii-240",
+      "supplierSku": "EVETECH-225408",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2290,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-corsair-nautilus-240-rs",
+      "supplierSku": "EVETECH-397070",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2200,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-nzxt-kraken-240",
+      "supplierSku": "EVETECH-177049",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2220,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-liquid-freezer-iii-280",
+      "supplierSku": "EVETECH-033971",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2370,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-corsair-nautilus-360-rs",
+      "supplierSku": "EVETECH-383094",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2860,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-nzxt-kraken-360",
+      "supplierSku": "EVETECH-966718",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2780,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-liquid-freezer-iii-420",
+      "supplierSku": "EVETECH-240484",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2950,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
     }
   ]
 }

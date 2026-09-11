@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.2.0",
+  "schemaVersion": "0.3.0",
   "supplier": {
     "id": "mock-rebeltech",
     "name": "Mock Rebel Tech",
@@ -7,109 +7,1579 @@
   },
   "offers": [
     {
-      "productId": "vt-cpu-intel-265k",
-      "supplierSku": "RB-265K",
+      "productId": "vt-cpu-amd-5500",
+      "supplierSku": "REBELTECH-113557",
       "identifiers": {
         "mpn": null,
         "ean": null,
         "upc": null,
         "gtin": null
       },
-      "price": 7999,
+      "price": 1770,
       "currency": "ZAR",
-      "stock": 3,
-      "stockStatus": "supplier-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
     },
     {
-      "productId": "vt-mb-asus-b550m-a-wifi-ii",
-      "supplierSku": "RB-B550",
+      "productId": "vt-cpu-amd-5600",
+      "supplierSku": "REBELTECH-238239",
       "identifiers": {
         "mpn": null,
         "ean": null,
         "upc": null,
         "gtin": null
       },
-      "price": 2499,
+      "price": 2200,
       "currency": "ZAR",
-      "stock": 2,
-      "stockStatus": "supplier-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
-    },
-    {
-      "productId": "vt-mb-msi-z890-gaming-plus-wifi",
-      "supplierSku": "RB-Z890",
-      "identifiers": {
-        "mpn": null,
-        "ean": null,
-        "upc": null,
-        "gtin": null
-      },
-      "price": 5999,
-      "currency": "ZAR",
-      "stock": 5,
-      "stockStatus": "supplier-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
-    },
-    {
-      "productId": "vt-ram-kingston-fury-ddr4-32-3200",
-      "supplierSku": "RB-KF32",
-      "identifiers": {
-        "mpn": null,
-        "ean": null,
-        "upc": null,
-        "gtin": null
-      },
-      "price": 1499,
-      "currency": "ZAR",
-      "stock": 9,
+      "stock": 12,
       "stockStatus": "in-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
+      "lastChecked": "2026-09-11T10:30:00+02:00"
     },
     {
-      "productId": "vt-ssd-wd-sn770-1tb",
-      "supplierSku": "RB-SN770",
+      "productId": "vt-cpu-amd-5700x",
+      "supplierSku": "REBELTECH-817775",
       "identifiers": {
         "mpn": null,
         "ean": null,
         "upc": null,
         "gtin": null
       },
-      "price": 1299,
+      "price": 3090,
       "currency": "ZAR",
       "stock": 11,
       "stockStatus": "in-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
+      "lastChecked": "2026-09-11T10:30:00+02:00"
     },
     {
-      "productId": "vt-psu-superflower-750w",
-      "supplierSku": "RB-SF750",
+      "productId": "vt-cpu-amd-7600",
+      "supplierSku": "REBELTECH-659159",
       "identifiers": {
         "mpn": null,
         "ean": null,
         "upc": null,
         "gtin": null
       },
-      "price": 2199,
+      "price": 3820,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-9600x",
+      "supplierSku": "REBELTECH-144682",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 5430,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-9700x",
+      "supplierSku": "REBELTECH-591723",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6620,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-9800x3d",
+      "supplierSku": "REBELTECH-175400",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 9450,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-14400f",
+      "supplierSku": "REBELTECH-044969",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3730,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-14600k",
+      "supplierSku": "REBELTECH-339886",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6350,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-14700k",
+      "supplierSku": "REBELTECH-501895",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 8490,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-245k",
+      "supplierSku": "REBELTECH-305465",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6530,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-265k",
+      "supplierSku": "REBELTECH-539131",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 9190,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-285k",
+      "supplierSku": "REBELTECH-110662",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 11580,
+      "currency": "ZAR",
+      "stock": 10,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-prime-b550m-a-wifi-ii",
+      "supplierSku": "REBELTECH-935997",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2230,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-gigabyte-b550-aorus-elite-v2",
+      "supplierSku": "REBELTECH-597001",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2280,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-b650m-gaming-plus-wifi",
+      "supplierSku": "REBELTECH-065539",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3340,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-gigabyte-b650-eagle-ax",
+      "supplierSku": "REBELTECH-147645",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3410,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-tuf-b650-plus-wifi",
+      "supplierSku": "REBELTECH-939873",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3310,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asrock-b650m-pro-rs-wifi",
+      "supplierSku": "REBELTECH-780540",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3380,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-x670e-gaming-plus-wifi",
+      "supplierSku": "REBELTECH-465748",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6660,
+      "currency": "ZAR",
+      "stock": 10,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-gigabyte-x870-aorus-elite-wifi7",
+      "supplierSku": "REBELTECH-362830",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7030,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-b760m-gaming-plus-wifi",
+      "supplierSku": "REBELTECH-959347",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3150,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-gigabyte-z790-eagle-ax",
+      "supplierSku": "REBELTECH-628964",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 5230,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-z790-gaming-plus-wifi",
+      "supplierSku": "REBELTECH-487016",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 5020,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asrock-b860m-pro-rs-wifi",
+      "supplierSku": "REBELTECH-526456",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4060,
       "currency": "ZAR",
       "stock": 4,
-      "stockStatus": "supplier-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
     },
     {
-      "productId": "vt-cooler-deepcool-ak400",
-      "supplierSku": "RB-AK400",
+      "productId": "vt-mb-gigabyte-b860-eagle-wifi6e",
+      "supplierSku": "REBELTECH-486079",
       "identifiers": {
         "mpn": null,
         "ean": null,
         "upc": null,
         "gtin": null
       },
-      "price": 699,
+      "price": 3780,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-z890-gaming-plus-wifi",
+      "supplierSku": "REBELTECH-798419",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6530,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-tuf-z890-plus-wifi",
+      "supplierSku": "REBELTECH-859591",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6600,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-beast-16-ddr4-3200",
+      "supplierSku": "REBELTECH-244141",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 660,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-vengeance-lpx-32-ddr4-3200",
+      "supplierSku": "REBELTECH-308475",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1250,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-renegade-64-ddr4-3600",
+      "supplierSku": "REBELTECH-812123",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2650,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-teamgroup-tforce-delta-32-ddr5-6000",
+      "supplierSku": "REBELTECH-114771",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2280,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-trident-z5-32-ddr5-7200",
+      "supplierSku": "REBELTECH-520599",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2320,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-flare-x5-64-ddr5-6000",
+      "supplierSku": "REBELTECH-530984",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4330,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-vengeance-64-ddr5-6000",
+      "supplierSku": "REBELTECH-283967",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4290,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-renegade-64-ddr5-6400",
+      "supplierSku": "REBELTECH-348373",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4450,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-vengeance-96-ddr5-6000",
+      "supplierSku": "REBELTECH-074132",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6490,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-trident-z5-128-ddr5-6000",
+      "supplierSku": "REBELTECH-755623",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 8390,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rx7700xt-gaming-oc",
+      "supplierSku": "REBELTECH-797130",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 9850,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-sapphire-rx7800xt-pulse",
+      "supplierSku": "REBELTECH-979081",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 11820,
+      "currency": "ZAR",
+      "stock": 10,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-sapphire-rx9070-pulse",
+      "supplierSku": "REBELTECH-857852",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 13570,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-sapphire-rx9070xt-pulse",
+      "supplierSku": "REBELTECH-439141",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 17240,
       "currency": "ZAR",
       "stock": 7,
       "stockStatus": "in-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx4060-windforce",
+      "supplierSku": "REBELTECH-595444",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6340,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5060-windforce",
+      "supplierSku": "REBELTECH-271452",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 8160,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5060ti-16",
+      "supplierSku": "REBELTECH-040657",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 10030,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-msi-rtx5070-ventus",
+      "supplierSku": "REBELTECH-207843",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 15000,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asus-rtx5070-prime",
+      "supplierSku": "REBELTECH-895199",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 14860,
+      "currency": "ZAR",
+      "stock": 17,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5070ti-gaming",
+      "supplierSku": "REBELTECH-217128",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 19850,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5090-gaming",
+      "supplierSku": "REBELTECH-478277",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 53290,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asus-rtx5090-tuf",
+      "supplierSku": "REBELTECH-881498",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 50190,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-intel-arc-b580-limited",
+      "supplierSku": "REBELTECH-349357",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7170,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asrock-arc-b580-steel-legend",
+      "supplierSku": "REBELTECH-306062",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7240,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-kingston-nv3-1tb",
+      "supplierSku": "REBELTECH-352058",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 880,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-blue-sn580-1tb",
+      "supplierSku": "REBELTECH-782625",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 920,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-black-sn770-1tb",
+      "supplierSku": "REBELTECH-745450",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 870,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-black-sn850x-2tb",
+      "supplierSku": "REBELTECH-880012",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1980,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-samsung-990-evo-plus-1tb",
+      "supplierSku": "REBELTECH-773046",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1080,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-samsung-990-pro-2tb",
+      "supplierSku": "REBELTECH-186008",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2140,
+      "currency": "ZAR",
+      "stock": 17,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-crucial-p3-plus-1tb",
+      "supplierSku": "REBELTECH-356642",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 850,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-crucial-t500-2tb",
+      "supplierSku": "REBELTECH-697913",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2100,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-lexar-nm790-2tb",
+      "supplierSku": "REBELTECH-089065",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1860,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-teamgroup-mp44-2tb",
+      "supplierSku": "REBELTECH-391189",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1830,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-samsung-870-evo-1tb",
+      "supplierSku": "REBELTECH-802530",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 930,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-crucial-bx500-1tb",
+      "supplierSku": "REBELTECH-813342",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 920,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-seagate-barracuda-2tb",
+      "supplierSku": "REBELTECH-921791",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 820,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-blue-4tb",
+      "supplierSku": "REBELTECH-708863",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1620,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-cooler-master-mwe-550-bronze",
+      "supplierSku": "REBELTECH-109214",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1110,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-cx650",
+      "supplierSku": "REBELTECH-720641",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1450,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-rm650e",
+      "supplierSku": "REBELTECH-233100",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1460,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-superflower-leadex-iii-750",
+      "supplierSku": "REBELTECH-813564",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1670,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-rm750e",
+      "supplierSku": "REBELTECH-215356",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1760,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-msi-mag-a750gl",
+      "supplierSku": "REBELTECH-174148",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1730,
+      "currency": "ZAR",
+      "stock": 10,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-msi-mag-a850gl",
+      "supplierSku": "REBELTECH-991972",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1950,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-seasonic-focus-gx-850",
+      "supplierSku": "REBELTECH-551494",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2070,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-bequiet-pure-power-12m-850",
+      "supplierSku": "REBELTECH-152824",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1910,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-rm1000e",
+      "supplierSku": "REBELTECH-222149",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2410,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-seasonic-vertex-gx-1000",
+      "supplierSku": "REBELTECH-516324",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2460,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-hx1200i",
+      "supplierSku": "REBELTECH-619583",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3130,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-bequiet-dark-power-13-1300",
+      "supplierSku": "REBELTECH-263195",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3470,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-seasonic-prime-tx-1600",
+      "supplierSku": "REBELTECH-353599",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4190,
+      "currency": "ZAR",
+      "stock": 10,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-montech-air-100-argb",
+      "supplierSku": "REBELTECH-340099",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1410,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-cooler-master-q300l-v2",
+      "supplierSku": "REBELTECH-679425",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1800,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-deepcool-ch370",
+      "supplierSku": "REBELTECH-503058",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1410,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-corsair-4000d-airflow",
+      "supplierSku": "REBELTECH-526061",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1760,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-nzxt-h5-flow",
+      "supplierSku": "REBELTECH-055328",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1820,
+      "currency": "ZAR",
+      "stock": 17,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-fractal-pop-air",
+      "supplierSku": "REBELTECH-491018",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1970,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-lian-li-lancool-216",
+      "supplierSku": "REBELTECH-720591",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1930,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-phanteks-xt-pro-ultra",
+      "supplierSku": "REBELTECH-990094",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2170,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-montech-air-903-max",
+      "supplierSku": "REBELTECH-457026",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2110,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-corsair-5000d-airflow",
+      "supplierSku": "REBELTECH-384398",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1990,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-nzxt-h7-flow",
+      "supplierSku": "REBELTECH-964778",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2030,
+      "currency": "ZAR",
+      "stock": 17,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-lian-li-o11-dynamic-evo",
+      "supplierSku": "REBELTECH-008028",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2330,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-deepcool-ak400",
+      "supplierSku": "REBELTECH-571438",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 730,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-cooler-master-hyper-212-halo",
+      "supplierSku": "REBELTECH-224686",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 660,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-thermalright-peerless-assassin-120",
+      "supplierSku": "REBELTECH-327184",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1120,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-deepcool-ak620",
+      "supplierSku": "REBELTECH-688842",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1270,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-bequiet-dark-rock-5",
+      "supplierSku": "REBELTECH-868983",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1330,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-noctua-nh-d15-g2",
+      "supplierSku": "REBELTECH-258750",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1540,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-liquid-freezer-iii-240",
+      "supplierSku": "REBELTECH-411648",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2290,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-corsair-nautilus-240-rs",
+      "supplierSku": "REBELTECH-426675",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2310,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-nzxt-kraken-240",
+      "supplierSku": "REBELTECH-500631",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2380,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-liquid-freezer-iii-280",
+      "supplierSku": "REBELTECH-638541",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2370,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-liquid-freezer-iii-360",
+      "supplierSku": "REBELTECH-229893",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2780,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-corsair-nautilus-360-rs",
+      "supplierSku": "REBELTECH-648918",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2830,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-liquid-freezer-iii-420",
+      "supplierSku": "REBELTECH-742044",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3110,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
     }
   ]
 }

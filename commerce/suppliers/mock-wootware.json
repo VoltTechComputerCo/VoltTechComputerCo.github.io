@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.2.0",
+  "schemaVersion": "0.3.0",
   "supplier": {
     "id": "mock-wootware",
     "name": "Mock Wootware",
@@ -7,94 +7,1579 @@
   },
   "offers": [
     {
-      "productId": "vt-cpu-amd-7600",
-      "supplierSku": "WW-7600",
+      "productId": "vt-cpu-amd-5500",
+      "supplierSku": "WOOTWARE-315005",
       "identifiers": {
-        "mpn": "100-100001015BOX",
+        "mpn": null,
         "ean": null,
         "upc": null,
         "gtin": null
       },
-      "price": 3799,
+      "price": 1870,
       "currency": "ZAR",
-      "stock": 5,
-      "stockStatus": "in-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
-    },
-    {
-      "productId": "vt-cpu-amd-9800x3d",
-      "supplierSku": "WW-9800X3D",
-      "identifiers": {
-        "mpn": "100-100001084WOF",
-        "ean": null,
-        "upc": null,
-        "gtin": null
-      },
-      "price": 8999,
-      "currency": "ZAR",
-      "stock": 4,
-      "stockStatus": "in-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
     },
     {
       "productId": "vt-cpu-amd-5700x",
-      "supplierSku": "WW-5700X",
-      "identifiers": {
-        "mpn": "100-100000926WOF",
-        "ean": null,
-        "upc": null,
-        "gtin": null
-      },
-      "price": 4199,
-      "currency": "ZAR",
-      "stock": 2,
-      "stockStatus": "in-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
-    },
-    {
-      "productId": "vt-gpu-rtx5070-12gb",
-      "supplierSku": "WW-5070",
+      "supplierSku": "WOOTWARE-910750",
       "identifiers": {
         "mpn": null,
         "ean": null,
         "upc": null,
         "gtin": null
       },
-      "price": 13999,
+      "price": 3200,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-5700x3d",
+      "supplierSku": "WOOTWARE-318014",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4260,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-7600",
+      "supplierSku": "WOOTWARE-419897",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3800,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-7800x3d",
+      "supplierSku": "WOOTWARE-431599",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7450,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-9600x",
+      "supplierSku": "WOOTWARE-526761",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 5150,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-9800x3d",
+      "supplierSku": "WOOTWARE-035267",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 9120,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-14400f",
+      "supplierSku": "WOOTWARE-206960",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3940,
+      "currency": "ZAR",
+      "stock": 17,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-14600k",
+      "supplierSku": "WOOTWARE-376959",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 5890,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-14700k",
+      "supplierSku": "WOOTWARE-751200",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 8610,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-245k",
+      "supplierSku": "WOOTWARE-719052",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6440,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-265k",
+      "supplierSku": "WOOTWARE-005283",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 8620,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-285k",
+      "supplierSku": "WOOTWARE-864305",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 11640,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-prime-b550m-a-wifi-ii",
+      "supplierSku": "WOOTWARE-818074",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2180,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-gigabyte-b550-aorus-elite-v2",
+      "supplierSku": "WOOTWARE-129672",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2180,
       "currency": "ZAR",
       "stock": 3,
       "stockStatus": "in-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
+      "lastChecked": "2026-09-11T10:30:00+02:00"
     },
     {
-      "productId": "vt-ssd-samsung-990pro-2tb",
-      "supplierSku": "WW-9902",
+      "productId": "vt-mb-gigabyte-b650-eagle-ax",
+      "supplierSku": "WOOTWARE-859624",
       "identifiers": {
         "mpn": null,
         "ean": null,
         "upc": null,
         "gtin": null
       },
-      "price": 3299,
+      "price": 3570,
       "currency": "ZAR",
-      "stock": 6,
-      "stockStatus": "supplier-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
+      "stock": 10,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
     },
     {
-      "productId": "vt-psu-corsair-rm650e",
-      "supplierSku": "WW-RM650E",
+      "productId": "vt-mb-asus-tuf-b650-plus-wifi",
+      "supplierSku": "WOOTWARE-444721",
       "identifiers": {
         "mpn": null,
         "ean": null,
         "upc": null,
         "gtin": null
       },
-      "price": 1999,
+      "price": 3400,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asrock-b650m-pro-rs-wifi",
+      "supplierSku": "WOOTWARE-014500",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3400,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-x670e-gaming-plus-wifi",
+      "supplierSku": "WOOTWARE-147690",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6440,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-gigabyte-x870-aorus-elite-wifi7",
+      "supplierSku": "WOOTWARE-001726",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7350,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-b760m-gaming-plus-wifi",
+      "supplierSku": "WOOTWARE-619789",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3200,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-prime-b760-plus",
+      "supplierSku": "WOOTWARE-548114",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3230,
       "currency": "ZAR",
       "stock": 8,
       "stockStatus": "in-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-gigabyte-z790-eagle-ax",
+      "supplierSku": "WOOTWARE-025469",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 5150,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-z790-gaming-plus-wifi",
+      "supplierSku": "WOOTWARE-766690",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4990,
+      "currency": "ZAR",
+      "stock": 10,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asrock-b860m-pro-rs-wifi",
+      "supplierSku": "WOOTWARE-261109",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3880,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-z890-gaming-plus-wifi",
+      "supplierSku": "WOOTWARE-706025",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6240,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-tuf-z890-plus-wifi",
+      "supplierSku": "WOOTWARE-857773",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6440,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-beast-16-ddr4-3200",
+      "supplierSku": "WOOTWARE-792691",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 680,
+      "currency": "ZAR",
+      "stock": 10,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-vengeance-lpx-32-ddr4-3200",
+      "supplierSku": "WOOTWARE-757593",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1250,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-renegade-64-ddr4-3600",
+      "supplierSku": "WOOTWARE-893901",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2770,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-vengeance-32-ddr5-6000",
+      "supplierSku": "WOOTWARE-531712",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2220,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-flare-x5-32-ddr5-6000",
+      "supplierSku": "WOOTWARE-824901",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2110,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-beast-32-ddr5-6000",
+      "supplierSku": "WOOTWARE-041038",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2290,
+      "currency": "ZAR",
+      "stock": 10,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-teamgroup-tforce-delta-32-ddr5-6000",
+      "supplierSku": "WOOTWARE-619696",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2110,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-dominator-32-ddr5-6400",
+      "supplierSku": "WOOTWARE-910039",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2370,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-trident-z5-32-ddr5-7200",
+      "supplierSku": "WOOTWARE-953437",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2300,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-flare-x5-64-ddr5-6000",
+      "supplierSku": "WOOTWARE-771189",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4260,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-renegade-64-ddr5-6400",
+      "supplierSku": "WOOTWARE-068761",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4330,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-vengeance-96-ddr5-6000",
+      "supplierSku": "WOOTWARE-166028",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6660,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-trident-z5-128-ddr5-6000",
+      "supplierSku": "WOOTWARE-679137",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 9150,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asus-rx7600-dual",
+      "supplierSku": "WOOTWARE-057999",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6120,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-sapphire-rx7800xt-pulse",
+      "supplierSku": "WOOTWARE-438387",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 11880,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-sapphire-rx9070xt-pulse",
+      "supplierSku": "WOOTWARE-412323",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 17320,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx4060-windforce",
+      "supplierSku": "WOOTWARE-929939",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6820,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-msi-rtx4060ti-ventus-2x",
+      "supplierSku": "WOOTWARE-460810",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 9360,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5060-windforce",
+      "supplierSku": "WOOTWARE-596901",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 8450,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5060ti-16",
+      "supplierSku": "WOOTWARE-513886",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 11020,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-msi-rtx5070-ventus",
+      "supplierSku": "WOOTWARE-985379",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 15220,
+      "currency": "ZAR",
+      "stock": 17,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asus-rtx5070-prime",
+      "supplierSku": "WOOTWARE-859067",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 13780,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5070ti-gaming",
+      "supplierSku": "WOOTWARE-699842",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 18050,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-msi-rtx5080-ventus",
+      "supplierSku": "WOOTWARE-853158",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 30160,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5090-gaming",
+      "supplierSku": "WOOTWARE-219607",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 50960,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asus-rtx5090-tuf",
+      "supplierSku": "WOOTWARE-827312",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 50440,
+      "currency": "ZAR",
+      "stock": 17,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-intel-arc-b580-limited",
+      "supplierSku": "WOOTWARE-438000",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6790,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asrock-arc-b580-steel-legend",
+      "supplierSku": "WOOTWARE-155571",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7280,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-kingston-nv2-500",
+      "supplierSku": "WOOTWARE-166792",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 470,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-kingston-nv3-1tb",
+      "supplierSku": "WOOTWARE-783800",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 910,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-blue-sn580-1tb",
+      "supplierSku": "WOOTWARE-144788",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 910,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-black-sn770-1tb",
+      "supplierSku": "WOOTWARE-190816",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 940,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-black-sn850x-1tb",
+      "supplierSku": "WOOTWARE-839280",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1000,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-black-sn850x-2tb",
+      "supplierSku": "WOOTWARE-288863",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2030,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-samsung-990-evo-plus-1tb",
+      "supplierSku": "WOOTWARE-949332",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1090,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-samsung-990-pro-2tb",
+      "supplierSku": "WOOTWARE-559391",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2130,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-crucial-t500-2tb",
+      "supplierSku": "WOOTWARE-627948",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2010,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-lexar-nm790-2tb",
+      "supplierSku": "WOOTWARE-055529",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1730,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-samsung-870-evo-1tb",
+      "supplierSku": "WOOTWARE-476934",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 970,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-crucial-bx500-1tb",
+      "supplierSku": "WOOTWARE-729461",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 970,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-seagate-barracuda-2tb",
+      "supplierSku": "WOOTWARE-247419",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 870,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-blue-4tb",
+      "supplierSku": "WOOTWARE-453175",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1750,
+      "currency": "ZAR",
+      "stock": 10,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-cooler-master-mwe-550-bronze",
+      "supplierSku": "WOOTWARE-141049",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1120,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-cx650",
+      "supplierSku": "WOOTWARE-618411",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1360,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-rm650e",
+      "supplierSku": "WOOTWARE-031098",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1340,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-superflower-leadex-iii-750",
+      "supplierSku": "WOOTWARE-308820",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1720,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-msi-mag-a750gl",
+      "supplierSku": "WOOTWARE-980738",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1620,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-rm850e",
+      "supplierSku": "WOOTWARE-546263",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1960,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-seasonic-focus-gx-850",
+      "supplierSku": "WOOTWARE-953984",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2080,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-rm1000e",
+      "supplierSku": "WOOTWARE-369968",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2450,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-msi-mpg-a1000g-pcie5",
+      "supplierSku": "WOOTWARE-126801",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2430,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-seasonic-vertex-gx-1000",
+      "supplierSku": "WOOTWARE-275754",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2470,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-hx1200i",
+      "supplierSku": "WOOTWARE-507817",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2960,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-bequiet-dark-power-13-1300",
+      "supplierSku": "WOOTWARE-083225",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3520,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-seasonic-prime-tx-1600",
+      "supplierSku": "WOOTWARE-598621",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4080,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-montech-air-100-argb",
+      "supplierSku": "WOOTWARE-823797",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1510,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-corsair-4000d-airflow",
+      "supplierSku": "WOOTWARE-561632",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1720,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-nzxt-h5-flow",
+      "supplierSku": "WOOTWARE-056915",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1690,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-fractal-pop-air",
+      "supplierSku": "WOOTWARE-257412",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2000,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-lian-li-lancool-216",
+      "supplierSku": "WOOTWARE-965060",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2040,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-phanteks-xt-pro-ultra",
+      "supplierSku": "WOOTWARE-882863",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2120,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-corsair-5000d-airflow",
+      "supplierSku": "WOOTWARE-375808",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2020,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-fractal-north",
+      "supplierSku": "WOOTWARE-568991",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1680,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-nzxt-h7-flow",
+      "supplierSku": "WOOTWARE-984230",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2120,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-lian-li-o11-dynamic-evo",
+      "supplierSku": "WOOTWARE-262221",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2200,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-fractal-meshify-2-xl",
+      "supplierSku": "WOOTWARE-442874",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3170,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-deepcool-ak400",
+      "supplierSku": "WOOTWARE-416828",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 700,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-cooler-master-hyper-212-halo",
+      "supplierSku": "WOOTWARE-463254",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 660,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-deepcool-ak620",
+      "supplierSku": "WOOTWARE-226269",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1410,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-bequiet-dark-rock-5",
+      "supplierSku": "WOOTWARE-159570",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1330,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-noctua-nh-d15-g2",
+      "supplierSku": "WOOTWARE-503416",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1440,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-corsair-nautilus-240-rs",
+      "supplierSku": "WOOTWARE-880126",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2280,
+      "currency": "ZAR",
+      "stock": 10,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-nzxt-kraken-240",
+      "supplierSku": "WOOTWARE-244148",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2230,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-liquid-freezer-iii-280",
+      "supplierSku": "WOOTWARE-664803",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2510,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-liquid-freezer-iii-360",
+      "supplierSku": "WOOTWARE-393105",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2930,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-corsair-nautilus-360-rs",
+      "supplierSku": "WOOTWARE-986495",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2790,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-nzxt-kraken-360",
+      "supplierSku": "WOOTWARE-748704",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2680,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-liquid-freezer-iii-420",
+      "supplierSku": "WOOTWARE-341803",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2940,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
     }
   ]
 }

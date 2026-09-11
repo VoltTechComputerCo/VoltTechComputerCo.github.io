@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.2.0",
+  "schemaVersion": "0.3.0",
   "supplier": {
     "id": "mock-dreamware",
     "name": "Mock Dreamware",
@@ -7,79 +7,1579 @@
   },
   "offers": [
     {
-      "productId": "vt-mb-gigabyte-b650-eagle-ax",
-      "supplierSku": "DW-B650",
+      "productId": "vt-cpu-amd-5600",
+      "supplierSku": "DREAMWARE-766432",
       "identifiers": {
         "mpn": null,
         "ean": null,
         "upc": null,
         "gtin": null
       },
-      "price": 3899,
-      "currency": "ZAR",
-      "stock": 3,
-      "stockStatus": "supplier-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
-    },
-    {
-      "productId": "vt-ram-gskill-flare-x5-32-6000",
-      "supplierSku": "DW-FX5",
-      "identifiers": {
-        "mpn": null,
-        "ean": null,
-        "upc": null,
-        "gtin": null
-      },
-      "price": 1999,
-      "currency": "ZAR",
-      "stock": 8,
-      "stockStatus": "supplier-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
-    },
-    {
-      "productId": "vt-gpu-rx9070xt-16gb",
-      "supplierSku": "DW-9070XT",
-      "identifiers": {
-        "mpn": null,
-        "ean": null,
-        "upc": null,
-        "gtin": null
-      },
-      "price": 15999,
-      "currency": "ZAR",
-      "stock": 2,
-      "stockStatus": "supplier-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
-    },
-    {
-      "productId": "vt-case-corsair-4000d",
-      "supplierSku": "DW-4000D",
-      "identifiers": {
-        "mpn": null,
-        "ean": null,
-        "upc": null,
-        "gtin": null
-      },
-      "price": 1799,
-      "currency": "ZAR",
-      "stock": 5,
-      "stockStatus": "supplier-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
-    },
-    {
-      "productId": "vt-cooler-arctic-lf3-360",
-      "supplierSku": "DW-LF360",
-      "identifiers": {
-        "mpn": null,
-        "ean": null,
-        "upc": null,
-        "gtin": null
-      },
-      "price": 2499,
+      "price": 2380,
       "currency": "ZAR",
       "stock": 4,
-      "stockStatus": "supplier-stock",
-      "lastChecked": "2026-09-10T00:00:00+02:00"
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-5700x3d",
+      "supplierSku": "DREAMWARE-578661",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4410,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-7600",
+      "supplierSku": "DREAMWARE-032707",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3820,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-7800x3d",
+      "supplierSku": "DREAMWARE-774512",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7480,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-9600x",
+      "supplierSku": "DREAMWARE-647682",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 5120,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-9700x",
+      "supplierSku": "DREAMWARE-851999",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7100,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-14600k",
+      "supplierSku": "DREAMWARE-744758",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6170,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-245k",
+      "supplierSku": "DREAMWARE-561890",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6930,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-265k",
+      "supplierSku": "DREAMWARE-473440",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 8490,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-intel-285k",
+      "supplierSku": "DREAMWARE-368513",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 11810,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-prime-b550m-a-wifi-ii",
+      "supplierSku": "DREAMWARE-691994",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2260,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-b550m-pro-vdh-wifi",
+      "supplierSku": "DREAMWARE-400611",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2170,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-b650m-gaming-plus-wifi",
+      "supplierSku": "DREAMWARE-878283",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3730,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-gigabyte-b650-eagle-ax",
+      "supplierSku": "DREAMWARE-709712",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3480,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-tuf-b650-plus-wifi",
+      "supplierSku": "DREAMWARE-942777",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3370,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-x670e-gaming-plus-wifi",
+      "supplierSku": "DREAMWARE-709782",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6730,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-rog-strix-x870e-e",
+      "supplierSku": "DREAMWARE-020880",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 8860,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-gigabyte-x870-aorus-elite-wifi7",
+      "supplierSku": "DREAMWARE-391086",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6960,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-prime-b760-plus",
+      "supplierSku": "DREAMWARE-982630",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3090,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-z790-gaming-plus-wifi",
+      "supplierSku": "DREAMWARE-639612",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 5330,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-gigabyte-b860-eagle-wifi6e",
+      "supplierSku": "DREAMWARE-594976",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4180,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-z890-gaming-plus-wifi",
+      "supplierSku": "DREAMWARE-864351",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6530,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-tuf-z890-plus-wifi",
+      "supplierSku": "DREAMWARE-841915",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6800,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-beast-16-ddr4-3200",
+      "supplierSku": "DREAMWARE-921837",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 650,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-vengeance-lpx-32-ddr4-3200",
+      "supplierSku": "DREAMWARE-925629",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1270,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-ripjaws-v-32-ddr4-3600",
+      "supplierSku": "DREAMWARE-887026",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1400,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-renegade-64-ddr4-3600",
+      "supplierSku": "DREAMWARE-489126",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2590,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-vengeance-32-ddr5-6000",
+      "supplierSku": "DREAMWARE-767851",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2300,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-flare-x5-32-ddr5-6000",
+      "supplierSku": "DREAMWARE-734898",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2370,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-beast-32-ddr5-6000",
+      "supplierSku": "DREAMWARE-073930",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2370,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-teamgroup-tforce-delta-32-ddr5-6000",
+      "supplierSku": "DREAMWARE-600471",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2210,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-dominator-32-ddr5-6400",
+      "supplierSku": "DREAMWARE-895840",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2200,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-trident-z5-32-ddr5-7200",
+      "supplierSku": "DREAMWARE-116895",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2530,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-beast-48-ddr5-6000",
+      "supplierSku": "DREAMWARE-700227",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3210,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-gskill-flare-x5-64-ddr5-6000",
+      "supplierSku": "DREAMWARE-539859",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4330,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-vengeance-64-ddr5-6000",
+      "supplierSku": "DREAMWARE-588834",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4460,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-kingston-fury-renegade-64-ddr5-6400",
+      "supplierSku": "DREAMWARE-371758",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4490,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-mem-corsair-vengeance-96-ddr5-6000",
+      "supplierSku": "DREAMWARE-546770",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6690,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asus-rx7600-dual",
+      "supplierSku": "DREAMWARE-452592",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6270,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rx7700xt-gaming-oc",
+      "supplierSku": "DREAMWARE-654479",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 9740,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-sapphire-rx7800xt-pulse",
+      "supplierSku": "DREAMWARE-202107",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 12060,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-sapphire-rx9070-pulse",
+      "supplierSku": "DREAMWARE-808608",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 14250,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-sapphire-rx9070xt-pulse",
+      "supplierSku": "DREAMWARE-945400",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 16750,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx4060-windforce",
+      "supplierSku": "DREAMWARE-533897",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6330,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-msi-rtx4060ti-ventus-2x",
+      "supplierSku": "DREAMWARE-145210",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 9590,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5060ti-16",
+      "supplierSku": "DREAMWARE-527032",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 10120,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-msi-rtx5070-ventus",
+      "supplierSku": "DREAMWARE-352501",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 14860,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asus-rtx5070-prime",
+      "supplierSku": "DREAMWARE-423542",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 15310,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5070ti-gaming",
+      "supplierSku": "DREAMWARE-582868",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 18320,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-msi-rtx5080-ventus",
+      "supplierSku": "DREAMWARE-001898",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 29730,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asus-rtx5080-tuf",
+      "supplierSku": "DREAMWARE-854184",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 28260,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-gigabyte-rtx5090-gaming",
+      "supplierSku": "DREAMWARE-803738",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 50670,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asus-rtx5090-tuf",
+      "supplierSku": "DREAMWARE-647440",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 51200,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-intel-arc-b580-limited",
+      "supplierSku": "DREAMWARE-174856",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 6750,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-asrock-arc-b580-steel-legend",
+      "supplierSku": "DREAMWARE-665836",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7180,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-kingston-nv2-500",
+      "supplierSku": "DREAMWARE-839907",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 440,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-kingston-nv3-1tb",
+      "supplierSku": "DREAMWARE-173018",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 960,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-blue-sn580-1tb",
+      "supplierSku": "DREAMWARE-210963",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 910,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-black-sn770-1tb",
+      "supplierSku": "DREAMWARE-706014",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 880,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-black-sn850x-2tb",
+      "supplierSku": "DREAMWARE-269535",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2040,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-samsung-990-evo-plus-1tb",
+      "supplierSku": "DREAMWARE-296791",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1000,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-samsung-990-pro-2tb",
+      "supplierSku": "DREAMWARE-789855",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2000,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-crucial-p3-plus-1tb",
+      "supplierSku": "DREAMWARE-955929",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 930,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-crucial-t500-2tb",
+      "supplierSku": "DREAMWARE-860150",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2100,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-lexar-nm790-2tb",
+      "supplierSku": "DREAMWARE-252962",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1850,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-teamgroup-mp44-2tb",
+      "supplierSku": "DREAMWARE-613817",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1850,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-samsung-870-evo-1tb",
+      "supplierSku": "DREAMWARE-351288",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 940,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-crucial-bx500-1tb",
+      "supplierSku": "DREAMWARE-931548",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 940,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-seagate-barracuda-2tb",
+      "supplierSku": "DREAMWARE-570540",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 850,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-storage-wd-blue-4tb",
+      "supplierSku": "DREAMWARE-661299",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1660,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-cooler-master-mwe-550-bronze",
+      "supplierSku": "DREAMWARE-655853",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1060,
+      "currency": "ZAR",
+      "stock": 17,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-superflower-leadex-iii-750",
+      "supplierSku": "DREAMWARE-845169",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1740,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-rm750e",
+      "supplierSku": "DREAMWARE-385257",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1710,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-msi-mag-a750gl",
+      "supplierSku": "DREAMWARE-005271",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1670,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-msi-mag-a850gl",
+      "supplierSku": "DREAMWARE-846820",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2070,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-rm850e",
+      "supplierSku": "DREAMWARE-131876",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2090,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-bequiet-pure-power-12m-850",
+      "supplierSku": "DREAMWARE-056718",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1970,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-rm1000e",
+      "supplierSku": "DREAMWARE-051975",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2360,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-msi-mpg-a1000g-pcie5",
+      "supplierSku": "DREAMWARE-595767",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2540,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-hx1200i",
+      "supplierSku": "DREAMWARE-372049",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3160,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-bequiet-dark-power-13-1300",
+      "supplierSku": "DREAMWARE-177517",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3570,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-psu-seasonic-prime-tx-1600",
+      "supplierSku": "DREAMWARE-596459",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4360,
+      "currency": "ZAR",
+      "stock": 14,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-montech-air-100-argb",
+      "supplierSku": "DREAMWARE-395056",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1460,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-cooler-master-q300l-v2",
+      "supplierSku": "DREAMWARE-735197",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1680,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-corsair-4000d-airflow",
+      "supplierSku": "DREAMWARE-729457",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1710,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-nzxt-h5-flow",
+      "supplierSku": "DREAMWARE-651477",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1730,
+      "currency": "ZAR",
+      "stock": 15,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-fractal-pop-air",
+      "supplierSku": "DREAMWARE-789649",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2070,
+      "currency": "ZAR",
+      "stock": 10,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-lian-li-lancool-216",
+      "supplierSku": "DREAMWARE-034703",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2090,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-phanteks-xt-pro-ultra",
+      "supplierSku": "DREAMWARE-740804",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2280,
+      "currency": "ZAR",
+      "stock": 17,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-corsair-5000d-airflow",
+      "supplierSku": "DREAMWARE-181312",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2170,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-fractal-north",
+      "supplierSku": "DREAMWARE-899898",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1790,
+      "currency": "ZAR",
+      "stock": 18,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-nzxt-h7-flow",
+      "supplierSku": "DREAMWARE-431016",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2110,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-case-fractal-meshify-2-xl",
+      "supplierSku": "DREAMWARE-009134",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3250,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-deepcool-ak400",
+      "supplierSku": "DREAMWARE-569614",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 680,
+      "currency": "ZAR",
+      "stock": 16,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-cooler-master-hyper-212-halo",
+      "supplierSku": "DREAMWARE-027883",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 740,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-thermalright-peerless-assassin-120",
+      "supplierSku": "DREAMWARE-426679",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1140,
+      "currency": "ZAR",
+      "stock": 19,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-deepcool-ak620",
+      "supplierSku": "DREAMWARE-460747",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1310,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-bequiet-dark-rock-5",
+      "supplierSku": "DREAMWARE-838916",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1310,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-corsair-nautilus-240-rs",
+      "supplierSku": "DREAMWARE-644885",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2430,
+      "currency": "ZAR",
+      "stock": 1,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-nzxt-kraken-240",
+      "supplierSku": "DREAMWARE-796276",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2380,
+      "currency": "ZAR",
+      "stock": 13,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-liquid-freezer-iii-280",
+      "supplierSku": "DREAMWARE-588398",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2570,
+      "currency": "ZAR",
+      "stock": 17,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-liquid-freezer-iii-360",
+      "supplierSku": "DREAMWARE-177155",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2720,
+      "currency": "ZAR",
+      "stock": 20,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-corsair-nautilus-360-rs",
+      "supplierSku": "DREAMWARE-800959",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2860,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-nzxt-kraken-360",
+      "supplierSku": "DREAMWARE-434713",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2830,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-liquid-freezer-iii-420",
+      "supplierSku": "DREAMWARE-233249",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3140,
+      "currency": "ZAR",
+      "stock": 0,
+      "stockStatus": "out-of-stock",
+      "lastChecked": "2026-09-11T10:30:00+02:00"
     }
   ]
 }
