@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "0.2.0",
+  "supplier": {
+    "id": "mock-dreamware",
+    "name": "Mock Dreamware",
+    "mode": "temporary-test-data"
+  },
+  "offers": [
+    {
+      "productId": "vt-mb-gigabyte-b650-eagle-ax",
+      "supplierSku": "DW-B650",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3899,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "supplier-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-ram-gskill-flare-x5-32-6000",
+      "supplierSku": "DW-FX5",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1999,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "supplier-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-rx9070xt-16gb",
+      "supplierSku": "DW-9070XT",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 15999,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "supplier-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-case-corsair-4000d",
+      "supplierSku": "DW-4000D",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1799,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "supplier-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-arctic-lf3-360",
+      "supplierSku": "DW-LF360",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2499,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "supplier-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    }
+  ]
+}

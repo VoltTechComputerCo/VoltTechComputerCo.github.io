@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "0.2.0",
+  "supplier": {
+    "id": "mock-wootware",
+    "name": "Mock Wootware",
+    "mode": "temporary-test-data"
+  },
+  "offers": [
+    {
+      "productId": "vt-cpu-amd-7600",
+      "supplierSku": "WW-7600",
+      "identifiers": {
+        "mpn": "100-100001015BOX",
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3799,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-9800x3d",
+      "supplierSku": "WW-9800X3D",
+      "identifiers": {
+        "mpn": "100-100001084WOF",
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 8999,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-cpu-amd-5700x",
+      "supplierSku": "WW-5700X",
+      "identifiers": {
+        "mpn": "100-100000926WOF",
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 4199,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-rtx5070-12gb",
+      "supplierSku": "WW-5070",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 13999,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-ssd-samsung-990pro-2tb",
+      "supplierSku": "WW-9902",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3299,
+      "currency": "ZAR",
+      "stock": 6,
+      "stockStatus": "supplier-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-psu-corsair-rm650e",
+      "supplierSku": "WW-RM650E",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1999,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    }
+  ]
+}

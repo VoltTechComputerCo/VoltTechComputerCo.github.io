@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "0.2.0",
+  "supplier": {
+    "id": "mock-evetech",
+    "name": "Mock Evetech",
+    "mode": "temporary-test-data"
+  },
+  "offers": [
+    {
+      "productId": "vt-mb-msi-b650m-gaming-plus-wifi",
+      "supplierSku": "EV-B650M",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 3499,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-ram-corsair-vengeance-ddr5-32-6000",
+      "supplierSku": "EV-CV32",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2199,
+      "currency": "ZAR",
+      "stock": 12,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-gpu-rtx5060ti-16gb",
+      "supplierSku": "EV-5060TI",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 10999,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "supplier-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-psu-msi-a850gl",
+      "supplierSku": "EV-A850GL",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2499,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-case-montech-air-100",
+      "supplierSku": "EV-AIR100",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1099,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    }
+  ]
+}

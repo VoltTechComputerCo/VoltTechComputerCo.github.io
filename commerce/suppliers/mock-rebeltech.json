@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "0.2.0",
+  "supplier": {
+    "id": "mock-rebeltech",
+    "name": "Mock Rebel Tech",
+    "mode": "temporary-test-data"
+  },
+  "offers": [
+    {
+      "productId": "vt-cpu-intel-265k",
+      "supplierSku": "RB-265K",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 7999,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "supplier-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-mb-asus-b550m-a-wifi-ii",
+      "supplierSku": "RB-B550",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2499,
+      "currency": "ZAR",
+      "stock": 2,
+      "stockStatus": "supplier-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-mb-msi-z890-gaming-plus-wifi",
+      "supplierSku": "RB-Z890",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 5999,
+      "currency": "ZAR",
+      "stock": 5,
+      "stockStatus": "supplier-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-ram-kingston-fury-ddr4-32-3200",
+      "supplierSku": "RB-KF32",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1499,
+      "currency": "ZAR",
+      "stock": 9,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-ssd-wd-sn770-1tb",
+      "supplierSku": "RB-SN770",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 1299,
+      "currency": "ZAR",
+      "stock": 11,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-psu-superflower-750w",
+      "supplierSku": "RB-SF750",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 2199,
+      "currency": "ZAR",
+      "stock": 4,
+      "stockStatus": "supplier-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    },
+    {
+      "productId": "vt-cooler-deepcool-ak400",
+      "supplierSku": "RB-AK400",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 699,
+      "currency": "ZAR",
+      "stock": 7,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-10T00:00:00+02:00"
+    }
+  ]
+}
