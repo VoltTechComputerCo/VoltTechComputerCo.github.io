@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VoltTech Product",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "brand",
+    "name",
+    "status",
+    "specs",
+    "compatibility",
+    "identifiers"
+  ]
+}
