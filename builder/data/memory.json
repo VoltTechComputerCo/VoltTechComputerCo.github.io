@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.3.0",
+  "schemaVersion": "0.4.0",
   "generatedAt": "2026-09-11",
   "products": [
     {
@@ -24,7 +24,9 @@
         "casLatency": 16
       },
       "compatibility": {
-        "memoryType": "DDR4"
+        "memoryType": "DDR4",
+        "capacityGB": 16,
+        "modules": 2
       },
       "powerWatts": 8,
       "media": {
@@ -64,7 +66,9 @@
         "casLatency": 16
       },
       "compatibility": {
-        "memoryType": "DDR4"
+        "memoryType": "DDR4",
+        "capacityGB": 32,
+        "modules": 2
       },
       "powerWatts": 10,
       "media": {
@@ -104,7 +108,9 @@
         "casLatency": 18
       },
       "compatibility": {
-        "memoryType": "DDR4"
+        "memoryType": "DDR4",
+        "capacityGB": 32,
+        "modules": 2
       },
       "powerWatts": 10,
       "media": {
@@ -144,7 +150,9 @@
         "casLatency": 18
       },
       "compatibility": {
-        "memoryType": "DDR4"
+        "memoryType": "DDR4",
+        "capacityGB": 64,
+        "modules": 2
       },
       "powerWatts": 12,
       "media": {
@@ -184,7 +192,9 @@
         "casLatency": 30
       },
       "compatibility": {
-        "memoryType": "DDR5"
+        "memoryType": "DDR5",
+        "capacityGB": 32,
+        "modules": 2
       },
       "powerWatts": 12,
       "media": {
@@ -224,7 +234,9 @@
         "casLatency": 30
       },
       "compatibility": {
-        "memoryType": "DDR5"
+        "memoryType": "DDR5",
+        "capacityGB": 32,
+        "modules": 2
       },
       "powerWatts": 12,
       "media": {
@@ -264,7 +276,9 @@
         "casLatency": 36
       },
       "compatibility": {
-        "memoryType": "DDR5"
+        "memoryType": "DDR5",
+        "capacityGB": 32,
+        "modules": 2
       },
       "powerWatts": 12,
       "media": {
@@ -304,7 +318,9 @@
         "casLatency": 30
       },
       "compatibility": {
-        "memoryType": "DDR5"
+        "memoryType": "DDR5",
+        "capacityGB": 32,
+        "modules": 2
       },
       "powerWatts": 12,
       "media": {
@@ -344,7 +360,9 @@
         "casLatency": 32
       },
       "compatibility": {
-        "memoryType": "DDR5"
+        "memoryType": "DDR5",
+        "capacityGB": 32,
+        "modules": 2
       },
       "powerWatts": 13,
       "media": {
@@ -384,7 +402,9 @@
         "casLatency": 34
       },
       "compatibility": {
-        "memoryType": "DDR5"
+        "memoryType": "DDR5",
+        "capacityGB": 32,
+        "modules": 2
       },
       "powerWatts": 14,
       "media": {
@@ -424,7 +444,9 @@
         "casLatency": 36
       },
       "compatibility": {
-        "memoryType": "DDR5"
+        "memoryType": "DDR5",
+        "capacityGB": 48,
+        "modules": 2
       },
       "powerWatts": 13,
       "media": {
@@ -464,7 +486,9 @@
         "casLatency": 30
       },
       "compatibility": {
-        "memoryType": "DDR5"
+        "memoryType": "DDR5",
+        "capacityGB": 64,
+        "modules": 2
       },
       "powerWatts": 14,
       "media": {
@@ -504,7 +528,9 @@
         "casLatency": 30
       },
       "compatibility": {
-        "memoryType": "DDR5"
+        "memoryType": "DDR5",
+        "capacityGB": 64,
+        "modules": 2
       },
       "powerWatts": 14,
       "media": {
@@ -544,7 +570,9 @@
         "casLatency": 32
       },
       "compatibility": {
-        "memoryType": "DDR5"
+        "memoryType": "DDR5",
+        "capacityGB": 64,
+        "modules": 2
       },
       "powerWatts": 15,
       "media": {
@@ -584,7 +612,9 @@
         "casLatency": 30
       },
       "compatibility": {
-        "memoryType": "DDR5"
+        "memoryType": "DDR5",
+        "capacityGB": 96,
+        "modules": 2
       },
       "powerWatts": 16,
       "media": {
@@ -624,7 +654,9 @@
         "casLatency": 36
       },
       "compatibility": {
-        "memoryType": "DDR5"
+        "memoryType": "DDR5",
+        "capacityGB": 128,
+        "modules": 4
       },
       "powerWatts": 24,
       "media": {

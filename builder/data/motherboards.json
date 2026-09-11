@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.3.0",
+  "schemaVersion": "0.4.0",
   "generatedAt": "2026-09-11",
   "products": [
     {
@@ -31,7 +31,12 @@
       "compatibility": {
         "socket": "AM4",
         "memoryType": "DDR4",
-        "formFactor": "mATX"
+        "formFactor": "mATX",
+        "chipset": "B550",
+        "m2Slots": 2,
+        "sataPorts": 4,
+        "maxMemoryGB": 128,
+        "maxM2PcieGeneration": 4
       },
       "powerWatts": 50,
       "media": {
@@ -78,7 +83,12 @@
       "compatibility": {
         "socket": "AM4",
         "memoryType": "DDR4",
-        "formFactor": "mATX"
+        "formFactor": "mATX",
+        "chipset": "B550",
+        "m2Slots": 2,
+        "sataPorts": 4,
+        "maxMemoryGB": 128,
+        "maxM2PcieGeneration": 4
       },
       "powerWatts": 50,
       "media": {
@@ -125,7 +135,12 @@
       "compatibility": {
         "socket": "AM4",
         "memoryType": "DDR4",
-        "formFactor": "ATX"
+        "formFactor": "ATX",
+        "chipset": "B550",
+        "m2Slots": 2,
+        "sataPorts": 4,
+        "maxMemoryGB": 128,
+        "maxM2PcieGeneration": 4
       },
       "powerWatts": 55,
       "media": {
@@ -172,7 +187,12 @@
       "compatibility": {
         "socket": "AM5",
         "memoryType": "DDR5",
-        "formFactor": "mATX"
+        "formFactor": "mATX",
+        "chipset": "B650",
+        "m2Slots": 2,
+        "sataPorts": 4,
+        "maxMemoryGB": 256,
+        "maxM2PcieGeneration": 5
       },
       "powerWatts": 55,
       "media": {
@@ -219,7 +239,12 @@
       "compatibility": {
         "socket": "AM5",
         "memoryType": "DDR5",
-        "formFactor": "ATX"
+        "formFactor": "ATX",
+        "chipset": "B650",
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "maxMemoryGB": 256,
+        "maxM2PcieGeneration": 5
       },
       "powerWatts": 60,
       "media": {
@@ -266,7 +291,12 @@
       "compatibility": {
         "socket": "AM5",
         "memoryType": "DDR5",
-        "formFactor": "ATX"
+        "formFactor": "ATX",
+        "chipset": "B650",
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "maxMemoryGB": 192,
+        "maxM2PcieGeneration": 5
       },
       "powerWatts": 65,
       "media": {
@@ -313,7 +343,12 @@
       "compatibility": {
         "socket": "AM5",
         "memoryType": "DDR5",
-        "formFactor": "mATX"
+        "formFactor": "mATX",
+        "chipset": "B650",
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "maxMemoryGB": 256,
+        "maxM2PcieGeneration": 5
       },
       "powerWatts": 55,
       "media": {
@@ -360,7 +395,12 @@
       "compatibility": {
         "socket": "AM5",
         "memoryType": "DDR5",
-        "formFactor": "ATX"
+        "formFactor": "ATX",
+        "chipset": "X670E",
+        "m2Slots": 4,
+        "sataPorts": 4,
+        "maxMemoryGB": 256,
+        "maxM2PcieGeneration": 5
       },
       "powerWatts": 75,
       "media": {
@@ -407,7 +447,12 @@
       "compatibility": {
         "socket": "AM5",
         "memoryType": "DDR5",
-        "formFactor": "ATX"
+        "formFactor": "ATX",
+        "chipset": "X870E",
+        "m2Slots": 5,
+        "sataPorts": 4,
+        "maxMemoryGB": 192,
+        "maxM2PcieGeneration": 5
       },
       "powerWatts": 85,
       "media": {
@@ -454,7 +499,12 @@
       "compatibility": {
         "socket": "AM5",
         "memoryType": "DDR5",
-        "formFactor": "ATX"
+        "formFactor": "ATX",
+        "chipset": "X870",
+        "m2Slots": 4,
+        "sataPorts": 4,
+        "maxMemoryGB": 256,
+        "maxM2PcieGeneration": 5
       },
       "powerWatts": 80,
       "media": {
@@ -501,7 +551,12 @@
       "compatibility": {
         "socket": "LGA1700",
         "memoryType": "DDR5",
-        "formFactor": "mATX"
+        "formFactor": "mATX",
+        "chipset": "B760",
+        "m2Slots": 2,
+        "sataPorts": 4,
+        "maxMemoryGB": 192,
+        "maxM2PcieGeneration": 4
       },
       "powerWatts": 55,
       "media": {
@@ -548,7 +603,12 @@
       "compatibility": {
         "socket": "LGA1700",
         "memoryType": "DDR5",
-        "formFactor": "ATX"
+        "formFactor": "ATX",
+        "chipset": "B760",
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "maxMemoryGB": 192,
+        "maxM2PcieGeneration": 4
       },
       "powerWatts": 60,
       "media": {
@@ -595,7 +655,12 @@
       "compatibility": {
         "socket": "LGA1700",
         "memoryType": "DDR5",
-        "formFactor": "ATX"
+        "formFactor": "ATX",
+        "chipset": "Z790",
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "maxMemoryGB": 192,
+        "maxM2PcieGeneration": 5
       },
       "powerWatts": 70,
       "media": {
@@ -642,7 +707,12 @@
       "compatibility": {
         "socket": "LGA1700",
         "memoryType": "DDR5",
-        "formFactor": "ATX"
+        "formFactor": "ATX",
+        "chipset": "Z790",
+        "m2Slots": 4,
+        "sataPorts": 6,
+        "maxMemoryGB": 192,
+        "maxM2PcieGeneration": 5
       },
       "powerWatts": 75,
       "media": {
@@ -689,7 +759,12 @@
       "compatibility": {
         "socket": "LGA1851",
         "memoryType": "DDR5",
-        "formFactor": "mATX"
+        "formFactor": "mATX",
+        "chipset": "B860",
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "maxMemoryGB": 256,
+        "maxM2PcieGeneration": 5
       },
       "powerWatts": 60,
       "media": {
@@ -736,7 +811,12 @@
       "compatibility": {
         "socket": "LGA1851",
         "memoryType": "DDR5",
-        "formFactor": "ATX"
+        "formFactor": "ATX",
+        "chipset": "B860",
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "maxMemoryGB": 256,
+        "maxM2PcieGeneration": 5
       },
       "powerWatts": 65,
       "media": {
@@ -783,7 +863,12 @@
       "compatibility": {
         "socket": "LGA1851",
         "memoryType": "DDR5",
-        "formFactor": "ATX"
+        "formFactor": "ATX",
+        "chipset": "Z890",
+        "m2Slots": 4,
+        "sataPorts": 4,
+        "maxMemoryGB": 256,
+        "maxM2PcieGeneration": 5
       },
       "powerWatts": 70,
       "media": {
@@ -830,7 +915,12 @@
       "compatibility": {
         "socket": "LGA1851",
         "memoryType": "DDR5",
-        "formFactor": "ATX"
+        "formFactor": "ATX",
+        "chipset": "Z890",
+        "m2Slots": 4,
+        "sataPorts": 4,
+        "maxMemoryGB": 256,
+        "maxM2PcieGeneration": 5
       },
       "powerWatts": 80,
       "media": {

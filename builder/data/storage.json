@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.3.0",
+  "schemaVersion": "0.4.0",
   "generatedAt": "2026-09-11",
   "products": [
     {
@@ -22,7 +22,11 @@
         "capacityGB": 500,
         "pcieGeneration": 4
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "NVMe",
+        "pcieGeneration": 4,
+        "formFactor": "M.2 2280"
+      },
       "powerWatts": 5,
       "media": {
         "primaryImage": null,
@@ -59,7 +63,11 @@
         "capacityGB": 1000,
         "pcieGeneration": 4
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "NVMe",
+        "pcieGeneration": 4,
+        "formFactor": "M.2 2280"
+      },
       "powerWatts": 6,
       "media": {
         "primaryImage": null,
@@ -96,7 +104,11 @@
         "capacityGB": 1000,
         "pcieGeneration": 4
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "NVMe",
+        "pcieGeneration": 4,
+        "formFactor": "M.2 2280"
+      },
       "powerWatts": 6,
       "media": {
         "primaryImage": null,
@@ -133,7 +145,11 @@
         "capacityGB": 1000,
         "pcieGeneration": 4
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "NVMe",
+        "pcieGeneration": 4,
+        "formFactor": "M.2 2280"
+      },
       "powerWatts": 7,
       "media": {
         "primaryImage": null,
@@ -170,7 +186,11 @@
         "capacityGB": 1000,
         "pcieGeneration": 4
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "NVMe",
+        "pcieGeneration": 4,
+        "formFactor": "M.2 2280"
+      },
       "powerWatts": 8,
       "media": {
         "primaryImage": null,
@@ -207,7 +227,11 @@
         "capacityGB": 2000,
         "pcieGeneration": 4
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "NVMe",
+        "pcieGeneration": 4,
+        "formFactor": "M.2 2280"
+      },
       "powerWatts": 9,
       "media": {
         "primaryImage": null,
@@ -244,7 +268,11 @@
         "capacityGB": 1000,
         "pcieGeneration": 4
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "NVMe",
+        "pcieGeneration": 4,
+        "formFactor": "M.2 2280"
+      },
       "powerWatts": 7,
       "media": {
         "primaryImage": null,
@@ -281,7 +309,11 @@
         "capacityGB": 2000,
         "pcieGeneration": 4
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "NVMe",
+        "pcieGeneration": 4,
+        "formFactor": "M.2 2280"
+      },
       "powerWatts": 9,
       "media": {
         "primaryImage": null,
@@ -318,7 +350,11 @@
         "capacityGB": 1000,
         "pcieGeneration": 4
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "NVMe",
+        "pcieGeneration": 4,
+        "formFactor": "M.2 2280"
+      },
       "powerWatts": 6,
       "media": {
         "primaryImage": null,
@@ -355,7 +391,11 @@
         "capacityGB": 2000,
         "pcieGeneration": 4
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "NVMe",
+        "pcieGeneration": 4,
+        "formFactor": "M.2 2280"
+      },
       "powerWatts": 9,
       "media": {
         "primaryImage": null,
@@ -392,7 +432,11 @@
         "capacityGB": 2000,
         "pcieGeneration": 4
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "NVMe",
+        "pcieGeneration": 4,
+        "formFactor": "M.2 2280"
+      },
       "powerWatts": 8,
       "media": {
         "primaryImage": null,
@@ -429,7 +473,11 @@
         "capacityGB": 2000,
         "pcieGeneration": 4
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "NVMe",
+        "pcieGeneration": 4,
+        "formFactor": "M.2 2280"
+      },
       "powerWatts": 8,
       "media": {
         "primaryImage": null,
@@ -466,7 +514,11 @@
         "capacityGB": 1000,
         "pcieGeneration": 0
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "SATA",
+        "pcieGeneration": 0,
+        "formFactor": "2.5-inch"
+      },
       "powerWatts": 4,
       "media": {
         "primaryImage": null,
@@ -503,7 +555,11 @@
         "capacityGB": 1000,
         "pcieGeneration": 0
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "SATA",
+        "pcieGeneration": 0,
+        "formFactor": "2.5-inch"
+      },
       "powerWatts": 4,
       "media": {
         "primaryImage": null,
@@ -540,7 +596,11 @@
         "capacityGB": 2000,
         "pcieGeneration": 0
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "SATA",
+        "pcieGeneration": 0,
+        "formFactor": "3.5-inch"
+      },
       "powerWatts": 7,
       "media": {
         "primaryImage": null,
@@ -577,7 +637,11 @@
         "capacityGB": 4000,
         "pcieGeneration": 0
       },
-      "compatibility": {},
+      "compatibility": {
+        "interface": "SATA",
+        "pcieGeneration": 0,
+        "formFactor": "3.5-inch"
+      },
       "powerWatts": 8,
       "media": {
         "primaryImage": null,

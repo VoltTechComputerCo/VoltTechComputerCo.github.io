@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.3.0",
+  "schemaVersion": "0.4.0",
   "generatedAt": "2026-09-11",
   "products": [
     {
@@ -26,7 +26,12 @@
         "architecture": "Zen 3"
       },
       "compatibility": {
-        "socket": "AM4"
+        "socket": "AM4",
+        "cpuFamily": "Ryzen 5000",
+        "supportedChipsets": [
+          "B550"
+        ],
+        "biosMayRequireUpdateChipsets": []
       },
       "powerWatts": 80,
       "media": {
@@ -68,7 +73,12 @@
         "architecture": "Zen 3"
       },
       "compatibility": {
-        "socket": "AM4"
+        "socket": "AM4",
+        "cpuFamily": "Ryzen 5000",
+        "supportedChipsets": [
+          "B550"
+        ],
+        "biosMayRequireUpdateChipsets": []
       },
       "powerWatts": 85,
       "media": {
@@ -110,7 +120,12 @@
         "architecture": "Zen 3"
       },
       "compatibility": {
-        "socket": "AM4"
+        "socket": "AM4",
+        "cpuFamily": "Ryzen 5000",
+        "supportedChipsets": [
+          "B550"
+        ],
+        "biosMayRequireUpdateChipsets": []
       },
       "powerWatts": 88,
       "media": {
@@ -152,7 +167,12 @@
         "architecture": "Zen 3"
       },
       "compatibility": {
-        "socket": "AM4"
+        "socket": "AM4",
+        "cpuFamily": "Ryzen 5000",
+        "supportedChipsets": [
+          "B550"
+        ],
+        "biosMayRequireUpdateChipsets": []
       },
       "powerWatts": 120,
       "media": {
@@ -194,7 +214,15 @@
         "architecture": "Zen 4"
       },
       "compatibility": {
-        "socket": "AM5"
+        "socket": "AM5",
+        "cpuFamily": "Ryzen 7000",
+        "supportedChipsets": [
+          "B650",
+          "X670E",
+          "X870",
+          "X870E"
+        ],
+        "biosMayRequireUpdateChipsets": []
       },
       "powerWatts": 88,
       "media": {
@@ -236,7 +264,15 @@
         "architecture": "Zen 4"
       },
       "compatibility": {
-        "socket": "AM5"
+        "socket": "AM5",
+        "cpuFamily": "Ryzen 7000",
+        "supportedChipsets": [
+          "B650",
+          "X670E",
+          "X870",
+          "X870E"
+        ],
+        "biosMayRequireUpdateChipsets": []
       },
       "powerWatts": 95,
       "media": {
@@ -278,7 +314,15 @@
         "architecture": "Zen 4"
       },
       "compatibility": {
-        "socket": "AM5"
+        "socket": "AM5",
+        "cpuFamily": "Ryzen 7000",
+        "supportedChipsets": [
+          "B650",
+          "X670E",
+          "X870",
+          "X870E"
+        ],
+        "biosMayRequireUpdateChipsets": []
       },
       "powerWatts": 135,
       "media": {
@@ -320,7 +364,18 @@
         "architecture": "Zen 5"
       },
       "compatibility": {
-        "socket": "AM5"
+        "socket": "AM5",
+        "cpuFamily": "Ryzen 9000",
+        "supportedChipsets": [
+          "B650",
+          "X670E",
+          "X870",
+          "X870E"
+        ],
+        "biosMayRequireUpdateChipsets": [
+          "B650",
+          "X670E"
+        ]
       },
       "powerWatts": 105,
       "media": {
@@ -362,7 +417,18 @@
         "architecture": "Zen 5"
       },
       "compatibility": {
-        "socket": "AM5"
+        "socket": "AM5",
+        "cpuFamily": "Ryzen 9000",
+        "supportedChipsets": [
+          "B650",
+          "X670E",
+          "X870",
+          "X870E"
+        ],
+        "biosMayRequireUpdateChipsets": [
+          "B650",
+          "X670E"
+        ]
       },
       "powerWatts": 120,
       "media": {
@@ -404,7 +470,18 @@
         "architecture": "Zen 5"
       },
       "compatibility": {
-        "socket": "AM5"
+        "socket": "AM5",
+        "cpuFamily": "Ryzen 9000",
+        "supportedChipsets": [
+          "B650",
+          "X670E",
+          "X870",
+          "X870E"
+        ],
+        "biosMayRequireUpdateChipsets": [
+          "B650",
+          "X670E"
+        ]
       },
       "powerWatts": 162,
       "media": {
@@ -446,7 +523,16 @@
         "architecture": "Raptor Lake Refresh"
       },
       "compatibility": {
-        "socket": "LGA1700"
+        "socket": "LGA1700",
+        "cpuFamily": "Intel 14th Gen",
+        "supportedChipsets": [
+          "B760",
+          "Z790"
+        ],
+        "biosMayRequireUpdateChipsets": [
+          "B760",
+          "Z790"
+        ]
       },
       "powerWatts": 148,
       "media": {
@@ -488,7 +574,16 @@
         "architecture": "Raptor Lake Refresh"
       },
       "compatibility": {
-        "socket": "LGA1700"
+        "socket": "LGA1700",
+        "cpuFamily": "Intel 14th Gen",
+        "supportedChipsets": [
+          "B760",
+          "Z790"
+        ],
+        "biosMayRequireUpdateChipsets": [
+          "B760",
+          "Z790"
+        ]
       },
       "powerWatts": 181,
       "media": {
@@ -530,7 +625,16 @@
         "architecture": "Raptor Lake Refresh"
       },
       "compatibility": {
-        "socket": "LGA1700"
+        "socket": "LGA1700",
+        "cpuFamily": "Intel 14th Gen",
+        "supportedChipsets": [
+          "B760",
+          "Z790"
+        ],
+        "biosMayRequireUpdateChipsets": [
+          "B760",
+          "Z790"
+        ]
       },
       "powerWatts": 253,
       "media": {
@@ -572,7 +676,13 @@
         "architecture": "Arrow Lake"
       },
       "compatibility": {
-        "socket": "LGA1851"
+        "socket": "LGA1851",
+        "cpuFamily": "Core Ultra 200",
+        "supportedChipsets": [
+          "B860",
+          "Z890"
+        ],
+        "biosMayRequireUpdateChipsets": []
       },
       "powerWatts": 159,
       "media": {
@@ -614,7 +724,13 @@
         "architecture": "Arrow Lake"
       },
       "compatibility": {
-        "socket": "LGA1851"
+        "socket": "LGA1851",
+        "cpuFamily": "Core Ultra 200",
+        "supportedChipsets": [
+          "B860",
+          "Z890"
+        ],
+        "biosMayRequireUpdateChipsets": []
       },
       "powerWatts": 250,
       "media": {
@@ -656,7 +772,13 @@
         "architecture": "Arrow Lake"
       },
       "compatibility": {
-        "socket": "LGA1851"
+        "socket": "LGA1851",
+        "cpuFamily": "Core Ultra 200",
+        "supportedChipsets": [
+          "B860",
+          "Z890"
+        ],
+        "biosMayRequireUpdateChipsets": []
       },
       "powerWatts": 250,
       "media": {

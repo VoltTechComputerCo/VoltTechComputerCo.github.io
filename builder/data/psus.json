@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.3.0",
+  "schemaVersion": "0.4.0",
   "generatedAt": "2026-09-11",
   "products": [
     {
@@ -24,7 +24,8 @@
       },
       "compatibility": {
         "wattage": 550,
-        "has12V2x6": false
+        "has12V2x6": false,
+        "pcie8PinConnectors": 2
       },
       "powerWatts": 85,
       "media": {
@@ -64,7 +65,8 @@
       },
       "compatibility": {
         "wattage": 650,
-        "has12V2x6": false
+        "has12V2x6": false,
+        "pcie8PinConnectors": 3
       },
       "powerWatts": 88,
       "media": {
@@ -104,7 +106,8 @@
       },
       "compatibility": {
         "wattage": 650,
-        "has12V2x6": true
+        "has12V2x6": true,
+        "pcie8PinConnectors": 3
       },
       "powerWatts": 90,
       "media": {
@@ -144,7 +147,8 @@
       },
       "compatibility": {
         "wattage": 750,
-        "has12V2x6": false
+        "has12V2x6": false,
+        "pcie8PinConnectors": 4
       },
       "powerWatts": 95,
       "media": {
@@ -184,7 +188,8 @@
       },
       "compatibility": {
         "wattage": 750,
-        "has12V2x6": true
+        "has12V2x6": true,
+        "pcie8PinConnectors": 4
       },
       "powerWatts": 95,
       "media": {
@@ -224,7 +229,8 @@
       },
       "compatibility": {
         "wattage": 750,
-        "has12V2x6": true
+        "has12V2x6": true,
+        "pcie8PinConnectors": 4
       },
       "powerWatts": 95,
       "media": {
@@ -264,7 +270,8 @@
       },
       "compatibility": {
         "wattage": 850,
-        "has12V2x6": true
+        "has12V2x6": true,
+        "pcie8PinConnectors": 4
       },
       "powerWatts": 100,
       "media": {
@@ -304,7 +311,8 @@
       },
       "compatibility": {
         "wattage": 850,
-        "has12V2x6": true
+        "has12V2x6": true,
+        "pcie8PinConnectors": 4
       },
       "powerWatts": 100,
       "media": {
@@ -344,7 +352,8 @@
       },
       "compatibility": {
         "wattage": 850,
-        "has12V2x6": true
+        "has12V2x6": true,
+        "pcie8PinConnectors": 4
       },
       "powerWatts": 100,
       "media": {
@@ -384,7 +393,8 @@
       },
       "compatibility": {
         "wattage": 850,
-        "has12V2x6": true
+        "has12V2x6": true,
+        "pcie8PinConnectors": 4
       },
       "powerWatts": 100,
       "media": {
@@ -424,7 +434,8 @@
       },
       "compatibility": {
         "wattage": 1000,
-        "has12V2x6": true
+        "has12V2x6": true,
+        "pcie8PinConnectors": 6
       },
       "powerWatts": 110,
       "media": {
@@ -464,7 +475,8 @@
       },
       "compatibility": {
         "wattage": 1000,
-        "has12V2x6": true
+        "has12V2x6": true,
+        "pcie8PinConnectors": 6
       },
       "powerWatts": 110,
       "media": {
@@ -504,7 +516,8 @@
       },
       "compatibility": {
         "wattage": 1000,
-        "has12V2x6": true
+        "has12V2x6": true,
+        "pcie8PinConnectors": 6
       },
       "powerWatts": 110,
       "media": {
@@ -544,7 +557,8 @@
       },
       "compatibility": {
         "wattage": 1200,
-        "has12V2x6": true
+        "has12V2x6": true,
+        "pcie8PinConnectors": 8
       },
       "powerWatts": 120,
       "media": {
@@ -584,7 +598,8 @@
       },
       "compatibility": {
         "wattage": 1300,
-        "has12V2x6": true
+        "has12V2x6": true,
+        "pcie8PinConnectors": 8
       },
       "powerWatts": 125,
       "media": {
@@ -624,7 +639,8 @@
       },
       "compatibility": {
         "wattage": 1600,
-        "has12V2x6": true
+        "has12V2x6": true,
+        "pcie8PinConnectors": 8
       },
       "powerWatts": 135,
       "media": {

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.3.0",
+  "schemaVersion": "0.4.0",
   "generatedAt": "2026-09-11",
   "products": [
     {
@@ -25,7 +25,8 @@
       },
       "compatibility": {
         "lengthMm": 245,
-        "recommendedPsuWatts": 550
+        "recommendedPsuWatts": 550,
+        "powerConnector": "8-pin"
       },
       "powerWatts": 165,
       "media": {
@@ -66,7 +67,8 @@
       },
       "compatibility": {
         "lengthMm": 302,
-        "recommendedPsuWatts": 700
+        "recommendedPsuWatts": 700,
+        "powerConnector": "2x8-pin"
       },
       "powerWatts": 245,
       "media": {
@@ -107,7 +109,8 @@
       },
       "compatibility": {
         "lengthMm": 280,
-        "recommendedPsuWatts": 700
+        "recommendedPsuWatts": 700,
+        "powerConnector": "2x8-pin"
       },
       "powerWatts": 263,
       "media": {
@@ -148,7 +151,8 @@
       },
       "compatibility": {
         "lengthMm": 320,
-        "recommendedPsuWatts": 650
+        "recommendedPsuWatts": 650,
+        "powerConnector": "2x8-pin"
       },
       "powerWatts": 220,
       "media": {
@@ -189,7 +193,8 @@
       },
       "compatibility": {
         "lengthMm": 320,
-        "recommendedPsuWatts": 750
+        "recommendedPsuWatts": 750,
+        "powerConnector": "3x8-pin"
       },
       "powerWatts": 304,
       "media": {
@@ -230,7 +235,8 @@
       },
       "compatibility": {
         "lengthMm": 192,
-        "recommendedPsuWatts": 450
+        "recommendedPsuWatts": 450,
+        "powerConnector": "8-pin"
       },
       "powerWatts": 115,
       "media": {
@@ -271,7 +277,8 @@
       },
       "compatibility": {
         "lengthMm": 199,
-        "recommendedPsuWatts": 550
+        "recommendedPsuWatts": 550,
+        "powerConnector": "8-pin"
       },
       "powerWatts": 160,
       "media": {
@@ -312,7 +319,8 @@
       },
       "compatibility": {
         "lengthMm": 210,
-        "recommendedPsuWatts": 550
+        "recommendedPsuWatts": 550,
+        "powerConnector": "8-pin"
       },
       "powerWatts": 145,
       "media": {
@@ -353,7 +361,8 @@
       },
       "compatibility": {
         "lengthMm": 281,
-        "recommendedPsuWatts": 600
+        "recommendedPsuWatts": 600,
+        "powerConnector": "8-pin"
       },
       "powerWatts": 180,
       "media": {
@@ -394,7 +403,8 @@
       },
       "compatibility": {
         "lengthMm": 303,
-        "recommendedPsuWatts": 650
+        "recommendedPsuWatts": 650,
+        "powerConnector": "12V-2x6"
       },
       "powerWatts": 250,
       "media": {
@@ -435,7 +445,8 @@
       },
       "compatibility": {
         "lengthMm": 304,
-        "recommendedPsuWatts": 650
+        "recommendedPsuWatts": 650,
+        "powerConnector": "12V-2x6"
       },
       "powerWatts": 250,
       "media": {
@@ -476,7 +487,8 @@
       },
       "compatibility": {
         "lengthMm": 340,
-        "recommendedPsuWatts": 750
+        "recommendedPsuWatts": 750,
+        "powerConnector": "12V-2x6"
       },
       "powerWatts": 300,
       "media": {
@@ -517,7 +529,8 @@
       },
       "compatibility": {
         "lengthMm": 322,
-        "recommendedPsuWatts": 850
+        "recommendedPsuWatts": 850,
+        "powerConnector": "12V-2x6"
       },
       "powerWatts": 360,
       "media": {
@@ -558,7 +571,8 @@
       },
       "compatibility": {
         "lengthMm": 348,
-        "recommendedPsuWatts": 850
+        "recommendedPsuWatts": 850,
+        "powerConnector": "12V-2x6"
       },
       "powerWatts": 360,
       "media": {
@@ -599,7 +613,8 @@
       },
       "compatibility": {
         "lengthMm": 342,
-        "recommendedPsuWatts": 1000
+        "recommendedPsuWatts": 1000,
+        "powerConnector": "12V-2x6"
       },
       "powerWatts": 575,
       "media": {
@@ -640,7 +655,8 @@
       },
       "compatibility": {
         "lengthMm": 348,
-        "recommendedPsuWatts": 1000
+        "recommendedPsuWatts": 1000,
+        "powerConnector": "12V-2x6"
       },
       "powerWatts": 575,
       "media": {
@@ -681,7 +697,8 @@
       },
       "compatibility": {
         "lengthMm": 272,
-        "recommendedPsuWatts": 600
+        "recommendedPsuWatts": 600,
+        "powerConnector": "8-pin"
       },
       "powerWatts": 190,
       "media": {
@@ -722,7 +739,8 @@
       },
       "compatibility": {
         "lengthMm": 298,
-        "recommendedPsuWatts": 650
+        "recommendedPsuWatts": 650,
+        "powerConnector": "2x8-pin"
       },
       "powerWatts": 200,
       "media": {
