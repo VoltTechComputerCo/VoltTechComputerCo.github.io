@@ -1,7 +1,148 @@
 {
-  "schemaVersion": "0.2.0",
-  "generatedAt": "2026-09-10",
+  "schemaVersion": "0.3.0",
+  "generatedAt": "2026-09-11",
   "products": [
+    {
+      "id": "vt-mb-asus-prime-b550m-a-wifi-ii",
+      "type": "motherboard",
+      "brand": "ASUS",
+      "manufacturer": "ASUS",
+      "name": "ASUS Prime B550M-A WiFi II",
+      "model": "Prime B550M-A WiFi II",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM4",
+        "chipset": "B550",
+        "formFactor": "mATX",
+        "memoryType": "DDR4",
+        "dimmSlots": 4,
+        "maxMemoryGB": 128,
+        "m2Slots": 2,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": false
+      },
+      "compatibility": {
+        "socket": "AM4",
+        "memoryType": "DDR4",
+        "formFactor": "mATX"
+      },
+      "powerWatts": 50,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-asus-prime-b550m-a-wifi-ii",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mb-msi-b550m-pro-vdh-wifi",
+      "type": "motherboard",
+      "brand": "MSI",
+      "manufacturer": "MSI",
+      "name": "MSI B550M PRO-VDH WiFi",
+      "model": "B550M PRO-VDH WiFi",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM4",
+        "chipset": "B550",
+        "formFactor": "mATX",
+        "memoryType": "DDR4",
+        "dimmSlots": 4,
+        "maxMemoryGB": 128,
+        "m2Slots": 2,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "AM4",
+        "memoryType": "DDR4",
+        "formFactor": "mATX"
+      },
+      "powerWatts": 50,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-msi-b550m-pro-vdh-wifi",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mb-gigabyte-b550-aorus-elite-v2",
+      "type": "motherboard",
+      "brand": "Gigabyte",
+      "manufacturer": "Gigabyte",
+      "name": "Gigabyte B550 AORUS Elite V2",
+      "model": "B550 AORUS Elite V2",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM4",
+        "chipset": "B550",
+        "formFactor": "ATX",
+        "memoryType": "DDR4",
+        "dimmSlots": 4,
+        "maxMemoryGB": 128,
+        "m2Slots": 2,
+        "sataPorts": 4,
+        "wifi": false,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "AM4",
+        "memoryType": "DDR4",
+        "formFactor": "ATX"
+      },
+      "powerWatts": 55,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-gigabyte-b550-aorus-elite-v2",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
     {
       "id": "vt-mb-msi-b650m-gaming-plus-wifi",
       "type": "motherboard",
@@ -45,8 +186,8 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
-        "created": "2026-09-10",
-        "updated": "2026-09-10"
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
       }
     },
     {
@@ -92,17 +233,17 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
-        "created": "2026-09-10",
-        "updated": "2026-09-10"
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
       }
     },
     {
-      "id": "vt-mb-asus-b550m-a-wifi-ii",
+      "id": "vt-mb-asus-tuf-b650-plus-wifi",
       "type": "motherboard",
       "brand": "ASUS",
       "manufacturer": "ASUS",
-      "name": "ASUS Prime B550M-A WiFi II",
-      "model": "Prime B550M-A WiFi II",
+      "name": "ASUS TUF Gaming B650-PLUS WiFi",
+      "model": "TUF Gaming B650-PLUS WiFi",
       "identifiers": {
         "mpn": null,
         "ean": null,
@@ -111,35 +252,506 @@
       },
       "status": "active",
       "specs": {
-        "socket": "AM4",
-        "chipset": "B550",
-        "formFactor": "mATX",
-        "memoryType": "DDR4",
+        "socket": "AM5",
+        "chipset": "B650",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
         "dimmSlots": 4,
-        "maxMemoryGB": 128,
-        "m2Slots": 2,
+        "maxMemoryGB": 192,
+        "m2Slots": 3,
         "sataPorts": 4,
-        "wifi": true
+        "wifi": true,
+        "biosFlashback": true
       },
       "compatibility": {
-        "socket": "AM4",
-        "memoryType": "DDR4",
-        "formFactor": "mATX"
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "formFactor": "ATX"
       },
-      "powerWatts": 50,
+      "powerWatts": 65,
       "media": {
         "primaryImage": null,
         "images": []
       },
       "seo": {
-        "slug": "mb-asus-b550m-a-wifi-ii",
+        "slug": "mb-asus-tuf-b650-plus-wifi",
         "title": null,
         "description": null
       },
       "metadata": {
         "dataSource": "temporary-test-data",
-        "created": "2026-09-10",
-        "updated": "2026-09-10"
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mb-asrock-b650m-pro-rs-wifi",
+      "type": "motherboard",
+      "brand": "ASRock",
+      "manufacturer": "ASRock",
+      "name": "ASRock B650M Pro RS WiFi",
+      "model": "B650M Pro RS WiFi",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "chipset": "B650",
+        "formFactor": "mATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 256,
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "formFactor": "mATX"
+      },
+      "powerWatts": 55,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-asrock-b650m-pro-rs-wifi",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mb-msi-x670e-gaming-plus-wifi",
+      "type": "motherboard",
+      "brand": "MSI",
+      "manufacturer": "MSI",
+      "name": "MSI X670E Gaming Plus WiFi",
+      "model": "X670E Gaming Plus WiFi",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "chipset": "X670E",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 256,
+        "m2Slots": 4,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "formFactor": "ATX"
+      },
+      "powerWatts": 75,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-msi-x670e-gaming-plus-wifi",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mb-asus-rog-strix-x870e-e",
+      "type": "motherboard",
+      "brand": "ASUS",
+      "manufacturer": "ASUS",
+      "name": "ASUS ROG Strix X870E-E Gaming WiFi",
+      "model": "ROG Strix X870E-E Gaming WiFi",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "chipset": "X870E",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 192,
+        "m2Slots": 5,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "formFactor": "ATX"
+      },
+      "powerWatts": 85,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-asus-rog-strix-x870e-e",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mb-gigabyte-x870-aorus-elite-wifi7",
+      "type": "motherboard",
+      "brand": "Gigabyte",
+      "manufacturer": "Gigabyte",
+      "name": "Gigabyte X870 AORUS Elite WiFi7",
+      "model": "X870 AORUS Elite WiFi7",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "chipset": "X870",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 256,
+        "m2Slots": 4,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "formFactor": "ATX"
+      },
+      "powerWatts": 80,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-gigabyte-x870-aorus-elite-wifi7",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mb-msi-b760m-gaming-plus-wifi",
+      "type": "motherboard",
+      "brand": "MSI",
+      "manufacturer": "MSI",
+      "name": "MSI B760M Gaming Plus WiFi",
+      "model": "B760M Gaming Plus WiFi",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1700",
+        "chipset": "B760",
+        "formFactor": "mATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 192,
+        "m2Slots": 2,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "LGA1700",
+        "memoryType": "DDR5",
+        "formFactor": "mATX"
+      },
+      "powerWatts": 55,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-msi-b760m-gaming-plus-wifi",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mb-asus-prime-b760-plus",
+      "type": "motherboard",
+      "brand": "ASUS",
+      "manufacturer": "ASUS",
+      "name": "ASUS Prime B760-PLUS",
+      "model": "Prime B760-PLUS",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1700",
+        "chipset": "B760",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 192,
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "wifi": false,
+        "biosFlashback": false
+      },
+      "compatibility": {
+        "socket": "LGA1700",
+        "memoryType": "DDR5",
+        "formFactor": "ATX"
+      },
+      "powerWatts": 60,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-asus-prime-b760-plus",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mb-gigabyte-z790-eagle-ax",
+      "type": "motherboard",
+      "brand": "Gigabyte",
+      "manufacturer": "Gigabyte",
+      "name": "Gigabyte Z790 Eagle AX",
+      "model": "Z790 Eagle AX",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1700",
+        "chipset": "Z790",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 192,
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "LGA1700",
+        "memoryType": "DDR5",
+        "formFactor": "ATX"
+      },
+      "powerWatts": 70,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-gigabyte-z790-eagle-ax",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mb-msi-z790-gaming-plus-wifi",
+      "type": "motherboard",
+      "brand": "MSI",
+      "manufacturer": "MSI",
+      "name": "MSI Z790 Gaming Plus WiFi",
+      "model": "Z790 Gaming Plus WiFi",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1700",
+        "chipset": "Z790",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 192,
+        "m2Slots": 4,
+        "sataPorts": 6,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "LGA1700",
+        "memoryType": "DDR5",
+        "formFactor": "ATX"
+      },
+      "powerWatts": 75,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-msi-z790-gaming-plus-wifi",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mb-asrock-b860m-pro-rs-wifi",
+      "type": "motherboard",
+      "brand": "ASRock",
+      "manufacturer": "ASRock",
+      "name": "ASRock B860M Pro RS WiFi",
+      "model": "B860M Pro RS WiFi",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1851",
+        "chipset": "B860",
+        "formFactor": "mATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 256,
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "LGA1851",
+        "memoryType": "DDR5",
+        "formFactor": "mATX"
+      },
+      "powerWatts": 60,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-asrock-b860m-pro-rs-wifi",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mb-gigabyte-b860-eagle-wifi6e",
+      "type": "motherboard",
+      "brand": "Gigabyte",
+      "manufacturer": "Gigabyte",
+      "name": "Gigabyte B860 Eagle WiFi6E",
+      "model": "B860 Eagle WiFi6E",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1851",
+        "chipset": "B860",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 256,
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "LGA1851",
+        "memoryType": "DDR5",
+        "formFactor": "ATX"
+      },
+      "powerWatts": 65,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-gigabyte-b860-eagle-wifi6e",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
       }
     },
     {
@@ -185,8 +797,55 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
-        "created": "2026-09-10",
-        "updated": "2026-09-10"
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mb-asus-tuf-z890-plus-wifi",
+      "type": "motherboard",
+      "brand": "ASUS",
+      "manufacturer": "ASUS",
+      "name": "ASUS TUF Gaming Z890-PLUS WiFi",
+      "model": "TUF Gaming Z890-PLUS WiFi",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1851",
+        "chipset": "Z890",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 256,
+        "m2Slots": 4,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "LGA1851",
+        "memoryType": "DDR5",
+        "formFactor": "ATX"
+      },
+      "powerWatts": 80,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-asus-tuf-z890-plus-wifi",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
       }
     }
   ]

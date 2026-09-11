@@ -1,94 +1,54 @@
 {
-  "schemaVersion": "0.2.0",
-  "generatedAt": "2026-09-10",
+  "schemaVersion": "0.3.0",
+  "generatedAt": "2026-09-11",
   "products": [
     {
-      "id": "vt-ram-corsair-vengeance-ddr5-32-6000",
-      "type": "memory",
-      "brand": "Corsair",
-      "manufacturer": "Corsair",
-      "name": "Corsair Vengeance 32GB (2x16GB) DDR5-6000",
-      "model": "Vengeance DDR5 32GB 6000",
-      "identifiers": {
-        "mpn": null,
-        "ean": null,
-        "upc": null,
-        "gtin": null
-      },
-      "status": "active",
-      "specs": {
-        "memoryType": "DDR5",
-        "capacityGB": 32,
-        "modules": 2,
-        "speedMTs": 6000,
-        "heightMm": 35
-      },
-      "compatibility": {
-        "memoryType": "DDR5"
-      },
-      "powerWatts": 10,
-      "media": {
-        "primaryImage": null,
-        "images": []
-      },
-      "seo": {
-        "slug": "ram-corsair-vengeance-ddr5-32-6000",
-        "title": null,
-        "description": null
-      },
-      "metadata": {
-        "dataSource": "temporary-test-data",
-        "created": "2026-09-10",
-        "updated": "2026-09-10"
-      }
-    },
-    {
-      "id": "vt-ram-gskill-flare-x5-32-6000",
-      "type": "memory",
-      "brand": "G.Skill",
-      "manufacturer": "G.Skill",
-      "name": "G.Skill Flare X5 32GB (2x16GB) DDR5-6000",
-      "model": "Flare X5 32GB 6000",
-      "identifiers": {
-        "mpn": null,
-        "ean": null,
-        "upc": null,
-        "gtin": null
-      },
-      "status": "active",
-      "specs": {
-        "memoryType": "DDR5",
-        "capacityGB": 32,
-        "modules": 2,
-        "speedMTs": 6000,
-        "heightMm": 33
-      },
-      "compatibility": {
-        "memoryType": "DDR5"
-      },
-      "powerWatts": 10,
-      "media": {
-        "primaryImage": null,
-        "images": []
-      },
-      "seo": {
-        "slug": "ram-gskill-flare-x5-32-6000",
-        "title": null,
-        "description": null
-      },
-      "metadata": {
-        "dataSource": "temporary-test-data",
-        "created": "2026-09-10",
-        "updated": "2026-09-10"
-      }
-    },
-    {
-      "id": "vt-ram-kingston-fury-ddr4-32-3200",
+      "id": "vt-mem-kingston-fury-beast-16-ddr4-3200",
       "type": "memory",
       "brand": "Kingston",
       "manufacturer": "Kingston",
-      "name": "Kingston Fury Beast 32GB (2x16GB) DDR4-3200",
-      "model": "Fury Beast DDR4 32GB 3200",
+      "name": "Kingston Fury Beast 16GB DDR4-3200",
+      "model": "Fury Beast 16GB DDR4-3200",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR4",
+        "capacityGB": 16,
+        "modules": 2,
+        "speedMTs": 3200,
+        "casLatency": 16
+      },
+      "compatibility": {
+        "memoryType": "DDR4"
+      },
+      "powerWatts": 8,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-kingston-fury-beast-16-ddr4-3200",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-corsair-vengeance-lpx-32-ddr4-3200",
+      "type": "memory",
+      "brand": "Corsair",
+      "manufacturer": "Corsair",
+      "name": "Corsair Vengeance LPX 32GB DDR4-3200",
+      "model": "Vengeance LPX 32GB DDR4-3200",
       "identifiers": {
         "mpn": null,
         "ean": null,
@@ -101,25 +61,585 @@
         "capacityGB": 32,
         "modules": 2,
         "speedMTs": 3200,
-        "heightMm": 34
+        "casLatency": 16
       },
       "compatibility": {
         "memoryType": "DDR4"
       },
-      "powerWatts": 8,
+      "powerWatts": 10,
       "media": {
         "primaryImage": null,
         "images": []
       },
       "seo": {
-        "slug": "ram-kingston-fury-ddr4-32-3200",
+        "slug": "mem-corsair-vengeance-lpx-32-ddr4-3200",
         "title": null,
         "description": null
       },
       "metadata": {
         "dataSource": "temporary-test-data",
-        "created": "2026-09-10",
-        "updated": "2026-09-10"
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-gskill-ripjaws-v-32-ddr4-3600",
+      "type": "memory",
+      "brand": "G.Skill",
+      "manufacturer": "G.Skill",
+      "name": "G.Skill Ripjaws V 32GB DDR4-3600",
+      "model": "Ripjaws V 32GB DDR4-3600",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR4",
+        "capacityGB": 32,
+        "modules": 2,
+        "speedMTs": 3600,
+        "casLatency": 18
+      },
+      "compatibility": {
+        "memoryType": "DDR4"
+      },
+      "powerWatts": 10,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-gskill-ripjaws-v-32-ddr4-3600",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-kingston-fury-renegade-64-ddr4-3600",
+      "type": "memory",
+      "brand": "Kingston",
+      "manufacturer": "Kingston",
+      "name": "Kingston Fury Renegade 64GB DDR4-3600",
+      "model": "Fury Renegade 64GB DDR4-3600",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR4",
+        "capacityGB": 64,
+        "modules": 2,
+        "speedMTs": 3600,
+        "casLatency": 18
+      },
+      "compatibility": {
+        "memoryType": "DDR4"
+      },
+      "powerWatts": 12,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-kingston-fury-renegade-64-ddr4-3600",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-corsair-vengeance-32-ddr5-6000",
+      "type": "memory",
+      "brand": "Corsair",
+      "manufacturer": "Corsair",
+      "name": "Corsair Vengeance 32GB DDR5-6000",
+      "model": "Vengeance 32GB DDR5-6000",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR5",
+        "capacityGB": 32,
+        "modules": 2,
+        "speedMTs": 6000,
+        "casLatency": 30
+      },
+      "compatibility": {
+        "memoryType": "DDR5"
+      },
+      "powerWatts": 12,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-corsair-vengeance-32-ddr5-6000",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-gskill-flare-x5-32-ddr5-6000",
+      "type": "memory",
+      "brand": "G.Skill",
+      "manufacturer": "G.Skill",
+      "name": "G.Skill Flare X5 32GB DDR5-6000",
+      "model": "Flare X5 32GB DDR5-6000",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR5",
+        "capacityGB": 32,
+        "modules": 2,
+        "speedMTs": 6000,
+        "casLatency": 30
+      },
+      "compatibility": {
+        "memoryType": "DDR5"
+      },
+      "powerWatts": 12,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-gskill-flare-x5-32-ddr5-6000",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-kingston-fury-beast-32-ddr5-6000",
+      "type": "memory",
+      "brand": "Kingston",
+      "manufacturer": "Kingston",
+      "name": "Kingston Fury Beast 32GB DDR5-6000",
+      "model": "Fury Beast 32GB DDR5-6000",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR5",
+        "capacityGB": 32,
+        "modules": 2,
+        "speedMTs": 6000,
+        "casLatency": 36
+      },
+      "compatibility": {
+        "memoryType": "DDR5"
+      },
+      "powerWatts": 12,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-kingston-fury-beast-32-ddr5-6000",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-teamgroup-tforce-delta-32-ddr5-6000",
+      "type": "memory",
+      "brand": "TeamGroup",
+      "manufacturer": "TeamGroup",
+      "name": "TeamGroup T-Force Delta RGB 32GB DDR5-6000",
+      "model": "T-Force Delta RGB 32GB DDR5-6000",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR5",
+        "capacityGB": 32,
+        "modules": 2,
+        "speedMTs": 6000,
+        "casLatency": 30
+      },
+      "compatibility": {
+        "memoryType": "DDR5"
+      },
+      "powerWatts": 12,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-teamgroup-tforce-delta-32-ddr5-6000",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-corsair-dominator-32-ddr5-6400",
+      "type": "memory",
+      "brand": "Corsair",
+      "manufacturer": "Corsair",
+      "name": "Corsair Dominator Titanium 32GB DDR5-6400",
+      "model": "Dominator Titanium 32GB DDR5-6400",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR5",
+        "capacityGB": 32,
+        "modules": 2,
+        "speedMTs": 6400,
+        "casLatency": 32
+      },
+      "compatibility": {
+        "memoryType": "DDR5"
+      },
+      "powerWatts": 13,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-corsair-dominator-32-ddr5-6400",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-gskill-trident-z5-32-ddr5-7200",
+      "type": "memory",
+      "brand": "G.Skill",
+      "manufacturer": "G.Skill",
+      "name": "G.Skill Trident Z5 32GB DDR5-7200",
+      "model": "Trident Z5 32GB DDR5-7200",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR5",
+        "capacityGB": 32,
+        "modules": 2,
+        "speedMTs": 7200,
+        "casLatency": 34
+      },
+      "compatibility": {
+        "memoryType": "DDR5"
+      },
+      "powerWatts": 14,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-gskill-trident-z5-32-ddr5-7200",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-kingston-fury-beast-48-ddr5-6000",
+      "type": "memory",
+      "brand": "Kingston",
+      "manufacturer": "Kingston",
+      "name": "Kingston Fury Beast 48GB DDR5-6000",
+      "model": "Fury Beast 48GB DDR5-6000",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR5",
+        "capacityGB": 48,
+        "modules": 2,
+        "speedMTs": 6000,
+        "casLatency": 36
+      },
+      "compatibility": {
+        "memoryType": "DDR5"
+      },
+      "powerWatts": 13,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-kingston-fury-beast-48-ddr5-6000",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-gskill-flare-x5-64-ddr5-6000",
+      "type": "memory",
+      "brand": "G.Skill",
+      "manufacturer": "G.Skill",
+      "name": "G.Skill Flare X5 64GB DDR5-6000",
+      "model": "Flare X5 64GB DDR5-6000",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR5",
+        "capacityGB": 64,
+        "modules": 2,
+        "speedMTs": 6000,
+        "casLatency": 30
+      },
+      "compatibility": {
+        "memoryType": "DDR5"
+      },
+      "powerWatts": 14,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-gskill-flare-x5-64-ddr5-6000",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-corsair-vengeance-64-ddr5-6000",
+      "type": "memory",
+      "brand": "Corsair",
+      "manufacturer": "Corsair",
+      "name": "Corsair Vengeance 64GB DDR5-6000",
+      "model": "Vengeance 64GB DDR5-6000",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR5",
+        "capacityGB": 64,
+        "modules": 2,
+        "speedMTs": 6000,
+        "casLatency": 30
+      },
+      "compatibility": {
+        "memoryType": "DDR5"
+      },
+      "powerWatts": 14,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-corsair-vengeance-64-ddr5-6000",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-kingston-fury-renegade-64-ddr5-6400",
+      "type": "memory",
+      "brand": "Kingston",
+      "manufacturer": "Kingston",
+      "name": "Kingston Fury Renegade 64GB DDR5-6400",
+      "model": "Fury Renegade 64GB DDR5-6400",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR5",
+        "capacityGB": 64,
+        "modules": 2,
+        "speedMTs": 6400,
+        "casLatency": 32
+      },
+      "compatibility": {
+        "memoryType": "DDR5"
+      },
+      "powerWatts": 15,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-kingston-fury-renegade-64-ddr5-6400",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-corsair-vengeance-96-ddr5-6000",
+      "type": "memory",
+      "brand": "Corsair",
+      "manufacturer": "Corsair",
+      "name": "Corsair Vengeance 96GB DDR5-6000",
+      "model": "Vengeance 96GB DDR5-6000",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR5",
+        "capacityGB": 96,
+        "modules": 2,
+        "speedMTs": 6000,
+        "casLatency": 30
+      },
+      "compatibility": {
+        "memoryType": "DDR5"
+      },
+      "powerWatts": 16,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-corsair-vengeance-96-ddr5-6000",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-mem-gskill-trident-z5-128-ddr5-6000",
+      "type": "memory",
+      "brand": "G.Skill",
+      "manufacturer": "G.Skill",
+      "name": "G.Skill Trident Z5 128GB DDR5-6000",
+      "model": "Trident Z5 128GB DDR5-6000",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "memoryType": "DDR5",
+        "capacityGB": 128,
+        "modules": 4,
+        "speedMTs": 6000,
+        "casLatency": 36
+      },
+      "compatibility": {
+        "memoryType": "DDR5"
+      },
+      "powerWatts": 24,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mem-gskill-trident-z5-128-ddr5-6000",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
       }
     }
   ]

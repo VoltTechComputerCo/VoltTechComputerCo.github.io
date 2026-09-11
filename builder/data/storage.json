@@ -1,9 +1,120 @@
 {
-  "schemaVersion": "0.2.0",
-  "generatedAt": "2026-09-10",
+  "schemaVersion": "0.3.0",
+  "generatedAt": "2026-09-11",
   "products": [
     {
-      "id": "vt-ssd-wd-sn770-1tb",
+      "id": "vt-storage-kingston-nv2-500",
+      "type": "storage",
+      "brand": "Kingston",
+      "manufacturer": "Kingston",
+      "name": "Kingston NV2 500GB NVMe SSD",
+      "model": "NV2 500GB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "NVMe",
+        "formFactor": "M.2 2280",
+        "capacityGB": 500,
+        "pcieGeneration": 4
+      },
+      "compatibility": {},
+      "powerWatts": 5,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "storage-kingston-nv2-500",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-kingston-nv3-1tb",
+      "type": "storage",
+      "brand": "Kingston",
+      "manufacturer": "Kingston",
+      "name": "Kingston NV3 1TB NVMe SSD",
+      "model": "NV3 1TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "NVMe",
+        "formFactor": "M.2 2280",
+        "capacityGB": 1000,
+        "pcieGeneration": 4
+      },
+      "compatibility": {},
+      "powerWatts": 6,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "storage-kingston-nv3-1tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-wd-blue-sn580-1tb",
+      "type": "storage",
+      "brand": "Western Digital",
+      "manufacturer": "Western Digital",
+      "name": "WD Blue SN580 1TB NVMe SSD",
+      "model": "Blue SN580 1TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "NVMe",
+        "formFactor": "M.2 2280",
+        "capacityGB": 1000,
+        "pcieGeneration": 4
+      },
+      "compatibility": {},
+      "powerWatts": 6,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "storage-wd-blue-sn580-1tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-wd-black-sn770-1tb",
       "type": "storage",
       "brand": "Western Digital",
       "manufacturer": "Western Digital",
@@ -22,28 +133,136 @@
         "capacityGB": 1000,
         "pcieGeneration": 4
       },
-      "compatibility": {
-        "interface": "NVMe",
-        "m2": true
-      },
-      "powerWatts": 6,
+      "compatibility": {},
+      "powerWatts": 7,
       "media": {
         "primaryImage": null,
         "images": []
       },
       "seo": {
-        "slug": "ssd-wd-sn770-1tb",
+        "slug": "storage-wd-black-sn770-1tb",
         "title": null,
         "description": null
       },
       "metadata": {
         "dataSource": "temporary-test-data",
-        "created": "2026-09-10",
-        "updated": "2026-09-10"
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
       }
     },
     {
-      "id": "vt-ssd-samsung-990pro-2tb",
+      "id": "vt-storage-wd-black-sn850x-1tb",
+      "type": "storage",
+      "brand": "Western Digital",
+      "manufacturer": "Western Digital",
+      "name": "WD Black SN850X 1TB NVMe SSD",
+      "model": "Black SN850X 1TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "NVMe",
+        "formFactor": "M.2 2280",
+        "capacityGB": 1000,
+        "pcieGeneration": 4
+      },
+      "compatibility": {},
+      "powerWatts": 8,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "storage-wd-black-sn850x-1tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-wd-black-sn850x-2tb",
+      "type": "storage",
+      "brand": "Western Digital",
+      "manufacturer": "Western Digital",
+      "name": "WD Black SN850X 2TB NVMe SSD",
+      "model": "Black SN850X 2TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "NVMe",
+        "formFactor": "M.2 2280",
+        "capacityGB": 2000,
+        "pcieGeneration": 4
+      },
+      "compatibility": {},
+      "powerWatts": 9,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "storage-wd-black-sn850x-2tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-samsung-990-evo-plus-1tb",
+      "type": "storage",
+      "brand": "Samsung",
+      "manufacturer": "Samsung",
+      "name": "Samsung 990 EVO Plus 1TB NVMe SSD",
+      "model": "990 EVO Plus 1TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "NVMe",
+        "formFactor": "M.2 2280",
+        "capacityGB": 1000,
+        "pcieGeneration": 4
+      },
+      "compatibility": {},
+      "powerWatts": 7,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "storage-samsung-990-evo-plus-1tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-samsung-990-pro-2tb",
       "type": "storage",
       "brand": "Samsung",
       "manufacturer": "Samsung",
@@ -62,24 +281,317 @@
         "capacityGB": 2000,
         "pcieGeneration": 4
       },
-      "compatibility": {
-        "interface": "NVMe",
-        "m2": true
+      "compatibility": {},
+      "powerWatts": 9,
+      "media": {
+        "primaryImage": null,
+        "images": []
       },
+      "seo": {
+        "slug": "storage-samsung-990-pro-2tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-crucial-p3-plus-1tb",
+      "type": "storage",
+      "brand": "Crucial",
+      "manufacturer": "Crucial",
+      "name": "Crucial P3 Plus 1TB NVMe SSD",
+      "model": "P3 Plus 1TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "NVMe",
+        "formFactor": "M.2 2280",
+        "capacityGB": 1000,
+        "pcieGeneration": 4
+      },
+      "compatibility": {},
+      "powerWatts": 6,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "storage-crucial-p3-plus-1tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-crucial-t500-2tb",
+      "type": "storage",
+      "brand": "Crucial",
+      "manufacturer": "Crucial",
+      "name": "Crucial T500 2TB NVMe SSD",
+      "model": "T500 2TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "NVMe",
+        "formFactor": "M.2 2280",
+        "capacityGB": 2000,
+        "pcieGeneration": 4
+      },
+      "compatibility": {},
+      "powerWatts": 9,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "storage-crucial-t500-2tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-lexar-nm790-2tb",
+      "type": "storage",
+      "brand": "Lexar",
+      "manufacturer": "Lexar",
+      "name": "Lexar NM790 2TB NVMe SSD",
+      "model": "NM790 2TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "NVMe",
+        "formFactor": "M.2 2280",
+        "capacityGB": 2000,
+        "pcieGeneration": 4
+      },
+      "compatibility": {},
       "powerWatts": 8,
       "media": {
         "primaryImage": null,
         "images": []
       },
       "seo": {
-        "slug": "ssd-samsung-990pro-2tb",
+        "slug": "storage-lexar-nm790-2tb",
         "title": null,
         "description": null
       },
       "metadata": {
         "dataSource": "temporary-test-data",
-        "created": "2026-09-10",
-        "updated": "2026-09-10"
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-teamgroup-mp44-2tb",
+      "type": "storage",
+      "brand": "TeamGroup",
+      "manufacturer": "TeamGroup",
+      "name": "TeamGroup MP44 2TB NVMe SSD",
+      "model": "MP44 2TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "NVMe",
+        "formFactor": "M.2 2280",
+        "capacityGB": 2000,
+        "pcieGeneration": 4
+      },
+      "compatibility": {},
+      "powerWatts": 8,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "storage-teamgroup-mp44-2tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-samsung-870-evo-1tb",
+      "type": "storage",
+      "brand": "Samsung",
+      "manufacturer": "Samsung",
+      "name": "Samsung 870 EVO 1TB SATA SSD",
+      "model": "870 EVO 1TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "SATA",
+        "formFactor": "2.5-inch",
+        "capacityGB": 1000,
+        "pcieGeneration": 0
+      },
+      "compatibility": {},
+      "powerWatts": 4,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "storage-samsung-870-evo-1tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-crucial-bx500-1tb",
+      "type": "storage",
+      "brand": "Crucial",
+      "manufacturer": "Crucial",
+      "name": "Crucial BX500 1TB SATA SSD",
+      "model": "BX500 1TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "SATA",
+        "formFactor": "2.5-inch",
+        "capacityGB": 1000,
+        "pcieGeneration": 0
+      },
+      "compatibility": {},
+      "powerWatts": 4,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "storage-crucial-bx500-1tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-seagate-barracuda-2tb",
+      "type": "storage",
+      "brand": "Seagate",
+      "manufacturer": "Seagate",
+      "name": "Seagate BarraCuda 2TB HDD",
+      "model": "BarraCuda 2TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "SATA",
+        "formFactor": "3.5-inch",
+        "capacityGB": 2000,
+        "pcieGeneration": 0
+      },
+      "compatibility": {},
+      "powerWatts": 7,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "storage-seagate-barracuda-2tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
+      }
+    },
+    {
+      "id": "vt-storage-wd-blue-4tb",
+      "type": "storage",
+      "brand": "Western Digital",
+      "manufacturer": "Western Digital",
+      "name": "WD Blue 4TB HDD",
+      "model": "Blue 4TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "SATA",
+        "formFactor": "3.5-inch",
+        "capacityGB": 4000,
+        "pcieGeneration": 0
+      },
+      "compatibility": {},
+      "powerWatts": 8,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "storage-wd-blue-4tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-11",
+        "updated": "2026-09-11"
       }
     }
   ]
