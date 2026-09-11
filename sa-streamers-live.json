@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T20:38:24.336412Z",
+  "generated_at": "2026-09-11T20:50:25.856149Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,11 +9,11 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
       "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
       "live": true,
-      "viewer_count": 5,
+      "viewer_count": 9,
       "game_name": "Project Zomboid",
       "title": "[!Pink 0/4] !extend - Want to be the next survivor? Bits, Tips and subbing will get you there.",
       "started_at": "2026-09-11T14:09:06Z",
-      "last_live_at": "2026-09-11T20:38:24.336412Z",
+      "last_live_at": "2026-09-11T20:50:25.856149Z",
       "activity_score": 100.0
     },
     {
@@ -26,8 +26,8 @@
       "game_name": "Valheim",
       "title": "1.0 Lets go poke things, PURE VANILLA | NO MODS | Raising funds for Schmoopies Birthday and School.  | !blame | 18++",
       "started_at": "2026-09-11T18:16:13Z",
-      "last_live_at": "2026-09-11T20:38:24.336412Z",
-      "activity_score": 66.63
+      "last_live_at": "2026-09-11T20:50:25.856149Z",
+      "activity_score": 70.63
     },
     {
       "login": "chronic_za",
@@ -39,8 +39,8 @@
       "game_name": "World of Warcraft",
       "title": "All the keys in china tonight need a 10 just ask!",
       "started_at": "2026-09-11T18:10:07Z",
-      "last_live_at": "2026-09-11T20:38:24.336412Z",
-      "activity_score": 65.99
+      "last_live_at": "2026-09-11T20:50:25.856149Z",
+      "activity_score": 70.03
     },
     {
       "login": "zulumachinegaming",
@@ -48,12 +48,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/6c1b8e82-dab1-46de-acd3-8f0231c6e5bd-profile_image-300x300.png",
       "description": "I'm a gamer producing cool plays, streams and funny moments. Here we play and have fun. Join the community on Discord: https://discord.gg/vWcTNZt . You can contact me on siphomoths@gmail.com",
       "live": true,
-      "viewer_count": 2,
+      "viewer_count": 1,
       "game_name": "Apex Legends",
       "title": "🔥 APEX IS WORKING! RANKING UP LIVE 🚀 | Road to Platinum",
       "started_at": "2026-09-11T19:17:19Z",
-      "last_live_at": "2026-09-11T20:38:24.336412Z",
-      "activity_score": 46.93
+      "last_live_at": "2026-09-11T20:50:25.856149Z",
+      "activity_score": 52.11
     },
     {
       "login": "deosil25",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T20:07:54.948228Z",
-      "activity_score": 54.48
+      "activity_score": 51.21
     },
     {
       "login": "virtualgemma",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T18:32:51.830527Z",
-      "activity_score": 53.87
+      "activity_score": 50.64
     },
     {
       "login": "viking_237",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T16:40:59.590051Z",
-      "activity_score": 26.52
+      "activity_score": 24.93
     },
     {
       "login": "deathsjokerst",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T16:10:08.471627Z",
-      "activity_score": 21.53
+      "activity_score": 20.24
     },
     {
       "login": "waldoliveza",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T17:21:03.539365Z",
-      "activity_score": 20.6
+      "activity_score": 19.36
     },
     {
       "login": "danatdawn",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T14:40:12.132707Z",
-      "activity_score": 16.77
+      "activity_score": 15.76
     },
     {
       "login": "blu3bee",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T16:10:08.471627Z",
-      "activity_score": 16.58
+      "activity_score": 15.59
     },
     {
       "login": "spyro_za",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T13:39:36.062739Z",
-      "activity_score": 14.82
+      "activity_score": 13.93
     },
     {
       "login": "dead_oryx",
@@ -170,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T12:51:42.599099Z",
-      "activity_score": 12.97
+      "activity_score": 12.19
     },
     {
       "login": "buffalo_recon",
@@ -183,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T17:06:44.871557Z",
-      "activity_score": 10.87
+      "activity_score": 10.22
     },
     {
       "login": "derpy_ruby",
@@ -196,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T11:12:04.098011Z",
-      "activity_score": 6.39
+      "activity_score": 6.01
     },
     {
       "login": "azuracub",
@@ -209,7 +209,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T09:30:25.619449Z",
-      "activity_score": 3.52
+      "activity_score": 3.31
     },
     {
       "login": "8bitzoe",
@@ -222,7 +222,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T06:53:26.776260Z",
-      "activity_score": 0.75
+      "activity_score": 0.7
     },
     {
       "login": "thejudgeza",
@@ -235,7 +235,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T23:29:43.473636Z",
-      "activity_score": 0.43
+      "activity_score": 0.4
     },
     {
       "login": "slikkdudebroguy",
@@ -248,7 +248,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T22:28:01.354768Z",
-      "activity_score": 0.34
+      "activity_score": 0.32
     },
     {
       "login": "thelemons",
@@ -261,7 +261,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T21:58:50.984061Z",
-      "activity_score": 0.28
+      "activity_score": 0.26
     },
     {
       "login": "anotherbrokegeek",
@@ -274,7 +274,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-10T23:06:43.190241Z",
-      "activity_score": 0.28
+      "activity_score": 0.26
     },
     {
       "login": "zlorbz",
