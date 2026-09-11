@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "0.4.0",
+  "schemaVersion": "0.5.0",
   "generatedAt": "2026-09-11",
   "currency": "ZAR",
-  "notice": "Temporary test catalogue for architecture and deeper compatibility validation. Prices, stock and prototype connector/capability fields are simulated and are not quotations.",
+  "notice": "Temporary test catalogue for confidence-aware compatibility validation. Prices, stock and prototype connector/capability fields are simulated and are not quotations. Unknown compatibility states mean a specification still needs authoritative product data.",
   "categoryFiles": [
     "./data/cpus.json",
     "./data/motherboards.json",
