@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "0.2.0",
+  "generatedAt": "2026-09-10",
+  "products": [
+    {
+      "id": "vt-psu-corsair-rm650e",
+      "type": "psu",
+      "brand": "Corsair",
+      "manufacturer": "Corsair",
+      "name": "Corsair RM650e 650W 80+ Gold",
+      "model": "RM650e",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "wattage": 650,
+        "efficiency": "80+ Gold",
+        "modular": "Fully modular",
+        "atxVersion": "ATX 3.1",
+        "has12V2x6": true
+      },
+      "compatibility": {
+        "wattage": 650,
+        "has12V2x6": true
+      },
+      "powerWatts": 0,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "psu-corsair-rm650e",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    },
+    {
+      "id": "vt-psu-superflower-750w",
+      "type": "psu",
+      "brand": "Super Flower",
+      "manufacturer": "Super Flower",
+      "name": "Super Flower Leadex III Gold 750W",
+      "model": "Leadex III Gold 750W",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "wattage": 750,
+        "efficiency": "80+ Gold",
+        "modular": "Fully modular",
+        "atxVersion": "ATX 2.x",
+        "has12V2x6": false
+      },
+      "compatibility": {
+        "wattage": 750,
+        "has12V2x6": false
+      },
+      "powerWatts": 0,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "psu-superflower-750w",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    },
+    {
+      "id": "vt-psu-msi-a850gl",
+      "type": "psu",
+      "brand": "MSI",
+      "manufacturer": "MSI",
+      "name": "MSI MAG A850GL PCIE5 850W 80+ Gold",
+      "model": "MAG A850GL PCIE5",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "wattage": 850,
+        "efficiency": "80+ Gold",
+        "modular": "Fully modular",
+        "atxVersion": "ATX 3.0",
+        "has12V2x6": true
+      },
+      "compatibility": {
+        "wattage": 850,
+        "has12V2x6": true
+      },
+      "powerWatts": 0,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "psu-msi-a850gl",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    }
+  ]
+}

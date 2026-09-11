@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "0.2.0",
+  "generatedAt": "2026-09-10",
+  "products": [
+    {
+      "id": "vt-gpu-rtx5060ti-16gb",
+      "type": "gpu",
+      "brand": "Gigabyte",
+      "manufacturer": "Gigabyte",
+      "name": "Gigabyte GeForce RTX 5060 Ti 16GB",
+      "model": "GeForce RTX 5060 Ti 16GB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "vramGB": 16,
+        "lengthMm": 281,
+        "slots": 2.5,
+        "recommendedPsuWatts": 650,
+        "powerConnector": "8-pin"
+      },
+      "compatibility": {
+        "lengthMm": 281,
+        "slots": 2.5,
+        "recommendedPsuWatts": 650
+      },
+      "powerWatts": 180,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "gpu-rtx5060ti-16gb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    },
+    {
+      "id": "vt-gpu-rtx5070-12gb",
+      "type": "gpu",
+      "brand": "MSI",
+      "manufacturer": "MSI",
+      "name": "MSI GeForce RTX 5070 12GB",
+      "model": "GeForce RTX 5070 12GB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "vramGB": 12,
+        "lengthMm": 303,
+        "slots": 2.5,
+        "recommendedPsuWatts": 650,
+        "powerConnector": "12V-2x6"
+      },
+      "compatibility": {
+        "lengthMm": 303,
+        "slots": 2.5,
+        "recommendedPsuWatts": 650
+      },
+      "powerWatts": 250,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "gpu-rtx5070-12gb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    },
+    {
+      "id": "vt-gpu-rx9070xt-16gb",
+      "type": "gpu",
+      "brand": "Sapphire",
+      "manufacturer": "Sapphire",
+      "name": "Sapphire Radeon RX 9070 XT 16GB",
+      "model": "Radeon RX 9070 XT 16GB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "vramGB": 16,
+        "lengthMm": 320,
+        "slots": 3,
+        "recommendedPsuWatts": 750,
+        "powerConnector": "3x 8-pin"
+      },
+      "compatibility": {
+        "lengthMm": 320,
+        "slots": 3,
+        "recommendedPsuWatts": 750
+      },
+      "powerWatts": 304,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "gpu-rx9070xt-16gb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    }
+  ]
+}

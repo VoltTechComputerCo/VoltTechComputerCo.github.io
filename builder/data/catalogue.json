@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "0.2.0",
+  "generatedAt": "2026-09-10",
+  "currency": "ZAR",
+  "notice": "Private prototype. Test pricing and stock only; not a quotation.",
+  "categoryFiles": [
+    "./data/cpus.json",
+    "./data/motherboards.json",
+    "./data/memory.json",
+    "./data/gpus.json",
+    "./data/storage.json",
+    "./data/psus.json",
+    "./data/cases.json",
+    "./data/cooling.json"
+  ],
+  "supplierFiles": [
+    "../commerce/suppliers/mock-wootware.json",
+    "../commerce/suppliers/mock-evetech.json",
+    "../commerce/suppliers/mock-dreamware.json",
+    "../commerce/suppliers/mock-rebeltech.json"
+  ]
+}

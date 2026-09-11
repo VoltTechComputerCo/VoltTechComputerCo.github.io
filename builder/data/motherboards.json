@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "0.2.0",
+  "generatedAt": "2026-09-10",
+  "products": [
+    {
+      "id": "vt-mb-msi-b650m-gaming-plus-wifi",
+      "type": "motherboard",
+      "brand": "MSI",
+      "manufacturer": "MSI",
+      "name": "MSI B650M Gaming Plus WiFi",
+      "model": "B650M Gaming Plus WiFi",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "chipset": "B650",
+        "formFactor": "mATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 256,
+        "m2Slots": 2,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "formFactor": "mATX"
+      },
+      "powerWatts": 55,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-msi-b650m-gaming-plus-wifi",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    },
+    {
+      "id": "vt-mb-gigabyte-b650-eagle-ax",
+      "type": "motherboard",
+      "brand": "Gigabyte",
+      "manufacturer": "Gigabyte",
+      "name": "Gigabyte B650 Eagle AX",
+      "model": "B650 Eagle AX",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "chipset": "B650",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 256,
+        "m2Slots": 3,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "formFactor": "ATX"
+      },
+      "powerWatts": 60,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-gigabyte-b650-eagle-ax",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    },
+    {
+      "id": "vt-mb-asus-b550m-a-wifi-ii",
+      "type": "motherboard",
+      "brand": "ASUS",
+      "manufacturer": "ASUS",
+      "name": "ASUS Prime B550M-A WiFi II",
+      "model": "Prime B550M-A WiFi II",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM4",
+        "chipset": "B550",
+        "formFactor": "mATX",
+        "memoryType": "DDR4",
+        "dimmSlots": 4,
+        "maxMemoryGB": 128,
+        "m2Slots": 2,
+        "sataPorts": 4,
+        "wifi": true
+      },
+      "compatibility": {
+        "socket": "AM4",
+        "memoryType": "DDR4",
+        "formFactor": "mATX"
+      },
+      "powerWatts": 50,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-asus-b550m-a-wifi-ii",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    },
+    {
+      "id": "vt-mb-msi-z890-gaming-plus-wifi",
+      "type": "motherboard",
+      "brand": "MSI",
+      "manufacturer": "MSI",
+      "name": "MSI Z890 Gaming Plus WiFi",
+      "model": "Z890 Gaming Plus WiFi",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1851",
+        "chipset": "Z890",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "dimmSlots": 4,
+        "maxMemoryGB": 256,
+        "m2Slots": 4,
+        "sataPorts": 4,
+        "wifi": true,
+        "biosFlashback": true
+      },
+      "compatibility": {
+        "socket": "LGA1851",
+        "memoryType": "DDR5",
+        "formFactor": "ATX"
+      },
+      "powerWatts": 70,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "mb-msi-z890-gaming-plus-wifi",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    }
+  ]
+}

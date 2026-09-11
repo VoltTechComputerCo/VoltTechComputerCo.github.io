@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "0.2.0",
+  "generatedAt": "2026-09-10",
+  "products": [
+    {
+      "id": "vt-cpu-amd-7600",
+      "type": "cpu",
+      "brand": "AMD",
+      "manufacturer": "AMD",
+      "name": "AMD Ryzen 5 7600",
+      "model": "Ryzen 5 7600",
+      "identifiers": {
+        "mpn": "100-100001015BOX",
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "cores": 6,
+        "threads": 12,
+        "tdpWatts": 65,
+        "integratedGraphics": true,
+        "coolerIncluded": true,
+        "architecture": "Zen 4"
+      },
+      "compatibility": {
+        "socket": "AM5"
+      },
+      "powerWatts": 88,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-amd-7600",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    },
+    {
+      "id": "vt-cpu-amd-9800x3d",
+      "type": "cpu",
+      "brand": "AMD",
+      "manufacturer": "AMD",
+      "name": "AMD Ryzen 7 9800X3D",
+      "model": "Ryzen 7 9800X3D",
+      "identifiers": {
+        "mpn": "100-100001084WOF",
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM5",
+        "cores": 8,
+        "threads": 16,
+        "tdpWatts": 120,
+        "integratedGraphics": true,
+        "coolerIncluded": false,
+        "architecture": "Zen 5"
+      },
+      "compatibility": {
+        "socket": "AM5"
+      },
+      "powerWatts": 162,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-amd-9800x3d",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    },
+    {
+      "id": "vt-cpu-amd-5700x",
+      "type": "cpu",
+      "brand": "AMD",
+      "manufacturer": "AMD",
+      "name": "AMD Ryzen 7 5700X",
+      "model": "Ryzen 7 5700X",
+      "identifiers": {
+        "mpn": "100-100000926WOF",
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "AM4",
+        "cores": 8,
+        "threads": 16,
+        "tdpWatts": 65,
+        "integratedGraphics": false,
+        "coolerIncluded": false,
+        "architecture": "Zen 3"
+      },
+      "compatibility": {
+        "socket": "AM4"
+      },
+      "powerWatts": 88,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-amd-5700x",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    },
+    {
+      "id": "vt-cpu-intel-265k",
+      "type": "cpu",
+      "brand": "Intel",
+      "manufacturer": "Intel",
+      "name": "Intel Core Ultra 7 265K",
+      "model": "Core Ultra 7 265K",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "socket": "LGA1851",
+        "cores": 20,
+        "threads": 20,
+        "tdpWatts": 125,
+        "integratedGraphics": true,
+        "coolerIncluded": false,
+        "architecture": "Arrow Lake"
+      },
+      "compatibility": {
+        "socket": "LGA1851"
+      },
+      "powerWatts": 250,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cpu-intel-265k",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    }
+  ]
+}

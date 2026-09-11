@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "0.2.0",
+  "generatedAt": "2026-09-10",
+  "products": [
+    {
+      "id": "vt-case-montech-air-100",
+      "type": "case",
+      "brand": "Montech",
+      "manufacturer": "Montech",
+      "name": "Montech AIR 100 ARGB",
+      "model": "AIR 100 ARGB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 330,
+        "maxCpuCoolerHeightMm": 161,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 330,
+        "maxCpuCoolerHeightMm": 161,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280
+        ]
+      },
+      "powerWatts": 0,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-montech-air-100",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    },
+    {
+      "id": "vt-case-corsair-4000d",
+      "type": "case",
+      "brand": "Corsair",
+      "manufacturer": "Corsair",
+      "name": "Corsair 4000D Airflow",
+      "model": "4000D Airflow",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 360,
+        "maxCpuCoolerHeightMm": 170,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "compatibility": {
+        "supportedMotherboardSizes": [
+          "ATX",
+          "mATX",
+          "Mini-ITX"
+        ],
+        "maxGpuLengthMm": 360,
+        "maxCpuCoolerHeightMm": 170,
+        "radiatorSupportMm": [
+          120,
+          240,
+          280,
+          360
+        ]
+      },
+      "powerWatts": 0,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "case-corsair-4000d",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    }
+  ]
+}

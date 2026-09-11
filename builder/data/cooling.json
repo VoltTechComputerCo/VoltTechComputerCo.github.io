@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "0.2.0",
+  "generatedAt": "2026-09-10",
+  "products": [
+    {
+      "id": "vt-cooler-deepcool-ak400",
+      "type": "cooler",
+      "brand": "DeepCool",
+      "manufacturer": "DeepCool",
+      "name": "DeepCool AK400",
+      "model": "AK400",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "air",
+        "heightMm": 155,
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 180
+      },
+      "compatibility": {
+        "heightMm": 155,
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 180
+      },
+      "powerWatts": 4,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-deepcool-ak400",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    },
+    {
+      "id": "vt-cooler-arctic-lf3-360",
+      "type": "cooler",
+      "brand": "ARCTIC",
+      "manufacturer": "ARCTIC",
+      "name": "ARCTIC Liquid Freezer III 360",
+      "model": "Liquid Freezer III 360",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "coolerType": "aio",
+        "radiatorSizeMm": 360,
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 300
+      },
+      "compatibility": {
+        "radiatorSizeMm": 360,
+        "supportedSockets": [
+          "AM4",
+          "AM5",
+          "LGA1700",
+          "LGA1851"
+        ],
+        "recommendedCpuPowerWatts": 300
+      },
+      "powerWatts": 12,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "cooler-arctic-lf3-360",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    }
+  ]
+}

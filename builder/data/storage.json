@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "0.2.0",
+  "generatedAt": "2026-09-10",
+  "products": [
+    {
+      "id": "vt-ssd-wd-sn770-1tb",
+      "type": "storage",
+      "brand": "Western Digital",
+      "manufacturer": "Western Digital",
+      "name": "WD Black SN770 1TB NVMe SSD",
+      "model": "Black SN770 1TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "NVMe",
+        "formFactor": "M.2 2280",
+        "capacityGB": 1000,
+        "pcieGeneration": 4
+      },
+      "compatibility": {
+        "interface": "NVMe",
+        "m2": true
+      },
+      "powerWatts": 6,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "ssd-wd-sn770-1tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    },
+    {
+      "id": "vt-ssd-samsung-990pro-2tb",
+      "type": "storage",
+      "brand": "Samsung",
+      "manufacturer": "Samsung",
+      "name": "Samsung 990 PRO 2TB NVMe SSD",
+      "model": "990 PRO 2TB",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "interface": "NVMe",
+        "formFactor": "M.2 2280",
+        "capacityGB": 2000,
+        "pcieGeneration": 4
+      },
+      "compatibility": {
+        "interface": "NVMe",
+        "m2": true
+      },
+      "powerWatts": 8,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "ssd-samsung-990pro-2tb",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "created": "2026-09-10",
+        "updated": "2026-09-10"
+      }
+    }
+  ]
+}
