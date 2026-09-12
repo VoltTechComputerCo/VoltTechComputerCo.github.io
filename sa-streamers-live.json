@@ -1,21 +1,8 @@
 {
-  "generated_at": "2026-09-12T17:54:08.233652Z",
+  "generated_at": "2026-09-12T18:08:37.151894Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
-    {
-      "login": "1handbanditza",
-      "display_name": "1HandBanditZA",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/0d2fb852-a52a-425f-ba87-463feaee1cdd-profile_image-300x300.png",
-      "description": "Single Handed Life CHALLENGE RUNVariety turned Horror Streamer, why? Because entertainment",
-      "live": true,
-      "viewer_count": 5,
-      "game_name": "The Evil Within",
-      "title": "💀ONE HAND vs THE EVIL WITHIN! 😱 Can I Survive the Nightmare?! 🔥 | !discord",
-      "started_at": "2026-09-12T14:01:13Z",
-      "last_live_at": "2026-09-12T17:54:08.233652Z",
-      "activity_score": 92.21
-    },
     {
       "login": "waldoliveza",
       "display_name": "WaldoLiveZA",
@@ -26,8 +13,8 @@
       "game_name": "Special Events",
       "title": "BLIZZCON WATCH PARTY | GOD WAR FIRST PLAYTHROUGH |  @WaldoLiveZA on all socials",
       "started_at": "2026-09-12T14:55:35Z",
-      "last_live_at": "2026-09-12T17:54:08.233652Z",
-      "activity_score": 80.67
+      "last_live_at": "2026-09-12T18:08:37.151894Z",
+      "activity_score": 83.83
     },
     {
       "login": "zaffa_geek",
@@ -39,8 +26,8 @@
       "game_name": "Project Zomboid",
       "title": "[!Pink 0/4] !extend - Fresh Start",
       "started_at": "2026-09-12T17:28:50Z",
-      "last_live_at": "2026-09-12T17:54:08.233652Z",
-      "activity_score": 66.12
+      "last_live_at": "2026-09-12T18:08:37.151894Z",
+      "activity_score": 70.15
     },
     {
       "login": "androvaza",
@@ -52,8 +39,21 @@
       "game_name": "League of Legends",
       "title": "Hardstuck Gold Gamer | I geniunely suck at this game? | #SYNCity",
       "started_at": "2026-09-12T17:04:22Z",
+      "last_live_at": "2026-09-12T18:08:37.151894Z",
+      "activity_score": 41.35
+    },
+    {
+      "login": "1handbanditza",
+      "display_name": "1HandBanditZA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/0d2fb852-a52a-425f-ba87-463feaee1cdd-profile_image-300x300.png",
+      "description": "Single Handed Life CHALLENGE RUNVariety turned Horror Streamer, why? Because entertainment",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
       "last_live_at": "2026-09-12T17:54:08.233652Z",
-      "activity_score": 35.48
+      "activity_score": 86.68
     },
     {
       "login": "chronic_za",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 37.01
+      "activity_score": 34.79
     },
     {
       "login": "spyro_za",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 30.87
+      "activity_score": 29.02
     },
     {
       "login": "chickenwingerz",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 7.44
+      "activity_score": 6.99
     },
     {
       "login": "agriopsgaming",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T01:00:16.228552Z",
-      "activity_score": 0.8
+      "activity_score": 0.75
     },
     {
       "login": "zulumachinegaming",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T23:30:16.004641Z",
-      "activity_score": 0.54
+      "activity_score": 0.51
     },
     {
       "login": "virtualgemma",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T18:32:51.830527Z",
-      "activity_score": 0.13
+      "activity_score": 0.12
     },
     {
       "login": "deosil25",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T20:07:54.948228Z",
-      "activity_score": 0.13
+      "activity_score": 0.12
     },
     {
       "login": "zlorbz",
