@@ -1,5 +1,5 @@
-import {CATEGORY_ORDER,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getNextCategory,getCategorySummary,getStockLabel} from "./build-engine.js?v=0.6";
-import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.6.1";
+import {CATEGORY_ORDER,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,hasCategory,isMultiCategory} from "./build-engine.js?v=0.7";
+import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.7";
 import {loadCatalogue} from "./data-loader.js?v=0.6";
 
 const e={
@@ -27,7 +27,7 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.6.1 diagnostics/scroll fix · test pricing and stock only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7 multi-RAM/storage foundation · test pricing and stock only.`;
         render();
     }catch(x){
         console.error(x);
@@ -58,9 +58,10 @@ function render(){
 
 function renderSteps(){
     e.steps.innerHTML=CATEGORY_ORDER.map((c,i)=>{
-        const p=build[c];
-        const cl=["step",c===activeCategory?"active":"",p?"complete":""].filter(Boolean).join(" ");
-        return `<button class="${cl}" type="button" data-category="${c}"><span class="step-index">${p?"✓":i+1}</span><span class="step-label"><b>${esc(CATEGORY_LABELS[c])}</b><small>${p?esc(getCategorySummary(p)):"Not selected"}</small></span></button>`;
+        const selected=getSelections(build,c);
+        const complete=selected.length>0;
+        const cl=["step",c===activeCategory?"active":"",complete?"complete":""].filter(Boolean).join(" ");
+        return `<button class="${cl}" type="button" data-category="${c}"><span class="step-index">${complete?"✓":i+1}</span><span class="step-label"><b>${esc(CATEGORY_LABELS[c])}</b><small>${complete?esc(getCategorySummary(selected,c)):"Not selected"}</small></span></button>`;
     }).join("");
     e.steps.querySelectorAll("[data-category]").forEach(b=>b.addEventListener("click",()=>openCategory(b.dataset.category)));
 }
@@ -77,7 +78,7 @@ function renderProducts(){
     });
 
     const visible=e.compatibleOnly.checked
-        ? evaluated.filter(x=>x.result.compatible||build[activeCategory]?.id===x.product.id)
+        ? evaluated.filter(x=>x.result.compatible||getSelections(build,activeCategory).some(p=>p.id===x.product.id))
         : evaluated;
 
     e.productCount.textContent=`${visible.length} of ${ps.length}`;
@@ -93,8 +94,11 @@ function renderProducts(){
         const product=catalogue.find(x=>x.id===button.dataset.selectProduct);
         if(!product)return;
 
-        if(build[product.type]?.id===product.id){
-            build=removeProduct(build,product.type);
+        const multi=isMultiCategory(product.type);
+        const selectedCount=getSelections(build,product.type).filter(p=>p.id===product.id).length;
+
+        if(!multi && selectedCount){
+            build=removeProduct(build,product.type,product.id);
             render();
             return;
         }
@@ -104,9 +108,9 @@ function renderProducts(){
         if(!relevant.compatible)return;
 
         build=selectProduct(build,product);
-        const done=getSelectedCount(build)===CATEGORY_ORDER.length;
+        const done=getCompletedCategoryCount(build)===CATEGORY_ORDER.length;
 
-        if(!done){
+        if(!multi && !done){
             activeCategory=getNextCategory(product.type,build);
         }
 
@@ -115,9 +119,14 @@ function renderProducts(){
 
         if(done){
             scrollDone();
-        }else{
+        }else if(!multi){
             scrollCatalogueTop();
         }
+    }));
+
+    e.products.querySelectorAll("[data-remove-product]").forEach(button=>button.addEventListener("click",()=>{
+        build=removeProduct(build,activeCategory,button.dataset.removeProduct);
+        render();
     }));
 }
 
@@ -171,7 +180,8 @@ function textOf(x){
 
 function card(p,r){
     const o=getBestOffer(p);
-    const sel=build[p.type]?.id===p.id;
+    const qty=getSelections(build,p.type).filter(x=>x.id===p.id).length;
+    const sel=qty>0;
     const meta=metaOf(p).map(x=>`<span class="meta">${esc(x)}</span>`).join("");
     const issues=r.issues.map(x=>`<div class="product-error">✕ ${esc(textOf(x))}</div>`).join("");
     const warnings=r.warnings.map(x=>`<div class="product-warning">⚠ ${esc(textOf(x))}</div>`).join("");
@@ -179,15 +189,15 @@ function card(p,r){
     const price=o?formatMoney(o.price,currency):"Price unavailable";
     const supplier=o?`${o.supplierName||o.source} · ${getStockLabel(o.stockStatus,o.freshness)}`:"No supplier offer";
 
-    return `<article class="product ${sel?"selected":""} ${!r.compatible?"incompatible":""}"><div class="product-main"><span class="product-brand">${esc(p.brand||"")}</span><h3>${esc(p.name)}</h3><div class="product-meta">${meta}</div>${issues}${warnings}${unknowns}</div><div class="product-side"><div class="price">${esc(price)}</div><div class="supplier">${esc(supplier)}</div><button type="button" class="select-btn ${sel?"remove":""}" data-select-product="${esc(p.id)}" ${!r.compatible&&!sel?"disabled":""}>${sel?"Remove":r.compatible?"Select":"Incompatible"}</button></div></article>`;
+    return `<article class="product ${sel?"selected":""} ${!r.compatible?"incompatible":""}"><div class="product-main"><span class="product-brand">${esc(p.brand||"")}</span><h3>${esc(p.name)}</h3><div class="product-meta">${meta}</div>${issues}${warnings}${unknowns}</div><div class="product-side"><div class="price">${esc(price)}</div><div class="supplier">${esc(supplier)}</div>${isMultiCategory(p.type)&&qty?`<div class="supplier">Selected ×${qty}</div>`:""}<button type="button" class="select-btn" data-select-product="${esc(p.id)}" ${!r.compatible?"disabled":""}>${r.compatible?(isMultiCategory(p.type)?(qty?"Add another":"Add"):"Select"):"Incompatible"}</button>${isMultiCategory(p.type)&&qty?`<button type="button" class="select-btn remove" data-remove-product="${esc(p.id)}">Remove one</button>`:""}</div></article>`;
 }
 
 function renderBuild(){
     e.buildList.innerHTML=CATEGORY_ORDER.map(c=>{
-        const p=build[c];
-        return p
-            ? `<div class="build-item"><div><span>${esc(CATEGORY_LABELS[c])}</span><div class="build-price">${esc(formatMoney(getProductPrice(p),currency))}</div></div><b>${esc(p.name)}</b></div>`
-            : `<div class="build-item"><span>${esc(CATEGORY_LABELS[c])}</span><b>Not selected</b></div>`;
+        const items=getSelections(build,c);
+        if(!items.length)return `<div class="build-item"><span>${esc(CATEGORY_LABELS[c])}</span><b>Not selected</b></div>`;
+        const lines=items.map((p,i)=>`<div style="margin-top:${i?"8":"4"}px"><b>${esc(p.name)}</b><div class="build-price">${esc(formatMoney(getProductPrice(p),currency))}</div></div>`).join("");
+        return `<div class="build-item"><div><span>${esc(CATEGORY_LABELS[c])}</span>${lines}</div></div>`;
     }).join("");
     e.total.textContent=formatMoney(calculateBuildTotal(build),currency);
 }
@@ -202,6 +212,7 @@ function renderPower(){
 function renderReport(){
     const r=validateBuild(build);
     const n=getSelectedCount(build);
+    const completed=getCompletedCategoryCount(build);
     const a=[];
 
     if(!n){
@@ -216,7 +227,7 @@ function renderReport(){
     r.warnings.forEach(x=>a.push({type:"warn",diagnostic:x}));
     r.unknowns.forEach(x=>a.push({type:"unknown",diagnostic:x}));
 
-    if(n===CATEGORY_ORDER.length){
+    if(completed===CATEGORY_ORDER.length){
         if(!r.compatible){
             a.unshift({type:"bad",text:"BUILD COMPLETE — All component categories are filled, but confirmed compatibility issues still need to be resolved."});
         }else if(r.unknowns.length){

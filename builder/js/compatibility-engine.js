@@ -6,9 +6,13 @@ export function getCompatibility(product, build) {
     const selected = {
         cpu: product.type === "cpu" ? product : build.cpu,
         motherboard: product.type === "motherboard" ? product : build.motherboard,
-        memory: product.type === "memory" ? product : build.memory,
+        memory: product.type === "memory"
+            ? [...asList(build.memory), product]
+            : asList(build.memory),
         gpu: product.type === "gpu" ? product : build.gpu,
-        storage: product.type === "storage" ? product : build.storage,
+        storage: product.type === "storage"
+            ? [...asList(build.storage), product]
+            : asList(build.storage),
         psu: product.type === "psu" ? product : build.psu,
         case: product.type === "case" ? product : build.case,
         cooler: product.type === "cooler" ? product : build.cooler
@@ -38,7 +42,7 @@ export function validateBuild(build) {
 
 export function estimatePower(build) {
     const componentPower = Object.values(build)
-        .filter(Boolean)
+        .flatMap(value => Array.isArray(value) ? value : value ? [value] : [])
         .reduce((total, product) => total + Number(product.powerWatts || 0), 0);
 
     const systemAllowance = 65;
@@ -62,13 +66,15 @@ function result(issues, warnings, unknowns) {
 
 function runChecks(build, issues, warnings, unknowns) {
     checkCpuMotherboard(build.cpu, build.motherboard, issues, warnings, unknowns);
-    checkMemoryMotherboard(build.memory, build.motherboard, issues, unknowns);
-    checkStorageMotherboard(build.storage, build.motherboard, issues, warnings, unknowns);
+    asList(build.memory).forEach(memory => checkMemoryMotherboard(memory, build.motherboard, issues, unknowns));
+    checkCombinedMemory(build.memory, build.motherboard, issues, warnings);
+    asList(build.storage).forEach(storage => checkStorageMotherboard(storage, build.motherboard, issues, warnings, unknowns));
+    checkCombinedStorage(build.storage, build.motherboard, issues);
     checkMotherboardCase(build.motherboard, build.case, issues, unknowns);
     checkGpuCase(build.gpu, build.case, issues, unknowns);
     checkCoolerCpu(build.cooler, build.cpu, issues, unknowns);
     checkCoolerCase(build.cooler, build.case, issues, unknowns);
-    checkRamCooler(build.memory, build.cooler, warnings);
+    asList(build.memory).forEach(memory => checkRamCooler(memory, build.cooler, warnings));
     checkCoolerCapacity(build.cooler, build.cpu, warnings);
     checkCpuBoardPowerSuitability(build.cpu, build.motherboard, warnings);
     checkPsu(build.psu, build.gpu, build, issues, warnings, unknowns);
@@ -424,6 +430,47 @@ function checkRamCooler(memory, cooler, warnings) {
         }
     }
 }
+
+function checkCombinedMemory(memoryValue, motherboard, issues, warnings) {
+    const memory = asList(memoryValue);
+    if (!memory.length || !motherboard) return;
+
+    const totalModules = memory.reduce((n,p)=>n+Number(p.compatibility?.modules ?? p.specs?.modules ?? 0),0);
+    const totalCapacity = memory.reduce((n,p)=>n+Number(p.compatibility?.capacityGB ?? p.specs?.capacityGB ?? 0),0);
+    const dimmSlots = Number(motherboard.compatibility?.dimmSlots ?? motherboard.specs?.dimmSlots ?? 0);
+    const maxCapacity = Number(motherboard.compatibility?.maxMemoryGB ?? motherboard.specs?.maxMemoryGB ?? 0);
+    const types = [...new Set(memory.map(p=>p.compatibility?.memoryType || p.specs?.memoryType).filter(Boolean))];
+
+    if (types.length > 1) {
+        issues.push(makeDiagnostic("Selected memory kits use different DDR generations and cannot be mixed.","memory","motherboard","memory-mixed-ddr"));
+    }
+    if (dimmSlots && totalModules > dimmSlots) {
+        issues.push(makeDiagnostic(`Selected memory uses ${totalModules} DIMMs, but the motherboard only has ${dimmSlots} DIMM slots.`,"memory","motherboard","memory-total-slots"));
+    }
+    if (maxCapacity && totalCapacity > maxCapacity) {
+        issues.push(makeDiagnostic(`Selected memory totals ${totalCapacity} GB, but the motherboard supports up to ${maxCapacity} GB.`,"memory","motherboard","memory-total-capacity"));
+    }
+    if (memory.length > 1) {
+        const speeds=[...new Set(memory.map(p=>Number(p.specs?.speedMTs||0)).filter(Boolean))];
+        const latencies=[...new Set(memory.map(p=>Number(p.specs?.casLatency||0)).filter(Boolean))];
+        if (speeds.length>1 || latencies.length>1) {
+            warnings.push(makeDiagnostic("Multiple RAM kits with different speed or latency specifications may run at the slowest common settings. A matched kit is preferred.","memory","motherboard","memory-mixed-kit"));
+        }
+    }
+}
+
+function checkCombinedStorage(storageValue, motherboard, issues) {
+    const storage=asList(storageValue);
+    if (!storage.length || !motherboard) return;
+    const nvme=storage.filter(p=>(p.compatibility?.interface||p.specs?.interface)==="NVMe").length;
+    const sata=storage.filter(p=>(p.compatibility?.interface||p.specs?.interface)==="SATA").length;
+    const m2=Number(motherboard.compatibility?.m2Slots ?? motherboard.specs?.m2Slots ?? 0);
+    const sataPorts=Number(motherboard.compatibility?.sataPorts ?? motherboard.specs?.sataPorts ?? 0);
+    if(m2 && nvme>m2)issues.push(makeDiagnostic(`The build has ${nvme} NVMe drives but the motherboard lists ${m2} M.2 slots.`,"storage","motherboard","storage-total-m2"));
+    if(sataPorts && sata>sataPorts)issues.push(makeDiagnostic(`The build has ${sata} SATA drives but the motherboard lists ${sataPorts} SATA ports.`,"storage","motherboard","storage-total-sata"));
+}
+
+function asList(value){return Array.isArray(value)?value:(value?[value]:[])}
 
 function checkCoolerCapacity(cooler, cpu, warnings) {
     if (!cooler || !cpu) return;
