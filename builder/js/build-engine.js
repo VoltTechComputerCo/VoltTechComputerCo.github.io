@@ -1,4 +1,5 @@
-export const CATEGORY_ORDER=["cpu","motherboard","memory","gpu","storage","psu","case","cooler","fans"];
+export const REQUIRED_CATEGORIES=["cpu","motherboard","memory","gpu","storage","psu","case","cooler"];
+export const CATEGORY_ORDER=[...REQUIRED_CATEGORIES,"fans"];
 export const MULTI_CATEGORIES=new Set(["storage","fans"]);
 export const CATEGORY_LABELS={cpu:"CPU",motherboard:"Motherboard",memory:"Memory",gpu:"Graphics Card",storage:"Storage",psu:"Power Supply",case:"Case",cooler:"CPU Cooler",fans:"Case Fans"};
 
@@ -38,12 +39,15 @@ export function getProductPrice(product){return Number(getBestOffer(product)?.pr
 export function calculateBuildTotal(build){return CATEGORY_ORDER.flatMap(c=>getSelections(build,c)).reduce((t,p)=>t+getProductPrice(p),0)}
 export function formatMoney(value,currency="ZAR"){return new Intl.NumberFormat("en-ZA",{style:"currency",currency,maximumFractionDigits:0}).format(Number(value||0))}
 export function getSelectedCount(build){return CATEGORY_ORDER.reduce((n,c)=>n+getSelections(build,c).length,0)}
-export function getCompletedCategoryCount(build){return CATEGORY_ORDER.filter(c=>hasCategory(build,c)).length}
+export function getCompletedCategoryCount(build){return REQUIRED_CATEGORIES.filter(c=>hasCategory(build,c)).length}
 export function getNextCategory(currentCategory,build){
-    const i=CATEGORY_ORDER.indexOf(currentCategory);
-    return CATEGORY_ORDER.slice(Math.max(i+1,0)).find(c=>!hasCategory(build,c))||CATEGORY_ORDER.find(c=>!hasCategory(build,c))||currentCategory;
+    const i=REQUIRED_CATEGORIES.indexOf(currentCategory);
+    if(i===-1)return REQUIRED_CATEGORIES.find(c=>!hasCategory(build,c))||currentCategory;
+    return REQUIRED_CATEGORIES.slice(i+1).find(c=>!hasCategory(build,c))
+        ||REQUIRED_CATEGORIES.find(c=>!hasCategory(build,c))
+        ||currentCategory;
 }
-export function getFirstIncompleteCategory(build){return CATEGORY_ORDER.find(c=>!hasCategory(build,c))||CATEGORY_ORDER[0]}
+export function getFirstIncompleteCategory(build){return REQUIRED_CATEGORIES.find(c=>!hasCategory(build,c))||REQUIRED_CATEGORIES[0]}
 export function getCategorySummary(value,type=null){
     const list=Array.isArray(value)?value:(value?[value]:[]); if(!list.length)return"Not selected";
     const t=type||list[0].type;

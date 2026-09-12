@@ -1,5 +1,5 @@
-import {CATEGORY_ORDER,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,hasCategory,isMultiCategory} from "./build-engine.js?v=0.7";
-import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.7";
+import {CATEGORY_ORDER,REQUIRED_CATEGORIES,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,hasCategory,isMultiCategory} from "./build-engine.js?v=0.7.1";
+import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.7.1";
 import {loadCatalogue} from "./data-loader.js?v=0.6";
 
 const e={
@@ -27,7 +27,7 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7 case-fan quantity foundation · test pricing and stock only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7.1 optional case-fan foundation · test pricing and stock only.`;
         render();
     }catch(x){
         console.error(x);
@@ -108,7 +108,7 @@ function renderProducts(){
         if(!relevant.compatible)return;
 
         build=selectProduct(build,product);
-        const done=getCompletedCategoryCount(build)===CATEGORY_ORDER.length;
+        const done=getCompletedCategoryCount(build)===REQUIRED_CATEGORIES.length;
 
         if(!multi && !done){
             activeCategory=getNextCategory(product.type,build);
@@ -227,13 +227,13 @@ function renderReport(){
     r.warnings.forEach(x=>a.push({type:"warn",diagnostic:x}));
     r.unknowns.forEach(x=>a.push({type:"unknown",diagnostic:x}));
 
-    if(completed===CATEGORY_ORDER.length){
+    if(completed===REQUIRED_CATEGORIES.length){
         if(!r.compatible){
-            a.unshift({type:"bad",text:"BUILD COMPLETE — All component categories are filled, but confirmed compatibility issues still need to be resolved."});
+            a.unshift({type:"bad",text:"BUILD COMPLETE — All required component categories are filled, but confirmed compatibility issues still need to be resolved."});
         }else if(r.unknowns.length){
-            a.unshift({type:"unknown",text:`BUILD COMPLETE ? — All core categories are filled with no confirmed hard conflict, but ${r.unknowns.length} compatibility check${r.unknowns.length===1?" is":"s are"} still unconfirmed. Current prototype parts total: ${formatMoney(calculateBuildTotal(build),currency)}.`});
+            a.unshift({type:"unknown",text:`BUILD COMPLETE ? — All required core categories are filled with no confirmed hard conflict, but ${r.unknowns.length} compatibility check${r.unknowns.length===1?" is":"s are"} still unconfirmed. Current prototype parts total: ${formatMoney(calculateBuildTotal(build),currency)}.`});
         }else{
-            a.unshift({type:"good",text:`BUILD COMPLETE ✓ — All core components are selected and no confirmed compatibility conflicts were found. Current prototype parts total: ${formatMoney(calculateBuildTotal(build),currency)}.`});
+            a.unshift({type:"good",text:`BUILD COMPLETE ✓ — All required core components are selected and no confirmed compatibility conflicts were found. Case fans are optional. Current prototype parts total: ${formatMoney(calculateBuildTotal(build),currency)}.`});
         }
     }
 
