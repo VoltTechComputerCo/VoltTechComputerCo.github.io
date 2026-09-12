@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12T14:06:55.052215Z",
+  "generated_at": "2026-09-12T14:20:57.635634Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,25 +9,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/5bf9e857-1a6d-403b-9937-499dabc6838d-profile_image-300x300.png",
       "description": "Two Taylors. One squad. Zero safe raids. We’re Chronic & Clover—chasing loot, laughs and legendary escapes. Gear up and join the raid!",
       "live": true,
-      "viewer_count": 1,
+      "viewer_count": 2,
       "game_name": "World of Warcraft",
       "title": "No friends so i pug",
       "started_at": "2026-09-12T12:40:24Z",
-      "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 52.72
-    },
-    {
-      "login": "chickenwingerz",
-      "display_name": "ChickenWingerZ",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/95ef6966-e207-4ff6-bcf0-59621c34af57-profile_image-300x300.png",
-      "description": "New South African Streamer Lets have fun Lets all help each other out!",
-      "live": true,
-      "viewer_count": 1,
-      "game_name": "Fortnite",
-      "title": "welcome all! young and old!",
-      "started_at": "2026-09-12T13:37:11Z",
-      "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 22.66
+      "last_live_at": "2026-09-12T14:20:57.635634Z",
+      "activity_score": 57.56
     },
     {
       "login": "1handbanditza",
@@ -35,12 +22,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/0d2fb852-a52a-425f-ba87-463feaee1cdd-profile_image-300x300.png",
       "description": "Single Handed Life CHALLENGE RUNVariety turned Horror Streamer, why? Because entertainment",
       "live": true,
-      "viewer_count": 1,
+      "viewer_count": 2,
       "game_name": "The Evil Within",
       "title": "💀ONE HAND vs THE EVIL WITHIN! 😱 Can I Survive the Nightmare?! 🔥 | !discord",
       "started_at": "2026-09-12T14:01:13Z",
-      "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 8.08
+      "last_live_at": "2026-09-12T14:20:57.635634Z",
+      "activity_score": 15.6
     },
     {
       "login": "spyro_za",
@@ -53,7 +40,20 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 94.0
+      "activity_score": 88.36
+    },
+    {
+      "login": "chickenwingerz",
+      "display_name": "ChickenWingerZ",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/95ef6966-e207-4ff6-bcf0-59621c34af57-profile_image-300x300.png",
+      "description": "New South African Streamer Lets have fun Lets all help each other out!",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": "2026-09-12T14:06:55.052215Z",
+      "activity_score": 21.3
     },
     {
       "login": "agriopsgaming",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T01:00:16.228552Z",
-      "activity_score": 2.43
+      "activity_score": 2.28
     },
     {
       "login": "zulumachinegaming",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T23:30:16.004641Z",
-      "activity_score": 1.64
+      "activity_score": 1.54
     },
     {
       "login": "zaffa_geek",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T21:35:14.265242Z",
-      "activity_score": 0.9
+      "activity_score": 0.85
     },
     {
       "login": "virtualgemma",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T18:32:51.830527Z",
-      "activity_score": 0.38
+      "activity_score": 0.36
     },
     {
       "login": "deosil25",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T20:07:54.948228Z",
-      "activity_score": 0.38
+      "activity_score": 0.36
     },
     {
       "login": "viking_237",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T16:40:59.590051Z",
-      "activity_score": 0.2
+      "activity_score": 0.19
     },
     {
       "login": "deathsjokerst",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T16:10:08.471627Z",
-      "activity_score": 0.16
+      "activity_score": 0.15
     },
     {
       "login": "waldoliveza",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T17:21:03.539365Z",
-      "activity_score": 0.15
+      "activity_score": 0.14
     },
     {
       "login": "danatdawn",
@@ -170,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T14:40:12.132707Z",
-      "activity_score": 0.12
+      "activity_score": 0.11
     },
     {
       "login": "blu3bee",
@@ -183,20 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T16:10:08.471627Z",
-      "activity_score": 0.12
-    },
-    {
-      "login": "dead_oryx",
-      "display_name": "Dead_Oryx",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/79acf5d8-98ae-4b84-b97b-4a7d352845b8-profile_image-300x300.jpeg",
-      "description": "and the people bowed and prayed to the neon god they made and the sign flashed out its warning In the words that it was forming and the sign said, \"the words of the prophets are written on the subway walls\". - Simon & Garfunkel - Business enquiries: info@deadoryx.co.za",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": "2026-09-11T12:51:42.599099Z",
-      "activity_score": 0.08
+      "activity_score": 0.11
     },
     {
       "login": "zlorbz",
@@ -287,6 +274,19 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T11:12:04.098011Z",
+      "activity_score": 0.08
+    },
+    {
+      "login": "dead_oryx",
+      "display_name": "Dead_Oryx",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/79acf5d8-98ae-4b84-b97b-4a7d352845b8-profile_image-300x300.jpeg",
+      "description": "and the people bowed and prayed to the neon god they made and the sign flashed out its warning In the words that it was forming and the sign said, \"the words of the prophets are written on the subway walls\". - Simon & Garfunkel - Business enquiries: info@deadoryx.co.za",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": "2026-09-11T12:51:42.599099Z",
       "activity_score": 0.08
     },
     {
