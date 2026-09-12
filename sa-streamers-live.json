@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-09-12T21:36:19.091252Z",
+  "generated_at": "2026-09-12T21:45:37.963407Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
-    {
-      "login": "zaffa_geek",
-      "display_name": "Zaffa_Geek",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
-      "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
-      "live": true,
-      "viewer_count": 10,
-      "game_name": "Project Zomboid",
-      "title": "[!Pink 0/4] !extend - Fresh Start",
-      "started_at": "2026-09-12T17:28:50Z",
-      "last_live_at": "2026-09-12T21:36:19.091252Z",
-      "activity_score": 100.0
-    },
     {
       "login": "androvaza",
       "display_name": "AndrovaZA",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/8b5628de-2866-48d7-a9cb-0ea3689a1dce-profile_image-300x300.png",
       "description": "Recovering Riot Games addict",
       "live": true,
-      "viewer_count": 10,
+      "viewer_count": 13,
       "game_name": "League of Legends",
       "title": "Hardstuck Gold Gamer | I geniunely suck at this game? | #SYNCity",
       "started_at": "2026-09-12T21:33:17Z",
-      "last_live_at": "2026-09-12T21:36:19.091252Z",
-      "activity_score": 99.15
+      "last_live_at": "2026-09-12T21:45:37.963407Z",
+      "activity_score": 100.0
+    },
+    {
+      "login": "zaffa_geek",
+      "display_name": "Zaffa_Geek",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
+      "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
+      "live": true,
+      "viewer_count": 12,
+      "game_name": "Project Zomboid",
+      "title": "[!Pink 0/4] !extend - Fresh Start",
+      "started_at": "2026-09-12T17:28:50Z",
+      "last_live_at": "2026-09-12T21:45:37.963407Z",
+      "activity_score": 100.0
     },
     {
       "login": "waldoliveza",
@@ -40,7 +40,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T18:57:07.533386Z",
-      "activity_score": 45.05
+      "activity_score": 42.35
     },
     {
       "login": "1handbanditza",
@@ -53,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T17:54:08.233652Z",
-      "activity_score": 32.2
+      "activity_score": 30.27
     },
     {
       "login": "chronic_za",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 12.93
+      "activity_score": 12.15
     },
     {
       "login": "spyro_za",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 10.77
+      "activity_score": 10.12
     },
     {
       "login": "alaskayeen",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T19:44:46.058522Z",
-      "activity_score": 9.47
+      "activity_score": 8.9
     },
     {
       "login": "chickenwingerz",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 2.58
+      "activity_score": 2.43
     },
     {
       "login": "agriopsgaming",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T01:00:16.228552Z",
-      "activity_score": 0.28
+      "activity_score": 0.26
     },
     {
       "login": "zulumachinegaming",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T23:30:16.004641Z",
-      "activity_score": 0.19
+      "activity_score": 0.18
     },
     {
       "login": "zlorbz",
