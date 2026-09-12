@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12T23:09:19.292824Z",
+  "generated_at": "2026-09-12T23:22:15.183890Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,11 +9,11 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
       "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
       "live": true,
-      "viewer_count": 11,
+      "viewer_count": 10,
       "game_name": "Project Zomboid",
       "title": "[!Pink 0/4] !extend - Fresh Start",
       "started_at": "2026-09-12T17:28:50Z",
-      "last_live_at": "2026-09-12T23:09:19.292824Z",
+      "last_live_at": "2026-09-12T23:22:15.183890Z",
       "activity_score": 100.0
     },
     {
@@ -27,7 +27,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T22:47:51.115298Z",
-      "activity_score": 88.36
+      "activity_score": 83.06
     },
     {
       "login": "waldoliveza",
@@ -40,7 +40,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T18:57:07.533386Z",
-      "activity_score": 27.47
+      "activity_score": 25.82
     },
     {
       "login": "1handbanditza",
@@ -53,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T17:54:08.233652Z",
-      "activity_score": 19.63
+      "activity_score": 18.45
     },
     {
       "login": "chronic_za",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 7.88
+      "activity_score": 7.41
     },
     {
       "login": "spyro_za",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 6.56
+      "activity_score": 6.17
     },
     {
       "login": "alaskayeen",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T19:44:46.058522Z",
-      "activity_score": 5.78
+      "activity_score": 5.43
     },
     {
       "login": "chickenwingerz",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 1.57
+      "activity_score": 1.48
     },
     {
       "login": "agriopsgaming",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T01:00:16.228552Z",
-      "activity_score": 0.18
+      "activity_score": 0.17
     },
     {
       "login": "zulumachinegaming",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T23:30:16.004641Z",
-      "activity_score": 0.11
+      "activity_score": 0.1
     },
     {
       "login": "zlorbz",
