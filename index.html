@@ -50,236 +50,45 @@
 @media(min-width:700px){.diagnostic-card{flex-basis:300px}.diagnostic-card-rail{margin-left:0;margin-right:0;padding-left:2px;padding-right:2px}}
 @media(prefers-reduced-motion:reduce){.sensor-row em,.render-grid i,.score-ring::before,.mark-bars em,.crystal-row em,.mem-grid i,.mem-progress em{animation:none!important}}
 
-
 /* Diagnostic rail discoverability */
-@media(max-width:699px){
-  .diagnostic-card-rail{
-    gap:12px!important;
-    margin-right:-20px!important;
-    padding-right:46px!important;
-    scroll-padding-left:16px!important;
-  }
-  .diagnostic-card{
-    flex-basis:76vw!important;
-    max-width:300px!important;
-    scroll-snap-align:start!important;
-  }
-}
+@media(max-width:699px){.diagnostic-card-rail{gap:12px!important;margin-right:-20px!important;padding-right:46px!important;scroll-padding-left:16px!important}.diagnostic-card{flex-basis:76vw!important;max-width:300px!important;scroll-snap-align:start!important}}
 .diagnostic-rail-nav{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:13px;margin:3px 2px 8px}
-.diagnostic-progress{display:flex;align-items:baseline;gap:4px;color:#6f8984;font:700 8px var(--mono);letter-spacing:.08em}
-.diagnostic-progress #diagnosticCurrent{color:var(--teal);font-size:11px}
-.diagnostic-progress i{font-style:normal;color:#3d5551}
-.diagnostic-dots{display:flex;justify-content:center;align-items:center;gap:6px}
-.diagnostic-dots i{display:block;width:5px;height:5px;border-radius:50%;background:#30443f;transition:width .18s ease,background .18s ease}
-.diagnostic-dots i.active{width:16px;border-radius:4px;background:var(--teal)}
-.diagnostic-swipe-hint{margin:0!important;color:#8aa29d!important;font:700 8px var(--mono)!important;letter-spacing:.12em!important;white-space:nowrap}
-.diagnostic-swipe-hint b{display:inline-block;color:var(--teal);font-size:14px;line-height:1;animation:diagArrow 1.25s ease-in-out infinite}
-@keyframes diagArrow{50%{transform:translateX(5px)}}
-@media(prefers-reduced-motion:reduce){.diagnostic-swipe-hint b{animation:none}}
-
+.diagnostic-progress{display:flex;align-items:baseline;gap:4px;color:#6f8984;font:700 8px var(--mono);letter-spacing:.08em}.diagnostic-progress #diagnosticCurrent{color:var(--teal);font-size:11px}.diagnostic-progress i{font-style:normal;color:#3d5551}
+.diagnostic-dots{display:flex;justify-content:center;align-items:center;gap:6px}.diagnostic-dots i{display:block;width:5px;height:5px;border-radius:50%;background:#30443f;transition:width .18s ease,background .18s ease}.diagnostic-dots i.active{width:16px;border-radius:4px;background:var(--teal)}
+.diagnostic-swipe-hint{margin:0!important;color:#8aa29d!important;font:700 8px var(--mono)!important;letter-spacing:.12em!important;white-space:nowrap}.diagnostic-swipe-hint b{display:inline-block;color:var(--teal);font-size:14px;line-height:1;animation:diagArrow 1.25s ease-in-out infinite}@keyframes diagArrow{50%{transform:translateX(5px)}}@media(prefers-reduced-motion:reduce){.diagnostic-swipe-hint b{animation:none}}
 
 /* Diagnostic logo contrast glow */
-.diag-card-head::after{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  top:-14px;
-  right:-17px;
-  width:72%;
-  height:78px;
-  pointer-events:none;
-  background:linear-gradient(270deg,rgba(var(--dcrgb),.28) 0%,rgba(var(--dcrgb),.14) 34%,rgba(var(--dcrgb),.045) 66%,transparent 100%);
-  filter:blur(7px);
-  opacity:.9;
-}
-.diag-card-head img,.diag-card-head .diag-wordmark{
-  position:relative;
-  z-index:2;
-  filter:brightness(1.22) contrast(1.06);
-}
-.diag-card-head .diag-step{position:relative;z-index:2}
+.diag-card-head::after{content:"";position:absolute;z-index:-1;top:-14px;right:-17px;width:72%;height:78px;pointer-events:none;background:linear-gradient(270deg,rgba(var(--dcrgb),.28) 0%,rgba(var(--dcrgb),.14) 34%,rgba(var(--dcrgb),.045) 66%,transparent 100%);filter:blur(7px);opacity:.9}
+.diag-card-head img,.diag-card-head .diag-wordmark{position:relative;z-index:2;filter:brightness(1.22) contrast(1.06)}.diag-card-head .diag-step{position:relative;z-index:2}
+.diag-card-head img{opacity:1!important;filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(var(--dcrgb),.42))!important}
+.diag-aida .diag-card-head img{filter:grayscale(1) brightness(0) invert(1) drop-shadow(0 0 8px rgba(229,57,53,.5))!important}
+.diag-3dmark .diag-card-head img{filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(53,167,255,.55))!important}
+.diag-memtest .diag-card-head img{filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,157,31,.48))!important}
+.cinebench-mark{color:#fff!important;text-shadow:0 0 10px rgba(255,91,87,.5)!important}.crystal-mark{color:#f5ffeF!important;text-shadow:0 0 10px rgba(117,232,59,.55)!important}
+.diag-card-head::after{opacity:1!important;background:linear-gradient(270deg,rgba(var(--dcrgb),.36) 0%,rgba(var(--dcrgb),.18) 34%,rgba(var(--dcrgb),.055) 68%,transparent 100%)!important}
+.diag-memtest .diag-card-head img{filter:brightness(1.12) contrast(1.05) drop-shadow(0 0 8px rgba(255,157,31,.32))!important;opacity:1!important}
+.diag-3dmark .diag-card-head img{filter:none!important;opacity:1!important}.diag-3dmark .diag-card-head{isolation:isolate}.diag-3dmark .diag-card-head img{position:relative;z-index:3}
+.mark-3d-composite{position:relative;display:block;width:112px;height:38px;overflow:hidden}.mark-3d-composite img{position:absolute!important;left:0;top:5px;width:112px!important;max-width:none!important;height:auto!important;filter:none!important}
+.mark-3d-composite::after{content:"3DMARK";position:absolute;right:0;top:9px;color:#fff;font:800 15px/1 var(--display);letter-spacing:-.055em;text-shadow:0 0 8px rgba(53,167,255,.28)}
+.diag-3dmark .diag-card-head img{filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(53,167,255,.55))!important;opacity:1!important}
 
+/* Hero kicker */
+.hero-kicker::before,.hero .eyebrow::before{display:none!important;content:none!important}.hero-kicker,.hero .eyebrow{padding-left:0!important;margin-left:0!important}
+@media(max-width:560px){.hero-kicker,.hero .eyebrow{width:100%!important;max-width:none!important;line-height:1.45!important;letter-spacing:.13em!important}}
 
-/* Diagnostic brand marks — high-contrast treatment for dark cards */
-.diag-card-head img{
-  opacity:1!important;
-  filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(var(--dcrgb),.42))!important;
-}
-.diag-aida .diag-card-head img{
-  filter:grayscale(1) brightness(0) invert(1) drop-shadow(0 0 8px rgba(229,57,53,.5))!important;
-}
-.diag-3dmark .diag-card-head img{
-  filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(53,167,255,.55))!important;
-}
-.diag-memtest .diag-card-head img{
-  filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,157,31,.48))!important;
-}
-.cinebench-mark{
-  color:#fff!important;
-  text-shadow:0 0 10px rgba(255,91,87,.5)!important;
-}
-.crystal-mark{
-  color:#f5ffeF!important;
-  text-shadow:0 0 10px rgba(117,232,59,.55)!important;
-}
-.diag-card-head::after{
-  opacity:1!important;
-  background:linear-gradient(270deg,
-    rgba(var(--dcrgb),.36) 0%,
-    rgba(var(--dcrgb),.18) 34%,
-    rgba(var(--dcrgb),.055) 68%,
-    transparent 100%)!important;
-}
+/* Creator Hub positioning */
+#contact + .creator-promo{margin-top:24px;margin-bottom:44px}
 
-
-/* Requested diagnostic logo corrections */
-.diag-memtest .diag-card-head img{
-  filter:brightness(1.12) contrast(1.05) drop-shadow(0 0 8px rgba(255,157,31,.32))!important;
-  opacity:1!important;
-}
-.diag-3dmark .diag-card-head img{
-  filter:none!important;
-  opacity:1!important;
-}
-/* 3DMark official mark: preserve orange wings; brighten dark wordmark for this dark UI */
-.diag-3dmark .diag-card-head{
-  isolation:isolate;
-}
-.diag-3dmark .diag-card-head img{
-  position:relative;
-  z-index:3;
-}
-
-
-.mark-3d-composite{
-  position:relative;
-  display:block;
-  width:112px;
-  height:38px;
-  overflow:hidden;
-}
-.mark-3d-composite img{
-  position:absolute!important;
-  left:0;
-  top:5px;
-  width:112px!important;
-  max-width:none!important;
-  height:auto!important;
-  filter:none!important;
-}
-/* White wordmark laid over only the text region, leaving the official orange wing untouched */
-.mark-3d-composite::after{
-  content:"3DMARK";
-  position:absolute;
-  right:0;
-  top:9px;
-  color:#fff;
-  font:800 15px/1 var(--display);
-  letter-spacing:-.055em;
-  text-shadow:0 0 8px rgba(53,167,255,.28);
-}
-
-
-/* Final 3DMark treatment: clean white official mark */
-.diag-3dmark .diag-card-head img{
-  filter:brightness(0) invert(1) drop-shadow(0 0 8px rgba(53,167,255,.55))!important;
-  opacity:1!important;
-}
-
-
-/* Hero kicker: remove decorative lead-in line and give the text full mobile width */
-.hero-kicker::before,
-.hero .eyebrow::before{
-  display:none!important;
-  content:none!important;
-}
-.hero-kicker,
-.hero .eyebrow{
-  padding-left:0!important;
-  margin-left:0!important;
-}
-@media(max-width:560px){
-  .hero-kicker,
-  .hero .eyebrow{
-    width:100%!important;
-    max-width:none!important;
-    line-height:1.45!important;
-    letter-spacing:.13em!important;
-  }
-}
-
-
-/* Creator Hub is a secondary discovery destination, after the support journey */
-#contact + .creator-promo{
-  margin-top:24px;
-  margin-bottom:44px;
-}
-
-
-/* Dedicated Creator Hub pill beside the mobile Menu control */
-.creator-hub-nav-pill{
-  margin-left:auto;min-height:40px;padding:0 12px;display:flex;align-items:center;justify-content:center;
-  border:1px solid rgba(157,123,255,.62);border-radius:999px;
-  background:linear-gradient(135deg,rgba(126,87,194,.14),rgba(47,230,200,.04));
-  color:#ddd2ff;font:700 8px var(--mono);letter-spacing:.09em;white-space:nowrap
-}
-.creator-hub-nav-pill b{color:#a98cff;font-weight:700}
-@media(min-width:701px){.creator-hub-nav-pill{display:none}}
-@media(max-width:420px){.creator-hub-nav-pill span{display:none}.creator-hub-nav-pill{padding:0 11px}}
-
-
-/* Creator Hub header pill — full label + live indicator on portrait */
-.creator-hub-nav-pill{
-  flex:0 0 auto!important;
-  min-width:92px!important;
-  min-height:40px!important;
-  padding:0 11px!important;
-  gap:7px!important;
-  border-radius:999px!important;
-  font:700 7.5px/1 var(--mono)!important;
-  letter-spacing:.075em!important;
-  color:#ddd2ff!important;
-  white-space:nowrap!important;
-}
-.creator-hub-nav-pill span{
-  display:inline!important;
-  white-space:nowrap!important;
-}
-.creator-hub-live-dot{
-  display:block;
-  flex:0 0 7px;
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:#ff4f64;
-  box-shadow:0 0 0 3px rgba(255,79,100,.12),0 0 9px rgba(255,79,100,.62);
-  animation:creatorHubLivePulse 1.8s ease-in-out infinite;
-}
-@keyframes creatorHubLivePulse{
-  50%{opacity:.55;box-shadow:0 0 0 5px rgba(255,79,100,.07),0 0 12px rgba(255,79,100,.8)}
-}
-@media(max-width:560px){
-  nav .wrap{gap:7px!important;padding-left:12px!important;padding-right:12px!important}
-  .creator-hub-nav-pill{
-    min-width:88px!important;
-    min-height:38px!important;
-    padding:0 9px!important;
-    gap:6px!important;
-    font-size:7px!important;
-    letter-spacing:.055em!important;
-  }
-}
-@media(max-width:390px){
-  .creator-hub-nav-pill{
-    min-width:84px!important;
-    padding:0 8px!important;
-    font-size:6.7px!important;
-  }
-  .creator-hub-live-dot{flex-basis:6px;width:6px;height:6px}
-}
-@media(prefers-reduced-motion:reduce){
-  .creator-hub-live-dot{animation:none}
-}
+/* Creator Hub header pill */
+.creator-hub-nav-pill{margin-left:auto;min-height:40px;padding:0 12px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(157,123,255,.62);border-radius:999px;background:linear-gradient(135deg,rgba(126,87,194,.14),rgba(47,230,200,.04));color:#ddd2ff;font:700 8px var(--mono);letter-spacing:.09em;white-space:nowrap}
+.creator-hub-nav-pill b{color:#a98cff;font-weight:700}@media(min-width:701px){.creator-hub-nav-pill{display:none}}@media(max-width:420px){.creator-hub-nav-pill span{display:none}.creator-hub-nav-pill{padding:0 11px}}
+.creator-hub-nav-pill{flex:0 0 auto!important;min-width:92px!important;min-height:40px!important;padding:0 11px!important;gap:7px!important;border-radius:999px!important;font:700 7.5px/1 var(--mono)!important;letter-spacing:.075em!important;color:#ddd2ff!important;white-space:nowrap!important}
+.creator-hub-nav-pill span{display:inline!important;white-space:nowrap!important}
+.creator-hub-live-dot{display:block;flex:0 0 7px;width:7px;height:7px;border-radius:50%;background:#ff4f64;box-shadow:0 0 0 3px rgba(255,79,100,.12),0 0 9px rgba(255,79,100,.62);animation:creatorHubLivePulse 1.8s ease-in-out infinite}
+@keyframes creatorHubLivePulse{50%{opacity:.55;box-shadow:0 0 0 5px rgba(255,79,100,.07),0 0 12px rgba(255,79,100,.8)}}
+@media(max-width:560px){nav .wrap{gap:7px!important;padding-left:12px!important;padding-right:12px!important}.creator-hub-nav-pill{min-width:88px!important;min-height:38px!important;padding:0 9px!important;gap:6px!important;font-size:7px!important;letter-spacing:.055em!important}}
+@media(max-width:390px){.creator-hub-nav-pill{min-width:84px!important;padding:0 8px!important;font-size:6.7px!important}.creator-hub-live-dot{flex-basis:6px;width:6px;height:6px}}
+@media(prefers-reduced-motion:reduce){.creator-hub-live-dot{animation:none}}
 
 </style>
 <link rel="stylesheet" href="service-backgrounds.css">
@@ -287,7 +96,7 @@
 <body>
 <nav><div class="wrap"><a class="brand" href="/" aria-label="VoltTech Computer Co. home"><img src="logo-badge.png" alt=""><span class="brand-text"><span class="v">Volt</span>Tech <span class="c">Computer Co.</span></span></a><a class="creator-hub-nav-pill" href="creator-hub-south-africa.html" aria-label="Open Creator Hub"><i class="creator-hub-live-dot" aria-hidden="true"></i><span>CREATOR HUB</span></a><div class="navlinks"><a href="#services">Services</a><a class="hub-link" href="creator-hub-south-africa.html">Creator Hub</a><a class="static-link" href="static.html">STATIC ↗</a><a class="account-link" href="account.html">Account</a><a href="#contact">Contact</a></div></div></nav>
 <div class="wrap">
-<header class="hero"><div class="hero-shell"><div class="hero-copy"><div class="hero-kicker">PC systems · performance · creator tech</div><h1>Technical support. <span>Without the guesswork.</span></h1><p class="sub">PC diagnostics and repair from Pretoria, with nationwide courier-in and remote creator support across South Africa.</p><div class="hero-actions"><a class="btn primary" href="signal-scan.html">⚡ Run Signal Scan</a><a class="btn secondary" href="#services">Explore services</a></div></div></div><div class="scope-grid" aria-label="VoltTech service coverage"><a class="scope-card" href="#services"><small>PC & Hardware Support</small><b>Nationwide South Africa</b><span>Local service in Pretoria · courier-in support nationwide</span></a><a class="scope-card" href="streaming-setup-south-africa.html"><small>Remote Creator Support</small><b>Nationwide South Africa</b><span>OBS · encoding · audio · stream performance</span></a></div></header>
+<header class="hero"><div class="hero-shell"><div class="hero-copy"><div class="hero-kicker">PC systems · performance · creator tech</div><h1>It’s 2026. Your tech should just work. <span>We’ll make sure it does.</span></h1><p class="sub">PC diagnostics and repair from Pretoria, with nationwide courier-in and remote creator support across South Africa.</p><div class="hero-actions"><a class="btn primary" href="signal-scan.html">⚡ Run Signal Scan</a><a class="btn secondary" href="#services">Explore services</a></div></div></div><div class="scope-grid" aria-label="VoltTech service coverage"><a class="scope-card" href="#services"><small>PC & Hardware Support</small><b>Nationwide South Africa</b><span>Local service in Pretoria · courier-in support nationwide</span></a><a class="scope-card" href="streaming-setup-south-africa.html"><small>Remote Creator Support</small><b>Nationwide South Africa</b><span>OBS · encoding · audio · stream performance</span></a></div></header>
 <section id="services"><div class="label">QUICK ACCESS</div><h2>What do you need help with?</h2><div class="services">
 <a class="service repair" href="pc-repair-pretoria.html"><small>01 · REPAIR</small><h3>PC Repair</h3><p>Diagnostics for boot failures, crashes, overheating and hardware or software faults.</p><span class="card-link">View service →</span></a>
 <a class="service performance" href="pc-performance-optimisation.html"><small>02 · PERFORMANCE</small><h3>Performance</h3><p>Startup, storage, thermal and system tuning backed by repeatable tests.</p><span class="card-link">View service →</span></a>
@@ -297,97 +106,23 @@
 <a class="service signal" href="signal-scan.html"><small>06 · DIAGNOSTIC</small><h3>Signal Scan</h3><p>Free symptom-based diagnostic estimate before you contact VoltTech.</p><span class="card-link">Run free scan →</span></a>
 <a class="service streaming" href="streaming-setup-south-africa.html"><small>07 · STREAMING</small><h3>Streaming</h3><p>OBS, encoder, audio and stream-performance support across South Africa.</p><span class="card-link">Explore support →</span></a>
 </div></section>
-
 <section class="diagnostic-cards" aria-labelledby="diagnostic-cards-title">
   <div class="label">OUR TOOLKIT</div>
   <h2 id="diagnostic-cards-title">Industry-standard tools. Clear answers.</h2>
   <p class="copy diagnostic-intro">We use industry-standard diagnostic and benchmarking tools to test your PC, identify faults and uncover instability. This gives us real data to work from, so we can recommend the right fix instead of guessing.</p>
-
   <div class="diagnostic-card-rail" aria-label="VoltTech diagnostic tools">
-      <article class="diagnostic-card diag-3dmark">
-      <div class="diag-card-head">
-        <span class="diag-step">01 · GPU / SYSTEM PERFORMANCE</span>
-        <img src="https://www.3dmark.com/proxycon/images/3dmarklogo_new.png" alt="3DMark" loading="lazy">
-      </div>
-      <div class="diag-ui mark-ui" aria-hidden="true">
-        <div class="score-ring"><span>TIME SPY</span><strong>14 286</strong><small>Graphics score</small></div>
-        <div class="mark-bars"><i><em style="--fill:88%"></em></i><i><em style="--fill:74%"></em></i><i><em style="--fill:92%"></em></i></div>
-      </div>
-      <h3>Benchmark graphics performance</h3>
-      <p>3DMark gives us a repeatable score and load profile to compare GPU performance, thermals and stability against expected behaviour.</p>
-      <small>GPU · SCORE · FPS · STABILITY</small>
-    </article>
-      <article class="diagnostic-card diag-aida">
-      <div class="diag-card-head">
-        <span class="diag-step">02 · SYSTEM TELEMETRY</span>
-        <img src="https://www.aida64.com/sites/default/files/inline-images/aida64logo3a.png" alt="AIDA64" loading="lazy">
-      </div>
-      <div class="diag-ui aida-ui" aria-hidden="true">
-        <div class="sensor-row"><span>CPU Package</span><b>67°C</b><i><em style="--fill:67%"></em></i></div>
-        <div class="sensor-row"><span>GPU Core</span><b>61°C</b><i><em style="--fill:61%"></em></i></div>
-        <div class="sensor-row"><span>CPU Clock</span><b>5.1 GHz</b><i><em style="--fill:82%"></em></i></div>
-        <div class="sensor-row"><span>12V Rail</span><b>12.08 V</b><i><em style="--fill:94%"></em></i></div>
-      </div>
-      <h3>Measure the system</h3>
-      <p>Temperatures, voltages, clock speeds and hardware sensors help establish what the PC is actually doing under load.</p>
-      <small>THERMALS · VOLTAGES · CLOCKS · SENSORS</small>
-    </article>
-      <article class="diagnostic-card diag-cinebench">
-      <div class="diag-card-head">
-        <span class="diag-step">03 · CPU PERFORMANCE</span>
-        <b class="diag-wordmark cinebench-mark">MAXON CINEBENCH</b>
-      </div>
-      <div class="diag-ui cinebench-ui" aria-hidden="true">
-        <div class="render-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="render-score"><span>CPU Multi Core</span><strong>1 842 pts</strong></div>
-      </div>
-      <h3>Push the CPU</h3>
-      <p>A sustained rendering workload helps expose weak cooling, unstable boost behaviour and CPU performance that falls below expectation.</p>
-      <small>CPU · RENDER LOAD · THERMALS · SCORE</small>
-    </article>
-      <article class="diagnostic-card diag-crystal">
-      <div class="diag-card-head">
-        <span class="diag-step">04 · STORAGE PERFORMANCE</span>
-        <b class="diag-wordmark crystal-mark">CrystalDiskMark</b>
-      </div>
-      <div class="diag-ui crystal-ui" aria-hidden="true">
-        <div class="crystal-head"><span>READ MB/s</span><span>WRITE MB/s</span></div>
-        <div class="crystal-row"><b>SEQ1M</b><i><em style="--fill:92%">7 128</em></i><i><em style="--fill:78%">5 238</em></i></div>
-        <div class="crystal-row"><b>RND4K</b><i><em style="--fill:60%">4 197</em></i><i><em style="--fill:64%">4 389</em></i></div>
-      </div>
-      <h3>Check storage speed</h3>
-      <p>Read and write testing helps identify slow storage, configuration problems and whether an SSD or NVMe drive is performing correctly.</p>
-      <small>SSD · NVME · READ · WRITE</small>
-    </article>
-      <article class="diagnostic-card diag-memtest">
-      <div class="diag-card-head">
-        <span class="diag-step">05 · MEMORY STABILITY</span>
-        <img src="https://www.memtest86.com/img/product-memtest.png" alt="PassMark MemTest86" loading="lazy">
-      </div>
-      <div class="diag-ui mem-ui" aria-hidden="true">
-        <div class="mem-status"><span>Pass 2 / 4</span><strong>Errors: 0</strong></div>
-        <div class="mem-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="mem-progress"><em></em></div>
-      </div>
-      <h3>Verify memory stability</h3>
-      <p>Memory testing checks for RAM errors that can cause crashes, corruption, failed boots and intermittent instability.</p>
-      <small>RAM · ERRORS · PASSES · STABILITY</small>
-    </article>
-    </div>
-  <div class="diagnostic-rail-nav" aria-label="Diagnostic card navigation">
-      <div class="diagnostic-progress"><span id="diagnosticCurrent">01</span><i>/</i><span>05</span></div>
-      <div class="diagnostic-dots" aria-hidden="true">
-        <i class="active"></i><i></i><i></i><i></i><i></i>
-      </div>
-      <div class="diagnostic-swipe-hint">SWIPE <b>→</b></div>
-    </div>
+    <article class="diagnostic-card diag-3dmark"><div class="diag-card-head"><span class="diag-step">01 · GPU / SYSTEM PERFORMANCE</span><img src="https://www.3dmark.com/proxycon/images/3dmarklogo_new.png" alt="3DMark" loading="lazy"></div><div class="diag-ui mark-ui" aria-hidden="true"><div class="score-ring"><span>TIME SPY</span><strong>14 286</strong><small>Graphics score</small></div><div class="mark-bars"><i><em style="--fill:88%"></em></i><i><em style="--fill:74%"></em></i><i><em style="--fill:92%"></em></i></div></div><h3>Benchmark graphics performance</h3><p>3DMark gives us a repeatable score and load profile to compare GPU performance, thermals and stability against expected behaviour.</p><small>GPU · SCORE · FPS · STABILITY</small></article>
+    <article class="diagnostic-card diag-aida"><div class="diag-card-head"><span class="diag-step">02 · SYSTEM TELEMETRY</span><img src="https://www.aida64.com/sites/default/files/inline-images/aida64logo3a.png" alt="AIDA64" loading="lazy"></div><div class="diag-ui aida-ui" aria-hidden="true"><div class="sensor-row"><span>CPU Package</span><b>67°C</b><i><em style="--fill:67%"></em></i></div><div class="sensor-row"><span>GPU Core</span><b>61°C</b><i><em style="--fill:61%"></em></i></div><div class="sensor-row"><span>CPU Clock</span><b>5.1 GHz</b><i><em style="--fill:82%"></em></i></div><div class="sensor-row"><span>12V Rail</span><b>12.08 V</b><i><em style="--fill:94%"></em></i></div></div><h3>Measure the system</h3><p>Temperatures, voltages, clock speeds and hardware sensors help establish what the PC is actually doing under load.</p><small>THERMALS · VOLTAGES · CLOCKS · SENSORS</small></article>
+    <article class="diagnostic-card diag-cinebench"><div class="diag-card-head"><span class="diag-step">03 · CPU PERFORMANCE</span><b class="diag-wordmark cinebench-mark">MAXON CINEBENCH</b></div><div class="diag-ui cinebench-ui" aria-hidden="true"><div class="render-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="render-score"><span>CPU Multi Core</span><strong>1 842 pts</strong></div></div><h3>Push the CPU</h3><p>A sustained rendering workload helps expose weak cooling, unstable boost behaviour and CPU performance that falls below expectation.</p><small>CPU · RENDER LOAD · THERMALS · SCORE</small></article>
+    <article class="diagnostic-card diag-crystal"><div class="diag-card-head"><span class="diag-step">04 · STORAGE PERFORMANCE</span><b class="diag-wordmark crystal-mark">CrystalDiskMark</b></div><div class="diag-ui crystal-ui" aria-hidden="true"><div class="crystal-head"><span>READ MB/s</span><span>WRITE MB/s</span></div><div class="crystal-row"><b>SEQ1M</b><i><em style="--fill:92%">7 128</em></i><i><em style="--fill:78%">5 238</em></i></div><div class="crystal-row"><b>RND4K</b><i><em style="--fill:60%">4 197</em></i><i><em style="--fill:64%">4 389</em></i></div></div><h3>Check storage speed</h3><p>Read and write testing helps identify slow storage, configuration problems and whether an SSD or NVMe drive is performing correctly.</p><small>SSD · NVME · READ · WRITE</small></article>
+    <article class="diagnostic-card diag-memtest"><div class="diag-card-head"><span class="diag-step">05 · MEMORY STABILITY</span><img src="https://www.memtest86.com/img/product-memtest.png" alt="PassMark MemTest86" loading="lazy"></div><div class="diag-ui mem-ui" aria-hidden="true"><div class="mem-status"><span>Pass 2 / 4</span><strong>Errors: 0</strong></div><div class="mem-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="mem-progress"><em></em></div></div><h3>Verify memory stability</h3><p>Memory testing checks for RAM errors that can cause crashes, corruption, failed boots and intermittent instability.</p><small>RAM · ERRORS · PASSES · STABILITY</small></article>
+  </div>
+  <div class="diagnostic-rail-nav" aria-label="Diagnostic card navigation"><div class="diagnostic-progress"><span id="diagnosticCurrent">01</span><i>/</i><span>05</span></div><div class="diagnostic-dots" aria-hidden="true"><i class="active"></i><i></i><i></i><i></i><i></i></div><div class="diagnostic-swipe-hint">SWIPE <b>→</b></div></div>
   <p class="diagnostic-rule">Evidence first. <span>Parts second.</span></p>
 </section>
-
 <section><div class="label">WHY VOLTTECH</div><h2>Diagnosis before replacement.</h2><p class="copy">Thermals, power, storage health, memory stability, drivers and system behaviour can overlap. VoltTech focuses on identifying the actual fault or bottleneck before recommending work.</p><div class="trust-grid" style="margin-top:20px"><div class="trust"><b>Hands-on diagnostics</b><span>Fault isolation before parts are recommended.</span></div><div class="trust"><b>Benchmark where useful</b><span>Before/after measurements for performance work and upgrades.</span></div><div class="trust"><b>Clear quote scope</b><span>Service/labour and replacement hardware are separated.</span></div><div class="trust"><b>National reach</b><span>Pretoria-based local service with courier-in and remote support available across South Africa.</span></div></div></section>
 <section><div class="label">SOUTH AFRICA · LOCAL + NATIONWIDE</div><h2>PC support across South Africa</h2><p class="copy">VoltTech supports customers across South Africa with PC diagnostics, technical support and eligible remote services. Based in Pretoria, we also provide local support across the surrounding area, while courier-in options make selected hardware services accessible nationwide.</p></section>
 <section id="contact"><div class="label">GET IN TOUCH</div><h2>Contact</h2><div class="contact"><span>WhatsApp · +27 61 843 5775</span><a href="https://wa.me/27618435775">Message →</a></div><div class="contact"><span>volttechcomputerco@gmail.com</span><a href="mailto:volttechcomputerco@gmail.com">Email →</a></div></section>
-
 <a class="creator-promo" id="creatorHubPromo" href="creator-hub-south-africa.html"><div class="creator-live"><span class="creator-dot"></span><span id="creatorLiveCount">FOR SOUTH AFRICAN CREATORS</span></div><h2>See who’s live.</h2><p>Explore the Creator Hub and discover South African Twitch creators streaming right now.</p><div class="creator-list" id="creatorLiveList"><span class="creator-empty">Checking who's live…</span></div><span class="creator-enter">Enter Creator Hub →</span></a>
 </div>
 <footer>⚡ VOLTTECH COMPUTER CO. · SOUTH AFRICA · © 2026 · <a href="creator-hub-south-africa.html">Creator Hub</a> · <a href="static.html">STATIC</a> · <a href="privacy-policy.html">Privacy</a></footer>
@@ -406,10 +141,7 @@
   function update(){
     const left=rail.getBoundingClientRect().left;
     let best=0,dist=Infinity;
-    cards.forEach((card,i)=>{
-      const d=Math.abs(card.getBoundingClientRect().left-left);
-      if(d<dist){dist=d;best=i;}
-    });
+    cards.forEach((card,i)=>{const d=Math.abs(card.getBoundingClientRect().left-left);if(d<dist){dist=d;best=i;}});
     if(current)current.textContent=String(best+1).padStart(2,'0');
     dots.forEach((dot,i)=>dot.classList.toggle('active',i===best));
     ticking=false;
