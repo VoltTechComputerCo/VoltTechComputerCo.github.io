@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12T16:54:15.497680Z",
+  "generated_at": "2026-09-12T17:06:46.008069Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,12 +9,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/0d2fb852-a52a-425f-ba87-463feaee1cdd-profile_image-300x300.png",
       "description": "Single Handed Life CHALLENGE RUNVariety turned Horror Streamer, why? Because entertainment",
       "live": true,
-      "viewer_count": 4,
+      "viewer_count": 5,
       "game_name": "The Evil Within",
       "title": "💀ONE HAND vs THE EVIL WITHIN! 😱 Can I Survive the Nightmare?! 🔥 | !discord",
       "started_at": "2026-09-12T14:01:13Z",
-      "last_live_at": "2026-09-12T16:54:15.497680Z",
-      "activity_score": 77.3
+      "last_live_at": "2026-09-12T17:06:46.008069Z",
+      "activity_score": 80.66
     },
     {
       "login": "waldoliveza",
@@ -22,12 +22,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/f51a7788-d7cd-480d-b7fc-eecbb3967d23-profile_image-300x300.png",
       "description": "",
       "live": true,
-      "viewer_count": 4,
+      "viewer_count": 1,
       "game_name": "God of War",
       "title": "GOING TO PLAY THROUGH BOTH GAMES | GOD WAR FIRST PLAYTHROUGH |  @WaldoLiveZA on all socials",
       "started_at": "2026-09-12T14:55:35Z",
-      "last_live_at": "2026-09-12T16:54:15.497680Z",
-      "activity_score": 61.57
+      "last_live_at": "2026-09-12T17:06:46.008069Z",
+      "activity_score": 65.88
     },
     {
       "login": "zaffa_geek",
@@ -35,12 +35,25 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
       "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
       "live": true,
-      "viewer_count": 6,
+      "viewer_count": 10,
       "game_name": "Project Zomboid",
       "title": "[!Pink 0/4] !extend - Fresh Start",
       "started_at": "2026-09-12T15:41:45Z",
-      "last_live_at": "2026-09-12T16:54:15.497680Z",
-      "activity_score": 41.76
+      "last_live_at": "2026-09-12T17:06:46.008069Z",
+      "activity_score": 47.25
+    },
+    {
+      "login": "androvaza",
+      "display_name": "AndrovaZA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/8b5628de-2866-48d7-a9cb-0ea3689a1dce-profile_image-300x300.png",
+      "description": "Recovering Riot Games addict",
+      "live": true,
+      "viewer_count": 4,
+      "game_name": "League of Legends",
+      "title": "Hardstuck Gold Gamer | I geniunely suck at this game? | #SYNCity",
+      "started_at": "2026-09-12T17:04:22Z",
+      "last_live_at": "2026-09-12T17:06:46.008069Z",
+      "activity_score": 8.0
     },
     {
       "login": "chronic_za",
@@ -53,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 50.42
+      "activity_score": 47.39
     },
     {
       "login": "spyro_za",
@@ -66,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 42.06
+      "activity_score": 39.54
     },
     {
       "login": "chickenwingerz",
@@ -79,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 10.13
+      "activity_score": 9.52
     },
     {
       "login": "agriopsgaming",
@@ -92,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T01:00:16.228552Z",
-      "activity_score": 1.09
+      "activity_score": 1.02
     },
     {
       "login": "zulumachinegaming",
@@ -105,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T23:30:16.004641Z",
-      "activity_score": 0.73
+      "activity_score": 0.69
     },
     {
       "login": "virtualgemma",
@@ -118,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T18:32:51.830527Z",
-      "activity_score": 0.18
+      "activity_score": 0.17
     },
     {
       "login": "deosil25",
@@ -131,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T20:07:54.948228Z",
-      "activity_score": 0.18
+      "activity_score": 0.17
     },
     {
       "login": "zlorbz",
@@ -1282,19 +1295,6 @@
       "display_name": "CPTPoloZA",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/0316ddab-71f7-427b-b3dc-e1685939c3bc-profile_image-300x300.jpeg",
       "description": "Just a small variety twitch streamer based in Cape Town, South Africa. Trying my best to bring you hilarious and funny content throughout my streams! Hope Y'all can give me a follow which would be much appreciated and have a great day!",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": null,
-      "activity_score": 0.0
-    },
-    {
-      "login": "cpt_cris",
-      "display_name": "Cpt_Cris",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/b8021ec6-6def-4c67-a1bd-8d40b25b4a17-profile_image-300x300.png",
-      "description": "Good day, my name is Crispin and I am born and raised in the beautiful city of roses. I am a proudly South African gamer, not the best out there of course but my skills are okay'ish. I also enjoy everything photography, from capturing to editing and everything in between. I play just about any game.",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
