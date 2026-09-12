@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12T15:38:59.972707Z",
+  "generated_at": "2026-09-12T15:48:06.872041Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,12 +9,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/0d2fb852-a52a-425f-ba87-463feaee1cdd-profile_image-300x300.png",
       "description": "Single Handed Life CHALLENGE RUNVariety turned Horror Streamer, why? Because entertainment",
       "live": true,
-      "viewer_count": 3,
+      "viewer_count": 2,
       "game_name": "The Evil Within",
       "title": "💀ONE HAND vs THE EVIL WITHIN! 😱 Can I Survive the Nightmare?! 🔥 | !discord",
       "started_at": "2026-09-12T14:01:13Z",
-      "last_live_at": "2026-09-12T15:38:59.972707Z",
-      "activity_score": 52.11
+      "last_live_at": "2026-09-12T15:48:06.872041Z",
+      "activity_score": 56.98
     },
     {
       "login": "waldoliveza",
@@ -26,8 +26,21 @@
       "game_name": "God of War",
       "title": "GOING TO PLAY THROUGH BOTH GAMES | GOD WAR FIRST PLAYTHROUGH |  @WaldoLiveZA on all socials",
       "started_at": "2026-09-12T14:55:35Z",
-      "last_live_at": "2026-09-12T15:38:59.972707Z",
-      "activity_score": 29.32
+      "last_live_at": "2026-09-12T15:48:06.872041Z",
+      "activity_score": 35.56
+    },
+    {
+      "login": "zaffa_geek",
+      "display_name": "Zaffa_Geek",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
+      "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
+      "live": true,
+      "viewer_count": 4,
+      "game_name": "Project Zomboid",
+      "title": "[!Pink 0/4] !extend - Fresh Start",
+      "started_at": "2026-09-12T15:41:45Z",
+      "last_live_at": "2026-09-12T15:48:06.872041Z",
+      "activity_score": 8.55
     },
     {
       "login": "chronic_za",
@@ -40,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 73.07
+      "activity_score": 68.69
     },
     {
       "login": "spyro_za",
@@ -53,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 60.97
+      "activity_score": 57.31
     },
     {
       "login": "chickenwingerz",
@@ -66,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 14.69
+      "activity_score": 13.81
     },
     {
       "login": "agriopsgaming",
@@ -79,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T01:00:16.228552Z",
-      "activity_score": 1.57
+      "activity_score": 1.48
     },
     {
       "login": "zulumachinegaming",
@@ -92,20 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T23:30:16.004641Z",
-      "activity_score": 1.06
-    },
-    {
-      "login": "zaffa_geek",
-      "display_name": "Zaffa_Geek",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
-      "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": "2026-09-11T21:35:14.265242Z",
-      "activity_score": 0.58
+      "activity_score": 1.0
     },
     {
       "login": "virtualgemma",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T18:32:51.830527Z",
-      "activity_score": 0.24
+      "activity_score": 0.23
     },
     {
       "login": "deosil25",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T20:07:54.948228Z",
-      "activity_score": 0.24
+      "activity_score": 0.23
     },
     {
       "login": "viking_237",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T16:40:59.590051Z",
-      "activity_score": 0.13
+      "activity_score": 0.12
     },
     {
       "login": "deathsjokerst",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T16:10:08.471627Z",
-      "activity_score": 0.09
+      "activity_score": 0.08
     },
     {
       "login": "zlorbz",
