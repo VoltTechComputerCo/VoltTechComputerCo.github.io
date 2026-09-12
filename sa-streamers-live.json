@@ -1,33 +1,20 @@
 {
-  "generated_at": "2026-09-12T15:27:40.024448Z",
+  "generated_at": "2026-09-12T15:38:59.972707Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
-    {
-      "login": "chronic_za",
-      "display_name": "ChroniC_ZA",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/5bf9e857-1a6d-403b-9937-499dabc6838d-profile_image-300x300.png",
-      "description": "Two Taylors. One squad. Zero safe raids. We’re Chronic & Clover—chasing loot, laughs and legendary escapes. Gear up and join the raid!",
-      "live": true,
-      "viewer_count": 1,
-      "game_name": "World of Warcraft",
-      "title": "No friends so i pug",
-      "started_at": "2026-09-12T12:40:24Z",
-      "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 77.73
-    },
     {
       "login": "1handbanditza",
       "display_name": "1HandBanditZA",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/0d2fb852-a52a-425f-ba87-463feaee1cdd-profile_image-300x300.png",
       "description": "Single Handed Life CHALLENGE RUNVariety turned Horror Streamer, why? Because entertainment",
       "live": true,
-      "viewer_count": 4,
+      "viewer_count": 3,
       "game_name": "The Evil Within",
       "title": "💀ONE HAND vs THE EVIL WITHIN! 😱 Can I Survive the Nightmare?! 🔥 | !discord",
       "started_at": "2026-09-12T14:01:13Z",
-      "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 46.93
+      "last_live_at": "2026-09-12T15:38:59.972707Z",
+      "activity_score": 52.11
     },
     {
       "login": "waldoliveza",
@@ -39,8 +26,21 @@
       "game_name": "God of War",
       "title": "GOING TO PLAY THROUGH BOTH GAMES | GOD WAR FIRST PLAYTHROUGH |  @WaldoLiveZA on all socials",
       "started_at": "2026-09-12T14:55:35Z",
+      "last_live_at": "2026-09-12T15:38:59.972707Z",
+      "activity_score": 29.32
+    },
+    {
+      "login": "chronic_za",
+      "display_name": "ChroniC_ZA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/5bf9e857-1a6d-403b-9937-499dabc6838d-profile_image-300x300.png",
+      "description": "Two Taylors. One squad. Zero safe raids. We’re Chronic & Clover—chasing loot, laughs and legendary escapes. Gear up and join the raid!",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 22.68
+      "activity_score": 73.07
     },
     {
       "login": "spyro_za",
@@ -53,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 64.86
+      "activity_score": 60.97
     },
     {
       "login": "chickenwingerz",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 15.63
+      "activity_score": 14.69
     },
     {
       "login": "agriopsgaming",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T01:00:16.228552Z",
-      "activity_score": 1.67
+      "activity_score": 1.57
     },
     {
       "login": "zulumachinegaming",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T23:30:16.004641Z",
-      "activity_score": 1.13
+      "activity_score": 1.06
     },
     {
       "login": "zaffa_geek",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T21:35:14.265242Z",
-      "activity_score": 0.62
+      "activity_score": 0.58
     },
     {
       "login": "virtualgemma",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T18:32:51.830527Z",
-      "activity_score": 0.26
+      "activity_score": 0.24
     },
     {
       "login": "deosil25",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T20:07:54.948228Z",
-      "activity_score": 0.26
+      "activity_score": 0.24
     },
     {
       "login": "viking_237",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T16:40:59.590051Z",
-      "activity_score": 0.14
+      "activity_score": 0.13
     },
     {
       "login": "deathsjokerst",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T16:10:08.471627Z",
-      "activity_score": 0.1
+      "activity_score": 0.09
     },
     {
       "login": "zlorbz",
