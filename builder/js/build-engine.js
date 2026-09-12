@@ -1,8 +1,8 @@
-export const CATEGORY_ORDER=["cpu","motherboard","memory","gpu","storage","psu","case","cooler"];
-export const MULTI_CATEGORIES=new Set(["storage"]);
-export const CATEGORY_LABELS={cpu:"CPU",motherboard:"Motherboard",memory:"Memory",gpu:"Graphics Card",storage:"Storage",psu:"Power Supply",case:"Case",cooler:"CPU Cooler"};
+export const CATEGORY_ORDER=["cpu","motherboard","memory","gpu","storage","psu","case","cooler","fans"];
+export const MULTI_CATEGORIES=new Set(["storage","fans"]);
+export const CATEGORY_LABELS={cpu:"CPU",motherboard:"Motherboard",memory:"Memory",gpu:"Graphics Card",storage:"Storage",psu:"Power Supply",case:"Case",cooler:"CPU Cooler",fans:"Case Fans"};
 
-export function createEmptyBuild(){return{cpu:null,motherboard:null,memory:null,gpu:null,storage:[],psu:null,case:null,cooler:null}}
+export function createEmptyBuild(){return{cpu:null,motherboard:null,memory:null,gpu:null,storage:[],psu:null,case:null,cooler:null,fans:[]}}
 export function isMultiCategory(type){return MULTI_CATEGORIES.has(type)}
 export function getSelections(build,type){const v=build[type];return isMultiCategory(type)?(Array.isArray(v)?v:[]):(v?[v]:[])}
 export function hasCategory(build,type){return getSelections(build,type).length>0}
@@ -58,6 +58,11 @@ export function getCategorySummary(value,type=null){
     if(t==="storage"){
         const total=list.reduce((n,p)=>n+Number(p.specs?.capacityGB||0),0);
         return`${formatCapacity(total)} · ${list.length} drive${list.length===1?"":"s"}`;
+    }
+    if(t==="fans"){
+        const totalFans=list.reduce((n,p)=>n+Number(p.specs?.fanCount||1),0);
+        const sizes=[...new Set(list.map(p=>p.specs?.sizeMm).filter(Boolean))];
+        return`${totalFans} fan${totalFans===1?"":"s"}${sizes.length?` · ${sizes.join("/")}mm`:""}`;
     }
     const p=list[0],s=p.specs||{};
     switch(t){

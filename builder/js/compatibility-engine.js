@@ -13,7 +13,10 @@ export function getCompatibility(product, build) {
             : asList(build.storage),
         psu: product.type === "psu" ? product : build.psu,
         case: product.type === "case" ? product : build.case,
-        cooler: product.type === "cooler" ? product : build.cooler
+        cooler: product.type === "cooler" ? product : build.cooler,
+        fans: product.type === "fans"
+            ? [...asList(build.fans), product]
+            : asList(build.fans)
     };
 
     runChecks(selected, issues, warnings, unknowns);
@@ -75,6 +78,7 @@ function runChecks(build, issues, warnings, unknowns) {
     checkCoolerCapacity(build.cooler, build.cpu, warnings);
     checkCpuBoardPowerSuitability(build.cpu, build.motherboard, warnings);
     checkPsu(build.psu, build.gpu, build, issues, warnings, unknowns);
+    checkCaseFans(build.fans, build.case, build.cooler, issues, warnings);
 }
 
 function makeDiagnostic(text, category, alternateCategory = null, code = null) {
@@ -425,6 +429,49 @@ function checkRamCooler(memory, cooler, warnings) {
                 "cooler", "memory", "ram-cooler-clearance"
             ));
         }
+    }
+}
+
+
+function checkCaseFans(fanValue, pcCase, cooler, issues, warnings) {
+    const fanProducts=asList(fanValue);
+    if(!fanProducts.length || !pcCase) return;
+
+    const totalFans=fanProducts.reduce((n,p)=>n+Number(p.specs?.fanCount||1),0);
+    const maxFans=Number(pcCase.compatibility?.maxCaseFans ?? pcCase.specs?.maxCaseFans ?? 0);
+
+    if(maxFans && totalFans>maxFans){
+        issues.push(makeDiagnostic(
+            `Selected case-fan packs contain ${totalFans} fans, but the case supports up to ${maxFans} case fans.`,
+            "fans","case","case-fan-count"
+        ));
+    }
+
+    const supportedSizes=pcCase.compatibility?.fanSizesMm ?? pcCase.specs?.fanSizesMm ?? [];
+    if(Array.isArray(supportedSizes) && supportedSizes.length){
+        const unsupported=[...new Set(fanProducts.map(p=>Number(p.specs?.sizeMm||0)).filter(size=>size && !supportedSizes.includes(size)))];
+        if(unsupported.length){
+            issues.push(makeDiagnostic(
+                `The case does not list support for ${unsupported.join("/")}mm case fans.`,
+                "fans","case","case-fan-size"
+            ));
+        }
+    }
+
+    // If detailed mount-resource data exists, reserve radiator fan positions too.
+    const totalMounts=Number(pcCase.compatibility?.fanMountCount ?? pcCase.specs?.fanMountCount ?? 0);
+    const radiatorSize=Number(cooler?.specs?.radiatorSizeMm||0);
+    const radiatorFans=radiatorSize ? Math.ceil(radiatorSize/120) : 0;
+    if(totalMounts && totalFans + radiatorFans > totalMounts){
+        issues.push(makeDiagnostic(
+            `The selected case fans plus the ${radiatorSize}mm AIO would require about ${totalFans+radiatorFans} fan positions, but this case lists ${totalMounts}.`,
+            "fans","case","case-fan-mount-resources"
+        ));
+    } else if(radiatorSize && totalMounts && totalFans + radiatorFans === totalMounts){
+        warnings.push(makeDiagnostic(
+            "The selected case fans and AIO appear to use all listed fan positions in this case.",
+            "fans","case","case-fan-mount-full"
+        ));
     }
 }
 

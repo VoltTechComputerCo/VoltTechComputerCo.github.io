@@ -27,7 +27,7 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7 matched-RAM/storage foundation · test pricing and stock only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7 case-fan quantity foundation · test pricing and stock only.`;
         render();
     }catch(x){
         console.error(x);
@@ -282,6 +282,8 @@ function metaOf(p){
             return[s.supportedMotherboardSizes?.join(" / "),s.maxGpuLengthMm?`${s.maxGpuLengthMm}mm GPU`:null,s.maxCpuCoolerHeightMm?`${s.maxCpuCoolerHeightMm}mm cooler`:null].filter(Boolean);
         case"cooler":
             return[s.coolerType==="aio"?"Liquid AIO":"Air cooler",s.radiatorSizeMm?`${s.radiatorSizeMm}mm radiator`:null,s.heightMm?`${s.heightMm}mm height`:null].filter(Boolean);
+        case"fans":
+            return[s.sizeMm?`${s.sizeMm}mm`:null,s.fanCount?`${s.fanCount}-pack`:"1 fan",s.pwm?"PWM":null,s.argb?"ARGB":null].filter(Boolean);
         default:
             return[];
     }
