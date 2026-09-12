@@ -1,8 +1,8 @@
 export const CATEGORY_ORDER=["cpu","motherboard","memory","gpu","storage","psu","case","cooler"];
-export const MULTI_CATEGORIES=new Set(["memory","storage"]);
+export const MULTI_CATEGORIES=new Set(["storage"]);
 export const CATEGORY_LABELS={cpu:"CPU",motherboard:"Motherboard",memory:"Memory",gpu:"Graphics Card",storage:"Storage",psu:"Power Supply",case:"Case",cooler:"CPU Cooler"};
 
-export function createEmptyBuild(){return{cpu:null,motherboard:null,memory:[],gpu:null,storage:[],psu:null,case:null,cooler:null}}
+export function createEmptyBuild(){return{cpu:null,motherboard:null,memory:null,gpu:null,storage:[],psu:null,case:null,cooler:null}}
 export function isMultiCategory(type){return MULTI_CATEGORIES.has(type)}
 export function getSelections(build,type){const v=build[type];return isMultiCategory(type)?(Array.isArray(v)?v:[]):(v?[v]:[])}
 export function hasCategory(build,type){return getSelections(build,type).length>0}
@@ -48,9 +48,12 @@ export function getCategorySummary(value,type=null){
     const list=Array.isArray(value)?value:(value?[value]:[]); if(!list.length)return"Not selected";
     const t=type||list[0].type;
     if(t==="memory"){
-        const total=list.reduce((n,p)=>n+Number(p.specs?.capacityGB||0),0);
-        const dimms=list.reduce((n,p)=>n+Number(p.specs?.modules||0),0);
-        return`${total}GB · ${dimms} DIMM${dimms===1?"":"s"}${list.length>1?` · ${list.length} kits`:""}`;
+        const p=list[0],s=p.specs||{};
+        const total=Number(s.capacityGB||0);
+        const dimms=Number(s.modules||0);
+        const perDimm=total&&dimms?total/dimms:0;
+        const config=dimms&&perDimm?`${dimms}×${Number.isInteger(perDimm)?perDimm:perDimm.toFixed(1)}GB`:null;
+        return[total?`${total}GB`:null,config,s.memoryType,s.speedMTs?`${s.speedMTs} MT/s`:null].filter(Boolean).join(" · ");
     }
     if(t==="storage"){
         const total=list.reduce((n,p)=>n+Number(p.specs?.capacityGB||0),0);

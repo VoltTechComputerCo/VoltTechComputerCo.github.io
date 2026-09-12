@@ -27,7 +27,7 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7 multi-RAM/storage foundation · test pricing and stock only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7 matched-RAM/storage foundation · test pricing and stock only.`;
         render();
     }catch(x){
         console.error(x);
@@ -265,8 +265,13 @@ function metaOf(p){
             return[s.socket,s.cores?`${s.cores} cores`:null,s.threads?`${s.threads} threads`:null,s.tdpWatts?`${s.tdpWatts}W TDP`:null].filter(Boolean);
         case"motherboard":
             return[s.socket,s.chipset,s.formFactor,s.memoryType,s.wifi?"Wi-Fi":null].filter(Boolean);
-        case"memory":
-            return[s.capacityGB?`${s.capacityGB}GB`:null,s.modules?`${s.modules} modules`:null,s.memoryType,s.speedMTs?`${s.speedMTs} MT/s`:null].filter(Boolean);
+        case"memory":{
+            const modules=Number(s.modules||0);
+            const capacity=Number(s.capacityGB||0);
+            const perDimm=modules&&capacity?capacity/modules:0;
+            const config=modules&&perDimm?`${modules}×${Number.isInteger(perDimm)?perDimm:perDimm.toFixed(1)}GB`:null;
+            return[capacity?`${capacity}GB`:null,config,s.memoryType,s.speedMTs?`${s.speedMTs} MT/s`:null].filter(Boolean);
+        }
         case"gpu":
             return[s.vramGB?`${s.vramGB}GB VRAM`:null,s.lengthMm?`${s.lengthMm}mm`:null,s.slots?`${s.slots}-slot`:null,s.recommendedPsuWatts?`${s.recommendedPsuWatts}W PSU`:null].filter(Boolean);
         case"storage":
