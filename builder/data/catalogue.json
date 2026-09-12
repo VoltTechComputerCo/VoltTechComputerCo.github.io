@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "0.6.0",
-  "generatedAt": "2026-09-11",
+  "schemaVersion": "0.7.1",
+  "generatedAt": "2026-09-12",
   "currency": "ZAR",
-  "notice": "Temporary test catalogue for VoltTech Commerce v0.6. Product identities, supplier offer normalization, freshness and stale-data handling are prototype infrastructure. Prices and stock remain simulated and are not quotations.",
+  "notice": "Temporary test catalogue for VoltTech Commerce v0.7.1. Fan compatibility data and prices/stock are prototype-only and are not quotations.",
   "categoryFiles": [
     "./data/cpus.json",
     "./data/motherboards.json",
@@ -11,7 +11,8 @@
     "./data/storage.json",
     "./data/psus.json",
     "./data/cases.json",
-    "./data/cooling.json"
+    "./data/cooling.json",
+    "./data/fans.json"
   ],
   "supplierFiles": [
     "../../commerce/suppliers/mock-wootware.json",

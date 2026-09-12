@@ -1,0 +1,351 @@
+{
+  "schemaVersion": "0.7.1",
+  "generatedAt": "2026-09-12",
+  "notice": "Temporary case-fan catalogue for architecture and compatibility testing. Product identity/spec fields are prototype data and must be verified before public commerce use.",
+  "products": [
+    {
+      "id": "vt-fan-arctic-p12-pwm-pst-single",
+      "type": "fans",
+      "brand": "ARCTIC",
+      "manufacturer": "ARCTIC",
+      "name": "ARCTIC P12 PWM PST",
+      "model": "P12 PWM PST",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "sizeMm": 120,
+        "fanCount": 1,
+        "thicknessMm": 25,
+        "pwm": true,
+        "argb": false,
+        "connector": "4-pin PWM",
+        "lightingConnector": null
+      },
+      "compatibility": {
+        "sizeMm": 120
+      },
+      "powerWatts": 2,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "fan-arctic-p12-pwm-pst-single",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "specStatus": "prototype-unverified",
+        "created": "2026-09-12",
+        "updated": "2026-09-12"
+      }
+    },
+    {
+      "id": "vt-fan-arctic-p12-pwm-pst-5pack",
+      "type": "fans",
+      "brand": "ARCTIC",
+      "manufacturer": "ARCTIC",
+      "name": "ARCTIC P12 PWM PST 5-Pack",
+      "model": "P12 PWM PST 5-Pack",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "sizeMm": 120,
+        "fanCount": 5,
+        "thicknessMm": 25,
+        "pwm": true,
+        "argb": false,
+        "connector": "4-pin PWM",
+        "lightingConnector": null
+      },
+      "compatibility": {
+        "sizeMm": 120
+      },
+      "powerWatts": 10,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "fan-arctic-p12-pwm-pst-5pack",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "specStatus": "prototype-unverified",
+        "created": "2026-09-12",
+        "updated": "2026-09-12"
+      }
+    },
+    {
+      "id": "vt-fan-cooler-master-sickleflow-120-argb-3pack",
+      "type": "fans",
+      "brand": "Cooler Master",
+      "manufacturer": "Cooler Master",
+      "name": "Cooler Master SickleFlow 120 ARGB 3-Pack",
+      "model": "SickleFlow 120 ARGB 3-Pack",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "sizeMm": 120,
+        "fanCount": 3,
+        "thicknessMm": 25,
+        "pwm": true,
+        "argb": true,
+        "connector": "4-pin PWM",
+        "lightingConnector": "3-pin 5V ARGB"
+      },
+      "compatibility": {
+        "sizeMm": 120
+      },
+      "powerWatts": 7,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "fan-cooler-master-sickleflow-120-argb-3pack",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "specStatus": "prototype-unverified",
+        "created": "2026-09-12",
+        "updated": "2026-09-12"
+      }
+    },
+    {
+      "id": "vt-fan-corsair-af120-elite-single",
+      "type": "fans",
+      "brand": "Corsair",
+      "manufacturer": "Corsair",
+      "name": "Corsair AF120 ELITE",
+      "model": "AF120 ELITE",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "sizeMm": 120,
+        "fanCount": 1,
+        "thicknessMm": 25,
+        "pwm": true,
+        "argb": false,
+        "connector": "4-pin PWM",
+        "lightingConnector": null
+      },
+      "compatibility": {
+        "sizeMm": 120
+      },
+      "powerWatts": 3,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "fan-corsair-af120-elite-single",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "specStatus": "prototype-unverified",
+        "created": "2026-09-12",
+        "updated": "2026-09-12"
+      }
+    },
+    {
+      "id": "vt-fan-noctua-nf-a12x25-pwm-single",
+      "type": "fans",
+      "brand": "Noctua",
+      "manufacturer": "Noctua",
+      "name": "Noctua NF-A12x25 PWM",
+      "model": "NF-A12x25 PWM",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "sizeMm": 120,
+        "fanCount": 1,
+        "thicknessMm": 25,
+        "pwm": true,
+        "argb": false,
+        "connector": "4-pin PWM",
+        "lightingConnector": null
+      },
+      "compatibility": {
+        "sizeMm": 120
+      },
+      "powerWatts": 2,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "fan-noctua-nf-a12x25-pwm-single",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "specStatus": "prototype-unverified",
+        "created": "2026-09-12",
+        "updated": "2026-09-12"
+      }
+    },
+    {
+      "id": "vt-fan-arctic-p14-pwm-pst-single",
+      "type": "fans",
+      "brand": "ARCTIC",
+      "manufacturer": "ARCTIC",
+      "name": "ARCTIC P14 PWM PST",
+      "model": "P14 PWM PST",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "sizeMm": 140,
+        "fanCount": 1,
+        "thicknessMm": 25,
+        "pwm": true,
+        "argb": false,
+        "connector": "4-pin PWM",
+        "lightingConnector": null
+      },
+      "compatibility": {
+        "sizeMm": 140
+      },
+      "powerWatts": 2,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "fan-arctic-p14-pwm-pst-single",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "specStatus": "prototype-unverified",
+        "created": "2026-09-12",
+        "updated": "2026-09-12"
+      }
+    },
+    {
+      "id": "vt-fan-arctic-p14-pwm-pst-5pack",
+      "type": "fans",
+      "brand": "ARCTIC",
+      "manufacturer": "ARCTIC",
+      "name": "ARCTIC P14 PWM PST 5-Pack",
+      "model": "P14 PWM PST 5-Pack",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "sizeMm": 140,
+        "fanCount": 5,
+        "thicknessMm": 25,
+        "pwm": true,
+        "argb": false,
+        "connector": "4-pin PWM",
+        "lightingConnector": null
+      },
+      "compatibility": {
+        "sizeMm": 140
+      },
+      "powerWatts": 10,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "fan-arctic-p14-pwm-pst-5pack",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "specStatus": "prototype-unverified",
+        "created": "2026-09-12",
+        "updated": "2026-09-12"
+      }
+    },
+    {
+      "id": "vt-fan-bequiet-pure-wings-3-140-pwm",
+      "type": "fans",
+      "brand": "be quiet!",
+      "manufacturer": "be quiet!",
+      "name": "be quiet! Pure Wings 3 140mm PWM",
+      "model": "Pure Wings 3 140mm PWM",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "status": "active",
+      "specs": {
+        "sizeMm": 140,
+        "fanCount": 1,
+        "thicknessMm": 25,
+        "pwm": true,
+        "argb": false,
+        "connector": "4-pin PWM",
+        "lightingConnector": null
+      },
+      "compatibility": {
+        "sizeMm": 140
+      },
+      "powerWatts": 3,
+      "media": {
+        "primaryImage": null,
+        "images": []
+      },
+      "seo": {
+        "slug": "fan-bequiet-pure-wings-3-140-pwm",
+        "title": null,
+        "description": null
+      },
+      "metadata": {
+        "dataSource": "temporary-test-data",
+        "specStatus": "prototype-unverified",
+        "created": "2026-09-12",
+        "updated": "2026-09-12"
+      }
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 {
-  "schemaVersion": "0.4.0",
-  "generatedAt": "2026-09-11",
+  "schemaVersion": "0.7.1",
+  "generatedAt": "2026-09-12",
+  "notice": "Case fan-support fields are simulated prototype data for compatibility-engine testing and must be replaced with verified manufacturer/supplier data before public commerce use.",
   "products": [
     {
       "id": "vt-case-montech-air-100-argb",
@@ -27,7 +28,25 @@
           120,
           240,
           280
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 2,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -40,7 +59,25 @@
           120,
           240,
           280
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 2,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "powerWatts": 20,
       "media": {
@@ -54,8 +91,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     },
     {
@@ -82,7 +120,27 @@
         "radiatorSupportMm": [
           120,
           240
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 2,
+            "140": 2
+          },
+          "top": {
+            "120": 2
+          },
+          "rear": {
+            "120": 1
+          },
+          "bottom": {
+            "120": 1
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -94,7 +152,27 @@
         "radiatorSupportMm": [
           120,
           240
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 2,
+            "140": 2
+          },
+          "top": {
+            "120": 2
+          },
+          "rear": {
+            "120": 1
+          },
+          "bottom": {
+            "120": 1
+          }
+        }
       },
       "powerWatts": 18,
       "media": {
@@ -108,8 +186,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     },
     {
@@ -137,7 +216,25 @@
           120,
           240,
           280
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 2,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -150,7 +247,25 @@
           120,
           240,
           280
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 2,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "powerWatts": 20,
       "media": {
@@ -164,8 +279,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     },
     {
@@ -195,7 +311,25 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 2,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -210,7 +344,25 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 2,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "powerWatts": 22,
       "media": {
@@ -224,8 +376,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     },
     {
@@ -254,7 +407,28 @@
           120,
           240,
           280
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 2,
+            "140": 2
+          },
+          "top": {
+            "120": 2,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          },
+          "bottom": {
+            "120": 1
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -268,7 +442,28 @@
           120,
           240,
           280
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 2,
+            "140": 2
+          },
+          "top": {
+            "120": 2,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          },
+          "bottom": {
+            "120": 1
+          }
+        }
       },
       "powerWatts": 22,
       "media": {
@@ -282,8 +477,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     },
     {
@@ -312,7 +508,25 @@
           120,
           240,
           280
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 2,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -326,7 +540,25 @@
           120,
           240,
           280
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 2,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "powerWatts": 22,
       "media": {
@@ -340,8 +572,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     },
     {
@@ -371,7 +604,28 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 9,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 3,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          },
+          "bottom": {
+            "120": 2
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -386,7 +640,28 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 9,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 3,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          },
+          "bottom": {
+            "120": 2
+          }
+        }
       },
       "powerWatts": 25,
       "media": {
@@ -400,8 +675,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     },
     {
@@ -431,7 +707,25 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 7,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 3
+          },
+          "top": {
+            "120": 3,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -446,7 +740,25 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 7,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 3
+          },
+          "top": {
+            "120": 3,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "powerWatts": 25,
       "media": {
@@ -460,8 +772,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     },
     {
@@ -491,7 +804,25 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 7,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 3
+          },
+          "top": {
+            "120": 3,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -506,7 +837,25 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 7,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 3
+          },
+          "top": {
+            "120": 3,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "powerWatts": 25,
       "media": {
@@ -520,8 +869,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     },
     {
@@ -551,7 +901,28 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 10,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 3,
+            "140": 2
+          },
+          "side": {
+            "120": 3
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -566,7 +937,28 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 10,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 3,
+            "140": 2
+          },
+          "side": {
+            "120": 3
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "powerWatts": 28,
       "media": {
@@ -580,8 +972,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     },
     {
@@ -611,7 +1004,25 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 2,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -626,7 +1037,25 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 6,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 2
+          },
+          "top": {
+            "120": 2,
+            "140": 2
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "powerWatts": 25,
       "media": {
@@ -640,8 +1069,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     },
     {
@@ -671,7 +1101,25 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 7,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 3
+          },
+          "top": {
+            "120": 3,
+            "140": 3
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -686,7 +1134,25 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 7,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 3
+          },
+          "top": {
+            "120": 3,
+            "140": 3
+          },
+          "rear": {
+            "120": 1
+          }
+        }
       },
       "powerWatts": 28,
       "media": {
@@ -700,8 +1166,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     },
     {
@@ -732,7 +1199,26 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 9,
+        "fanSupport": {
+          "top": {
+            "120": 3,
+            "140": 2
+          },
+          "side": {
+            "120": 3,
+            "140": 2
+          },
+          "bottom": {
+            "120": 3,
+            "140": 2
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -748,7 +1234,26 @@
           240,
           280,
           360
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 9,
+        "fanSupport": {
+          "top": {
+            "120": 3,
+            "140": 2
+          },
+          "side": {
+            "120": 3,
+            "140": 2
+          },
+          "bottom": {
+            "120": 3,
+            "140": 2
+          }
+        }
       },
       "powerWatts": 30,
       "media": {
@@ -762,8 +1267,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     },
     {
@@ -795,7 +1301,30 @@
           280,
           360,
           420
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 10,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 3
+          },
+          "top": {
+            "120": 4,
+            "140": 3
+          },
+          "rear": {
+            "120": 1,
+            "140": 1
+          },
+          "bottom": {
+            "120": 2,
+            "140": 2
+          }
+        }
       },
       "compatibility": {
         "supportedMotherboardSizes": [
@@ -812,7 +1341,30 @@
           280,
           360,
           420
-        ]
+        ],
+        "fanSizesMm": [
+          120,
+          140
+        ],
+        "maxCaseFans": 10,
+        "fanSupport": {
+          "front": {
+            "120": 3,
+            "140": 3
+          },
+          "top": {
+            "120": 4,
+            "140": 3
+          },
+          "rear": {
+            "120": 1,
+            "140": 1
+          },
+          "bottom": {
+            "120": 2,
+            "140": 2
+          }
+        }
       },
       "powerWatts": 32,
       "media": {
@@ -826,8 +1378,9 @@
       },
       "metadata": {
         "dataSource": "temporary-test-data",
+        "fanSupportData": "simulated-prototype",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-09-12"
       }
     }
   ]
