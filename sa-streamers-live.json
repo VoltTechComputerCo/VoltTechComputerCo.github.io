@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12T18:08:37.151894Z",
+  "generated_at": "2026-09-12T18:23:54.874479Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,12 +9,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/f51a7788-d7cd-480d-b7fc-eecbb3967d23-profile_image-300x300.png",
       "description": "",
       "live": true,
-      "viewer_count": 2,
+      "viewer_count": 1,
       "game_name": "Special Events",
       "title": "BLIZZCON WATCH PARTY | GOD WAR FIRST PLAYTHROUGH |  @WaldoLiveZA on all socials",
       "started_at": "2026-09-12T14:55:35Z",
-      "last_live_at": "2026-09-12T18:08:37.151894Z",
-      "activity_score": 83.83
+      "last_live_at": "2026-09-12T18:23:54.874479Z",
+      "activity_score": 86.8
     },
     {
       "login": "zaffa_geek",
@@ -26,8 +26,8 @@
       "game_name": "Project Zomboid",
       "title": "[!Pink 0/4] !extend - Fresh Start",
       "started_at": "2026-09-12T17:28:50Z",
-      "last_live_at": "2026-09-12T18:08:37.151894Z",
-      "activity_score": 70.15
+      "last_live_at": "2026-09-12T18:23:54.874479Z",
+      "activity_score": 73.94
     },
     {
       "login": "androvaza",
@@ -35,12 +35,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/8b5628de-2866-48d7-a9cb-0ea3689a1dce-profile_image-300x300.png",
       "description": "Recovering Riot Games addict",
       "live": true,
-      "viewer_count": 7,
+      "viewer_count": 9,
       "game_name": "League of Legends",
       "title": "Hardstuck Gold Gamer | I geniunely suck at this game? | #SYNCity",
       "started_at": "2026-09-12T17:04:22Z",
-      "last_live_at": "2026-09-12T18:08:37.151894Z",
-      "activity_score": 41.35
+      "last_live_at": "2026-09-12T18:23:54.874479Z",
+      "activity_score": 46.87
     },
     {
       "login": "1handbanditza",
@@ -53,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T17:54:08.233652Z",
-      "activity_score": 86.68
+      "activity_score": 81.48
     },
     {
       "login": "chronic_za",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 34.79
+      "activity_score": 32.7
     },
     {
       "login": "spyro_za",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 29.02
+      "activity_score": 27.28
     },
     {
       "login": "chickenwingerz",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 6.99
+      "activity_score": 6.57
     },
     {
       "login": "agriopsgaming",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T01:00:16.228552Z",
-      "activity_score": 0.75
+      "activity_score": 0.7
     },
     {
       "login": "zulumachinegaming",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T23:30:16.004641Z",
-      "activity_score": 0.51
+      "activity_score": 0.48
     },
     {
       "login": "virtualgemma",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T18:32:51.830527Z",
-      "activity_score": 0.12
+      "activity_score": 0.11
     },
     {
       "login": "deosil25",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T20:07:54.948228Z",
-      "activity_score": 0.12
+      "activity_score": 0.11
     },
     {
       "login": "zlorbz",
