@@ -1,5 +1,5 @@
 import {CATEGORY_ORDER,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getNextCategory,getCategorySummary,getStockLabel} from "./build-engine.js?v=0.6";
-import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.5";
+import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.6.1";
 import {loadCatalogue} from "./data-loader.js?v=0.6";
 
 const e={

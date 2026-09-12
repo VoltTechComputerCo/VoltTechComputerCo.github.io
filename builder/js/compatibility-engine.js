@@ -16,14 +16,7 @@ export function getCompatibility(product, build) {
 
     runChecks(selected, issues, warnings, unknowns);
 
-    return {
-        compatible: issues.length === 0,
-        confirmed: issues.length === 0 && unknowns.length === 0,
-        status: issues.length ? "incompatible" : unknowns.length ? "unknown" : warnings.length ? "warning" : "compatible",
-        issues,
-        warnings,
-        unknowns
-    };
+    return result(issues, warnings, unknowns);
 }
 
 export function validateBuild(build) {
@@ -36,20 +29,11 @@ export function validateBuild(build) {
     if (build.cpu && build.cpu.specs?.coolerIncluded === false && !build.cooler) {
         warnings.push(makeDiagnostic(
             "This CPU does not include a cooler. Add a compatible CPU cooler.",
-            "cooler",
-            "cpu",
-            "cpu-cooler-required"
+            "cooler", "cpu", "cpu-cooler-required"
         ));
     }
 
-    return {
-        compatible: issues.length === 0,
-        confirmed: issues.length === 0 && unknowns.length === 0,
-        status: issues.length ? "incompatible" : unknowns.length ? "unknown" : warnings.length ? "warning" : "compatible",
-        issues,
-        warnings,
-        unknowns
-    };
+    return result(issues, warnings, unknowns);
 }
 
 export function estimatePower(build) {
@@ -65,6 +49,17 @@ export function estimatePower(build) {
     return { estimated, minimum, preferred };
 }
 
+function result(issues, warnings, unknowns) {
+    return {
+        compatible: issues.length === 0,
+        confirmed: issues.length === 0 && unknowns.length === 0,
+        status: issues.length ? "incompatible" : unknowns.length ? "unknown" : warnings.length ? "warning" : "compatible",
+        issues,
+        warnings,
+        unknowns
+    };
+}
+
 function runChecks(build, issues, warnings, unknowns) {
     checkCpuMotherboard(build.cpu, build.motherboard, issues, warnings, unknowns);
     checkMemoryMotherboard(build.memory, build.motherboard, issues, unknowns);
@@ -73,7 +68,7 @@ function runChecks(build, issues, warnings, unknowns) {
     checkGpuCase(build.gpu, build.case, issues, unknowns);
     checkCoolerCpu(build.cooler, build.cpu, issues, unknowns);
     checkCoolerCase(build.cooler, build.case, issues, unknowns);
-    checkRamCooler(build.memory, build.cooler, warnings, unknowns);
+    checkRamCooler(build.memory, build.cooler, warnings);
     checkCoolerCapacity(build.cooler, build.cpu, warnings);
     checkCpuBoardPowerSuitability(build.cpu, build.motherboard, warnings);
     checkPsu(build.psu, build.gpu, build, issues, warnings, unknowns);
@@ -279,7 +274,7 @@ function checkGpuCase(gpu, pcCase, issues, unknowns) {
 
     if (!gpuLength || maxLengthRaw === undefined) {
         unknowns.push(makeDiagnostic(
-            "GPU length clearance cannot be fully confirmed because one or both length measurements are missing.",
+            "GPU length clearance cannot be confirmed because length data is missing.",
             "case", "gpu", "gpu-case-length-unknown"
         ));
     } else if (gpuLength > maxLength) {
@@ -289,23 +284,21 @@ function checkGpuCase(gpu, pcCase, issues, unknowns) {
         ));
     }
 
+    // Slot-width is only used when BOTH products publish a meaningful limit.
+    // Missing slot-width data no longer creates an uncertainty warning by itself.
     const gpuSlotsRaw = gpu.compatibility?.slotWidth ?? gpu.specs?.slots ?? gpu.specs?.slotWidth;
     const caseSlotsRaw = pcCase.compatibility?.maxGpuSlotWidth ?? pcCase.specs?.maxGpuSlotWidth;
 
     if (gpuSlotsRaw !== undefined && caseSlotsRaw !== undefined) {
         const gpuSlots = Number(gpuSlotsRaw);
         const caseSlots = Number(caseSlotsRaw);
+
         if (gpuSlots && caseSlots && gpuSlots > caseSlots) {
             issues.push(makeDiagnostic(
-                `GPU thickness is approximately ${gpuSlots} slots, but the case's current compatibility data allows up to ${caseSlots} slots.`,
+                `GPU thickness is approximately ${gpuSlots} slots, but this case supports up to ${caseSlots} slots.`,
                 "case", "gpu", "gpu-case-thickness"
             ));
         }
-    } else {
-        unknowns.push(makeDiagnostic(
-            "GPU thickness/slot-width clearance has not yet been confirmed for this case.",
-            "case", "gpu", "gpu-case-thickness-unknown"
-        ));
     }
 }
 
@@ -343,7 +336,7 @@ function checkCoolerCase(cooler, pcCase, issues, unknowns) {
 
         if (!height || maxRaw === undefined) {
             unknowns.push(makeDiagnostic(
-                "Air-cooler height clearance cannot be fully confirmed because a height measurement is missing.",
+                "Air-cooler height clearance cannot be confirmed because a required height measurement is missing.",
                 "cooler", "case", "cooler-case-height-unknown"
             ));
         } else if (height > maxHeight) {
@@ -352,6 +345,8 @@ function checkCoolerCase(cooler, pcCase, issues, unknowns) {
                 "cooler", "case", "cooler-case-height"
             ));
         }
+
+        return;
     }
 
     if (coolerType === "aio") {
@@ -360,68 +355,73 @@ function checkCoolerCase(cooler, pcCase, issues, unknowns) {
 
         if (!radiator || !Array.isArray(supported) || !supported.length) {
             unknowns.push(makeDiagnostic(
-                "Radiator-size support cannot be fully confirmed because AIO/case radiator data is incomplete.",
+                "Radiator fit cannot be confirmed because radiator-size support data is missing.",
                 "cooler", "case", "aio-case-size-unknown"
             ));
-        } else if (!supported.includes(radiator)) {
+            return;
+        }
+
+        if (!supported.includes(radiator)) {
             issues.push(makeDiagnostic(
-                `${radiator} mm radiator is not listed as supported by this case.`,
+                `${radiator} mm radiator is not supported by this case.`,
                 "cooler", "case", "aio-case-size"
             ));
             return;
         }
 
+        // If the case explicitly publishes per-position support, use it to reject a
+        // combination only when the data proves there is no valid mounting location.
         const radiatorPositions = cooler.compatibility?.radiatorPositions || cooler.specs?.radiatorPositions;
         const casePositions = pcCase.compatibility?.radiatorSupportByPosition || pcCase.specs?.radiatorSupportByPosition;
 
-        if (radiator && casePositions && typeof casePositions === "object") {
+        if (casePositions && typeof casePositions === "object") {
             const possiblePositions = Object.entries(casePositions)
                 .filter(([, sizes]) => Array.isArray(sizes) && sizes.includes(radiator))
                 .map(([position]) => position);
+
+            if (!possiblePositions.length) {
+                issues.push(makeDiagnostic(
+                    `${radiator} mm radiator is listed for this case generally, but no valid mounting position is available in the case's detailed compatibility data.`,
+                    "cooler", "case", "aio-case-position"
+                ));
+                return;
+            }
 
             if (Array.isArray(radiatorPositions) && radiatorPositions.length) {
                 const overlap = radiatorPositions.some(position => possiblePositions.includes(position));
                 if (!overlap) {
                     issues.push(makeDiagnostic(
-                        `${radiator} mm radiator size is supported in principle, but none of the cooler's listed mounting positions match the case's available positions.`,
+                        `${radiator} mm radiator is supported by the case, but the cooler's allowed mounting positions do not match the case's available positions.`,
                         "cooler", "case", "aio-case-position"
                     ));
                 }
-            } else if (!possiblePositions.length) {
-                issues.push(makeDiagnostic(
-                    `${radiator} mm radiator does not have a confirmed mounting position in this case.`,
-                    "cooler", "case", "aio-case-position"
-                ));
             }
-        } else if (radiator && Array.isArray(supported) && supported.includes(radiator)) {
-            unknowns.push(makeDiagnostic(
-                `${radiator} mm radiator size is supported, but the exact mounting position (top/front/side) has not yet been confirmed.`,
-                "case", "cooler", "aio-case-position-unknown"
-            ));
         }
+
+        // Important: if the case supports the radiator size but does not publish
+        // position-level data, the builder accepts the fit instead of creating
+        // a permanent "unknown" warning.
     }
 }
 
-function checkRamCooler(memory, cooler, warnings, unknowns) {
+function checkRamCooler(memory, cooler, warnings) {
     if (!memory || !cooler || cooler.specs?.coolerType !== "air") return;
 
     const ramHeightRaw = memory.compatibility?.heightMm ?? memory.specs?.heightMm;
     const coolerClearanceRaw = cooler.compatibility?.maxRamHeightMm ?? cooler.specs?.maxRamHeightMm;
 
+    // Only warn when both measurements exist and prove a likely clearance issue.
+    // Missing optional RAM-height data should not make the whole build "unknown".
     if (ramHeightRaw !== undefined && coolerClearanceRaw !== undefined) {
         const ramHeight = Number(ramHeightRaw);
         const maxHeight = Number(coolerClearanceRaw);
+
         if (ramHeight && maxHeight && ramHeight > maxHeight) {
             warnings.push(makeDiagnostic(
                 `RAM height is ${ramHeight} mm while the air cooler lists approximately ${maxHeight} mm RAM clearance. Fan position or DIMM clearance may need adjustment.`,
                 "cooler", "memory", "ram-cooler-clearance"
             ));
         }
-    } else {
-        unknowns.push(makeDiagnostic(
-            "RAM height versus air-cooler clearance is not yet confirmed in the current product data.",
-            "cooler", "memory", "ram-cooler-clearance-unknown"
-        ));
     }
 }
 
