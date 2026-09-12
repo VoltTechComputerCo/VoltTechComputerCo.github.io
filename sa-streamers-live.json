@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12T19:44:46.058522Z",
+  "generated_at": "2026-09-12T19:54:12.533349Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,12 +9,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
       "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
       "live": true,
-      "viewer_count": 17,
+      "viewer_count": 15,
       "game_name": "Project Zomboid",
       "title": "[!Pink 0/4] !extend - Fresh Start",
       "started_at": "2026-09-12T17:28:50Z",
-      "last_live_at": "2026-09-12T19:44:46.058522Z",
-      "activity_score": 94.82
+      "last_live_at": "2026-09-12T19:54:12.533349Z",
+      "activity_score": 97.13
     },
     {
       "login": "androvaza",
@@ -22,25 +22,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/8b5628de-2866-48d7-a9cb-0ea3689a1dce-profile_image-300x300.png",
       "description": "Recovering Riot Games addict",
       "live": true,
-      "viewer_count": 19,
+      "viewer_count": 27,
       "game_name": "League of Legends",
       "title": "Hardstuck Gold Gamer | I geniunely suck at this game? | #SYNCity",
       "started_at": "2026-09-12T17:04:22Z",
-      "last_live_at": "2026-09-12T19:44:46.058522Z",
-      "activity_score": 77.27
-    },
-    {
-      "login": "alaskayeen",
-      "display_name": "AlaskaYeen",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/1436799a-c6aa-4109-ae4f-197132776e8f-profile_image-300x300.png",
-      "description": "Im a South African Streamer , Still in the learing process , Love Vr Games and also love To show the Viewers how i play and my type of gamestyle , Im 31 Year old  love Gaming",
-      "live": true,
-      "viewer_count": 2,
-      "game_name": "WARDOGS",
-      "title": "What am i doing | Wardogs|  !discord  18+ | NEW AVI |",
-      "started_at": "2026-09-12T19:24:47Z",
-      "last_live_at": "2026-09-12T19:44:46.058522Z",
-      "activity_score": 15.52
+      "last_live_at": "2026-09-12T19:54:12.533349Z",
+      "activity_score": 80.63
     },
     {
       "login": "waldoliveza",
@@ -53,7 +40,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T18:57:07.533386Z",
-      "activity_score": 73.92
+      "activity_score": 69.48
     },
     {
       "login": "1handbanditza",
@@ -66,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T17:54:08.233652Z",
-      "activity_score": 52.83
+      "activity_score": 49.66
     },
     {
       "login": "chronic_za",
@@ -79,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 21.22
+      "activity_score": 19.95
     },
     {
       "login": "spyro_za",
@@ -92,7 +79,20 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 17.68
+      "activity_score": 16.62
+    },
+    {
+      "login": "alaskayeen",
+      "display_name": "AlaskaYeen",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/1436799a-c6aa-4109-ae4f-197132776e8f-profile_image-300x300.png",
+      "description": "Im a South African Streamer , Still in the learing process , Love Vr Games and also love To show the Viewers how i play and my type of gamestyle , Im 31 Year old  love Gaming",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": "2026-09-12T19:44:46.058522Z",
+      "activity_score": 14.59
     },
     {
       "login": "chickenwingerz",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 4.26
+      "activity_score": 4.0
     },
     {
       "login": "agriopsgaming",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T01:00:16.228552Z",
-      "activity_score": 0.46
+      "activity_score": 0.43
     },
     {
       "login": "zulumachinegaming",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T23:30:16.004641Z",
-      "activity_score": 0.31
+      "activity_score": 0.29
     },
     {
       "login": "zlorbz",
