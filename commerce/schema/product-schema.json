@@ -1,7 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "VoltTech Product",
+  "$id": "https://volttechcomputerco.github.io/commerce/schema/product-schema.json",
+  "title": "VoltTech Product v0.6",
   "type": "object",
+  "additionalProperties": true,
   "required": [
     "id",
     "type",
@@ -11,5 +13,118 @@
     "specs",
     "compatibility",
     "identifiers"
-  ]
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "cpu",
+        "motherboard",
+        "memory",
+        "gpu",
+        "storage",
+        "psu",
+        "case",
+        "cooler",
+        "fan",
+        "peripheral",
+        "accessory"
+      ]
+    },
+    "brand": {
+      "type": "string",
+      "minLength": 1
+    },
+    "manufacturer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive",
+        "discontinued",
+        "draft"
+      ]
+    },
+    "identifiers": {
+      "$ref": "#/$defs/identifiers"
+    },
+    "specs": {
+      "type": "object"
+    },
+    "compatibility": {
+      "type": "object"
+    },
+    "powerWatts": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "media": {
+      "type": "object"
+    },
+    "seo": {
+      "type": "object"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "identifiers": {
+      "type": "object",
+      "required": [
+        "mpn",
+        "ean",
+        "upc",
+        "gtin"
+      ],
+      "properties": {
+        "mpn": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ean": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "upc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gtin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
 }

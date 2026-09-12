@@ -1,10 +1,104 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "VoltTech Supplier Feed",
+  "$id": "https://volttechcomputerco.github.io/commerce/schema/supplier-offer-schema.json",
+  "title": "VoltTech Supplier Feed v0.6",
   "type": "object",
+  "additionalProperties": true,
   "required": [
     "schemaVersion",
     "supplier",
     "offers"
-  ]
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "supplier": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "offers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "price",
+          "currency"
+        ],
+        "properties": {
+          "productId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "supplierSku": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "identifiers": {
+            "type": "object"
+          },
+          "price": {
+            "type": "number",
+            "minimum": 0
+          },
+          "currency": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3
+          },
+          "stock": {
+            "type": [
+              "integer",
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "stockStatus": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lastChecked": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
 }
