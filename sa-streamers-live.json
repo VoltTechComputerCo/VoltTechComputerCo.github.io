@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12T10:54:10.243731Z",
+  "generated_at": "2026-09-12T11:06:58.322176Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,12 +9,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dd8b5abe-e947-4d30-bfd1-2682a123a468-profile_image-300x300.png",
       "description": "Hey there gamers and friends! I'm Spyro, your friendly neighborhood streamer. Join me as we dive into epic adventures, conquer challenges and share some laughs along the way! Business Enquiries: spyro@expansion.gg",
       "live": true,
-      "viewer_count": 23,
+      "viewer_count": 28,
       "game_name": "Valheim",
       "title": "More Valheim! Lets Take On The Dragon Today!",
       "started_at": "2026-09-12T08:34:40Z",
-      "last_live_at": "2026-09-12T10:54:10.243731Z",
-      "activity_score": 70.13
+      "last_live_at": "2026-09-12T11:06:58.322176Z",
+      "activity_score": 73.92
     },
     {
       "login": "agriopsgaming",
@@ -27,7 +27,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T01:00:16.228552Z",
-      "activity_score": 5.8
+      "activity_score": 5.45
     },
     {
       "login": "zulumachinegaming",
@@ -40,7 +40,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T23:30:16.004641Z",
-      "activity_score": 3.88
+      "activity_score": 3.65
     },
     {
       "login": "zaffa_geek",
@@ -53,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T21:35:14.265242Z",
-      "activity_score": 2.14
+      "activity_score": 2.01
     },
     {
       "login": "chronic_za",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T21:21:17.292491Z",
-      "activity_score": 1.57
+      "activity_score": 1.48
     },
     {
       "login": "deosil25",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T20:07:54.948228Z",
-      "activity_score": 0.91
+      "activity_score": 0.86
     },
     {
       "login": "virtualgemma",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T18:32:51.830527Z",
-      "activity_score": 0.9
+      "activity_score": 0.85
     },
     {
       "login": "viking_237",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T16:40:59.590051Z",
-      "activity_score": 0.46
+      "activity_score": 0.43
     },
     {
       "login": "deathsjokerst",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T16:10:08.471627Z",
-      "activity_score": 0.36
+      "activity_score": 0.34
     },
     {
       "login": "waldoliveza",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T17:21:03.539365Z",
-      "activity_score": 0.35
+      "activity_score": 0.33
     },
     {
       "login": "danatdawn",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T14:40:12.132707Z",
-      "activity_score": 0.28
+      "activity_score": 0.26
     },
     {
       "login": "blu3bee",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T16:10:08.471627Z",
-      "activity_score": 0.28
+      "activity_score": 0.26
     },
     {
       "login": "dead_oryx",
@@ -170,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T12:51:42.599099Z",
-      "activity_score": 0.22
+      "activity_score": 0.21
     },
     {
       "login": "buffalo_recon",
@@ -183,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T17:06:44.871557Z",
-      "activity_score": 0.19
+      "activity_score": 0.18
     },
     {
       "login": "derpy_ruby",
@@ -196,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T11:12:04.098011Z",
-      "activity_score": 0.11
+      "activity_score": 0.1
     },
     {
       "login": "zlorbz",
