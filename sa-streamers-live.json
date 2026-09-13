@@ -1,21 +1,8 @@
 {
-  "generated_at": "2026-09-13T01:19:36.826634Z",
+  "generated_at": "2026-09-13T01:32:56.227829Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
-    {
-      "login": "alialbaster",
-      "display_name": "alialbaster",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/edddc7fb-67b7-406d-8f0c-ffe3bd69ade2-profile_image-300x300.png",
-      "description": "Hey Everyone names Alialbaster but most people call me Ali ,I am a South African streamer with an awesome accent, I really do what I enjoy and that's playing games, I mainly focus on survival games but open to play any type of game there is.",
-      "live": true,
-      "viewer_count": 2,
-      "game_name": "Corsair Cove",
-      "title": "Oi! You there!....Yes You! Playing Corsair Cove",
-      "started_at": "2026-09-13T00:15:31Z",
-      "last_live_at": "2026-09-13T01:19:36.826634Z",
-      "activity_score": 29.23
-    },
     {
       "login": "zaffa_geek",
       "display_name": "Zaffa_Geek",
@@ -27,7 +14,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T00:10:56.915900Z",
-      "activity_score": 78.08
+      "activity_score": 73.4
     },
     {
       "login": "androvaza",
@@ -40,7 +27,20 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T22:47:51.115298Z",
-      "activity_score": 50.64
+      "activity_score": 47.6
+    },
+    {
+      "login": "alialbaster",
+      "display_name": "alialbaster",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/edddc7fb-67b7-406d-8f0c-ffe3bd69ade2-profile_image-300x300.png",
+      "description": "Hey Everyone names Alialbaster but most people call me Ali ,I am a South African streamer with an awesome accent, I really do what I enjoy and that's playing games, I mainly focus on survival games but open to play any type of game there is.",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": "2026-09-13T01:19:36.826634Z",
+      "activity_score": 27.48
     },
     {
       "login": "waldoliveza",
@@ -53,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T18:57:07.533386Z",
-      "activity_score": 15.73
+      "activity_score": 14.79
     },
     {
       "login": "1handbanditza",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T17:54:08.233652Z",
-      "activity_score": 11.25
+      "activity_score": 10.57
     },
     {
       "login": "chronic_za",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 4.51
+      "activity_score": 4.24
     },
     {
       "login": "spyro_za",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 3.75
+      "activity_score": 3.52
     },
     {
       "login": "alaskayeen",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T19:44:46.058522Z",
-      "activity_score": 3.31
+      "activity_score": 3.11
     },
     {
       "login": "chickenwingerz",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 0.9
+      "activity_score": 0.85
     },
     {
       "login": "agriopsgaming",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T01:00:16.228552Z",
-      "activity_score": 0.09
+      "activity_score": 0.08
     },
     {
       "login": "zulumachinegaming",
