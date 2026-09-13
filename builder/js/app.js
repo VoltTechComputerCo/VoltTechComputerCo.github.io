@@ -1,6 +1,6 @@
 import {CATEGORY_ORDER,REQUIRED_CATEGORIES,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,hasCategory,isMultiCategory} from "./build-engine.js?v=0.7.7";
 import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.7.8.1";
-import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=1.2";
+import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=1.5";
 import {loadCatalogue} from "./data-loader.js?v=0.6";
 
 const e={
@@ -41,7 +41,7 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · private preview · v1.4 storefront experience · temporary catalogue pricing and stock for testing only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · private preview · v1.5 guided store experience · temporary catalogue pricing and stock for testing only.`;
         render();
     }catch(x){
         console.error(x);
@@ -143,51 +143,20 @@ function bind(){
 }
 
 
+
+function buildPersona(p){const t=profileLabel(p?.target)||"your target",u=p?.useCase||"gaming";if(u==="gaming")return{badge:"Gaming build · built around you",title:`${t} gaming. Properly done.`,copy:"A gaming-first machine that puts the money into the parts you actually feel when the match starts — not spec-sheet bragging rights."};if(u==="streaming")return{badge:"Gaming + streaming",title:"Play it. Stream it. Clip it.",copy:"A machine built to game hard while the stream, chat and capture workload keep moving in the background."};if(u==="creator")return{badge:"Creator build",title:"Make big projects feel smaller.",copy:"More breathing room for timelines, renders and creative apps without forgetting that this PC should still be fun after work."};return{badge:"Built around you",title:"Hardware that earns its desk space.",copy:"A balanced machine shaped around what you told us you actually do."}}
+function merch(p,t,profile){const s=p?.specs||{},n=String(p?.name||"").toLowerCase(),v=Number(s.vramGB||0);if(t==="gpu")return{badge:"The star of the show",hook:"This is where the frames live.",story:`For ${profileLabel(profile?.target)||"gaming"}, the GPU deserves a serious slice of the budget.${v?` ${v}GB of VRAM gives modern games useful breathing room.`:""}${Number(s.boardPowerWatts||0)>=300?" It can be a bit thirsty when pushed, so we made sure the PSU has room to breathe.":""}`};if(t==="cpu")return{badge:/x3d/.test(n)?"Gaming favourite":"The brains",hook:/x3d/.test(n)?"Yep, this is one of those CPUs gamers talk about.":"Fast enough to let the rest of the build do its thing.",story:"We want strong performance without stealing money from the parts that make a bigger difference. This is the kind of balance we would recommend to a friend."};if(t==="memory")return{badge:"Sweet spot",hook:Number(s.capacityGB||0)>=32?"Enough RAM to stop thinking about RAM.":"Sensible memory. More money for the fun parts.",story:"Games, Discord, browser tabs and background apps all need room. We choose a matched kit that fits the build instead of chasing RAM for bragging rights."};if(t==="storage")return{badge:"Game library",hook:Number(s.capacityGB||0)>=2000?"Less uninstalling. Finally.":"Fast storage where you feel it every day.",story:"Storage is easy to expand later, so the smart move is starting with enough fast space without robbing the GPU budget."};if(t==="psu")return{badge:"Power sorted",hook:"Nobody flexes the PSU. Everybody notices a bad one.",story:"We size power after the main hardware so the system gets sensible headroom instead of living on the edge."};if(t==="case")return{badge:"The look",hook:"This is where a pile of parts becomes your PC.",story:"Fit and airflow come first. Looking clean and premium is the very nice bonus."};if(t==="cooler")return{badge:"Keep it cool",hook:"Fast hardware is nicer when it is not screaming at you.",story:"Cooling is matched to the CPU and case so the machine has thermal breathing room when you lean on it."};if(t==="motherboard")return{badge:"The backbone",hook:"Enough board where it matters. No motherboard tax for bragging rights.",story:"The right socket, memory and expansion matter. Paying more for a board does not automatically make games faster."};return{badge:"VoltTech pick",hook:"This part makes sense here.",story:"It fits the brief, the budget and the rest of the machine."}}
+function specs(p,t){const s=p?.specs||{},a=[],add=(k,v)=>{if(v)a.push(`${k}: ${v}`)};if(t==="gpu"){add("VRAM",s.vramGB&&`${s.vramGB}GB`);add("Power",s.boardPowerWatts&&`${s.boardPowerWatts}W`)}if(t==="cpu"){add("Cores",s.cores);add("Threads",s.threads);add("Socket",s.socket)}if(t==="memory"){add("Capacity",s.capacityGB&&`${s.capacityGB}GB`);add("Modules",s.modules)}if(t==="storage")add("Capacity",s.capacityGB&&`${s.capacityGB}GB`);if(t==="psu")add("Wattage",s.wattage&&`${s.wattage}W`);if(t==="motherboard"){add("Chipset",s.chipset);add("Socket",s.socket)}return a.slice(0,3)}
+
 function renderGuidedProfile(){
-    if(!guidedProfile||!e.guidedResult)return;
-    e.guidedForm.hidden=true;
-    e.guidedResult.hidden=false;
-
-    if(!guidedRecommendation?.ok){
-        e.guidedResult.innerHTML=`<h3>We couldn’t generate this build yet</h3><p>${esc(guidedRecommendation?.message||"The prototype catalogue could not produce a complete recommendation for this profile.")}</p><div class="guided-result-actions"><button type="button" class="flow-btn secondary" id="guided-edit">← Change answers</button></div>`;
-        document.getElementById("guided-edit")?.addEventListener("click",()=>{e.guidedResult.hidden=true;e.guidedForm.hidden=false;});
-        return;
-    }
-
-    const r=guidedRecommendation;
-    const budgetClass=r.budgetState==="within"?"Within target":r.budgetState==="under"?"Below target":"Above target";
-    const confidence={confirmed:"Compatibility confirmed",review:"Compatible · review notes","needs-data":"Compatible · some data unknown",conflict:"Compatibility conflict"}[r.confidence]||r.confidence;
-    const cats=[["cpu","CPU"],["motherboard","Motherboard"],["memory","Memory"],["gpu","Graphics Card"],["case","Case"],["cooler","CPU Cooler"],["psu","Power Supply"],["storage","Storage"]];
-
-    const parts=cats.map(([type,label])=>{
-        const p=getSelections(r.build,type)[0]; if(!p)return"";
-        const price=getProductPrice(p);
-        return `<div class="guided-part"><span class="gp-cat">${esc(label)}</span><div><b>${esc(p.name)}</b><small>${esc(r.reasons[type]||"Compatibility-aware recommendation.")}</small></div><span class="gp-price">${esc(price?formatMoney(price,currency):"Price unavailable")}</span></div>`;
-    }).join("");
-
-    e.guidedResult.innerHTML=`
-      <h3>This is where it gets fun.</h3>
-      <p>Here’s the PC we’d start with for your goals and budget. We’ve already done the boring compatibility and power homework — now you can see what makes the build exciting, swap parts and make it yours. Preview pricing is still test data, not a final quotation.</p>
-      <div class="guided-result-grid">
-        <div class="guided-parts">${parts}</div>
-        <aside class="guided-side">
-          <div class="guided-stat"><span>Parts total</span><strong>${esc(formatMoney(r.total,currency))}</strong><small>${esc(budgetClass)} · selected budget ${esc(r.budget.label)}</small></div>
-          <div class="guided-stat"><span>Power</span><strong>${esc(`${r.power.estimated} W`)}</strong><small>Preferred PSU headroom: ${esc(`${r.power.preferred} W`)}</small></div>
-          <div class="guided-stat"><span>Optimizer</span><strong style="font-size:14px">${esc(`${r.optimizer?.applied?.length||0} adjustments`)}</strong><small>${esc(`${r.optimizer?.evaluated||0} compatible CPU/GPU upgrade candidates evaluated · internal relative performance data`)}</small></div>
-          <div class="guided-stat"><span>Compatibility</span><strong style="font-size:14px">${esc(confidence)}</strong><small>${esc((r.report.issues||[]).length)} conflicts · ${esc((r.report.warnings||[]).length)} attention items · ${esc((r.report.unknowns||[]).length)} unknowns</small></div>
-          <div class="guided-notes">${(r.notes||[]).map(n=>`• ${esc(n)}`).join("<br>")}</div>
-        </aside>
-      </div>
-      <div class="guided-result-actions">
-        <button type="button" class="flow-btn secondary" id="guided-edit">← Change answers</button>
-        <button type="button" class="flow-btn" id="guided-use">Use This Build & Customize →</button>
-      </div>`;
-
-    document.getElementById("guided-edit")?.addEventListener("click",()=>{e.guidedResult.hidden=true;e.guidedForm.hidden=false;});
-    document.getElementById("guided-use")?.addEventListener("click",()=>{
-        build=cloneBuild(r.build); activeCategory=CATEGORY_ORDER[0];
-        e.guidedPanel.hidden=true; e.builderLayout.hidden=false; updatePickerProfile(); render(); scrollCatalogueTop();
-    });
+ if(!guidedProfile||!e.guidedResult)return;e.guidedForm.hidden=true;e.guidedResult.hidden=false;e.builderLayout.hidden=true;
+ if(!guidedRecommendation?.ok){e.guidedResult.innerHTML=`<section class="build-reveal"><span class="reveal-kicker">Almost there</span><h3>We hit a parts snag.</h3><p class="reveal-copy">${esc(guidedRecommendation?.message||"The temporary catalogue could not complete that combination yet.")} Change an answer and we’ll take another swing.</p><div class="store-actions"><button class="flow-btn secondary" id="guided-edit">← Tweak my answers</button></div></section>`;document.getElementById("guided-edit")?.addEventListener("click",()=>{e.guidedResult.hidden=true;e.guidedForm.hidden=false});return}
+ const r=guidedRecommendation,persona=buildPersona(guidedProfile),cats=[["gpu","Graphics Card"],["cpu","Processor"],["memory","Memory"],["motherboard","Motherboard"],["storage","Storage"],["case","Case"],["cooler","CPU Cooler"],["psu","Power Supply"]];
+ const parts=cats.map(([t,l])=>{const p=getSelections(r.build,t)[0];if(!p)return"";const m=merch(p,t,guidedProfile),sp=specs(p,t),price=getProductPrice(p);return `<article class="store-part ${t==="gpu"?"hero-part":""}"><div class="part-top"><div><span class="part-label">${esc(l)}</span><span class="part-badge">${esc(m.badge)}</span></div><span class="part-price">${esc(price?formatMoney(price,currency):"Price pending")}</span></div><h4>${esc(p.name)}</h4><p class="part-hook">${esc(m.hook)}</p><p class="part-story">${esc(m.story)}</p>${sp.length?`<div class="part-specs">${sp.map(x=>`<span>${esc(x)}</span>`).join("")}</div>`:""}<div class="part-actions"><button class="part-action" data-why="${t}">Why this part?</button><button class="part-action alt" data-swap="${t}">See alternatives →</button></div><div class="part-why" data-why-panel="${t}" hidden>${esc(r.reasons[t]||"Selected because it fits your brief, budget and the rest of the build.")}</div></article>`}).join("");
+ const budget=r.budgetState==="over"?"Over target":r.budgetState==="under"?"Room to play":"On budget",compat=(r.report.issues||[]).length?"Needs attention":"Looks good";
+ e.guidedResult.innerHTML=`<section class="build-reveal"><span class="reveal-kicker">${esc(persona.badge)}</span><h3>This is your machine.<em>${esc(persona.title)}</em></h3><p class="reveal-copy">${esc(persona.copy)}</p><div class="reveal-price"><span>Current parts total · preview pricing</span><strong>${esc(formatMoney(r.total,currency))}</strong></div></section><div class="build-verdict"><b>This is the fun part.</b> We have done the compatibility and power homework. Now tap into the pieces, see why they are here, or swap anything that makes you curious.</div><div class="build-dashboard"><div class="build-metric"><span>Budget</span><strong>${esc(budget)}</strong><small>Ceiling: ${esc(r.budget.label)}</small></div><div class="build-metric"><span>Compatibility</span><strong>${esc(compat)}</strong><small>${(r.report.issues||[]).length?`${(r.report.issues||[]).length} item(s) need attention`:"No known conflicts"}</small></div><div class="build-metric"><span>Power</span><strong>${esc(`${r.power.estimated} W`)}</strong><small>PSU chosen with headroom</small></div></div><div class="guided-parts-v15">${parts}</div><div class="store-actions"><button class="flow-btn primary-action" id="guided-use">Make it mine · customise →</button><button class="flow-btn secondary" id="guided-edit">← Change the brief</button></div><p class="store-footnote">Private preview: prices, stock and some product data are temporary test data. This is not a final quotation.</p>`;
+ e.guidedResult.querySelectorAll("[data-why]").forEach(b=>b.addEventListener("click",()=>{const p=e.guidedResult.querySelector(`[data-why-panel="${b.dataset.why}"]`);p.hidden=!p.hidden;b.textContent=p.hidden?"Why this part?":"Hide the nerdy bit ↑"}));
+ const open=t=>{build=cloneBuild(r.build);activeCategory=t;e.guidedPanel.hidden=true;e.builderLayout.hidden=false;updatePickerProfile();render();requestAnimationFrame(()=>e.categoryTitle?.scrollIntoView({behavior:"smooth",block:"start"}))};e.guidedResult.querySelectorAll("[data-swap]").forEach(b=>b.addEventListener("click",()=>open(b.dataset.swap)));document.getElementById("guided-edit")?.addEventListener("click",()=>{e.guidedResult.hidden=true;e.guidedForm.hidden=false;e.guidedForm.scrollIntoView({behavior:"smooth"})});document.getElementById("guided-use")?.addEventListener("click",()=>open("cpu"));
 }
 
 function cloneBuild(source){
