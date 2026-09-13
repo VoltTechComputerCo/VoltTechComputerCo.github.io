@@ -90,6 +90,28 @@
 @media(max-width:390px){.creator-hub-nav-pill{min-width:84px!important;padding:0 8px!important;font-size:6.7px!important}.creator-hub-live-dot{flex-basis:6px;width:6px;height:6px}}
 @media(prefers-reduced-motion:reduce){.creator-hub-live-dot{animation:none}}
 
+
+/* Google reviews */
+.reviews-section{overflow:hidden}
+.reviews-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px}
+.reviews-head h2{margin-bottom:0}
+.google-review-link{flex:0 0 auto;color:var(--teal);font:700 9px var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.reviews-viewport{overflow:hidden;margin-left:-20px;margin-right:-20px;padding:2px 0}
+.reviews-track{display:flex;width:max-content;gap:10px;padding-left:20px;animation:reviewMarquee 34s linear infinite;will-change:transform}
+.reviews-viewport:hover .reviews-track,.reviews-viewport:focus-within .reviews-track{animation-play-state:paused}
+.review-card{flex:0 0 286px;min-height:205px;padding:18px;border:1px solid rgba(47,230,200,.18);border-radius:7px;background:linear-gradient(145deg,rgba(47,230,200,.045),#091011 64%);white-space:normal}
+.review-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.reviewer{display:flex;align-items:center;gap:10px;min-width:0}
+.review-avatar{display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border-radius:50%;background:#172526;color:#dce9e6;font:700 12px var(--mono)}
+.reviewer b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.google-mark{color:#9bb0ac;font:700 9px var(--mono);letter-spacing:.05em}
+.review-stars{margin:13px 0 10px;color:#fbbc04;font-size:15px;letter-spacing:2px}
+.review-card blockquote{margin:0;color:#b6c6c2;font-size:12.5px;line-height:1.65}
+.review-source{display:block;margin-top:13px;color:#617b76;font:8px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+@keyframes reviewMarquee{to{transform:translateX(calc(-50% - 5px))}}
+@media(max-width:560px){.reviews-head{align-items:start;flex-direction:column;gap:8px}.review-card{flex-basis:76vw;max-width:300px;min-height:195px}.reviews-track{animation-duration:30s}}
+@media(prefers-reduced-motion:reduce){.reviews-viewport{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.reviews-track{animation:none}.review-card{scroll-snap-align:start}}
+
 </style>
 <link rel="stylesheet" href="service-backgrounds.css">
 </head>
@@ -123,6 +145,24 @@
 <section><div class="label">WHY VOLTTECH</div><h2>Diagnosis before replacement.</h2><p class="copy">Thermals, power, storage health, memory stability, drivers and system behaviour can overlap. VoltTech focuses on identifying the actual fault or bottleneck before recommending work.</p><div class="trust-grid" style="margin-top:20px"><div class="trust"><b>Hands-on diagnostics</b><span>Fault isolation before parts are recommended.</span></div><div class="trust"><b>Benchmark where useful</b><span>Before/after measurements for performance work and upgrades.</span></div><div class="trust"><b>Clear quote scope</b><span>Service/labour and replacement hardware are separated.</span></div><div class="trust"><b>National reach</b><span>Pretoria-based local service with courier-in and remote support available across South Africa.</span></div></div></section>
 <section><div class="label">SOUTH AFRICA · LOCAL + NATIONWIDE</div><h2>PC support across South Africa</h2><p class="copy">VoltTech supports customers across South Africa with PC diagnostics, technical support and eligible remote services. Based in Pretoria, we also provide local support across the surrounding area, while courier-in options make selected hardware services accessible nationwide.</p></section>
 <section id="contact"><div class="label">GET IN TOUCH</div><h2>Contact</h2><div class="contact"><span>WhatsApp · +27 61 843 5775</span><a href="https://wa.me/27618435775">Message →</a></div><div class="contact"><span>volttechcomputerco@gmail.com</span><a href="mailto:volttechcomputerco@gmail.com">Email →</a></div></section>
+
+<section class="reviews-section" aria-labelledby="reviewsTitle">
+  <div class="reviews-head">
+    <div><div class="label">CUSTOMER REVIEWS</div><h2 id="reviewsTitle">What customers say.</h2></div>
+    <a class="google-review-link" href="https://goo.gl/maps/i2q1b5LzTZySAAK26?g_st=ac" target="_blank" rel="noopener">View on Google ↗</a>
+  </div>
+  <div class="reviews-viewport" aria-label="Google customer reviews">
+    <div class="reviews-track">
+      <article class="review-card"><div class="review-top"><div class="reviewer"><span class="review-avatar">D</span><b>Dylan Vermaak</b></div><span class="google-mark">Google</span></div><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“They helped me quick with my issue.. Affordable &amp; Exceptional !! Definitely recommended”</blockquote><span class="review-source">Google review</span></article>
+      <article class="review-card"><div class="review-top"><div class="reviewer"><span class="review-avatar">F</span><b>Fredrik Venter</b></div><span class="google-mark">Google</span></div><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“Great service, very friendly, can help with anything and works very fast would 100% recommend for any problems”</blockquote><span class="review-source">Google review</span></article>
+      <article class="review-card"><div class="review-top"><div class="reviewer"><span class="review-avatar">M</span><b>Marius De Clercq</b></div><span class="google-mark">Google</span></div><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“Super smart guy! would recommend him anytime when it comes to computers!”</blockquote><span class="review-source">Google review</span></article>
+      <article class="review-card" aria-hidden="true"><div class="review-top"><div class="reviewer"><span class="review-avatar">D</span><b>Dylan Vermaak</b></div><span class="google-mark">Google</span></div><div class="review-stars">★★★★★</div><blockquote>“They helped me quick with my issue.. Affordable &amp; Exceptional !! Definitely recommended”</blockquote><span class="review-source">Google review</span></article>
+      <article class="review-card" aria-hidden="true"><div class="review-top"><div class="reviewer"><span class="review-avatar">F</span><b>Fredrik Venter</b></div><span class="google-mark">Google</span></div><div class="review-stars">★★★★★</div><blockquote>“Great service, very friendly, can help with anything and works very fast would 100% recommend for any problems”</blockquote><span class="review-source">Google review</span></article>
+      <article class="review-card" aria-hidden="true"><div class="review-top"><div class="reviewer"><span class="review-avatar">M</span><b>Marius De Clercq</b></div><span class="google-mark">Google</span></div><div class="review-stars">★★★★★</div><blockquote>“Super smart guy! would recommend him anytime when it comes to computers!”</blockquote><span class="review-source">Google review</span></article>
+    </div>
+  </div>
+</section>
+
 <a class="creator-promo" id="creatorHubPromo" href="creator-hub-south-africa.html"><div class="creator-live"><span class="creator-dot"></span><span id="creatorLiveCount">FOR SOUTH AFRICAN CREATORS</span></div><h2>See who’s live.</h2><p>Explore the Creator Hub and discover South African Twitch creators streaming right now.</p><div class="creator-list" id="creatorLiveList"><span class="creator-empty">Checking who's live…</span></div><span class="creator-enter">Enter Creator Hub →</span></a>
 </div>
 <footer>⚡ VOLTTECH COMPUTER CO. · SOUTH AFRICA · © 2026 · <a href="creator-hub-south-africa.html">Creator Hub</a> · <a href="static.html">STATIC</a> · <a href="privacy-policy.html">Privacy</a></footer>
