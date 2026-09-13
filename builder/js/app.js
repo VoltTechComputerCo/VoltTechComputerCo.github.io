@@ -1,5 +1,6 @@
 import {CATEGORY_ORDER,REQUIRED_CATEGORIES,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,hasCategory,isMultiCategory} from "./build-engine.js?v=0.7.7";
 import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.7.8.1";
+import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=0.9.0";
 import {loadCatalogue} from "./data-loader.js?v=0.6";
 
 const e={
@@ -14,10 +15,21 @@ const e={
     power:document.getElementById("power"),
     report:document.getElementById("report"),
     clearBuild:document.getElementById("clear-build"),
-    catalogueNote:document.getElementById("catalogue-note")
+    catalogueNote:document.getElementById("catalogue-note"),
+    modeShell:document.getElementById("mode-shell"),
+    guidedPanel:document.getElementById("guided-panel"),
+    builderLayout:document.getElementById("builder-layout"),
+    chooseGuided:document.getElementById("choose-guided"),
+    chooseAdvanced:document.getElementById("choose-advanced"),
+    guidedBack:document.getElementById("guided-back"),
+    guidedForm:document.getElementById("guided-form"),
+    guidedResult:document.getElementById("guided-result"),
+    pickerProfile:document.getElementById("picker-profile"),
+    copyBuild:document.getElementById("copy-build"),
+    changeMode:document.getElementById("change-mode")
 };
 
-let catalogue=[],currency="ZAR",activeCategory=CATEGORY_ORDER[0],build=createEmptyBuild();
+let catalogue=[],currency="ZAR",activeCategory=CATEGORY_ORDER[0],build=createEmptyBuild(),guidedProfile=null,guidedRecommendation=null;
 
 init();
 
@@ -27,16 +39,63 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7.8.1 fan-capacity hotfix · test pricing and stock only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.9.0 end-to-end guided prototype · test pricing and stock only.`;
         render();
     }catch(x){
         console.error(x);
         e.catalogueNote.textContent="Prototype catalogue could not be loaded.";
-        e.products.innerHTML='<div class="empty">Could not load v0.7.8.1 catalogue data.</div>';
+        e.products.innerHTML='<div class="empty">Could not load v0.9.0 catalogue data.</div>';
     }
 }
 
 function bind(){
+    e.chooseGuided?.addEventListener("click",()=>{
+        e.modeShell.hidden=true;
+        e.builderLayout.hidden=true;
+        e.guidedPanel.hidden=false;
+        e.guidedResult.hidden=true;
+        e.guidedForm.hidden=false;
+        e.guidedPanel.scrollIntoView({behavior:"smooth",block:"start"});
+    });
+    e.chooseAdvanced?.addEventListener("click",()=>{
+        guidedProfile=null;
+        guidedRecommendation=null;
+        updatePickerProfile();
+        e.modeShell.hidden=true;
+        e.guidedPanel.hidden=true;
+        e.builderLayout.hidden=false;
+        scrollCatalogueTop();
+    });
+    e.guidedBack?.addEventListener("click",()=>{
+        e.guidedPanel.hidden=true;
+        e.builderLayout.hidden=true;
+        e.modeShell.hidden=false;
+        e.modeShell.scrollIntoView({behavior:"smooth",block:"start"});
+    });
+    e.guidedForm?.addEventListener("submit",event=>{
+        event.preventDefault();
+        const data=new FormData(e.guidedForm);
+        guidedProfile={
+            useCase:data.get("useCase"),
+            budget:data.get("budget"),
+            target:data.get("target"),
+            priority:data.get("priority"),
+            fpsTarget:data.get("fpsTarget"),
+            storageNeed:data.get("storageNeed")
+        };
+        guidedRecommendation=buildGuidedRecommendation(guidedProfile,catalogue,currency);
+        renderGuidedProfile();
+    });
+    e.copyBuild?.addEventListener("click",copyBuildSummary);
+    e.changeMode?.addEventListener("click",()=>{
+        guidedProfile=null;
+        guidedRecommendation=null;
+        e.builderLayout.hidden=true;
+        e.guidedPanel.hidden=true;
+        e.modeShell.hidden=false;
+        e.modeShell.scrollIntoView({behavior:"smooth",block:"start"});
+    });
+
     e.search.addEventListener("input",renderProducts);
     e.compatibleOnly.addEventListener("change",renderProducts);
     e.clearBuild.addEventListener("click",()=>{
@@ -48,7 +107,91 @@ function bind(){
     });
 }
 
+
+function renderGuidedProfile(){
+    if(!guidedProfile||!e.guidedResult)return;
+    e.guidedForm.hidden=true;
+    e.guidedResult.hidden=false;
+
+    if(!guidedRecommendation?.ok){
+        e.guidedResult.innerHTML=`<h3>We couldn’t generate this build yet</h3><p>${esc(guidedRecommendation?.message||"The prototype catalogue could not produce a complete recommendation for this profile.")}</p><div class="guided-result-actions"><button type="button" class="flow-btn secondary" id="guided-edit">← Change answers</button></div>`;
+        document.getElementById("guided-edit")?.addEventListener("click",()=>{e.guidedResult.hidden=true;e.guidedForm.hidden=false;});
+        return;
+    }
+
+    const r=guidedRecommendation;
+    const budgetClass=r.budgetState==="within"?"Within target":r.budgetState==="under"?"Below target":"Above target";
+    const confidence={confirmed:"Compatibility confirmed",review:"Compatible · review notes","needs-data":"Compatible · some data unknown",conflict:"Compatibility conflict"}[r.confidence]||r.confidence;
+    const cats=[["cpu","CPU"],["motherboard","Motherboard"],["memory","Memory"],["gpu","Graphics Card"],["case","Case"],["cooler","CPU Cooler"],["psu","Power Supply"],["storage","Storage"]];
+
+    const parts=cats.map(([type,label])=>{
+        const p=getSelections(r.build,type)[0]; if(!p)return"";
+        const price=getProductPrice(p);
+        return `<div class="guided-part"><span class="gp-cat">${esc(label)}</span><div><b>${esc(p.name)}</b><small>${esc(r.reasons[type]||"Compatibility-aware recommendation.")}</small></div><span class="gp-price">${esc(price?formatMoney(price,currency):"Price unavailable")}</span></div>`;
+    }).join("");
+
+    e.guidedResult.innerHTML=`
+      <h3>Your recommended starting build</h3>
+      <p>Generated from the current prototype catalogue and test supplier pricing. This is a starting recommendation, not a final quotation.</p>
+      <div class="guided-result-grid">
+        <div class="guided-parts">${parts}</div>
+        <aside class="guided-side">
+          <div class="guided-stat"><span>Parts total</span><strong>${esc(formatMoney(r.total,currency))}</strong><small>${esc(budgetClass)} · selected budget ${esc(r.budget.label)}</small></div>
+          <div class="guided-stat"><span>Power</span><strong>${esc(`${r.power.estimated} W`)}</strong><small>Preferred PSU headroom: ${esc(`${r.power.preferred} W`)}</small></div>
+          <div class="guided-stat"><span>Compatibility</span><strong style="font-size:14px">${esc(confidence)}</strong><small>${esc((r.report.issues||[]).length)} conflicts · ${esc((r.report.warnings||[]).length)} attention items · ${esc((r.report.unknowns||[]).length)} unknowns</small></div>
+          <div class="guided-notes">${(r.notes||[]).map(n=>`• ${esc(n)}`).join("<br>")}</div>
+        </aside>
+      </div>
+      <div class="guided-result-actions">
+        <button type="button" class="flow-btn secondary" id="guided-edit">← Change answers</button>
+        <button type="button" class="flow-btn" id="guided-use">Use This Build & Customize →</button>
+      </div>`;
+
+    document.getElementById("guided-edit")?.addEventListener("click",()=>{e.guidedResult.hidden=true;e.guidedForm.hidden=false;});
+    document.getElementById("guided-use")?.addEventListener("click",()=>{
+        build=cloneBuild(r.build); activeCategory=CATEGORY_ORDER[0];
+        e.guidedPanel.hidden=true; e.builderLayout.hidden=false; updatePickerProfile(); render(); scrollCatalogueTop();
+    });
+}
+
+function cloneBuild(source){
+    const fresh=createEmptyBuild();
+    for(const category of CATEGORY_ORDER){
+        const items=getSelections(source,category);
+        fresh[category]=isMultiCategory(category)?[...items]:(items[0]||null);
+    }
+    return fresh;
+}
+
+function updatePickerProfile(){
+    if(!e.pickerProfile)return;
+    if(!guidedProfile){e.pickerProfile.hidden=true;e.pickerProfile.textContent="";return;}
+    e.pickerProfile.hidden=false;
+    e.pickerProfile.innerHTML=`<b>Guided profile:</b> ${esc(profileLabel(guidedProfile.useCase))} · ${esc(profileLabel(guidedProfile.target))} · ${esc(profileLabel(guidedProfile.priority))} · ${esc(guidedProfile.fpsTarget||"")}+ FPS target. Every part can still be changed manually.`;
+}
+
+async function copyBuildSummary(){
+    const lines=["VoltTech Build — Prototype Summary"];
+    if(guidedProfile)lines.push(`Profile: ${profileLabel(guidedProfile.useCase)} · ${profileLabel(guidedProfile.target)} · ${profileLabel(guidedProfile.priority)}`);
+    for(const category of CATEGORY_ORDER){
+        const items=getSelections(build,category); if(!items.length)continue;
+        const groups=new Map();
+        items.forEach(p=>{const g=groups.get(p.id)||{p,qty:0};g.qty++;groups.set(p.id,g);});
+        for(const {p,qty} of groups.values()){
+            const price=getProductPrice(p);
+            lines.push(`${CATEGORY_LABELS[category]}: ${p.name}${qty>1?` ×${qty}`:""}${price?` — ${formatMoney(price*qty,currency)}`:""}`);
+        }
+    }
+    lines.push(`Parts total: ${formatMoney(calculateBuildTotal(build),currency)}`);
+    const power=estimatePower(build); lines.push(`Power estimate: ${power.estimated} W · Preferred PSU headroom ${power.preferred} W`);
+    lines.push("Prototype pricing only — not a quotation.");
+    try{await navigator.clipboard.writeText(lines.join("\n"));const old=e.copyBuild.textContent;e.copyBuild.textContent="Copied ✓";setTimeout(()=>e.copyBuild.textContent=old,1600);}
+    catch{alert(lines.join("\n"));}
+}
+
+
 function render(){
+    updatePickerProfile();
     renderSteps();
     renderProducts();
     renderBuild();
