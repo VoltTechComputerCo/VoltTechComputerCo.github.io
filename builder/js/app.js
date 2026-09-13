@@ -1,4 +1,4 @@
-import {CATEGORY_ORDER,REQUIRED_CATEGORIES,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,hasCategory,isMultiCategory} from "./build-engine.js?v=0.7.1";
+import {CATEGORY_ORDER,REQUIRED_CATEGORIES,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,hasCategory,isMultiCategory} from "./build-engine.js?v=0.7.6";
 import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.7.3";
 import {loadCatalogue} from "./data-loader.js?v=0.6";
 
@@ -27,12 +27,12 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7.5 limit-message + open-summary · test pricing and stock only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7.6 guided multi-select flow · test pricing and stock only.`;
         render();
     }catch(x){
         console.error(x);
         e.catalogueNote.textContent="Prototype catalogue could not be loaded.";
-        e.products.innerHTML='<div class="empty">Could not load v0.7.5 catalogue data.</div>';
+        e.products.innerHTML='<div class="empty">Could not load v0.7.6 catalogue data.</div>';
     }
 }
 
@@ -93,11 +93,22 @@ function renderProducts(){
 
     const resource=activeCategory==="fans"?fanCapacityInfo():null;
     const coreDone=getCompletedCategoryCount(build)===REQUIRED_CATEGORIES.length;
+    const storageReady=activeCategory==="storage"&&getSelections(build,"storage").length>0;
+    const storageCue=storageReady
+        ? `<div class="resource-note good flow-note"><b>Storage selected ✓</b><br>Add another drive if you need one, or continue when you’re happy with the storage setup.<button type="button" class="flow-btn" data-flow-next="fans">Continue to Case Fans →</button></div>`
+        : "";
     const completionCue=activeCategory==="fans"&&coreDone
-        ? `<div class="resource-note good"><b>Core build complete ✓</b><br>Case fans are optional. Add them here if the case needs extra airflow, then review the final build below.</div>`
+        ? `<div class="resource-note good flow-note"><b>Core build complete ✓</b><br>Case fans are optional. Add them if needed, or review the finished build now.<button type="button" class="flow-btn" data-flow-review>Review Final Build ↓</button></div>`
         : "";
     const banner=resource?`<div class="resource-note ${resource.tone}">${esc(resource.text)}</div>`:"";
-    e.products.innerHTML=completionCue+banner+visible.map(x=>card(x.product,x.display,x.candidate,x.qty)).join("");
+    e.products.innerHTML=storageCue+completionCue+banner+visible.map(x=>card(x.product,x.display,x.candidate,x.qty)).join("");
+
+    e.products.querySelectorAll("[data-flow-next]").forEach(button=>button.addEventListener("click",()=>{
+        openCategory(button.dataset.flowNext);
+    }));
+    e.products.querySelectorAll("[data-flow-review]").forEach(button=>button.addEventListener("click",()=>{
+        scrollDone();
+    }));
 
     e.products.querySelectorAll("[data-select-product]").forEach(button=>button.addEventListener("click",()=>{
         const product=catalogue.find(x=>x.id===button.dataset.selectProduct);
@@ -120,16 +131,18 @@ function renderProducts(){
         const done=getCompletedCategoryCount(build)===REQUIRED_CATEGORIES.length;
         const justCompleted=!wasDone&&done;
 
-        if(justCompleted){
-            activeCategory="fans";
-        }else if(!multi && !done){
+        if(!multi && !done){
             activeCategory=getNextCategory(product.type,build);
         }
 
         e.search.value="";
         render();
 
-        if(justCompleted){
+        if(product.type==="storage"){
+            scrollCatalogueTop();
+        }else if(justCompleted&&product.type!=="fans"){
+            activeCategory="storage";
+            render();
             scrollCatalogueTop();
         }else if(done && !multi){
             scrollDone();
