@@ -1,6 +1,106 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>VoltTech Build — Prototype v0.7.8.1</title><meta name="description" content="Private VoltTech PC parts compatibility, supplier-data and case-fan prototype."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="./styles.css"><style>.report-item.unknown{border-color:rgba(126,164,255,.24);background:rgba(126,164,255,.045);color:#9eb6ff}.product-unknown{margin-top:10px;color:#9eb6ff;font:8px var(--mono);line-height:1.5}.diagnostic-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.diagnostic-action{padding:6px 8px;border:1px solid currentColor;border-radius:4px;background:transparent;color:inherit;font:700 7px var(--mono);letter-spacing:.04em;text-transform:uppercase}.diagnostic-action:hover,.diagnostic-action:focus-visible{background:rgba(255,255,255,.07);outline:none}
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>VoltTech Build — Prototype v0.9.0</title><meta name="description" content="Private VoltTech PC parts compatibility, supplier-data and case-fan prototype."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="./styles.css"><style>.report-item.unknown{border-color:rgba(126,164,255,.24);background:rgba(126,164,255,.045);color:#9eb6ff}.product-unknown{margin-top:10px;color:#9eb6ff;font:8px var(--mono);line-height:1.5}.diagnostic-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.diagnostic-action{padding:6px 8px;border:1px solid currentColor;border-radius:4px;background:transparent;color:inherit;font:700 7px var(--mono);letter-spacing:.04em;text-transform:uppercase}.diagnostic-action:hover,.diagnostic-action:focus-visible{background:rgba(255,255,255,.07);outline:none}
 .resource-note{margin:0 0 4px;padding:10px 12px;border:1px solid #1b302e;border-radius:6px;background:#081210;color:#91aaa6;font:9px var(--mono);line-height:1.5}.resource-note.good{border-color:rgba(83,224,154,.25);color:#9bd6cc}.resource-note.full{border-color:rgba(255,180,84,.3);color:var(--warn)}.qty-wrap{width:100%;margin-top:12px}.qty-label{margin-bottom:6px;color:#78928e;font:8px var(--mono);text-align:right}.qty-control{display:grid;grid-template-columns:40px 42px 40px;justify-content:end;align-items:center;gap:5px}.qty-control button{height:36px;border:1px solid rgba(47,230,200,.32);border-radius:5px;background:transparent;color:var(--teal);font:700 16px var(--mono)}.qty-control button:disabled{cursor:not-allowed;opacity:.35}.qty-control span{display:grid;height:36px;place-items:center;border:1px solid #203436;border-radius:5px;color:var(--text);font:700 10px var(--mono)}.limit-note{max-width:220px;margin-top:7px;margin-left:auto;color:var(--bad);font:8px var(--mono);line-height:1.45;text-align:right}.build-group{padding:10px 3px;border-bottom:1px solid #162426}.build-group summary{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;cursor:pointer;list-style:none}.build-group summary::-webkit-details-marker{display:none}.build-group summary span{color:var(--muted);font:8px var(--mono);text-transform:uppercase}.build-group summary b{max-width:160px;color:var(--text);font-size:10px;text-align:right}.build-details{margin-top:9px;padding-top:7px;border-top:1px dashed #1b2b2d}.build-detail-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:5px 0}.build-detail-row span{color:#9eb2ae;font:9px var(--display);text-transform:none}.build-detail-row b{color:#69827e;font:8px var(--mono);text-align:right}.select-btn:disabled{cursor:not-allowed;opacity:.45}.product.selected{opacity:1!important}.product.selected .product-error{display:block}
 @media(max-width:700px){.product-side{grid-template-columns:minmax(0,1fr) auto;gap:4px 12px}.price{grid-column:1/-1}.supplier{grid-column:1/-1}.select-btn{grid-column:1/-1;width:100%;margin-top:12px;white-space:normal;line-height:1.25;min-height:40px}.qty-wrap{grid-column:1/-1}.qty-label{text-align:left}.qty-control{justify-content:start}.limit-note{max-width:none;margin-left:0;text-align:left}.build-list{display:block}.build-item b,.build-group summary b{max-width:62vw}.build-detail-row{grid-template-columns:minmax(0,1fr) auto}}
 
 .flow-note .flow-btn{display:block;width:100%;margin-top:12px;padding:11px 12px;border:1px solid rgba(47,230,200,.38);border-radius:5px;background:rgba(47,230,200,.07);color:var(--teal);font:700 9px var(--mono);letter-spacing:.05em;text-transform:uppercase;text-align:center}.flow-note .flow-btn:hover,.flow-note .flow-btn:focus-visible{background:var(--teal);color:#03110f;outline:none}
-</style></head><body><header class="topbar"><div class="wrap"><div class="logo"><img src="../brand/VoltTech_Emblem_Transparent.png" alt="VoltTech"><b>VOLTTECH BUILD</b></div><span class="prototype">Private Prototype v0.7.8.1.1</span></div></header><main class="wrap"><section class="hero"><span class="eyebrow">Commerce Backbone / Test Environment</span><h1>Build a PC.<br>Check everything.</h1><p>VoltTech Commerce v0.7.8.1 treats full fan-slot usage as valid while preserving aggregate case fan-capacity checks.</p><div class="notice" id="catalogue-note">Loading v0.7.8.1 catalogue…</div></section><section class="layout"><aside class="panel steps-panel sticky"><div class="panel-head"><h2>Build steps</h2><p>Follow the guided order or jump between components. PSU is chosen after the main hardware; Case Fans are optional.</p></div><div class="steps" id="steps"></div></aside><section class="panel catalogue"><div class="catalogue-toolbar"><input class="search" id="search" type="search" placeholder="Search this category…" autocomplete="off"><label class="toggle"><input id="compatible-only" type="checkbox" checked>Hide incompatible</label></div><div class="category-head"><h2 id="category-title">Processor</h2><span id="product-count"></span></div><div class="products" id="products"><div class="empty">Loading catalogue…</div></div></section><aside class="panel summary sticky"><div class="panel-head"><h2>Your build</h2><p>Prototype total · not a quotation.</p></div><div class="build-list" id="build-list"></div><div class="total"><span>Parts total</span><strong id="total">R0</strong></div><div class="power" id="power"></div><div class="report" id="report"></div><button class="clear" id="clear-build">Clear build</button></aside></section></main><script type="module" src="./js/app.js?v=0.7.8.1"></script></body></html>
+
+.mode-shell{margin-bottom:18px}.mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.mode-card{padding:22px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);text-align:left}.mode-card.primary{border-color:rgba(47,230,200,.35);background:rgba(47,230,200,.055)}.mode-card strong{display:block;margin:8px 0 6px;font-size:20px}.mode-card small{display:block;color:var(--muted);font-size:12px;line-height:1.6}.mode-kicker{color:var(--teal);font:700 8px var(--mono);letter-spacing:.12em;text-transform:uppercase}.guided-panel{margin-bottom:24px}.guided-head{padding:24px;border-bottom:1px solid var(--line)}.guided-head h2{font-size:26px}.guided-head p{max-width:720px;margin-top:10px;color:var(--muted);font-size:13px;line-height:1.65}.guided-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:24px}.guided-form label span{display:block;margin-bottom:7px;color:#9cb6b1;font:700 8px var(--mono);letter-spacing:.08em;text-transform:uppercase}.guided-form select{width:100%;padding:12px;border:1px solid var(--line);border-radius:6px;background:#071012;color:var(--text);font:11px var(--mono)}.guided-actions{grid-column:1/-1;display:flex;gap:10px}.guided-actions .flow-btn{flex:1}.guided-actions .secondary{border-color:var(--line);background:transparent;color:var(--muted)}.guided-result{padding:24px;border-top:1px solid var(--line)}.guided-result h3{margin-bottom:10px;font-size:20px}.guided-result p{color:var(--muted);font-size:12px;line-height:1.7}.guided-result .profile-line{margin:12px 0;padding:12px;border:1px solid rgba(47,230,200,.2);border-radius:6px;background:rgba(47,230,200,.04);color:#a7c6c1;font:9px var(--mono);line-height:1.7}.guided-result .flow-btn{width:100%;margin-top:14px}
+@media(max-width:700px){.mode-grid,.guided-form{grid-template-columns:1fr}.guided-actions{flex-direction:column}.mode-card{padding:18px}}
+
+.guided-result-grid{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:18px;margin-top:16px}.guided-parts{display:grid;gap:8px}.guided-part{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:12px;align-items:start;padding:12px;border:1px solid var(--line);border-radius:6px;background:#091113}.guided-part .gp-cat{color:var(--muted);font:700 8px var(--mono);letter-spacing:.08em;text-transform:uppercase}.guided-part b{display:block;font-size:12px}.guided-part small{display:block;margin-top:4px;color:#708984;font-size:9px;line-height:1.5}.guided-part .gp-price{color:var(--teal);font:700 10px var(--mono);white-space:nowrap}.guided-side{display:grid;gap:10px;align-content:start}.guided-stat{padding:14px;border:1px solid var(--line);border-radius:6px;background:#091113}.guided-stat span{display:block;color:var(--muted);font:700 8px var(--mono);text-transform:uppercase}.guided-stat strong{display:block;margin-top:5px;font-size:20px}.guided-stat small{display:block;margin-top:5px;color:#708984;font:8px var(--mono);line-height:1.5}.guided-notes{padding:14px;border:1px solid rgba(47,230,200,.2);border-radius:6px;background:rgba(47,230,200,.035);color:#9eb8b3;font:9px var(--mono);line-height:1.7}.guided-result-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.guided-result-actions .flow-btn{margin:0}.guided-result-actions .secondary{border-color:var(--line);background:transparent;color:var(--muted)}.picker-profile{margin-bottom:12px;padding:10px 12px;border:1px solid rgba(47,230,200,.22);border-radius:6px;background:rgba(47,230,200,.04);color:#9fbab5;font:8px var(--mono);line-height:1.55}.summary-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 18px 0}.summary-action{padding:10px;border:1px solid var(--line);border-radius:5px;background:transparent;color:var(--muted);font:700 8px var(--mono);text-transform:uppercase}.summary-action.primary{border-color:rgba(47,230,200,.3);color:var(--teal)}@media(max-width:700px){.guided-result-grid{grid-template-columns:1fr}.guided-part{grid-template-columns:1fr auto}.guided-part .gp-cat,.guided-part small{grid-column:1/-1}.guided-result-actions,.summary-actions{grid-template-columns:1fr}}
+</style></head><body><header class="topbar"><div class="wrap"><div class="logo"><img src="../brand/VoltTech_Emblem_Transparent.png" alt="VoltTech"><b>VOLTTECH BUILD</b></div><span class="prototype">Private Prototype v0.9.0.1</span></div></header><main class="wrap"><section class="hero"><span class="eyebrow">Commerce Backbone / Test Environment</span><h1>Build a PC.<br>Check everything.</h1><p>VoltTech Build v0.9.0 is an end-to-end preview with Guided Build recommendations, automatic compatibility-aware part selection, the Advanced Parts Picker and final build review.</p><div class="notice" id="catalogue-note">Loading v0.9.0 catalogue…</div></section>
+<section class="mode-shell" id="mode-shell">
+  <div class="mode-grid">
+    <button class="mode-card primary" type="button" id="choose-guided">
+      <span class="mode-kicker">Recommended</span>
+      <strong>Guided Build</strong>
+      <small>Tell VoltTech what the PC is for, your budget and performance target. We’ll use that profile to guide the build.</small>
+    </button>
+    <button class="mode-card" type="button" id="choose-advanced">
+      <span class="mode-kicker">Full control</span>
+      <strong>Advanced Parts Picker</strong>
+      <small>Choose every component yourself with compatibility, power and capacity checks active.</small>
+    </button>
+  </div>
+</section>
+
+<section class="guided-panel panel" id="guided-panel" hidden>
+  <div class="guided-head">
+    <span class="eyebrow">Guided Build</span>
+    <h2>What should this PC be built for?</h2>
+    <p>Answer a few questions and VoltTech will generate a complete compatibility-aware starting build from the current catalogue. You can accept it or change any individual part.</p>
+  </div>
+
+  <form id="guided-form" class="guided-form">
+    <label>
+      <span>Primary use</span>
+      <select name="useCase" required>
+        <option value="gaming">Gaming</option>
+        <option value="streaming">Gaming + Streaming</option>
+        <option value="creator">Content Creation</option>
+        <option value="workstation">Workstation / Professional</option>
+        <option value="office">Office / Home</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Budget</span>
+      <select name="budget" required>
+        <option value="10000-15000">R10 000 – R15 000</option>
+        <option value="15000-25000">R15 000 – R25 000</option>
+        <option value="25000-40000" selected>R25 000 – R40 000</option>
+        <option value="40000-60000">R40 000 – R60 000</option>
+        <option value="60000+">R60 000+</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Gaming / display target</span>
+      <select name="target" required>
+        <option value="1080p">1080p</option>
+        <option value="1440p" selected>1440p</option>
+        <option value="4k">4K</option>
+        <option value="unsure">Not sure yet</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Build priority</span>
+      <select name="priority" required>
+        <option value="value">Best value</option>
+        <option value="balanced" selected>Balanced</option>
+        <option value="performance">Maximum performance</option>
+        <option value="quiet">Quiet / efficient</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Performance target</span>
+      <select name="fpsTarget" required>
+        <option value="60">Smooth 60+ FPS</option>
+        <option value="120" selected>High refresh 120+ FPS</option>
+        <option value="144">Competitive 144+ FPS</option>
+        <option value="240">Esports 240+ FPS</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Starting storage</span>
+      <select name="storageNeed" required>
+        <option value="500">500GB</option>
+        <option value="1000" selected>1TB</option>
+        <option value="2000">2TB</option>
+        <option value="4000">4TB+</option>
+      </select>
+    </label>
+
+    <div class="guided-actions">
+      <button type="button" class="flow-btn secondary" id="guided-back">← Back</button>
+      <button type="submit" class="flow-btn">Create Build Profile →</button>
+    </div>
+  </form>
+
+  <div class="guided-result" id="guided-result" hidden></div>
+</section>
+
+<section class="layout" id="builder-layout" hidden><aside class="panel steps-panel sticky"><div class="panel-head"><h2>Build steps</h2><p>Follow the guided order or jump between components. PSU is chosen after the main hardware; Case Fans are optional.</p></div><div class="steps" id="steps"></div></aside><section class="panel catalogue"><div class="picker-profile" id="picker-profile" hidden></div><div class="catalogue-toolbar"><input class="search" id="search" type="search" placeholder="Search this category…" autocomplete="off"><label class="toggle"><input id="compatible-only" type="checkbox" checked>Hide incompatible</label></div><div class="category-head"><h2 id="category-title">Processor</h2><span id="product-count"></span></div><div class="products" id="products"><div class="empty">Loading catalogue…</div></div></section><aside class="panel summary sticky"><div class="panel-head"><h2>Your build</h2><p>Prototype total · not a quotation.</p></div><div class="build-list" id="build-list"></div><div class="total"><span>Parts total</span><strong id="total">R0</strong></div><div class="power" id="power"></div><div class="report" id="report"></div><div class="summary-actions"><button class="summary-action primary" id="copy-build">Copy Build Summary</button><button class="summary-action" id="change-mode">Change Mode</button></div><button class="clear" id="clear-build">Clear build</button></aside></section></main><script type="module" src="./js/app.js?v=0.9.0"></script></body></html>
