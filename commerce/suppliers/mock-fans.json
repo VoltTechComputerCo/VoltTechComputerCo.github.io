@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "0.7.3",
+  "supplier": {
+    "id": "mock-fans",
+    "name": "Mock Fan Supplier",
+    "mode": "temporary-test-data"
+  },
+  "offers": [
+    {
+      "productId": "vt-fan-arctic-p12-pwm-pst-single",
+      "supplierSku": "MOCK-FAN-001",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 189,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-13T16:00:00+02:00"
+    },
+    {
+      "productId": "vt-fan-arctic-p12-pwm-pst-5pack",
+      "supplierSku": "MOCK-FAN-002",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 699,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-13T16:00:00+02:00"
+    },
+    {
+      "productId": "vt-fan-cooler-master-sickleflow-120-argb-3pack",
+      "supplierSku": "MOCK-FAN-003",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 899,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-13T16:00:00+02:00"
+    },
+    {
+      "productId": "vt-fan-corsair-af120-elite-single",
+      "supplierSku": "MOCK-FAN-004",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 399,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-13T16:00:00+02:00"
+    },
+    {
+      "productId": "vt-fan-noctua-nf-a12x25-pwm-single",
+      "supplierSku": "MOCK-FAN-005",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 649,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-13T16:00:00+02:00"
+    },
+    {
+      "productId": "vt-fan-arctic-p14-pwm-pst-single",
+      "supplierSku": "MOCK-FAN-006",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 229,
+      "currency": "ZAR",
+      "stock": 3,
+      "stockStatus": "low-stock",
+      "lastChecked": "2026-09-13T16:00:00+02:00"
+    },
+    {
+      "productId": "vt-fan-arctic-p14-pwm-pst-5pack",
+      "supplierSku": "MOCK-FAN-007",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 799,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-13T16:00:00+02:00"
+    },
+    {
+      "productId": "vt-fan-bequiet-pure-wings-3-140-pwm",
+      "supplierSku": "MOCK-FAN-008",
+      "identifiers": {
+        "mpn": null,
+        "ean": null,
+        "upc": null,
+        "gtin": null
+      },
+      "price": 299,
+      "currency": "ZAR",
+      "stock": 8,
+      "stockStatus": "in-stock",
+      "lastChecked": "2026-09-13T16:00:00+02:00"
+    }
+  ]
+}
