@@ -1,6 +1,6 @@
 import {CATEGORY_ORDER,REQUIRED_CATEGORIES,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,hasCategory,isMultiCategory} from "./build-engine.js?v=0.7.7";
 import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.7.8.1";
-import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=1.0";
+import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=1.1";
 import {loadCatalogue} from "./data-loader.js?v=0.6";
 
 const e={
@@ -39,7 +39,7 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · private preview · temporary catalogue pricing and stock for testing only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · private preview · v1.1 component intelligence + budget optimizer · temporary pricing and stock only.`;
         render();
     }catch(x){
         console.error(x);
@@ -138,6 +138,7 @@ function renderGuidedProfile(){
         <aside class="guided-side">
           <div class="guided-stat"><span>Parts total</span><strong>${esc(formatMoney(r.total,currency))}</strong><small>${esc(budgetClass)} · selected budget ${esc(r.budget.label)}</small></div>
           <div class="guided-stat"><span>Power</span><strong>${esc(`${r.power.estimated} W`)}</strong><small>Preferred PSU headroom: ${esc(`${r.power.preferred} W`)}</small></div>
+          <div class="guided-stat"><span>Optimizer</span><strong style="font-size:14px">${esc(`${r.optimizer?.applied?.length||0} adjustments`)}</strong><small>${esc(`${r.optimizer?.evaluated||0} compatible CPU/GPU upgrade candidates evaluated · internal relative performance data`)}</small></div>
           <div class="guided-stat"><span>Compatibility</span><strong style="font-size:14px">${esc(confidence)}</strong><small>${esc((r.report.issues||[]).length)} conflicts · ${esc((r.report.warnings||[]).length)} attention items · ${esc((r.report.unknowns||[]).length)} unknowns</small></div>
           <div class="guided-notes">${(r.notes||[]).map(n=>`• ${esc(n)}`).join("<br>")}</div>
         </aside>
@@ -183,6 +184,7 @@ async function copyBuildSummary(){
         }
     }
     lines.push(`Parts total: ${formatMoney(calculateBuildTotal(build),currency)}`);
+    if(guidedRecommendation?.optimizer)lines.push(`Optimizer: ${guidedRecommendation.optimizer.applied.length} adjustments from ${guidedRecommendation.optimizer.evaluated} evaluated upgrade candidates`);
     const power=estimatePower(build); lines.push(`Power estimate: ${power.estimated} W · Preferred PSU headroom ${power.preferred} W`);
     lines.push("Preview pricing only — final availability and quotation must be confirmed by VoltTech.");
     try{await navigator.clipboard.writeText(lines.join("\n"));const old=e.copyBuild.textContent;e.copyBuild.textContent="Copied ✓";setTimeout(()=>e.copyBuild.textContent=old,1600);}
