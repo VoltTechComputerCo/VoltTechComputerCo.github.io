@@ -27,12 +27,12 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7.4 quantity + optional-fan flow · test pricing and stock only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7.5 limit-message + open-summary · test pricing and stock only.`;
         render();
     }catch(x){
         console.error(x);
         e.catalogueNote.textContent="Prototype catalogue could not be loaded.";
-        e.products.innerHTML='<div class="empty">Could not load v0.7.4 catalogue data.</div>';
+        e.products.innerHTML='<div class="empty">Could not load v0.7.5 catalogue data.</div>';
     }
 }
 
@@ -181,6 +181,62 @@ function fanCapacityInfo(){
     };
 }
 
+
+function addLimitMessage(product){
+    if(product.type==="storage"){
+        const board=build.motherboard;
+        if(!board)return "No additional drive can be added with the current build.";
+
+        const current=getSelections(build,"storage");
+        const kind=product.compatibility?.interface||product.specs?.interface;
+
+        if(kind==="NVMe"){
+            const used=current.filter(p=>(p.compatibility?.interface||p.specs?.interface)==="NVMe").length;
+            const max=Number(board.compatibility?.m2Slots ?? board.specs?.m2Slots ?? 0);
+            if(max){
+                if(used>=max)return `Limit reached: ${used} of ${max} M.2 slot${max===1?"":"s"} ${max===1?"is":"are"} already in use.`;
+                return `This drive would exceed the motherboard limit: ${used} of ${max} M.2 slots are currently in use, so only ${Math.max(0,max-used)} remain${max-used===1?"s":""}.`;
+            }
+        }
+
+        if(kind==="SATA"){
+            const used=current.filter(p=>(p.compatibility?.interface||p.specs?.interface)==="SATA").length;
+            const max=Number(board.compatibility?.sataPorts ?? board.specs?.sataPorts ?? 0);
+            if(max){
+                if(used>=max)return `Limit reached: ${used} of ${max} SATA port${max===1?"":"s"} ${max===1?"is":"are"} already in use.`;
+                return `This drive would exceed the motherboard limit: ${used} of ${max} SATA ports are currently in use, so only ${Math.max(0,max-used)} remain.`;
+            }
+        }
+    }
+
+    if(product.type==="fans"){
+        const pcCase=build.case;
+        if(!pcCase)return "Select a case before adding case fans.";
+
+        const max=Number(pcCase.compatibility?.fanMountCount ?? pcCase.specs?.fanMountCount ?? pcCase.compatibility?.maxCaseFans ?? pcCase.specs?.maxCaseFans ?? 0);
+        if(max){
+            const selected=getSelections(build,"fans").reduce((n,p)=>n+Number(p.specs?.fanCount||1),0);
+            const radiator=Number(build.cooler?.specs?.radiatorSizeMm||0);
+            const reserved=radiator?Math.ceil(radiator/120):0;
+            const used=selected+reserved;
+            const remain=Math.max(0,max-used);
+            const pack=Number(product.specs?.fanCount||1);
+
+            if(remain<=0){
+                const aioText=reserved?` (${reserved} reserved by the ${radiator}mm AIO)`:"";
+                return `Limit reached: all ${max} case-fan positions are already allocated${aioText}.`;
+            }
+
+            if(pack>remain){
+                const aioText=reserved?` The ${radiator}mm AIO reserves ${reserved} position${reserved===1?"":"s"}.`:"";
+                return `This ${pack}-fan pack will not fit: only ${remain} of ${max} fan positions remain.${aioText}`;
+            }
+        }
+    }
+
+    return "No additional unit can be added with the current build.";
+}
+
 function openCategory(c){
     if(!CATEGORY_ORDER.includes(c))return;
     activeCategory=c;
@@ -225,7 +281,7 @@ function card(p,displayResult,candidateResult,qty=0){
     const supplier=o?`${o.supplierName||o.source} · ${getStockLabel(o.stockStatus,o.freshness)}`:"No supplier offer";
     const cardIncompatible=!sel&&!candidateResult.compatible;
     const addBlocked=multi&&!candidateResult.compatible;
-    const addIssue=addBlocked?`Can’t add another: ${candidateResult.issues[0]?.text||"No additional unit can be added with the current build."}`:"";
+    const addIssue=addBlocked?addLimitMessage(p):"";
 
     let controls="";
     if(multi&&sel){
@@ -260,7 +316,7 @@ function renderBuild(){
                 const price=each?formatMoney(each*qty,currency):"Price unavailable";
                 return `<div class="build-detail-row"><span>${esc(product.name)}${qty>1?` ×${qty}`:""}</span><b>${esc(price)}</b></div>`;
             }).join("");
-            return `<details class="build-group"><summary><span>${esc(CATEGORY_LABELS[c])}</span><b>${esc(getCategorySummary(items,c))}</b></summary><div class="build-details">${details}</div></details>`;
+            return `<details class="build-group" open><summary><span>${esc(CATEGORY_LABELS[c])}</span><b>${esc(getCategorySummary(items,c))}</b></summary><div class="build-details">${details}</div></details>`;
         }
 
         const p=items[0];
