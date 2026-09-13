@@ -1,8 +1,21 @@
 {
-  "generated_at": "2026-09-13T03:58:32.603692Z",
+  "generated_at": "2026-09-13T04:29:26.414053Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
+    {
+      "login": "1handbanditza",
+      "display_name": "1HandBanditZA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/0d2fb852-a52a-425f-ba87-463feaee1cdd-profile_image-300x300.png",
+      "description": "Single Handed Life CHALLENGE RUNVariety turned Horror Streamer, why? Because entertainment",
+      "live": true,
+      "viewer_count": 0,
+      "game_name": "The Evil Within",
+      "title": "💀ONE HAND vs THE EVIL WITHIN! 😱 Can I Survive the Nightmare?! 🔥 | !discord",
+      "started_at": "2026-09-13T04:26:49Z",
+      "last_live_at": "2026-09-13T04:29:26.414053Z",
+      "activity_score": 13.02
+    },
     {
       "login": "zaffa_geek",
       "display_name": "Zaffa_Geek",
@@ -14,7 +27,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T00:10:56.915900Z",
-      "activity_score": 37.17
+      "activity_score": 34.94
     },
     {
       "login": "androvaza",
@@ -27,7 +40,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T22:47:51.115298Z",
-      "activity_score": 24.1
+      "activity_score": 22.65
     },
     {
       "login": "alialbaster",
@@ -40,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T01:19:36.826634Z",
-      "activity_score": 13.91
+      "activity_score": 13.08
     },
     {
       "login": "waldoliveza",
@@ -53,20 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T18:57:07.533386Z",
-      "activity_score": 7.49
-    },
-    {
-      "login": "1handbanditza",
-      "display_name": "1HandBanditZA",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/0d2fb852-a52a-425f-ba87-463feaee1cdd-profile_image-300x300.png",
-      "description": "Single Handed Life CHALLENGE RUNVariety turned Horror Streamer, why? Because entertainment",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": "2026-09-12T17:54:08.233652Z",
-      "activity_score": 5.34
+      "activity_score": 7.04
     },
     {
       "login": "chronic_za",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 2.14
+      "activity_score": 2.01
     },
     {
       "login": "spyro_za",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 1.78
+      "activity_score": 1.67
     },
     {
       "login": "alaskayeen",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T19:44:46.058522Z",
-      "activity_score": 1.57
+      "activity_score": 1.48
     },
     {
       "login": "chickenwingerz",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 0.43
+      "activity_score": 0.4
     },
     {
       "login": "zulumachinegaming",
