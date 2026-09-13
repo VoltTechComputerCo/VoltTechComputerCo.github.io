@@ -459,7 +459,7 @@ function checkCaseFans(fanValue, pcCase, cooler, issues, warnings) {
     }
 
     // If detailed mount-resource data exists, reserve radiator fan positions too.
-    const totalMounts=Number(pcCase.compatibility?.fanMountCount ?? pcCase.specs?.fanMountCount ?? 0);
+    const totalMounts=Number(pcCase.compatibility?.fanMountCount ?? pcCase.specs?.fanMountCount ?? pcCase.compatibility?.maxCaseFans ?? pcCase.specs?.maxCaseFans ?? 0);
     const radiatorSize=Number(cooler?.specs?.radiatorSizeMm||0);
     const radiatorFans=radiatorSize ? Math.ceil(radiatorSize/120) : 0;
     if(totalMounts && totalFans + radiatorFans > totalMounts){
