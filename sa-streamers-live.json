@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T18:14:14.279192Z",
+  "generated_at": "2026-09-13T18:31:12.252262Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,25 +9,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/fe4ae28d-9290-4929-91a2-bb2d539306d8-profile_image-300x300.png",
       "description": "Deadlock Streamer | Previously Apex, quit because I got ligamentitis in my fingers | Business email: thelemonsstreams@gmail.com",
       "live": true,
-      "viewer_count": 10,
+      "viewer_count": 9,
       "game_name": "Deadlock",
       "title": "#1 STEP SISTER ENJOYER SOLO QUEUES RANKED",
       "started_at": "2026-09-13T13:31:55Z",
-      "last_live_at": "2026-09-13T18:14:14.279192Z",
+      "last_live_at": "2026-09-13T18:31:12.252262Z",
       "activity_score": 100.0
-    },
-    {
-      "login": "waldoliveza",
-      "display_name": "WaldoLiveZA",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/f51a7788-d7cd-480d-b7fc-eecbb3967d23-profile_image-300x300.png",
-      "description": "",
-      "live": true,
-      "viewer_count": 4,
-      "game_name": "Special Events",
-      "title": "WOW BLIZZCON DAY 2 WATCH PARTY  @WaldoLiveZA on all socials",
-      "started_at": "2026-09-13T16:22:37Z",
-      "last_live_at": "2026-09-13T18:14:14.279192Z",
-      "activity_score": 61.7
     },
     {
       "login": "thendoplays",
@@ -35,12 +22,25 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/4820fda8-00f0-4ee8-bda0-75608c3c290a-profile_image-300x300.png",
       "description": "Gamer, Content creator, Esports talent, Entrepreneur & Award Winning Filmmaker | Enquiries:Thendomuk@gmail.com",
       "live": true,
-      "viewer_count": 0,
+      "viewer_count": 2,
       "game_name": "Apex Legends",
       "title": "NEW PC!!!!! Limit Tesing new Rig | @ThendoPlays on !socials | #SYNgg",
       "started_at": "2026-09-13T18:13:39Z",
+      "last_live_at": "2026-09-13T18:31:12.252262Z",
+      "activity_score": 15.52
+    },
+    {
+      "login": "waldoliveza",
+      "display_name": "WaldoLiveZA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/f51a7788-d7cd-480d-b7fc-eecbb3967d23-profile_image-300x300.png",
+      "description": "",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
       "last_live_at": "2026-09-13T18:14:14.279192Z",
-      "activity_score": 8.0
+      "activity_score": 58.0
     },
     {
       "login": "alaskayeen",
@@ -53,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T16:58:06.073562Z",
-      "activity_score": 57.1
+      "activity_score": 53.67
     },
     {
       "login": "cyndalive",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T15:21:29.519182Z",
-      "activity_score": 42.06
+      "activity_score": 39.54
     },
     {
       "login": "spyro_za",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T14:46:21.095742Z",
-      "activity_score": 34.94
+      "activity_score": 32.84
     },
     {
       "login": "dead_oryx",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T13:46:16.897309Z",
-      "activity_score": 25.64
+      "activity_score": 24.1
     },
     {
       "login": "1handbanditza",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T10:46:28.710675Z",
-      "activity_score": 10.77
+      "activity_score": 10.12
     },
     {
       "login": "zaffa_geek",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T00:10:56.915900Z",
-      "activity_score": 0.96
+      "activity_score": 0.9
     },
     {
       "login": "androvaza",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T22:47:51.115298Z",
-      "activity_score": 0.62
+      "activity_score": 0.58
     },
     {
       "login": "alialbaster",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T01:19:36.826634Z",
-      "activity_score": 0.36
+      "activity_score": 0.34
     },
     {
       "login": "zulumachinegaming",
