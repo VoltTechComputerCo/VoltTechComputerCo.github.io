@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>VoltTech Build — Preview v1.1</title><meta name="description" content="Private VoltTech PC parts compatibility, supplier-data and case-fan prototype."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="./styles.css"><style>.report-item.unknown{border-color:rgba(126,164,255,.24);background:rgba(126,164,255,.045);color:#9eb6ff}.product-unknown{margin-top:10px;color:#9eb6ff;font:8px var(--mono);line-height:1.5}.diagnostic-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.diagnostic-action{padding:6px 8px;border:1px solid currentColor;border-radius:4px;background:transparent;color:inherit;font:700 7px var(--mono);letter-spacing:.04em;text-transform:uppercase}.diagnostic-action:hover,.diagnostic-action:focus-visible{background:rgba(255,255,255,.07);outline:none}
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>VoltTech Build — Preview v1.2</title><meta name="description" content="Private VoltTech PC parts compatibility, supplier-data and case-fan prototype."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="./styles.css"><style>.report-item.unknown{border-color:rgba(126,164,255,.24);background:rgba(126,164,255,.045);color:#9eb6ff}.product-unknown{margin-top:10px;color:#9eb6ff;font:8px var(--mono);line-height:1.5}.diagnostic-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.diagnostic-action{padding:6px 8px;border:1px solid currentColor;border-radius:4px;background:transparent;color:inherit;font:700 7px var(--mono);letter-spacing:.04em;text-transform:uppercase}.diagnostic-action:hover,.diagnostic-action:focus-visible{background:rgba(255,255,255,.07);outline:none}
 .resource-note{margin:0 0 4px;padding:10px 12px;border:1px solid #1b302e;border-radius:6px;background:#081210;color:#91aaa6;font:9px var(--mono);line-height:1.5}.resource-note.good{border-color:rgba(83,224,154,.25);color:#9bd6cc}.resource-note.full{border-color:rgba(255,180,84,.3);color:var(--warn)}.qty-wrap{width:100%;margin-top:12px}.qty-label{margin-bottom:6px;color:#78928e;font:8px var(--mono);text-align:right}.qty-control{display:grid;grid-template-columns:40px 42px 40px;justify-content:end;align-items:center;gap:5px}.qty-control button{height:36px;border:1px solid rgba(47,230,200,.32);border-radius:5px;background:transparent;color:var(--teal);font:700 16px var(--mono)}.qty-control button:disabled{cursor:not-allowed;opacity:.35}.qty-control span{display:grid;height:36px;place-items:center;border:1px solid #203436;border-radius:5px;color:var(--text);font:700 10px var(--mono)}.limit-note{max-width:220px;margin-top:7px;margin-left:auto;color:var(--bad);font:8px var(--mono);line-height:1.45;text-align:right}.build-group{padding:10px 3px;border-bottom:1px solid #162426}.build-group summary{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;cursor:pointer;list-style:none}.build-group summary::-webkit-details-marker{display:none}.build-group summary span{color:var(--muted);font:8px var(--mono);text-transform:uppercase}.build-group summary b{max-width:160px;color:var(--text);font-size:10px;text-align:right}.build-details{margin-top:9px;padding-top:7px;border-top:1px dashed #1b2b2d}.build-detail-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:5px 0}.build-detail-row span{color:#9eb2ae;font:9px var(--display);text-transform:none}.build-detail-row b{color:#69827e;font:8px var(--mono);text-align:right}.select-btn:disabled{cursor:not-allowed;opacity:.45}.product.selected{opacity:1!important}.product.selected .product-error{display:block}
 @media(max-width:700px){.product-side{grid-template-columns:minmax(0,1fr) auto;gap:4px 12px}.price{grid-column:1/-1}.supplier{grid-column:1/-1}.select-btn{grid-column:1/-1;width:100%;margin-top:12px;white-space:normal;line-height:1.25;min-height:40px}.qty-wrap{grid-column:1/-1}.qty-label{text-align:left}.qty-control{justify-content:start}.limit-note{max-width:none;margin-left:0;text-align:left}.build-list{display:block}.build-item b,.build-group summary b{max-width:62vw}.build-detail-row{grid-template-columns:minmax(0,1fr) auto}}
 
@@ -46,12 +46,63 @@
   .guided-result h3{font-size:24px}
   .hero h1{font-size:40px}
 }
-</style></head><body><header class="topbar"><div class="wrap"><div class="logo"><img src="../brand/VoltTech_Emblem_Transparent.png" alt="VoltTech"><b>VOLTTECH BUILD</b></div><span class="prototype">Private Preview v1.1.1</span></div></header><main class="wrap"><section class="hero"><span class="eyebrow">PC BUILDER / PRIVATE PREVIEW</span><h1>Build your next PC.<br><span class="hero-accent">Without the guesswork.</span></h1><p>A smarter way to plan your next PC. Tell us what you want to do, set your budget, and get a compatible starting build you can customise component by component.</p><div class="notice" id="catalogue-note">Preparing the component catalogue…</div></section>
+
+/* ===== VoltTech Builder v1.2 — homepage design pass ===== */
+.builder-home-intro{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.7fr);gap:28px;align-items:center;margin:18px 0 34px;padding:38px 0 8px}
+.builder-home-copy h1{margin:10px 0 16px;font-size:clamp(42px,7vw,76px);line-height:.98;letter-spacing:-.055em}.builder-home-copy h1 span{color:var(--teal)}
+.builder-home-copy p{max-width:650px;color:var(--muted);font-size:15px;line-height:1.7}.builder-home-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.builder-ghost{background:transparent;color:var(--text)}
+.builder-system-card{position:relative;padding:18px;border:1px solid rgba(47,230,200,.26);border-radius:8px;background:linear-gradient(rgba(47,230,200,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(47,230,200,.035) 1px,transparent 1px),linear-gradient(160deg,rgba(47,230,200,.07),#071012 48%);background-size:18px 18px,18px 18px,auto;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.builder-system-card:before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--teal)}.system-label{display:block;margin-bottom:12px;color:var(--teal);font:700 8px var(--mono);letter-spacing:.14em}
+.system-row{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid #162426;font:9px var(--mono);color:#78928e}.system-row b{color:#83eabf}.system-row em{color:var(--warn);font-style:normal}
+.system-pulse{display:flex;align-items:center;gap:8px;margin-top:14px;color:#6f8984;font:8px var(--mono)}.system-pulse i{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(47,230,200,.1)}
+.mode-shell{padding-top:4px}.mode-card{background:linear-gradient(145deg,rgba(47,230,200,.045),rgba(13,21,23,.96) 52%);border-radius:7px}.mode-card strong{font-size:22px}.mode-card small{max-width:440px}
+.guided-panel{overflow:hidden;border-color:#1a2d2e!important}.guided-head{position:relative;padding:30px 28px;background:radial-gradient(circle at 85% 0,rgba(47,230,200,.10),transparent 35%)}.guided-head:after{content:"";position:absolute;left:28px;bottom:0;width:56px;height:2px;background:var(--teal)}
+.guided-head h2{margin-top:8px;font-size:clamp(26px,4vw,38px);line-height:1.08;letter-spacing:-.035em}.guided-head p{max-width:680px}
+.guided-form-v12{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:18px;background:#071012}.guided-question{padding:18px;border:1px solid #18292b;border-radius:7px;background:linear-gradient(145deg,#0b1517,#091113)}.guided-question.full{grid-column:1/-1}
+.question-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}.question-number{display:grid;place-items:center;flex:0 0 29px;height:29px;border:1px solid rgba(47,230,200,.28);border-radius:4px;color:var(--teal);font:700 8px var(--mono);background:rgba(47,230,200,.05)}
+.question-head b{display:block;color:#dfece9;font-size:14px}.question-head small{display:block;margin-top:3px;color:#69827e;font-size:10px;line-height:1.5}
+.choice-grid{display:grid;gap:8px}.choice-grid-5{grid-template-columns:repeat(5,minmax(0,1fr))}.choice-grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}.choice-grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.choice-card{position:relative;min-height:84px;padding:13px;border:1px solid #1a2d2f;border-radius:6px;background:#081012;color:var(--text);text-align:left;cursor:pointer;transition:.16s ease}
+.choice-card:hover,.choice-card:focus-visible{border-color:rgba(47,230,200,.45);outline:none;transform:translateY(-1px)}.choice-card.active{border-color:var(--teal);background:linear-gradient(145deg,rgba(47,230,200,.12),rgba(47,230,200,.035));box-shadow:inset 0 0 0 1px rgba(47,230,200,.06)}
+.choice-card.active:after{content:"✓";position:absolute;right:10px;top:9px;color:var(--teal);font:700 10px var(--mono)}.choice-card strong{display:block;padding-right:18px;font-size:11px}.choice-card span{display:block;margin-top:5px;color:#647e79;font-size:9px;line-height:1.4}.choice-card.active span{color:#89a7a1}
+.budget-question{background:radial-gradient(circle at 90% 10%,rgba(47,230,200,.07),transparent 30%),linear-gradient(145deg,#0b1517,#091113)}.budget-display{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:2px 0 14px}
+.budget-display span{color:#738d88;font:8px var(--mono);letter-spacing:.08em;text-transform:uppercase}.budget-display output{color:var(--teal);font:700 clamp(24px,5vw,42px) var(--display);letter-spacing:-.04em}
+.budget-slider{width:100%;height:7px;border-radius:999px;appearance:none;-webkit-appearance:none;background:linear-gradient(90deg,var(--teal) var(--budget-progress,22%),#1b2c2e var(--budget-progress,22%));outline:none}
+.budget-slider::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;border:5px solid #071012;background:var(--teal);box-shadow:0 0 0 1px var(--teal),0 0 22px rgba(47,230,200,.24);cursor:pointer}
+.budget-slider::-moz-range-thumb{width:18px;height:18px;border-radius:50%;border:5px solid #071012;background:var(--teal);box-shadow:0 0 0 1px var(--teal);cursor:pointer}
+.budget-scale{display:flex;justify-content:space-between;margin-top:11px;color:#516965;font:7px var(--mono)}.primary-action{background:var(--teal)!important;color:#03110f!important;border-color:var(--teal)!important}
+.guided-result{background:radial-gradient(circle at 90% 0,rgba(47,230,200,.075),transparent 32%),#081012}.guided-part{border-radius:7px}.guided-stat{border-radius:7px}.picker-profile{border-left:3px solid var(--teal)}
+@media(max-width:860px){.builder-home-intro{grid-template-columns:1fr}.builder-system-card{max-width:520px}.choice-grid-5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.builder-home-intro{padding-top:16px;margin-bottom:26px}.builder-home-copy h1{font-size:48px}.builder-home-actions{display:grid;grid-template-columns:1fr}.builder-home-actions .btn{width:100%}.guided-form-v12{grid-template-columns:1fr;padding:10px}.guided-question,.guided-question.full{grid-column:1}.choice-grid-5,.choice-grid-4,.choice-grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.choice-card{min-height:76px;padding:11px}.budget-display{align-items:center}.budget-scale span:nth-child(even){display:none}}
+@media(max-width:390px){.choice-grid-5,.choice-grid-4,.choice-grid-2{grid-template-columns:1fr 1fr}.choice-card strong{font-size:10px}.builder-home-copy h1{font-size:42px}}
+
+</style></head><body><header class="topbar"><div class="wrap"><div class="logo"><img src="../brand/VoltTech_Emblem_Transparent.png" alt="VoltTech"><b>VOLTTECH BUILD</b></div><span class="prototype">Private Preview v1.2.1</span></div></header><main class="wrap"><section class="hero"><span class="eyebrow">PC BUILDER / PRIVATE PREVIEW</span><h1>Build your next PC.<br><span class="hero-accent">Without the guesswork.</span></h1><p>A smarter way to plan your next PC. Tell us what you want to do, set your budget, and get a compatible starting build you can customise component by component.</p><div class="notice" id="catalogue-note">Preparing the component catalogue…</div></section>
 <section class="builder-trust">
   <div><b>✓ Compatibility checked</b><span>Socket, memory, case, cooling and power rules</span></div>
   <div><b>⚡ Power-aware</b><span>PSU headroom calculated from your hardware</span></div>
   <div><b>↻ Fully customisable</b><span>Change any recommended component afterwards</span></div>
 </section>
+
+<section class="builder-home-intro">
+  <div class="builder-home-copy">
+    <span class="eyebrow">VoltTech PC Builder · Private Preview</span>
+    <h1>Build smarter.<br><span>Not harder.</span></h1>
+    <p>Start with a guided recommendation or take full control. VoltTech checks compatibility, power, physical fit and budget logic while you build.</p>
+    <div class="builder-home-actions">
+      <button type="button" class="btn primary" id="hero-guided">Start Guided Build</button>
+      <button type="button" class="btn builder-ghost" id="hero-advanced">Choose My Own Parts</button>
+    </div>
+  </div>
+  <div class="builder-system-card" aria-label="VoltTech builder system status">
+    <span class="system-label">SYSTEM STATUS</span>
+    <div class="system-row"><span>Compatibility engine</span><b>ONLINE</b></div>
+    <div class="system-row"><span>Power modelling</span><b>ONLINE</b></div>
+    <div class="system-row"><span>Component intelligence</span><b>v1.1</b></div>
+    <div class="system-row"><span>Supplier data</span><em>TEST DATA</em></div>
+    <div class="system-pulse"><i></i><span>Private development preview</span></div>
+  </div>
+</section>
+
 <section class="mode-shell" id="mode-shell">
   <div class="mode-grid">
     <button class="mode-card primary" type="button" id="choose-guided">
@@ -69,81 +120,112 @@
 
 <section class="guided-panel panel" id="guided-panel" hidden>
   <div class="guided-head">
-    <span class="eyebrow">Guided Build</span>
-    <h2>Tell us what you need from your PC</h2>
-    <p>No jargon required. Choose what matters to you and we’ll create a sensible starting point. You can change every part afterwards.</p>
+    <span class="eyebrow">VoltTech Guided Build</span>
+    <h2>Tell us what you want. <span class="hero-accent">We’ll handle the technical part.</span></h2>
+    <p>A simple six-step build brief backed by compatibility checks, power calculations and the VoltTech component-intelligence engine.</p>
   </div>
 
-  <form id="guided-form" class="guided-form">
-    <label>
-      <span>Primary use</span>
-      <select name="useCase" required>
-        <option value="gaming">Gaming</option>
-        <option value="streaming">Gaming + Streaming</option>
-        <option value="creator">Content Creation</option>
-        <option value="workstation">Workstation / Professional</option>
-        <option value="office">Office / Home</option>
-      </select>
-    </label>
+  <form id="guided-form" class="guided-form guided-form-v12">
+    <div class="guided-question full">
+      <div class="question-head">
+        <span class="question-number">01</span>
+        <div>
+          <b>What is this PC mainly for?</b>
+          <small>Pick the closest match. You can still customize every part later.</small>
+        </div>
+      </div>
+      <input type="hidden" name="useCase" value="gaming">
+      <div class="choice-grid choice-grid-5" data-choice-group="useCase">
+        <button type="button" class="choice-card active" data-value="gaming"><strong>Gaming</strong><span>Best gaming performance for the money.</span></button>
+        <button type="button" class="choice-card" data-value="streaming"><strong>Gaming + Streaming</strong><span>Play and broadcast from one system.</span></button>
+        <button type="button" class="choice-card" data-value="creator"><strong>Content Creation</strong><span>Editing, rendering and creative work.</span></button>
+        <button type="button" class="choice-card" data-value="workstation"><strong>Workstation</strong><span>Heavy professional workloads.</span></button>
+        <button type="button" class="choice-card" data-value="office"><strong>Office / Home</strong><span>Fast everyday productivity.</span></button>
+      </div>
+    </div>
 
-    <label>
-      <span>Budget</span>
-      <select name="budget" required>
-        <option value="10000-15000">R10 000 – R15 000</option>
-        <option value="15000-25000">R15 000 – R25 000</option>
-        <option value="25000-40000" selected>R25 000 – R40 000</option>
-        <option value="40000-60000">R40 000 – R60 000</option>
-        <option value="60000+">R60 000+</option>
-      </select>
-    </label>
+    <div class="guided-question full budget-question">
+      <div class="question-head">
+        <span class="question-number">02</span>
+        <div>
+          <b>What is the most you want to spend?</b>
+          <small>Move in R5 000 steps. VoltTech will try to stay under this ceiling instead of treating a huge price band as one budget.</small>
+        </div>
+      </div>
+      <div class="budget-display">
+        <span>Maximum build budget</span>
+        <output id="budget-output" for="budget-slider">R30 000</output>
+      </div>
+      <input id="budget-slider" class="budget-slider" type="range" name="budget" min="10000" max="100000" step="5000" value="30000" aria-label="Maximum build budget">
+      <div class="budget-scale"><span>R10k</span><span>R25k</span><span>R50k</span><span>R75k</span><span>R100k</span></div>
+    </div>
 
-    <label>
-      <span>Gaming / display target</span>
-      <select name="target" required>
-        <option value="1080p">1080p</option>
-        <option value="1440p" selected>1440p</option>
-        <option value="4k">4K</option>
-        <option value="unsure">Not sure yet</option>
-      </select>
-    </label>
+    <div class="guided-question full">
+      <div class="question-head">
+        <span class="question-number">03</span>
+        <div>
+          <b>What display are we building around?</b>
+          <small>This changes how aggressively the budget is weighted toward the graphics card.</small>
+        </div>
+      </div>
+      <input type="hidden" name="target" value="1440p">
+      <div class="choice-grid choice-grid-4" data-choice-group="target">
+        <button type="button" class="choice-card" data-value="1080p"><strong>1080p</strong><span>High FPS / value.</span></button>
+        <button type="button" class="choice-card active" data-value="1440p"><strong>1440p</strong><span>Sharp + high refresh.</span></button>
+        <button type="button" class="choice-card" data-value="4k"><strong>4K</strong><span>Maximum visual quality.</span></button>
+        <button type="button" class="choice-card" data-value="unsure"><strong>Not sure</strong><span>We will balance it.</span></button>
+      </div>
+    </div>
 
-    <label>
-      <span>Build priority</span>
-      <select name="priority" required>
-        <option value="value">Best value</option>
-        <option value="balanced" selected>Balanced</option>
-        <option value="performance">Maximum performance</option>
-        <option value="quiet">Quiet / efficient</option>
-      </select>
-    </label>
+    <div class="guided-question">
+      <div class="question-head">
+        <span class="question-number">04</span>
+        <div><b>Performance target</b><small>Especially useful for gaming builds.</small></div>
+      </div>
+      <input type="hidden" name="fpsTarget" value="120">
+      <div class="choice-grid choice-grid-2" data-choice-group="fpsTarget">
+        <button type="button" class="choice-card" data-value="60"><strong>60+ FPS</strong><span>Smooth</span></button>
+        <button type="button" class="choice-card active" data-value="120"><strong>120+ FPS</strong><span>High refresh</span></button>
+        <button type="button" class="choice-card" data-value="144"><strong>144+ FPS</strong><span>Competitive</span></button>
+        <button type="button" class="choice-card" data-value="240"><strong>240+ FPS</strong><span>Esports</span></button>
+      </div>
+    </div>
 
-    <label>
-      <span>Performance target</span>
-      <select name="fpsTarget" required>
-        <option value="60">Smooth 60+ FPS</option>
-        <option value="120" selected>High refresh 120+ FPS</option>
-        <option value="144">Competitive 144+ FPS</option>
-        <option value="240">Esports 240+ FPS</option>
-      </select>
-    </label>
+    <div class="guided-question">
+      <div class="question-head">
+        <span class="question-number">05</span>
+        <div><b>What matters most?</b><small>This affects where spare budget goes.</small></div>
+      </div>
+      <input type="hidden" name="priority" value="balanced">
+      <div class="choice-grid choice-grid-2" data-choice-group="priority">
+        <button type="button" class="choice-card" data-value="value"><strong>Best value</strong><span>Performance per rand</span></button>
+        <button type="button" class="choice-card active" data-value="balanced"><strong>Balanced</strong><span>No obvious weak link</span></button>
+        <button type="button" class="choice-card" data-value="performance"><strong>Max performance</strong><span>Push the budget harder</span></button>
+        <button type="button" class="choice-card" data-value="quiet"><strong>Quiet / efficient</strong><span>Lower noise and power</span></button>
+      </div>
+    </div>
 
-    <label>
-      <span>Starting storage</span>
-      <select name="storageNeed" required>
-        <option value="500">500GB</option>
-        <option value="1000" selected>1TB</option>
-        <option value="2000">2TB</option>
-        <option value="4000">4TB+</option>
-      </select>
-    </label>
+    <div class="guided-question full">
+      <div class="question-head">
+        <span class="question-number">06</span>
+        <div><b>How much storage should we start with?</b><small>You can add more drives after the recommendation is generated.</small></div>
+      </div>
+      <input type="hidden" name="storageNeed" value="1000">
+      <div class="choice-grid choice-grid-4" data-choice-group="storageNeed">
+        <button type="button" class="choice-card" data-value="500"><strong>500GB</strong><span>Light use</span></button>
+        <button type="button" class="choice-card active" data-value="1000"><strong>1TB</strong><span>Good starting point</span></button>
+        <button type="button" class="choice-card" data-value="2000"><strong>2TB</strong><span>Large game library</span></button>
+        <button type="button" class="choice-card" data-value="4000"><strong>4TB+</strong><span>Heavy storage use</span></button>
+      </div>
+    </div>
 
-    <div class="guided-actions">
+    <div class="guided-actions full">
       <button type="button" class="flow-btn secondary" id="guided-back">← Back</button>
-      <button type="submit" class="flow-btn">Create Build Profile →</button>
+      <button type="submit" class="flow-btn primary-action">Build My Recommendation →</button>
     </div>
   </form>
 
   <div class="guided-result" id="guided-result" hidden></div>
 </section>
 
-<section class="layout" id="builder-layout" hidden><aside class="panel steps-panel sticky"><div class="panel-head"><h2>Build steps</h2><p>Follow the guided order or jump between components. PSU is chosen after the main hardware; Case Fans are optional.</p></div><div class="steps" id="steps"></div></aside><section class="panel catalogue"><div class="picker-profile" id="picker-profile" hidden></div><div class="catalogue-toolbar"><input class="search" id="search" type="search" placeholder="Search this category…" autocomplete="off"><label class="toggle"><input id="compatible-only" type="checkbox" checked>Hide incompatible</label></div><div class="category-head"><h2 id="category-title">Processor</h2><span id="product-count"></span></div><div class="products" id="products"><div class="empty">Loading catalogue…</div></div></section><aside class="panel summary sticky"><div class="panel-head"><h2>Your build</h2><p>Prototype total · not a quotation.</p></div><div class="build-list" id="build-list"></div><div class="total"><span>Parts total</span><strong id="total">R0</strong></div><div class="power" id="power"></div><div class="report" id="report"></div><div class="summary-actions"><button class="summary-action primary" id="copy-build">Copy Build Summary</button><button class="summary-action" id="change-mode">Change Mode</button></div><button class="clear" id="clear-build">Clear build</button></aside></section></main><script type="module" src="./js/app.js?v=1.1"></script></body></html>
+<section class="layout" id="builder-layout" hidden><aside class="panel steps-panel sticky"><div class="panel-head"><h2>Build steps</h2><p>Follow the guided order or jump between components. PSU is chosen after the main hardware; Case Fans are optional.</p></div><div class="steps" id="steps"></div></aside><section class="panel catalogue"><div class="picker-profile" id="picker-profile" hidden></div><div class="catalogue-toolbar"><input class="search" id="search" type="search" placeholder="Search this category…" autocomplete="off"><label class="toggle"><input id="compatible-only" type="checkbox" checked>Hide incompatible</label></div><div class="category-head"><h2 id="category-title">Processor</h2><span id="product-count"></span></div><div class="products" id="products"><div class="empty">Loading catalogue…</div></div></section><aside class="panel summary sticky"><div class="panel-head"><h2>Your build</h2><p>Prototype total · not a quotation.</p></div><div class="build-list" id="build-list"></div><div class="total"><span>Parts total</span><strong id="total">R0</strong></div><div class="power" id="power"></div><div class="report" id="report"></div><div class="summary-actions"><button class="summary-action primary" id="copy-build">Copy Build Summary</button><button class="summary-action" id="change-mode">Change Mode</button></div><button class="clear" id="clear-build">Clear build</button></aside></section></main><script type="module" src="./js/app.js?v=1.2"></script></body></html>
