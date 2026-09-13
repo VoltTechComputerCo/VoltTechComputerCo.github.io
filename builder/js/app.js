@@ -41,7 +41,7 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · private preview · v1.2 guided experience + R5k budget control · temporary pricing and stock only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · private preview · v1.4 storefront experience · temporary catalogue pricing and stock for testing only.`;
         render();
     }catch(x){
         console.error(x);
@@ -166,8 +166,8 @@ function renderGuidedProfile(){
     }).join("");
 
     e.guidedResult.innerHTML=`
-      <h3>Your VoltTech starting build</h3>
-      <p>This is a compatible starting point based on your answers. Prices and availability are still preview data, so this is not a final quotation.</p>
+      <h3>This is where it gets fun.</h3>
+      <p>Here’s the PC we’d start with for your goals and budget. We’ve already done the boring compatibility and power homework — now you can see what makes the build exciting, swap parts and make it yours. Preview pricing is still test data, not a final quotation.</p>
       <div class="guided-result-grid">
         <div class="guided-parts">${parts}</div>
         <aside class="guided-side">
@@ -245,6 +245,62 @@ function renderSteps(){
         return `<button class="${cl}" type="button" data-category="${c}"><span class="step-index">${complete?"✓":optional?"＋":i+1}</span><span class="step-label"><b>${esc(CATEGORY_LABELS[c])}${optional?" · Optional":""}</b><small>${complete?esc(getCategorySummary(selected,c)):optional?"Add only if needed":"Not selected"}</small></span></button>`;
     }).join("");
     e.steps.querySelectorAll("[data-category]").forEach(b=>b.addEventListener("click",()=>openCategory(b.dataset.category)));
+}
+
+
+function productPitch(product){
+    const n=String(product.name||"").toLowerCase();
+    const s=product.specs||{};
+    const type=product.type;
+    const bits=[];
+
+    if(type==="gpu"){
+        const vram=Number(s.vramGB||s.memoryGB||0);
+        if(vram>=16) bits.push("Serious GPU territory. The big VRAM pool gives demanding games and creative workloads plenty of breathing room.");
+        else if(vram>=12) bits.push("A strong sweet-spot graphics card for a premium gaming build, with enough VRAM to stay comfortable in heavier titles.");
+        else if(vram>=8) bits.push("A sensible gaming GPU that puts the money where you’ll actually feel it: frame rate and visual quality.");
+        else bits.push("A graphics card aimed at getting you into the game without letting the GPU swallow the entire build budget.");
+        const watts=Number(s.powerWatts||s.tdpWatts||0);
+        if(watts>=300) bits.push("It can be a bit thirsty though — very tech-YouTuber behaviour — so we’ll keep an eye on PSU headroom and cooling.");
+    } else if(type==="cpu"){
+        if(/x3d/.test(n)) bits.push("This is the kind of CPU gamers get excited about. The extra cache can be a monster advantage in the right games.");
+        else if(Number(s.cores||0)>=12) bits.push("Lots of cores, lots of headroom. Great when gaming is only half of what this PC needs to do.");
+        else bits.push("A solid foundation for the build. We’re looking for the point where gaming performance stays strong without wasting budget that could go to the GPU.");
+    } else if(type==="memory"){
+        const cap=Number(s.capacityGB||0);
+        if(cap>=64) bits.push("Huge memory headroom for serious creation, workstation loads and the kind of multitasking that makes 32GB look ordinary.");
+        else if(cap>=32) bits.push("32GB-class memory is where a modern premium gaming PC starts feeling properly comfortable — games, Discord, browser tabs and background apps included.");
+        else bits.push("Lean and sensible memory capacity for a value-focused build. Easy money to redirect toward the parts that move performance more.");
+    } else if(type==="storage"){
+        const cap=Number(s.capacityGB||0);
+        if(cap>=2000) bits.push("This is the ‘stop uninstalling games every weekend’ option. Plenty of fast space for a serious library.");
+        else bits.push("Fast everyday storage for Windows, your core apps and a healthy starting game library.");
+    } else if(type==="psu"){
+        const w=Number(s.wattage||s.watts||0);
+        if(w>=1000) bits.push("Big power with room to breathe. Ideal when the GPU is hungry and you don’t want the PSU living on the edge.");
+        else bits.push("The PSU is the part nobody brags about until a bad one ruins the day. We’d rather give the system clean, sensible headroom.");
+    } else if(type==="case"){
+        bits.push("The case is where the whole build finally gets a personality. We still care about airflow and clearance first — looking good is much easier when the hardware can breathe.");
+    } else if(type==="cooler"){
+        if(/360|280|aio|liquid/.test(n)) bits.push("Proper cooling hardware for a build that deserves to stay fast without sounding like it’s preparing for take-off.");
+        else bits.push("Cooling that focuses on the important stuff: sensible temperatures, manageable noise and enough thermal headroom for the CPU.");
+    } else if(type==="fans"){
+        bits.push("Not the glamorous purchase, but good airflow is one of those upgrades you appreciate every time the system stays cool and quiet.");
+    } else if(type==="motherboard"){
+        bits.push("Think of this as the build’s backbone. The goal is the right features and upgrade path without paying for motherboard flex you’ll never use.");
+    }
+    return bits.join(" ");
+}
+
+function productVibe(product){
+    const n=String(product.name||"").toLowerCase(), s=product.specs||{};
+    if(product.type==="gpu" && Number(s.vramGB||s.memoryGB||0)>=12) return "Gaming favourite";
+    if(product.type==="cpu" && /x3d/.test(n)) return "FPS hunter";
+    if(product.type==="memory" && Number(s.capacityGB||0)>=32) return "Sweet spot";
+    if(product.type==="storage" && Number(s.capacityGB||0)>=2000) return "Game library ready";
+    if(product.type==="psu" && Number(s.wattage||s.watts||0)>=1000) return "High-power build";
+    if(product.type==="cooler" && /360|280|aio|liquid/.test(n)) return "Thermal headroom";
+    return "VoltTech pick";
 }
 
 function renderProducts(){
@@ -502,7 +558,7 @@ function card(p,displayResult,candidateResult,qty=0){
         controls=`<button type="button" class="select-btn" data-select-product="${esc(p.id)}" ${!candidateResult.compatible?"disabled":""}>${candidateResult.compatible?(multi?"Add":"Select"):"Incompatible"}</button>`;
     }
 
-    return `<article class="product ${sel?"selected":""} ${cardIncompatible?"incompatible":""}"><div class="product-main"><span class="product-brand">${esc(p.brand||"")}</span><h3>${esc(p.name)}</h3><div class="product-meta">${meta}</div>${issues}${warnings}${unknowns}</div><div class="product-side"><div class="price">${esc(price)}</div><div class="supplier">${esc(supplier)}</div>${controls}</div></article>`;
+    return `<article class="product ${sel?"selected":""} ${cardIncompatible?"incompatible":""}"><div class="product-main"><span class="product-brand">${esc(p.brand||"")}</span><h3>${esc(p.name)}</h3><div class="product-meta">${meta}</div>${issues}${warnings}${unknowns}</div><div class="product-pitch"><b>Why it’s worth a look:</b> ${esc(productPitch(product))}</div><div class="product-side"><div class="price">${esc(price)}</div><div class="supplier">${esc(supplier)}</div>${controls}</div></article>`;
 }
 
 function renderBuild(){
