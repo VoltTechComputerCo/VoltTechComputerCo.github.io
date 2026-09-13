@@ -1,20 +1,33 @@
 {
-  "generated_at": "2026-09-13T00:10:56.915900Z",
+  "generated_at": "2026-09-13T00:37:16.336061Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
+    {
+      "login": "alialbaster",
+      "display_name": "alialbaster",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/edddc7fb-67b7-406d-8f0c-ffe3bd69ade2-profile_image-300x300.png",
+      "description": "Hey Everyone names Alialbaster but most people call me Ali ,I am a South African streamer with an awesome accent, I really do what I enjoy and that's playing games, I mainly focus on survival games but open to play any type of game there is.",
+      "live": true,
+      "viewer_count": 2,
+      "game_name": "Corsair Cove",
+      "title": "Oi! You there!....Yes You! Playing Corsair Cove",
+      "started_at": "2026-09-13T00:15:31Z",
+      "last_live_at": "2026-09-13T00:37:16.336061Z",
+      "activity_score": 8.0
+    },
     {
       "login": "zaffa_geek",
       "display_name": "Zaffa_Geek",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
       "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
-      "live": true,
-      "viewer_count": 18,
-      "game_name": "Project Zomboid",
-      "title": "[!Pink 0/4] !extend - Fresh Start",
-      "started_at": "2026-09-12T17:28:50Z",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
       "last_live_at": "2026-09-13T00:10:56.915900Z",
-      "activity_score": 100.0
+      "activity_score": 94.0
     },
     {
       "login": "androvaza",
@@ -27,7 +40,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T22:47:51.115298Z",
-      "activity_score": 64.86
+      "activity_score": 60.97
     },
     {
       "login": "waldoliveza",
@@ -40,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T18:57:07.533386Z",
-      "activity_score": 20.15
+      "activity_score": 18.94
     },
     {
       "login": "1handbanditza",
@@ -53,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T17:54:08.233652Z",
-      "activity_score": 14.4
+      "activity_score": 13.54
     },
     {
       "login": "chronic_za",
@@ -66,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 5.79
+      "activity_score": 5.44
     },
     {
       "login": "spyro_za",
@@ -79,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 4.81
+      "activity_score": 4.52
     },
     {
       "login": "alaskayeen",
@@ -92,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T19:44:46.058522Z",
-      "activity_score": 4.23
+      "activity_score": 3.98
     },
     {
       "login": "chickenwingerz",
@@ -105,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 1.16
+      "activity_score": 1.09
     },
     {
       "login": "agriopsgaming",
@@ -118,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T01:00:16.228552Z",
-      "activity_score": 0.13
+      "activity_score": 0.12
     },
     {
       "login": "zulumachinegaming",
@@ -1282,19 +1295,6 @@
       "display_name": "CrazyGreek_Gaming",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/f30681d8-a6d5-45d0-89c0-f3bacb57b3ab-profile_image-300x300.png",
       "description": "EX South African streamer.",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": null,
-      "activity_score": 0.0
-    },
-    {
-      "login": "cptsmugg",
-      "display_name": "CPTSmugg",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/5a3e59f9-341d-44f5-8473-23bf8e43e0e8-profile_image-300x300.png",
-      "description": "I am a casual gamer, playing some of my favorite titles with my friends and sharing our experiences.For me this is a hobby that i enjoy.This channels only goal is for our viewers to have fun and laugh with us.So i hope you enjoy the content.",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
