@@ -107,6 +107,13 @@ export function buildGuidedRecommendation(profile,catalogue,currency="ZAR"){
 function fail(message){return{ok:false,message}}
 
 function parseBudget(raw){
+  const numeric=Number(raw);
+  if(Number.isFinite(numeric)&&numeric>=10000){
+    const max=Math.round(numeric/5000)*5000;
+    const target=Math.round(max*.92);
+    const min=Math.round(max*.80);
+    return{min,max,target,label:`Up to R${fmt(max)}`};
+  }
   if(raw==="60000+")return{min:60000,max:90000,target:70000,label:"R60 000+"};
   const [min,max]=String(raw||"25000-40000").split("-").map(Number);
   return{min,max,target:Math.round((min+max)*.52),label:`R${fmt(min)} – R${fmt(max)}`};
@@ -208,8 +215,9 @@ function memoryScore(p,profile){
   const s=p.specs||{},cap=Number(s.capacityGB||0),mods=Number(s.modules||0);
   let target=["creator","workstation"].includes(profile.useCase)?32:16;
   if(profile.useCase==="streaming")target=32;
-  if(profile.budget==="40000-60000"||profile.budget==="60000+")target=Math.max(target,32);
-  if(profile.useCase==="workstation"&&profile.budget==="60000+")target=64;
+  const budgetCeiling=Number(profile.budget||0);
+  if(budgetCeiling>=40000)target=Math.max(target,32);
+  if(profile.useCase==="workstation"&&budgetCeiling>=60000)target=64;
 
   let v=80-Math.abs(cap-target)*2.5;
   if(cap===target)v+=30;
@@ -270,7 +278,7 @@ function optimizeCore(catalogue,initial,profile,budget,plan,optimizer){
   // Keep a realistic reserve for case/cooling/PSU/storage before spending spare
   // budget on CPU/GPU upgrades.
   const reserve=(plan.case||0)+(plan.cooler||0)+(plan.psu||0)+(plan.storage||0);
-  const ceiling=Math.max(0,budget.max*.96-reserve);
+  const ceiling=Math.max(0,budget.max*.94-reserve);
   const order=["creator","workstation"].includes(profile.useCase)?["cpu","gpu"]:["gpu","cpu"];
 
   for(let pass=0;pass<3;pass++){

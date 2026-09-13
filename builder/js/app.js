@@ -1,6 +1,6 @@
 import {CATEGORY_ORDER,REQUIRED_CATEGORIES,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,hasCategory,isMultiCategory} from "./build-engine.js?v=0.7.7";
 import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.7.8.1";
-import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=1.1";
+import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=1.2";
 import {loadCatalogue} from "./data-loader.js?v=0.6";
 
 const e={
@@ -23,6 +23,8 @@ const e={
     chooseAdvanced:document.getElementById("choose-advanced"),
     guidedBack:document.getElementById("guided-back"),
     guidedForm:document.getElementById("guided-form"),
+    heroGuided:document.getElementById("hero-guided"),
+    heroAdvanced:document.getElementById("hero-advanced"),
     guidedResult:document.getElementById("guided-result"),
     pickerProfile:document.getElementById("picker-profile"),
     copyBuild:document.getElementById("copy-build"),
@@ -39,7 +41,7 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · private preview · v1.1 component intelligence + budget optimizer · temporary pricing and stock only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · private preview · v1.2 guided experience + R5k budget control · temporary pricing and stock only.`;
         render();
     }catch(x){
         console.error(x);
@@ -48,7 +50,40 @@ async function init(){
     }
 }
 
+
+function setupGuidedControls(){
+    const form=e.guidedForm;
+    if(!form)return;
+
+    form.querySelectorAll("[data-choice-group]").forEach(group=>{
+        const name=group.dataset.choiceGroup;
+        const input=form.querySelector(`input[name="${name}"]`);
+        group.querySelectorAll(".choice-card").forEach(btn=>{
+            btn.addEventListener("click",()=>{
+                group.querySelectorAll(".choice-card").forEach(x=>x.classList.toggle("active",x===btn));
+                if(input)input.value=btn.dataset.value||"";
+            });
+        });
+    });
+
+    const slider=form.querySelector("#budget-slider");
+    const output=form.querySelector("#budget-output");
+    const syncBudget=()=>{
+        if(!slider||!output)return;
+        const value=Number(slider.value||30000);
+        output.textContent=`R${value.toLocaleString("en-ZA")}`;
+        const min=Number(slider.min||10000), max=Number(slider.max||100000);
+        const pct=((value-min)/(max-min))*100;
+        slider.style.setProperty("--budget-progress",`${Math.max(0,Math.min(100,pct))}%`);
+    };
+    slider?.addEventListener("input",syncBudget);
+    syncBudget();
+}
+
 function bind(){
+    setupGuidedControls();
+    e.heroGuided?.addEventListener("click",()=>e.chooseGuided?.click());
+    e.heroAdvanced?.addEventListener("click",()=>e.chooseAdvanced?.click());
     e.chooseGuided?.addEventListener("click",()=>{
         e.modeShell.hidden=true;
         e.builderLayout.hidden=true;
@@ -168,7 +203,7 @@ function updatePickerProfile(){
     if(!e.pickerProfile)return;
     if(!guidedProfile){e.pickerProfile.hidden=true;e.pickerProfile.textContent="";return;}
     e.pickerProfile.hidden=false;
-    e.pickerProfile.innerHTML=`<b>Your build goal:</b> ${esc(profileLabel(guidedProfile.useCase))} · ${esc(profileLabel(guidedProfile.target))} · ${esc(profileLabel(guidedProfile.priority))} · ${esc(guidedProfile.fpsTarget||"")}+ FPS target. Every part can still be changed manually.`;
+    e.pickerProfile.innerHTML=`<b>Your build goal:</b> ${esc(profileLabel(guidedProfile.useCase))} · max ${esc(formatMoney(Number(guidedProfile.budget||0),currency))} · ${esc(profileLabel(guidedProfile.target))} · ${esc(profileLabel(guidedProfile.priority))} · ${esc(guidedProfile.fpsTarget||"")}+ FPS target. Every part can still be changed manually.`;
 }
 
 async function copyBuildSummary(){
