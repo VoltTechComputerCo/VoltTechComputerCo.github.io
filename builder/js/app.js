@@ -27,12 +27,12 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7.3 mobile multi-part UX · test pricing and stock only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7.4 quantity + optional-fan flow · test pricing and stock only.`;
         render();
     }catch(x){
         console.error(x);
         e.catalogueNote.textContent="Prototype catalogue could not be loaded.";
-        e.products.innerHTML='<div class="empty">Could not load v0.7.3 catalogue data.</div>';
+        e.products.innerHTML='<div class="empty">Could not load v0.7.4 catalogue data.</div>';
     }
 }
 
@@ -92,8 +92,12 @@ function renderProducts(){
     }
 
     const resource=activeCategory==="fans"?fanCapacityInfo():null;
+    const coreDone=getCompletedCategoryCount(build)===REQUIRED_CATEGORIES.length;
+    const completionCue=activeCategory==="fans"&&coreDone
+        ? `<div class="resource-note good"><b>Core build complete ✓</b><br>Case fans are optional. Add them here if the case needs extra airflow, then review the final build below.</div>`
+        : "";
     const banner=resource?`<div class="resource-note ${resource.tone}">${esc(resource.text)}</div>`:"";
-    e.products.innerHTML=banner+visible.map(x=>card(x.product,x.display,x.candidate,x.qty)).join("");
+    e.products.innerHTML=completionCue+banner+visible.map(x=>card(x.product,x.display,x.candidate,x.qty)).join("");
 
     e.products.querySelectorAll("[data-select-product]").forEach(button=>button.addEventListener("click",()=>{
         const product=catalogue.find(x=>x.id===button.dataset.selectProduct);
@@ -111,17 +115,23 @@ function renderProducts(){
         const relevant=resultForCandidate(getCompatibility(product,build),product.type);
         if(!relevant.compatible)return;
 
+        const wasDone=getCompletedCategoryCount(build)===REQUIRED_CATEGORIES.length;
         build=selectProduct(build,product);
         const done=getCompletedCategoryCount(build)===REQUIRED_CATEGORIES.length;
+        const justCompleted=!wasDone&&done;
 
-        if(!multi && !done){
+        if(justCompleted){
+            activeCategory="fans";
+        }else if(!multi && !done){
             activeCategory=getNextCategory(product.type,build);
         }
 
         e.search.value="";
         render();
 
-        if(done && !multi){
+        if(justCompleted){
+            scrollCatalogueTop();
+        }else if(done && !multi){
             scrollDone();
         }else if(!multi){
             scrollCatalogueTop();
@@ -215,11 +225,16 @@ function card(p,displayResult,candidateResult,qty=0){
     const supplier=o?`${o.supplierName||o.source} · ${getStockLabel(o.stockStatus,o.freshness)}`:"No supplier offer";
     const cardIncompatible=!sel&&!candidateResult.compatible;
     const addBlocked=multi&&!candidateResult.compatible;
-    const addIssue=addBlocked?(candidateResult.issues[0]?.text||"No additional unit can be added with the current build."):"";
+    const addIssue=addBlocked?`Can’t add another: ${candidateResult.issues[0]?.text||"No additional unit can be added with the current build."}`:"";
 
     let controls="";
     if(multi&&sel){
-        controls=`<div class="qty-wrap"><div class="qty-label">Selected ×${qty}</div><div class="qty-control"><button type="button" aria-label="Remove one ${esc(p.name)}" data-remove-product="${esc(p.id)}" data-product-type="${esc(p.type)}">−</button><span>${qty}</span><button type="button" aria-label="Add another ${esc(p.name)}" data-select-product="${esc(p.id)}" ${addBlocked?"disabled":""}>＋</button></div>${addBlocked?`<div class="limit-note">${esc(addIssue)}</div>`:""}</div>`;
+        const selectedLabel=p.type==="fans"
+            ? `Selected ×${qty} · ${qty*Number(p.specs?.fanCount||1)} fan${qty*Number(p.specs?.fanCount||1)===1?"":"s"} total`
+            : p.type==="storage"
+                ? `Selected ×${qty} drive${qty===1?"":"s"}`
+                : `Selected ×${qty}`;
+        controls=`<div class="qty-wrap"><div class="qty-label">${esc(selectedLabel)}</div><div class="qty-control"><button type="button" aria-label="Remove one ${esc(p.name)}" data-remove-product="${esc(p.id)}" data-product-type="${esc(p.type)}">−</button><span>${qty}</span><button type="button" aria-label="Add another ${esc(p.name)}" data-select-product="${esc(p.id)}" ${addBlocked?"disabled":""}>＋</button></div>${addBlocked?`<div class="limit-note">${esc(addIssue)}</div>`:""}</div>`;
     }else{
         controls=`<button type="button" class="select-btn" data-select-product="${esc(p.id)}" ${!candidateResult.compatible?"disabled":""}>${candidateResult.compatible?(multi?"Add":"Select"):"Incompatible"}</button>`;
     }
