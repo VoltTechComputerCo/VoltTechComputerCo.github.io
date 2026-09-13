@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>VoltTech Build — Preview v1.3</title><meta name="description" content="Private VoltTech PC parts compatibility, supplier-data and case-fan prototype."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="./styles.css?v=1.3"><style>.report-item.unknown{border-color:rgba(126,164,255,.24);background:rgba(126,164,255,.045);color:#9eb6ff}.product-unknown{margin-top:10px;color:#9eb6ff;font:8px var(--mono);line-height:1.5}.diagnostic-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.diagnostic-action{padding:6px 8px;border:1px solid currentColor;border-radius:4px;background:transparent;color:inherit;font:700 7px var(--mono);letter-spacing:.04em;text-transform:uppercase}.diagnostic-action:hover,.diagnostic-action:focus-visible{background:rgba(255,255,255,.07);outline:none}
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>VoltTech Build — Preview v1.4</title><meta name="description" content="Private VoltTech PC parts compatibility, supplier-data and case-fan prototype."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="./styles.css?v=1.4"><style>.report-item.unknown{border-color:rgba(126,164,255,.24);background:rgba(126,164,255,.045);color:#9eb6ff}.product-unknown{margin-top:10px;color:#9eb6ff;font:8px var(--mono);line-height:1.5}.diagnostic-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.diagnostic-action{padding:6px 8px;border:1px solid currentColor;border-radius:4px;background:transparent;color:inherit;font:700 7px var(--mono);letter-spacing:.04em;text-transform:uppercase}.diagnostic-action:hover,.diagnostic-action:focus-visible{background:rgba(255,255,255,.07);outline:none}
 .resource-note{margin:0 0 4px;padding:10px 12px;border:1px solid #1b302e;border-radius:6px;background:#081210;color:#91aaa6;font:9px var(--mono);line-height:1.5}.resource-note.good{border-color:rgba(83,224,154,.25);color:#9bd6cc}.resource-note.full{border-color:rgba(255,180,84,.3);color:var(--warn)}.qty-wrap{width:100%;margin-top:12px}.qty-label{margin-bottom:6px;color:#78928e;font:8px var(--mono);text-align:right}.qty-control{display:grid;grid-template-columns:40px 42px 40px;justify-content:end;align-items:center;gap:5px}.qty-control button{height:36px;border:1px solid rgba(47,230,200,.32);border-radius:5px;background:transparent;color:var(--teal);font:700 16px var(--mono)}.qty-control button:disabled{cursor:not-allowed;opacity:.35}.qty-control span{display:grid;height:36px;place-items:center;border:1px solid #203436;border-radius:5px;color:var(--text);font:700 10px var(--mono)}.limit-note{max-width:220px;margin-top:7px;margin-left:auto;color:var(--bad);font:8px var(--mono);line-height:1.45;text-align:right}.build-group{padding:10px 3px;border-bottom:1px solid #162426}.build-group summary{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;cursor:pointer;list-style:none}.build-group summary::-webkit-details-marker{display:none}.build-group summary span{color:var(--muted);font:8px var(--mono);text-transform:uppercase}.build-group summary b{max-width:160px;color:var(--text);font-size:10px;text-align:right}.build-details{margin-top:9px;padding-top:7px;border-top:1px dashed #1b2b2d}.build-detail-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:5px 0}.build-detail-row span{color:#9eb2ae;font:9px var(--display);text-transform:none}.build-detail-row b{color:#69827e;font:8px var(--mono);text-align:right}.select-btn:disabled{cursor:not-allowed;opacity:.45}.product.selected{opacity:1!important}.product.selected .product-error{display:block}
 @media(max-width:700px){.product-side{grid-template-columns:minmax(0,1fr) auto;gap:4px 12px}.price{grid-column:1/-1}.supplier{grid-column:1/-1}.select-btn{grid-column:1/-1;width:100%;margin-top:12px;white-space:normal;line-height:1.25;min-height:40px}.qty-wrap{grid-column:1/-1}.qty-label{text-align:left}.qty-control{justify-content:start}.limit-note{max-width:none;margin-left:0;text-align:left}.build-list{display:block}.build-item b,.build-group summary b{max-width:62vw}.build-detail-row{grid-template-columns:minmax(0,1fr) auto}}
 
@@ -718,31 +718,372 @@ body:before{
   }
 }
 
-</style></head><body><header class="topbar"><div class="wrap"><div class="logo"><img src="../brand/VoltTech_Emblem_Transparent.png" alt="VoltTech"><b>VOLTTECH BUILD</b></div><span class="prototype">Private Preview v1.3.1</span></div></header><main class="wrap"><section class="hero"><span class="eyebrow">PC BUILDER / PRIVATE PREVIEW</span><h1>Build your next PC.<br><span class="hero-accent">Without the guesswork.</span></h1><p>A smarter way to plan your next PC. Tell us what you want to do, set your budget, and get a compatible starting build you can customise component by component.</p><div class="notice" id="catalogue-note">Preparing the component catalogue…</div></section>
+
+/* ============================================================
+   VOLTTECH BUILD v1.4 — PREMIUM STOREFRONT EXPERIENCE
+   Mobile-first commerce journey. Teal remains the brand signal,
+   with cyan/violet secondary light used only for depth.
+   ============================================================ */
+:root{
+  --shop-teal:#35f2d0;
+  --shop-cyan:#49bfff;
+  --shop-violet:#8c72ff;
+  --shop-bg:#030607;
+  --shop-panel:#071012;
+  --shop-panel-2:#0a1517;
+  --shop-text:#effaf7;
+  --shop-muted:#8ba29e;
+  --shop-line:rgba(114,220,204,.16);
+}
+
+/* richer geometric atmosphere */
+body{
+  background:
+    radial-gradient(700px 420px at 8% 2%,rgba(53,242,208,.13),transparent 58%),
+    radial-gradient(620px 420px at 98% 15%,rgba(73,191,255,.08),transparent 62%),
+    radial-gradient(700px 480px at 65% 75%,rgba(140,114,255,.035),transparent 64%),
+    #030607 !important;
+}
+body:before{
+  background-image:
+    linear-gradient(rgba(53,242,208,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(53,242,208,.025) 1px,transparent 1px) !important;
+  background-size:28px 28px !important;
+}
+body:after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(120deg,transparent 0 21%,rgba(53,242,208,.025) 21.1% 21.3%,transparent 21.4%),
+    linear-gradient(55deg,transparent 0 72%,rgba(73,191,255,.02) 72.1% 72.25%,transparent 72.35%);
+}
+
+/* One hero, not two */
+.hero{
+  position:relative;overflow:hidden;
+  padding:clamp(48px,8vw,88px) 0 34px;
+}
+.hero:before{
+  content:"";position:absolute;right:-90px;top:8px;width:330px;height:330px;pointer-events:none;
+  background:
+    linear-gradient(135deg,transparent 38%,rgba(53,242,208,.10) 38.2% 38.8%,transparent 39%),
+    linear-gradient(45deg,transparent 53%,rgba(73,191,255,.055) 53.2% 53.7%,transparent 53.9%);
+  border:1px solid rgba(53,242,208,.07);
+  transform:rotate(18deg);
+}
+.hero h1{
+  max-width:850px;
+  font-size:clamp(48px,9vw,92px) !important;
+  line-height:.91 !important;
+  letter-spacing:-.065em !important;
+  text-wrap:balance;
+}
+.hero h1 .accent,.hero-accent{
+  color:var(--shop-teal) !important;
+  text-shadow:0 0 18px rgba(53,242,208,.22),0 0 50px rgba(53,242,208,.08);
+}
+.hero p{
+  max-width:660px;
+  color:#91aaa5 !important;
+  font-size:clamp(14px,2vw,17px) !important;
+  line-height:1.72 !important;
+}
+.eyebrow{
+  color:var(--shop-teal) !important;
+  text-shadow:0 0 14px rgba(53,242,208,.20);
+}
+
+/* trust strip becomes useful proof, not filler */
+.builder-trust{
+  gap:8px !important;
+  margin:0 0 28px !important;
+}
+.builder-trust div{
+  position:relative;overflow:hidden;
+  padding:15px 15px 14px 17px !important;
+  border:1px solid var(--shop-line) !important;
+  background:linear-gradient(135deg,rgba(53,242,208,.055),rgba(7,16,18,.82) 58%) !important;
+  clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px);
+}
+.builder-trust div:before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--shop-teal);
+  box-shadow:0 0 14px rgba(53,242,208,.25);
+}
+
+/* premium journey cards */
+.mode-shell{margin:0 0 28px !important}
+.mode-grid{gap:10px !important}
+.mode-card{
+  min-height:190px !important;
+  padding:25px 64px 24px 22px !important;
+  border:1px solid rgba(93,196,182,.20) !important;
+  background:
+    radial-gradient(circle at 95% 0,rgba(53,242,208,.11),transparent 34%),
+    linear-gradient(145deg,#0a1718,#061012 70%) !important;
+  box-shadow:0 20px 45px rgba(0,0,0,.18) !important;
+}
+.mode-card strong{
+  max-width:330px;font-size:clamp(23px,4vw,31px) !important;letter-spacing:-.035em;
+}
+.mode-card small{
+  max-width:440px !important;color:#8ba39e !important;font-size:12px !important;line-height:1.65 !important;
+}
+.mode-card:after{
+  content:"→" !important;
+  width:40px !important;height:40px !important;
+  border-color:rgba(53,242,208,.32) !important;
+  color:var(--shop-teal) !important;
+  background:rgba(53,242,208,.045);
+  box-shadow:0 0 22px rgba(53,242,208,.06);
+}
+.mode-card:hover,.mode-card:focus-visible{
+  border-color:rgba(53,242,208,.55) !important;
+  box-shadow:0 22px 55px rgba(0,0,0,.25),0 0 30px rgba(53,242,208,.05) !important;
+}
+
+/* guided journey */
+.guided-panel{
+  border:1px solid rgba(91,198,183,.20) !important;
+  background:rgba(5,12,13,.94) !important;
+  box-shadow:0 28px 70px rgba(0,0,0,.28);
+}
+.guided-head{
+  padding:34px 30px !important;
+  background:
+    radial-gradient(circle at 90% 0,rgba(53,242,208,.14),transparent 34%),
+    linear-gradient(135deg,rgba(73,191,255,.025),transparent 45%) !important;
+}
+.guided-head h2{
+  font-size:clamp(31px,5vw,48px) !important;
+  max-width:760px !important;
+}
+.guided-head p{font-size:14px !important;line-height:1.75 !important}
+
+.guided-question{
+  padding:20px !important;
+  border:1px solid rgba(94,190,177,.17) !important;
+  background:
+    radial-gradient(circle at 100% 0,rgba(53,242,208,.045),transparent 35%),
+    linear-gradient(145deg,#0a1517,#061012) !important;
+}
+.question-head b{font-size:15px !important}
+.question-head small{font-size:11px !important;color:#819994 !important}
+
+/* choice cards are tactile interactive tiles */
+.choice-card{
+  min-height:98px !important;
+  padding:16px 14px !important;
+  border:1px solid rgba(104,185,174,.17) !important;
+  background:linear-gradient(145deg,#0b1517,#061012) !important;
+}
+.choice-card strong{font-size:12px !important}
+.choice-card span{font-size:10px !important;line-height:1.5 !important;color:#708a85 !important}
+.choice-card:hover,.choice-card:focus-visible{
+  border-color:rgba(53,242,208,.48) !important;
+  box-shadow:0 10px 28px rgba(0,0,0,.22),inset 0 0 28px rgba(53,242,208,.025);
+}
+.choice-card.active{
+  border-color:rgba(53,242,208,.72) !important;
+  background:
+    radial-gradient(circle at 95% 0,rgba(53,242,208,.14),transparent 38%),
+    linear-gradient(145deg,rgba(53,242,208,.11),#071113 70%) !important;
+  box-shadow:inset 3px 0 0 var(--shop-teal),0 0 22px rgba(53,242,208,.045) !important;
+}
+
+/* buttons: premium CTA system; no native-looking white rectangles */
+.btn,.flow-btn,.summary-action,.select-btn,.clear,.diagnostic-action{
+  -webkit-appearance:none !important;appearance:none !important;
+  font-family:var(--mono) !important;
+  text-transform:uppercase;
+}
+.flow-btn,.summary-action,.select-btn,.clear{
+  border:1px solid rgba(53,242,208,.34) !important;
+  background:
+    linear-gradient(105deg,rgba(53,242,208,.10),rgba(53,242,208,.025) 62%,transparent) !important;
+  color:#a9fff0 !important;
+  box-shadow:inset 2px 0 0 rgba(53,242,208,.55);
+}
+.flow-btn.primary-action{
+  min-height:58px !important;
+  background:linear-gradient(105deg,#1de0c1,#36f0d1 58%,#71f8e2) !important;
+  color:#02100d !important;
+  border-color:#68f7df !important;
+  box-shadow:0 0 0 1px rgba(53,242,208,.18),0 12px 34px rgba(53,242,208,.13) !important;
+}
+.flow-btn.primary-action:hover,.flow-btn.primary-action:focus-visible{
+  box-shadow:0 0 0 1px rgba(53,242,208,.35),0 16px 42px rgba(53,242,208,.22) !important;
+}
+.flow-btn.secondary,.summary-action:not(.primary),.clear{
+  border-color:rgba(127,162,157,.20) !important;
+  background:#071012 !important;
+  color:#839b97 !important;
+  box-shadow:inset 2px 0 0 #20383a !important;
+}
+.select-btn{
+  min-height:43px !important;
+  font-size:8px !important;
+}
+.select-btn:not(.remove):hover,.select-btn:not(.remove):focus-visible{
+  background:var(--shop-teal) !important;color:#03100e !important;
+}
+
+/* price slider gets a real illuminated track */
+.budget-slider{
+  height:7px !important;
+  background:linear-gradient(90deg,var(--shop-teal) var(--budget-progress,22%),rgba(111,151,145,.20) var(--budget-progress,22%)) !important;
+  box-shadow:0 0 18px rgba(53,242,208,.06) !important;
+}
+.budget-slider::-webkit-slider-thumb{
+  width:28px !important;height:34px !important;
+  background:var(--shop-teal) !important;
+  box-shadow:0 0 0 5px #071012,0 0 0 6px rgba(53,242,208,.62),0 0 26px rgba(53,242,208,.30) !important;
+}
+
+/* advanced picker becomes shopping, not database rows */
+.builder-layout{gap:16px !important}
+.catalogue-toolbar{
+  position:sticky;top:66px;z-index:8;
+  padding:12px !important;
+  background:rgba(4,10,11,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(53,242,208,.10);
+}
+.products{gap:10px !important}
+.product{
+  min-height:160px !important;
+  padding:18px !important;
+  border:1px solid rgba(96,180,169,.16) !important;
+  background:
+    radial-gradient(circle at 100% 0,rgba(73,191,255,.035),transparent 32%),
+    linear-gradient(145deg,#0a1517,#061012 72%) !important;
+  box-shadow:0 15px 35px rgba(0,0,0,.13);
+}
+.product:hover{
+  border-color:rgba(53,242,208,.38) !important;
+  box-shadow:0 18px 44px rgba(0,0,0,.22),0 0 24px rgba(53,242,208,.035) !important;
+}
+.product h3{
+  max-width:560px;
+  font-size:clamp(16px,2vw,20px) !important;
+  letter-spacing:-.025em;
+}
+.price{
+  color:var(--shop-teal) !important;
+  font-size:clamp(18px,3vw,23px) !important;
+  text-shadow:0 0 18px rgba(53,242,208,.10);
+}
+.meta{
+  background:rgba(5,13,14,.75) !important;
+  border-color:rgba(104,176,166,.13) !important;
+}
+
+/* new sales copy injected by JS */
+.product-pitch{
+  grid-column:1/-1;
+  margin-top:11px;padding:12px 13px;
+  border-left:2px solid rgba(53,242,208,.55);
+  background:linear-gradient(90deg,rgba(53,242,208,.055),transparent);
+  color:#a8bfba;
+  font-size:11px;line-height:1.62;
+}
+.product-pitch b{color:#e8f7f3;font-weight:600}
+.product-vibe{
+  display:inline-flex;align-items:center;gap:6px;
+  margin:0 0 8px;padding:5px 8px;
+  border:1px solid rgba(53,242,208,.17);
+  color:var(--shop-teal);
+  background:rgba(53,242,208,.035);
+  font:700 7px var(--mono);letter-spacing:.08em;text-transform:uppercase;
+}
+.product-vibe:before{content:"✦";text-shadow:0 0 10px var(--shop-teal)}
+
+/* category journey */
+.steps{
+  gap:5px !important;
+  padding:10px !important;
+}
+.step{
+  min-height:54px;
+  border:1px solid transparent !important;
+}
+.step.active{
+  border-color:rgba(53,242,208,.26) !important;
+  background:linear-gradient(90deg,rgba(53,242,208,.10),transparent) !important;
+  box-shadow:inset 3px 0 0 var(--shop-teal),0 0 18px rgba(53,242,208,.025) !important;
+}
+.step.complete .step-index{
+  color:#04110e !important;background:var(--shop-teal) !important;border-color:var(--shop-teal) !important;
+}
+
+/* final build becomes the premium checkout precursor */
+.summary-panel{
+  background:
+    radial-gradient(circle at 100% 0,rgba(53,242,208,.08),transparent 27%),
+    linear-gradient(180deg,#091416,#061012) !important;
+}
+.total strong{
+  color:var(--shop-teal) !important;
+  font-size:26px !important;
+  text-shadow:0 0 24px rgba(53,242,208,.18) !important;
+}
+.power{
+  border-color:rgba(53,242,208,.24) !important;
+  box-shadow:inset 0 0 35px rgba(53,242,208,.025);
+}
+
+/* guided recommendation feels like a reveal */
+.guided-result{
+  background:
+    radial-gradient(circle at 85% 0,rgba(53,242,208,.12),transparent 28%),
+    radial-gradient(circle at 100% 35%,rgba(73,191,255,.045),transparent 26%),
+    #061012 !important;
+}
+.guided-result h3{
+  color:var(--shop-text);
+  font-size:clamp(32px,6vw,54px) !important;
+  letter-spacing:-.045em;
+}
+.guided-part{
+  min-height:92px;
+  padding:15px !important;
+  background:linear-gradient(145deg,#0b1618,#071012) !important;
+}
+.guided-part b{font-size:14px !important}
+.guided-part small{font-size:10px !important;line-height:1.6 !important}
+.guided-stat strong{color:#eaf7f4}
+.guided-stat:first-child strong{color:var(--shop-teal) !important}
+
+/* mobile storefront */
+@media(max-width:700px){
+  .hero{padding:42px 0 24px}
+  .hero:before{right:-190px;top:20px}
+  .hero h1{font-size:clamp(48px,15vw,68px) !important}
+  .hero p{font-size:14px !important}
+  .builder-trust{grid-template-columns:1fr !important}
+  .mode-card{min-height:170px !important;padding:22px 58px 21px 18px !important}
+  .mode-card strong{font-size:26px !important}
+  .guided-head{padding:28px 18px !important}
+  .guided-form-v12{padding:8px !important}
+  .guided-question{padding:16px 12px !important}
+  .choice-card{min-height:96px !important}
+  .choice-card strong{font-size:11px !important}
+  .catalogue-toolbar{top:63px}
+  .product{min-height:0 !important;padding:16px 13px !important}
+  .product h3{font-size:17px !important}
+  .product-pitch{font-size:10.5px}
+  .select-btn{min-height:48px !important;font-size:8.5px !important}
+  .summary-action{min-height:50px !important}
+}
+
+/* Small motion makes the interface feel alive without becoming gamer-RGB */
+@keyframes vtPulse{0%,100%{opacity:.55}50%{opacity:1}}
+.system-pulse i{animation:vtPulse 2.1s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.system-pulse i{animation:none}}
+
+</style></head><body><header class="topbar"><div class="wrap"><div class="logo"><img src="../brand/VoltTech_Emblem_Transparent.png" alt="VoltTech"><b>VOLTTECH BUILD</b></div><span class="prototype">Private Preview v1.4.1</span></div></header><main class="wrap"><section class="hero"><span class="eyebrow">PC BUILDER / PRIVATE PREVIEW</span><h1>Build your next PC.<br><span class="hero-accent">Without the guesswork.</span></h1><p>A smarter way to plan your next PC. Tell us what you want to do, set your budget, and get a compatible starting build you can customise component by component.</p><div class="notice" id="catalogue-note">Preparing the component catalogue…</div></section>
 <section class="builder-trust">
   <div><b>✓ Compatibility checked</b><span>Socket, memory, case, cooling and power rules</span></div>
   <div><b>⚡ Power-aware</b><span>PSU headroom calculated from your hardware</span></div>
   <div><b>↻ Fully customisable</b><span>Change any recommended component afterwards</span></div>
-</section>
-
-<section class="builder-home-intro">
-  <div class="builder-home-copy">
-    <span class="eyebrow">VoltTech PC Builder · Private Preview</span>
-    <h1>Build smarter.<br><span>Not harder.</span></h1>
-    <p>Start with a guided recommendation or take full control. VoltTech checks compatibility, power, physical fit and budget logic while you build.</p>
-    <div class="builder-home-actions">
-      <button type="button" class="btn primary" id="hero-guided">Start Guided Build</button>
-      <button type="button" class="btn builder-ghost" id="hero-advanced">Choose My Own Parts</button>
-    </div>
-  </div>
-  <div class="builder-system-card" aria-label="VoltTech builder system status">
-    <span class="system-label">SYSTEM STATUS</span>
-    <div class="system-row"><span>Compatibility engine</span><b>ONLINE</b></div>
-    <div class="system-row"><span>Power modelling</span><b>ONLINE</b></div>
-    <div class="system-row"><span>Component intelligence</span><b>v1.1</b></div>
-    <div class="system-row"><span>Supplier data</span><em>TEST DATA</em></div>
-    <div class="system-pulse"><i></i><span>Private development preview</span></div>
-  </div>
 </section>
 
 <section class="mode-shell" id="mode-shell">
@@ -870,4 +1211,4 @@ body:before{
   <div class="guided-result" id="guided-result" hidden></div>
 </section>
 
-<section class="layout" id="builder-layout" hidden><aside class="panel steps-panel sticky"><div class="panel-head"><h2>Build steps</h2><p>Follow the guided order or jump between components. PSU is chosen after the main hardware; Case Fans are optional.</p></div><div class="steps" id="steps"></div></aside><section class="panel catalogue"><div class="picker-profile" id="picker-profile" hidden></div><div class="catalogue-toolbar"><input class="search" id="search" type="search" placeholder="Search this category…" autocomplete="off"><label class="toggle"><input id="compatible-only" type="checkbox" checked>Hide incompatible</label></div><div class="category-head"><h2 id="category-title">Processor</h2><span id="product-count"></span></div><div class="products" id="products"><div class="empty">Loading catalogue…</div></div></section><aside class="panel summary sticky"><div class="panel-head"><h2>Your build</h2><p>Prototype total · not a quotation.</p></div><div class="build-list" id="build-list"></div><div class="total"><span>Parts total</span><strong id="total">R0</strong></div><div class="power" id="power"></div><div class="report" id="report"></div><div class="summary-actions"><button class="summary-action primary" id="copy-build">Copy Build Summary</button><button class="summary-action" id="change-mode">Change Mode</button></div><button class="clear" id="clear-build">Clear build</button></aside></section></main><script type="module" src="./js/app.js?v=1.2"></script></body></html>
+<section class="layout" id="builder-layout" hidden><aside class="panel steps-panel sticky"><div class="panel-head"><h2>Build steps</h2><p>Follow the guided order or jump between components. PSU is chosen after the main hardware; Case Fans are optional.</p></div><div class="steps" id="steps"></div></aside><section class="panel catalogue"><div class="picker-profile" id="picker-profile" hidden></div><div class="catalogue-toolbar"><input class="search" id="search" type="search" placeholder="Search this category…" autocomplete="off"><label class="toggle"><input id="compatible-only" type="checkbox" checked>Hide incompatible</label></div><div class="category-head"><h2 id="category-title">Processor</h2><span id="product-count"></span></div><div class="products" id="products"><div class="empty">Loading catalogue…</div></div></section><aside class="panel summary sticky"><div class="panel-head"><h2>Your build</h2><p>Prototype total · not a quotation.</p></div><div class="build-list" id="build-list"></div><div class="total"><span>Parts total</span><strong id="total">R0</strong></div><div class="power" id="power"></div><div class="report" id="report"></div><div class="summary-actions"><button class="summary-action primary" id="copy-build">Copy Build Summary</button><button class="summary-action" id="change-mode">Change Mode</button></div><button class="clear" id="clear-build">Clear build</button></aside></section></main><script type="module" src="./js/app.js?v=1.4"></script></body></html>
