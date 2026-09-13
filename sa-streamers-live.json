@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T17:57:26.627465Z",
+  "generated_at": "2026-09-13T18:14:14.279192Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,11 +9,11 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/fe4ae28d-9290-4929-91a2-bb2d539306d8-profile_image-300x300.png",
       "description": "Deadlock Streamer | Previously Apex, quit because I got ligamentitis in my fingers | Business email: thelemonsstreams@gmail.com",
       "live": true,
-      "viewer_count": 14,
+      "viewer_count": 10,
       "game_name": "Deadlock",
       "title": "#1 STEP SISTER ENJOYER SOLO QUEUES RANKED",
       "started_at": "2026-09-13T13:31:55Z",
-      "last_live_at": "2026-09-13T17:57:26.627465Z",
+      "last_live_at": "2026-09-13T18:14:14.279192Z",
       "activity_score": 100.0
     },
     {
@@ -26,8 +26,21 @@
       "game_name": "Special Events",
       "title": "WOW BLIZZCON DAY 2 WATCH PARTY  @WaldoLiveZA on all socials",
       "started_at": "2026-09-13T16:22:37Z",
-      "last_live_at": "2026-09-13T17:57:26.627465Z",
-      "activity_score": 57.13
+      "last_live_at": "2026-09-13T18:14:14.279192Z",
+      "activity_score": 61.7
+    },
+    {
+      "login": "thendoplays",
+      "display_name": "ThendoPlays",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/4820fda8-00f0-4ee8-bda0-75608c3c290a-profile_image-300x300.png",
+      "description": "Gamer, Content creator, Esports talent, Entrepreneur & Award Winning Filmmaker | Enquiries:Thendomuk@gmail.com",
+      "live": true,
+      "viewer_count": 0,
+      "game_name": "Apex Legends",
+      "title": "NEW PC!!!!! Limit Tesing new Rig | @ThendoPlays on !socials | #SYNgg",
+      "started_at": "2026-09-13T18:13:39Z",
+      "last_live_at": "2026-09-13T18:14:14.279192Z",
+      "activity_score": 8.0
     },
     {
       "login": "alaskayeen",
@@ -40,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T16:58:06.073562Z",
-      "activity_score": 60.75
+      "activity_score": 57.1
     },
     {
       "login": "cyndalive",
@@ -53,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T15:21:29.519182Z",
-      "activity_score": 44.74
+      "activity_score": 42.06
     },
     {
       "login": "spyro_za",
@@ -66,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T14:46:21.095742Z",
-      "activity_score": 37.17
+      "activity_score": 34.94
     },
     {
       "login": "dead_oryx",
@@ -79,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T13:46:16.897309Z",
-      "activity_score": 27.28
+      "activity_score": 25.64
     },
     {
       "login": "1handbanditza",
@@ -92,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T10:46:28.710675Z",
-      "activity_score": 11.46
+      "activity_score": 10.77
     },
     {
       "login": "zaffa_geek",
@@ -105,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T00:10:56.915900Z",
-      "activity_score": 1.02
+      "activity_score": 0.96
     },
     {
       "login": "androvaza",
@@ -118,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T22:47:51.115298Z",
-      "activity_score": 0.66
+      "activity_score": 0.62
     },
     {
       "login": "alialbaster",
@@ -131,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T01:19:36.826634Z",
-      "activity_score": 0.38
+      "activity_score": 0.36
     },
     {
       "login": "zulumachinegaming",
@@ -567,19 +580,6 @@
       "display_name": "UGCZA",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/51120637-1a27-4740-9c51-b3de076ba35e-profile_image-300x300.png",
       "description": "UGC is a fighting gaming events company that produces commercial grade content and international quality Tournaments. Our goal is to grow the community and have relevant brands to partner with as we promote Esports and fighting game players.",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": null,
-      "activity_score": 0.0
-    },
-    {
-      "login": "thendoplays",
-      "display_name": "ThendoPlays",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/4820fda8-00f0-4ee8-bda0-75608c3c290a-profile_image-300x300.png",
-      "description": "Gamer, Content creator, Esports talent, Entrepreneur & Award Winning Filmmaker | Enquiries:Thendomuk@gmail.com",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
