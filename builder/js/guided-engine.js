@@ -26,11 +26,11 @@ export function buildGuidedRecommendation(profile,catalogue,currency="ZAR"){
   if(!cpu)return fail("No priced CPU was available for this profile."); build=selectProduct(build,cpu);
   reasons.cpu=profile.useCase==="creator"||profile.useCase==="workstation"
     ? `${cpu.specs?.cores||"Multi"}-core CPU weighted for heavier threaded workloads.`
-    : `Balanced CPU spend so the build keeps enough budget for graphics performance.`;
+    : `Strong enough for the target without overspending here at the expense of the graphics card.`;
 
   const board=pick("motherboard",plan.motherboard,p=>boardScore(p,profile));
   if(!board)return fail("No compatible motherboard was found."); build=selectProduct(build,board);
-  reasons.motherboard=`Matched to the ${cpu.specs?.socket||"CPU"} platform with sensible expansion for this budget.`;
+  reasons.motherboard=`Matched to the ${cpu.specs?.socket||"CPU"} platform with room for sensible upgrades.`;
 
   const memory=pick("memory",plan.memory,p=>memoryScore(p,profile));
   if(!memory)return fail("No compatible matched memory kit was found."); build=selectProduct(build,memory);
@@ -45,11 +45,11 @@ export function buildGuidedRecommendation(profile,catalogue,currency="ZAR"){
 
   const pcCase=pick("case",plan.case,p=>caseScore(p,profile));
   if(!pcCase)return fail("No compatible case was found."); build=selectProduct(build,pcCase);
-  reasons.case=`Selected after the core platform so motherboard, GPU and cooler fit can be checked together.`;
+  reasons.case=`Chosen to physically fit the selected motherboard, graphics card and cooling setup.`;
 
   const cooler=pick("cooler",plan.cooler,p=>coolerScore(p,cpu,profile));
   if(!cooler)return fail("No compatible CPU cooler was found."); build=selectProduct(build,cooler);
-  reasons.cooler=`Compatible with the CPU socket and selected case.`;
+  reasons.cooler=`Sized for the selected CPU while remaining compatible with the case.`;
 
   const prePsu=estimatePower({...build,psu:null});
   const psu=choosePsu(catalogue,build,plan.psu,prePsu,profile);
@@ -58,7 +58,7 @@ export function buildGuidedRecommendation(profile,catalogue,currency="ZAR"){
 
   const storage=chooseStorage(catalogue,build,plan.storage,profile);
   if(!storage)return fail("No compatible storage option was found."); build=selectProduct(build,storage);
-  reasons.storage=`Starting ${storage.specs?.interface||storage.compatibility?.interface||"storage"} drive sized around the profile. Extra drives can be added later.`;
+  reasons.storage=`A fast starting drive sized around your selected storage requirement. You can add more drives afterwards.`;
   reasons.fans="Optional. The guided build does not force extra case fans unless you choose to add them.";
 
   const report=validateBuild(build), power=estimatePower(build), total=calculateBuildTotal(build);
@@ -96,6 +96,10 @@ function getPlan(profile,budget){
   for(const[k,v]of Object.entries(shares))plan[k]=Math.round(target*v);
   if(profile.target==="4k"){plan.gpu=Math.round(plan.gpu*1.18);plan.cpu=Math.round(plan.cpu*.92)}
   if(profile.target==="1080p"){plan.gpu=Math.round(plan.gpu*.90);plan.cpu=Math.round(plan.cpu*1.05)}
+  const fps=Number(profile.fpsTarget||120);
+  if(fps>=240){plan.cpu=Math.round(plan.cpu*1.16);plan.gpu=Math.round(plan.gpu*1.08)}
+  else if(fps>=144){plan.cpu=Math.round(plan.cpu*1.08);plan.gpu=Math.round(plan.gpu*1.04)}
+  else if(fps<=60){plan.cpu=Math.round(plan.cpu*.94);plan.gpu=Math.round(plan.gpu*.96)}
   return plan;
 }
 
@@ -114,10 +118,10 @@ function candidateCompatible(product,build){
 function priceFit(price,target){if(!price||!target)return 0;const r=price/target;return r<=1?120-Math.abs(1-r)*65:120-(r-1)*125}
 function freshness(p){const o=getBestOffer(p);return o?({fresh:12,aging:6,unknown:0,stale:-18}[o.freshness]??0):-50}
 
-function cpuScore(p,profile){const s=p.specs||{},c=Number(s.cores||0),t=Number(s.threads||0);let v=c*3+t;if(["creator","workstation","streaming"].includes(profile.useCase))v+=c*4;if(profile.priority==="quiet")v-=Number(p.powerWatts||0)*.03;return v}
+function cpuScore(p,profile){const s=p.specs||{},c=Number(s.cores||0),t=Number(s.threads||0);let v=c*3+t;if(["creator","workstation","streaming"].includes(profile.useCase))v+=c*4;if(profile.useCase==="office")v+=s.integratedGraphics?45:-120;if(Number(profile.fpsTarget||120)>=240&&profile.useCase==="gaming")v+=c*2;if(profile.priority==="quiet")v-=Number(p.powerWatts||0)*.03;return v}
 function boardScore(p,profile){const s=p.specs||{};let v=0;if(s.m2Slots>=2)v+=8;if(s.maxMemoryGB>=64)v+=5;if(profile.priority==="value"&&/^B/i.test(s.chipset||""))v+=8;return v}
-function memoryScore(p,profile){const s=p.specs||{},cap=Number(s.capacityGB||0),mods=Number(s.modules||0),target=["creator","workstation"].includes(profile.useCase)?32:16;let v=60-Math.abs(cap-target)*2;if(mods===2)v+=18;if(mods===1)v-=12;return v}
-function gpuScore(p,profile){const s=p.specs||{},vram=Number(s.vramGB||0);let min=profile.target==="4k"?12:profile.target==="1440p"?10:8;let v=vram*5+(vram>=min?28:-(min-vram)*12);if(profile.priority==="performance")v+=getProductPrice(p)/1000;if(profile.priority==="quiet")v-=Number(p.powerWatts||0)*.025;return v}
+function memoryScore(p,profile){const s=p.specs||{},cap=Number(s.capacityGB||0),mods=Number(s.modules||0);let target=["creator","workstation"].includes(profile.useCase)?32:16;if(profile.useCase==="streaming")target=32;if(profile.budget==="40000-60000"||profile.budget==="60000+")target=Math.max(target,32);if(profile.useCase==="workstation"&&profile.budget==="60000+")target=64;let v=80-Math.abs(cap-target)*2.5;if(cap===target)v+=28;if(mods===2)v+=18;if(mods===4&&target>=64)v+=8;if(mods===1)v-=18;return v}
+function gpuScore(p,profile){const s=p.specs||{},vram=Number(s.vramGB||0),fps=Number(profile.fpsTarget||120);let min=profile.target==="4k"?12:profile.target==="1440p"?10:8;if(["creator","workstation"].includes(profile.useCase))min=Math.max(min,12);let v=vram*5+(vram>=min?30:-(min-vram)*14);if(fps>=144)v+=getProductPrice(p)/1800;if(fps>=240)v+=getProductPrice(p)/1300;if(profile.priority==="performance")v+=getProductPrice(p)/1000;if(profile.priority==="quiet")v-=Number(p.powerWatts||0)*.03;return v}
 function caseScore(p){const s=p.specs||{};return ((s.maxGpuLengthMm||0)>=340?6:0)+((s.maxCpuCoolerHeightMm||0)>=160?4:0)+((s.radiatorSupportMm||[]).includes(360)?4:0)}
 function coolerScore(p,cpu,profile){const s=p.specs||{},cpuP=Number(cpu?.powerWatts||0),cap=Number(s.recommendedCpuPowerWatts||p.compatibility?.recommendedCpuPowerWatts||0);let v=cap>=cpuP*1.35?18:0;if(profile.priority==="quiet"&&s.coolerType==="air")v+=5;if(cpuP>=140&&s.coolerType==="aio")v+=10;return v}
 

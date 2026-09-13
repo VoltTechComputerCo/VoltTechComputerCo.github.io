@@ -1,6 +1,6 @@
 import {CATEGORY_ORDER,REQUIRED_CATEGORIES,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,hasCategory,isMultiCategory} from "./build-engine.js?v=0.7.7";
 import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.7.8.1";
-import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=0.9.0";
+import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=1.0";
 import {loadCatalogue} from "./data-loader.js?v=0.6";
 
 const e={
@@ -39,12 +39,12 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.9.0 end-to-end guided prototype · test pricing and stock only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · private preview · temporary catalogue pricing and stock for testing only.`;
         render();
     }catch(x){
         console.error(x);
         e.catalogueNote.textContent="Prototype catalogue could not be loaded.";
-        e.products.innerHTML='<div class="empty">Could not load v0.9.0 catalogue data.</div>';
+        e.products.innerHTML='<div class="empty">Could not load the preview catalogue.</div>';
     }
 }
 
@@ -131,8 +131,8 @@ function renderGuidedProfile(){
     }).join("");
 
     e.guidedResult.innerHTML=`
-      <h3>Your recommended starting build</h3>
-      <p>Generated from the current prototype catalogue and test supplier pricing. This is a starting recommendation, not a final quotation.</p>
+      <h3>Your VoltTech starting build</h3>
+      <p>This is a compatible starting point based on your answers. Prices and availability are still preview data, so this is not a final quotation.</p>
       <div class="guided-result-grid">
         <div class="guided-parts">${parts}</div>
         <aside class="guided-side">
@@ -167,11 +167,11 @@ function updatePickerProfile(){
     if(!e.pickerProfile)return;
     if(!guidedProfile){e.pickerProfile.hidden=true;e.pickerProfile.textContent="";return;}
     e.pickerProfile.hidden=false;
-    e.pickerProfile.innerHTML=`<b>Guided profile:</b> ${esc(profileLabel(guidedProfile.useCase))} · ${esc(profileLabel(guidedProfile.target))} · ${esc(profileLabel(guidedProfile.priority))} · ${esc(guidedProfile.fpsTarget||"")}+ FPS target. Every part can still be changed manually.`;
+    e.pickerProfile.innerHTML=`<b>Your build goal:</b> ${esc(profileLabel(guidedProfile.useCase))} · ${esc(profileLabel(guidedProfile.target))} · ${esc(profileLabel(guidedProfile.priority))} · ${esc(guidedProfile.fpsTarget||"")}+ FPS target. Every part can still be changed manually.`;
 }
 
 async function copyBuildSummary(){
-    const lines=["VoltTech Build — Prototype Summary"];
+    const lines=["VoltTech PC Build Summary"];
     if(guidedProfile)lines.push(`Profile: ${profileLabel(guidedProfile.useCase)} · ${profileLabel(guidedProfile.target)} · ${profileLabel(guidedProfile.priority)}`);
     for(const category of CATEGORY_ORDER){
         const items=getSelections(build,category); if(!items.length)continue;
@@ -184,7 +184,7 @@ async function copyBuildSummary(){
     }
     lines.push(`Parts total: ${formatMoney(calculateBuildTotal(build),currency)}`);
     const power=estimatePower(build); lines.push(`Power estimate: ${power.estimated} W · Preferred PSU headroom ${power.preferred} W`);
-    lines.push("Prototype pricing only — not a quotation.");
+    lines.push("Preview pricing only — final availability and quotation must be confirmed by VoltTech.");
     try{await navigator.clipboard.writeText(lines.join("\n"));const old=e.copyBuild.textContent;e.copyBuild.textContent="Copied ✓";setTimeout(()=>e.copyBuild.textContent=old,1600);}
     catch{alert(lines.join("\n"));}
 }
