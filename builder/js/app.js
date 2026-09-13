@@ -1,4 +1,4 @@
-import {CATEGORY_ORDER,REQUIRED_CATEGORIES,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,hasCategory,isMultiCategory} from "./build-engine.js?v=0.7.6";
+import {CATEGORY_ORDER,REQUIRED_CATEGORIES,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,hasCategory,isMultiCategory} from "./build-engine.js?v=0.7.7";
 import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.7.3";
 import {loadCatalogue} from "./data-loader.js?v=0.6";
 
@@ -27,12 +27,12 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7.6 guided multi-select flow · test pricing and stock only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · v0.7.7 PSU-last-core + fan wording · test pricing and stock only.`;
         render();
     }catch(x){
         console.error(x);
         e.catalogueNote.textContent="Prototype catalogue could not be loaded.";
-        e.products.innerHTML='<div class="empty">Could not load v0.7.6 catalogue data.</div>';
+        e.products.innerHTML='<div class="empty">Could not load v0.7.7 catalogue data.</div>';
     }
 }
 
@@ -92,6 +92,7 @@ function renderProducts(){
     }
 
     const resource=activeCategory==="fans"?fanCapacityInfo():null;
+    const psuGuide=activeCategory==="psu"?psuRecommendationInfo():null;
     const coreDone=getCompletedCategoryCount(build)===REQUIRED_CATEGORIES.length;
     const storageReady=activeCategory==="storage"&&getSelections(build,"storage").length>0;
     const storageCue=storageReady
@@ -101,7 +102,8 @@ function renderProducts(){
         ? `<div class="resource-note good flow-note"><b>Core build complete ✓</b><br>Case fans are optional. Add them if needed, or review the finished build now.<button type="button" class="flow-btn" data-flow-review>Review Final Build ↓</button></div>`
         : "";
     const banner=resource?`<div class="resource-note ${resource.tone}">${esc(resource.text)}</div>`:"";
-    e.products.innerHTML=storageCue+completionCue+banner+visible.map(x=>card(x.product,x.display,x.candidate,x.qty)).join("");
+    const psuBanner=psuGuide?`<div class="resource-note good"><b>Power supply recommendation</b><br>${esc(psuGuide.text)}</div>`:"";
+    e.products.innerHTML=psuBanner+storageCue+completionCue+banner+visible.map(x=>card(x.product,x.display,x.candidate,x.qty)).join("");
 
     e.products.querySelectorAll("[data-flow-next]").forEach(button=>button.addEventListener("click",()=>{
         openCategory(button.dataset.flowNext);
@@ -195,6 +197,15 @@ function fanCapacityInfo(){
 }
 
 
+
+function psuRecommendationInfo(){
+    const power=estimatePower({...build,psu:null});
+    if(!power.estimated)return {text:"Select the main system components first to calculate PSU requirements."};
+    return {
+        text:`Current system estimate: ${power.estimated} W load · ${power.minimum} W minimum target · ${power.preferred} W preferred headroom. Choose a PSU at or above the preferred target where practical.`
+    };
+}
+
 function addLimitMessage(product){
     if(product.type==="storage"){
         const board=build.motherboard;
@@ -237,12 +248,15 @@ function addLimitMessage(product){
 
             if(remain<=0){
                 const aioText=reserved?` (${reserved} reserved by the ${radiator}mm AIO)`:"";
-                return `Limit reached: all ${max} case-fan positions are already allocated${aioText}.`;
+                return `Fan capacity reached — all ${max} case-fan positions are already allocated${aioText}.`;
             }
 
             if(pack>remain){
                 const aioText=reserved?` The ${radiator}mm AIO reserves ${reserved} position${reserved===1?"":"s"}.`:"";
-                return `This ${pack}-fan pack will not fit: only ${remain} of ${max} fan positions remain.${aioText}`;
+                const indiv=remain===1
+                    ? `You can still add 1 individual compatible fan.`
+                    : `You can still add up to ${remain} individual compatible fans.`;
+                return `Cannot add another ${pack}-fan pack — only ${remain} of ${max} fan positions remain. ${indiv}${aioText}`;
             }
         }
     }

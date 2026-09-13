@@ -1,4 +1,4 @@
-export const REQUIRED_CATEGORIES=["cpu","motherboard","memory","gpu","psu","case","cooler","storage"];
+export const REQUIRED_CATEGORIES=["cpu","motherboard","memory","gpu","case","cooler","psu","storage"];
 export const CATEGORY_ORDER=[...REQUIRED_CATEGORIES,"fans"];
 export const MULTI_CATEGORIES=new Set(["storage","fans"]);
 export const CATEGORY_LABELS={cpu:"CPU",motherboard:"Motherboard",memory:"Memory",gpu:"Graphics Card",storage:"Storage",psu:"Power Supply",case:"Case",cooler:"CPU Cooler",fans:"Case Fans"};
