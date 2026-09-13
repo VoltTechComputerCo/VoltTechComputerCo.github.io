@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T01:06:41.520518Z",
+  "generated_at": "2026-09-13T01:19:36.826634Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -13,8 +13,8 @@
       "game_name": "Corsair Cove",
       "title": "Oi! You there!....Yes You! Playing Corsair Cove",
       "started_at": "2026-09-13T00:15:31Z",
-      "last_live_at": "2026-09-13T01:06:41.520518Z",
-      "activity_score": 22.59
+      "last_live_at": "2026-09-13T01:19:36.826634Z",
+      "activity_score": 29.23
     },
     {
       "login": "zaffa_geek",
@@ -27,7 +27,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T00:10:56.915900Z",
-      "activity_score": 83.06
+      "activity_score": 78.08
     },
     {
       "login": "androvaza",
@@ -40,7 +40,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T22:47:51.115298Z",
-      "activity_score": 53.87
+      "activity_score": 50.64
     },
     {
       "login": "waldoliveza",
@@ -53,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T18:57:07.533386Z",
-      "activity_score": 16.73
+      "activity_score": 15.73
     },
     {
       "login": "1handbanditza",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T17:54:08.233652Z",
-      "activity_score": 11.97
+      "activity_score": 11.25
     },
     {
       "login": "chronic_za",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 4.8
+      "activity_score": 4.51
     },
     {
       "login": "spyro_za",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 3.99
+      "activity_score": 3.75
     },
     {
       "login": "alaskayeen",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T19:44:46.058522Z",
-      "activity_score": 3.52
+      "activity_score": 3.31
     },
     {
       "login": "chickenwingerz",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 0.96
+      "activity_score": 0.9
     },
     {
       "login": "agriopsgaming",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T01:00:16.228552Z",
-      "activity_score": 0.1
+      "activity_score": 0.09
     },
     {
       "login": "zulumachinegaming",
