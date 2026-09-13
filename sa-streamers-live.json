@@ -1,33 +1,46 @@
 {
-  "generated_at": "2026-09-13T15:21:29.519182Z",
+  "generated_at": "2026-09-13T15:37:18.731548Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
-    {
-      "login": "cyndalive",
-      "display_name": "Cyndalive",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/e8feb8f5-41ef-4950-86f9-5222eaadacc0-profile_image-300x300.png",
-      "description": "Originally from South Africa, but moved to the UK (Scotland) to create a better life for myself and persue a career in content creation. I will forever have a passion for gaming, and making friends from all over the world. If you wanna check out some of my other socials https://linktr.ee/Cyndalive.",
-      "live": true,
-      "viewer_count": 1,
-      "game_name": "VALORANT",
-      "title": "Cozy viber's only. Bronze - Radiant Socials: @cyndalive",
-      "started_at": "2026-09-13T10:25:14Z",
-      "last_live_at": "2026-09-13T15:21:29.519182Z",
-      "activity_score": 100.0
-    },
     {
       "login": "thelemons",
       "display_name": "TheLemons",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/fe4ae28d-9290-4929-91a2-bb2d539306d8-profile_image-300x300.png",
       "description": "Deadlock Streamer | Previously Apex, quit because I got ligamentitis in my fingers | Business email: thelemonsstreams@gmail.com",
       "live": true,
-      "viewer_count": 8,
+      "viewer_count": 12,
       "game_name": "Deadlock",
       "title": "#1 SOLO Q RANKED ENJOYER",
       "started_at": "2026-09-13T13:31:55Z",
+      "last_live_at": "2026-09-13T15:37:18.731548Z",
+      "activity_score": 65.87
+    },
+    {
+      "login": "alaskayeen",
+      "display_name": "AlaskaYeen",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/1436799a-c6aa-4109-ae4f-197132776e8f-profile_image-300x300.png",
+      "description": "Im a South African Streamer , Still in the learing process , Love Vr Games and also love To show the Viewers how i play and my type of gamestyle , Im 31 Year old  love Gaming",
+      "live": true,
+      "viewer_count": 2,
+      "game_name": "VRChat",
+      "title": "This yeen is live | Vrchat|  !discord  18+ | Yeen |",
+      "started_at": "2026-09-13T15:34:31Z",
+      "last_live_at": "2026-09-13T15:37:18.731548Z",
+      "activity_score": 55.39
+    },
+    {
+      "login": "cyndalive",
+      "display_name": "Cyndalive",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/e8feb8f5-41ef-4950-86f9-5222eaadacc0-profile_image-300x300.png",
+      "description": "Originally from South Africa, but moved to the UK (Scotland) to create a better life for myself and persue a career in content creation. I will forever have a passion for gaming, and making friends from all over the world. If you wanna check out some of my other socials https://linktr.ee/Cyndalive.",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
       "last_live_at": "2026-09-13T15:21:29.519182Z",
-      "activity_score": 61.56
+      "activity_score": 94.0
     },
     {
       "login": "spyro_za",
@@ -40,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T14:46:21.095742Z",
-      "activity_score": 83.06
+      "activity_score": 78.08
     },
     {
       "login": "dead_oryx",
@@ -53,20 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T13:46:16.897309Z",
-      "activity_score": 60.97
-    },
-    {
-      "login": "alaskayeen",
-      "display_name": "AlaskaYeen",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/1436799a-c6aa-4109-ae4f-197132776e8f-profile_image-300x300.png",
-      "description": "Im a South African Streamer , Still in the learing process , Love Vr Games and also love To show the Viewers how i play and my type of gamestyle , Im 31 Year old  love Gaming",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": "2026-09-13T14:55:06.900775Z",
-      "activity_score": 50.41
+      "activity_score": 57.31
     },
     {
       "login": "1handbanditza",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T10:46:28.710675Z",
-      "activity_score": 25.64
+      "activity_score": 24.1
     },
     {
       "login": "zaffa_geek",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T00:10:56.915900Z",
-      "activity_score": 2.28
+      "activity_score": 2.14
     },
     {
       "login": "androvaza",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T22:47:51.115298Z",
-      "activity_score": 1.48
+      "activity_score": 1.39
     },
     {
       "login": "alialbaster",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T01:19:36.826634Z",
-      "activity_score": 0.86
+      "activity_score": 0.81
     },
     {
       "login": "waldoliveza",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T18:57:07.533386Z",
-      "activity_score": 0.46
+      "activity_score": 0.43
     },
     {
       "login": "chronic_za",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 0.14
+      "activity_score": 0.13
     },
     {
       "login": "zulumachinegaming",
