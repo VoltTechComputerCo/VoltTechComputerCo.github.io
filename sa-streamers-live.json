@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T08:29:40.204154Z",
+  "generated_at": "2026-09-13T08:44:31.223031Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -13,8 +13,8 @@
       "game_name": "The Evil Within",
       "title": "💀ONE HAND vs THE EVIL WITHIN! 😱 Can I Survive the Nightmare?! 🔥 | !discord",
       "started_at": "2026-09-13T04:26:49Z",
-      "last_live_at": "2026-09-13T08:29:40.204154Z",
-      "activity_score": 91.31
+      "last_live_at": "2026-09-13T08:44:31.223031Z",
+      "activity_score": 93.83
     },
     {
       "login": "dead_oryx",
@@ -22,12 +22,25 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/79acf5d8-98ae-4b84-b97b-4a7d352845b8-profile_image-300x300.jpeg",
       "description": "and the people bowed and prayed to the neon god they made and the sign flashed out its warning In the words that it was forming and the sign said, \"the words of the prophets are written on the subway walls\". - Simon & Garfunkel - Business enquiries: info@deadoryx.co.za",
       "live": true,
-      "viewer_count": 87,
+      "viewer_count": 97,
       "game_name": "WARDOGS",
       "title": "[DROPS] Wardogs then NMS 🚀 | !wheel | !lurk | !Gportal | Vigi-Verse🚀",
       "started_at": "2026-09-13T07:01:03Z",
-      "last_live_at": "2026-09-13T08:29:40.204154Z",
-      "activity_score": 46.93
+      "last_live_at": "2026-09-13T08:44:31.223031Z",
+      "activity_score": 52.11
+    },
+    {
+      "login": "spyro_za",
+      "display_name": "Spyro_ZA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dd8b5abe-e947-4d30-bfd1-2682a123a468-profile_image-300x300.png",
+      "description": "Hey there gamers and friends! I'm Spyro, your friendly neighborhood streamer. Join me as we dive into epic adventures, conquer challenges and share some laughs along the way! Business Enquiries: spyro@expansion.gg",
+      "live": true,
+      "viewer_count": 4,
+      "game_name": "Just Chatting",
+      "title": "Today We Finish The Plans And Start Mistlands!",
+      "started_at": "2026-09-13T08:37:58Z",
+      "last_live_at": "2026-09-13T08:44:31.223031Z",
+      "activity_score": 8.55
     },
     {
       "login": "zaffa_geek",
@@ -40,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T00:10:56.915900Z",
-      "activity_score": 12.19
+      "activity_score": 11.46
     },
     {
       "login": "androvaza",
@@ -53,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T22:47:51.115298Z",
-      "activity_score": 7.9
+      "activity_score": 7.43
     },
     {
       "login": "alialbaster",
@@ -66,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T01:19:36.826634Z",
-      "activity_score": 4.58
+      "activity_score": 4.31
     },
     {
       "login": "waldoliveza",
@@ -79,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T18:57:07.533386Z",
-      "activity_score": 2.46
+      "activity_score": 2.31
     },
     {
       "login": "chronic_za",
@@ -92,20 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 0.7
-    },
-    {
-      "login": "spyro_za",
-      "display_name": "Spyro_ZA",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dd8b5abe-e947-4d30-bfd1-2682a123a468-profile_image-300x300.png",
-      "description": "Hey there gamers and friends! I'm Spyro, your friendly neighborhood streamer. Join me as we dive into epic adventures, conquer challenges and share some laughs along the way! Business Enquiries: spyro@expansion.gg",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 0.58
+      "activity_score": 0.66
     },
     {
       "login": "alaskayeen",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T19:44:46.058522Z",
-      "activity_score": 0.52
+      "activity_score": 0.49
     },
     {
       "login": "chickenwingerz",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 0.15
+      "activity_score": 0.14
     },
     {
       "login": "zulumachinegaming",
