@@ -41,12 +41,18 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · private preview · v1.5 guided store experience · temporary catalogue pricing and stock for testing only.`;
-        render();
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · private preview · v1.5.2 guided store experience · temporary catalogue pricing and stock for testing only.`;
+        try{
+            render();
+        }catch(renderError){
+            console.error("VoltTech builder render error:",renderError);
+            e.catalogueNote.textContent="The parts loaded, but this preview hit a display error.";
+            e.products.innerHTML='<div class="empty">The catalogue loaded, but this preview hit a display error. Refresh once; if it persists, VoltTech needs to fix the interface rather than the product data.</div>';
+        }
     }catch(x){
-        console.error(x);
-        e.catalogueNote.textContent="Prototype catalogue could not be loaded.";
-        e.products.innerHTML='<div class="empty">Could not load the preview catalogue.</div>';
+        console.error("VoltTech catalogue load error:",x);
+        e.catalogueNote.textContent="The preview catalogue could not be loaded.";
+        e.products.innerHTML='<div class="empty">We could not load the preview parts data. Please refresh and try again.</div>';
     }
 }
 
@@ -156,7 +162,21 @@ function renderGuidedProfile(){
  const budget=r.budgetState==="over"?"Over target":r.budgetState==="under"?"Room to play":"On budget",compat=(r.report.issues||[]).length?"Needs attention":"Looks good";
  e.guidedResult.innerHTML=`<section class="build-reveal"><span class="reveal-kicker">${esc(persona.badge)}</span><h3>This is your machine.<em>${esc(persona.title)}</em></h3><p class="reveal-copy">${esc(persona.copy)}</p><div class="reveal-price"><span>Current parts total · preview pricing</span><strong>${esc(formatMoney(r.total,currency))}</strong></div></section><div class="build-verdict"><b>This is the fun part.</b> We have done the compatibility and power homework. Now tap into the pieces, see why they are here, or swap anything that makes you curious.</div><div class="build-dashboard"><div class="build-metric"><span>Budget</span><strong>${esc(budget)}</strong><small>Ceiling: ${esc(r.budget.label)}</small></div><div class="build-metric"><span>Compatibility</span><strong>${esc(compat)}</strong><small>${(r.report.issues||[]).length?`${(r.report.issues||[]).length} item(s) need attention`:"No known conflicts"}</small></div><div class="build-metric"><span>Power</span><strong>${esc(`${r.power.estimated} W`)}</strong><small>PSU chosen with headroom</small></div></div><div class="guided-parts-v15">${parts}</div><div class="store-actions"><button class="flow-btn primary-action" id="guided-use">Make it mine · customise →</button><button class="flow-btn secondary" id="guided-edit">← Change the brief</button></div><p class="store-footnote">Private preview: prices, stock and some product data are temporary test data. This is not a final quotation.</p>`;
  e.guidedResult.querySelectorAll("[data-why]").forEach(b=>b.addEventListener("click",()=>{const p=e.guidedResult.querySelector(`[data-why-panel="${b.dataset.why}"]`);p.hidden=!p.hidden;b.textContent=p.hidden?"Why this part?":"Hide the nerdy bit ↑"}));
- const open=t=>{build=cloneBuild(r.build);activeCategory=t;e.guidedPanel.hidden=true;e.builderLayout.hidden=false;updatePickerProfile();render();requestAnimationFrame(()=>e.categoryTitle?.scrollIntoView({behavior:"smooth",block:"start"}))};e.guidedResult.querySelectorAll("[data-swap]").forEach(b=>b.addEventListener("click",()=>open(b.dataset.swap)));document.getElementById("guided-edit")?.addEventListener("click",()=>{e.guidedResult.hidden=true;e.guidedForm.hidden=false;e.guidedForm.scrollIntoView({behavior:"smooth"})});document.getElementById("guided-use")?.addEventListener("click",()=>open("cpu"));
+ const open=t=>{
+        build=cloneBuild(r.build);
+        activeCategory=t;
+        e.guidedPanel.hidden=true;
+        e.builderLayout.hidden=false;
+        updatePickerProfile();
+        render();
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+            const catalogue=document.querySelector(".catalogue");
+            catalogue?.scrollIntoView({behavior:"smooth",block:"start"});
+        }));
+    };e.guidedResult.querySelectorAll("[data-swap]").forEach(b=>b.addEventListener("click",()=>open(b.dataset.swap)));document.getElementById("guided-edit")?.addEventListener("click",()=>{e.guidedResult.hidden=true;e.guidedForm.hidden=false;e.guidedForm.scrollIntoView({behavior:"smooth"})});document.getElementById("guided-use")?.addEventListener("click",()=>{
+        const first=["gaming","streaming"].includes(guidedProfile?.useCase)?"gpu":"cpu";
+        open(first);
+    });
 }
 
 function cloneBuild(source){
@@ -527,7 +547,7 @@ function card(p,displayResult,candidateResult,qty=0){
         controls=`<button type="button" class="select-btn" data-select-product="${esc(p.id)}" ${!candidateResult.compatible?"disabled":""}>${candidateResult.compatible?(multi?"Add":"Select"):"Incompatible"}</button>`;
     }
 
-    return `<article class="product ${sel?"selected":""} ${cardIncompatible?"incompatible":""}"><div class="product-main"><span class="product-brand">${esc(p.brand||"")}</span><h3>${esc(p.name)}</h3><div class="product-meta">${meta}</div>${issues}${warnings}${unknowns}</div><div class="product-pitch"><b>Why it’s worth a look:</b> ${esc(productPitch(product))}</div><div class="product-side"><div class="price">${esc(price)}</div><div class="supplier">${esc(supplier)}</div>${controls}</div></article>`;
+    return `<article class="product ${sel?"selected":""} ${cardIncompatible?"incompatible":""}"><div class="product-main"><span class="product-brand">${esc(p.brand||"")}</span><h3>${esc(p.name)}</h3><div class="product-meta">${meta}</div>${issues}${warnings}${unknowns}</div><div class="product-pitch"><b>Why it’s worth a look:</b> ${esc(productPitch(p))}</div><div class="product-side"><div class="price">${esc(price)}</div><div class="supplier">${esc(supplier)}</div>${controls}</div></article>`;
 }
 
 function renderBuild(){
