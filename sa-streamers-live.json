@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T10:14:54.699384Z",
+  "generated_at": "2026-09-13T10:31:55.644854Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,12 +9,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/0d2fb852-a52a-425f-ba87-463feaee1cdd-profile_image-300x300.png",
       "description": "Single Handed Life CHALLENGE RUNVariety turned Horror Streamer, why? Because entertainment",
       "live": true,
-      "viewer_count": 7,
+      "viewer_count": 4,
       "game_name": "The Evil Within",
       "title": "💀ONE HAND vs THE EVIL WITHIN! 😱 Can I Survive the Nightmare?! 🔥 | !discord",
       "started_at": "2026-09-13T04:26:49Z",
-      "last_live_at": "2026-09-13T10:14:54.699384Z",
-      "activity_score": 98.43
+      "last_live_at": "2026-09-13T10:31:55.644854Z",
+      "activity_score": 100.0
     },
     {
       "login": "dead_oryx",
@@ -22,12 +22,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/79acf5d8-98ae-4b84-b97b-4a7d352845b8-profile_image-300x300.jpeg",
       "description": "and the people bowed and prayed to the neon god they made and the sign flashed out its warning In the words that it was forming and the sign said, \"the words of the prophets are written on the subway walls\". - Simon & Garfunkel - Business enquiries: info@deadoryx.co.za",
       "live": true,
-      "viewer_count": 135,
-      "game_name": "WARDOGS",
-      "title": "[DROPS] Wardogs then NMS 🚀 | !wheel | !lurk | !Gportal | Vigi-Verse🚀",
+      "viewer_count": 113,
+      "game_name": "No Man's Sky",
+      "title": "[DROPS] No Man's Sky 🚀 | !wheel | !lurk | !Gportal | Vigi-Verse🚀",
       "started_at": "2026-09-13T07:01:03Z",
-      "last_live_at": "2026-09-13T10:14:54.699384Z",
-      "activity_score": 61.56
+      "last_live_at": "2026-09-13T10:31:55.644854Z",
+      "activity_score": 65.87
     },
     {
       "login": "spyro_za",
@@ -35,12 +35,25 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dd8b5abe-e947-4d30-bfd1-2682a123a468-profile_image-300x300.png",
       "description": "Hey there gamers and friends! I'm Spyro, your friendly neighborhood streamer. Join me as we dive into epic adventures, conquer challenges and share some laughs along the way! Business Enquiries: spyro@expansion.gg",
       "live": true,
-      "viewer_count": 13,
+      "viewer_count": 25,
       "game_name": "Valheim",
       "title": "Today We Finish The Plans And Start Mistlands!",
       "started_at": "2026-09-13T08:37:58Z",
-      "last_live_at": "2026-09-13T10:14:54.699384Z",
-      "activity_score": 23.08
+      "last_live_at": "2026-09-13T10:31:55.644854Z",
+      "activity_score": 29.7
+    },
+    {
+      "login": "cyndalive",
+      "display_name": "Cyndalive",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/e8feb8f5-41ef-4950-86f9-5222eaadacc0-profile_image-300x300.png",
+      "description": "Originally from South Africa, but moved to the UK (Scotland) to create a better life for myself and persue a career in content creation. I will forever have a passion for gaming, and making friends from all over the world. If you wanna check out some of my other socials https://linktr.ee/Cyndalive.",
+      "live": true,
+      "viewer_count": 1,
+      "game_name": "VALORANT",
+      "title": "Cozy viber's only. Bronze - Radiant Socials: @cyndalive",
+      "started_at": "2026-09-13T10:25:14Z",
+      "last_live_at": "2026-09-13T10:31:55.644854Z",
+      "activity_score": 8.0
     },
     {
       "login": "zaffa_geek",
@@ -53,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T00:10:56.915900Z",
-      "activity_score": 10.12
+      "activity_score": 9.51
     },
     {
       "login": "androvaza",
@@ -66,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T22:47:51.115298Z",
-      "activity_score": 6.56
+      "activity_score": 6.17
     },
     {
       "login": "alialbaster",
@@ -79,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T01:19:36.826634Z",
-      "activity_score": 3.81
+      "activity_score": 3.58
     },
     {
       "login": "waldoliveza",
@@ -92,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T18:57:07.533386Z",
-      "activity_score": 2.04
+      "activity_score": 1.92
     },
     {
       "login": "chronic_za",
@@ -105,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 0.58
+      "activity_score": 0.55
     },
     {
       "login": "alaskayeen",
@@ -118,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T19:44:46.058522Z",
-      "activity_score": 0.43
+      "activity_score": 0.4
     },
     {
       "login": "chickenwingerz",
@@ -131,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 0.12
+      "activity_score": 0.11
     },
     {
       "login": "zulumachinegaming",
@@ -1113,19 +1126,6 @@
       "display_name": "D3phault",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/ca943913-7fad-41f8-85d6-9e021eb554ec-profile_image-300x300.png",
       "description": "",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": null,
-      "activity_score": 0.0
-    },
-    {
-      "login": "cyndalive",
-      "display_name": "Cyndalive",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/e8feb8f5-41ef-4950-86f9-5222eaadacc0-profile_image-300x300.png",
-      "description": "Originally from South Africa, but moved to the UK (Scotland) to create a better life for myself and persue a career in content creation. I will forever have a passion for gaming, and making friends from all over the world. If you wanna check out some of my other socials https://linktr.ee/Cyndalive.",
       "live": false,
       "viewer_count": 0,
       "game_name": "",
