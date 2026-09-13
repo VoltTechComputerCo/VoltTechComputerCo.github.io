@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T01:46:41.442059Z",
+  "generated_at": "2026-09-13T01:56:33.391142Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -14,7 +14,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T00:10:56.915900Z",
-      "activity_score": 69.0
+      "activity_score": 64.86
     },
     {
       "login": "androvaza",
@@ -27,7 +27,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T22:47:51.115298Z",
-      "activity_score": 44.74
+      "activity_score": 42.06
     },
     {
       "login": "alialbaster",
@@ -40,7 +40,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T01:19:36.826634Z",
-      "activity_score": 25.83
+      "activity_score": 24.28
     },
     {
       "login": "waldoliveza",
@@ -53,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T18:57:07.533386Z",
-      "activity_score": 13.9
+      "activity_score": 13.07
     },
     {
       "login": "1handbanditza",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T17:54:08.233652Z",
-      "activity_score": 9.94
+      "activity_score": 9.34
     },
     {
       "login": "chronic_za",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T15:27:40.024448Z",
-      "activity_score": 3.99
+      "activity_score": 3.75
     },
     {
       "login": "spyro_za",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T13:54:06.312066Z",
-      "activity_score": 3.31
+      "activity_score": 3.11
     },
     {
       "login": "alaskayeen",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T19:44:46.058522Z",
-      "activity_score": 2.92
+      "activity_score": 2.74
     },
     {
       "login": "chickenwingerz",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-12T14:06:55.052215Z",
-      "activity_score": 0.8
+      "activity_score": 0.75
     },
     {
       "login": "zulumachinegaming",
