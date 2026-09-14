@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T13:40:38.371675Z",
+  "generated_at": "2026-09-14T13:56:43.356397Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,12 +9,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dd8b5abe-e947-4d30-bfd1-2682a123a468-profile_image-300x300.png",
       "description": "Hey there gamers and friends! I'm Spyro, your friendly neighborhood streamer. Join me as we dive into epic adventures, conquer challenges and share some laughs along the way! Business Enquiries: spyro@expansion.gg",
       "live": true,
-      "viewer_count": 24,
+      "viewer_count": 25,
       "game_name": "Valheim",
       "title": "Lets Take On The Mistlands And Boss Today!",
       "started_at": "2026-09-14T08:20:31Z",
-      "last_live_at": "2026-09-14T13:40:38.371675Z",
-      "activity_score": 92.45
+      "last_live_at": "2026-09-14T13:56:43.356397Z",
+      "activity_score": 94.9
     },
     {
       "login": "zlorbz",
@@ -26,8 +26,8 @@
       "game_name": "WARDOGS",
       "title": "thank you @zeus_dv for gifting me with rawdogs",
       "started_at": "2026-09-14T12:11:24Z",
-      "last_live_at": "2026-09-14T13:40:38.371675Z",
-      "activity_score": 35.54
+      "last_live_at": "2026-09-14T13:56:43.356397Z",
+      "activity_score": 41.41
     },
     {
       "login": "syernide",
@@ -35,12 +35,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/e4f8fd54-3bfd-4b4c-9df9-f368411a696f-profile_image-300x300.png",
       "description": "A friendly otter exploring the virtual world together with a community of explorers waiting for something amazing to happen.",
       "live": true,
-      "viewer_count": 11,
+      "viewer_count": 14,
       "game_name": "A Plague Tale: Innocence",
       "title": "💜SUBtember is HERE💜 - Revisiting an old Gem - Story time",
       "started_at": "2026-09-14T13:00:51Z",
-      "last_live_at": "2026-09-14T13:40:38.371675Z",
-      "activity_score": 15.6
+      "last_live_at": "2026-09-14T13:56:43.356397Z",
+      "activity_score": 22.66
     },
     {
       "login": "viking_237",
@@ -48,12 +48,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dfc3b3de-bf8b-46aa-ab5d-f8627259da28-profile_image-300x300.png",
       "description": "Hey!! I'm a full-time variety streamer I love first person shooters, rpg games and survival games. Jump in, say whats up and meet the coolest Horde you will ever encounter :D You can call me Viking or Vike for short :D Even just V",
       "live": true,
-      "viewer_count": 2,
+      "viewer_count": 5,
       "game_name": "Warhammer 40,000: Space Marine II",
       "title": "We marining this space! | +18 | !socials",
       "started_at": "2026-09-14T13:11:28Z",
-      "last_live_at": "2026-09-14T13:40:38.371675Z",
-      "activity_score": 15.6
+      "last_live_at": "2026-09-14T13:56:43.356397Z",
+      "activity_score": 22.66
     },
     {
       "login": "dead_oryx",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T13:20:36.674470Z",
-      "activity_score": 94.0
+      "activity_score": 88.36
     },
     {
       "login": "azuracub",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T10:13:03.440622Z",
-      "activity_score": 31.35
+      "activity_score": 29.47
     },
     {
       "login": "thendoplays",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T20:23:46.863694Z",
-      "activity_score": 0.97
+      "activity_score": 0.91
     },
     {
       "login": "thelemons",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T18:57:51.046704Z",
-      "activity_score": 0.96
+      "activity_score": 0.9
     },
     {
       "login": "waldoliveza",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T18:14:14.279192Z",
-      "activity_score": 0.49
+      "activity_score": 0.46
     },
     {
       "login": "alaskayeen",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T16:58:06.073562Z",
-      "activity_score": 0.46
+      "activity_score": 0.43
     },
     {
       "login": "cyndalive",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T15:21:29.519182Z",
-      "activity_score": 0.34
+      "activity_score": 0.32
     },
     {
       "login": "zulumachinegaming",
