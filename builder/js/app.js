@@ -1,554 +1,245 @@
-import { loadCatalogue } from "./data-loader.js?v=2.0.0";
 import {
-  REQUIRED_CATEGORIES, CATEGORY_ORDER, CATEGORY_LABELS, createEmptyBuild, isMultiCategory,
-  getSelections, hasCategory, selectProduct, removeProduct, clearBuild, getProductsByCategory,
-  getBestOffer, getProductPrice, calculateBuildTotal, formatMoney, getSelectedCount,
-  getCategorySummary, getStockLabel
+  CATEGORY_ORDER,REQUIRED_CATEGORIES,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,
+  getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,
+  getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,isMultiCategory
 } from "./build-engine.js?v=0.7.7";
-import { getCompatibility, validateBuild, estimatePower } from "./compatibility-engine.js?v=0.7.8.1";
-import { buildGuidedRecommendation, profileLabel } from "./guided-engine.js?v=1.1";
+import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.7.8.1";
+import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=1.5";
+import {loadCatalogue} from "./data-loader.js?v=2.2.0";
 
-const STORAGE_KEY = "volttech-builder-v2";
-const MODE_KEY = "volttech-builder-mode-v2";
-const SHARE_PARAM = "build";
-const AUTH_PENDING_KEY = "volttech-builder-auth-pending";
-
-const CATEGORY_META = {
-  cpu:{title:"Processor",help:"The CPU drives game logic, general responsiveness and heavier threaded workloads."},
-  motherboard:{title:"Motherboard",help:"The board must match the CPU socket and memory generation, then provide the expansion you need."},
-  memory:{title:"Memory",help:"Choose a matched RAM kit. Capacity and DDR generation both matter."},
-  gpu:{title:"Graphics Card",help:"The biggest gaming-performance decision in most builds. Physical size and power also matter."},
-  case:{title:"Case",help:"More than looks: it has to fit the board, graphics card and cooling hardware."},
-  cooler:{title:"CPU Cooler",help:"Cooling must fit the CPU platform and the case, with enough thermal capacity for the processor."},
-  psu:{title:"Power Supply",help:"Choose enough clean power with sensible headroom — not just the biggest wattage number."},
-  storage:{title:"Storage",help:"Fast NVMe storage is a strong default. You can add multiple drives when the platform has room."},
-  fans:{title:"Case Fans",help:"Optional airflow tuning. Fan size, count and case capacity are checked where data is available."}
+const e={
+  steps:document.getElementById("steps"), search:document.getElementById("search"), compatibleOnly:document.getElementById("compatible-only"),
+  categoryTitle:document.getElementById("category-title"), productCount:document.getElementById("product-count"), products:document.getElementById("products"),
+  buildList:document.getElementById("build-list"), total:document.getElementById("total"), power:document.getElementById("power"), report:document.getElementById("report"),
+  clearBuild:document.getElementById("clear-build"), catalogueNote:document.getElementById("catalogue-note"), modeShell:document.getElementById("mode-shell"),
+  guidedPanel:document.getElementById("guided-panel"), builderLayout:document.getElementById("builder-layout"), chooseGuided:document.getElementById("choose-guided"),
+  chooseAdvanced:document.getElementById("choose-advanced"), guidedBack:document.getElementById("guided-back"), guidedForm:document.getElementById("guided-form"),
+  guidedSubmit:document.getElementById("guided-submit"), guidedError:document.getElementById("guided-error"), heroGuided:document.getElementById("hero-guided"),
+  heroAdvanced:document.getElementById("hero-advanced"), guidedResult:document.getElementById("guided-result"), pickerProfile:document.getElementById("picker-profile"),
+  copyBuild:document.getElementById("copy-build"), changeMode:document.getElementById("change-mode"), mobileBar:document.getElementById("mobile-buildbar"),
+  mobileTotal:document.getElementById("mobile-total"), mobileSummary:document.getElementById("mobile-summary")
 };
 
-const state = {
-  catalogue:null, products:[], currency:"ZAR", build:createEmptyBuild(), activeCategory:"cpu",
-  mode:"guided", guided:null, query:"", brand:"all", sort:"recommended", compatibleOnly:true, stockOnly:false,
-  modalProductId:null, authClient:null, user:null, savedBuildId:null, savedBuildStatus:null, pendingAccountAction:null
-};
+let catalogue=[],currency="ZAR",activeCategory=CATEGORY_ORDER[0],build=createEmptyBuild(),guidedProfile=null,guidedRecommendation=null;
+let generating=false;
 
-const $ = (id)=>document.getElementById(id);
-const refs = {};
-let toastTimer = null;
-
-window.addEventListener("DOMContentLoaded", init);
+init();
 
 async function init(){
-  cacheRefs();
-  bindStaticEvents();
-  setLoading(true);
+  bind();
   try{
-    const catalogue = await loadCatalogue();
-    state.catalogue = catalogue;
-    state.products = catalogue.products || [];
-    state.currency = catalogue.currency || "ZAR";
-    hydrateBuild();
-    await initAccount();
-    state.mode = localStorage.getItem(MODE_KEY) || "guided";
-    if(!["guided","manual"].includes(state.mode)) state.mode="guided";
-    refs.heroProductCount.textContent = `${state.products.length} PARTS`;
-    refs.heroSupplierCount.textContent = `${catalogue.supplierCount || 0} FEEDS`;
-    refs.systemStatus.textContent = "Catalogue ready. Compatibility engine active.";
-    setMode(state.mode,false);
-    renderAll();
+    const d=await loadCatalogue();
+    catalogue=d.products||[];
+    currency=d.currency||"ZAR";
+    const imageCount=catalogue.filter(p=>p.media?.primaryImage).length;
+    e.catalogueNote.textContent=`${catalogue.length} components loaded · ${imageCount} product images mapped · ${d.offerCount} supplier offers · preview pricing and availability are estimates until VoltTech confirms the quotation.`;
+    render();
   }catch(error){
-    console.error(error);
-    refs.systemStatus.textContent = "Catalogue failed to load.";
-    refs.workspaceHealth.className = "workspace-health bad";
-    refs.workspaceHealth.innerHTML = `<span class="status-dot"></span><b>Catalogue unavailable</b>`;
-    refs.productGrid.innerHTML = `<div class="empty-state"><b>Builder data could not be loaded.</b><span>Check that the /builder/data and /commerce files were uploaded with their existing folder structure.</span></div>`;
-  }finally{setLoading(false)}
-}
-
-function cacheRefs(){
-  ["heroProductCount","heroSupplierCount","systemStatus","guidedPanel","guidedForm","guidedResult","generateBuildBtn",
-  "builderWorkspace","workspaceHealth","categoryList","progressText","clearBuildBtn","categoryKicker","categoryTitle","categoryHelp",
-  "resultCount","productSearch","brandFilter","sortFilter","compatibleOnly","stockOnly","resetFilters","catalogueContext","productGrid","emptyState",
-  "summaryPanel","summaryStatus","summaryClose","buildTotal","powerEstimate","powerNote","buildHealth","buildList","saveBuildBtn","quoteBtn","myBuildsBtn","shareBtn","copyBtn",
-  "mobileSummaryToggle","mobileBuildTotal","mobilePartCount","productModal","modalClose","modalContent","accountBtn","accountBtnText","accountStorageStatus","accountModal","accountModalClose","accountSignedOut","accountSignedIn","builderAuthForm","builderAuthEmail","builderAuthPassword","builderCreateAccount","builderGoogleSignIn","builderAuthStatus","builderAccountEmail","builderSignOut","openMyBuildsFromAccount","savedBuildsModal","savedBuildsClose","savedBuildsList","toast"].forEach(id=>refs[id]=$(id));
-}
-
-function bindStaticEvents(){
-  document.querySelectorAll("[data-start-mode]").forEach(btn=>btn.addEventListener("click",()=>openBuilderMode(btn.dataset.startMode)));
-  document.querySelectorAll("[data-mode]").forEach(btn=>btn.addEventListener("click",()=>openBuilderMode(btn.dataset.mode)));
-  refs.guidedForm.addEventListener("submit", onGuidedSubmit);
-  refs.generateBuildBtn.addEventListener("click", onGuidedSubmit);
-  refs.categoryList.addEventListener("click",e=>{
-    const btn=e.target.closest("[data-category]"); if(!btn)return;
-    state.activeCategory=btn.dataset.category; resetCatalogueFilters(false); renderCatalogue(); renderCategories();
-    if(window.innerWidth<821) refs.productGrid.scrollIntoView({behavior:"smooth",block:"start"});
-  });
-  refs.productSearch.addEventListener("input",()=>{state.query=refs.productSearch.value;renderProducts()});
-  refs.brandFilter.addEventListener("change",()=>{state.brand=refs.brandFilter.value;renderProducts()});
-  refs.sortFilter.addEventListener("change",()=>{state.sort=refs.sortFilter.value;renderProducts()});
-  refs.compatibleOnly.addEventListener("change",()=>{state.compatibleOnly=refs.compatibleOnly.checked;renderProducts()});
-  refs.stockOnly.addEventListener("change",()=>{state.stockOnly=refs.stockOnly.checked;renderProducts()});
-  refs.resetFilters.addEventListener("click",()=>{resetCatalogueFilters();renderCatalogue()});
-  refs.productGrid.addEventListener("click",onProductGridClick);
-  refs.buildList.addEventListener("click",onBuildListClick);
-  refs.clearBuildBtn.addEventListener("click",clearCurrentBuild);
-  refs.saveBuildBtn.addEventListener("click",()=>saveBuildToAccount(false));
-  refs.quoteBtn.addEventListener("click",requestQuote);
-  refs.myBuildsBtn.addEventListener("click",openSavedBuilds);
-  refs.accountBtn.addEventListener("click",openAccountModal);
-  refs.accountModalClose.addEventListener("click",()=>closeAccountModal());
-  refs.accountModal.addEventListener("click",e=>{if(e.target===refs.accountModal)closeAccountModal()});
-  refs.builderAuthForm.addEventListener("submit",signInBuilderEmail);
-  refs.builderCreateAccount.addEventListener("click",createBuilderAccount);
-  refs.builderGoogleSignIn.addEventListener("click",googleBuilderSignIn);
-  refs.builderSignOut.addEventListener("click",signOutBuilder);
-  refs.openMyBuildsFromAccount.addEventListener("click",()=>{closeAccountModal();openSavedBuilds()});
-  refs.savedBuildsClose.addEventListener("click",closeSavedBuilds);
-  refs.savedBuildsModal.addEventListener("click",e=>{if(e.target===refs.savedBuildsModal)closeSavedBuilds()});
-  refs.savedBuildsList.addEventListener("click",onSavedBuildAction);
-  refs.shareBtn.addEventListener("click",shareBuild);
-  refs.copyBtn.addEventListener("click",copyBuildSummary);
-  refs.mobileSummaryToggle.addEventListener("click",()=>toggleSummary());
-  refs.summaryClose.addEventListener("click",()=>toggleSummary(false));
-  refs.modalClose.addEventListener("click",closeModal);
-  refs.productModal.addEventListener("click",e=>{if(e.target===refs.productModal)closeModal()});
-  refs.modalContent.addEventListener("click",e=>{
-    const select=e.target.closest("[data-modal-select]"); if(select)chooseProduct(select.dataset.modalSelect);
-  });
-  document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeModal();toggleSummary(false);closeAccountModal();closeSavedBuilds()}});
-  window.addEventListener("popstate",()=>{if(readShareBuild())renderAll()});
-}
-
-function setLoading(on){if(refs.generateBuildBtn) refs.generateBuildBtn.disabled=on}
-
-function setMode(mode,persist=true){
-  state.mode=mode;
-  if(persist)localStorage.setItem(MODE_KEY,mode);
-  document.querySelectorAll("[data-mode]").forEach(btn=>{
-    const active=btn.dataset.mode===mode;btn.classList.toggle("active",active);btn.setAttribute("aria-selected",String(active));
-  });
-  refs.guidedPanel.classList.toggle("hidden",mode!=="guided");
-}
-
-function openBuilderMode(mode){
-  setMode(mode);
-  const target=mode==="guided"?refs.guidedPanel:refs.builderWorkspace;
-  requestAnimationFrame(()=>scrollToElement(target));
-}
-
-function scrollToElement(target){
-  if(!target)return;
-  const header=document.querySelector(".topbar");
-  const offset=(header?.offsetHeight||66)+12;
-  const top=Math.max(0,window.scrollY+target.getBoundingClientRect().top-offset);
-  window.scrollTo({top,behavior:"smooth"});
-}
-
-function showGuidedMessage(message,isError=false){
-  refs.guidedResult.classList.remove("hidden");
-  refs.guidedResult.innerHTML=`<div class="guided-note"${isError?' role="alert"':''}>${escapeHtml(message)}</div>`;
-  requestAnimationFrame(()=>scrollToElement(refs.guidedResult));
-}
-
-function setGenerating(on){
-  refs.generateBuildBtn.disabled=on;
-  refs.generateBuildBtn.setAttribute("aria-busy",String(on));
-  refs.generateBuildBtn.textContent=on?"Building your PC…":"Generate my build";
-}
-
-function onGuidedSubmit(e){
-  e?.preventDefault?.();
-  e?.stopPropagation?.();
-  if(refs.generateBuildBtn.disabled)return;
-  if(!state.products.length){
-    showGuidedMessage("The parts catalogue is still loading. Give it a moment and try again.",true);
-    return;
-  }
-
-  setGenerating(true);
-  try{
-    const data=new FormData(refs.guidedForm);
-    const profile=Object.fromEntries(data.entries());
-    profile.fpsTarget=Number(profile.fpsTarget||120);
-    profile.storageNeed=Number(profile.storageNeed||1000);
-
-    const result=buildGuidedRecommendation(profile,state.products,state.currency);
-    if(!result?.ok){
-      showGuidedMessage(result?.message||"A guided build could not be generated from the current catalogue. Try a different budget or use Manual Build.",true);
-      return;
-    }
-
-    state.guided=result;
-    state.build=result.build;
-    state.activeCategory=firstUsefulCategory();
-    persistBuild();
-    renderAll();
-    renderGuidedResult(result);
-    refs.guidedResult.classList.remove("hidden");
-    requestAnimationFrame(()=>scrollToElement(refs.guidedResult));
-    toast("Guided build created — you can now swap any part.");
-  }catch(error){
-    console.error("Guided build failed",error);
-    showGuidedMessage("The guided builder hit an error while creating this recommendation. Your choices are still here — please try again.",true);
-  }finally{
-    setGenerating(false);
+    console.error("VoltTech catalogue load error",error);
+    e.catalogueNote.textContent="The component catalogue could not be loaded. Refresh once; if it persists, VoltTech needs to repair the builder data connection.";
+    e.products.innerHTML='<div class="empty">The parts catalogue did not load. No build data has been submitted.</div>';
   }
 }
 
-function renderGuidedResult(result){
-  const parts=CATEGORY_ORDER.flatMap(type=>getSelections(result.build,type).map(p=>({type,p})));
-  const notes=[...(result.notes||[])].slice(0,3);
-  refs.guidedResult.innerHTML=`
-    <div class="guided-result-head">
-      <div><span class="eyebrow">STARTING BUILD READY</span><h3>${escapeHtml(profileLabel(result.profile.useCase))} build</h3><p>${escapeHtml(result.budget?.label||"")} · ${escapeHtml(profileLabel(result.profile.priority))} · ${escapeHtml(profileLabel(result.profile.target))}</p></div>
-      <div class="guided-total"><span>Estimated parts</span><strong>${formatMoney(result.total,state.currency)}</strong></div>
-    </div>
-    <div class="guided-parts">${parts.map(({type,p})=>`<article class="guided-part"><span>${escapeHtml(CATEGORY_LABELS[type]||type)}</span><div><b>${escapeHtml(p.name)}</b><small>${escapeHtml(result.reasons?.[type]||getCategorySummary(p,type)||"")}</small></div><strong>${priceText(p)}</strong></article>`).join("")}</div>
-    <div class="guided-notes">${notes.map(n=>`<div class="guided-note">${escapeHtml(n)}</div>`).join("")}</div>
-    <div class="guided-result-actions"><button type="button" class="btn btn-primary" data-fine-tune>Fine tune this build</button><button type="button" class="btn btn-secondary" data-guided-save>Save to my account</button><button type="button" class="btn btn-secondary" data-guided-quote>Request a proper quote</button></div>`;
-  refs.guidedResult.querySelector("[data-fine-tune]")?.addEventListener("click",()=>{setMode("manual");refs.builderWorkspace.scrollIntoView({behavior:"smooth",block:"start")});
-  refs.guidedResult.querySelector("[data-guided-save]")?.addEventListener("click",()=>saveBuildToAccount(false));
-  refs.guidedResult.querySelector("[data-guided-quote]")?.addEventListener("click",requestQuote);
+function bind(){
+  setupGuidedControls();
+  e.heroGuided?.addEventListener("click",openGuided);
+  e.chooseGuided?.addEventListener("click",openGuided);
+  e.heroAdvanced?.addEventListener("click",openManual);
+  e.chooseAdvanced?.addEventListener("click",openManual);
+  e.guidedBack?.addEventListener("click",showModeChoice);
+  e.guidedForm?.addEventListener("submit",onGuidedSubmit);
+  e.search?.addEventListener("input",renderProducts);
+  e.compatibleOnly?.addEventListener("change",renderProducts);
+  e.copyBuild?.addEventListener("click",copyBuildSummary);
+  e.changeMode?.addEventListener("click",showModeChoice);
+  e.clearBuild?.addEventListener("click",()=>{
+    if(getSelectedCount(build)&&!confirm("Clear every component from this build?"))return;
+    build=clearBuild();guidedProfile=null;guidedRecommendation=null;activeCategory=CATEGORY_ORDER[0];e.search.value="";render();
+    scrollToElement(e.builderLayout);
+  });
+  e.mobileSummary?.addEventListener("click",()=>scrollToElement(document.querySelector(".summary")));
 }
 
-function renderAll(){renderCategories();renderCatalogue();renderSummary()}
+function setupGuidedControls(){
+  if(!e.guidedForm)return;
+  e.guidedForm.querySelectorAll("[data-choice-group]").forEach(group=>{
+    const name=group.dataset.choiceGroup;
+    const input=e.guidedForm.querySelector(`input[name="${name}"]`);
+    group.querySelectorAll(".choice-card").forEach(btn=>btn.addEventListener("click",()=>{
+      group.querySelectorAll(".choice-card").forEach(x=>x.classList.toggle("active",x===btn));
+      if(input)input.value=btn.dataset.value||"";
+    }));
+  });
+  const slider=document.getElementById("budget-slider"),output=document.getElementById("budget-output");
+  const sync=()=>{
+    if(!slider||!output)return;
+    const value=Number(slider.value||30000),min=Number(slider.min||10000),max=Number(slider.max||100000);
+    output.textContent=`R${value.toLocaleString("en-ZA")}`;
+    slider.style.setProperty("--budget-progress",`${Math.max(0,Math.min(100,((value-min)/(max-min))*100))}%`);
+  };
+  slider?.addEventListener("input",sync);sync();
+}
 
-function renderCategories(){
-  const required=effectiveRequiredCategories();
-  const completed=required.filter(type=>hasCategory(state.build,type)).length;
-  refs.progressText.textContent=`${completed} / ${required.length}`;
-  refs.categoryList.innerHTML=CATEGORY_ORDER.map((type,i)=>{
-    const selections=getSelections(state.build,type); const done=selections.length>0;
-    const summary=done?getCategorySummary(selections,type):type==="fans"?"Optional":"Not selected";
-    return `<button type="button" class="category-btn ${state.activeCategory===type?"active":""}" data-category="${type}"><span class="category-index">${String(i+1).padStart(2,"0")}</span><span class="category-copy"><b>${escapeHtml(CATEGORY_LABELS[type]||type)}</b><small>${escapeHtml(summary||selections[0]?.name||"")}</small></span><span class="category-state ${done?"done":"open"}">${done?"✓":"·"}</span></button>`
+function openGuided(){
+  e.modeShell.hidden=true;e.builderLayout.hidden=true;e.guidedPanel.hidden=false;e.guidedResult.hidden=true;e.guidedForm.hidden=false;
+  e.guidedError.hidden=true;e.guidedError.textContent="";scrollToElement(e.guidedPanel);
+}
+function openManual(){
+  guidedProfile=null;guidedRecommendation=null;updatePickerProfile();e.modeShell.hidden=true;e.guidedPanel.hidden=true;e.builderLayout.hidden=false;
+  render();scrollToElement(document.querySelector(".catalogue"));
+}
+function showModeChoice(){
+  guidedProfile=null;guidedRecommendation=null;e.builderLayout.hidden=true;e.guidedPanel.hidden=true;e.modeShell.hidden=false;updateMobileBar();scrollToElement(e.modeShell);
+}
+function scrollToElement(el){
+  if(!el)return;requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    const h=document.querySelector(".topbar")?.getBoundingClientRect().height||0;
+    const top=window.scrollY+el.getBoundingClientRect().top-h-8;
+    window.scrollTo({top:Math.max(0,top),behavior:"smooth"});
+  }));
+}
+
+async function onGuidedSubmit(event){
+  event.preventDefault();
+  if(generating||!catalogue.length)return;
+  generating=true;e.guidedError.hidden=true;e.guidedError.textContent="";
+  const old=e.guidedSubmit.textContent;e.guidedSubmit.disabled=true;e.guidedSubmit.textContent="Building your recommendation…";
+  try{
+    const data=new FormData(e.guidedForm);
+    guidedProfile={useCase:data.get("useCase")||"gaming",budget:Number(data.get("budget")||30000),target:data.get("target")||"1440p",priority:data.get("priority")||"balanced",fpsTarget:data.get("fpsTarget")||"120",storageNeed:Number(data.get("storageNeed")||1000)};
+    guidedRecommendation=buildGuidedRecommendation(guidedProfile,catalogue,currency);
+    renderGuidedProfile();
+    await new Promise(r=>setTimeout(r,30));scrollToElement(e.guidedResult);
+  }catch(error){
+    console.error("Guided recommendation failed",error);
+    e.guidedError.textContent=`We couldn't generate that combination yet. ${error?.message||"Please change an answer and try again."}`;
+    e.guidedError.hidden=false;
+  }finally{generating=false;e.guidedSubmit.disabled=false;e.guidedSubmit.textContent=old;}
+}
+
+function mediaMarkup(product,variant="catalogue"){
+  const src=safeUrl(product?.media?.primaryImage),label=CATEGORY_LABELS[product?.type]||"PC Part";
+  const eager=variant==="guided-hero";
+  return `<div class="product-media ${variant}${src?"":" no-media"}">${src?`<img src="${esc(src)}" alt="${esc(product.name)} product image" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true;this.parentElement.classList.add('media-error')">`:""}<div class="media-fallback"><b>${esc(label)}</b><small>Product image unavailable</small></div></div>`;
+}
+function safeUrl(value){try{const u=new URL(value,location.href);return ["http:","https:"].includes(u.protocol)?u.href:""}catch{return""}}
+
+function persona(profile){
+  const target=profileLabel(profile?.target)||"your target",use=profile?.useCase||"gaming";
+  if(use==="gaming")return{badge:"Gaming build · built around you",title:`${target} gaming. Properly done.`,copy:"A gaming-first machine that puts the budget into the parts you actually feel when the match starts — not spec-sheet bragging rights."};
+  if(use==="streaming")return{badge:"Gaming + streaming",title:"Play it. Stream it. Clip it.",copy:"A machine built to game hard while the stream, chat and capture workload keep moving in the background."};
+  if(use==="creator")return{badge:"Creator build",title:"Make big projects feel smaller.",copy:"More breathing room for timelines, renders and creative apps without forgetting that this PC should still be fun after work."};
+  if(use==="workstation")return{badge:"Workstation build",title:"Hardware that earns its desk space.",copy:"Threaded performance, memory and platform capability get more weight for sustained professional work."};
+  return{badge:"Everyday build",title:"Fast where it matters. Quiet where it counts.",copy:"A responsive, sensible machine without paying for gaming hardware you may never use."};
+}
+function merch(product,type){
+  const s=product?.specs||{},n=String(product?.name||"").toLowerCase();
+  if(type==="gpu")return{badge:"The star of the show",hook:"This is where the frames live.",story:`The GPU gets serious budget weight for ${profileLabel(guidedProfile?.target)||"your display target"}.${s.vramGB?` ${s.vramGB}GB of VRAM gives modern games useful breathing room.`:""}`};
+  if(type==="cpu")return{badge:/x3d/.test(n)?"Gaming favourite":"The brains",hook:/x3d/.test(n)?"One of those CPUs gamers talk about.":"Strong enough to let the rest of the build do its thing.",story:"We balance CPU performance against the rest of the machine instead of spending for core-count bragging rights."};
+  if(type==="memory")return{badge:"Sweet spot",hook:Number(s.capacityGB||0)>=32?"Enough RAM to stop thinking about RAM.":"Sensible memory. More budget for the fun parts.",story:"A matched kit with the right DDR generation for the selected platform."};
+  if(type==="storage")return{badge:"Game library",hook:Number(s.capacityGB||0)>=2000?"Less uninstalling. Finally.":"Fast storage where you feel it every day.",story:"Enough fast space to start comfortably, with expansion still possible later."};
+  if(type==="psu")return{badge:"Power sorted",hook:"Nobody flexes the PSU. Everybody notices a bad one.",story:"Power is sized after the main hardware so the machine gets sensible headroom."};
+  if(type==="case")return{badge:"The look",hook:"This is where a pile of parts becomes your PC.",story:"Fit and airflow first. Looking clean is the very nice bonus."};
+  if(type==="cooler")return{badge:"Keep it cool",hook:"Fast hardware is nicer when it isn't screaming at you.",story:"Cooling is matched to the CPU and case so the machine has thermal breathing room."};
+  if(type==="motherboard")return{badge:"The backbone",hook:"Enough board where it matters. No motherboard tax.",story:"The right socket, memory and expansion matter more than paying for a prestige board."};
+  return{badge:"VoltTech pick",hook:"This part makes sense here.",story:"It fits the brief, budget and the rest of the machine."};
+}
+function specChips(product,type){
+  const s=product?.specs||{},a=[],add=v=>{if(v)a.push(String(v))};
+  if(type==="gpu"){add(s.vramGB&&`${s.vramGB}GB VRAM`);add(s.lengthMm&&`${s.lengthMm}mm`)}
+  if(type==="cpu"){add(s.cores&&`${s.cores} cores`);add(s.threads&&`${s.threads} threads`);add(s.socket)}
+  if(type==="memory"){add(s.capacityGB&&`${s.capacityGB}GB`);add(s.memoryType);add(s.speedMTs&&`${s.speedMTs} MT/s`)}
+  if(type==="storage"){add(s.capacityGB&&(s.capacityGB>=1000?`${s.capacityGB/1000}TB`:`${s.capacityGB}GB`));add(s.interface)}
+  if(type==="psu"){add(s.wattage&&`${s.wattage}W`);add(s.efficiency)}
+  if(type==="motherboard"){add(s.chipset);add(s.socket);add(s.formFactor)}
+  return a.slice(0,3);
+}
+
+function renderGuidedProfile(){
+  if(!guidedProfile||!e.guidedResult)return;
+  e.guidedForm.hidden=true;e.guidedResult.hidden=false;e.builderLayout.hidden=true;
+  const r=guidedRecommendation;
+  if(!r?.ok){
+    e.guidedResult.innerHTML=`<section class="build-reveal"><span class="reveal-kicker">ALMOST THERE</span><h3>We hit a parts snag.</h3><p class="reveal-copy">${esc(r?.message||"The current catalogue could not complete that combination yet.")}</p><div class="result-actions"><button class="flow-btn secondary" id="guided-edit" type="button">← Tweak my answers</button></div></section>`;
+    document.getElementById("guided-edit")?.addEventListener("click",()=>{e.guidedResult.hidden=true;e.guidedForm.hidden=false;scrollToElement(e.guidedForm)});return;
+  }
+  const p=persona(guidedProfile);const categories=[["gpu","Graphics Card"],["cpu","Processor"],["memory","Memory"],["motherboard","Motherboard"],["storage","Storage"],["case","Case"],["cooler","CPU Cooler"],["psu","Power Supply"]];
+  const parts=categories.map(([type,label])=>{
+    const product=getSelections(r.build,type)[0];if(!product)return"";const m=merch(product,type),chips=specChips(product,type),price=getProductPrice(product);
+    return `<article class="store-part ${type==="gpu"?"hero-part":""}"><div class="part-top"><div><span class="part-label">${esc(label)}</span><span class="part-badge">${esc(m.badge)}</span></div><span class="part-price">${price?esc(formatMoney(price,currency)):"Price pending"}</span></div>${mediaMarkup(product,type==="gpu"?"guided-hero":"guided")}<h4>${esc(product.name)}</h4><p class="part-hook">${esc(m.hook)}</p><p class="part-story">${esc(m.story)}</p>${chips.length?`<div class="part-specs">${chips.map(x=>`<span>${esc(x)}</span>`).join("")}</div>`:""}<div class="part-actions"><button class="part-action" type="button" data-why="${type}">Why this part?</button><button class="part-action alt" type="button" data-swap="${type}">See alternatives →</button></div><div class="part-why" data-why-panel="${type}" hidden>${esc(r.reasons?.[type]||"Selected because it fits your brief, budget and the rest of the build.")}</div></article>`;
   }).join("");
+  const budget=r.budgetState==="over"?"Over target":r.budgetState==="under"?"Room to play":"On budget";const report=r.report||{issues:[],unknowns:[],warnings:[]};
+  e.guidedResult.innerHTML=`<section class="build-reveal"><span class="reveal-kicker">${esc(p.badge)}</span><h3>This is your machine.<em>${esc(p.title)}</em></h3><p class="reveal-copy">${esc(p.copy)}</p><div class="reveal-price"><span>Current parts total · preview pricing</span><strong>${esc(formatMoney(r.total,currency))}</strong></div></section><div class="build-verdict"><b>This is the fun part.</b> We’ve done the compatibility and power homework. Now explore the hardware, see why it is here, or swap anything that makes you curious.</div><div class="build-dashboard"><div class="build-metric"><span>Budget</span><strong>${esc(budget)}</strong><small>${esc(r.budget?.label||formatMoney(guidedProfile.budget,currency))}</small></div><div class="build-metric"><span>Compatibility</span><strong>${report.issues?.length?"Needs attention":"Looks good"}</strong><small>${report.issues?.length?`${report.issues.length} hard conflict(s)`:report.unknowns?.length?`${report.unknowns.length} check(s) need verification`:"No known hard conflicts"}</small></div><div class="build-metric"><span>Power</span><strong>${esc(`${r.power?.estimated||0} W`)}</strong><small>${r.power?.preferred?`${r.power.preferred} W preferred PSU target`:"Headroom calculated"}</small></div></div><div class="guided-parts">${parts}</div><div class="result-actions"><button class="flow-btn primary-action" id="guided-use" type="button">Make it mine · customise →</button><button class="flow-btn" id="guided-save" type="button">Save to my account</button><button class="flow-btn secondary" id="guided-edit" type="button">← Change the brief</button></div><p class="store-footnote">Preview pricing only. Final stock, compatibility and quotation are confirmed by VoltTech before an order proceeds.</p>`;
+  e.guidedResult.querySelectorAll("[data-why]").forEach(btn=>btn.addEventListener("click",()=>{const panel=e.guidedResult.querySelector(`[data-why-panel="${btn.dataset.why}"]`);panel.hidden=!panel.hidden;btn.textContent=panel.hidden?"Why this part?":"Hide details ↑"}));
+  e.guidedResult.querySelectorAll("[data-swap]").forEach(btn=>btn.addEventListener("click",()=>applyGuidedBuild(btn.dataset.swap)));
+  document.getElementById("guided-use")?.addEventListener("click",()=>applyGuidedBuild(["gaming","streaming"].includes(guidedProfile.useCase)?"gpu":"cpu"));
+  document.getElementById("guided-edit")?.addEventListener("click",()=>{e.guidedResult.hidden=true;e.guidedForm.hidden=false;scrollToElement(e.guidedForm)});
+  document.getElementById("guided-save")?.addEventListener("click",()=>{applyGuidedBuild("gpu",false);setTimeout(()=>document.getElementById("vt-save-build")?.click(),120)});
 }
 
-function renderCatalogue(){
-  const meta=CATEGORY_META[state.activeCategory]||{title:CATEGORY_LABELS[state.activeCategory],help:"Choose a component."};
-  const index=CATEGORY_ORDER.indexOf(state.activeCategory)+1;
-  refs.categoryKicker.textContent=`STEP ${String(index).padStart(2,"0")}`;
-  refs.categoryTitle.textContent=meta.title; refs.categoryHelp.textContent=meta.help;
-  populateBrands(); renderCatalogueContext(); renderProducts();
+function cloneBuild(source){
+  const fresh=createEmptyBuild();for(const category of CATEGORY_ORDER){const items=getSelections(source,category);fresh[category]=isMultiCategory(category)?[...items]:(items[0]||null)}return fresh;
+}
+function applyGuidedBuild(category="gpu",scroll=true){
+  if(!guidedRecommendation?.ok)return;build=cloneBuild(guidedRecommendation.build);activeCategory=CATEGORY_ORDER.includes(category)?category:"gpu";e.guidedPanel.hidden=true;e.builderLayout.hidden=false;updatePickerProfile();render();if(scroll)scrollToElement(document.querySelector(".catalogue"));
+}
+function updatePickerProfile(){
+  if(!e.pickerProfile)return;if(!guidedProfile){e.pickerProfile.hidden=true;e.pickerProfile.textContent="";return}e.pickerProfile.hidden=false;e.pickerProfile.innerHTML=`<b>Your build goal:</b> ${esc(profileLabel(guidedProfile.useCase))} · max ${esc(formatMoney(Number(guidedProfile.budget||0),currency))} · ${esc(profileLabel(guidedProfile.target))} · ${esc(profileLabel(guidedProfile.priority))} · ${esc(guidedProfile.fpsTarget||"")}+ FPS target. Every part can still be changed.`;
 }
 
-function resetCatalogueFilters(updateInputs=true){
-  state.query="";state.brand="all";state.sort="recommended";state.compatibleOnly=true;state.stockOnly=false;
-  if(updateInputs){refs.productSearch.value="";refs.sortFilter.value="recommended";refs.compatibleOnly.checked=true;refs.stockOnly.checked=false}
+function render(){updatePickerProfile();renderSteps();renderProducts();renderBuild();renderPower();renderReport();updateMobileBar()}
+function renderSteps(){
+  e.steps.innerHTML=CATEGORY_ORDER.map((type,index)=>{const selected=getSelections(build,type),complete=selected.length>0,optional=!REQUIRED_CATEGORIES.includes(type);return `<button class="step ${type===activeCategory?"active":""} ${complete?"complete":""}" type="button" data-category="${type}"><span class="step-index">${complete?"✓":optional?"＋":index+1}</span><span class="step-label"><b>${esc(CATEGORY_LABELS[type])}${optional?" · Optional":""}</b><small>${complete?esc(getCategorySummary(selected,type)):optional?"Add if needed":"Not selected"}</small></span></button>`}).join("");
+  e.steps.querySelectorAll("[data-category]").forEach(btn=>btn.addEventListener("click",()=>openCategory(btn.dataset.category)));
 }
-
-function populateBrands(){
-  const brands=[...new Set(getProductsByCategory(state.products,state.activeCategory).map(p=>p.brand).filter(Boolean))].sort();
-  refs.brandFilter.innerHTML=`<option value="all">All brands</option>${brands.map(b=>`<option value="${escapeAttr(b)}">${escapeHtml(b)}</option>`).join("")}`;
-  if(brands.includes(state.brand))refs.brandFilter.value=state.brand;else{state.brand="all";refs.brandFilter.value="all"}
-}
-
-function renderCatalogueContext(){
-  const chosen=getSelections(state.build,state.activeCategory);
-  const report=validateBuild(state.build);
-  let html="";
-  if(chosen.length){html=`<div class="context-note good"><b>Selected:</b> ${escapeHtml(chosen.map(p=>p.name).join(", "))}. Pick another option to ${isMultiCategory(state.activeCategory)?"add another":"replace it"}.</div>`}
-  else if(report.issues?.length){html=`<div class="context-note">This build currently has a conflict. Compatible choices are prioritised while you repair it.</div>`}
-  refs.catalogueContext.innerHTML=html;
-}
+function openCategory(type){if(!CATEGORY_ORDER.includes(type))return;activeCategory=type;e.search.value="";renderSteps();renderProducts();scrollToElement(document.querySelector(".catalogue"))}
 
 function renderProducts(){
-  let list=getProductsByCategory(state.products,state.activeCategory).map(product=>({product,compat:getCompatibility(product,state.build),offer:getBestOffer(product)}));
-  const q=state.query.trim().toLowerCase();
-  if(q)list=list.filter(x=>searchBlob(x.product).includes(q));
-  if(state.brand!=="all")list=list.filter(x=>x.product.brand===state.brand);
-  if(state.compatibleOnly)list=list.filter(x=>!x.compat.issues?.length || isSelected(x.product));
-  if(state.stockOnly)list=list.filter(x=>isOfferAvailable(x.offer));
-  list.sort(productSorter(state.sort));
-  refs.resultCount.textContent=`${list.length} part${list.length===1?"":"s"}`;
-  refs.emptyState.classList.toggle("hidden",list.length>0);
-  refs.productGrid.innerHTML=list.map(({product,compat,offer},i)=>productCard(product,compat,offer,i)).join("");
-  bindProductImages(refs.productGrid);
+  if(!catalogue.length)return;e.categoryTitle.textContent=CATEGORY_LABELS[activeCategory];const raw=searchProducts(getProductsByCategory(catalogue,activeCategory),e.search.value||"");
+  const evaluated=raw.map(product=>{const candidate=relevantCompatibility(getCompatibility(product,build),product.type),qty=getSelections(build,product.type).filter(p=>p.id===product.id).length;return{product,candidate,display:qty?relevantCompatibility(validateBuild(build),product.type):candidate,qty}});
+  const visible=e.compatibleOnly.checked?evaluated.filter(x=>x.candidate.compatible||x.qty>0):evaluated;e.productCount.textContent=`${visible.length} of ${raw.length}`;
+  if(!visible.length){e.products.innerHTML='<div class="empty">No matching compatible products. Turn off “Compatible only” or change another component.</div>';return}
+  const info=[];if(activeCategory==="psu")info.push(psuRecommendation());if(activeCategory==="fans")info.push(fanCapacity());
+  e.products.innerHTML=info.filter(Boolean).map(t=>`<div class="resource-note good">${esc(t)}</div>`).join("")+visible.map(x=>productCard(x.product,x.display,x.candidate,x.qty)).join("");
+  e.products.querySelectorAll("[data-select-product]").forEach(btn=>btn.addEventListener("click",()=>selectFromCard(btn.dataset.selectProduct)));
+  e.products.querySelectorAll("[data-remove-product]").forEach(btn=>btn.addEventListener("click",()=>{build=removeProduct(build,btn.dataset.productType||activeCategory,btn.dataset.removeProduct);render()}));
 }
-
-function productSorter(sort){
-  return (a,b)=>{
-    if(sort==="price-asc")return priceSort(a.product,b.product,1);
-    if(sort==="price-desc")return priceSort(a.product,b.product,-1);
-    if(sort==="name")return a.product.name.localeCompare(b.product.name);
-    const selectedDiff=Number(isSelected(b.product))-Number(isSelected(a.product)); if(selectedDiff)return selectedDiff;
-    const compatDiff=statusRank(a.compat)-statusRank(b.compat);if(compatDiff)return compatDiff;
-    const stockDiff=Number(isOfferAvailable(b.offer))-Number(isOfferAvailable(a.offer));if(stockDiff)return stockDiff;
-    return priceSort(a.product,b.product,1);
-  }
+function relevantCompatibility(result,category){const relevant=x=>x&&(x.category===category||x.alternateCategory===category);const issues=(result.issues||[]).filter(relevant),warnings=(result.warnings||[]).filter(relevant),unknowns=(result.unknowns||[]).filter(relevant);return{compatible:issues.length===0,status:issues.length?"bad":unknowns.length?"unknown":warnings.length?"warn":"good",issues,warnings,unknowns}}
+function productCard(product,display,candidate,qty){
+  const offer=getBestOffer(product),price=offer?formatMoney(offer.price,currency):"Price pending",supplier=offer?`${offer.supplierName||offer.supplier||offer.source||"Supplier"} · ${getStockLabel(offer.stockStatus,offer.freshness)}`:"Supplier match pending";
+  const selected=qty>0,multi=isMultiCategory(product.type);const diagnostics=[...display.issues.map(x=>`<div class="product-error">✕ ${esc(textOf(x))}</div>`),...display.warnings.map(x=>`<div class="product-warning">⚠ ${esc(textOf(x))}</div>`),...display.unknowns.map(x=>`<div class="product-unknown">? ${esc(textOf(x))}</div>`)].join("");
+  const controls=multi&&selected?`<div class="qty-wrap"><div class="qty-label">Selected ×${qty}</div><div class="qty-control"><button type="button" data-remove-product="${esc(product.id)}" data-product-type="${esc(product.type)}" aria-label="Remove one">−</button><span>${qty}</span><button type="button" data-select-product="${esc(product.id)}" ${candidate.compatible?"":"disabled"} aria-label="Add another">＋</button></div></div>`:`<button class="select-btn" type="button" data-select-product="${esc(product.id)}" ${candidate.compatible?"":"disabled"}>${candidate.compatible?(selected&&!multi?"Selected":multi?"Add to build":"Select"):"Incompatible"}</button>`;
+  return `<article class="product ${selected?"selected":""} ${!candidate.compatible&&!selected?"incompatible":""}"><div class="product-main">${mediaMarkup(product,"catalogue")}<span class="product-brand">${esc(product.brand||product.manufacturer||"")}</span><h3>${esc(product.name)}</h3><div class="product-meta">${metaOf(product).map(x=>`<span class="meta">${esc(x)}</span>`).join("")}</div>${diagnostics}</div><div class="product-side"><div class="price">${esc(price)}</div><div class="supplier">${esc(supplier)}</div>${controls}</div><div class="product-pitch"><b>Why it’s worth a look:</b> ${esc(productPitch(product))}</div></article>`;
 }
-function priceSort(a,b,dir){const ap=getProductPrice(a)||Infinity,bp=getProductPrice(b)||Infinity;return(ap-bp)*dir}
-function statusRank(r){return r.issues?.length?3:r.unknowns?.length?2:r.warnings?.length?1:0}
-
-function productCard(product,compat,offer,index){
-  const selected=isSelected(product), conflict=compat.issues?.length>0, unknown=!conflict&&compat.unknowns?.length>0, warning=!conflict&&!unknown&&compat.warnings?.length>0;
-  const status=selected?"selected":conflict?"bad":unknown||warning?"warn":"good";
-  const badge=selected?"Selected":conflict?"Conflict":unknown?"Needs data":warning?"Review":"Compatible";
-  const message=compatMessage(compat,selected);
-  const image=safeUrl(product.media?.primaryImage);
-  const specs=specChips(product).slice(0,4);
-  const stock=getStockLabel(offer?.stockStatus,offer?.freshness);
-  const stockClass=isOfferAvailable(offer)?"good":offer?.stockStatus==="low-stock"?"warn":"";
-  const actionLabel=selected?"Selected":isMultiCategory(product.type)?"Add to build":getSelections(state.build,product.type).length?"Replace":"Select";
-  return `<article class="product-card ${selected?"selected":""} ${conflict?"conflict":""}" data-product-card="${escapeAttr(product.id)}">
-    <div class="product-media">
-      ${image?`<img data-product-image src="${escapeAttr(image)}" alt="${escapeAttr(product.name)}" loading="${index<4?"eager":"lazy"}" decoding="async" referrerpolicy="no-referrer">`:""}
-      <div class="image-fallback"><b>${escapeHtml(categoryMonogram(product.type))}</b><small>Image unavailable</small></div>
-      <div class="card-badges"><span class="badge ${status}">${badge}</span>${offer?.freshness?`<span class="badge">${escapeHtml(offer.freshness)}</span>`:""}</div>
-    </div>
-    <div class="product-body">
-      <span class="product-brand">${escapeHtml(product.brand||product.manufacturer||"PC COMPONENT")}</span>
-      <h4>${escapeHtml(product.name)}</h4>
-      <div class="spec-chips">${specs.map(s=>`<span class="spec-chip">${escapeHtml(s)}</span>`).join("")}</div>
-      <div class="compat-line ${status}">${escapeHtml(message)}</div>
-      <div class="price-row"><div class="price-block"><span>${offer?"Best preview price":"Price"}</span><strong>${priceText(product)}</strong><small>${offer?.supplier?escapeHtml(offer.supplier):"Supplier match pending"}</small></div><div class="stock-label ${stockClass}">${escapeHtml(stock)}</div></div>
-      <div class="card-actions"><button type="button" class="select-product ${selected?"selected":""}" data-select-product="${escapeAttr(product.id)}" ${conflict&&!selected?"disabled":""}>${actionLabel}</button><button type="button" class="details-product" data-details-product="${escapeAttr(product.id)}" aria-label="View details for ${escapeAttr(product.name)}">＋</button></div>
-    </div>
-  </article>`;
+function selectFromCard(id){
+  const product=catalogue.find(p=>p.id===id);if(!product)return;const multi=isMultiCategory(product.type),selected=getSelections(build,product.type).filter(p=>p.id===product.id).length;
+  if(selected&&!multi){build=removeProduct(build,product.type,product.id);render();return}
+  const compat=relevantCompatibility(getCompatibility(product,build),product.type);if(!compat.compatible)return;
+  const wasComplete=getCompletedCategoryCount(build)===REQUIRED_CATEGORIES.length;build=selectProduct(build,product);const complete=getCompletedCategoryCount(build)===REQUIRED_CATEGORIES.length;
+  if(!multi&&!complete)activeCategory=getNextCategory(product.type,build);e.search.value="";render();
+  if(!multi&&(!wasComplete||!complete))scrollToElement(document.querySelector(".catalogue"));else if(complete)scrollToElement(document.querySelector(".summary"));
 }
-
-function onProductGridClick(e){
-  const select=e.target.closest("[data-select-product]");if(select){chooseProduct(select.dataset.selectProduct);return}
-  const detail=e.target.closest("[data-details-product]");if(detail)openModal(detail.dataset.detailsProduct)
+function textOf(x){return x?.text||String(x)}
+function productPitch(product){
+  const s=product.specs||{},n=String(product.name||"").toLowerCase();if(product.type==="gpu"){const v=Number(s.vramGB||0);return v>=16?"Serious graphics territory with a large VRAM pool for demanding games and creative workloads.":v>=12?"A strong premium gaming sweet spot with useful VRAM headroom.":"A sensible graphics choice that keeps the budget focused on real frame-rate gains."}if(product.type==="cpu")return /x3d/.test(n)?"A gaming-focused CPU with the extra cache enthusiasts care about.":Number(s.cores||0)>=12?"Strong multi-core headroom for gaming plus heavier work.":"A balanced processor choice that leaves enough budget for the GPU and rest of the platform.";if(product.type==="memory")return Number(s.capacityGB||0)>=32?"A comfortable modern capacity for games, Discord, browser tabs and background apps.":"A leaner matched kit that protects budget for higher-impact components.";if(product.type==="storage")return Number(s.capacityGB||0)>=2000?"Plenty of fast space for a serious game library.":"Fast everyday storage for Windows, apps and your core game library.";if(product.type==="psu")return"The unglamorous part that protects everything else. Wattage and connector headroom matter more than a flashy label.";if(product.type==="case")return"Fit and airflow come first. The clean look is the bonus.";if(product.type==="cooler")return"Cooling matched to the CPU and case helps keep performance stable without unnecessary noise.";if(product.type==="motherboard")return"The right socket, memory support and expansion matter more than paying a motherboard prestige tax.";if(product.type==="fans")return"Optional airflow tuning when the case and cooler leave useful fan positions available.";return"A compatible option that fits the current build.";
 }
+function metaOf(product){const s=product.specs||{};switch(product.type){case"cpu":return[s.socket,s.cores&&`${s.cores} cores`,s.threads&&`${s.threads} threads`,s.tdpWatts&&`${s.tdpWatts}W TDP`].filter(Boolean);case"motherboard":return[s.socket,s.chipset,s.formFactor,s.memoryType,s.wifi?"Wi-Fi":null].filter(Boolean);case"memory":return[s.capacityGB&&`${s.capacityGB}GB`,s.memoryType,s.speedMTs&&`${s.speedMTs} MT/s`].filter(Boolean);case"gpu":return[s.vramGB&&`${s.vramGB}GB VRAM`,s.lengthMm&&`${s.lengthMm}mm`,s.slots&&`${s.slots}-slot`,s.recommendedPsuWatts&&`${s.recommendedPsuWatts}W PSU`].filter(Boolean);case"storage":return[s.capacityGB&&(s.capacityGB>=1000?`${s.capacityGB/1000}TB`:`${s.capacityGB}GB`),s.interface,s.formFactor,s.pcieGeneration&&`PCIe ${s.pcieGeneration}.0`].filter(Boolean);case"psu":return[s.wattage&&`${s.wattage}W`,s.efficiency,s.modular,s.atxVersion].filter(Boolean);case"case":return[s.supportedMotherboardSizes?.join(" / "),s.maxGpuLengthMm&&`${s.maxGpuLengthMm}mm GPU`].filter(Boolean);case"cooler":return[s.coolerType==="aio"?"Liquid AIO":"Air cooler",s.radiatorSizeMm&&`${s.radiatorSizeMm}mm radiator`,s.heightMm&&`${s.heightMm}mm height`].filter(Boolean);case"fans":return[s.sizeMm&&`${s.sizeMm}mm`,s.fanCount?`${s.fanCount}-pack`:"1 fan",s.pwm?"PWM":null,s.argb?"ARGB":null].filter(Boolean);default:return[]}}
+function psuRecommendation(){const p=estimatePower({...build,psu:null});return p.estimated?`Power target: ${p.estimated} W estimated load · ${p.minimum} W minimum · ${p.preferred} W preferred PSU headroom.`:"Select the main hardware first and VoltTech will calculate a PSU target."}
+function fanCapacity(){const c=build.case;if(!c)return"Select a case first to calculate fan capacity.";const max=Number(c.compatibility?.fanMountCount??c.specs?.fanMountCount??c.compatibility?.maxCaseFans??c.specs?.maxCaseFans??0);if(!max)return"Detailed fan-position capacity is not available for this case yet.";const selected=getSelections(build,"fans").reduce((n,p)=>n+Number(p.specs?.fanCount||1),0),rad=Number(build.cooler?.specs?.radiatorSizeMm||0),reserved=rad?Math.ceil(rad/120):0;return`Approx. fan capacity: ${selected} case fan(s) selected${reserved?` · ${reserved} positions reserved by the ${rad}mm AIO`:""} · ${Math.max(0,max-selected-reserved)} of ${max} positions remain.`}
 
-function chooseProduct(id){
-  const product=state.products.find(p=>p.id===id);if(!product)return;
-  if(isSelected(product)){toast("That part is already in the build.");return}
-  const compat=getCompatibility(product,state.build);
-  if(compat.issues?.length){toast(compat.issues[0]?.text||"That part conflicts with the current build.");return}
-  if(isMultiCategory(product.type)) state.build=selectProduct(state.build,product);
-  else state.build=selectProduct(state.build,product);
-  state.guided=null; persistBuild(); closeModal();
-  const next=findNextIncomplete(product.type);if(next)state.activeCategory=next;
-  renderAll(); toast(`${product.name} added to your build.`)
+function renderBuild(){
+  e.buildList.innerHTML=CATEGORY_ORDER.map(type=>{const items=getSelections(build,type),optional=!REQUIRED_CATEGORIES.includes(type);if(!items.length)return`<div class="build-item"><div><span>${esc(CATEGORY_LABELS[type])}</span><b>${optional?"Optional":"Not selected"}</b></div></div>`;if(isMultiCategory(type)){const groups=new Map();items.forEach(p=>{const g=groups.get(p.id)||{p,qty:0};g.qty++;groups.set(p.id,g)});const detail=[...groups.values()].map(({p,qty})=>`<div class="build-detail-row"><span>${esc(p.name)}${qty>1?` ×${qty}`:""}</span><b>${esc(getProductPrice(p)?formatMoney(getProductPrice(p)*qty,currency):"Pending")}</b></div>`).join("");return`<details class="build-group" open><summary><span>${esc(CATEGORY_LABELS[type])}</span><b>${esc(getCategorySummary(items,type))}</b></summary><div class="build-details">${detail}</div></details>`}const p=items[0];return`<div class="build-item"><div><span>${esc(CATEGORY_LABELS[type])}</span><b>${esc(p.name)}</b><div class="build-price">${esc(getProductPrice(p)?formatMoney(getProductPrice(p),currency):"Price pending")}</div></div></div>`}).join("");
+  const total=calculateBuildTotal(build);e.total.textContent=formatMoney(total,currency);e.mobileTotal.textContent=formatMoney(total,currency);
 }
-
-function onBuildListClick(e){
-  const remove=e.target.closest("[data-remove]");
-  if(remove){const [type,id]=remove.dataset.remove.split("|");state.build=removeProduct(state.build,type,id||null);state.activeCategory=type;state.guided=null;persistBuild();renderAll();return}
-  const edit=e.target.closest("[data-edit]");
-  if(edit){state.activeCategory=edit.dataset.edit;renderCategories();renderCatalogue();toggleSummary(false);refs.productGrid.scrollIntoView({behavior:"smooth",block:"start"})}
+function renderPower(){const p=estimatePower(build);e.power.innerHTML=p.estimated?`<div class="power-title">Power estimate</div><div class="power-grid"><span>Estimated load</span><strong>${p.estimated} W</strong><span>Minimum target</span><strong>${p.minimum} W</strong><span>Preferred headroom</span><strong>${p.preferred} W</strong></div>`:'<div class="power-title">Power estimate</div><div class="power-grid"><span>Estimated load</span><strong>—</strong><span>Recommended PSU</span><strong>—</strong></div>'}
+function renderReport(){
+  const r=validateBuild(build),count=getSelectedCount(build),completed=getCompletedCategoryCount(build),items=[];if(!count)items.push({type:"good",text:"Start with any component. Compatibility checks update automatically."});else if(r.compatible&&!r.unknowns?.length)items.push({type:"good",text:`No confirmed compatibility conflicts across ${count} selected component${count===1?"":"s"}.`});else if(r.compatible)items.push({type:"unknown",text:`No hard conflict is known, but ${r.unknowns.length} check${r.unknowns.length===1?"":"s"} still need final verification.`});(r.issues||[]).forEach(d=>items.push({type:"bad",d}));(r.warnings||[]).forEach(d=>items.push({type:"warn",d}));(r.unknowns||[]).forEach(d=>items.push({type:"unknown",d}));if(completed===REQUIRED_CATEGORIES.length)items.unshift({type:r.compatible?(r.unknowns?.length?"unknown":"good"):"bad",text:r.compatible?`BUILD COMPLETE ${r.unknowns?.length?"?":"✓"} — Core categories are filled. Preview parts total: ${formatMoney(calculateBuildTotal(build),currency)}.`:"BUILD COMPLETE — Core categories are filled, but a confirmed compatibility conflict still needs to be resolved."});e.report.innerHTML=items.map(item=>{const icon=item.type==="good"?"✓":item.type==="warn"?"⚠":item.type==="unknown"?"?":"✕",text=item.text||textOf(item.d);return`<div class="report-item ${item.type}">${icon} ${esc(text)}${item.d?diagnosticActions(item.d):""}</div>`}).join("");e.report.querySelectorAll("[data-fix-category]").forEach(btn=>btn.addEventListener("click",()=>openCategory(btn.dataset.fixCategory)));
 }
+function diagnosticActions(d){const cats=[];if(d?.category&&CATEGORY_ORDER.includes(d.category))cats.push(d.category);if(d?.alternateCategory&&CATEGORY_ORDER.includes(d.alternateCategory)&&!cats.includes(d.alternateCategory))cats.push(d.alternateCategory);return cats.length?`<div class="diagnostic-actions">${cats.map(c=>`<button class="diagnostic-action" type="button" data-fix-category="${c}">Change ${esc(CATEGORY_LABELS[c])}</button>`).join("")}</div>`:""}
+function updateMobileBar(){e.mobileBar.hidden=e.builderLayout.hidden||getSelectedCount(build)<1}
 
-function renderSummary(){
-  const total=calculateBuildTotal(state.build);const power=estimatePower(state.build);const report=validateBuild(state.build);
-  const required=effectiveRequiredCategories();const complete=required.filter(type=>hasCategory(state.build,type)).length;const ready=complete===required.length&&!report.issues?.length;
-  refs.buildTotal.textContent=formatMoney(total,state.currency);refs.mobileBuildTotal.textContent=formatMoney(total,state.currency);
-  refs.mobilePartCount.textContent=getSelectedCount(state.build);refs.progressText.textContent=`${complete} / ${required.length}`;
-  refs.powerEstimate.textContent=power.estimated?`${power.estimated} W`:"—";refs.powerNote.textContent=power.preferred?`${power.preferred} W preferred PSU target`:"Add core parts";
-  refs.summaryStatus.textContent=report.issues?.length?"CONFLICT":ready?"READY TO REVIEW":"IN PROGRESS";
-  refs.buildHealth.innerHTML=healthMarkup(report,complete,required.length);
-  refs.buildList.innerHTML=CATEGORY_ORDER.map(type=>summaryCategory(type)).join("");
-  refs.saveBuildBtn.disabled=getSelectedCount(state.build)<1;
-  refs.quoteBtn.disabled=getSelectedCount(state.build)<3;
-  updateWorkspaceHealth(report,complete,required.length);
+async function copyBuildSummary(){
+  const lines=["VoltTech PC Build Summary"];if(guidedProfile)lines.push(`Profile: ${profileLabel(guidedProfile.useCase)} · ${profileLabel(guidedProfile.target)} · ${profileLabel(guidedProfile.priority)}`);for(const type of CATEGORY_ORDER){const items=getSelections(build,type);if(!items.length)continue;const groups=new Map();items.forEach(p=>{const g=groups.get(p.id)||{p,qty:0};g.qty++;groups.set(p.id,g)});for(const {p,qty} of groups.values()){const price=getProductPrice(p);lines.push(`${CATEGORY_LABELS[type]}: ${p.name}${qty>1?` ×${qty}`:""}${price?` — ${formatMoney(price*qty,currency)}`:""}`)}}lines.push(`Parts total: ${formatMoney(calculateBuildTotal(build),currency)}`);const power=estimatePower(build);if(power.estimated)lines.push(`Power estimate: ${power.estimated} W · ${power.preferred} W preferred PSU target`);lines.push("Preview pricing only — final stock and quotation must be confirmed by VoltTech.");try{await navigator.clipboard.writeText(lines.join("\n"));const old=e.copyBuild.textContent;e.copyBuild.textContent="Copied ✓";setTimeout(()=>e.copyBuild.textContent=old,1500)}catch{alert(lines.join("\n"))}
 }
-
-function healthMarkup(report,complete,total){
-  if(report.issues?.length)return `<div class="health-card bad"><strong>● Compatibility conflict</strong><p>${escapeHtml(report.issues[0].text)}${report.issues.length>1?` +${report.issues.length-1} more`:""}</p></div>`;
-  if(report.unknowns?.length)return `<div class="health-card warn"><strong>● Needs final verification</strong><p>${escapeHtml(report.unknowns[0].text)}${report.unknowns.length>1?` +${report.unknowns.length-1} more`:""}</p></div>`;
-  if(report.warnings?.length)return `<div class="health-card warn"><strong>● Compatible with notes</strong><p>${escapeHtml(report.warnings[0].text)}${report.warnings.length>1?` +${report.warnings.length-1} more`:""}</p></div>`;
-  if(complete===total)return `<div class="health-card good"><strong>● Compatibility checks clear</strong><p>No conflicts were found in the current product data. VoltTech still confirms the final build before order.</p></div>`;
-  return `<div class="health-card"><strong>● Build in progress</strong><p>${total-complete} required categor${total-complete===1?"y":"ies"} still need a selection.</p></div>`
-}
-
-function updateWorkspaceHealth(report,complete,total){
-  if(report.issues?.length){refs.workspaceHealth.className="workspace-health bad";refs.workspaceHealth.innerHTML=`<span class="status-dot"></span><b>${report.issues.length} conflict${report.issues.length===1?"":"s"}</b>`}
-  else if(report.unknowns?.length||report.warnings?.length){refs.workspaceHealth.className="workspace-health warn";refs.workspaceHealth.innerHTML=`<span class="status-dot"></span><b>${report.unknowns.length+report.warnings.length} item${report.unknowns.length+report.warnings.length===1?"":"s"} to review</b>`}
-  else{refs.workspaceHealth.className="workspace-health good";refs.workspaceHealth.innerHTML=`<span class="status-dot"></span><b>${complete===total?"Build checks clear":"Compatibility active"}</b>`}
-}
-
-function summaryCategory(type){
-  const items=getSelections(state.build,type);const label=CATEGORY_LABELS[type]||type;
-  if(!items.length)return `<div class="build-row"><div class="build-row-head"><div><span class="build-row-label">${escapeHtml(label)}</span><span class="build-row-empty">${type==="fans"?"Optional":"Not selected"}</span></div><button class="build-row-price" data-edit="${type}">＋</button></div></div>`;
-  if(isMultiCategory(type))return `<div class="build-row"><span class="build-row-label">${escapeHtml(label)}</span>${items.map(p=>`<div class="multi-item"><div><span class="build-row-name">${escapeHtml(p.name)}</span><div class="build-row-actions"><button data-edit="${type}">Add / change</button><button data-remove="${type}|${escapeAttr(p.id)}">Remove</button></div></div><span class="build-row-price">${priceText(p)}</span></div>`).join("")}</div>`;
-  const p=items[0];return `<div class="build-row"><div class="build-row-head"><div><span class="build-row-label">${escapeHtml(label)}</span><span class="build-row-name">${escapeHtml(p.name)}</span><div class="build-row-actions"><button data-edit="${type}">Change</button><button data-remove="${type}|">Remove</button></div></div><span class="build-row-price">${priceText(p)}</span></div></div>`
-}
-
-function openModal(id){
-  const product=state.products.find(p=>p.id===id);if(!product)return;state.modalProductId=id;
-  const compat=getCompatibility(product,state.build);const offer=getBestOffer(product);const selected=isSelected(product);const image=safeUrl(product.media?.primaryImage);
-  const source=safeUrl(product.media?.sourcePage);const specs=specEntries(product);const offers=(product.offers||[]).slice(0,5);
-  refs.modalContent.innerHTML=`<div class="modal-grid"><div class="modal-media">${image?`<img data-product-image src="${escapeAttr(image)}" alt="${escapeAttr(product.name)}" decoding="async" referrerpolicy="no-referrer">`:""}<div class="image-fallback"><b>${escapeHtml(categoryMonogram(product.type))}</b><small>Image unavailable</small></div></div><div class="modal-info"><span class="product-brand">${escapeHtml(product.brand||product.manufacturer||"")}</span><h2 id="modalTitle">${escapeHtml(product.name)}</h2><div class="modal-price">${priceText(product)}</div><div class="modal-stock">${escapeHtml(getStockLabel(offer?.stockStatus,offer?.freshness))}${offer?.supplier?` · ${escapeHtml(offer.supplier)}`:""}</div><section class="modal-section"><h3>Key specifications</h3><div class="spec-table">${specs.map(([k,v])=>`<div class="spec-row"><span>${escapeHtml(k)}</span><b>${escapeHtml(v)}</b></div>`).join("")}</div></section><section class="modal-section"><h3>Compatibility with your current build</h3><div class="compat-detail">${diagnosticsMarkup(compat)}</div></section>${offers.length?`<section class="modal-section"><h3>Preview supplier offers</h3><div class="offers">${offers.map(o=>`<div class="offer"><div><span>${escapeHtml(o.supplier||"Supplier")}</span><small>${escapeHtml(getStockLabel(o.stockStatus,o.freshness))} · ${escapeHtml(o.freshness||"unknown freshness")}</small></div><b>${formatMoney(o.price,state.currency)}</b></div>`).join("")}</div></section>`:""}${source?`<a class="media-source" href="${escapeAttr(source)}" target="_blank" rel="noopener noreferrer">Open product image source ↗</a>`:""}<div class="modal-actions"><button type="button" class="btn btn-primary" data-modal-select="${escapeAttr(product.id)}" ${compat.issues?.length&&!selected?"disabled":""}>${selected?"Already selected":isMultiCategory(product.type)?"Add to build":"Select this part"}</button></div></div></div>`;
-  refs.productModal.classList.remove("hidden");document.body.style.overflow="hidden";bindProductImages(refs.productModal)
-}
-function closeModal(){if(refs.productModal.classList.contains("hidden"))return;refs.productModal.classList.add("hidden");document.body.style.overflow="";state.modalProductId=null}
-
-function diagnosticsMarkup(report){
-  const items=[];
-  (report.issues||[]).forEach(d=>items.push(`<div class="diag bad">${escapeHtml(d.text||d)}</div>`));
-  (report.warnings||[]).forEach(d=>items.push(`<div class="diag warn">${escapeHtml(d.text||d)}</div>`));
-  (report.unknowns||[]).forEach(d=>items.push(`<div class="diag warn">${escapeHtml(d.text||d)}</div>`));
-  if(!items.length)items.push(`<div class="diag good">No compatibility conflict was found against the parts currently selected.</div>`);
-  return items.join("")
-}
-
-function clearCurrentBuild(){
-  if(getSelectedCount(state.build)&&!window.confirm("Clear every part from this build?"))return;
-  state.build=clearBuild();state.guided=null;state.savedBuildId=null;state.activeCategory="cpu";persistBuild();renderAll();toast("Build cleared.")
-}
-
-function persistBuild(){
-  try{localStorage.setItem(STORAGE_KEY,JSON.stringify({version:2,build:serializeBuild(state.build),savedAt:new Date().toISOString()}))}catch(error){console.warn("Could not save build",error)}
-}
-function hydrateBuild(){
-  if(readShareBuild())return;
-  try{const raw=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null");if(raw?.build)state.build=deserializeBuild(raw.build)}catch(error){console.warn("Could not restore build",error)}
-}
-function serializeBuild(build){const out={};CATEGORY_ORDER.forEach(type=>{const items=getSelections(build,type);out[type]=isMultiCategory(type)?items.map(p=>p.id):(items[0]?.id||null)});return out}
-function deserializeBuild(data){const map=new Map(state.products.map(p=>[p.id,p]));const build=createEmptyBuild();CATEGORY_ORDER.forEach(type=>{const value=data?.[type];if(isMultiCategory(type))build[type]=(Array.isArray(value)?value:[]).map(id=>map.get(id)).filter(Boolean);else build[type]=map.get(value)||null});return build}
-function readShareBuild(){
-  const param=new URL(location.href).searchParams.get(SHARE_PARAM);if(!param)return false;
-  try{let b64=param.replace(/-/g,"+").replace(/_/g,"/");b64+="=".repeat((4-b64.length%4)%4);const parsed=JSON.parse(atob(b64));state.build=deserializeBuild(parsed);persistBuild();return true}catch(error){console.warn("Invalid shared build",error);return false}
-}
-function encodeShareBuild(){const json=JSON.stringify(serializeBuild(state.build));return btoa(json).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/g,"")}
-
-async function shareBuild(){
-  if(!getSelectedCount(state.build)){toast("Add a few parts before sharing the build.");return}
-  const url=new URL(location.href);url.searchParams.set(SHARE_PARAM,encodeShareBuild());
-  const data={title:"VoltTech PC Builder",text:`My VoltTech PC build — ${formatMoney(calculateBuildTotal(state.build),state.currency)} estimated parts total`,url:url.toString()};
-  try{if(navigator.share){await navigator.share(data);toast("Build share opened.")}else{await navigator.clipboard.writeText(url.toString());toast("Build link copied.")}}catch(error){if(error?.name!=="AbortError")fallbackCopy(url.toString(),"Build link copied.")}
-}
-
-async function copyBuildSummary(){const text=buildSummaryText();try{await navigator.clipboard.writeText(text);toast("Build summary copied.")}catch{fallbackCopy(text,"Build summary copied.")}}
-
-async function requestQuote(){
-  if(getSelectedCount(state.build)<3){toast("Add a few parts before requesting a quote.");return}
-  await saveBuildToAccount(true);
-}
-
-async function initAccount(){
-  if(!window.supabase||!window.VOLTTECH_SUPABASE){updateAccountUi();return}
-  state.authClient=window.supabase.createClient(VOLTTECH_SUPABASE.url,VOLTTECH_SUPABASE.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
-  const {data:{session}}=await state.authClient.auth.getSession();
-  state.user=session?.user||null;updateAccountUi();
-  state.authClient.auth.onAuthStateChange((event,session)=>{state.user=session?.user||null;updateAccountUi();if(event==="SIGNED_IN")runPendingAccountAction()});
-  if(state.user) setTimeout(runPendingAccountAction,0);
-}
-
-function updateAccountUi(){
-  const signed=!!state.user;
-  refs.accountBtn?.classList.toggle("signed-in",signed);
-  if(refs.accountBtnText) refs.accountBtnText.textContent=signed?"My account":"Account";
-  if(refs.accountStorageStatus) refs.accountStorageStatus.textContent=signed?"ACCOUNT READY":"SIGN-IN REQUIRED";
-  refs.accountSignedOut?.classList.toggle("hidden",signed);
-  refs.accountSignedIn?.classList.toggle("hidden",!signed);
-  if(refs.builderAccountEmail) refs.builderAccountEmail.textContent=state.user?.email||"Signed in to VoltTech.";
-}
-
-function openAccountModal(action=null){state.pendingAccountAction=action;refs.accountModal?.classList.remove("hidden");updateAccountUi();setTimeout(()=>refs.builderAuthEmail?.focus(),50)}
-function closeAccountModal(){refs.accountModal?.classList.add("hidden")}
-function authStatus(message="",type=""){if(!refs.builderAuthStatus)return;refs.builderAuthStatus.textContent=message;refs.builderAuthStatus.className=`auth-status ${type}`}
-
-async function requireAccount(action){
-  if(state.user)return true;
-  state.pendingAccountAction=action;try{sessionStorage.setItem(AUTH_PENDING_KEY,action||"")}catch{}
-  openAccountModal(action);authStatus("Sign in or create an account to continue.");return false
-}
-async function runPendingAccountAction(){
-  let action=state.pendingAccountAction;try{action=action||sessionStorage.getItem(AUTH_PENDING_KEY)}catch{}
-  if(!state.user||!action)return;state.pendingAccountAction=null;try{sessionStorage.removeItem(AUTH_PENDING_KEY)}catch{}
-  closeAccountModal();if(action==="save")await saveBuildToAccount(false,true);if(action==="quote")await saveBuildToAccount(true,true);if(action==="builds")await openSavedBuilds(true)
-}
-
-async function signInBuilderEmail(e){
-  e.preventDefault();if(!state.authClient)return authStatus("Account service is unavailable.","error");authStatus("Signing in…");
-  const email=refs.builderAuthEmail.value.trim(),password=refs.builderAuthPassword.value;
-  const {data,error}=await state.authClient.auth.signInWithPassword({email,password});
-  if(error)return authStatus(error.message,"error");state.user=data?.user||null;updateAccountUi();authStatus("Signed in.","success");await runPendingAccountAction()
-}
-async function createBuilderAccount(){
-  if(!state.authClient)return authStatus("Account service is unavailable.","error");const email=refs.builderAuthEmail.value.trim(),password=refs.builderAuthPassword.value;
-  if(!email||password.length<8)return authStatus("Enter an email and a password of at least 8 characters.","error");authStatus("Creating account…");
-  const redirectTo=new URL(location.href);redirectTo.searchParams.delete("build");
-  const {data,error}=await state.authClient.auth.signUp({email,password,options:{emailRedirectTo:redirectTo.toString()}});
-  if(error)return authStatus(error.message,"error");
-  if(data?.session?.user){state.user=data.session.user;updateAccountUi();authStatus("Account created.","success");await runPendingAccountAction()}else authStatus("Account created. Confirm your email, then return to this builder and sign in. Your build is still saved on this device.","success")
-}
-async function googleBuilderSignIn(){
-  if(!state.authClient)return authStatus("Account service is unavailable.","error");authStatus("Opening Google sign-in…");
-  const redirectTo=new URL(location.href);redirectTo.searchParams.delete("build");
-  const {error}=await state.authClient.auth.signInWithOAuth({provider:"google",options:{redirectTo:redirectTo.toString()}});if(error)authStatus(error.message,"error")
-}
-async function signOutBuilder(){if(!state.authClient)return;await state.authClient.auth.signOut();state.user=null;state.savedBuildId=null;state.savedBuildStatus=null;updateAccountUi();closeAccountModal();toast("Signed out of VoltTech.")}
-
-function buildAccountPayload(){
-  const report=validateBuild(state.build),power=estimatePower(state.build),total=calculateBuildTotal(state.build);
-  const items=CATEGORY_ORDER.flatMap(type=>getSelections(state.build,type).map(p=>{const offer=getBestOffer(p);return{product_id:p.id,type,name:p.name,brand:p.brand||p.manufacturer||null,quantity:1,unit_price:getProductPrice(p),supplier:offer?.supplier||null,stock_status:offer?.stockStatus||null,price_checked_at:offer?.priceCheckedAt||offer?.checkedAt||null}}));
-  return {version:2,serialized:serializeBuild(state.build),items,summary:buildSummaryText(),compatibility:{status:report.issues?.length?"conflict":report.unknowns?.length||report.warnings?.length?"review":"clear",issues:report.issues||[],warnings:report.warnings||[],unknowns:report.unknowns||[]},power,estimated_total:total,saved_at:new Date().toISOString()}
-}
-function defaultBuildName(){const cpu=state.build.cpu?.model||state.build.cpu?.name,gpu=state.build.gpu?.model||state.build.gpu?.name;return [cpu,gpu].filter(Boolean).join(" + ")||"VoltTech PC Build"}
-
-async function saveBuildToAccount(requestQuote=false,skipAuth=false){
-  if(!getSelectedCount(state.build)){toast("Add at least one part before saving.");return null}
-  if(!skipAuth&&!await requireAccount(requestQuote?"quote":"save"))return null;
-  if(!state.user||!state.authClient)return null;
-  const snapshot=buildAccountPayload(),now=new Date().toISOString();
-  const payload={user_id:state.user.id,name:defaultBuildName(),build_data:snapshot,estimated_total:snapshot.estimated_total,estimated_power_watts:snapshot.power?.estimated||null,compatibility_status:snapshot.compatibility.status,status:requestQuote?"quote_requested":"saved",updated_at:now};
-  if(requestQuote)payload.quote_requested_at=now;
-  let result;
-  const submittedVersion=["quote_requested","quoted"].includes(state.savedBuildStatus);
-  if(submittedVersion){state.savedBuildId=null;state.savedBuildStatus=null}
-  if(state.savedBuildId) result=await state.authClient.from("saved_builds").update(payload).eq("id",state.savedBuildId).eq("user_id",state.user.id).select("id,status,quote_id").maybeSingle();
-  else result=await state.authClient.from("saved_builds").insert(payload).select("id,status,quote_id").single();
-  if(result.error){console.error(result.error);toast(result.error.message?.includes("saved_builds")?"Account build storage needs the Supabase setup file to be applied first.":`Could not save build: ${result.error.message}`);return null}
-  state.savedBuildId=result.data?.id||state.savedBuildId;state.savedBuildStatus=result.data?.status||payload.status;
-  toast(requestQuote?"Build saved and sent to VoltTech for quotation review.":"Build saved to your VoltTech account.");
-  return result.data
-}
-
-async function openSavedBuilds(skipAuth=false){
-  if(!skipAuth&&!await requireAccount("builds"))return; if(!state.user||!state.authClient)return;
-  refs.savedBuildsModal.classList.remove("hidden");refs.savedBuildsList.innerHTML='<p class="saved-build-empty">Loading your saved builds…</p>';
-  const {data,error}=await state.authClient.from("saved_builds").select("id,name,status,build_data,estimated_total,estimated_power_watts,compatibility_status,quote_id,quote_requested_at,updated_at").order("updated_at",{ascending:false});
-  if(error){refs.savedBuildsList.innerHTML=`<p class="saved-build-empty">${escapeHtml(error.message)}</p>`;return}
-  if(!data?.length){refs.savedBuildsList.innerHTML='<p class="saved-build-empty">No account builds yet. Save the build you are working on and it will appear here.</p>';return}
-  refs.savedBuildsList.innerHTML=data.map(savedBuildCard).join("")
-}
-function closeSavedBuilds(){refs.savedBuildsModal?.classList.add("hidden")}
-function savedBuildCard(b){const items=b.build_data?.items||[];const parts=items.slice(0,5).map(i=>i.name).join(" · ")+(items.length>5?` · +${items.length-5} more`:"");const status=b.status||"saved";return `<article class="saved-build-card" data-saved-build="${escapeAttr(b.id)}"><div class="saved-build-head"><div><h3>${escapeHtml(b.name||"PC Build")}</h3><small>Updated ${escapeHtml(formatSavedDate(b.updated_at))}</small></div><span class="saved-status ${status==="quote_requested"?"requested":status==="quoted"?"quoted":""}">${escapeHtml(savedStatusLabel(status))}</span></div><div class="saved-build-total"><span>${items.length} selected part${items.length===1?"":"s"}</span><b>${formatMoney(b.estimated_total,state.currency)}</b></div><p class="saved-build-parts">${escapeHtml(parts||"Saved component configuration")}</p><div class="saved-build-actions"><button type="button" class="primary-small" data-resume-build="${escapeAttr(b.id)}">Resume build</button>${status==="saved"?`<button type="button" data-request-saved-quote="${escapeAttr(b.id)}">Request quote</button>`:""}${b.quote_id?'<a href="../quotes.html">Open quote</a>':status==="quote_requested"?'<a href="../quotes.html">Quotes</a>':""}<button type="button" data-delete-saved-build="${escapeAttr(b.id)}">Delete</button></div></article>`}
-function savedStatusLabel(status){return({saved:"Saved",quote_requested:"Quote requested",quoted:"Quote ready",archived:"Archived"}[status]||status)}
-function formatSavedDate(v){try{return new Intl.DateTimeFormat("en-ZA",{dateStyle:"medium",timeStyle:"short"}).format(new Date(v))}catch{return"recently"}}
-async function onSavedBuildAction(e){
-  const id=e.target.dataset.resumeBuild||e.target.dataset.requestSavedQuote||e.target.dataset.deleteSavedBuild;if(!id)return;
-  const {data,error}=await state.authClient.from("saved_builds").select("*").eq("id",id).maybeSingle();if(error||!data)return toast("Could not load that saved build.");
-  if(e.target.dataset.resumeBuild){state.build=deserializeBuild(data.build_data?.serialized||{});state.savedBuildId=data.id;state.savedBuildStatus=data.status||"saved";persistBuild();renderAll();closeSavedBuilds();refs.builderWorkspace.scrollIntoView({behavior:"smooth",block:"start"});toast("Saved build loaded.");return}
-  if(e.target.dataset.requestSavedQuote){const {error:upError}=await state.authClient.from("saved_builds").update({status:"quote_requested",quote_requested_at:new Date().toISOString(),updated_at:new Date().toISOString()}).eq("id",id).eq("user_id",state.user.id);if(upError)return toast(`Could not request quote: ${upError.message}`);toast("Quote request sent to VoltTech.");await openSavedBuilds(true);return}
-  if(e.target.dataset.deleteSavedBuild){if(!confirm("Delete this saved PC build?"))return;const {error:delError}=await state.authClient.from("saved_builds").delete().eq("id",id).eq("user_id",state.user.id);if(delError)return toast(`Could not delete build: ${delError.message}`);if(state.savedBuildId===id){state.savedBuildId=null;state.savedBuildStatus=null;}toast("Saved build deleted.");await openSavedBuilds(true)}
-}
-
-function buildSummaryText(){
-  const total=formatMoney(calculateBuildTotal(state.build),state.currency);const power=estimatePower(state.build);const report=validateBuild(state.build);
-  const parts=CATEGORY_ORDER.flatMap(type=>getSelections(state.build,type).map(p=>`${CATEGORY_LABELS[type]||type}: ${p.name} — ${priceText(p)}`));
-  return ["VoltTech PC Builder","",...parts,"",`Estimated parts total: ${total}`,power.estimated?`Estimated system load: ${power.estimated} W`:null,`Build status: ${report.issues?.length?"Conflict to review":report.unknowns?.length||report.warnings?.length?"Needs final verification":"Current checks clear"}`,"","Estimate only — final stock, pricing and specification must be confirmed by VoltTech."].filter(Boolean).join("\n")
-}
-
-function toggleSummary(force){const open=typeof force==="boolean"?force:!refs.summaryPanel.classList.contains("open");refs.summaryPanel.classList.toggle("open",open);refs.mobileSummaryToggle.setAttribute("aria-expanded",String(open))}
-
-function bindProductImages(scope){scope.querySelectorAll("img[data-product-image]").forEach(img=>{const fail=()=>img.closest(".product-media,.modal-media")?.classList.add("broken");if(img.complete&&img.naturalWidth===0)fail();img.addEventListener("error",fail,{once:true})})}
-
-function effectiveRequiredCategories(){
-  const cpu=state.build.cpu;const igpu=cpu?.specs?.integratedGraphics===true;
-  return igpu&&!state.build.gpu?REQUIRED_CATEGORIES.filter(t=>t!=="gpu"):REQUIRED_CATEGORIES
-}
-function findNextIncomplete(afterType){const required=effectiveRequiredCategories();const start=Math.max(0,required.indexOf(afterType)+1);return required.slice(start).find(t=>!hasCategory(state.build,t))||required.find(t=>!hasCategory(state.build,t))||null}
-function firstUsefulCategory(){return findNextIncomplete("")||"gpu"}
-function isSelected(product){return getSelections(state.build,product.type).some(p=>p.id===product.id)}
-function isOfferAvailable(offer){if(!offer)return false;return !["out-of-stock","discontinued"].includes(String(offer.stockStatus||"").toLowerCase())}
-function priceText(product){const price=getProductPrice(product);return price?formatMoney(price,state.currency):"Price pending"}
-function searchBlob(p){return [p.brand,p.manufacturer,p.name,p.model,p.identifiers?.mpn,p.identifiers?.ean,p.specs?.chipset,p.specs?.socket,p.specs?.memoryType,p.specs?.interface].filter(Boolean).join(" ").toLowerCase()}
-function compatMessage(report,selected){if(selected)return"Already in your current build.";if(report.issues?.length)return report.issues[0].text||"Conflicts with the current build.";if(report.unknowns?.length)return report.unknowns[0].text||"Some compatibility data still needs verification.";if(report.warnings?.length)return report.warnings[0].text||"Compatible, with a note to review.";return"Fits the parts currently selected."}
-
-function specChips(p){const s=p.specs||{};switch(p.type){case"cpu":return[s.socket,s.cores&&s.threads?`${s.cores}C / ${s.threads}T`:null,s.architecture,s.tdpWatts?`${s.tdpWatts}W TDP`:null].filter(Boolean);case"motherboard":return[s.chipset,s.formFactor,s.memoryType,s.wifi===true?"Wi-Fi":null].filter(Boolean);case"memory":return[s.capacityGB?`${s.capacityGB}GB`:null,s.memoryType,s.speedMTs?`${s.speedMTs} MT/s`:null,s.modules?`${s.modules} DIMMs`:null].filter(Boolean);case"gpu":return[s.vramGB?`${s.vramGB}GB VRAM`:null,s.lengthMm?`${s.lengthMm}mm`:null,s.recommendedPsuWatts?`${s.recommendedPsuWatts}W PSU`:null].filter(Boolean);case"storage":return[s.capacityGB?capacityLabel(s.capacityGB):null,s.interface,s.pcieGeneration?`PCIe ${s.pcieGeneration}`:null,s.formFactor].filter(Boolean);case"psu":return[s.wattage?`${s.wattage}W`:null,s.efficiency,s.modularity].filter(Boolean);case"case":return[(s.supportedMotherboardSizes||[]).join("/"),s.maxGpuLengthMm?`${s.maxGpuLengthMm}mm GPU`:null,s.maxCpuCoolerHeightMm?`${s.maxCpuCoolerHeightMm}mm cooler`:null].filter(Boolean);case"cooler":return[s.coolerType==="aio"?`${s.radiatorSizeMm}mm AIO`:"Air cooler",s.heightMm?`${s.heightMm}mm high`:null,(s.supportedSockets||[]).slice(0,2).join("/")].filter(Boolean);case"fans":return[s.sizeMm?`${s.sizeMm}mm`:null,s.fanCount?`${s.fanCount} pack`:null,s.pwm?"PWM":null].filter(Boolean);default:return[]}}
-
-function specEntries(p){const s=p.specs||{};return Object.entries(s).filter(([,v])=>v!==null&&v!==undefined&&v!==false&&v!==""&&(!Array.isArray(v)||v.length)).slice(0,14).map(([k,v])=>[humanize(k),formatSpecValue(k,v)])}
-function formatSpecValue(key,v){if(Array.isArray(v))return v.join(", ");if(typeof v==="boolean")return v?"Yes":"No";if(key.toLowerCase().includes("watts"))return`${v} W`;if(key.toLowerCase().includes("mm"))return`${v} mm`;if(key==="capacityGB")return capacityLabel(v);if(key==="speedMTs")return`${v} MT/s`;return String(v)}
-function humanize(s){return String(s).replace(/([a-z0-9])([A-Z])/g,"$1 $2").replace(/^./,m=>m.toUpperCase())}
-function capacityLabel(gb){gb=Number(gb||0);return gb>=1000?`${Number.isInteger(gb/1000)?gb/1000:(gb/1000).toFixed(1)}TB`:`${gb}GB`}
-function categoryMonogram(type){return({cpu:"CPU",motherboard:"MB",memory:"RAM",gpu:"GPU",storage:"SSD",psu:"PSU",case:"CASE",cooler:"COOL",fans:"FAN"}[type]||"PC")}
-
-function safeUrl(value){try{if(!value)return"";const u=new URL(value,location.href);return ["http:","https:"].includes(u.protocol)?u.href:""}catch{return""}}
-function escapeHtml(value){return String(value??"").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]))}
-function escapeAttr(value){return escapeHtml(value).replace(/`/g,"&#96;")}
-function fallbackCopy(text,message){const ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();toast(message)}
-function toast(message){clearTimeout(toastTimer);refs.toast.textContent=message;refs.toast.classList.add("show");toastTimer=setTimeout(()=>refs.toast.classList.remove("show"),2600)}
+function esc(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}

@@ -1,3 +1,4 @@
+import "./account-integration.js?v=2.2.0";
 import {
     buildProductIdentityIndexes,
     normalizeCatalogueProducts,
@@ -26,30 +27,24 @@ export async function loadCatalogue() {
         const mediaEntry = mediaById[product.id];
         if (!mediaEntry) return product;
 
-        const primaryImage = mediaEntry.primaryImage || product.media?.primaryImage || null;
-        const sourcePage = mediaEntry.sourcePage || product.media?.sourcePage || deriveSourcePage(primaryImage);
-        const images = uniqueUrls([
-            primaryImage,
-            ...(Array.isArray(mediaEntry.images) ? mediaEntry.images : []),
-            ...(Array.isArray(product.media?.images) ? product.media.images : [])
-        ]);
-
         return {
             ...product,
             media: {
                 ...(product.media || {}),
-                primaryImage,
-                images,
-                sourcePage,
-                sourceType: mediaEntry.sourceType || product.media?.sourceType || (sourcePage ? "external-product-page" : null),
-                matchLevel: mediaEntry.matchLevel || product.media?.matchLevel || (sourcePage ? "mapped-product" : null),
-                alt: mediaEntry.alt || `${product.name} product image`
+                primaryImage: mediaEntry.primaryImage || product.media?.primaryImage || null,
+                images: mediaEntry.images || product.media?.images || [],
+                sourcePage: mediaEntry.sourcePage || product.media?.sourcePage || null,
+                sourceType: mediaEntry.sourceType || null,
+                matchLevel: mediaEntry.matchLevel || null
             }
         };
     });
 
     const indexes = buildProductIdentityIndexes(products);
-    if (indexes.collisions.length) console.warn("Product identifier collisions detected", indexes.collisions);
+
+    if (indexes.collisions.length) {
+        console.warn("Product identifier collisions detected", indexes.collisions);
+    }
 
     const supplierFiles = await Promise.all((manifest.supplierFiles || []).map(async path => {
         try {
@@ -67,18 +62,33 @@ export async function loadCatalogue() {
     for (const feed of supplierFiles.filter(Boolean)) {
         for (const offer of feed.offers || []) {
             const productId = resolveOfferProductId(offer, products, indexes);
+
             if (!productId) {
-                unmatchedOffers.push({ supplier: offer.supplier, supplierSku: offer.supplierSku, identifiers: offer.identifiers });
+                unmatchedOffers.push({
+                    supplier: offer.supplier,
+                    supplierSku: offer.supplierSku,
+                    identifiers: offer.identifiers
+                });
                 continue;
             }
+
             const existing = offersByProduct.get(productId) || [];
             existing.push({ ...offer, productId });
             offersByProduct.set(productId, existing);
         }
     }
 
-    const enrichedProducts = products.map(product => ({ ...product, offers: sortOffers(offersByProduct.get(product.id) || []) }));
+    const enrichedProducts = products.map(product => ({
+        ...product,
+        offers: sortOffers(offersByProduct.get(product.id) || [])
+    }));
+
     const allOffers = enrichedProducts.flatMap(product => product.offers || []);
+
+    window.__VT_BUILDER_CATALOGUE = enrichedProducts;
+    window.dispatchEvent(new CustomEvent("volttech:catalogue-ready", {
+        detail: { products: enrichedProducts, currency: manifest.currency || "ZAR" }
+    }));
 
     return {
         schemaVersion: manifest.schemaVersion || "0.6.0",
@@ -92,34 +102,20 @@ export async function loadCatalogue() {
         unmatchedOfferCount: unmatchedOffers.length,
         unmatchedOffers,
         freshness: summarizeFreshness(allOffers),
-        identifierCollisionCount: indexes.collisions.length,
-        mediaCount: products.filter(product => product.media?.primaryImage).length
+        identifierCollisionCount: indexes.collisions.length
     };
-}
-
-function deriveSourcePage(imageUrl) {
-    if (!imageUrl) return null;
-    try {
-        const image = new URL(imageUrl);
-        if (image.hostname === "api.microlink.io") {
-            const target = image.searchParams.get("url");
-            if (target) return target;
-        }
-    } catch (error) {
-        console.warn("Could not derive image source", error);
-    }
-    return null;
-}
-
-function uniqueUrls(values) {
-    return [...new Set(values.filter(Boolean))];
 }
 
 function sortOffers(offers) {
     const freshnessRank = { fresh: 0, aging: 1, unknown: 2, stale: 3 };
+
     return [...offers].sort((a, b) => {
-        const rankDiff = (freshnessRank[a.freshness] ?? 9) - (freshnessRank[b.freshness] ?? 9);
+        const rankDiff =
+            (freshnessRank[a.freshness] ?? 9) -
+            (freshnessRank[b.freshness] ?? 9);
+
         if (rankDiff) return rankDiff;
+
         return Number(a.price || Infinity) - Number(b.price || Infinity);
     });
 }
