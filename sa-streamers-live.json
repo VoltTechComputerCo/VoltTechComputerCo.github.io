@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T19:16:30.425558Z",
+  "generated_at": "2026-09-14T19:31:57.101337Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,12 +9,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
       "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
       "live": true,
-      "viewer_count": 5,
+      "viewer_count": 4,
       "game_name": "Project Zomboid",
       "title": "[!Pink 1/4] !extend - Finding New things to do",
       "started_at": "2026-09-14T17:05:00Z",
-      "last_live_at": "2026-09-14T19:16:30.425558Z",
-      "activity_score": 92.21
+      "last_live_at": "2026-09-14T19:31:57.101337Z",
+      "activity_score": 94.68
     },
     {
       "login": "slikkdudebroguy",
@@ -26,8 +26,8 @@
       "game_name": "Valheim",
       "title": "Chilling in Valheim! ⚔️🐲 Come say hi! | !command !discord [EN | 18+]",
       "started_at": "2026-09-14T18:27:50Z",
-      "last_live_at": "2026-09-14T19:16:30.425558Z",
-      "activity_score": 22.66
+      "last_live_at": "2026-09-14T19:31:57.101337Z",
+      "activity_score": 29.3
     },
     {
       "login": "zulumachinegaming",
@@ -39,8 +39,8 @@
       "game_name": "THE FINALS",
       "title": "I'M PLAYING WHAT?! 😂 | RANDOM GAMES MONDAY with @sekwele",
       "started_at": "2026-09-14T18:55:52Z",
-      "last_live_at": "2026-09-14T19:16:30.425558Z",
-      "activity_score": 15.6
+      "last_live_at": "2026-09-14T19:31:57.101337Z",
+      "activity_score": 22.66
     },
     {
       "login": "chickenwingerz",
@@ -48,12 +48,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/95ef6966-e207-4ff6-bcf0-59621c34af57-profile_image-300x300.png",
       "description": "New South African Streamer Lets have fun Lets all help each other out!",
       "live": true,
-      "viewer_count": 1,
+      "viewer_count": 2,
       "game_name": "Fortnite",
       "title": "welcome all! young and old!",
       "started_at": "2026-09-14T19:06:44Z",
-      "last_live_at": "2026-09-14T19:16:30.425558Z",
-      "activity_score": 8.08
+      "last_live_at": "2026-09-14T19:31:57.101337Z",
+      "activity_score": 15.6
     },
     {
       "login": "viking_237",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T16:50:52.277297Z",
-      "activity_score": 42.24
+      "activity_score": 39.71
     },
     {
       "login": "zlorbz",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T15:56:12.853425Z",
-      "activity_score": 35.09
+      "activity_score": 32.98
     },
     {
       "login": "spyro_za",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T14:33:15.409106Z",
-      "activity_score": 34.7
+      "activity_score": 32.62
     },
     {
       "login": "dead_oryx",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T13:20:36.674470Z",
-      "activity_score": 27.28
+      "activity_score": 25.64
     },
     {
       "login": "syernide",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T15:28:29.801620Z",
-      "activity_score": 21.91
+      "activity_score": 20.6
     },
     {
       "login": "deathsjokerst",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T15:45:11.297139Z",
-      "activity_score": 18.53
+      "activity_score": 17.42
     },
     {
       "login": "azuracub",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T10:13:03.440622Z",
-      "activity_score": 9.09
+      "activity_score": 8.54
     },
     {
       "login": "thendoplays",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T20:23:46.863694Z",
-      "activity_score": 0.28
+      "activity_score": 0.26
     },
     {
       "login": "thelemons",
@@ -170,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T18:57:51.046704Z",
-      "activity_score": 0.28
+      "activity_score": 0.26
     },
     {
       "login": "waldoliveza",
@@ -183,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T18:14:14.279192Z",
-      "activity_score": 0.15
+      "activity_score": 0.14
     },
     {
       "login": "alaskayeen",
@@ -196,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T16:58:06.073562Z",
-      "activity_score": 0.14
+      "activity_score": 0.13
     },
     {
       "login": "cyndalive",
@@ -209,7 +209,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T15:21:29.519182Z",
-      "activity_score": 0.09
+      "activity_score": 0.08
     },
     {
       "login": "virtualgemma",
