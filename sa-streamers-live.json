@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T21:24:30.145227Z",
+  "generated_at": "2026-09-14T21:39:15.918439Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,11 +9,11 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
       "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
       "live": true,
-      "viewer_count": 8,
+      "viewer_count": 7,
       "game_name": "Project Zomboid",
       "title": "[!Pink 1/4] !extend - Finding New things to do",
       "started_at": "2026-09-14T20:16:38Z",
-      "last_live_at": "2026-09-14T21:24:30.145227Z",
+      "last_live_at": "2026-09-14T21:39:15.918439Z",
       "activity_score": 100.0
     },
     {
@@ -22,12 +22,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/c8500f68-6f16-453c-819c-1bc563758212-profile_image-300x300.png",
       "description": "Hi everyone! Variety streamer here with a love for old-school and retro shooters. And Sci-Fi. And anime. And fantasy. And, and, and... 😁",
       "live": true,
-      "viewer_count": 9,
+      "viewer_count": 7,
       "game_name": "Valheim",
       "title": "Chilling in Valheim! ⚔️🐲 Come say hi! | !command !discord [EN | 18+]",
       "started_at": "2026-09-14T18:27:50Z",
-      "last_live_at": "2026-09-14T21:24:30.145227Z",
-      "activity_score": 69.92
+      "last_live_at": "2026-09-14T21:39:15.918439Z",
+      "activity_score": 73.72
     },
     {
       "login": "zulumachinegaming",
@@ -39,8 +39,8 @@
       "game_name": "Apex Legends",
       "title": "I'M PLAYING WHAT?! 😂 | RANDOM GAMES MONDAY with @sekwele",
       "started_at": "2026-09-14T18:55:52Z",
-      "last_live_at": "2026-09-14T21:24:30.145227Z",
-      "activity_score": 65.87
+      "last_live_at": "2026-09-14T21:39:15.918439Z",
+      "activity_score": 69.92
     },
     {
       "login": "thelemons",
@@ -48,12 +48,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/fe4ae28d-9290-4929-91a2-bb2d539306d8-profile_image-300x300.png",
       "description": "Deadlock Streamer | Previously Apex, quit because I got ligamentitis in my fingers | Business email: thelemonsstreams@gmail.com",
       "live": true,
-      "viewer_count": 10,
+      "viewer_count": 7,
       "game_name": "Deadlock",
       "title": "Yoshi you're doing a great job don't listen to the haters",
       "started_at": "2026-09-14T20:24:39Z",
-      "last_live_at": "2026-09-14T21:24:30.145227Z",
-      "activity_score": 35.65
+      "last_live_at": "2026-09-14T21:39:15.918439Z",
+      "activity_score": 41.51
     },
     {
       "login": "chickenwingerz",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T20:29:41.566442Z",
-      "activity_score": 32.33
+      "activity_score": 30.39
     },
     {
       "login": "viking_237",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T16:50:52.277297Z",
-      "activity_score": 24.2
+      "activity_score": 22.75
     },
     {
       "login": "zlorbz",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T15:56:12.853425Z",
-      "activity_score": 20.1
+      "activity_score": 18.89
     },
     {
       "login": "spyro_za",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T14:33:15.409106Z",
-      "activity_score": 19.87
+      "activity_score": 18.68
     },
     {
       "login": "dead_oryx",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T13:20:36.674470Z",
-      "activity_score": 15.62
+      "activity_score": 14.68
     },
     {
       "login": "syernide",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T15:28:29.801620Z",
-      "activity_score": 12.56
+      "activity_score": 11.81
     },
     {
       "login": "deathsjokerst",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T15:45:11.297139Z",
-      "activity_score": 10.61
+      "activity_score": 9.97
     },
     {
       "login": "azuracub",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T10:13:03.440622Z",
-      "activity_score": 5.21
+      "activity_score": 4.9
     },
     {
       "login": "thendoplays",
@@ -170,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T20:23:46.863694Z",
-      "activity_score": 0.17
+      "activity_score": 0.16
     },
     {
       "login": "waldoliveza",
