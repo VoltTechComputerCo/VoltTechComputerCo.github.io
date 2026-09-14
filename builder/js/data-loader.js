@@ -6,12 +6,39 @@ import {
 } from "../../commerce/js/catalogue-normalizer.js?v=0.6";
 
 const CATALOGUE_PATH = "./data/catalogue.json";
+const PRODUCT_MEDIA_PATH = "./data/product-media.json";
 
 export async function loadCatalogue() {
     const manifest = await getJson(CATALOGUE_PATH);
     const categoryFiles = await Promise.all((manifest.categoryFiles || []).map(getJson));
     const rawProducts = categoryFiles.flatMap(file => file.products || []);
-    const products = normalizeCatalogueProducts(rawProducts);
+    const normalizedProducts = normalizeCatalogueProducts(rawProducts);
+
+    let mediaById = {};
+    try {
+        const mediaFile = await getJson(PRODUCT_MEDIA_PATH);
+        mediaById = mediaFile.products || {};
+    } catch (error) {
+        console.warn("Product media map unavailable", error);
+    }
+
+    const products = normalizedProducts.map(product => {
+        const mediaEntry = mediaById[product.id];
+        if (!mediaEntry) return product;
+
+        return {
+            ...product,
+            media: {
+                ...(product.media || {}),
+                primaryImage: mediaEntry.primaryImage || product.media?.primaryImage || null,
+                images: mediaEntry.images || product.media?.images || [],
+                sourcePage: mediaEntry.sourcePage || null,
+                sourceType: mediaEntry.sourceType || null,
+                matchLevel: mediaEntry.matchLevel || null
+            }
+        };
+    });
+
     const indexes = buildProductIdentityIndexes(products);
 
     if (indexes.collisions.length) {
