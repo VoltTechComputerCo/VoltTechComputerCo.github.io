@@ -1,34 +1,8 @@
 {
-  "generated_at": "2026-09-14T22:24:24.216629Z",
+  "generated_at": "2026-09-14T22:39:54.999094Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
-    {
-      "login": "zulumachinegaming",
-      "display_name": "ZuluMachineGaming",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/6c1b8e82-dab1-46de-acd3-8f0231c6e5bd-profile_image-300x300.png",
-      "description": "I'm a gamer producing cool plays, streams and funny moments. Here we play and have fun. Join the community on Discord: https://discord.gg/vWcTNZt . You can contact me on siphomoths@gmail.com",
-      "live": true,
-      "viewer_count": 1,
-      "game_name": "Apex Legends",
-      "title": "I'M PLAYING WHAT?! 😂 | RANDOM GAMES MONDAY with @sekwele",
-      "started_at": "2026-09-14T18:55:52Z",
-      "last_live_at": "2026-09-14T22:24:24.216629Z",
-      "activity_score": 80.66
-    },
-    {
-      "login": "thelemons",
-      "display_name": "TheLemons",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/fe4ae28d-9290-4929-91a2-bb2d539306d8-profile_image-300x300.png",
-      "description": "Deadlock Streamer | Previously Apex, quit because I got ligamentitis in my fingers | Business email: thelemonsstreams@gmail.com",
-      "live": true,
-      "viewer_count": 9,
-      "game_name": "Deadlock",
-      "title": "Yoshi you're doing a great job don't listen to the haters",
-      "started_at": "2026-09-14T20:24:39Z",
-      "last_live_at": "2026-09-14T22:24:24.216629Z",
-      "activity_score": 57.07
-    },
     {
       "login": "zaffa_geek",
       "display_name": "Zaffa_Geek",
@@ -40,7 +14,20 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T22:08:10.110048Z",
-      "activity_score": 94.0
+      "activity_score": 88.36
+    },
+    {
+      "login": "zulumachinegaming",
+      "display_name": "ZuluMachineGaming",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/6c1b8e82-dab1-46de-acd3-8f0231c6e5bd-profile_image-300x300.png",
+      "description": "I'm a gamer producing cool plays, streams and funny moments. Here we play and have fun. Join the community on Discord: https://discord.gg/vWcTNZt . You can contact me on siphomoths@gmail.com",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": "2026-09-14T22:24:24.216629Z",
+      "activity_score": 75.82
     },
     {
       "login": "slikkdudebroguy",
@@ -53,7 +40,20 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T21:51:37.351577Z",
-      "activity_score": 68.3
+      "activity_score": 64.2
+    },
+    {
+      "login": "thelemons",
+      "display_name": "TheLemons",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/fe4ae28d-9290-4929-91a2-bb2d539306d8-profile_image-300x300.png",
+      "description": "Deadlock Streamer | Previously Apex, quit because I got ligamentitis in my fingers | Business email: thelemonsstreams@gmail.com",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": "2026-09-14T22:24:24.216629Z",
+      "activity_score": 53.65
     },
     {
       "login": "chickenwingerz",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T20:29:41.566442Z",
-      "activity_score": 25.25
+      "activity_score": 23.73
     },
     {
       "login": "viking_237",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T16:50:52.277297Z",
-      "activity_score": 18.89
+      "activity_score": 17.76
     },
     {
       "login": "zlorbz",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T15:56:12.853425Z",
-      "activity_score": 15.69
+      "activity_score": 14.75
     },
     {
       "login": "spyro_za",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T14:33:15.409106Z",
-      "activity_score": 15.52
+      "activity_score": 14.59
     },
     {
       "login": "dead_oryx",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T13:20:36.674470Z",
-      "activity_score": 12.19
+      "activity_score": 11.46
     },
     {
       "login": "syernide",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T15:28:29.801620Z",
-      "activity_score": 9.8
+      "activity_score": 9.21
     },
     {
       "login": "deathsjokerst",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T15:45:11.297139Z",
-      "activity_score": 8.28
+      "activity_score": 7.78
     },
     {
       "login": "azuracub",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T10:13:03.440622Z",
-      "activity_score": 4.07
+      "activity_score": 3.83
     },
     {
       "login": "thendoplays",
@@ -170,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T20:23:46.863694Z",
-      "activity_score": 0.13
+      "activity_score": 0.12
     },
     {
       "login": "waldoliveza",
