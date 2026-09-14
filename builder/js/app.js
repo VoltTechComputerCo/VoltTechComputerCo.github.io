@@ -73,12 +73,10 @@ function cacheRefs(){
 }
 
 function bindStaticEvents(){
-  document.querySelectorAll("[data-start-mode]").forEach(btn=>btn.addEventListener("click",()=>{
-    setMode(btn.dataset.startMode);
-    (btn.dataset.startMode==="guided"?refs.guidedPanel:refs.builderWorkspace).scrollIntoView({behavior:"smooth",block:"start"});
-  }));
-  document.querySelectorAll("[data-mode]").forEach(btn=>btn.addEventListener("click",()=>setMode(btn.dataset.mode)));
+  document.querySelectorAll("[data-start-mode]").forEach(btn=>btn.addEventListener("click",()=>openBuilderMode(btn.dataset.startMode)));
+  document.querySelectorAll("[data-mode]").forEach(btn=>btn.addEventListener("click",()=>openBuilderMode(btn.dataset.mode)));
   refs.guidedForm.addEventListener("submit", onGuidedSubmit);
+  refs.generateBuildBtn.addEventListener("click", onGuidedSubmit);
   refs.categoryList.addEventListener("click",e=>{
     const btn=e.target.closest("[data-category]"); if(!btn)return;
     state.activeCategory=btn.dataset.category; resetCatalogueFilters(false); renderCatalogue(); renderCategories();
@@ -131,18 +129,69 @@ function setMode(mode,persist=true){
   refs.guidedPanel.classList.toggle("hidden",mode!=="guided");
 }
 
-function onGuidedSubmit(e){
-  e.preventDefault(); if(!state.products.length)return;
-  const data=new FormData(refs.guidedForm);
-  const profile=Object.fromEntries(data.entries());
-  profile.fpsTarget=Number(profile.fpsTarget||120); profile.storageNeed=Number(profile.storageNeed||1000);
-  const result=buildGuidedRecommendation(profile,state.products,state.currency);
-  if(!result.ok){refs.guidedResult.classList.remove("hidden");refs.guidedResult.innerHTML=`<div class="guided-note">${escapeHtml(result.message||"A guided build could not be generated from the current catalogue.")}</div>`;return}
-  state.guided=result; state.build=result.build; state.activeCategory=firstUsefulCategory();
-  persistBuild(); renderGuidedResult(result); renderAll();
+function openBuilderMode(mode){
+  setMode(mode);
+  const target=mode==="guided"?refs.guidedPanel:refs.builderWorkspace;
+  requestAnimationFrame(()=>scrollToElement(target));
+}
+
+function scrollToElement(target){
+  if(!target)return;
+  const header=document.querySelector(".topbar");
+  const offset=(header?.offsetHeight||66)+12;
+  const top=Math.max(0,window.scrollY+target.getBoundingClientRect().top-offset);
+  window.scrollTo({top,behavior:"smooth"});
+}
+
+function showGuidedMessage(message,isError=false){
   refs.guidedResult.classList.remove("hidden");
-  refs.guidedResult.scrollIntoView({behavior:"smooth",block:"nearest"});
-  toast("Guided build created — you can now swap any part.");
+  refs.guidedResult.innerHTML=`<div class="guided-note"${isError?' role="alert"':''}>${escapeHtml(message)}</div>`;
+  requestAnimationFrame(()=>scrollToElement(refs.guidedResult));
+}
+
+function setGenerating(on){
+  refs.generateBuildBtn.disabled=on;
+  refs.generateBuildBtn.setAttribute("aria-busy",String(on));
+  refs.generateBuildBtn.textContent=on?"Building your PC…":"Generate my build";
+}
+
+function onGuidedSubmit(e){
+  e?.preventDefault?.();
+  e?.stopPropagation?.();
+  if(refs.generateBuildBtn.disabled)return;
+  if(!state.products.length){
+    showGuidedMessage("The parts catalogue is still loading. Give it a moment and try again.",true);
+    return;
+  }
+
+  setGenerating(true);
+  try{
+    const data=new FormData(refs.guidedForm);
+    const profile=Object.fromEntries(data.entries());
+    profile.fpsTarget=Number(profile.fpsTarget||120);
+    profile.storageNeed=Number(profile.storageNeed||1000);
+
+    const result=buildGuidedRecommendation(profile,state.products,state.currency);
+    if(!result?.ok){
+      showGuidedMessage(result?.message||"A guided build could not be generated from the current catalogue. Try a different budget or use Manual Build.",true);
+      return;
+    }
+
+    state.guided=result;
+    state.build=result.build;
+    state.activeCategory=firstUsefulCategory();
+    persistBuild();
+    renderAll();
+    renderGuidedResult(result);
+    refs.guidedResult.classList.remove("hidden");
+    requestAnimationFrame(()=>scrollToElement(refs.guidedResult));
+    toast("Guided build created — you can now swap any part.");
+  }catch(error){
+    console.error("Guided build failed",error);
+    showGuidedMessage("The guided builder hit an error while creating this recommendation. Your choices are still here — please try again.",true);
+  }finally{
+    setGenerating(false);
+  }
 }
 
 function renderGuidedResult(result){
