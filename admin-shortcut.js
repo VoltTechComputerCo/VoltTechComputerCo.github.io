@@ -2,7 +2,49 @@
   const link = document.querySelector("#adminShortcut");
   const client = window.volttechAuth;
   const header = document.querySelector(".profile-head");
-  if (!link || !client) return;
+  const tabs = document.querySelector(".tabs");
+  if (!client) return;
+
+  // Make saved PC builds a first-class customer-account destination.
+  if (tabs && !document.querySelector('a[href="builds.html"]')) {
+    const buildsLink = document.createElement("a");
+    buildsLink.className = "tab";
+    buildsLink.href = "builds.html";
+    buildsLink.textContent = "PC Builds";
+    buildsLink.setAttribute("aria-label", "Open saved PC builds");
+    const adminTab = document.querySelector("#adminShortcut");
+    tabs.insertBefore(buildsLink, adminTab || null);
+  }
+
+  function safeReturnTarget() {
+    const raw = new URLSearchParams(location.search).get("returnTo");
+    if (!raw) return null;
+    try {
+      const target = new URL(raw, location.origin);
+      if (target.origin !== location.origin) return null;
+      const path = `${target.pathname}${target.search}${target.hash}`;
+      const current = `${location.pathname}${location.search}${location.hash}`;
+      return path !== current ? path : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function continueToRequestedPage(session) {
+    if (!session?.user) return false;
+    const target = safeReturnTarget();
+    if (!target) return false;
+    location.replace(target);
+    return true;
+  }
+
+  if (!link) {
+    client.auth.getSession().then(({ data }) => continueToRequestedPage(data?.session));
+    client.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_IN") setTimeout(() => continueToRequestedPage(session), 0);
+    });
+    return;
+  }
 
   link.textContent = "Admin Hub";
   link.classList.remove("tab");
@@ -45,6 +87,7 @@
   async function refreshAdminShortcut(session) {
     link.hidden = true;
     if (!session?.user) return;
+    if (continueToRequestedPage(session)) return;
     const { data, error } = await client.rpc("is_volttech_admin");
     if (!error && data === true) link.hidden = false;
   }
@@ -56,6 +99,8 @@
       link.hidden = true;
       return;
     }
-    setTimeout(() => refreshAdminShortcut(session), 0);
+    if (event === "SIGNED_IN") {
+      setTimeout(() => refreshAdminShortcut(session), 0);
+    }
   });
 })();
