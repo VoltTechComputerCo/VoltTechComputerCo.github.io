@@ -32,9 +32,9 @@ export async function loadCatalogue() {
                 ...(product.media || {}),
                 primaryImage: mediaEntry.primaryImage || product.media?.primaryImage || null,
                 images: mediaEntry.images || product.media?.images || [],
-                sourcePage: mediaEntry.sourcePage || null,
-                sourceType: mediaEntry.sourceType || null,
-                matchLevel: mediaEntry.matchLevel || null
+                sourcePage: null,
+                sourceType: null,
+                matchLevel: null
             }
         };
     });

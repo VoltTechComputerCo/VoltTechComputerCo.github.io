@@ -41,7 +41,7 @@ async function init(){
         const d=await loadCatalogue();
         catalogue=d.products;
         currency=d.currency;
-        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · private preview · v1.6 official product media · temporary catalogue pricing and stock for testing only.`;
+        e.catalogueNote.textContent=`${catalogue.length} prototype products · ${d.offerCount} normalized supplier offers · ${d.supplierCount} supplier feeds · ${d.unmatchedOfferCount} unmatched offers · private preview · v1.6.1 product showcase media · temporary catalogue pricing and stock for testing only.`;
         try{
             render();
         }catch(renderError){
@@ -153,17 +153,15 @@ function bind(){
 
 function mediaMarkup(p,variant="catalogue"){
     const src=p?.media?.primaryImage;
-    const source=p?.media?.sourcePage;
     const type=p?.type||"part";
     const label=CATEGORY_LABELS[type]||type||"PC part";
     const eager=variant==="guided-hero";
     if(!src){
-        return `<div class="product-media ${variant} no-media" data-category="${esc(type)}"><div class="media-fallback"><span>${esc(label)}</span><small>Image coming soon</small></div></div>`;
+        return `<div class="product-media ${variant} no-media" data-category="${esc(type)}"><div class="media-fallback"><span>${esc(label)}</span><small>Product image loading</small></div></div>`;
     }
     return `<div class="product-media ${variant}" data-category="${esc(type)}">
-        <img src="${esc(src)}" alt="${esc(p.name)} official product image" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true;this.parentElement.classList.add('media-error')">
-        <div class="media-fallback"><span>${esc(label)}</span><small>Official image unavailable</small></div>
-        ${source?`<a class="media-source" href="${esc(source)}" target="_blank" rel="noopener noreferrer" aria-label="Open official manufacturer page for ${esc(p.name)}">Official source ↗</a>`:""}
+        <img src="${esc(src)}" alt="${esc(p.name)} product image" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true;this.parentElement.classList.add('media-error')">
+        <div class="media-fallback"><span>${esc(label)}</span><small>Product image unavailable</small></div>
     </div>`;
 }
 
