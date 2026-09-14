@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T13:56:43.356397Z",
+  "generated_at": "2026-09-14T14:13:03.482033Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -9,12 +9,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dd8b5abe-e947-4d30-bfd1-2682a123a468-profile_image-300x300.png",
       "description": "Hey there gamers and friends! I'm Spyro, your friendly neighborhood streamer. Join me as we dive into epic adventures, conquer challenges and share some laughs along the way! Business Enquiries: spyro@expansion.gg",
       "live": true,
-      "viewer_count": 25,
+      "viewer_count": 19,
       "game_name": "Valheim",
       "title": "Lets Take On The Mistlands And Boss Today!",
       "started_at": "2026-09-14T08:20:31Z",
-      "last_live_at": "2026-09-14T13:56:43.356397Z",
-      "activity_score": 94.9
+      "last_live_at": "2026-09-14T14:13:03.482033Z",
+      "activity_score": 97.21
     },
     {
       "login": "zlorbz",
@@ -26,8 +26,8 @@
       "game_name": "WARDOGS",
       "title": "thank you @zeus_dv for gifting me with rawdogs",
       "started_at": "2026-09-14T12:11:24Z",
-      "last_live_at": "2026-09-14T13:56:43.356397Z",
-      "activity_score": 41.41
+      "last_live_at": "2026-09-14T14:13:03.482033Z",
+      "activity_score": 46.93
     },
     {
       "login": "syernide",
@@ -35,12 +35,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/e4f8fd54-3bfd-4b4c-9df9-f368411a696f-profile_image-300x300.png",
       "description": "A friendly otter exploring the virtual world together with a community of explorers waiting for something amazing to happen.",
       "live": true,
-      "viewer_count": 14,
+      "viewer_count": 13,
       "game_name": "A Plague Tale: Innocence",
       "title": "💜SUBtember is HERE💜 - Revisiting an old Gem - Story time",
       "started_at": "2026-09-14T13:00:51Z",
-      "last_live_at": "2026-09-14T13:56:43.356397Z",
-      "activity_score": 22.66
+      "last_live_at": "2026-09-14T14:13:03.482033Z",
+      "activity_score": 29.3
     },
     {
       "login": "viking_237",
@@ -48,12 +48,38 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dfc3b3de-bf8b-46aa-ab5d-f8627259da28-profile_image-300x300.png",
       "description": "Hey!! I'm a full-time variety streamer I love first person shooters, rpg games and survival games. Jump in, say whats up and meet the coolest Horde you will ever encounter :D You can call me Viking or Vike for short :D Even just V",
       "live": true,
-      "viewer_count": 5,
+      "viewer_count": 3,
       "game_name": "Warhammer 40,000: Space Marine II",
       "title": "We marining this space! | +18 | !socials",
       "started_at": "2026-09-14T13:11:28Z",
-      "last_live_at": "2026-09-14T13:56:43.356397Z",
-      "activity_score": 22.66
+      "last_live_at": "2026-09-14T14:13:03.482033Z",
+      "activity_score": 29.3
+    },
+    {
+      "login": "deathsjokerst",
+      "display_name": "DeathsJokerST",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/47732dbd-fe89-4f75-9f67-db706ce59e36-profile_image-300x300.png",
+      "description": "South African gamer....I play FPS games  mainly and enjoy a variety of other games from the Witcher to total war. I like various topics of discussion so bring your best questions and facts to chat about, no matter the topic! Disclaimer: All jokes made on stream are JOKES",
+      "live": true,
+      "viewer_count": 14,
+      "game_name": "Cyberpunk 2077",
+      "title": "Epic awesome cyberpunk themed title :D(very hard diff) (Sorry I'm Late!) |!clip |!discord | !lurk | 18+",
+      "started_at": "2026-09-14T13:57:06Z",
+      "last_live_at": "2026-09-14T14:13:03.482033Z",
+      "activity_score": 8.08
+    },
+    {
+      "login": "zaffa_geek",
+      "display_name": "Zaffa_Geek",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
+      "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
+      "live": true,
+      "viewer_count": 3,
+      "game_name": "Project Zomboid",
+      "title": "[!Pink 1/4] !extend - Finding New things to do",
+      "started_at": "2026-09-14T14:01:10Z",
+      "last_live_at": "2026-09-14T14:13:03.482033Z",
+      "activity_score": 8.08
     },
     {
       "login": "dead_oryx",
@@ -66,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T13:20:36.674470Z",
-      "activity_score": 88.36
+      "activity_score": 83.06
     },
     {
       "login": "azuracub",
@@ -79,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T10:13:03.440622Z",
-      "activity_score": 29.47
+      "activity_score": 27.7
     },
     {
       "login": "thendoplays",
@@ -92,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T20:23:46.863694Z",
-      "activity_score": 0.91
+      "activity_score": 0.86
     },
     {
       "login": "thelemons",
@@ -105,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T18:57:51.046704Z",
-      "activity_score": 0.9
+      "activity_score": 0.85
     },
     {
       "login": "waldoliveza",
@@ -118,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T18:14:14.279192Z",
-      "activity_score": 0.46
+      "activity_score": 0.43
     },
     {
       "login": "alaskayeen",
@@ -131,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T16:58:06.073562Z",
-      "activity_score": 0.43
+      "activity_score": 0.4
     },
     {
       "login": "cyndalive",
@@ -144,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T15:21:29.519182Z",
-      "activity_score": 0.32
+      "activity_score": 0.3
     },
     {
       "login": "zulumachinegaming",
@@ -157,19 +183,6 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T23:30:16.004641Z",
-      "activity_score": 0.08
-    },
-    {
-      "login": "zaffa_geek",
-      "display_name": "Zaffa_Geek",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
-      "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": "2026-09-13T00:10:56.915900Z",
       "activity_score": 0.08
     },
     {
@@ -248,19 +261,6 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-11T20:07:54.948228Z",
-      "activity_score": 0.08
-    },
-    {
-      "login": "deathsjokerst",
-      "display_name": "DeathsJokerST",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/47732dbd-fe89-4f75-9f67-db706ce59e36-profile_image-300x300.png",
-      "description": "South African gamer....I play FPS games  mainly and enjoy a variety of other games from the Witcher to total war. I like various topics of discussion so bring your best questions and facts to chat about, no matter the topic! Disclaimer: All jokes made on stream are JOKES",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": "2026-09-11T16:10:08.471627Z",
       "activity_score": 0.08
     },
     {
