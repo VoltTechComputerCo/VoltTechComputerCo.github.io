@@ -1,15 +1,11 @@
 name: STATIC Discord Publisher
-
 on:
   push:
     branches: [main]
-    paths:
-      - "static-feed.xml"
+    paths: ["static-feed.xml"]
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -20,14 +16,16 @@ jobs:
           STATIC_DISCORD_WEBHOOK: ${{ secrets.STATIC_DISCORD_WEBHOOK }}
         shell: python
         run: |
-          import json, os, urllib.request, xml.etree.ElementTree as ET
-          item = ET.parse("static-feed.xml").getroot().find("./channel/item")
-          if item is None: raise SystemExit("No RSS item found")
-          get=lambda n: ((item.find(n).text or "").strip() if item.find(n) is not None else "")
+          import json,os,urllib.request,xml.etree.ElementTree as ET
+          item=ET.parse("static-feed.xml").getroot().find("./channel/item")
+          def get(n):
+              x=item.find(n); return (x.text or "").strip() if x is not None else ""
           title,url,desc=get("title"),get("link"),get("description")
-          webhook=os.environ.get("STATIC_DISCORD_WEBHOOK","").strip()
-          if not webhook: raise SystemExit("STATIC_DISCORD_WEBHOOK secret is missing")
-          payload={"username":"STATIC","content":"🟠 **NEW STATIC SIGNAL**","allowed_mentions":{"parse":[]},"embeds":[{"title":title[:256],"url":url,"description":desc[:4096],"color":16757844,"footer":{"text":"STATIC · Tech, gaming & nerd culture"}}]}
-          req=urllib.request.Request(webhook+"?wait=true",data=json.dumps(payload).encode(),headers={"Content-Type":"application/json","User-Agent":"STATIC-Publisher/1.0"},method="POST")
-          with urllib.request.urlopen(req,timeout=30) as r:
-              if r.status not in (200,204): raise SystemExit(f"Discord HTTP {r.status}")
+          media=item.find("{http://search.yahoo.com/mrss/}content")
+          image=media.get("url","").strip() if media is not None else ""
+          embed={"title":title[:256],"url":url,"description":desc[:4096],"color":16757844,"footer":{"text":"STATIC · Tech, gaming & nerd culture"}}
+          if image: embed["image"]={"url":image}
+          payload={"username":"STATIC","content":"🟠 **NEW STATIC SIGNAL**","allowed_mentions":{"parse":[]},"embeds":[embed]}
+          hook=os.environ["STATIC_DISCORD_WEBHOOK"].strip()
+          req=urllib.request.Request(hook+"?wait=true",data=json.dumps(payload).encode(),headers={"Content-Type":"application/json","User-Agent":"STATIC-Publisher/1.1"},method="POST")
+          urllib.request.urlopen(req,timeout=30).read()
