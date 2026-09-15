@@ -30,7 +30,12 @@ const pageMessages={
 };
 
 function loadCSS(href,key){
- if(document.querySelector('link[data-vt-'+key+']'))return;
+ const base=href.split('?')[0];
+ const alreadyLoaded=Array.from(document.querySelectorAll('link[rel="stylesheet"]')).some(link=>{
+   const value=(link.getAttribute('href')||'').split('?')[0];
+   return value===base||value.endsWith('/'+base);
+ });
+ if(document.querySelector('link[data-vt-'+key+']')||alreadyLoaded)return;
  const l=document.createElement('link');
  l.rel='stylesheet'; l.href=href; l.dataset['vt'+key.replace(/(^|-)([a-z])/g,(_,a,b)=>b.toUpperCase())]='1';
  document.head.appendChild(l);
@@ -76,18 +81,10 @@ function loadVisualCSS(){
  loadCSS('visual-system.css?v=11','visual-system');
  loadCSS('visual-block-fix.css?v=3','visual-fix');
 }
-function addContactIcons(){
- loadCSS('contact-icons.css?v=1','contact-icons');
- document.querySelectorAll('a[href^="https://wa.me/"],a[href^="mailto:"]').forEach(a=>{
-   if(a.querySelector('.vt-contact-icon'))return;
-   const isWa=a.href.startsWith('https://wa.me/');
-   const img=document.createElement('img');
-   img.className='vt-contact-icon';
-   img.src=isWa?'whatsapp-logo.svg':'gmail-logo.svg';
-   img.alt='';
-   img.setAttribute('aria-hidden','true');
-   a.prepend(img);
- });
+function enableContactIcons(){
+ // Use the CSS-only icon system. It renders the same WhatsApp/Gmail marks
+ // without mutating link contents after first paint.
+ loadCSS('contact-icons-static.css?v=2','contact-icons-static');
 }
 function enhanceWhatsAppLinks(){
  const msg=pageMessages[location.pathname];
@@ -198,19 +195,23 @@ function initMobileNavigation(){
  window.addEventListener('resize',()=>{if(innerWidth>700)setOpen(false)});
 }
 
-function useOfficialHeaderLogo(){
+function ensureOfficialHeaderLogo(){
+ // Stabilised public pages already ship the official logo in their HTML.
+ // Keep this only as a fallback for older pages that still use a legacy mark.
  const logo=document.querySelector('nav .brand img');
  if(!logo)return;
- logo.src='brand/VoltTech_Full_Logo_Transparent.png';
- logo.alt='VoltTech Computer Co.';
+ const official='brand/VoltTech_Full_Logo_Transparent.png';
+ const current=(logo.getAttribute('src')||'').replace(/^\.\//,'');
+ if(current!==official)logo.src=official;
+ if(!logo.alt)logo.alt='VoltTech Computer Co.';
 }
 function init(){
  installAppMetadata();
- useOfficialHeaderLogo();
- addContactIcons();
+ ensureOfficialHeaderLogo();
+ enableContactIcons();
  if(/\/static(?:-|\.html|\/)/.test(location.pathname))return;
  const cls=pages[location.pathname];
- if(cls)document.body.classList.add(cls);
+ if(cls&&!document.body.classList.contains(cls))document.body.classList.add(cls);
  loadVisualCSS();
  enhanceWhatsAppLinks();
  initMobileNavigation();
