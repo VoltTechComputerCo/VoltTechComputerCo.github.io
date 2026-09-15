@@ -1,26 +1,21 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Stream Symptom & Estimate Guide South Africa | Stream Scan | VoltTech</title>
-<meta name="description" content="Use VoltTech Stream Scan to organise OBS, rendering, network, quality, game FPS and audio symptoms, then send the summary by WhatsApp or email. No connection or device measurement is performed.">
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Stream Diagnostic Tool South Africa | Stream Scan | VoltTech</title>
+<meta name="description" content="Diagnose OBS encoding overload, rendering lag, dropped frames, blurry streams, game FPS loss and stream audio problems with VoltTech Stream Scan.">
 <link rel="canonical" href="https://volttechcomputerco.github.io/stream-scan.html"><link rel="icon" href="favicon-512.png"><meta name="robots" content="index,follow"><meta name="theme-color" content="#08070d">
-<meta property="og:title" content="Stream Scan | Streaming Symptom & Estimate Guide | VoltTech"><meta property="og:description" content="A free streaming support guide for South African creators. No live measurement is performed."><meta property="og:type" content="website"><meta property="og:url" content="https://volttechcomputerco.github.io/stream-scan.html"><meta property="og:image" content="https://volttechcomputerco.github.io/logo-full.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"VoltTech Stream Scan","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","url":"https://volttechcomputerco.github.io/stream-scan.html","description":"Streaming symptom and estimate guide for OBS, encoder, rendering, network, video quality and audio problems. No device or network scan is performed.","provider":{"@id":"https://volttechcomputerco.github.io/#organization"}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="scan.css"><link rel="stylesheet" href="site-shell.css">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ3CC70MBE"></script><script src="tracking.js"></script><script src="site-shell.js"></script>
-</head><body class="stream-scan"><main id="main-content" class="wrap">
-<div class="brand"><a class="brand-left" href="index.html" style="text-decoration:none;color:inherit"><img src="logo-badge.png" alt=""><div class="brand-name"><span>Volt</span>Tech <span>Computer Co.</span></div></a><div class="brand-tag">CREATOR SUPPORT · SOUTH AFRICA</div></div>
-<a class="back" href="streaming-setup-south-africa.html">← Streaming & Creator Support</a><div class="eyebrow">// STREAM SCAN</div><h1>What’s happening to your stream?</h1>
-<p class="lead">Answer only the questions that apply to your problem. Stream Scan organises the symptoms into a likely support category and a useful handover summary.</p>
-<div class="truth"><b>Important:</b> Stream Scan does not test your upload, inspect OBS, read encoder statistics or measure stream health. The waveform is decorative branding.</div>
-<div class="scope" aria-hidden="true"><div class="scope-label">VOLTTECH BROADCAST SIGNAL</div><div class="scope-reading" id="reading">DECORATIVE</div><canvas id="scope"></canvas></div>
-<div class="alert" role="status" aria-live="polite"><small>GUIDE STATUS</small><b id="status">READY FOR YOUR ANSWERS</b></div>
-<div class="context" id="context"></div><div class="meter" id="meter" aria-hidden="true"></div><section class="panel" id="panel" aria-live="polite"></section>
-<footer>STREAMING & CREATOR TECH SUPPORT · REMOTE ACROSS SOUTH AFRICA · ESTIMATES ARE NOT FINAL QUOTATIONS</footer>
-</main>
+<meta property="og:title" content="Stream Scan | Streaming Diagnostic Tool | VoltTech"><meta property="og:description" content="Free symptom-based streaming diagnostics for South African creators."><meta property="og:type" content="website"><meta property="og:url" content="https://volttechcomputerco.github.io/stream-scan.html"><meta property="og:image" content="https://volttechcomputerco.github.io/logo-full.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"VoltTech Stream Scan","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","url":"https://volttechcomputerco.github.io/stream-scan.html","description":"Streaming diagnostic tool for OBS, encoder, rendering, network, video quality and audio problems.","provider":{"@id":"https://volttechcomputerco.github.io/#organization"},"areaServed":{"@type":"Country","name":"South Africa"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ3CC70MBE"></script><script src="analytics.js"></script>
+<style>
+:root{--bg:#08070d;--alt:#0e0c15;--panel:#12101a;--line:#292237;--purple:#9b6cff;--purple2:#6240b8;--red:#ff4057;--teal:#2fe6c8;--text:#f0edf7;--muted:#958da5;--mono:'JetBrains Mono',monospace;--display:'Space Grotesk',sans-serif}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 80% 45% at 50% -10%,rgba(155,108,255,.2),transparent 60%),var(--bg);color:var(--text);font-family:var(--display);min-height:100vh;display:flex;justify-content:center;padding:28px 16px 60px}.wrap{width:100%;max-width:620px}.brand{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px}.brand-left{display:flex;align-items:center;gap:10px}.brand img{height:28px}.brand-name{font:700 12px var(--mono)}.brand-name span{color:var(--teal)}.live{display:flex;align-items:center;gap:6px;font:9px var(--mono);color:#ff7b8b;text-transform:uppercase}.dot{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}.back{display:inline-flex;margin-bottom:18px;padding:9px 12px;border:1px solid var(--line);border-radius:3px;color:var(--muted);font:10px var(--mono);text-decoration:none;text-transform:uppercase}.eyebrow{font:10px var(--mono);color:var(--purple);letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px}h1{font-size:29px;line-height:1.15;margin:0 0 8px}h1 span{color:var(--purple)}.lead{color:var(--muted);font-size:14px;line-height:1.65;margin:0 0 22px}.scope{height:96px;background:var(--panel);border:1px solid var(--line);border-radius:4px;margin-bottom:22px;position:relative;overflow:hidden}.scope canvas{width:100%;height:100%}.scope-label,.scope-reading{position:absolute;top:8px;font:9px var(--mono)}.scope-label{left:10px;color:var(--purple)}.scope-reading{right:10px;color:var(--muted)}.alert{text-align:center;padding:14px 12px;margin-bottom:18px;border:1px solid var(--line);background:var(--panel)}.alert small{display:block;font:9px var(--mono);color:var(--muted)}.alert b{font:700 17px var(--mono)}.meter{display:flex;gap:4px;margin-bottom:24px}.meter i{flex:1;height:3px;background:var(--line)}.meter i.on{background:var(--purple);box-shadow:0 0 8px var(--purple)}.panel{background:rgba(18,16,26,.96);border:1px solid var(--line);border-radius:5px;padding:26px 22px;min-height:350px;display:flex;flex-direction:column}h2{font-size:21px;line-height:1.25;margin:0 0 18px}.options{display:flex;flex-direction:column;gap:10px}.opt{text-align:left;background:var(--alt);border:1px solid var(--line);color:var(--text);padding:14px 16px;border-radius:4px;font:14px var(--display);cursor:pointer}.opt:hover,.opt:focus{border-color:var(--purple2);outline:none}.field{display:flex;flex-direction:column;gap:12px}.field label{font:10px var(--mono);color:var(--muted)}input{width:100%;background:var(--alt);border:1px solid var(--line);color:var(--text);padding:13px;border-radius:3px;font:14px var(--display)}.nav{display:flex;gap:10px;margin-top:24px}.btn{font:12px var(--mono);padding:14px 18px;border-radius:3px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}.primary{flex:1;background:var(--purple);border-color:var(--purple);color:#0b0713;font-weight:700}.badge{display:inline-flex;font:10px var(--mono);padding:6px 10px;border-radius:20px;margin-bottom:14px;border:1px solid var(--purple2);color:var(--purple)}.diag{font:12px var(--mono);color:var(--muted);display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--line)}.diag span:last-child{color:var(--text);text-align:right}.price{font:700 29px var(--mono);color:var(--purple);margin:18px 0 4px}.note{font-size:11px;color:var(--muted);line-height:1.55;margin-bottom:18px}.security{border-left:2px solid var(--red);padding-left:12px;font-size:11px;color:var(--muted);line-height:1.55;margin:16px 0}.security b{color:var(--text)}.context{border-left:2px solid var(--purple);padding-left:12px;font-size:11px;color:var(--muted);line-height:1.55;margin:12px 0 18px}.wa{display:block;background:#25d366;color:#04120f;padding:15px;text-align:center;text-decoration:none;font-weight:700;border-radius:3px}.secondary{display:block;border:1px solid var(--line);color:var(--muted);padding:12px;text-align:center;text-decoration:none;font:11px var(--mono);margin-top:9px;background:transparent;width:100%;cursor:pointer}.helper{font-size:11px;color:var(--muted);line-height:1.55;margin-top:12px}footer{text-align:center;margin-top:20px;font:10px var(--mono);color:#554e62}@media(max-width:480px){.panel{padding:22px 18px}.live{display:none}h1{font-size:25px}.diag{font-size:11px}}
+</style></head><body><div class="wrap">
+<div class="brand"><div class="brand-left"><img src="logo-badge.png" alt="VoltTech Computer Co."><div class="brand-name"><span>Volt</span>Tech <span>Computer Co.</span></div></div><div class="live"><i class="dot"></i> Creator Support · SA</div></div>
+<a class="back" href="streaming-setup-south-africa.html">← Streaming & Creator Support</a><div class="eyebrow">// STREAM SCAN</div><h1>What's happening to <span>your stream?</span></h1><p class="lead">Answer only the questions relevant to your problem. Stream Scan narrows down the likely bottleneck and recommends a sensible VoltTech starting point.</p>
+<div class="scope"><div class="scope-label">BROADCAST SIGNAL</div><div class="scope-reading" id="reading">STABLE</div><canvas id="scope"></canvas></div><div class="alert"><small>STREAM STATUS</small><b id="status">SIGNAL STABLE</b></div><div class="meter" id="meter"></div><div class="panel" id="panel"></div>
+<footer>STREAMING & CREATOR TECHNICAL SUPPORT · REMOTE ACROSS SOUTH AFRICA</footer></div>
 <script>
-(function(){
-const S={symptom:null,platform:null,resolution:null,gpu:null,setupType:null,connection:null,upload:null};
+const S={symptom:null,platform:null,resolution:null,gpu:null,setupType:null,connection:null,upload:null,name:'',phone:'',email:''};
+let step=0,tension=.08,target=.08;
 const symptoms=[['encoding','OBS says encoding overloaded'],['rendering','Rendering lag / skipped frames'],['network','Dropped frames / unstable stream'],['blurry','Blurry or blocky stream'],['fps','Game FPS drops when I go live'],['audio','Mic / audio sounds bad'],['setup','I need a complete first-time setup']];
 const platforms=[['twitch','Twitch'],['youtube','YouTube'],['other','Other / not sure yet']];
 const resolutions=[['720p30','720p / 30 FPS'],['720p60','720p / 60 FPS'],['1080p30','1080p / 30 FPS'],['1080p60','1080p / 60 FPS'],['unknown','Not sure']];
@@ -29,88 +24,72 @@ const setupTypes=[['single','One PC runs the game and stream'],['dual','Two-PC s
 const connections=[['ethernet','Wired Ethernet'],['wifi','Wi-Fi'],['wireless','Fixed wireless / mobile data'],['other','Other / not sure']];
 const uploads=[['lt5','Under 5 Mbps'],['5to10','5 – 10 Mbps'],['10to20','10 – 20 Mbps'],['20plus','20+ Mbps'],['unknown','Not sure / never tested']];
 const baseR={
- encoding:{title:'Encoder / system headroom',explain:'The selected encoding workload or available system headroom may not suit the game and output target. The answers help VoltTech decide what to inspect first.',service:'Stream Tune',price:'R449'},
- rendering:{title:'OBS rendering bottleneck',explain:'OBS may not be getting enough GPU rendering headroom, or scene/capture load may be too high while the game is running.',service:'Stream Tune',price:'R449'},
- network:{title:'Network / bitrate instability',explain:'Dropped network frames often point toward connection stability, bitrate, routing or the path between the PC and streaming platform.',service:'Stream Check → Tune if needed',price:'R299–R449'},
- blurry:{title:'Output quality mismatch',explain:'Resolution, frame rate, bitrate and high-motion content may be working against each other.',service:'Stream Tune',price:'R449'},
- fps:{title:'Game + stream resource contention',explain:'The game and streaming workload may be competing for CPU/GPU resources while live.',service:'Stream Tune',price:'R449'},
- audio:{title:'Audio chain needs tuning',explain:'Gain, noise control, compression, limiting, routing or source balance may need adjustment.',service:'Stream Check / Tune',price:'R299–R449'},
- setup:{title:'Complete creator setup',explain:'A clean first-time setup avoids stacking random presets, conflicting sources and unsuitable output settings.',service:'Stream Setup',price:'R649'}
+encoding:['Encoder / system headroom','The stream is showing signs that the selected encoding workload or available system headroom may not match the current game and output target.','Stream Tune','R449'],
+rendering:['OBS rendering bottleneck','OBS may not be getting enough GPU rendering headroom, or scene/capture load may be too high while the game is running.','Stream Tune','R449'],
+network:['Network / bitrate instability','Dropped network frames usually point toward connection stability, bitrate, routing or the path between your PC and the streaming platform.','Stream Check → Tune if needed','R299–R449'],
+blurry:['Output quality mismatch','Resolution, frame rate, bitrate and high-motion content may be working against each other.','Stream Tune','R449'],
+fps:['Game + stream resource contention','The game and streaming workload may be competing for CPU/GPU resources while live.','Stream Tune','R449'],
+audio:['Audio chain needs tuning','Gain, noise control, compression, limiting, routing or source balance may need adjustment.','Stream Check / Tune','R299–R449'],
+setup:['Complete creator setup','A clean first-time setup avoids stacking random presets, conflicting sources and unsuitable output settings.','Stream Setup','R649']
 };
-const branchKeys={
- audio:['platform','setupType'],
- encoding:['platform','resolution','gpu','setupType'],
- rendering:['platform','resolution','gpu','setupType'],
- fps:['platform','resolution','gpu','setupType'],
- network:['platform','resolution','connection','upload'],
- blurry:['platform','resolution','connection','upload'],
- setup:['platform','resolution','gpu','setupType','connection','upload']
-};
-const arrays={platform:platforms,resolution:resolutions,gpu:gpus,setupType:setupTypes,connection:connections,upload:uploads};
-const titles={platform:'Where are you streaming?',resolution:'What output are you aiming for?',gpu:'What graphics hardware are you using?',setupType:'What kind of streaming setup are you using?',connection:'How is the streaming PC connected to the internet?',upload:'What is your upload speed?'};
-const helps={platform:'This helps frame platform limits and workflow.',resolution:'This is your intended output, not a measured result.',gpu:'Choose the closest match; exact model can be discussed later.',setupType:'The hardware path changes what should be checked.',connection:'Connection type can matter even when a speed test looks fast.',upload:'Use your normal observed upload if known. Stream Scan does not test it.'};
-const p=new URLSearchParams(location.search),pre=p.get('issue');
-if(symptoms.some(x=>x[0]===pre))S.symptom=pre;
-const panel=document.getElementById('panel'),meter=document.getElementById('meter'),status=document.getElementById('status'),context=document.getElementById('context');
-let history=[],started=false;
-function track(n,p){if(window.vtTrack)window.vtTrack(n,Object.assign({mode:'stream'},p||{}))}
-function label(arr,v){return (arr.find(x=>x[0]===v)||[])[1]||'Not sure'}
-function activeKeys(){return S.symptom?(branchKeys[S.symptom]||[]):[]}
-function clearInactive(){
- const keep=new Set(activeKeys());
- ['platform','resolution','gpu','setupType','connection','upload'].forEach(k=>{if(!keep.has(k))S[k]=null});
+const preselected=new URLSearchParams(window.location.search).get('issue');
+if(preselected && symptoms.some(x=>x[0]===preselected)){S.symptom=preselected;step=1;target=.2}
+const panel=document.getElementById('panel'),meter=document.getElementById('meter');
+function track(n,p={}){try{if(typeof gtag==='function')gtag('event',n,p)}catch(e){}}
+function label(arr,v){return arr.find(x=>x[0]===v)?.[1]||'Not sure'}
+function flow(){
+  if(!S.symptom)return [{key:'symptom',title:'What is the main streaming problem?',arr:symptoms}];
+  const q=[{key:'symptom',title:'What is the main streaming problem?',arr:symptoms}];
+  if(S.symptom==='audio'){
+    q.push({key:'platform',title:'Where are you streaming?',arr:platforms},{key:'setupType',title:'What kind of streaming setup are you using?',arr:setupTypes});
+  }else if(['encoding','rendering','fps'].includes(S.symptom)){
+    q.push({key:'platform',title:'Where are you streaming?',arr:platforms},{key:'resolution',title:'What output are you aiming for?',arr:resolutions},{key:'gpu',title:'What graphics hardware are you using?',arr:gpus},{key:'setupType',title:'What kind of streaming setup are you using?',arr:setupTypes});
+  }else if(['network','blurry'].includes(S.symptom)){
+    q.push({key:'platform',title:'Where are you streaming?',arr:platforms},{key:'resolution',title:'What output are you aiming for?',arr:resolutions},{key:'connection',title:'How is the streaming PC connected to the internet?',arr:connections},{key:'upload',title:'What is your upload speed?',arr:uploads});
+  }else{
+    q.push({key:'platform',title:'Where are you planning to stream?',arr:platforms},{key:'resolution',title:'What output are you aiming for?',arr:resolutions},{key:'gpu',title:'What graphics hardware are you using?',arr:gpus},{key:'setupType',title:'What kind of setup are you building?',arr:setupTypes},{key:'connection',title:'How will the streaming system connect to the internet?',arr:connections},{key:'upload',title:'What is your upload speed?',arr:uploads});
+  }
+  q.push({key:'contact',title:'Where can we send the result?'});
+  return q;
 }
-function nextQuestion(){
- if(!S.symptom)return {key:'symptom',title:'What is the main streaming problem?',help:'Choose the closest match. Nothing is being measured yet.',arr:symptoms};
- for(const k of activeKeys())if(!S[k])return {key:k,title:titles[k],help:helps[k],arr:arrays[k]};
- return null;
-}
-function progress(){
- const total=1+activeKeys().length,answered=[S.symptom,...activeKeys().map(k=>S[k])].filter(Boolean).length;
- meter.innerHTML=Array.from({length:Math.max(1,total)},(_,i)=>'<i class="'+(i<answered?'on':'')+'"></i>').join('');
- status.textContent=answered>=total&&S.symptom?'SUMMARY READY':'REVIEWING YOUR ANSWERS';
-}
-function focusHeading(){requestAnimationFrame(()=>{const h=panel.querySelector('h2');if(h){h.tabIndex=-1;h.focus({preventScroll:true})}})}
-function renderContext(){
- if(!pre||!S.symptom){context.className='context';return}
- context.className='context show';context.innerHTML='<b>Carried into Stream Scan:</b> '+label(symptoms,S.symptom)+' <button class="btn" id="changeIssue" type="button" style="padding:6px 9px;margin-left:8px">Change</button>';
- document.getElementById('changeIssue').onclick=()=>{S.symptom=null;clearInactive();history=[];context.className='context';render()};
-}
-function question(q){
- panel.innerHTML='<h2>'+q.title+'</h2><p class="question-help">'+q.help+'</p><div class="options"></div><div class="nav">'+(history.length?'<button class="btn" id="back" type="button">← Back</button>':'')+'</div>';
- const box=panel.querySelector('.options');
- q.arr.forEach(([v,t])=>{const b=document.createElement('button');b.type='button';b.className='opt';b.textContent=t;b.onclick=()=>{
-   if(!started){started=true;track('scan_start',{entry_issue:pre||'none'})}
-   history.push({key:q.key,prev:S[q.key]});
-   if(q.key==='symptom'&&S.symptom!==v){S.symptom=v;clearInactive()}
-   else S[q.key]=v;
-   track('scan_progress',{step:q.key,issue:S.symptom});render();
- };box.appendChild(b)});
- const back=document.getElementById('back');if(back)back.onclick=()=>{const last=history.pop();if(last){S[last.key]=last.prev;if(last.key==='symptom')clearInactive()}render()};
- focusHeading();
-}
+function meters(){const total=flow().length;meter.innerHTML=Array.from({length:total},(_,i)=>'<i class="'+(i<=step?'on':'')+'"></i>').join('')}
+function opts(q){panel.innerHTML='<h2>'+q.title+'</h2><div class="options">'+q.arr.map(x=>`<button class="opt" data-v="${x[0]}">${x[1]}</button>`).join('')+'</div>'+(step?'<div class="nav"><button class="btn" id="back">← Back</button></div>':'');panel.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{S[q.key]=b.dataset.v;step++;target=Math.min(.82,target+.12);render()});const back=document.getElementById('back');if(back)back.onclick=()=>{step=Math.max(0,step-1);target=Math.max(.08,target-.12);render()}}
+function contact(){panel.innerHTML=`<h2>Where can we send the result?</h2><div class="field"><label>NAME<input id="name" autocomplete="name" value="${S.name}"></label><label>PHONE / WHATSAPP<input id="phone" inputmode="tel" autocomplete="tel" value="${S.phone}"></label><label>EMAIL (OPTIONAL)<input id="email" type="email" autocomplete="email" value="${S.email}"></label></div><div class="security"><b>Keep your credentials private.</b> VoltTech never needs your Twitch or YouTube password, 2FA code or stream key. Do not send those credentials to us or anyone else.</div><div class="nav"><button class="btn" id="back">← Back</button><button class="btn primary" id="go">See result →</button></div>`;document.getElementById('back').onclick=()=>{step--;render()};document.getElementById('go').onclick=()=>{S.name=document.getElementById('name').value.trim();S.phone=document.getElementById('phone').value.trim();S.email=document.getElementById('email').value.trim();step++;target=.74;render()}}
 function contextNote(){
- const notes=[];
- if(S.symptom==='network'&&['wifi','wireless'].includes(S.connection))notes.push('Your connection path is wireless, which can add instability even when a speed test looks fast.');
- if(S.symptom==='blurry'&&S.resolution==='1080p60'&&S.upload==='lt5')notes.push('1080p60 is an ambitious target for an upload under 5 Mbps; a lower output target may be more realistic.');
- if(['encoding','rendering','fps'].includes(S.symptom)&&S.setupType==='single')notes.push('On a single-PC setup, the game and broadcast workload share the same system resources.');
- return notes.join(' ');
+  const notes=[];
+  if(S.symptom==='network' && ['wifi','wireless'].includes(S.connection))notes.push('Your connection path is wireless, which can add instability even when a speed test looks fast.');
+  if(S.symptom==='blurry' && S.resolution==='1080p60' && S.upload==='lt5')notes.push('1080p60 with under 5 Mbps upload leaves very little practical bitrate headroom, so a lower output target may be more stable and look cleaner.');
+  if(S.symptom==='blurry' && S.resolution==='1080p60' && S.upload==='5to10')notes.push('1080p60 on a 5–10 Mbps upload can be tight depending on platform limits, motion and connection consistency.');
+  if(['encoding','rendering','fps'].includes(S.symptom) && S.setupType==='single')notes.push('Because one PC is running both the game and broadcast, game load and OBS headroom need to be balanced together.');
+  if(['encoding','rendering','fps'].includes(S.symptom) && S.gpu!=='other')notes.push('Your graphics-hardware family helps narrow which encoder and rendering options are sensible, but the exact model still matters before final settings are chosen.');
+  if(S.symptom==='setup' && ['dual','capture'].includes(S.setupType))notes.push('This is a more involved creator workflow, so the final scope may be better handled as a Creator System Tune rather than a standard setup.');
+  if(S.symptom==='audio')notes.push('Audio problems are usually diagnosed from the signal chain and routing, not from bitrate or upload speed, so Stream Scan has skipped those unrelated questions.');
+  return notes.join(' ');
 }
-function summary(){
- const r=baseR[S.symptom],keys=activeKeys(),rows=[['Main problem',label(symptoms,S.symptom)],...keys.map(k=>[titles[k].replace(/\?$/,''),label(arrays[k],S[k])])],note=contextNote();
- const message=['Hi VoltTech, I used Stream Scan.','',...rows.map(x=>x[0]+': '+x[1]),'Guide category: '+r.title,'Suggested starting point: '+r.service,'Published starting estimate: '+r.price,note?'Guide note: '+note:'',"I understand Stream Scan did not test my connection, OBS or hardware. Could you advise me on the next step?"].filter(Boolean).join('\n');
- const wa='https://wa.me/27618435775?text='+encodeURIComponent(message),mail='mailto:volttechcomputerco@gmail.com?subject='+encodeURIComponent('VoltTech Stream Scan result')+'&body='+encodeURIComponent(message);
- panel.innerHTML='<span class="badge">GUIDE SUMMARY</span><h2>'+r.title+'</h2><p class="lead">'+r.explain+'</p>'+rows.map(x=>'<div class="diag"><span>'+x[0]+'</span><span>'+x[1]+'</span></div>').join('')+'<div class="diag"><span>Suggested starting point</span><span>'+r.service+'</span></div><div class="price">'+r.price+'</div>'+(note?'<div class="truth"><b>Context from your answers:</b> '+note+'</div>':'')+'<div class="note">Launch-price estimate for the described support tier. Final scope is confirmed after review. No live stream, network or device measurement was performed by this tool.</div><div class="actions"><a class="contact-action wa" data-vt-context="stream-result" target="_blank" rel="noopener" href="'+wa+'">WhatsApp result</a><a class="contact-action email" data-vt-context="stream-result" href="'+mail+'">Email result</a></div><a class="secondary" href="streaming-setup-south-africa.html">View streaming technical support</a><button class="secondary" id="restart" type="button">Run another guide</button><div class="helper"><b>Credentials stay private:</b> VoltTech never needs your Twitch/YouTube password, 2FA code or stream key.</div>';
- document.getElementById('restart').onclick=()=>{Object.keys(S).forEach(k=>S[k]=null);history=[];started=false;context.className='context';track('scan_restart',{mode:'stream'});render()};
- status.textContent='SUMMARY READY';track('scan_result',{issue:S.symptom,service:r.service});focusHeading();
+function recommendation(){
+  const r=[...baseR[S.symptom]];
+  if(S.symptom==='setup' && ['dual','capture'].includes(S.setupType)){r[2]='Creator System Tune';r[3]='Quoted after assessment'}
+  return r;
 }
-function render(){clearInactive();progress();renderContext();const q=nextQuestion();q?question(q):summary()}
+function diagRows(){
+  const rows=[];
+  if(S.platform)rows.push(['Platform',label(platforms,S.platform)]);
+  if(S.resolution)rows.push(['Target output',label(resolutions,S.resolution)]);
+  if(S.gpu)rows.push(['Graphics',label(gpus,S.gpu)]);
+  if(S.setupType)rows.push(['Setup',label(setupTypes,S.setupType)]);
+  if(S.connection)rows.push(['Connection',label(connections,S.connection)]);
+  if(S.upload)rows.push(['Upload',label(uploads,S.upload)]);
+  return rows;
+}
+function result(){
+  const r=recommendation(),rows=diagRows(),extra=contextNote();
+  const msgLines=['Hi VoltTech, I ran Stream Scan.','',`Name: ${S.name||'Not provided'}`,`Issue: ${label(symptoms,S.symptom)}`,...rows.map(x=>`${x[0]}: ${x[1]}`),`Likely category: ${r[0]}`,`Recommended service: ${r[2]}`,`Estimated launch price: ${r[3]}`,'','Please help us with the next step.'];
+  const msg=encodeURIComponent(msgLines.join('\n'));
+  panel.innerHTML=`<span class="badge">LIKELY STREAM ISSUE</span><h2>${r[0]}</h2><p class="lead">${r[1]}</p>${rows.map(x=>`<div class="diag"><span>${x[0]}</span><span>${x[1]}</span></div>`).join('')}<div class="diag"><span>Recommended</span><span>${r[2]}</span></div>${extra?`<div class="context"><b>Why this matters:</b> ${extra}</div>`:''}<div class="price">${r[3]}</div><div class="note">Launch-price estimate only, not a guaranteed final quotation. This is symptom-based triage, not a full remote diagnosis. Final scope can change after we inspect the actual OBS configuration, hardware and connection behaviour. Parts or unrelated PC repairs are separate.</div><div class="security"><b>Security:</b> VoltTech never needs your Twitch/YouTube password, 2FA code or stream key.</div><a class="wa" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=${msg}">Send result on WhatsApp →</a><a class="secondary" href="streaming-setup-south-africa.html">Streaming & Creator Support</a><button class="secondary" id="restart">Run another scan</button>`;
+  document.getElementById('restart').onclick=()=>{Object.keys(S).forEach(k=>S[k]=['name','phone','email'].includes(k)?'':null);step=0;target=.08;render()};
+  track('signal_scan_result',{mode:'stream',symptom:S.symptom,platform:S.platform,recommendation:r[2]})
+}
+function render(){meters();const q=flow();if(step<q.length){if(q[step].key==='contact')contact();else opts(q[step])}else result()}
 render();
-
-/* Decorative waveform; never changes with answers. */
-const canvas=document.getElementById('scope'),c=canvas.getContext('2d');let t=0,raf=0;const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-function resize(){canvas.width=Math.max(1,canvas.clientWidth*devicePixelRatio);canvas.height=Math.max(1,canvas.clientHeight*devicePixelRatio)}
-function draw(){if(document.hidden||reduce){raf=0;return}const w=canvas.width,h=canvas.height;c.clearRect(0,0,w,h);c.beginPath();c.strokeStyle='#9b6cff';c.lineWidth=1.6*devicePixelRatio;for(let x=0;x<=w;x+=3){const y=h/2+Math.sin(x*.017+t)*10*devicePixelRatio+Math.sin(x*.047-t*.7)*3*devicePixelRatio;x?c.lineTo(x,y):c.moveTo(x,y)}c.stroke();t+=.044;raf=requestAnimationFrame(draw)}
-resize();addEventListener('resize',resize);if(!reduce)raf=requestAnimationFrame(draw);document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!reduce&&!raf)raf=requestAnimationFrame(draw)});
-})();
+const c=document.getElementById('scope'),ctx=c.getContext('2d'),reading=document.getElementById('reading'),status=document.getElementById('status');let tt=0;function resize(){c.width=c.clientWidth*devicePixelRatio;c.height=c.clientHeight*devicePixelRatio}resize();addEventListener('resize',resize);function draw(){tension+=(target-tension)*.05;let w=c.width,h=c.height;ctx.clearRect(0,0,w,h);let col=tension>.68?'#ff4057':tension>.42?'#9b6cff':'#2fe6c8';ctx.beginPath();ctx.strokeStyle=col;ctx.lineWidth=1.7*devicePixelRatio;for(let x=0;x<=w;x+=2){let y=h/2+Math.sin(x*(.015+tension*.11)+tt)*(6+tension*26)*devicePixelRatio+(Math.random()-.5)*tension*tension*.3*h;x?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke();tt+=.05;reading.textContent=tension<.35?'STABLE':tension<.65?'DEGRADED':'UNSTABLE';status.textContent=tension<.35?'SIGNAL STABLE':tension<.65?'STREAM DEGRADED':'STREAM UNSTABLE';status.style.color=col;requestAnimationFrame(draw)}draw();
 </script></body></html>

@@ -1,107 +1,34 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PC Symptom & Estimate Guide South Africa | Signal Scan | VoltTech</title>
-<meta name="description" content="Use VoltTech Signal Scan to organise common PC symptoms and get a service-category estimate before contacting VoltTech. It does not scan your computer or measure hardware health.">
-<link rel="canonical" href="https://volttechcomputerco.github.io/signal-scan.html"><link rel="icon" href="favicon-512.png"><meta name="robots" content="index,follow"><meta name="theme-color" content="#05080a">
-<meta property="og:title" content="Signal Scan | PC Symptom & Estimate Guide | VoltTech"><meta property="og:description" content="A quick symptom-based guide and service estimate. No hardware or software scan is performed."><meta property="og:type" content="website"><meta property="og:url" content="https://volttechcomputerco.github.io/signal-scan.html"><meta property="og:image" content="https://volttechcomputerco.github.io/logo-full.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"VoltTech Signal Scan","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","url":"https://volttechcomputerco.github.io/signal-scan.html","description":"Symptom-based enquiry and estimate guide for common PC service needs. No device scan is performed.","provider":{"@id":"https://volttechcomputerco.github.io/#organization"}}</script>
+<title>Free PC Diagnostic Tool South Africa | Signal Scan | VoltTech</title>
+<meta name="description" content="Run VoltTech Signal Scan for common PC faults, performance problems, overheating, crashes, malware and upgrade needs, with estimated VoltTech service pricing and support options across South Africa.">
+<link rel="canonical" href="https://volttechcomputerco.github.io/signal-scan.html"><link rel="icon" href="favicon-512.png">
+<meta name="robots" content="index,follow"><meta name="theme-color" content="#05080a">
+<meta property="og:title" content="Signal Scan | Free PC Diagnostic Tool | VoltTech"><meta property="og:description" content="Quick symptom-based PC diagnostics with estimated VoltTech service pricing."><meta property="og:type" content="website"><meta property="og:url" content="https://volttechcomputerco.github.io/signal-scan.html"><meta property="og:image" content="https://volttechcomputerco.github.io/logo-full.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"VoltTech Signal Scan","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","url":"https://volttechcomputerco.github.io/signal-scan.html","description":"Symptom-based diagnostic tool for common PC faults with estimated VoltTech service ranges.","provider":{"@id":"https://volttechcomputerco.github.io/#organization"},"areaServed":{"@type":"Country","name":"South Africa"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="scan.css"><link rel="stylesheet" href="site-shell.css">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ3CC70MBE"></script><script src="tracking.js"></script><script src="site-shell.js"></script>
-</head><body><main id="main-content" class="wrap">
-<div class="brand"><a class="brand-left" href="index.html" style="text-decoration:none;color:inherit"><img src="logo-badge.png" alt=""><div class="brand-name"><span>Volt</span>Tech <span>Computer Co.</span></div></a><div class="brand-tag">PC SUPPORT · SOUTH AFRICA</div></div>
-<a class="back" href="index.html">← Back to VoltTech</a><div class="eyebrow">// SIGNAL SCAN</div><h1>PC symptom & estimate guide</h1>
-<p class="lead">Tell us what you are seeing and Signal Scan will organise the answers into a useful enquiry summary, service category and starting estimate where one is already published.</p>
-<div class="truth"><b>Important:</b> this web tool does not scan your PC, read sensors, test your internet or measure hardware health. The waveform below is decorative VoltTech branding.</div>
-<div class="scope" aria-hidden="true"><div class="scope-label">VOLTTECH SIGNAL</div><div class="scope-reading" id="reading">GUIDE ACTIVE</div><canvas id="scope"></canvas></div>
-<div class="alert" role="status" aria-live="polite"><small>GUIDE STATUS</small><b id="status">READY FOR YOUR ANSWERS</b></div>
-<div class="context" id="context"></div><div class="meter" id="meter" aria-hidden="true"></div><section class="panel" id="panel" aria-live="polite"></section>
-<footer>SYMPTOM GUIDE · ESTIMATES ARE NOT FINAL QUOTATIONS · WHATSAPP +27 61 843 5775</footer>
-</main>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ3CC70MBE"></script><script src="analytics.js"></script>
+<style>
+:root{--bg:#05080a;--alt:#0a1114;--panel:#0d1517;--line:#172526;--teal:#2fe6c8;--teal2:#1a6e62;--amber:#ffb454;--danger:#ff6b5d;--text:#e7f1ee;--muted:#6b8984;--mono:'JetBrains Mono',monospace;--display:'Space Grotesk',sans-serif}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 80% 50% at 50% -10%,#0c2320 0%,transparent 60%),var(--bg);color:var(--text);font-family:var(--display);min-height:100vh;display:flex;justify-content:center;padding:28px 16px 60px}.wrap{width:100%;max-width:600px}.brand{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px}.brand-left{display:flex;align-items:center;gap:10px}.brand img{height:28px}.brand-name{font:700 12px var(--mono)}.brand-name span{color:var(--teal)}.brand-tag{font:10px var(--mono);color:var(--muted)}.back{display:inline-flex;margin-bottom:18px;padding:9px 12px;border:1px solid var(--line);border-radius:3px;color:var(--muted);font:10px var(--mono);text-decoration:none;text-transform:uppercase}.eyebrow{font:10px var(--mono);color:var(--teal);letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px}h1{font-size:28px;line-height:1.15;margin:0 0 8px}.lead{color:var(--muted);font-size:14px;line-height:1.65;margin:0 0 22px}.scope{height:96px;background:var(--panel);border:1px solid var(--line);border-radius:3px;margin-bottom:22px;position:relative;overflow:hidden}.scope canvas{width:100%;height:100%}.scope-label,.scope-reading{position:absolute;top:8px;font:9px var(--mono)}.scope-label{left:10px;color:var(--teal2)}.scope-reading{right:10px;color:var(--muted)}.alert{text-align:center;padding:14px 12px;margin-bottom:18px;border:1px solid var(--line);background:var(--panel)}.alert small{display:block;font:9px var(--mono);color:var(--muted)}.alert b{font:700 17px var(--mono)}.meter{display:flex;gap:4px;margin-bottom:24px}.meter i{flex:1;height:3px;background:var(--line)}.meter i.on{background:var(--teal);box-shadow:0 0 8px var(--teal)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:26px 22px;min-height:340px;display:flex;flex-direction:column}h2{font-size:21px;line-height:1.25;margin:0 0 18px}.options{display:flex;flex-direction:column;gap:10px}.opt{text-align:left;background:var(--alt);border:1px solid var(--line);color:var(--text);padding:14px 16px;border-radius:3px;font:14px var(--display);cursor:pointer}.opt:hover,.opt:focus{border-color:var(--teal2);outline:none}.field{display:flex;flex-direction:column;gap:12px}.field label{font:10px var(--mono);color:var(--muted)}input{width:100%;background:var(--alt);border:1px solid var(--line);color:var(--text);padding:13px;border-radius:3px;font:14px var(--display)}.nav{display:flex;gap:10px;margin-top:24px}.btn{font:12px var(--mono);padding:14px 18px;border-radius:3px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}.primary{flex:1;background:var(--teal);border-color:var(--teal);color:#04120f;font-weight:700}.badge{display:inline-flex;font:10px var(--mono);padding:6px 10px;border-radius:20px;margin-bottom:14px;background:#0e211f;color:var(--teal)}.diag{font:12px var(--mono);color:var(--muted);display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--line)}.diag span:last-child{color:var(--text);text-align:right}.price{font:700 29px var(--mono);color:var(--teal);margin:18px 0 4px}.note{font-size:11px;color:var(--muted);line-height:1.55;margin-bottom:18px}.wa{display:block;background:#25d366;color:#04120f;padding:15px;text-align:center;text-decoration:none;font-weight:700;border-radius:3px}.secondary{display:block;border:1px solid var(--line);color:var(--muted);padding:12px;text-align:center;text-decoration:none;font:11px var(--mono);margin-top:9px}.helper{font-size:11px;color:var(--muted);line-height:1.55;margin-top:12px}footer{text-align:center;margin-top:20px;font:10px var(--mono);color:#354b47}@media(max-width:480px){.panel{padding:22px 18px}.brand-tag{display:none}h1{font-size:25px}}
+</style></head><body><div class="wrap">
+<div class="brand"><div class="brand-left"><img src="logo-badge.png" alt="VoltTech Computer Co."><div class="brand-name"><span>Volt</span>Tech <span>Computer Co.</span></div></div><div class="brand-tag">PC SUPPORT · SOUTH AFRICA</div></div>
+<a class="back" href="index.html">← Back to VoltTech</a><div class="eyebrow">// SIGNAL SCAN</div><h1>PC Diagnostic Tool</h1><p class="lead">Tell us what your PC is doing. Signal Scan checks common fault patterns and gives you a likely cause plus an estimated VoltTech service range.</p>
+<div class="scope"><div class="scope-label">PC SIGNAL</div><div class="scope-reading" id="reading">STABLE</div><canvas id="scope"></canvas></div><div class="alert"><small>SIGNAL STATUS</small><b id="status">SYSTEM STABLE</b></div><div class="meter" id="meter"></div><div class="panel" id="panel"></div>
+<footer>PC DIAGNOSTICS · LOCAL + NATIONWIDE SUPPORT · WHATSAPP +27 61 843 5775</footer></div>
 <script>
-(function(){
-const params=new URLSearchParams(location.search);
-const validIssues=['slow','noboot','heat','bsod','virus','upgrade','windows','other'];
-const initialIssue=validIssues.includes(params.get('issue'))?params.get('issue'):null;
-const context=params.get('context')||'';
-const source=params.get('source')||'';
-const S={symptom:initialIssue,duration:null,age:null,usage:null,goal:null};
-const symptoms=[['slow','Running slow / laggy'],['noboot',"Won't turn on / won't boot"],['heat','Overheating / loud fans'],['bsod','Crashes / blue screens'],['virus','Pop-ups / suspected malware'],['upgrade','I want more performance / an upgrade'],['windows','Windows install / Windows problem'],['other','Something else']];
+const S={symptom:null,duration:null,age:null,usage:null};let step=0,tension=.08,target=.08;
+const symptoms=[['slow','Running slow / laggy'],['noboot',"Won't turn on / won't boot"],['heat','Overheating / loud fans'],['bsod','Crashes / blue screens'],['virus','Pop-ups / suspected virus'],['upgrade','Want more performance']];
 const durations=[['today','Just started today'],['days','A few days now'],['weeks','A few weeks'],['months',"Months — I've been living with it"]];
 const ages=[['new','Under 2 years old'],['mid','2 – 5 years old'],['old','5+ years old'],['unknown','Not sure']];
 const uses=[['daily','Everyday use / work'],['gaming','Gaming'],['creation','3D / content creation / engineering'],['unsure','Not sure']];
-const upgradeGoals=[['storage','Faster loading / SSD'],['memory','More multitasking / RAM'],['gaming','Better gaming performance'],['cooling','Lower temperatures / less noise'],['space','More storage capacity'],['unsure','Not sure what to upgrade']];
-const windowsGoals=[['corrupt','Windows is broken / unstable'],['fresh','I want a clean start'],['drive','Windows on a new SSD or drive'],['malware','Clean reinstall after malware'],['slow','Considering reinstall because it feels slow'],['other','Not sure yet']];
-const R={
- slow:{title:'Performance bottleneck',explain:'Startup load, storage performance, background processes or thermal throttling are common areas to investigate.',price:'R350–R550',service:'PC Performance Optimisation',link:'pc-performance-optimisation.html'},
- noboot:{title:'Boot / power fault',explain:'Power delivery, RAM, storage, graphics or the boot path can create similar startup symptoms. Hands-on diagnosis may be needed.',price:'R350–R650',service:'PC Repair & Diagnostics',link:'pc-repair-pretoria.html'},
- heat:{title:'Thermal / airflow issue',explain:'Dust restriction, a cooling fault, fan behaviour, airflow or thermal-interface condition are common possibilities.',price:'R350–R550',service:'Cooling & Performance Service',link:'pc-performance-optimisation.html'},
- bsod:{title:'System instability',explain:'Drivers, memory, storage, Windows corruption or hardware instability can all cause repeated crashes.',price:'R350–R650',service:'PC Repair & Diagnostics',link:'pc-repair-pretoria.html'},
- virus:{title:'Security / unwanted software',explain:'Pop-ups, redirects or unexplained behaviour can indicate unwanted software or malware, but the symptom alone does not prove infection.',price:'R350–R550',service:'Virus & Malware Removal',link:'virus-malware-removal-pretoria.html'},
- upgrade:{title:'Upgrade assessment',explain:'The useful question is what you want the PC to do better, then whether the current platform can support a worthwhile upgrade.',price:'From R299 if hands-on assessment/testing is required',service:'PC Upgrade Consultation',link:'pc-upgrades-pretoria.html'},
- windows:{title:'Windows service enquiry',explain:'A clean install, a new-drive installation and a Windows fault are different jobs. VoltTech will confirm the right route before anything destructive is done.',price:'Estimate after review',service:'Windows Installation & Setup',link:'windows-installation-pretoria.html'},
- other:{title:'General diagnostic enquiry',explain:'The symptoms do not fit one simple category. A short description or hands-on diagnosis is the safest next step.',price:'Estimate after review',service:'PC Repair & Diagnostics',link:'pc-repair-pretoria.html'}
-};
-const contextLabels={boot:"Won't start",crash:'Keeps crashing',heat:'Running hot',slow:'Slow / freezing',windows:'Windows problems',other:'Something else',startup:'Slow startup',fps:'FPS drops',stutter:'Stutters',disk:'Storage bottleneck',popup:'Pop-ups',browser:'Browser changes',account:'Account worries',apps:'Unknown apps',storage:'Faster loading',memory:'More multitasking',gaming:'Better gaming',cooling:'Lower temperatures',space:'More storage',unsure:'Not sure',corrupt:'Windows broken',fresh:'Clean start',drive:'New drive',malware:'After malware'};
-if(S.symptom==='upgrade'&&upgradeGoals.some(x=>x[0]===context))S.goal=context;
-if(S.symptom==='windows'&&windowsGoals.some(x=>x[0]===context))S.goal=context;
-const panel=document.getElementById('panel'),meter=document.getElementById('meter'),status=document.getElementById('status'),ctxBox=document.getElementById('context');
-let history=[],started=false;
-function track(n,p){if(window.vtTrack)window.vtTrack(n,Object.assign({mode:'pc'},p||{}))}
-function issueLabel(k){return (symptoms.find(x=>x[0]===k)||[])[1]||k}
-function label(arr,k){return (arr.find(x=>x[0]===k)||[])[1]||''}
-function buildFlow(){
- const f=[];
- if(!S.symptom)f.push({key:'symptom',title:'What do you need help with?',help:'Choose the closest match. This is only a starting category.',arr:symptoms});
- if(S.symptom==='upgrade'&&!S.goal)f.push({key:'goal',title:'What do you want the PC to do better?',help:'Start with the result you want, not a component name.',arr:upgradeGoals});
- if(S.symptom==='windows'&&!S.goal)f.push({key:'goal',title:'What kind of Windows help do you need?',help:'A new-drive install is different from diagnosing a fault.',arr:windowsGoals});
- if(S.symptom&&!['upgrade','windows'].includes(S.symptom)&&!S.duration)f.push({key:'duration',title:'How long have you noticed it?',help:'This is context for VoltTech, not a severity measurement.',arr:durations});
- if(S.symptom&&!S.age)f.push({key:'age',title:'Roughly how old is the PC?',help:'Platform age can affect compatibility and the sensible next step.',arr:ages});
- if(S.symptom&&!S.usage)f.push({key:'usage',title:'What do you mainly use it for?',help:'This helps frame the recommendation around what matters to you.',arr:uses});
- return f;
-}
-function progress(){
- const total=S.symptom==='upgrade'||S.symptom==='windows'?4:4;
- const answered=[S.symptom,S.goal||S.duration,S.age,S.usage].filter(Boolean).length;
- meter.innerHTML=Array.from({length:total},(_,i)=>'<i class="'+(i<answered?'on':'')+'"></i>').join('');
- status.textContent=answered>=total?'SUMMARY READY':'REVIEWING YOUR ANSWERS';
-}
-function focusHeading(){requestAnimationFrame(()=>{const h=panel.querySelector('h2');if(h){h.tabIndex=-1;h.focus({preventScroll:true})}})}
-function showContext(){
- if(!initialIssue){ctxBox.className='context';return}
- ctxBox.className='context show';ctxBox.innerHTML='<b>Carried into Signal Scan:</b> '+(contextLabels[context]||issueLabel(initialIssue))+' · <button id="clearContext" class="btn" type="button" style="padding:6px 9px;margin-left:8px">Change</button>';
- document.getElementById('clearContext').onclick=()=>{S.symptom=null;S.goal=null;S.duration=null;S.age=null;S.usage=null;history=[];ctxBox.className='context';render()};
-}
-function question(q){
- panel.innerHTML='<h2>'+q.title+'</h2><p class="question-help">'+q.help+'</p><div class="options"></div><div class="nav">'+(history.length?'<button class="btn" id="back" type="button">← Back</button>':'')+'</div>';
- const box=panel.querySelector('.options');
- q.arr.forEach(([v,t])=>{const b=document.createElement('button');b.type='button';b.className='opt';b.dataset.v=v;b.textContent=t;b.onclick=()=>{if(!started){started=true;track('scan_start',{entry_issue:initialIssue||'none'})}history.push({key:q.key,prev:S[q.key]});S[q.key]=v;track('scan_progress',{step:q.key,issue:S.symptom||v});render()};box.appendChild(b)});
- const back=document.getElementById('back');if(back)back.onclick=()=>{const last=history.pop();if(last)S[last.key]=last.prev;render()};
- focusHeading();
-}
-function summary(){
- const r=R[S.symptom]||R.other;
- const rows=[['Issue / goal',S.goal?label(S.symptom==='upgrade'?upgradeGoals:windowsGoals,S.goal):issueLabel(S.symptom)],S.duration&&['Duration',label(durations,S.duration)],['PC age',label(ages,S.age)],['Main use',label(uses,S.usage)]].filter(Boolean);
- const lines=['Hi VoltTech, I used Signal Scan.','',...rows.map(x=>x[0]+': '+x[1]),'Guide category: '+r.title,'Published starting estimate: '+r.price,'',"I understand this is a symptom-based guide and not a hardware/software scan. Could you advise me on the next step?"];
- const msg=lines.join('\n'),wa='https://wa.me/27618435775?text='+encodeURIComponent(msg),mail='mailto:volttechcomputerco@gmail.com?subject='+encodeURIComponent('VoltTech Signal Scan result')+'&body='+encodeURIComponent(msg);
- panel.innerHTML='<span class="badge">GUIDE SUMMARY</span><h2>'+r.title+'</h2><p class="lead">'+r.explain+'</p>'+rows.map(x=>'<div class="diag"><span>'+x[0]+'</span><span>'+x[1]+'</span></div>').join('')+'<div class="diag"><span>Recommended service</span><span>'+r.service+'</span></div><div class="price">'+r.price+'</div><div class="note">Estimate guide only. No hardware, software or connection test was performed. Final pricing depends on the actual diagnosis, agreed work and any parts required.</div><div class="actions"><a class="contact-action wa" data-vt-context="signal-result" target="_blank" rel="noopener" href="'+wa+'">WhatsApp result</a><a class="contact-action email" data-vt-context="signal-result" href="'+mail+'">Email result</a></div><a class="secondary" href="'+r.link+'">View '+r.service+'</a><button class="secondary" id="restart" type="button">Run another guide</button>';
- document.getElementById('restart').onclick=()=>{S.symptom=null;S.duration=null;S.age=null;S.usage=null;S.goal=null;history=[];started=false;ctxBox.className='context';track('scan_restart',{mode:'pc'});render()};
- status.textContent='SUMMARY READY';track('scan_result',{issue:S.symptom,service:r.service,has_published_estimate:r.price!=='Estimate after review'});focusHeading();
-}
-function render(){progress();showContext();const flow=buildFlow();if(flow.length)question(flow[0]);else summary()}
-render();
-
-/* Decorative signal: amplitude never changes with answers. */
-const canvas=document.getElementById('scope'),c=canvas.getContext('2d'),reading=document.getElementById('reading');let t=0,raf=0;
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-function resize(){canvas.width=Math.max(1,canvas.clientWidth*devicePixelRatio);canvas.height=Math.max(1,canvas.clientHeight*devicePixelRatio)}
-function draw(){
- if(document.hidden||reduce){raf=0;return}
- const w=canvas.width,h=canvas.height;c.clearRect(0,0,w,h);c.beginPath();c.strokeStyle='#2fe6c8';c.lineWidth=1.6*devicePixelRatio;
- for(let x=0;x<=w;x+=3){const y=h/2+Math.sin(x*.018+t)*10*devicePixelRatio+Math.sin(x*.051-t*.6)*3*devicePixelRatio;x?c.lineTo(x,y):c.moveTo(x,y)}c.stroke();t+=.045;raf=requestAnimationFrame(draw)
-}
-resize();addEventListener('resize',resize);reading.textContent='DECORATIVE';
-if(!reduce)raf=requestAnimationFrame(draw);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!reduce&&!raf)raf=requestAnimationFrame(draw)});
-})();
+const R={slow:['Performance bottleneck','Likely startup load, storage performance, background processes or thermal throttling under sustained use.',350,550,'PC Performance Optimisation'],noboot:['Boot / power failure','Possible PSU, RAM, storage or boot-path failure. Hands-on diagnostics are recommended.',350,650,'PC Repair & Diagnostics'],heat:['Thermal / airflow fault','Dust restriction, degraded thermal interface, fan or airflow problems are common possibilities.',350,550,'Cooling & Performance Service'],bsod:['System instability','Drivers, memory, storage, Windows corruption or hardware instability can cause repeated crashes.',350,650,'PC Repair & Diagnostics'],virus:['Possible malware / unwanted software','Pop-ups, redirects or unexplained behaviour can indicate unwanted software or malware.',350,550,'Virus & Malware Removal'],upgrade:['Performance upgrade assessment','We can identify the component or bottleneck most worth addressing before you spend on parts.',299,449,'Upgrade Consultation']};
+const panel=document.getElementById('panel'),meter=document.getElementById('meter');
+function track(n,p={}){try{if(typeof gtag==='function')gtag('event',n,p)}catch(e){}}
+function meters(){meter.innerHTML=[0,1,2,3].map(i=>'<i class="'+(i<=step?'on':'')+'"></i>').join('')}
+function opts(title,arr,key){panel.innerHTML='<h2>'+title+'</h2><div class="options">'+arr.map(x=>`<button class="opt" data-v="${x[0]}">${x[1]}</button>`).join('')+'</div>'+ (step?'<div class="nav"><button class="btn" id="back">← Back</button></div>':'');panel.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{S[key]=b.dataset.v;step++;target=Math.min(.8,target+.13);render()});const back=document.getElementById('back');if(back)back.onclick=()=>{step--;target=Math.max(.08,target-.13);render()}}
+function result(){let r=R[S.symptom],dur=durations.find(x=>x[0]===S.duration)?.[1]||'',age=ages.find(x=>x[0]===S.age)?.[1]||'',use=uses.find(x=>x[0]===S.usage)?.[1]||'',issue=symptoms.find(x=>x[0]===S.symptom)?.[1]||'';let price=S.symptom==='upgrade'?'From R299 if hands-on assessment/testing is required':`R${r[2]}–R${r[3]}`;let msg=`Hi VoltTech, I ran the Signal Scan.%0A%0AIssue: ${encodeURIComponent(issue)}%0ADuration: ${encodeURIComponent(dur)}%0APC age: ${encodeURIComponent(age)}%0AUse: ${encodeURIComponent(use)}%0ALikely category: ${encodeURIComponent(r[0])}%0AEstimated service range: ${encodeURIComponent(price)}%0A%0ACould you please review my scan and advise me on the next step?`;panel.innerHTML=`<span class="badge">LIKELY CATEGORY</span><h2>${r[0]}</h2><p class="lead">${r[1]}</p><div class="diag"><span>Recommended service</span><span>${r[4]}</span></div><div class="diag"><span>PC age</span><span>${age}</span></div><div class="diag"><span>Main use</span><span>${use}</span></div><div class="price">${S.symptom==='upgrade'?'From R299':price}</div><div class="note">${S.symptom==='upgrade'?'Initial upgrade advice via WhatsApp is free. The price above applies only if hands-on assessment or testing is required.':'Estimated service range only. Final pricing depends on diagnosis, required work and any parts needed.'}</div><a class="wa" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=${msg}">Send my scan to VoltTech →</a><div class="helper">Send the result and VoltTech can review the symptoms and advise you on the most sensible next step.</div><a class="secondary" href="pc-repair-pretoria.html">PC repair & diagnostics</a><button class="secondary" id="restart">Run another scan</button>`;document.getElementById('restart').onclick=()=>{Object.keys(S).forEach(k=>S[k]=null);step=0;target=.08;render()};track('signal_scan_result',{mode:'pc',symptom:S.symptom})}
+function render(){meters();if(step===0)opts('What is your PC doing?',symptoms,'symptom');else if(step===1)opts('How long has this been happening?',durations,'duration');else if(step===2)opts('Roughly how old is the PC?',ages,'age');else if(step===3)opts('What do you mainly use it for?',uses,'usage');else result()}render();
+const c=document.getElementById('scope'),ctx=c.getContext('2d'),reading=document.getElementById('reading'),status=document.getElementById('status');let tt=0;function resize(){c.width=c.clientWidth*devicePixelRatio;c.height=c.clientHeight*devicePixelRatio}resize();addEventListener('resize',resize);function draw(){tension+=(target-tension)*.05;let w=c.width,h=c.height;ctx.clearRect(0,0,w,h);let col=tension>.65?'#ff6b5d':tension>.4?'#ffb454':'#2fe6c8';ctx.beginPath();ctx.strokeStyle=col;ctx.lineWidth=1.7*devicePixelRatio;for(let x=0;x<=w;x+=2){let y=h/2+Math.sin(x*(.015+tension*.11)+tt)*(6+tension*26)*devicePixelRatio+(Math.random()-.5)*tension*tension*.3*h;x?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke();tt+=.05;reading.textContent=tension<.35?'STABLE':tension<.65?'MOD. UNSTABLE':'UNSTABLE';status.textContent=tension<.35?'SYSTEM STABLE':tension<.65?'SIGNAL DEGRADED':'SIGNAL UNSTABLE';status.style.color=col;requestAnimationFrame(draw)}draw();
 </script></body></html>
