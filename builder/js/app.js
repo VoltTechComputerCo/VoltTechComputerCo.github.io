@@ -53,8 +53,11 @@ function bind(){
   e.compatibleOnly?.addEventListener("change",renderProducts);
   e.copyBuild?.addEventListener("click",copyBuildSummary);
   e.changeMode?.addEventListener("click",showModeChoice);
-  e.clearBuild?.addEventListener("click",()=>{
-    if(getSelectedCount(build)&&!confirm("Clear every component from this build?"))return;
+  e.clearBuild?.addEventListener("click",async()=>{
+    if(getSelectedCount(build)){
+      const ok=await window.VoltTechDialog.confirm({kicker:"PC BUILDER / CLEAR",title:"Clear this entire build?",message:"Every selected component will be removed from the current builder session.",confirmText:"Clear build",tone:"danger"});
+      if(!ok)return;
+    }
     build=clearBuild();guidedProfile=null;guidedRecommendation=null;activeCategory=CATEGORY_ORDER[0];e.search.value="";render();
     scrollToElement(e.builderLayout);
   });
@@ -240,6 +243,6 @@ function diagnosticActions(d){const cats=[];if(d?.category&&CATEGORY_ORDER.inclu
 function updateMobileBar(){e.mobileBar.hidden=e.builderLayout.hidden||getSelectedCount(build)<1}
 
 async function copyBuildSummary(){
-  const lines=["VoltTech PC Build Summary"];if(guidedProfile)lines.push(`Profile: ${profileLabel(guidedProfile.useCase)} · ${profileLabel(guidedProfile.target)} · ${profileLabel(guidedProfile.priority)}`);for(const type of CATEGORY_ORDER){const items=getSelections(build,type);if(!items.length)continue;const groups=new Map();items.forEach(p=>{const g=groups.get(p.id)||{p,qty:0};g.qty++;groups.set(p.id,g)});for(const {p,qty} of groups.values()){const price=getProductPrice(p);lines.push(`${CATEGORY_LABELS[type]}: ${p.name}${qty>1?` ×${qty}`:""}${price?` — ${formatMoney(price*qty,currency)}`:""}`)}}lines.push(`Parts total: ${formatMoney(calculateBuildTotal(build),currency)}`);const power=estimatePower(build);if(power.estimated)lines.push(`Power estimate: ${power.estimated} W · ${power.preferred} W preferred PSU target`);lines.push("Preview pricing only — final stock and quotation must be confirmed by VoltTech.");try{await navigator.clipboard.writeText(lines.join("\n"));const old=e.copyBuild.textContent;e.copyBuild.textContent="Copied ✓";setTimeout(()=>e.copyBuild.textContent=old,1500)}catch{alert(lines.join("\n"))}
+  const lines=["VoltTech PC Build Summary"];if(guidedProfile)lines.push(`Profile: ${profileLabel(guidedProfile.useCase)} · ${profileLabel(guidedProfile.target)} · ${profileLabel(guidedProfile.priority)}`);for(const type of CATEGORY_ORDER){const items=getSelections(build,type);if(!items.length)continue;const groups=new Map();items.forEach(p=>{const g=groups.get(p.id)||{p,qty:0};g.qty++;groups.set(p.id,g)});for(const {p,qty} of groups.values()){const price=getProductPrice(p);lines.push(`${CATEGORY_LABELS[type]}: ${p.name}${qty>1?` ×${qty}`:""}${price?` — ${formatMoney(price*qty,currency)}`:""}`)}}lines.push(`Parts total: ${formatMoney(calculateBuildTotal(build),currency)}`);const power=estimatePower(build);if(power.estimated)lines.push(`Power estimate: ${power.estimated} W · ${power.preferred} W preferred PSU target`);lines.push("Preview pricing only — final stock and quotation must be confirmed by VoltTech.");try{await navigator.clipboard.writeText(lines.join("\n"));const old=e.copyBuild.textContent;e.copyBuild.textContent="Copied ✓";setTimeout(()=>e.copyBuild.textContent=old,1500)}catch{await window.VoltTechDialog.message({kicker:"PC BUILDER / SUMMARY",title:"Your build summary",message:"Clipboard access is unavailable on this device. You can select and copy the summary below.",details:lines.join("\n"),confirmText:"Close"})}
 }
 function esc(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
