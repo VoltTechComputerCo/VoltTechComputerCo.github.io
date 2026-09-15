@@ -104,7 +104,7 @@ function initMobileNavigation(){
  const wrap=nav&&nav.querySelector('.wrap');
  if(!nav||!wrap)return;
 
- loadCSS('mobile-nav.css?v=3','mobile-nav');
+ loadCSS('mobile-nav.css?v=5','mobile-nav');
 
  const button=document.createElement('button');
  button.className='vt-mobile-menu-btn';
@@ -125,14 +125,14 @@ function initMobileNavigation(){
  drawer.innerHTML=
    '<div class="vt-mobile-drawer-head"><span>VoltTech</span><b>Menu</b></div>'+ 
    '<div class="vt-mobile-links">'+
-     '<a class="vt-mobile-link builder" href="builder/"><span class="vt-card-image vt-image-builder"></span><div class="vt-card-copy"><small>Build</small><strong>PC Builder</strong><em>Plan and configure your PC</em></div></a>'+ 
-     '<a class="vt-mobile-link services" href="index.html#services"><span class="vt-card-image vt-image-services"></span><div class="vt-card-copy"><small>Services</small><strong>PC Services</strong><em>Repair, upgrades & Windows</em></div></a>'+ 
-     '<a class="vt-mobile-link scan" href="signal-scan.html"><span class="vt-card-image vt-image-scan"></span><div class="vt-card-copy"><small>Free tool</small><strong>Signal Scan</strong><em>Symptoms, triage & estimates</em></div></a>'+ 
-     '<a class="vt-mobile-link creator" href="creator-hub-south-africa.html"><span class="vt-card-image vt-image-creator"></span><div class="vt-card-copy"><div class="vt-creator-top"><small>Creator Hub</small><span class="vt-live-pill"><i></i><b id="vtMenuLiveCount">LIVE</b></span></div><strong>SA Creators</strong><em id="vtMenuCreatorMeta">Checking live creators…</em></div></a>'+ 
-     '<a class="vt-mobile-link streaming" href="streaming-setup-south-africa.html"><span class="vt-card-image vt-image-streaming"></span><div class="vt-card-copy"><small>Streaming</small><strong>Creator Support</strong><em>OBS, audio & performance</em></div></a>'+ 
-     '<a class="vt-mobile-link account" href="account.html"><span class="vt-card-image vt-image-account"></span><div class="vt-card-copy"><small>Account</small><strong>My Account</strong><em>Quotes, builds & profile</em></div></a>'+ 
-     '<a class="vt-mobile-link contact" href="index.html#contact"><span class="vt-card-image vt-image-contact"></span><div class="vt-card-copy"><small>Contact</small><strong>Get Help</strong><em>WhatsApp or email</em></div></a>'+ 
-     '<a class="vt-mobile-link static" href="static.html"><span class="vt-card-image vt-image-static"></span><div class="vt-card-copy"><small>Editorial</small><strong>STATIC</strong><em>Tech, gaming & hardware</em></div></a>'+ 
+     '<a class="vt-mobile-link vt-menu-builder" href="builder/"><span class="vt-card-image vt-image-builder"></span><div class="vt-card-copy"><small>Build</small><strong>PC Builder</strong><em>Plan and configure your PC</em></div></a>'+ 
+     '<a class="vt-mobile-link vt-menu-services" href="index.html#services"><span class="vt-card-image vt-image-services"></span><div class="vt-card-copy"><small>Services</small><strong>PC Services</strong><em>Repair, upgrades & Windows</em></div></a>'+ 
+     '<a class="vt-mobile-link vt-menu-scan" href="signal-scan.html"><span class="vt-card-image vt-image-scan"></span><div class="vt-card-copy"><small>Free tool</small><strong>Signal Scan</strong><em>Symptoms, triage & estimates</em></div></a>'+ 
+     '<a class="vt-mobile-link vt-menu-creator" href="creator-hub-south-africa.html"><span class="vt-card-image vt-image-creator"></span><div class="vt-card-copy"><div class="vt-creator-top"><small>Creator Hub</small><span class="vt-live-pill"><i></i><b id="vtMenuLiveCount">LIVE</b></span></div><strong>SA Creators</strong><em id="vtMenuCreatorMeta">Checking live creators…</em></div></a>'+ 
+     '<a class="vt-mobile-link vt-menu-streaming" href="streaming-setup-south-africa.html"><span class="vt-card-image vt-image-streaming"></span><div class="vt-card-copy"><small>Streaming</small><strong>Creator Support</strong><em>OBS, audio & performance</em></div></a>'+ 
+     '<a class="vt-mobile-link vt-menu-account" href="account.html"><span class="vt-card-image vt-image-account"></span><div class="vt-card-copy"><small>Account</small><strong>My Account</strong><em>Quotes, builds & profile</em></div></a>'+ 
+     '<a class="vt-mobile-link vt-menu-contact" href="index.html#contact"><span class="vt-card-image vt-image-contact"></span><div class="vt-card-copy"><small>Contact</small><strong>Get Help</strong><em>WhatsApp or email</em></div></a>'+ 
+     '<a class="vt-mobile-link vt-menu-static" href="static.html"><span class="vt-card-image vt-image-static"></span><div class="vt-card-copy"><small>Editorial</small><strong>STATIC</strong><em>Tech, gaming & hardware</em></div></a>'+ 
    '</div>';
 
  document.body.append(backdrop,drawer);
