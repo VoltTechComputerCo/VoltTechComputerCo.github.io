@@ -123,16 +123,16 @@ function initMobileNavigation(){
  drawer.id='vtMobileDrawer';
  drawer.setAttribute('aria-hidden','true');
  drawer.innerHTML=
-   '<div class="vt-mobile-drawer-head"><span>VoltTech navigation</span><b>Menu</b></div>'+
+   '<div class="vt-mobile-drawer-head"><span>VoltTech</span><b>Menu</b></div>'+ 
    '<div class="vt-mobile-links">'+
-     '<a class="vt-mobile-link home" href="index.html"><span class="vt-card-image vt-image-logo"></span><div class="vt-card-copy"><small>Home</small><strong>VoltTech</strong><em>PC help, tools & support</em></div></a>'+
-     '<a class="vt-mobile-link services" href="index.html#services"><span class="vt-card-image vt-image-services"></span><div class="vt-card-copy"><small>Services</small><strong>PC Services</strong><em>Repair, upgrades & Windows</em></div></a>'+
-     '<a class="vt-mobile-link scan" href="signal-scan.html"><span class="vt-card-image vt-image-scan"></span><div class="vt-card-copy"><small>Free tool</small><strong>Signal Scan</strong><em>Diagnose & estimate</em></div></a>'+
-     '<a class="vt-mobile-link creator" href="creator-hub-south-africa.html"><div class="vt-creator-visual" id="vtMenuCreatorVisual"></div><div class="vt-card-copy"><div class="vt-creator-top"><small>Creator Hub</small><span class="vt-live-pill"><i></i><b id="vtMenuLiveCount">LIVE</b></span></div><strong>South African Creators</strong><em id="vtMenuCreatorMeta">Checking live creators…</em><div class="vt-creator-strip" id="vtMenuCreatorStrip"></div></div></a>'+
-     '<a class="vt-mobile-link streaming" href="streaming-setup-south-africa.html"><span class="vt-card-image vt-image-streaming"></span><div class="vt-card-copy"><small>Streaming</small><strong>Tech Support</strong><em>OBS, audio & performance</em></div></a>'+
-     '<a class="vt-mobile-link account" href="account.html"><span class="vt-card-image vt-image-account"></span><div class="vt-card-copy"><small>Account</small><strong>My Account</strong><em>Your VoltTech profile</em></div></a>'+
-     '<a class="vt-mobile-link contact" href="index.html#contact"><span class="vt-card-image vt-image-contact"></span><div class="vt-card-copy"><small>Contact</small><strong>Get Help</strong><em>WhatsApp or email</em></div></a>'+
-     '<a class="vt-mobile-link static" href="static.html"><span class="vt-card-image vt-image-static"></span><div class="vt-card-copy"><small>Editorial</small><strong>STATIC</strong><em>Tech, gaming & hardware</em></div></a>'+
+     '<a class="vt-mobile-link builder" href="builder/"><span class="vt-card-image vt-image-builder"></span><div class="vt-card-copy"><small>Build</small><strong>PC Builder</strong><em>Plan and configure your PC</em></div></a>'+ 
+     '<a class="vt-mobile-link services" href="index.html#services"><span class="vt-card-image vt-image-services"></span><div class="vt-card-copy"><small>Services</small><strong>PC Services</strong><em>Repair, upgrades & Windows</em></div></a>'+ 
+     '<a class="vt-mobile-link scan" href="signal-scan.html"><span class="vt-card-image vt-image-scan"></span><div class="vt-card-copy"><small>Free tool</small><strong>Signal Scan</strong><em>Symptoms, triage & estimates</em></div></a>'+ 
+     '<a class="vt-mobile-link creator" href="creator-hub-south-africa.html"><span class="vt-card-image vt-image-creator"></span><div class="vt-card-copy"><div class="vt-creator-top"><small>Creator Hub</small><span class="vt-live-pill"><i></i><b id="vtMenuLiveCount">LIVE</b></span></div><strong>SA Creators</strong><em id="vtMenuCreatorMeta">Checking live creators…</em></div></a>'+ 
+     '<a class="vt-mobile-link streaming" href="streaming-setup-south-africa.html"><span class="vt-card-image vt-image-streaming"></span><div class="vt-card-copy"><small>Streaming</small><strong>Creator Support</strong><em>OBS, audio & performance</em></div></a>'+ 
+     '<a class="vt-mobile-link account" href="account.html"><span class="vt-card-image vt-image-account"></span><div class="vt-card-copy"><small>Account</small><strong>My Account</strong><em>Quotes, builds & profile</em></div></a>'+ 
+     '<a class="vt-mobile-link contact" href="index.html#contact"><span class="vt-card-image vt-image-contact"></span><div class="vt-card-copy"><small>Contact</small><strong>Get Help</strong><em>WhatsApp or email</em></div></a>'+ 
+     '<a class="vt-mobile-link static" href="static.html"><span class="vt-card-image vt-image-static"></span><div class="vt-card-copy"><small>Editorial</small><strong>STATIC</strong><em>Tech, gaming & hardware</em></div></a>'+ 
    '</div>';
 
  document.body.append(backdrop,drawer);
@@ -140,42 +140,20 @@ function initMobileNavigation(){
  async function updateCreatorMenu(){
    const count=document.getElementById('vtMenuLiveCount');
    const meta=document.getElementById('vtMenuCreatorMeta');
-   const strip=document.getElementById('vtMenuCreatorStrip');
-   const visual=document.getElementById('vtMenuCreatorVisual');
-   if(!count||!meta||!strip)return;
+   if(!count||!meta)return;
    try{
      const res=await fetch('sa-streamers-live.json?menu=1',{cache:'no-store'});
      if(!res.ok)throw new Error('feed');
      const data=await res.json();
      const creators=Array.isArray(data.streamers)?data.streamers:[];
      const live=creators.filter(s=>s.live);
-     count.textContent=live.length+' LIVE NOW';
+     count.textContent=live.length?live.length+' LIVE':'LIVE';
      meta.textContent=live.length
-       ? live.length+' creator'+(live.length===1?' is':'s are')+' live · '+(data.valid_count||creators.length)+' tracked'
-       : 'No one live right now · '+(data.valid_count||creators.length)+' creators tracked';
-     strip.innerHTML='';
-     if(visual){
-       const featured=live[0]||creators[0];
-       if(featured&&featured.profile_image_url){
-         visual.style.backgroundImage='linear-gradient(90deg,rgba(12,8,16,.02),rgba(12,8,16,.78)),url("'+featured.profile_image_url.replace(/"/g,'%22')+'")';
-       }
-     }
-     live.slice(0,4).forEach(s=>{
-       const img=document.createElement('img');
-       img.src=s.profile_image_url;
-       img.alt='';
-       img.loading='lazy';
-       img.title=s.display_name||s.login||'Live creator';
-       strip.appendChild(img);
-     });
-     if(live.length){
-       const txt=document.createElement('span');
-       txt.textContent=live.slice(0,2).map(s=>s.display_name||s.login).join(' · ');
-       strip.appendChild(txt);
-     }
+       ? live.length+' creator'+(live.length===1?' is':'s are')+' live now'
+       : 'Discover South African creators';
    }catch(e){
      count.textContent='LIVE';
-     meta.textContent='Discover South African creators live on Twitch.';
+     meta.textContent='Discover South African creators';
    }
  }
  updateCreatorMenu();
@@ -187,11 +165,23 @@ function initMobileNavigation(){
    drawer.setAttribute('aria-hidden',String(!open));
    backdrop.setAttribute('aria-hidden',String(!open));
    document.body.classList.toggle('vt-menu-open',open);
+   if(open){requestAnimationFrame(()=>drawer.querySelector('a')?.focus())}
+   else if(document.activeElement&&drawer.contains(document.activeElement))button.focus();
  }
  button.addEventListener('click',()=>setOpen(button.getAttribute('aria-expanded')!=='true'));
  backdrop.addEventListener('click',()=>setOpen(false));
  drawer.addEventListener('click',e=>{if(e.target.closest('a'))setOpen(false)});
- document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false)});
+ document.addEventListener('keydown',e=>{
+   if(button.getAttribute('aria-expanded')!=='true')return;
+   if(e.key==='Escape'){e.preventDefault();setOpen(false);return}
+   if(e.key==='Tab'){
+     const focusable=[...drawer.querySelectorAll('a[href],button:not([disabled])')];
+     if(!focusable.length)return;
+     const first=focusable[0],last=focusable[focusable.length-1];
+     if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+     else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+   }
+ });
  window.addEventListener('resize',()=>{if(innerWidth>700)setOpen(false)});
 }
 
