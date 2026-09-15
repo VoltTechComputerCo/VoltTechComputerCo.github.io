@@ -47,6 +47,12 @@ section{padding:40px 0;border-top:1px solid var(--line)}section h2{font-size:26p
 <link rel="stylesheet" href="visual-system.css?v=11" data-vt-visual-system="1">
 <link rel="stylesheet" href="visual-block-fix.css?v=3" data-vt-visual-fix="1">
 <link rel="stylesheet" href="mobile-nav.css?v=5" data-vt-mobile-nav="1">
+
+<style id="vt-service-hero-overrides">
+/* Hero image override: Windows-specific setup visual */
+body.vt-page-windows main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-windows.webp')!important;background-position:center 48%!important}
+@media(max-width:620px){body.vt-page-windows main .wrap::before{background-position:center 48%!important}}
+</style>
 </head>
 <body class="vt-page-windows">
 <nav><div class="wrap"><a class="brand" href="index.html"><img src="brand/VoltTech_Full_Logo_Transparent.png" alt="VoltTech Computer Co."></a><div class="navlinks"><a href="index.html">Home</a><a class="scan" href="signal-scan.html">Signal Scan</a><a href="#contact">Contact</a></div></div></nav>
