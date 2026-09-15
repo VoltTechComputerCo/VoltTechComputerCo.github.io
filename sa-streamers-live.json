@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T22:28:29.554150Z",
+  "generated_at": "2026-09-15T22:40:26.616667Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
@@ -14,7 +14,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T21:13:42.437810Z",
-      "activity_score": 58.14
+      "activity_score": 54.65
     },
     {
       "login": "deathsjokerst",
@@ -27,7 +27,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T18:56:43.933430Z",
-      "activity_score": 33.3
+      "activity_score": 31.3
     },
     {
       "login": "sittingduck01",
@@ -40,7 +40,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T18:24:32.966391Z",
-      "activity_score": 26.48
+      "activity_score": 24.89
     },
     {
       "login": "thelemons",
@@ -53,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T16:48:27.376863Z",
-      "activity_score": 18.04
+      "activity_score": 16.96
     },
     {
       "login": "syernide",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T16:58:16.385158Z",
-      "activity_score": 15.85
+      "activity_score": 14.9
     },
     {
       "login": "viking_237",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T15:57:36.543217Z",
-      "activity_score": 13.22
+      "activity_score": 12.43
     },
     {
       "login": "waldoliveza",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T14:30:58.140021Z",
-      "activity_score": 12.97
+      "activity_score": 12.19
     },
     {
       "login": "spyro_za",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T14:10:29.626066Z",
-      "activity_score": 12.15
+      "activity_score": 11.42
     },
     {
       "login": "dead_oryx",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T12:52:10.431259Z",
-      "activity_score": 8.94
+      "activity_score": 8.4
     },
     {
       "login": "cassieroseza",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T15:57:36.543217Z",
-      "activity_score": 7.78
+      "activity_score": 7.31
     },
     {
       "login": "agriopsgaming",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T13:09:00.339792Z",
-      "activity_score": 7.37
+      "activity_score": 6.93
     },
     {
       "login": "cyndalive",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T12:35:46.304554Z",
-      "activity_score": 7.29
+      "activity_score": 6.85
     },
     {
       "login": "asananica81",
@@ -170,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T13:56:10.254335Z",
-      "activity_score": 7.07
+      "activity_score": 6.65
     },
     {
       "login": "azuracub",
@@ -183,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T11:15:55.651963Z",
-      "activity_score": 4.34
+      "activity_score": 4.08
     },
     {
       "login": "zaffa_geek",
@@ -196,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T22:08:10.110048Z",
-      "activity_score": 0.34
+      "activity_score": 0.32
     },
     {
       "login": "zulumachinegaming",
@@ -209,7 +209,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T22:24:24.216629Z",
-      "activity_score": 0.3
+      "activity_score": 0.28
     },
     {
       "login": "slikkdudebroguy",
@@ -222,20 +222,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-14T21:51:37.351577Z",
-      "activity_score": 0.24
-    },
-    {
-      "login": "chickenwingerz",
-      "display_name": "ChickenWingerZ",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/95ef6966-e207-4ff6-bcf0-59621c34af57-profile_image-300x300.png",
-      "description": "New South African Streamer Lets have fun Lets all help each other out!",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": "2026-09-14T20:29:41.566442Z",
-      "activity_score": 0.08
+      "activity_score": 0.23
     },
     {
       "login": "zlorbz",
@@ -339,6 +326,19 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-09T20:59:16.476174Z",
+      "activity_score": 0.08
+    },
+    {
+      "login": "chickenwingerz",
+      "display_name": "ChickenWingerZ",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/95ef6966-e207-4ff6-bcf0-59621c34af57-profile_image-300x300.png",
+      "description": "New South African Streamer Lets have fun Lets all help each other out!",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
+      "last_live_at": "2026-09-14T20:29:41.566442Z",
       "activity_score": 0.08
     },
     {
