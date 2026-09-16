@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browser Exposure Scan | See What Websites Can Learn | VoltTech</title>
+<meta name="description" content="Run VoltTech's free browser exposure demo to see what ordinary websites can learn about your device, browser, hardware, permissions and digital fingerprint — without installing anything.">
+<link rel="canonical" href="https://volttechcomputerco.github.io/exposure-scan.html">
+<link rel="icon" type="image/png" href="favicon-512.png">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#05080a">
+<meta property="og:title" content="VoltTech Exposure Scan — What Can a Website See?">
+<meta property="og:description" content="An interactive, privacy-first browser security awareness demo. See what your browser exposes without installing anything.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://volttechcomputerco.github.io/exposure-scan.html">
+<meta property="og:image" content="https://volttechcomputerco.github.io/logo-full.png">
+<meta property="og:site_name" content="VoltTech Computer Co.">
+<meta property="og:locale" content="en_ZA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VoltTech Exposure Scan — What Can a Website See?">
+<meta name="twitter:description" content="See what an ordinary webpage can learn about your device — then learn what it actually means.">
+<meta name="twitter:image" content="https://volttechcomputerco.github.io/logo-full.png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"VoltTech Exposure Scan",
+  "url":"https://volttechcomputerco.github.io/exposure-scan.html",
+  "applicationCategory":"SecurityApplication",
+  "operatingSystem":"Any modern web browser",
+  "isAccessibleForFree":true,
+  "description":"A privacy-first browser exposure awareness demo showing information that a browser may make available to websites."
+}
+</script>
+<style>
+:root{
+  --bg:#05080a;--panel:#0b1315;--panel2:#081012;--panel3:#0d1719;
+  --line:#17302d;--line2:#23433f;--teal:#2fe6c8;--teal2:#88ffe9;
+  --text:#eaf5f2;--muted:#7b9791;--dim:#4f6b66;--warn:#ffb454;--danger:#ff6b6b;
+  --good:#55e6a5;--blue:#65a9ff;--purple:#c184ff;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+  --display:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{
+  min-height:100vh;color:var(--text);font-family:var(--display);line-height:1.55;
+  background:
+    radial-gradient(circle at 50% -15%,rgba(47,230,200,.15),transparent 35%),
+    linear-gradient(rgba(47,230,200,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(47,230,200,.018) 1px,transparent 1px),
+    var(--bg);
+  background-size:auto,32px 32px,32px 32px,auto;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.wrap{width:min(860px,100%);margin:auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:50;background:rgba(5,8,10,.9);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+nav .wrap{height:62px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;min-width:0}
+.brand img{display:block;height:35px;max-width:176px;object-fit:contain}
+.navlinks{display:flex;gap:7px;align-items:center}
+.navlinks a{padding:9px 11px;border:1px solid transparent;border-radius:999px;color:var(--muted);font:700 9px var(--mono);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+.navlinks a:hover,.navlinks a:focus-visible{outline:none;color:var(--text);border-color:var(--line2)}
+.navlinks .hot{color:var(--teal);border-color:rgba(47,230,200,.32)}
+main{padding:44px 0 70px}
+.hero{padding:10px 0 30px}
+.eyebrow,.label{font:700 10px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.hero h1{font-size:clamp(38px,8vw,66px);line-height:.98;letter-spacing:-.055em;max-width:790px;margin:14px 0 16px}
+.hero h1 span{color:var(--teal)}
+.lead{font-size:clamp(15px,2vw,18px);color:#91aaa5;line-height:1.7;max-width:720px}
+.hero-note{display:flex;align-items:flex-start;gap:10px;margin-top:20px;padding:13px 14px;border:1px solid rgba(47,230,200,.2);border-radius:7px;background:rgba(47,230,200,.045);color:#a8bcb8;font-size:12px}
+.hero-note b{color:var(--teal)}
+section{padding:42px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(26px,5vw,36px);line-height:1.1;letter-spacing:-.035em;margin:8px 0 10px}
+.section-copy{color:var(--muted);font-size:14px;line-height:1.72;max-width:700px}
+
+.scan-shell{position:relative;margin-top:22px;border:1px solid rgba(47,230,200,.32);border-radius:10px;background:linear-gradient(145deg,rgba(47,230,200,.07),rgba(7,14,16,.96));overflow:hidden;box-shadow:0 18px 80px rgba(0,0,0,.28)}
+.scan-shell:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(47,230,200,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(47,230,200,.045) 1px,transparent 1px);background-size:20px 20px;mask-image:linear-gradient(to bottom,#000,transparent 70%)}
+.scan-top{position:relative;display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 14px;border-bottom:1px solid rgba(47,230,200,.15);font:700 8px var(--mono);color:#62837d;letter-spacing:.08em}
+.system-ready{color:var(--teal)}
+.pulse-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 12px var(--teal);margin-right:6px;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.35;box-shadow:0 0 2px var(--teal)}}
+.scan-body{position:relative;padding:22px}
+.scan-graphic{width:108px;height:108px;margin:0 auto 20px;position:relative;border:1px solid rgba(47,230,200,.2);border-radius:50%;display:grid;place-items:center}
+.scan-graphic:before,.scan-graphic:after{content:"";position:absolute;background:rgba(47,230,200,.2)}
+.scan-graphic:before{width:1px;top:-11px;bottom:-11px;left:50%}
+.scan-graphic:after{height:1px;left:-11px;right:-11px;top:50%}
+.ring{position:absolute;border:1px solid rgba(47,230,200,.25);border-radius:50%}
+.r1{inset:12px}.r2{inset:28px}.r3{inset:42px;background:var(--teal);box-shadow:0 0 28px rgba(47,230,200,.55)}
+.scan-shell.scanning .r1{animation:spin 2.6s linear infinite;border-style:dashed}
+.scan-shell.scanning .r2{animation:spin 1.5s linear infinite reverse;border-style:dashed}
+@keyframes spin{to{transform:rotate(360deg)}}
+.scan-copy{text-align:center;max-width:600px;margin:auto}
+.scan-copy h3{font-size:24px;letter-spacing:-.025em}
+.scan-copy p{color:var(--muted);font-size:13px;line-height:1.65;margin-top:7px}
+.scan-button,.action-button{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:5px;font:800 10px var(--mono);text-transform:uppercase;letter-spacing:.06em;transition:.18s}
+.scan-button{margin-top:18px;background:var(--teal);color:#03110f;box-shadow:0 8px 28px rgba(47,230,200,.16)}
+.scan-button:hover,.scan-button:focus-visible,.action-button:hover,.action-button:focus-visible{outline:none;transform:translateY(-2px)}
+.scan-button:disabled{opacity:.5;cursor:wait;transform:none}
+.mini-privacy{margin-top:10px;color:#5f7c77;font:8px var(--mono);line-height:1.5;text-transform:uppercase}
+.terminal{display:none;margin-top:20px;padding:14px;border:1px solid #14302c;border-radius:5px;background:#030809;color:#78a39b;font:10px/1.8 var(--mono);min-height:130px;text-align:left;overflow:hidden}
+.terminal.show{display:block}
+.terminal-line{white-space:normal}
+.terminal-line:before{content:"> ";color:var(--teal)}
+.terminal-line.ok{color:#a4c9c2}
+.terminal-line.ok:before{content:"✓ ";color:var(--good)}
+.terminal-line.hot{color:var(--teal2)}
+.scan-progress{height:2px;background:#112623;margin-top:14px;overflow:hidden}
+.scan-progress span{display:block;height:100%;width:0;background:var(--teal);box-shadow:0 0 10px var(--teal);transition:width .28s ease}
+
+.results{display:none}
+.results.show{display:block}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:20px}
+.stat{border:1px solid var(--line);border-radius:7px;background:var(--panel);padding:15px;min-height:92px}
+.stat b{display:block;color:var(--teal);font:800 24px var(--mono);line-height:1}
+.stat span{display:block;margin-top:9px;color:var(--muted);font:700 8px var(--mono);text-transform:uppercase;letter-spacing:.08em;line-height:1.45}
+.result-section{margin-top:15px;border:1px solid var(--line);border-radius:8px;background:rgba(8,16,18,.88);overflow:hidden}
+.result-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.result-head h3{font-size:15px}
+.result-head span{color:#58736e;font:700 8px var(--mono);text-transform:uppercase}
+.result-list{display:grid;grid-template-columns:1fr 1fr}
+.result-row{padding:13px 15px;border-bottom:1px solid #122320;min-width:0}
+.result-row:nth-child(odd){border-right:1px solid #122320}
+.result-row:last-child,.result-row:nth-last-child(2){border-bottom:0}
+.result-row small{display:block;color:#5e7d77;font:700 8px var(--mono);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.result-row strong{display:block;font-size:12.5px;overflow-wrap:anywhere;color:#d8e8e4}
+.result-row em{display:block;margin-top:4px;color:#58736e;font-style:normal;font-size:10px;line-height:1.45}
+.value-good{color:var(--good)!important}.value-warn{color:var(--warn)!important}.value-danger{color:var(--danger)!important}.value-teal{color:var(--teal)!important}
+.fingerprint{margin-top:15px;border:1px solid rgba(193,132,255,.3);border-radius:8px;background:linear-gradient(135deg,rgba(193,132,255,.07),rgba(8,16,18,.9));padding:18px}
+.fingerprint-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.fingerprint h3{font-size:18px}.fingerprint p{color:var(--muted);font-size:12px;line-height:1.65;margin-top:6px}
+.fp-code{margin-top:14px;padding:14px;border:1px dashed rgba(193,132,255,.36);border-radius:5px;background:#05080a;color:#dbb6ff;font:700 13px var(--mono);letter-spacing:.08em;overflow-wrap:anywhere}
+.fp-note{margin-top:9px;color:#7c678e;font:9px/1.55 var(--mono)}
+.reveal{margin-top:18px;border:1px solid rgba(47,230,200,.35);border-radius:9px;background:linear-gradient(135deg,rgba(47,230,200,.09),var(--panel));padding:22px}
+.reveal-kicker{font:800 10px var(--mono);color:var(--teal);text-transform:uppercase;letter-spacing:.14em}
+.reveal h3{font-size:clamp(27px,5vw,38px);line-height:1.04;letter-spacing:-.04em;margin:9px 0}
+.reveal p{color:#9db4af;font-size:14px;line-height:1.72}
+.reveal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.reveal-item{border:1px solid var(--line);border-radius:6px;background:#071012;padding:13px}
+.reveal-item b{display:block;font-size:12px;margin-bottom:5px}.reveal-item span{display:block;color:var(--muted);font-size:10.5px;line-height:1.55}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.action-button{border:1px solid var(--line2);background:transparent;color:var(--teal)}
+.action-button.primary{background:var(--teal);border-color:var(--teal);color:#04120f}
+.action-button.danger{color:#ff9d9d;border-color:rgba(255,107,107,.3)}
+
+.location-card{margin-top:18px;border:1px solid rgba(255,180,84,.3);border-radius:9px;background:linear-gradient(135deg,rgba(255,180,84,.06),var(--panel));padding:20px}
+.location-card h3{font-size:20px;margin:7px 0}.location-card p{color:var(--muted);font-size:13px;line-height:1.65}
+.permission-explain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.permission-explain div{border:1px solid var(--line);border-radius:6px;background:#071012;padding:13px}
+.permission-explain b{display:block;font-size:11px}.permission-explain span{display:block;color:var(--muted);font-size:10px;line-height:1.55;margin-top:4px}
+.location-result{display:none;margin-top:14px;border:1px dashed rgba(255,180,84,.35);border-radius:5px;background:#070b0c;padding:14px}
+.location-result.show{display:block}
+.location-result small{color:#9b7951;font:8px var(--mono);text-transform:uppercase}.location-result strong{display:block;margin-top:5px;color:#ffd199;font:700 13px var(--mono);overflow-wrap:anywhere}.location-result p{margin-top:5px;font-size:10.5px}
+
+.cta-card{margin-top:18px;border:1px solid rgba(47,230,200,.35);border-radius:9px;background:radial-gradient(circle at 85% 10%,rgba(47,230,200,.13),transparent 30%),var(--panel);padding:22px}
+.cta-card h3{font-size:26px;line-height:1.08;letter-spacing:-.03em;margin:8px 0 9px}.cta-card p{color:#8fa8a3;font-size:13px;line-height:1.7;max-width:650px}
+.disclaimer{margin-top:16px;border-left:2px solid #35514c;padding-left:13px;color:#627c77;font-size:10.5px;line-height:1.65}
+footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:#49605c;font:9px var(--mono)}
+.hidden-canvas{position:fixed;left:-9999px;top:-9999px;width:240px;height:60px}
+
+@media(max-width:700px){
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .result-list{grid-template-columns:1fr}
+  .result-row:nth-child(odd){border-right:0}
+  .result-row:nth-last-child(2){border-bottom:1px solid #122320}
+  .reveal-grid,.permission-explain{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .wrap{padding-left:16px;padding-right:16px}.navlinks a:first-child{display:none}
+  .brand img{height:31px;max-width:155px}.hero{padding-top:4px}.hero h1{font-size:40px}
+  main{padding-top:32px}.scan-body{padding:18px 14px}
+  .actions .action-button{flex:1 1 100%}.stat{min-height:84px;padding:13px}.stat b{font-size:21px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}.pulse-dot,.scan-shell.scanning .r1,.scan-shell.scanning .r2{animation:none!important}
+  .scan-button,.action-button{transition:none!important}.scan-button:hover,.action-button:hover{transform:none!important}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="VoltTech Computer Co. home">
+      <img src="brand/VoltTech_Full_Logo_Transparent.png" alt="VoltTech Computer Co.">
+    </a>
+    <div class="navlinks">
+      <a href="virus-malware-removal-pretoria.html">Security</a>
+      <a class="hot" href="signal-scan.html">Signal Scan</a>
+    </div>
+  </div>
+</nav>
+
+<main><div class="wrap">
+<header class="hero">
+  <div class="eyebrow">// VOLTTECH SECURITY LAB · INTERACTIVE DEMO</div>
+  <h1>How much can a website learn <span>without installing anything?</span></h1>
+  <p class="lead">More than most people expect. This demo shows information your browser may make available to an ordinary webpage — then explains what it means, what it <em>doesn't</em> mean, and why privacy settings matter.</p>
+  <div class="hero-note">
+    <span>🔒</span>
+    <div><b>Privacy-first by design.</b> The scan results are processed in your browser. This tool does not upload or save the information it displays. Optional location access is never requested unless you press the location button yourself.</div>
+  </div>
+</header>
+
+<section aria-labelledby="scanTitle">
+  <div class="label">THE EXPERIMENT</div>
+  <h2 id="scanTitle">Let your own browser snitch on you.</h2>
+  <p class="section-copy">Press the button and VoltTech will ask only the same browser interfaces available to normal web pages. No downloads. No administrator access. No file access. No password access.</p>
+
+  <div class="scan-shell" id="scanShell">
+    <div class="scan-top"><span>VT EXPOSURE ENGINE · LOCAL SESSION</span><span class="system-ready"><i class="pulse-dot"></i>READY</span></div>
+    <div class="scan-body">
+      <div class="scan-graphic" aria-hidden="true"><span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span></div>
+      <div class="scan-copy">
+        <h3 id="scanHeading">Ready when you are.</h3>
+        <p id="scanSub">We’ll inspect what this browser exposes and build a local demonstration fingerprint.</p>
+        <button class="scan-button" id="scanButton" type="button">⚡ Scan What My Browser Exposes</button>
+        <div class="mini-privacy">NO INSTALL · NO FILE ACCESS · RESULTS NOT UPLOADED BY THIS TOOL</div>
+        <div class="terminal" id="terminal" aria-live="polite"></div>
+        <div class="scan-progress" aria-hidden="true"><span id="progressBar"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="results" id="results" aria-labelledby="resultsTitle">
+  <div class="label">YOUR EXPOSURE REPORT</div>
+  <h2 id="resultsTitle">That was one webpage.</h2>
+  <p class="section-copy">Availability varies by browser and privacy settings, so “Not exposed” can be a good sign — or simply a browser compatibility difference.</p>
+
+  <div class="stat-grid">
+    <div class="stat"><b id="statSignals">0</b><span>browser signals visible</span></div>
+    <div class="stat"><b id="statPermissions">0</b><span>permission states readable</span></div>
+    <div class="stat"><b>0</b><span>files opened by this scan</span></div>
+    <div class="stat"><b>0</b><span>scan results uploaded</span></div>
+  </div>
+
+  <div class="result-section">
+    <div class="result-head"><h3>Device & browser</h3><span>IDENTITY SURFACE</span></div>
+    <div class="result-list" id="deviceResults"></div>
+  </div>
+
+  <div class="result-section">
+    <div class="result-head"><h3>Hardware & graphics</h3><span>CAPABILITY SURFACE</span></div>
+    <div class="result-list" id="hardwareResults"></div>
+  </div>
+
+  <div class="result-section">
+    <div class="result-head"><h3>Display, locale & preferences</h3><span>FINGERPRINT SIGNALS</span></div>
+    <div class="result-list" id="displayResults"></div>
+  </div>
+
+  <div class="result-section">
+    <div class="result-head"><h3>Network, battery & storage</h3><span>CONTEXT SURFACE</span></div>
+    <div class="result-list" id="contextResults"></div>
+  </div>
+
+  <div class="result-section">
+    <div class="result-head"><h3>Browser permissions</h3><span>NO PROMPTS TRIGGERED</span></div>
+    <div class="result-list" id="permissionResults"></div>
+  </div>
+
+  <div class="fingerprint">
+    <div class="fingerprint-top"><div><div class="label" style="color:var(--purple)">LOCAL FINGERPRINT DEMO</div><h3>Lots of boring details become less boring when combined.</h3></div></div>
+    <p>Web tracking can combine many small characteristics into a probabilistic fingerprint. This demo hashes a selection of the signals above plus a local canvas rendering. It is <strong>not guaranteed to be unique</strong> and VoltTech does not store it.</p>
+    <div class="fp-code" id="fingerprintCode">WAITING FOR SCAN…</div>
+    <div class="fp-note">A fingerprint is not the same thing as your name, password or identity — but it can help sites distinguish one browser/device configuration from another.</div>
+  </div>
+
+  <div class="reveal">
+    <div class="reveal-kicker">THE IMPORTANT PART</div>
+    <h3>👋 We didn’t hack you.</h3>
+    <p>Everything above came from browser features and information available to normal web content. That does <strong>not</strong> mean your PC is infected or insecure. It does show why browser privacy, permissions, updates and trusted websites matter.</p>
+    <div class="reveal-grid">
+      <div class="reveal-item"><b>We could not read your files</b><span>A normal webpage does not get arbitrary access to your documents, photos or drives.</span></div>
+      <div class="reveal-item"><b>We could not read your passwords</b><span>This demo has no access to saved passwords, banking apps, messages or 2FA codes.</span></div>
+      <div class="reveal-item"><b>Your browser still revealed plenty</b><span>Device characteristics and permission state can be useful for both legitimate features and tracking.</span></div>
+    </div>
+    <div class="actions">
+      <button type="button" class="action-button" id="copyReport">Copy My Exposure Report</button>
+      <button type="button" class="action-button" id="rescan">Run Again</button>
+    </div>
+  </div>
+
+  <div class="location-card">
+    <div class="label" style="color:var(--warn)">OPTIONAL PERMISSION DEMO</div>
+    <h3>Want to make it slightly scarier?</h3>
+    <p>A webpage can ask for your location too — but modern browsers are supposed to put <strong>you</strong> in control. VoltTech will only request it if you press the button below. Your browser should show a real permission prompt unless you have already made a choice for this site.</p>
+    <div class="permission-explain">
+      <div><b>Before you press it</b><span>The page does not currently have your coordinates just because the browser knows your timezone or language.</span></div>
+      <div><b>After you allow it</b><span>The browser can provide coordinates and an estimated accuracy to this page. The result is displayed locally.</span></div>
+    </div>
+    <div class="actions">
+      <button type="button" class="action-button danger" id="locationButton">Show What Location Permission Can Reveal</button>
+    </div>
+    <div class="location-result" id="locationResult" aria-live="polite"></div>
+  </div>
+
+  <div class="cta-card">
+    <div class="label">REAL SECURITY, NOT THEATRE</div>
+    <h3>Browser exposure is one thing. An insecure PC is another.</h3>
+    <p>If you are seeing pop-ups, redirects, unknown software, account warnings or other suspicious behaviour, VoltTech can help you work out what actually needs attention. Signal Scan is the quickest place to start.</p>
+    <div class="actions">
+      <a class="action-button primary" href="signal-scan.html">⚡ Run Signal Scan</a>
+      <a class="action-button" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%20ran%20the%20Exposure%20Scan%20and%20I%27d%20like%20help%20checking%20my%20device%20security." target="_blank" rel="noopener">Ask VoltTech About Security</a>
+    </div>
+  </div>
+
+  <p class="disclaimer"><strong>Important:</strong> Exposure Scan is an educational browser-privacy demonstration, not an antivirus or malware scanner and not proof that a device is compromised. Some values are approximate, reduced or unavailable because browsers deliberately limit fingerprinting information.</p>
+</section>
+</div></main>
+
+<canvas class="hidden-canvas" id="fpCanvas" width="280" height="80" aria-hidden="true"></canvas>
+<footer>⚡ VOLTTECH COMPUTER CO. · EXPOSURE SCAN · SECURITY AWARENESS · © 2026</footer>
+
+<script>
+(function(){
+"use strict";
+
+const $=id=>document.getElementById(id);
+const scanButton=$("scanButton");
+const scanShell=$("scanShell");
+const terminal=$("terminal");
+const progressBar=$("progressBar");
+const results=$("results");
+const fpCode=$("fingerprintCode");
+const report={};
+let signalCount=0;
+let permissionCount=0;
+
+function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+function valueOr(v,fallback="Not exposed by this browser"){
+  return (v===undefined||v===null||v==="")?fallback:String(v);
+}
+function yesNo(v){return v?"Yes":"No";}
+function safeTest(fn){
+  try{return fn();}catch(e){return undefined;}
+}
+function statusClass(status){
+  if(status==="good") return "value-good";
+  if(status==="warn") return "value-warn";
+  if(status==="danger") return "value-danger";
+  if(status==="teal") return "value-teal";
+  return "";
+}
+function row(target,label,value,note="",status=""){
+  const box=document.createElement("div");
+  box.className="result-row";
+  const s=document.createElement("small");s.textContent=label;
+  const strong=document.createElement("strong");strong.textContent=valueOr(value);strong.className=statusClass(status);
+  box.append(s,strong);
+  if(note){const em=document.createElement("em");em.textContent=note;box.append(em);}
+  target.appendChild(box);
+  if(value!==undefined&&value!==null&&value!==""&&value!=="Not exposed by this browser")signalCount++;
+}
+function term(text,cls=""){
+  const d=document.createElement("div");d.className="terminal-line "+cls;d.textContent=text;terminal.appendChild(d);terminal.scrollTop=terminal.scrollHeight;
+}
+function browserOS(){
+  const ua=navigator.userAgent||"";
+  let browser="Unknown / reduced user agent";
+  if(/Edg\//.test(ua)) browser="Microsoft Edge";
+  else if(/OPR\//.test(ua)) browser="Opera";
+  else if(/SamsungBrowser\//.test(ua)) browser="Samsung Internet";
+  else if(/Chrome\//.test(ua)&&!/Chromium/.test(ua)) browser="Chrome / Chromium-family";
+  else if(/Firefox\//.test(ua)) browser="Firefox";
+  else if(/Safari\//.test(ua)&&!/Chrome\//.test(ua)) browser="Safari";
+  let os="Unknown / reduced user agent";
+  if(/Windows NT/.test(ua)) os="Windows";
+  else if(/Android/.test(ua)) os="Android";
+  else if(/iPhone|iPad|iPod/.test(ua)) os="iOS / iPadOS";
+  else if(/Mac OS X/.test(ua)) os="macOS";
+  else if(/Linux/.test(ua)) os="Linux";
+  return {browser,os};
+}
+function storageAvailable(type){
+  try{
+    const s=window[type],x="__vt_exposure_test__";
+    s.setItem(x,x);s.removeItem(x);return true;
+  }catch(e){return false;}
+}
+function getWebGL(){
+  const canvas=document.createElement("canvas");
+  const gl=canvas.getContext("webgl2")||canvas.getContext("webgl")||canvas.getContext("experimental-webgl");
+  if(!gl)return {supported:false};
+  let vendor=gl.getParameter(gl.VENDOR),renderer=gl.getParameter(gl.RENDERER);
+  const ext=gl.getExtension("WEBGL_debug_renderer_info");
+  if(ext){
+    vendor=gl.getParameter(ext.UNMASKED_VENDOR_WEBGL)||vendor;
+    renderer=gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)||renderer;
+  }
+  return {
+    supported:true,
+    version:valueOr(gl.getParameter(gl.VERSION)),
+    vendor:valueOr(vendor),
+    renderer:valueOr(renderer),
+    webgl2:!!canvas.getContext("webgl2")
+  };
+}
+async function getCanvasToken(){
+  const c=$("fpCanvas"),ctx=c.getContext("2d");
+  if(!ctx)return "CANVAS_UNAVAILABLE";
+  ctx.clearRect(0,0,c.width,c.height);
+  const g=ctx.createLinearGradient(0,0,c.width,0);
+  g.addColorStop(0,"#2fe6c8");g.addColorStop(1,"#c184ff");
+  ctx.fillStyle="#05080a";ctx.fillRect(0,0,c.width,c.height);
+  ctx.font="16px sans-serif";ctx.fillStyle=g;ctx.fillText("VoltTech Exposure Scan ⚡ AaZz 0123456789",8,28);
+  ctx.font="11px monospace";ctx.fillStyle="#eaf5f2";ctx.fillText("browser-rendering-surface",8,52);
+  return c.toDataURL();
+}
+function simpleHash(str){
+  let h=2166136261;
+  for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619);}
+  return ("00000000"+(h>>>0).toString(16)).slice(-8).toUpperCase();
+}
+async function digest(str){
+  if(window.crypto&&crypto.subtle&&window.TextEncoder){
+    const buf=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("").toUpperCase();
+  }
+  return simpleHash(str)+simpleHash(str.split("").reverse().join(""));
+}
+async function permissionState(name){
+  if(!navigator.permissions||!navigator.permissions.query)return undefined;
+  try{
+    const p=await navigator.permissions.query({name});
+    permissionCount++;
+    return p.state;
+  }catch(e){return undefined;}
+}
+function permissionStatus(v){
+  if(v==="granted")return "warn";
+  if(v==="denied")return "good";
+  if(v==="prompt")return "teal";
+  return "";
+}
+async function collect(){
+  signalCount=0;permissionCount=0;
+  ["deviceResults","hardwareResults","displayResults","contextResults","permissionResults"].forEach(id=>$(id).textContent="");
+  const device=$("deviceResults"),hardware=$("hardwareResults"),display=$("displayResults"),context=$("contextResults"),permissions=$("permissionResults");
+  const parsed=browserOS();
+
+  let uaHigh={};
+  if(navigator.userAgentData){
+    report.uaBrands=(navigator.userAgentData.brands||[]).map(x=>x.brand+" "+x.version).join(", ");
+    report.uaMobile=navigator.userAgentData.mobile;
+    report.uaPlatform=navigator.userAgentData.platform;
+    try{
+      uaHigh=await navigator.userAgentData.getHighEntropyValues(["architecture","bitness","model","platformVersion","fullVersionList","wow64"]);
+    }catch(e){}
+  }
+  report.browser=parsed.browser;
+  report.os=uaHigh.platform||report.uaPlatform||parsed.os;
+  report.ua=navigator.userAgent;
+  report.languages=(navigator.languages||[navigator.language]).filter(Boolean).join(", ");
+  report.platform=navigator.platform;
+  report.mobile=(navigator.userAgentData&&typeof navigator.userAgentData.mobile==="boolean")?navigator.userAgentData.mobile:/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  report.model=uaHigh.model||undefined;
+  report.architecture=uaHigh.architecture||undefined;
+  report.bitness=uaHigh.bitness||undefined;
+  report.platformVersion=uaHigh.platformVersion||undefined;
+
+  row(device,"Browser family",report.browser,"Best-effort interpretation of browser-reported data.");
+  row(device,"Operating system",report.os,"May be reduced or generalised by the browser.");
+  row(device,"Mobile-class device",yesNo(report.mobile));
+  row(device,"Device model hint",report.model,"Only exposed by some Chromium-family browsers.");
+  row(device,"CPU architecture hint",report.architecture?report.architecture+(report.bitness?" · "+report.bitness+"-bit":""):undefined,"High-entropy client hint when available.");
+  row(device,"Platform version hint",report.platformVersion,"May be deliberately reduced.");
+  row(device,"Browser brands",report.uaBrands,"Client Hints brand list when available.");
+  row(device,"User-Agent string",report.ua,"Browsers increasingly reduce this string to limit fingerprinting.");
+
+  report.threads=navigator.hardwareConcurrency;
+  report.memory=navigator.deviceMemory;
+  const gl=getWebGL();
+  report.gpu=gl.renderer;
+  report.gpuVendor=gl.vendor;
+  report.webglVersion=gl.version;
+  report.webgl2=gl.webgl2;
+  let audioRate;
+  try{
+    const AC=window.AudioContext||window.webkitAudioContext;
+    if(AC){const ac=new AC();audioRate=ac.sampleRate;await ac.close();}
+  }catch(e){}
+  report.audioRate=audioRate;
+
+  row(hardware,"Logical processor threads",report.threads,"Browser-reported concurrency, not a guaranteed physical core count.");
+  row(hardware,"Approximate device memory",report.memory?report.memory+" GB":undefined,"Intentionally coarse and privacy-limited where supported.");
+  row(hardware,"Graphics renderer",report.gpu,"WebGL may expose a renderer or a privacy-reduced value.");
+  row(hardware,"Graphics vendor",report.gpuVendor);
+  row(hardware,"WebGL 2",gl.supported?yesNo(report.webgl2):"Unavailable");
+  row(hardware,"WebGL version",gl.supported?report.webglVersion:"Unavailable");
+  row(hardware,"Audio sample rate",audioRate?audioRate+" Hz":undefined,"Another small characteristic usable in fingerprinting.");
+  row(hardware,"Touch points",navigator.maxTouchPoints,"Maximum simultaneous touch contacts reported by the browser.");
+
+  const tz=Intl.DateTimeFormat().resolvedOptions();
+  report.screen=screen.width+" × "+screen.height;
+  report.viewport=innerWidth+" × "+innerHeight;
+  report.pixelRatio=window.devicePixelRatio;
+  report.colorDepth=screen.colorDepth;
+  report.timezone=tz.timeZone;
+  report.locale=tz.locale||navigator.language;
+  report.calendar=tz.calendar;
+  report.numberingSystem=tz.numberingSystem;
+  report.orientation=safeTest(()=>screen.orientation.type);
+  report.dark=matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches;
+  report.reducedMotion=matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  report.gamut=matchMedia&&matchMedia("(color-gamut: p3)").matches?"P3":"sRGB / not reported as P3";
+
+  row(display,"Physical screen",report.screen+" px");
+  row(display,"Current viewport",report.viewport+" px");
+  row(display,"Pixel ratio",report.pixelRatio);
+  row(display,"Colour depth",report.colorDepth+" bit");
+  row(display,"Timezone",report.timezone);
+  row(display,"Language(s)",report.languages);
+  row(display,"Locale / numbering",valueOr(report.locale)+(report.numberingSystem?" · "+report.numberingSystem:""));
+  row(display,"Screen orientation",report.orientation);
+  row(display,"Prefers dark colour scheme",yesNo(report.dark));
+  row(display,"Reduced-motion preference",yesNo(report.reducedMotion));
+  row(display,"Colour gamut",report.gamut);
+
+  const conn=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+  report.online=navigator.onLine;
+  report.connection=conn?conn.effectiveType:undefined;
+  report.downlink=conn&&conn.downlink;
+  report.rtt=conn&&conn.rtt;
+  report.saveData=conn&&conn.saveData;
+  report.cookies=navigator.cookieEnabled;
+  report.localStorage=storageAvailable("localStorage");
+  report.sessionStorage=storageAvailable("sessionStorage");
+  report.indexedDB=!!window.indexedDB;
+  report.secureContext=window.isSecureContext;
+  report.serviceWorkers="serviceWorker" in navigator;
+  report.dnt=navigator.doNotTrack;
+  report.gpc=(typeof navigator.globalPrivacyControl==="boolean")?navigator.globalPrivacyControl:undefined;
+
+  let battery;
+  if(navigator.getBattery){
+    try{battery=await navigator.getBattery();}catch(e){}
+  }
+  report.battery=battery?Math.round(battery.level*100)+"%":undefined;
+  report.charging=battery?battery.charging:undefined;
+
+  row(context,"Browser says online",yesNo(report.online),undefined,report.online?"teal":"warn");
+  row(context,"Effective network type",report.connection,"Network Information API is not supported by every browser.");
+  row(context,"Estimated downlink",report.downlink!==undefined?report.downlink+" Mbps":undefined,"An estimate, not a speed test.");
+  row(context,"Estimated round-trip time",report.rtt!==undefined?report.rtt+" ms":undefined,"Browser-provided estimate.");
+  row(context,"Data Saver",report.saveData!==undefined?yesNo(report.saveData):undefined);
+  row(context,"Battery level",report.battery,"Only exposed by some browsers.");
+  row(context,"Charging",report.charging!==undefined?yesNo(report.charging):undefined);
+  row(context,"Cookies enabled",yesNo(report.cookies),"Browser-reported capability; not a full third-party-cookie test.");
+  row(context,"Local storage available",yesNo(report.localStorage));
+  row(context,"Session storage available",yesNo(report.sessionStorage));
+  row(context,"IndexedDB available",yesNo(report.indexedDB));
+  row(context,"Secure HTTPS context",yesNo(report.secureContext),report.secureContext?"This page is running in a secure context.":"Sensitive browser APIs may be blocked on insecure pages.",report.secureContext?"good":"danger");
+  row(context,"Service Worker support",yesNo(report.serviceWorkers));
+  row(context,"Do Not Track signal",report.dnt===null||report.dnt===undefined?"Not set / not exposed":report.dnt);
+  row(context,"Global Privacy Control",report.gpc===undefined?"Not exposed by this browser":(report.gpc?"Enabled":"Disabled"),"Where supported, GPC communicates a privacy preference.",report.gpc===true?"good":"");
+
+  const geo=await permissionState("geolocation");
+  const camera=await permissionState("camera");
+  const microphone=await permissionState("microphone");
+  let notifications;
+  if("Notification" in window){notifications=Notification.permission;permissionCount++;}
+  report.permissions={geo,camera,microphone,notifications};
+
+  row(permissions,"Location permission",geo,"'Prompt' means this site would need to ask before receiving coordinates.",permissionStatus(geo));
+  row(permissions,"Camera permission",camera,"Checking state does not activate your camera.",permissionStatus(camera));
+  row(permissions,"Microphone permission",microphone,"Checking state does not activate your microphone.",permissionStatus(microphone));
+  row(permissions,"Notification permission",notifications,"Permission state only; this scan does not request notification access.",permissionStatus(notifications));
+
+  const canvasToken=await getCanvasToken();
+  const fpSource=[
+    report.ua,report.languages,report.timezone,report.screen,report.pixelRatio,report.colorDepth,
+    report.threads,report.memory,report.gpuVendor,report.gpu,report.audioRate,report.platform,
+    report.orientation,report.gamut,canvasToken
+  ].join("|");
+  report.fingerprint=await digest(fpSource);
+  fpCode.textContent="VT-"+report.fingerprint.slice(0,24);
+  $("statSignals").textContent=signalCount;
+  $("statPermissions").textContent=permissionCount;
+}
+
+async function runScan(){
+  scanButton.disabled=true;scanShell.classList.add("scanning");
+  terminal.textContent="";terminal.classList.add("show");
+  $("scanHeading").textContent="Scanning browser exposure…";
+  $("scanSub").textContent="Watching what the browser is willing to reveal.";
+  results.classList.remove("show");
+  const stages=[
+    ["Reading browser and platform signals…",12],
+    ["Checking CPU, memory and graphics interfaces…",27],
+    ["Measuring display, locale and system preferences…",43],
+    ["Checking storage and network capability…",59],
+    ["Reading existing permission states — no prompts…",73],
+    ["Building a local demonstration fingerprint…",88]
+  ];
+  for(const [text,pct] of stages){term(text);progressBar.style.width=pct+"%";await sleep(280);}
+  await collect();
+  term("Exposure profile assembled locally.","ok");progressBar.style.width="100%";await sleep(260);
+  term("No scan result upload performed.","hot");
+  $("scanHeading").textContent="Scan complete.";
+  $("scanSub").textContent="Scroll down. The interesting part is what all these tiny signals add up to.";
+  scanShell.classList.remove("scanning");scanButton.disabled=false;scanButton.textContent="Scan Again";
+  results.classList.add("show");
+  setTimeout(()=>results.scrollIntoView({behavior:"smooth",block:"start"}),180);
+}
+
+scanButton.addEventListener("click",runScan);
+$("rescan").addEventListener("click",()=>{window.scrollTo({top:document.querySelector(".scan-shell").offsetTop-90,behavior:"smooth"});setTimeout(runScan,350);});
+
+$("copyReport").addEventListener("click",async function(){
+  const lines=[
+    "VOLTTECH EXPOSURE SCAN — LOCAL REPORT",
+    "Educational browser exposure demo; not a malware scan.",
+    "",
+    "Browser: "+valueOr(report.browser),
+    "OS: "+valueOr(report.os),
+    "UA: "+valueOr(report.ua),
+    "Languages: "+valueOr(report.languages),
+    "Timezone: "+valueOr(report.timezone),
+    "Screen: "+valueOr(report.screen),
+    "Viewport: "+valueOr(report.viewport),
+    "Logical threads: "+valueOr(report.threads),
+    "Approx memory: "+(report.memory?report.memory+" GB":"Not exposed"),
+    "GPU: "+valueOr(report.gpu),
+    "Network type: "+valueOr(report.connection),
+    "HTTPS secure context: "+yesNo(report.secureContext),
+    "Location permission: "+valueOr(report.permissions&&report.permissions.geo),
+    "Camera permission: "+valueOr(report.permissions&&report.permissions.camera),
+    "Microphone permission: "+valueOr(report.permissions&&report.permissions.microphone),
+    "Demo fingerprint: VT-"+valueOr(report.fingerprint).slice(0,24),
+    "",
+    "Generated locally by https://volttechcomputerco.github.io/exposure-scan.html"
+  ];
+  try{
+    await navigator.clipboard.writeText(lines.join("\n"));
+    const old=this.textContent;this.textContent="Copied ✓";setTimeout(()=>this.textContent=old,1600);
+  }catch(e){
+    alert("Your browser blocked clipboard access. You can screenshot the report instead.");
+  }
+});
+
+$("locationButton").addEventListener("click",function(){
+  const box=$("locationResult");
+  if(!navigator.geolocation){
+    box.classList.add("show");box.innerHTML="<small>RESULT</small><strong>Geolocation is not available in this browser.</strong>";
+    return;
+  }
+  this.disabled=true;this.textContent="Waiting for your browser…";
+  box.classList.add("show");box.innerHTML="<small>PERMISSION REQUEST</small><strong>Your browser is deciding what to do.</strong><p>VoltTech cannot bypass the browser permission prompt.</p>";
+  navigator.geolocation.getCurrentPosition(
+    pos=>{
+      const lat=pos.coords.latitude.toFixed(5),lon=pos.coords.longitude.toFixed(5),acc=Math.round(pos.coords.accuracy);
+      box.textContent="";
+      const s=document.createElement("small");s.textContent="LOCATION PROVIDED BY YOUR BROWSER";
+      const strong=document.createElement("strong");strong.textContent=lat+", "+lon+" · accuracy ≈ "+acc+" m";
+      const p=document.createElement("p");p.textContent="You just authorised this webpage to receive coordinates. They are shown here and are not uploaded by this tool. To revoke the permission itself, use your browser's site-permission controls.";
+      const clear=document.createElement("button");clear.type="button";clear.className="action-button";clear.style.marginTop="10px";clear.textContent="Clear This Display";
+      clear.onclick=()=>{box.classList.remove("show");box.textContent="";$("locationButton").disabled=false;$("locationButton").textContent="Show What Location Permission Can Reveal";};
+      box.append(s,strong,p,clear);
+      $("locationButton").textContent="Location Was Allowed";$("locationButton").disabled=true;
+    },
+    err=>{
+      box.textContent="";
+      const s=document.createElement("small");s.textContent="LOCATION NOT PROVIDED";
+      const strong=document.createElement("strong");strong.textContent=err.code===1?"Permission denied / blocked.":"Location unavailable or timed out.";
+      const p=document.createElement("p");p.textContent="Exactly as it should be: the page only gets coordinates when the browser and user allow it.";
+      box.append(s,strong,p);
+      $("locationButton").disabled=false;$("locationButton").textContent="Try Location Demo Again";
+    },
+    {enableHighAccuracy:false,timeout:10000,maximumAge:0}
+  );
+});
+})();
+</script>
+</body>
+</html>
