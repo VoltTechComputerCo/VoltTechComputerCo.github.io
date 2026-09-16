@@ -28,6 +28,25 @@
   const status = (message = "", type = "") => setStatus(q("#hubStatus"), message, type);
   const authStatus = (message = "", type = "") => setStatus(q("#authStatus"), message, type);
 
+  function safeReturnPath() {
+    const raw = new URLSearchParams(location.search).get("returnTo");
+    if (!raw) return "";
+    try {
+      const url = new URL(raw, location.origin);
+      if (url.origin !== location.origin) return "";
+      if (url.pathname.endsWith("/account.html")) return "";
+      return `${url.pathname}${url.search}${url.hash}`;
+    } catch { return ""; }
+  }
+
+  const returnPath = safeReturnPath();
+  const accountCallbackUrl = () => `${location.origin}/account.html${returnPath ? `?returnTo=${encodeURIComponent(returnPath)}` : ""}`;
+  function continueAfterAuth() {
+    if (!returnPath) return false;
+    location.replace(returnPath);
+    return true;
+  }
+
   function show(view) {
     ["#authGate", "#recoveryGate", "#accountHub"].forEach(id => {
       const el = q(id);
@@ -136,14 +155,12 @@
 
   async function saveAddress(e) {
     e.preventDefault();
+    const form = q("#addressForm");
+    const submit = form.querySelector('button[type="submit"]');
+    if (form.dataset.saving === "1") return;
+
     const id = q("#addressId").value;
     const makeDefault = q("#defaultShipping").checked;
-    status("Saving delivery location…");
-
-    if (makeDefault) {
-      await client.from("customer_addresses").update({ is_default_shipping: false }).eq("user_id", currentUser.id);
-    }
-
     const payload = {
       user_id: currentUser.id,
       label: q("#addressLabel").value.trim() || "Delivery address",
@@ -160,14 +177,40 @@
       updated_at: new Date().toISOString()
     };
 
-    const result = id
-      ? await client.from("customer_addresses").update(payload).eq("id", id)
-      : await client.from("customer_addresses").insert(payload);
+    form.dataset.saving = "1";
+    form.setAttribute("aria-busy", "true");
+    if (submit) { submit.disabled = true; submit.textContent = "Saving…"; }
+    status("Saving delivery location…");
 
-    if (result.error) { status(`Could not save location: ${result.error.message}`, "error"); return; }
-    resetAddressForm();
-    await loadAddresses();
-    status("Delivery location saved.", "success");
+    try {
+      // Save the intended location first. This avoids clearing the old default if the save itself fails.
+      const query = id
+        ? client.from("customer_addresses").update(payload).eq("id", id).select("id").single()
+        : client.from("customer_addresses").insert(payload).select("id").single();
+      const result = await query;
+      if (result.error) { status(`Could not save location: ${result.error.message}`, "error"); return; }
+
+      const savedId = result.data?.id || id;
+      if (makeDefault && savedId) {
+        const { error: clearError } = await client.from("customer_addresses")
+          .update({ is_default_shipping: false })
+          .eq("user_id", currentUser.id)
+          .neq("id", savedId);
+        if (clearError) {
+          await loadAddresses();
+          status("Location saved, but the previous default could not be cleared. Please retry the default setting.", "error");
+          return;
+        }
+      }
+
+      resetAddressForm();
+      await loadAddresses();
+      status("Delivery location saved.", "success");
+    } finally {
+      delete form.dataset.saving;
+      form.removeAttribute("aria-busy");
+      if (submit) { submit.disabled = false; submit.textContent = "Save location"; }
+    }
   }
 
   async function deleteAddress(id) {
@@ -309,7 +352,11 @@
     const password = q("#authPassword").value;
     const { data, error } = await client.auth.signInWithPassword({ email, password });
     if (error) { authStatus(error.message, "error"); return; }
-    if (data?.user) { authStatus(""); await openHub(data.user); }
+    if (data?.user) {
+      authStatus("");
+      if (continueAfterAuth()) return;
+      await openHub(data.user);
+    }
   }
 
   async function createAccount() {
@@ -319,10 +366,10 @@
     authStatus("Creating account…");
     const { data, error } = await client.auth.signUp({
       email, password,
-      options: { emailRedirectTo: `${location.origin}/account.html` }
+      options: { emailRedirectTo: accountCallbackUrl() }
     });
     if (error) { authStatus(error.message, "error"); return; }
-    if (data?.session?.user) await openHub(data.session.user);
+    if (data?.session?.user) { if (!continueAfterAuth()) await openHub(data.session.user); }
     else authStatus("Account created. Check your email and confirm your address, then sign in.", "success");
   }
 
@@ -330,7 +377,7 @@
     authStatus("Opening Google sign-in…");
     const { error } = await client.auth.signInWithOAuth({
       provider: "google",
-      options: { redirectTo: `${location.origin}/account.html` }
+      options: { redirectTo: accountCallbackUrl() }
     });
     if (error) authStatus(error.message, "error");
   }
@@ -373,14 +420,17 @@
         return;
       }
       if (!recoveryMode && event === "SIGNED_IN" && session?.user) {
+        if (returnPath) { setTimeout(() => continueAfterAuth(), 0); return; }
         setTimeout(() => openHub(session.user), 0);
       }
       if (event === "SIGNED_OUT") show("#authGate");
     });
 
     const { data: { session } } = await client.auth.getSession();
-    if (session?.user && !recoveryMode) await openHub(session.user);
-    else if (!recoveryMode) show("#authGate");
+    if (session?.user && !recoveryMode) {
+      if (continueAfterAuth()) return;
+      await openHub(session.user);
+    } else if (!recoveryMode) show("#authGate");
   }
 
   document.addEventListener("DOMContentLoaded", initial);
