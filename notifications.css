@@ -316,3 +316,30 @@
 .vt-notify-clear span{display:block;margin-top:3px;color:var(--vt-n-muted);font-size:9.5px;line-height:1.45}
 .vt-notify-item.history{opacity:.66}
 .vt-notify-item.history:hover,.vt-notify-item.history:focus-visible{opacity:1}
+
+
+/* v5.2 — notification overlay deliberately reads as a popup, not another page */
+.vt-notify-scrim{position:fixed;inset:0;z-index:990;background:rgba(0,3,5,.58);-webkit-backdrop-filter:blur(2.5px) saturate(.72);backdrop-filter:blur(2.5px) saturate(.72)}
+.vt-notify-scrim[hidden]{display:none!important}
+html.vt-notify-open{overflow:hidden}
+.vt-notify-panel{z-index:1000;max-height:min(68vh,620px);overflow:visible;border:1px solid rgba(77,225,205,.46);border-top:2px solid rgba(47,230,200,.72);border-radius:16px;background:radial-gradient(circle at 18% 0%,rgba(47,230,200,.10),transparent 33%),linear-gradient(155deg,rgba(18,31,33,.995),rgba(8,14,16,.995) 58%,rgba(11,18,20,.995));box-shadow:0 32px 100px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.035),0 0 42px rgba(47,230,200,.09);outline:1px solid rgba(0,0,0,.55)}
+.vt-notify-panel.context-admin{border-color:rgba(255,180,84,.48);border-top-color:rgba(255,180,84,.82);background:radial-gradient(circle at 18% 0%,rgba(255,180,84,.105),transparent 34%),linear-gradient(155deg,rgba(32,27,18,.995),rgba(11,15,16,.995) 56%,rgba(13,18,19,.995));box-shadow:0 32px 100px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.035),0 0 42px rgba(255,180,84,.08)}
+.vt-notify-panel.context-hybrid{border-top-color:rgba(255,180,84,.72)}
+.vt-notify-panel::before{content:"";position:absolute;top:-8px;left:calc(var(--vt-panel-anchor,50%) - 7px);width:14px;height:14px;transform:rotate(45deg);border-left:1px solid rgba(77,225,205,.46);border-top:1px solid rgba(77,225,205,.46);background:#142225}
+.vt-notify-panel.context-admin::before{border-color:rgba(255,180,84,.5);background:#241e14}
+.vt-notify-head{position:relative;padding:15px 42px 13px 15px;border-bottom:1px solid rgba(255,255,255,.075);border-radius:14px 14px 0 0;background:linear-gradient(90deg,rgba(47,230,200,.07),rgba(255,255,255,.018))}
+.vt-notify-panel.context-admin .vt-notify-head{background:linear-gradient(90deg,rgba(255,180,84,.075),rgba(255,255,255,.014))}
+.vt-notify-head h2{font-size:16px!important;letter-spacing:-.015em}
+.vt-notify-close{position:absolute;top:12px;right:12px;width:27px;height:27px;display:grid;place-items:center;padding:0;border:1px solid rgba(255,255,255,.10);border-radius:50%;background:rgba(255,255,255,.035);color:#a9bbb7;font:400 19px/1 system-ui,sans-serif;cursor:pointer}
+.vt-notify-close:hover,.vt-notify-close:focus-visible{color:#fff;border-color:rgba(47,230,200,.45);background:rgba(47,230,200,.08);outline:none}
+.vt-notify-panel.context-admin .vt-notify-close:hover,.vt-notify-panel.context-admin .vt-notify-close:focus-visible{border-color:rgba(255,180,84,.48);background:rgba(255,180,84,.07)}
+.vt-notify-list{max-height:calc(min(68vh,620px) - 72px);margin:0 6px 6px;padding:6px 3px 8px;border-radius:0 0 11px 11px;background:rgba(0,4,6,.31)}
+.vt-notify-item{margin:3px 0;border:1px solid rgba(255,255,255,.045);background:rgba(255,255,255,.018)}
+.vt-notify-item:hover,.vt-notify-item:focus-visible{transform:translateY(-1px);background:rgba(47,230,200,.065);border-color:rgba(47,230,200,.22)}
+.vt-notify-item.role-admin:hover,.vt-notify-item.role-admin:focus-visible{background:rgba(255,180,84,.055);border-color:rgba(255,180,84,.22)}
+.vt-notify-item.history{opacity:.58;background:rgba(255,255,255,.008)}
+.vt-notify-clear{border-color:rgba(47,230,200,.20);background:rgba(47,230,200,.04)}
+.vt-notify-panel.context-admin .vt-notify-clear{border-color:rgba(255,180,84,.18);background:rgba(255,180,84,.035)}
+@media(max-width:620px){.vt-notify-panel{max-height:min(66vh,590px)}.vt-notify-list{max-height:calc(min(66vh,590px) - 72px)}.vt-notify-head{padding:13px 38px 12px 13px}}
+@media(prefers-reduced-motion:reduce){.vt-notify-item{transition:none!important}.vt-notify-item:hover,.vt-notify-item:focus-visible{transform:none!important}}
+@media print{.vt-notify-scrim{display:none!important}}

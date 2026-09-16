@@ -191,6 +191,43 @@
     }
   }
 
+
+  function statusTone(value){
+    const s=String(value||"").trim().toLowerCase().replace(/[_-]+/g," ").replace(/\s+/g," ");
+    if(!s)return"neutral";
+    if(/\b(overdue|declined|expired|failed|failure|cancelled|canceled|rejected|conflict|blocked|urgent|error)\b/.test(s))return"danger";
+    if(/\b(paid|accepted|completed|complete|delivered|fulfilled|quoted|closed|resolved|successful|success)\b/.test(s))return"success";
+    if(/\b(unpaid|pending|awaiting|quote requested|requested|sent|viewed|issued|due|waiting|needs review|ready to invoice|ready to send|payment due)\b/.test(s))return"warning";
+    if(/\b(draft|saved|open|active|in progress|processing|diagnosing|diagnostics|repairing|scheduled|booked|working)\b/.test(s))return"active";
+    if(/\b(archived|void|inactive)\b/.test(s))return"neutral";
+    return"neutral";
+  }
+
+  function decorateStatus(el){
+    if(!(el instanceof HTMLElement))return;
+    const tone=statusTone(el.textContent);
+    el.classList.remove("vt-status-success","vt-status-warning","vt-status-danger","vt-status-active","vt-status-neutral");
+    el.classList.add(`vt-status-${tone}`);
+  }
+
+  function applyStatusTones(root=document){
+    const selectors=".pill,.v4-status,.vt-work-stage,[data-status-pill]";
+    if(root instanceof Element&&root.matches(selectors))decorateStatus(root);
+    root.querySelectorAll?.(selectors).forEach(decorateStatus);
+  }
+
+  function watchStatuses(){
+    applyStatusTones(document);
+    let queued=false;
+    const observer=new MutationObserver(mutations=>{
+      if(queued)return;
+      if(!mutations.some(m=>m.addedNodes.length||m.type==="characterData"))return;
+      queued=true;
+      requestAnimationFrame(()=>{queued=false;applyStatusTones(document)});
+    });
+    observer.observe(document.body,{childList:true,subtree:true,characterData:true});
+  }
+
   function init(){
     if(page==="account.html")accountShell();
     else if(customerPages.has(page))customerNav();
@@ -199,6 +236,7 @@
       adminNav();
       adminHome();
     }
+    watchStatuses();
   }
 
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);

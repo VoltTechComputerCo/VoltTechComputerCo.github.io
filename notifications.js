@@ -16,7 +16,7 @@
   );
 
   const SOUND_KEY="volttech_notification_sound";
-  let user=null,rows=[],channel=null,opened=false,isAdmin=false,button=null,panel=null;
+  let user=null,rows=[],channel=null,opened=false,isAdmin=false,button=null,panel=null,scrim=null;
   let audioCtx=null,audioUnlocked=false,initialisedFor=null;
   const realtimeSeen=new Set();
   const q=s=>document.querySelector(s);
@@ -38,7 +38,7 @@
   async function ensureServiceWorker(){
     if(!("serviceWorker" in navigator)||location.protocol!=="https:")return;
     try{
-      const reg=await navigator.serviceWorker.register("/sw.js?v=5.1.0");
+      const reg=await navigator.serviceWorker.register("/sw.js?v=5.2.0");
       reg.update().catch(()=>{});
     }catch{}
   }
@@ -100,26 +100,37 @@
     host.append(button);
   }
 
+  function setOpen(next){
+    opened=!!next;
+    if(panel)panel.hidden=!opened;
+    if(scrim)scrim.hidden=!opened;
+    if(button)button.setAttribute("aria-expanded",String(opened));
+    document.documentElement.classList.toggle("vt-notify-open",opened);
+    if(opened)requestAnimationFrame(positionPanel);
+  }
+
   function positionPanel(){
     if(!opened||!panel||!button)return;
     const r=button.getBoundingClientRect();
-    const gap=7;
-    const width=Math.min(390,window.innerWidth-12);
+    const gap=9,edge=12;
+    const width=Math.min(360,window.innerWidth-(edge*2));
     let left=r.right-width;
-    left=Math.max(6,Math.min(left,window.innerWidth-width-6));
+    left=Math.max(edge,Math.min(left,window.innerWidth-width-edge));
     let top=r.bottom+gap;
-    const estimated=Math.min(window.innerHeight*.72,680);
-    if(top+estimated>window.innerHeight-6){
-      top=Math.max(6,r.top-gap-Math.min(estimated,r.top-gap-6));
+    const estimated=Math.min(window.innerHeight*.68,620);
+    if(top+estimated>window.innerHeight-edge){
+      top=Math.max(edge,r.top-gap-Math.min(estimated,r.top-gap-edge));
     }
     panel.style.width=`${width}px`;
     panel.style.left=`${Math.round(left)}px`;
     panel.style.top=`${Math.round(top)}px`;
+    panel.style.setProperty("--vt-panel-anchor",`${Math.max(24,Math.min(width-24,(r.left+r.width/2)-left))}px`);
   }
 
   function mount(){
     button=q("#vtNotifyButton");
     panel=q("#vtNotifyPanel");
+    scrim=q("#vtNotifyScrim");
 
     if(!button){
       button=document.createElement("button");
@@ -134,6 +145,15 @@
       placeButton();
     }
 
+    if(!scrim){
+      scrim=document.createElement("div");
+      scrim.id="vtNotifyScrim";
+      scrim.className="vt-notify-scrim";
+      scrim.hidden=true;
+      document.body.append(scrim);
+      scrim.addEventListener("click",()=>setOpen(false));
+    }
+
     if(!panel){
       panel=document.createElement("section");
       panel.id="vtNotifyPanel";
@@ -145,26 +165,24 @@
 
     const heading=adminContext?"Admin notifications":customerContext?"My notifications":"Notifications";
     const kicker=adminContext?"VOLTTECH / ADMIN":customerContext?"VOLTTECH / CUSTOMER":isAdmin?"ADMIN + CUSTOMER":"VOLTTECH / CUSTOMER";
-    panel.innerHTML=`<div class="vt-notify-head"><div><small>${kicker}</small><h2>${heading}</h2></div><div class="vt-notify-head-actions"><button id="vtNotifySound" class="vt-notify-sound" type="button" aria-pressed="${soundEnabled()}">${soundEnabled()?"Sound On":"Sound Off"}</button><button id="vtNotifyMarkAll" class="vt-notify-markall" type="button">Mark all read</button></div></div><div id="vtNotifyList" class="vt-notify-list"></div>`;
+    panel.classList.remove("context-admin","context-customer","context-hybrid");
+    panel.classList.add(adminContext?"context-admin":customerContext?"context-customer":isAdmin?"context-hybrid":"context-customer");
+    panel.innerHTML=`<div class="vt-notify-head"><div><small>${kicker}</small><h2>${heading}</h2></div><div class="vt-notify-head-actions"><button id="vtNotifySound" class="vt-notify-sound" type="button" aria-pressed="${soundEnabled()}">${soundEnabled()?"Sound On":"Sound Off"}</button><button id="vtNotifyMarkAll" class="vt-notify-markall" type="button">Mark all read</button></div><button id="vtNotifyClose" class="vt-notify-close" type="button" aria-label="Close notifications">×</button></div><div id="vtNotifyList" class="vt-notify-list"></div>`;
 
     if(!button.dataset.vtBound){
       button.dataset.vtBound="1";
-      button.addEventListener("click",()=>{
-        opened=!opened;
-        panel.hidden=!opened;
-        button.setAttribute("aria-expanded",String(opened));
-        if(opened)positionPanel();
-      });
+      button.addEventListener("click",()=>setOpen(!opened));
     }
 
     q("#vtNotifyMarkAll")?.addEventListener("click",markAllRead);
     q("#vtNotifySound")?.addEventListener("click",toggleSound);
+    q("#vtNotifyClose")?.addEventListener("click",()=>setOpen(false));
 
     if(!document.documentElement.dataset.vtNotifyGlobalBound){
       document.documentElement.dataset.vtNotifyGlobalBound="1";
       document.addEventListener("click",e=>{
         if(!opened||e.target.closest("#vtNotifyPanel,#vtNotifyButton"))return;
-        opened=false;panel.hidden=true;button?.setAttribute("aria-expanded","false");
+        setOpen(false);
       });
       window.addEventListener("resize",()=>{placeButton();positionPanel()},{passive:true});
       window.addEventListener("scroll",positionPanel,{passive:true});
@@ -176,8 +194,10 @@
     if(channel){client.removeChannel(channel);channel=null}
     q("#vtNotifyButton")?.remove();
     q("#vtNotifyPanel")?.remove();
+    q("#vtNotifyScrim")?.remove();
     q("#vtNotifyToast")?.remove();
-    button=null;panel=null;rows=[];user=null;initialisedFor=null;opened=false;
+    document.documentElement.classList.remove("vt-notify-open");
+    button=null;panel=null;scrim=null;rows=[];user=null;initialisedFor=null;opened=false;
   }
 
   async function unlockAudio(){
