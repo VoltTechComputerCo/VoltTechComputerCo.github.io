@@ -1,5 +1,4 @@
-const VT_NOTIFICATION_LOADER='site-notifications-loader.js?v=4.1.0';
-const VT_PRINT_DOCUMENTS=/(?:^|\/)(?:quote|invoice|receipt|build-document|order-document|service-record|proforma|personal-data)\.html$/i;
+const VT_NOTIFICATION_LOADER='site-notifications-loader.js?v=5.0.0';
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
@@ -17,7 +16,7 @@ self.addEventListener('fetch',event=>{
   }
 
   const url=new URL(request.url);
-  if(url.origin!==self.location.origin||VT_PRINT_DOCUMENTS.test(url.pathname)){
+  if(url.origin!==self.location.origin){
     event.respondWith(fetch(request));
     return;
   }
