@@ -7,16 +7,94 @@ const d=v=>v?new Intl.DateTimeFormat("en-ZA",{dateStyle:"long"}).format(new Date
 const cap=v=>String(v||"").replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase());
 const fileSafe=v=>String(v||"document").replace(/[^A-Za-z0-9_-]+/g,"_").replace(/^_+|_+$/g,"");
 const loginUrl=()=>`account.html?returnTo=${encodeURIComponent(location.pathname+location.search+location.hash)}`;
+let currentQuote=null,currentSession=null,busy=false;
 function expired(q){if(!q?.valid_until||!["sent","viewed"].includes(q.status))return false;const end=new Date(`${q.valid_until}T23:59:59`);return !Number.isNaN(end.getTime())&&end.getTime()<Date.now()}
+
+function renderDecision(q,session){
+  const box=document.querySelector("#quoteDecision");
+  if(!box)return;
+  const own=q.user_id===session.user.id;
+  if(!own){box.hidden=true;return}
+
+  const kicker=document.querySelector("#quoteDecisionKicker");
+  const title=document.querySelector("#quoteDecisionTitle");
+  const copy=document.querySelector("#quoteDecisionCopy");
+  const total=document.querySelector("#quoteDecisionTotal");
+  const actions=document.querySelector("#quoteDecisionActions");
+  const status=document.querySelector("#quoteDecisionStatus");
+  status.textContent="";
+  total.textContent="";
+
+  if(expired(q)){
+    box.hidden=false;box.dataset.state="expired";kicker.textContent="Quote expired";title.textContent=`${q.quote_number} can no longer be approved`;
+    copy.textContent="This quotation has passed its validity date. Contact VoltTech if you need an updated quotation.";
+    actions.hidden=true;return;
+  }
+
+  if(["sent","viewed"].includes(q.status)){
+    box.hidden=false;box.dataset.state="attention";kicker.textContent="Action required";title.textContent=`Review ${q.quote_number}`;
+    copy.textContent="Approve or decline this quotation below. Accepting does not take payment — it tells VoltTech to continue to the invoice stage.";
+    total.textContent=m(q.total);actions.hidden=false;return;
+  }
+
+  if(q.status==="accepted"){
+    box.hidden=false;box.dataset.state="done";kicker.textContent="Decision recorded";title.textContent=`${q.quote_number} accepted`;
+    copy.textContent="VoltTech has been notified. Your invoice will appear in your account when it is issued.";
+    actions.hidden=true;return;
+  }
+
+  if(q.status==="declined"){
+    box.hidden=false;box.dataset.state="declined";kicker.textContent="Decision recorded";title.textContent=`${q.quote_number} declined`;
+    copy.textContent="This quotation has been declined. Contact VoltTech if you want it revised or reissued.";
+    actions.hidden=true;return;
+  }
+
+  box.hidden=true;
+}
+
+async function act(action){
+  if(busy||!currentQuote||!currentSession)return;
+  if(currentQuote.user_id!==currentSession.user.id)return;
+  if(expired(currentQuote)||!["sent","viewed"].includes(currentQuote.status))return;
+
+  const accept=action==="accepted";
+  const ok=await VoltTechDialog.confirm({
+    kicker:accept?"QUOTE / ACCEPT":"QUOTE / DECLINE",
+    title:accept?`Accept ${currentQuote.quote_number}?`:`Decline ${currentQuote.quote_number}?`,
+    message:accept
+      ?`You are approving this quotation for ${m(currentQuote.total)}. No payment is taken now; VoltTech can then issue the invoice.`
+      :"This records the quotation as declined. No payment will be taken.",
+    confirmText:accept?"Accept quote":"Decline quote",
+    tone:accept?undefined:"danger"
+  });
+  if(!ok)return;
+
+  busy=true;
+  const a=document.querySelector("#quoteAccept"),dBtn=document.querySelector("#quoteDecline"),status=document.querySelector("#quoteDecisionStatus");
+  if(a)a.disabled=true;if(dBtn)dBtn.disabled=true;if(status)status.textContent="Updating your decision…";
+
+  try{
+    const{error}=await c.rpc("customer_quote_action",{p_quote_id:currentQuote.id,p_action:action});
+    if(error){if(status)status.textContent=error.message;return}
+    try{await c.rpc("snapshot_quote",{p_quote_id:currentQuote.id})}catch{}
+    await load();
+  }finally{
+    busy=false;
+  }
+}
+
 async function load(){
   const{data:{session}}=await c.auth.getSession();
   if(!session){location.replace(loginUrl());return}
+  currentSession=session;
+
   const id=new URLSearchParams(location.search).get("id");
   if(!id){root.innerHTML="<p>Quote not specified.</p>";return}
   const{data:q,error}=await c.from("quotes")
     .select("id,user_id,quote_number,quote_type,title,status,subtotal,total,delivery_fee,discount_total,valid_until,customer_note,created_at,terms_version,quote_items(position,description,quantity,line_total)")
     .eq("id",id).maybeSingle();
   if(error||!q){root.innerHTML="<p>Quotation could not be loaded.</p>";return}
+  currentQuote=q;
 
   let profile=null;
   if(q.user_id){
@@ -35,6 +113,8 @@ async function load(){
   const customerName=profile?.full_name||((q.user_id===session.user.id)&&(session.user.user_metadata?.full_name||session.user.user_metadata?.name))||"Customer";
   const customerEmail=profile?.billing_email||((q.user_id===session.user.id)?session.user.email:"")||"";
   const customerBits=[customerName,profile?.company_name||"",customerEmail,profile?.phone||"",profile?.suburb||""].filter(Boolean);
+
+  renderDecision(q,session);
 
   root.innerHTML=`<article class="sheet">
     <div class="top">
@@ -57,5 +137,8 @@ async function load(){
     <div class="notice">Quote Terms version ${x(q.terms_version||"2026-09")}. This document is a quotation, not an invoice or proof of payment.</div>
   </article>`;
 }
+
+document.querySelector("#quoteAccept")?.addEventListener("click",()=>act("accepted"));
+document.querySelector("#quoteDecline")?.addEventListener("click",()=>act("declined"));
 load();
 })();
