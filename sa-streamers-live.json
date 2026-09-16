@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-09-16T21:39:00.059100Z",
+  "generated_at": "2026-09-16T21:50:08.017548Z",
   "tracked_count": 219,
   "valid_count": 216,
   "streamers": [
-    {
-      "login": "zaffa_geek",
-      "display_name": "Zaffa_Geek",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
-      "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
-      "live": true,
-      "viewer_count": 9,
-      "game_name": "Project Zomboid",
-      "title": "[!Pink 1/4] !extend - 4 days left of !pink, then it resets",
-      "started_at": "2026-09-16T15:48:05Z",
-      "last_live_at": "2026-09-16T21:39:00.059100Z",
-      "activity_score": 100.0
-    },
     {
       "login": "androvaza",
       "display_name": "AndrovaZA",
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/8b5628de-2866-48d7-a9cb-0ea3689a1dce-profile_image-300x300.png",
       "description": "Recovering Riot Games addict",
       "live": true,
-      "viewer_count": 21,
+      "viewer_count": 20,
       "game_name": "Alan Wake",
       "title": "Something... different? | HorrorDrova | #SYNCity",
       "started_at": "2026-09-16T16:58:22Z",
+      "last_live_at": "2026-09-16T21:50:08.017548Z",
+      "activity_score": 97.0
+    },
+    {
+      "login": "zaffa_geek",
+      "display_name": "Zaffa_Geek",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dc177eab-0f87-4cf5-9c9c-5a8debaef00c-profile_image-300x300.png",
+      "description": "I stream games,I entertain. I will give you true South African hospitality. Yes I am from sunny South Africa and currently residing there. Stream days: mostly everyday, sometimes twice a day",
+      "live": false,
+      "viewer_count": 0,
+      "game_name": "",
+      "title": "",
+      "started_at": null,
       "last_live_at": "2026-09-16T21:39:00.059100Z",
-      "activity_score": 94.68
+      "activity_score": 94.0
     },
     {
       "login": "zulumachinegaming",
@@ -40,7 +40,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T21:23:55.961534Z",
-      "activity_score": 69.3
+      "activity_score": 65.14
     },
     {
       "login": "waldoliveza",
@@ -53,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T20:08:41.377447Z",
-      "activity_score": 69.0
+      "activity_score": 64.86
     },
     {
       "login": "agriopsgaming",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T19:14:29.939453Z",
-      "activity_score": 53.87
+      "activity_score": 50.64
     },
     {
       "login": "blu3bee",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T19:53:55.357574Z",
-      "activity_score": 50.13
+      "activity_score": 47.12
     },
     {
       "login": "derpy_ruby",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T19:53:55.357574Z",
-      "activity_score": 37.47
+      "activity_score": 35.22
     },
     {
       "login": "sittingduck01",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T17:58:09.895512Z",
-      "activity_score": 33.21
+      "activity_score": 31.22
     },
     {
       "login": "thelemons",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T17:22:28.602047Z",
-      "activity_score": 32.61
+      "activity_score": 30.65
     },
     {
       "login": "syernide",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T17:37:54.310370Z",
-      "activity_score": 28.21
+      "activity_score": 26.52
     },
     {
       "login": "1handbanditza",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T17:37:54.310370Z",
-      "activity_score": 25.75
+      "activity_score": 24.2
     },
     {
       "login": "bronzepot",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T16:56:10.709497Z",
-      "activity_score": 20.27
+      "activity_score": 19.05
     },
     {
       "login": "dead_oryx",
@@ -170,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T15:31:46.179127Z",
-      "activity_score": 20.01
+      "activity_score": 18.81
     },
     {
       "login": "deathsjokerst",
@@ -183,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T16:29:58.499692Z",
-      "activity_score": 18.02
+      "activity_score": 16.94
     },
     {
       "login": "viking_237",
@@ -196,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T15:58:29.001214Z",
-      "activity_score": 14.96
+      "activity_score": 14.06
     },
     {
       "login": "spyro_za",
@@ -209,7 +209,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T13:27:17.111960Z",
-      "activity_score": 11.29
+      "activity_score": 10.61
     },
     {
       "login": "thejudgeza",
@@ -222,7 +222,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T12:38:29.086400Z",
-      "activity_score": 10.06
+      "activity_score": 9.46
     },
     {
       "login": "danatdawn",
@@ -235,7 +235,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T13:57:53.372398Z",
-      "activity_score": 9.64
+      "activity_score": 9.06
     },
     {
       "login": "zlorbz",
