@@ -37,7 +37,7 @@
   }
 
   async function boot(){
-    addStyle("notifications.css?v=5.0.0");
+    addStyle("notifications.css?v=5.1.0");
     try{
       if(!window.supabase){
         await new Promise((resolve,reject)=>{
@@ -48,7 +48,7 @@
         });
       }
       if(!window.VOLTTECH_SUPABASE)await addScript("supabase-config.js",()=>!!window.VOLTTECH_SUPABASE);
-      if(!window.__voltTechNotificationsV5)await addScript("notifications.js?v=5.0.0",()=>!!window.__voltTechNotificationsV5);
+      if(!window.__voltTechNotificationsV5)await addScript("notifications.js?v=5.1.0",()=>!!window.__voltTechNotificationsV5);
     }catch(e){
       console.warn("VoltTech notifications unavailable",e);
     }

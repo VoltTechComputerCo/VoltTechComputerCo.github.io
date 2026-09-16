@@ -306,3 +306,13 @@
 @media print{
   .vt-notify-button,.vt-notify-panel,.vt-notify-toast{display:none!important}
 }
+
+
+/* v5.1 notification lifecycle clarity */
+.vt-notify-section-label{padding:10px 10px 5px;color:var(--vt-n-warn);font:800 7px 'JetBrains Mono',monospace;letter-spacing:.11em;text-transform:uppercase}
+.vt-notify-section-label.history-label{margin-top:4px;padding-top:12px;border-top:1px solid rgba(130,155,150,.12);color:var(--vt-n-muted)}
+.vt-notify-clear{margin:7px;padding:14px 12px;border:1px solid rgba(47,230,200,.15);border-radius:7px;background:rgba(47,230,200,.025)}
+.vt-notify-clear b{display:block;color:var(--vt-n-text);font-size:11px}
+.vt-notify-clear span{display:block;margin-top:3px;color:var(--vt-n-muted);font-size:9.5px;line-height:1.45}
+.vt-notify-item.history{opacity:.66}
+.vt-notify-item.history:hover,.vt-notify-item.history:focus-visible{opacity:1}

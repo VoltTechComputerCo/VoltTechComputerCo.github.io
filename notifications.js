@@ -22,7 +22,11 @@
   const q=s=>document.querySelector(s);
   const esc=v=>String(v??"").replace(/[&<>"']/g,a=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[a]));
   const soundEnabled=()=>localStorage.getItem(SOUND_KEY)!=="off";
-  const roleLabel=r=>r==="admin"?"ADMIN ACTION":"CUSTOMER UPDATE";
+  const roleLabel=(role,priority)=>{
+    const action=priority==="high"||priority==="urgent";
+    if(action)return role==="admin"?"ADMIN ACTION":"ACTION REQUIRED";
+    return role==="admin"?"ADMIN UPDATE":"CUSTOMER UPDATE";
+  };
   const relative=v=>{
     const ms=Date.now()-new Date(v).getTime(),m=Math.floor(ms/60000);
     if(m<1)return"now";if(m<60)return`${m}m`;
@@ -34,7 +38,7 @@
   async function ensureServiceWorker(){
     if(!("serviceWorker" in navigator)||location.protocol!=="https:")return;
     try{
-      const reg=await navigator.serviceWorker.register("/sw.js?v=5.0.0");
+      const reg=await navigator.serviceWorker.register("/sw.js?v=5.1.0");
       reg.update().catch(()=>{});
     }catch{}
   }
@@ -71,8 +75,7 @@
     }
 
     if(host.matches(".portal-admin-nav,.tools")){
-      const more=host.querySelector(".portal-admin-more-btn");
-      host.insertBefore(button,more||host.firstChild);
+      host.prepend(button);
       return;
     }
 
@@ -263,23 +266,32 @@
 
   function render(){
     if(!button||!panel)return;
-    const unread=rows.filter(r=>!r.read_at);
+    const actionRows=rows.filter(r=>r.priority==="high"||r.priority==="urgent");
+    const newUpdates=rows.filter(r=>r.priority!=="high"&&r.priority!=="urgent"&&!r.read_at);
+    const history=rows.filter(r=>r.priority!=="high"&&r.priority!=="urgent"&&r.read_at);
+    const attention=[...actionRows,...newUpdates];
+    const attentionCount=attention.length;
     const count=q("#vtNotifyCount");
-    if(count){
-      count.textContent=unread.length>99?"99+":String(unread.length);
-      count.hidden=!unread.length;
-    }
-
+    if(count){count.textContent=attentionCount>99?"99+":String(attentionCount);count.hidden=!attentionCount}
     button.classList.remove("has-high","has-urgent","role-admin","role-customer","role-hybrid","is-empty");
-    if(!unread.length)button.classList.add("is-empty");
-    if(unread.some(r=>r.priority==="urgent"))button.classList.add("has-urgent");
-    else if(unread.some(r=>r.priority==="high"))button.classList.add("has-high");
+    if(!attentionCount)button.classList.add("is-empty");
+    if(actionRows.some(r=>r.priority==="urgent"))button.classList.add("has-urgent");
+    else if(actionRows.some(r=>r.priority==="high"))button.classList.add("has-high");
     button.classList.add(adminContext?"role-admin":customerContext?"role-customer":isAdmin?"role-hybrid":"role-customer");
-
-    const list=q("#vtNotifyList");
-    if(!list)return;
-    list.innerHTML=rows.length?rows.map(r=>`<button type="button" class="vt-notify-item ${r.read_at?"":"unread"} ${(r.priority==="high"||r.priority==="urgent")?"high":""} role-${esc(r.recipient_role)}" data-notification="${esc(r.id)}"><span class="vt-notify-role role-${esc(r.recipient_role)}">${roleLabel(r.recipient_role)}</span><span class="vt-notify-title"><span>${esc(r.title)}</span><time>${esc(relative(r.created_at))}</time></span>${r.message?`<span class="vt-notify-message">${esc(r.message)}</span>`:""}${r.action_url?'<span class="vt-notify-action">Open →</span>':""}</button>`).join(""):'<div class="vt-notify-empty">You’re all caught up.</div>';
-
+    const mark=q("#vtNotifyMarkAll");if(mark)mark.textContent=actionRows.length?"Mark updates read":"Mark all read";
+    const list=q("#vtNotifyList");if(!list)return;
+    const card=(r,isHistory=false)=>{
+      const isAction=r.priority==="high"||r.priority==="urgent";
+      const classes=["vt-notify-item",r.read_at?"":"unread",isAction?"high":"",isHistory?"history":"",`role-${esc(r.recipient_role)}`].filter(Boolean).join(" ");
+      const cta=r.action_url?(isAction?"Open task →":"View →"):"";
+      return `<button type="button" class="${classes}" data-notification="${esc(r.id)}"><span class="vt-notify-role role-${esc(r.recipient_role)}">${roleLabel(r.recipient_role,r.priority)}</span><span class="vt-notify-title"><span>${esc(r.title)}</span><time>${esc(relative(r.created_at))}</time></span>${r.message?`<span class="vt-notify-message">${esc(r.message)}</span>`:""}${cta?`<span class="vt-notify-action">${cta}</span>`:""}</button>`;
+    };
+    let html="";
+    if(attention.length)html+=`<div class="vt-notify-section-label">Needs attention</div>${attention.map(r=>card(r,false)).join("")}`;
+    else html+=`<div class="vt-notify-clear"><b>You’re all caught up.</b><span>No actions or unread updates are waiting.</span></div>`;
+    if(history.length)html+=`<div class="vt-notify-section-label history-label">Recent history</div>${history.map(r=>card(r,true)).join("")}`;
+    if(!rows.length)html='<div class="vt-notify-clear"><b>You’re all caught up.</b><span>No notifications yet.</span></div>';
+    list.innerHTML=html;
     list.querySelectorAll("[data-notification]").forEach(b=>b.addEventListener("click",()=>openNotification(b.dataset.notification)));
     positionPanel();
   }
@@ -328,7 +340,7 @@
     t.id="vtNotifyToast";
     t.type="button";
     t.className=`vt-notify-toast role-${n.recipient_role} priority-${n.priority||"normal"}`;
-    t.innerHTML=`<small>${roleLabel(n.recipient_role)}${n.priority==="urgent"?" · URGENT":""}</small><b>${esc(n.title||"New VoltTech notification")}</b>${n.message?`<span>${esc(n.message)}</span>`:""}<em>Open →</em>`;
+    t.innerHTML=`<small>${roleLabel(n.recipient_role,n.priority)}${n.priority==="urgent"?" · URGENT":""}</small><b>${esc(n.title||"New VoltTech notification")}</b>${n.message?`<span>${esc(n.message)}</span>`:""}<em>Open →</em>`;
     t.addEventListener("click",()=>{refresh().then(()=>openNotification(n.id))});
     document.body.append(t);
     setTimeout(()=>t.remove(),7000);

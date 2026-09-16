@@ -37,6 +37,14 @@
     const grid=panel?.querySelector(".account-more-grid");
     if(panel)panel.classList.add("portal-more-panel");
 
+    if(grid&&!grid.querySelector('a[href="index.html"]')){
+      const home=document.createElement("a");
+      home.className="tab";
+      home.href="index.html";
+      home.textContent="VoltTech Home";
+      grid.appendChild(home);
+    }
+
     const admin=document.querySelector("#adminShortcut");
     if(admin&&grid){
       admin.classList.add("portal-admin-link");
@@ -76,7 +84,8 @@
       ["builds.html","Builds","builds.html"],
       ["quotes.html","Quotes","quotes.html"],
       ["documents.html","Documents","documents.html"],
-      ["account.html?more=1","More","more"]
+      ["account.html?more=1","More","more"],
+      ["index.html","Home","home"]
     ];
     old.innerHTML=links.map(([href,label,key])=>{
       const active=page===key?" active":"";
@@ -89,14 +98,15 @@
     const nav=document.createElement("div");
     nav.className="portal-admin-nav";
     nav.innerHTML=`
+      <a class="portal-admin-back" href="account.html">← Account</a>
       <a class="${active==="queue"?"active":""}" href="admin.html">Queue</a>
       <a class="${active==="customers"?"active":""}" href="admin-customers.html">Customers</a>
       <a class="${active==="records"?"active":""}" href="admin-records.html">Records</a>
-      <button class="portal-admin-more-btn" type="button" aria-expanded="false">More</button>
+      <button class="portal-admin-more-btn" type="button" aria-expanded="false" aria-label="Open Admin menu">Menu</button>
       <div class="portal-admin-more" hidden>
+        <a href="index.html">VoltTech Home</a>
         <a href="admin-builds.html">Build requests</a>
         <a href="admin-deletions.html">Account deletions</a>
-        <a href="account.html">My account</a>
       </div>`;
     const btn=nav.querySelector(".portal-admin-more-btn");
     const menu=nav.querySelector(".portal-admin-more");
