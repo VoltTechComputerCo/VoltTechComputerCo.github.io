@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T11:13:35.295248Z",
+  "generated_at": "2026-09-16T11:30:10.970440Z",
   "tracked_count": 219,
   "valid_count": 216,
   "streamers": [
@@ -9,12 +9,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/20d85e3d-57a0-4b6f-85ae-9112bc1912e4-profile_image-300x300.png",
       "description": "Jumper Streamer with the occasional main games like Warframe, Overwatch and GTA RP.Founder of ZA Gaming Alliance (ZAGA)Gamer since 1996 (Yes Im old....ish)Everyones secret lover.",
       "live": true,
-      "viewer_count": 5,
+      "viewer_count": 7,
       "game_name": "Grand Theft Auto V",
       "title": "ZA/ RP / DreadM / Cash Grim",
       "started_at": "2026-09-16T06:40:25Z",
-      "last_live_at": "2026-09-16T11:13:35.295248Z",
-      "activity_score": 86.79
+      "last_live_at": "2026-09-16T11:30:10.970440Z",
+      "activity_score": 89.58
     },
     {
       "login": "dead_oryx",
@@ -22,12 +22,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/79acf5d8-98ae-4b84-b97b-4a7d352845b8-profile_image-300x300.jpeg",
       "description": "and the people bowed and prayed to the neon god they made and the sign flashed out its warning In the words that it was forming and the sign said, \"the words of the prophets are written on the subway walls\". - Simon & Garfunkel - Business enquiries: info@deadoryx.co.za",
       "live": true,
-      "viewer_count": 108,
+      "viewer_count": 102,
       "game_name": "Aniimo",
       "title": "[DROPS] Aniimo | No Man’s Sky | !wheel | !lurk | !Gportal | Vigi-Verse🚀",
       "started_at": "2026-09-16T07:54:04Z",
-      "last_live_at": "2026-09-16T11:13:35.295248Z",
-      "activity_score": 74.07
+      "last_live_at": "2026-09-16T11:30:10.970440Z",
+      "activity_score": 77.63
     },
     {
       "login": "spyro_za",
@@ -35,12 +35,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/dd8b5abe-e947-4d30-bfd1-2682a123a468-profile_image-300x300.png",
       "description": "Hey there gamers and friends! I'm Spyro, your friendly neighborhood streamer. Join me as we dive into epic adventures, conquer challenges and share some laughs along the way! Business Enquiries: spyro@expansion.gg",
       "live": true,
-      "viewer_count": 20,
+      "viewer_count": 27,
       "game_name": "Valheim",
       "title": "More Suffering In The Ashlands",
       "started_at": "2026-09-16T08:25:20Z",
-      "last_live_at": "2026-09-16T11:13:35.295248Z",
-      "activity_score": 66.38
+      "last_live_at": "2026-09-16T11:30:10.970440Z",
+      "activity_score": 70.4
     },
     {
       "login": "danatdawn",
@@ -48,12 +48,12 @@
       "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/1bcc7eef-becb-43d2-8cc7-c44c11528962-profile_image-300x300.png",
       "description": "At dawn, we train. At night, we stream. Welcome to the arena.",
       "live": true,
-      "viewer_count": 2,
+      "viewer_count": 4,
       "game_name": "Apex Legends",
       "title": "NEW season! Pushing for masters!! | !Poggers | !discord",
       "started_at": "2026-09-16T10:50:56Z",
-      "last_live_at": "2026-09-16T11:13:35.295248Z",
-      "activity_score": 15.6
+      "last_live_at": "2026-09-16T11:30:10.970440Z",
+      "activity_score": 22.66
     },
     {
       "login": "derpy_ruby",
@@ -66,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-16T10:30:45.382419Z",
-      "activity_score": 49.92
+      "activity_score": 46.92
     },
     {
       "login": "deathsjokerst",
@@ -79,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T18:56:43.933430Z",
-      "activity_score": 1.5
+      "activity_score": 1.41
     },
     {
       "login": "sittingduck01",
@@ -92,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T18:24:32.966391Z",
-      "activity_score": 1.21
+      "activity_score": 1.14
     },
     {
       "login": "thelemons",
@@ -105,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T16:48:27.376863Z",
-      "activity_score": 0.81
+      "activity_score": 0.76
     },
     {
       "login": "syernide",
@@ -118,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T16:58:16.385158Z",
-      "activity_score": 0.71
+      "activity_score": 0.67
     },
     {
       "login": "viking_237",
@@ -131,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T15:57:36.543217Z",
-      "activity_score": 0.59
+      "activity_score": 0.55
     },
     {
       "login": "waldoliveza",
@@ -144,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T14:30:58.140021Z",
-      "activity_score": 0.58
+      "activity_score": 0.55
     },
     {
       "login": "cassieroseza",
@@ -157,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T15:57:36.543217Z",
-      "activity_score": 0.36
+      "activity_score": 0.34
     },
     {
       "login": "cyndalive",
@@ -170,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T12:35:46.304554Z",
-      "activity_score": 0.34
+      "activity_score": 0.32
     },
     {
       "login": "agriopsgaming",
@@ -183,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T13:09:00.339792Z",
-      "activity_score": 0.34
+      "activity_score": 0.32
     },
     {
       "login": "asananica81",
@@ -196,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T13:56:10.254335Z",
-      "activity_score": 0.32
+      "activity_score": 0.3
     },
     {
       "login": "azuracub",
@@ -209,7 +209,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T11:15:55.651963Z",
-      "activity_score": 0.2
+      "activity_score": 0.19
     },
     {
       "login": "zulumachinegaming",
