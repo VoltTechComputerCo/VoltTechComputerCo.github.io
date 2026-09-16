@@ -1,8 +1,21 @@
 {
-  "generated_at": "2026-09-16T06:36:53.735178Z",
+  "generated_at": "2026-09-16T06:52:53.341838Z",
   "tracked_count": 219,
   "valid_count": 217,
   "streamers": [
+    {
+      "login": "thejudgeza",
+      "display_name": "TheJudgeZA",
+      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/20d85e3d-57a0-4b6f-85ae-9112bc1912e4-profile_image-300x300.png",
+      "description": "Jumper Streamer with the occasional main games like Warframe, Overwatch and GTA RP.Founder of ZA Gaming Alliance (ZAGA)Gamer since 1996 (Yes Im old....ish)Everyones secret lover.",
+      "live": true,
+      "viewer_count": 2,
+      "game_name": "WARDOGS",
+      "title": "ZA/ RP / DreadM / Wardogs baby",
+      "started_at": "2026-09-16T06:40:25Z",
+      "last_live_at": "2026-09-16T06:52:53.341838Z",
+      "activity_score": 8.08
+    },
     {
       "login": "derpy_ruby",
       "display_name": "Derpy_Ruby",
@@ -14,7 +27,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T21:13:42.437810Z",
-      "activity_score": 7.54
+      "activity_score": 7.09
     },
     {
       "login": "deathsjokerst",
@@ -27,7 +40,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T18:56:43.933430Z",
-      "activity_score": 4.32
+      "activity_score": 4.06
     },
     {
       "login": "sittingduck01",
@@ -40,7 +53,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T18:24:32.966391Z",
-      "activity_score": 3.44
+      "activity_score": 3.23
     },
     {
       "login": "thelemons",
@@ -53,7 +66,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T16:48:27.376863Z",
-      "activity_score": 2.34
+      "activity_score": 2.2
     },
     {
       "login": "syernide",
@@ -66,7 +79,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T16:58:16.385158Z",
-      "activity_score": 2.06
+      "activity_score": 1.94
     },
     {
       "login": "viking_237",
@@ -79,7 +92,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T15:57:36.543217Z",
-      "activity_score": 1.72
+      "activity_score": 1.62
     },
     {
       "login": "waldoliveza",
@@ -92,7 +105,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T14:30:58.140021Z",
-      "activity_score": 1.67
+      "activity_score": 1.57
     },
     {
       "login": "spyro_za",
@@ -105,7 +118,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T14:10:29.626066Z",
-      "activity_score": 1.57
+      "activity_score": 1.48
     },
     {
       "login": "dead_oryx",
@@ -118,7 +131,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T12:52:10.431259Z",
-      "activity_score": 1.16
+      "activity_score": 1.09
     },
     {
       "login": "cassieroseza",
@@ -131,7 +144,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T15:57:36.543217Z",
-      "activity_score": 1.02
+      "activity_score": 0.96
     },
     {
       "login": "agriopsgaming",
@@ -144,7 +157,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T13:09:00.339792Z",
-      "activity_score": 0.96
+      "activity_score": 0.9
     },
     {
       "login": "cyndalive",
@@ -157,7 +170,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T12:35:46.304554Z",
-      "activity_score": 0.95
+      "activity_score": 0.89
     },
     {
       "login": "asananica81",
@@ -170,7 +183,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T13:56:10.254335Z",
-      "activity_score": 0.91
+      "activity_score": 0.86
     },
     {
       "login": "azuracub",
@@ -183,7 +196,7 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-15T11:15:55.651963Z",
-      "activity_score": 0.55
+      "activity_score": 0.52
     },
     {
       "login": "zulumachinegaming",
@@ -248,19 +261,6 @@
       "title": "",
       "started_at": null,
       "last_live_at": "2026-09-13T20:23:46.863694Z",
-      "activity_score": 0.08
-    },
-    {
-      "login": "thejudgeza",
-      "display_name": "TheJudgeZA",
-      "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/20d85e3d-57a0-4b6f-85ae-9112bc1912e4-profile_image-300x300.png",
-      "description": "Jumper Streamer with the occasional main games like Warframe, Overwatch and GTA RP.Founder of ZA Gaming Alliance (ZAGA)Gamer since 1996 (Yes Im old....ish)Everyones secret lover.",
-      "live": false,
-      "viewer_count": 0,
-      "game_name": "",
-      "title": "",
-      "started_at": null,
-      "last_live_at": "2026-09-10T23:29:43.473636Z",
       "activity_score": 0.08
     },
     {
