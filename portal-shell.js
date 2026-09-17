@@ -101,9 +101,10 @@
       <a class="portal-admin-back" href="account.html">← Account</a>
       <a class="${active==="queue"?"active":""}" href="admin.html">Queue</a>
       <a class="${active==="customers"?"active":""}" href="admin-customers.html">Customers</a>
-      <a class="${active==="records"?"active":""}" href="admin-records.html">Records</a>
-      <button class="portal-admin-more-btn" type="button" aria-expanded="false" aria-label="Open Admin menu">Menu</button>
+      <a class="${active==="parts"?"active":""}" href="admin-store.html">Parts</a>
+      <button class="portal-admin-more-btn ${active==="more"?"active":""}" type="button" aria-expanded="false" aria-label="Open Admin menu">Menu</button>
       <div class="portal-admin-more" hidden>
+        <a href="admin-records.html">Records</a>
         <a href="index.html">VoltTech Home</a>
         <a href="admin-builds.html">Build requests</a>
         <a href="admin-deletions.html">Account deletions</a>
@@ -123,7 +124,10 @@
   }
 
   function adminNav(){
-    const active=page==="admin.html"?"queue":page==="admin-customers.html"||page==="admin-customer.html"?"customers":page==="admin-records.html"?"records":"more";
+    const active=
+      page==="admin.html"?"queue":
+      page==="admin-customers.html"||page==="admin-customer.html"?"customers":
+      page==="admin-store.html"?"parts":"more";
 
     if(page==="admin.html"){
       const tools=document.querySelector(".top .tools");
@@ -190,7 +194,6 @@
       }
     }
   }
-
 
   function statusTone(value){
     const s=String(value||"").trim().toLowerCase().replace(/[_-]+/g," ").replace(/\s+/g," ");
