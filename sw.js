@@ -1,12 +1,13 @@
-const VT_NOTIFICATION_LOADER='site-notifications-loader.js?v=5.3.0';
+const VT_NOTIFICATION_LOADER='site-notifications-loader.js?v=5.4.0';
 const VT_VERSION_REWRITES=[
  ['notifications.css?v=5.0.0','notifications.css?v=5.2.0'],['notifications.css?v=5.1.0','notifications.css?v=5.2.0'],
  ['notifications.js?v=5.0.0','notifications.js?v=5.2.0'],['notifications.js?v=5.1.0','notifications.js?v=5.2.0'],
  ['portal-shell.css?v=5.0.0','portal-shell.css?v=5.2.0'],['portal-shell.css?v=5.1.0','portal-shell.css?v=5.2.0'],
  ['portal-shell.js?v=5.0.0','portal-shell.js?v=5.2.0'],['portal-shell.js?v=5.1.0','portal-shell.js?v=5.2.0'],
- ['site-notifications-loader.js?v=5.0.0','site-notifications-loader.js?v=5.3.0'],
- ['site-notifications-loader.js?v=5.1.0','site-notifications-loader.js?v=5.3.0'],
- ['site-notifications-loader.js?v=5.2.0','site-notifications-loader.js?v=5.3.0'],
+ ['site-notifications-loader.js?v=5.0.0','site-notifications-loader.js?v=5.4.0'],
+ ['site-notifications-loader.js?v=5.1.0','site-notifications-loader.js?v=5.4.0'],
+ ['site-notifications-loader.js?v=5.2.0','site-notifications-loader.js?v=5.4.0'],
+ ['site-notifications-loader.js?v=5.3.0','site-notifications-loader.js?v=5.4.0'],
  ['account-dashboard.js?v=3.1.0','account-dashboard.js?v=5.2.0']
 ];
 self.addEventListener('install',event=>{self.skipWaiting();});
