@@ -1,0 +1,14 @@
+/* VoltTech 2.0 Creator/Streaming shared system v1 */
+:root{--bg:#08070d;--bg2:#0e0c15;--panel:#12101a;--line:#292237;--purple:#9b6cff;--purple2:#6240b8;--red:#ff4057;--teal:#2fe6c8;--text:#f0edf7;--muted:#958da5;--mono:'JetBrains Mono',monospace;--display:'Space Grotesk',sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+a{color:inherit}
+
+nav{border-bottom:1px solid var(--line);background:rgba(8,7,13,.94);position:sticky;top:0;z-index:20;backdrop-filter:blur(10px)}
+nav .wrap{min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.navlinks a{text-decoration:none}
+.navlinks a:hover{color:var(--text)}
+
+footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:#655d73;font:9px var(--mono)}
+footer a{color:var(--teal);text-decoration:none}

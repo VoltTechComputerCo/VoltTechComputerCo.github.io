@@ -54,3 +54,13 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Replaced one-off inline diagnostic-helper styling with a shared `.optional-helper` component.
 - Preserved service copy, pricing, URLs, SEO metadata, WhatsApp/email CTAs and existing JavaScript behaviour.
 - Corrected a small typo in the security page enquiry copy.
+
+### Phase 2 — homepage and creator system, batch 2 — 2026-09-18
+- Added `home.css` and removed the large embedded homepage stylesheet from `index.html`.
+- Added `creator-system.css` as the shared shell for Creator Hub and Streaming Support.
+- Added page-specific `creator-hub.css` and `streaming-support.css`.
+- Removed duplicated Creator/Streaming navigation and footer styling from the page-specific stylesheets.
+- Removed simple layout-only inline styles from the homepage, Creator Hub and Streaming Support.
+- Kept diagnostic progress values such as `--fill` inline because they are component data rather than layout rules.
+- Updated the migrated pages to the already-current `visual-system.css` v12.
+- Preserved page content, URLs, SEO metadata, Supabase streamer behaviour, service pricing and direct-contact flows.
