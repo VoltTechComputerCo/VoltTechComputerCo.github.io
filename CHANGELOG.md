@@ -20,6 +20,16 @@ Versioning should follow a practical semantic pattern where possible:
 - Marked Stream Scan naming and positioning for review.
 - Documented current Supabase architecture and security backlog.
 
+### Conversion-first service pass — 2026-09-18
+- Made WhatsApp and email the primary contact actions across the remaining core service pages.
+- Reduced Signal Scan to one optional helper link per relevant service page.
+- Reduced Stream Scan to one optional streaming diagnostic-helper link.
+- Removed scan tools from primary navigation and hero CTAs on the migrated pages.
+- Routed service symptom cards toward direct human contact instead of requiring a tool first.
+- Kept existing public URLs, SEO metadata and service-page structure intact.
+- Clarified that VoltTech is not currently selling or sourcing upgrade components while supplier arrangements are still being established.
+- Kept the browser privacy/security demo optional rather than a primary enquiry path.
+
 ### Security backlog identified
 - Review executable permissions on Supabase `SECURITY DEFINER` functions.
 - Review `admin_users` RLS policy state.
