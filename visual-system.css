@@ -1,4 +1,4 @@
-/* VoltTech photography system v11
+/* VoltTech photography system v12
    Content-first refresh: one strong page hero image is enough.
    Homepage service-card imagery is owned by service-backgrounds.css.
    STATIC remains deliberately excluded by analytics.js. */
@@ -27,11 +27,11 @@ body.vt-page-streaming main .wrap::before{
 }
 
 /* One relevant hero image per service. */
-body.vt-page-repair main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-workbench.webp');background-position:center 58%}
+body.vt-page-repair main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-px-repair-cpu-install.webp');background-position:center 54%}
 body.vt-page-performance main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-rgb-cooling.webp');background-position:center 52%}
 body.vt-page-upgrades main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-motherboard.webp');background-position:center 43%}
-body.vt-page-malware main .wrap::before{background-image:linear-gradient(#0002,#0006),url('vt-px-laptop-tech.webp');background-position:center 45%}
-body.vt-page-windows main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-px-pc-workstation.webp');background-position:center 44%}
+body.vt-page-malware main .wrap::before{background-image:linear-gradient(#0002,#0006),url('vt-malware.webp');background-position:center 50%}
+body.vt-page-windows main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-windows.webp');background-position:center 48%}
 body.vt-page-streaming main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-creator-desk.webp');background-position:72% 50%}
 
 /* Scan tools use a restrained single background. */
@@ -65,8 +65,10 @@ body.vt-page-home .contact a{flex:0 0 auto;white-space:nowrap}
    height:215px;
    margin-bottom:22px;
  }
- body.vt-page-repair main .wrap::before{background-position:48% 60%}
+ body.vt-page-repair main .wrap::before{background-position:52% 52%}
  body.vt-page-upgrades main .wrap::before{background-position:52% 44%}
+ body.vt-page-malware main .wrap::before{background-position:center 50%}
+ body.vt-page-windows main .wrap::before{background-position:center 48%}
  body.vt-page-streaming main .wrap::before{background-position:76% 50%}
  body.vt-page-signal{background-attachment:scroll!important;background-position:center 38%!important}
  body.vt-page-streamscan{background-attachment:scroll!important;background-position:76% 50%!important}

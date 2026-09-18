@@ -45,3 +45,12 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Reused the same estimate ranges already used by VoltTech diagnostic tooling to avoid conflicting public prices.
 - Kept final pricing explicitly dependent on diagnosis, scope and any additional work or parts.
 - Clarified that upgrade advice can begin free over WhatsApp/email while component sales and sourcing remain paused.
+
+### Phase 2 — shared service design system, batch 1 — 2026-09-18
+- Added `service-pages.css` as the shared layout and component stylesheet for the five core PC service pages.
+- Removed the duplicated embedded service CSS from Repair, Performance, Upgrades, Security and Windows pages.
+- Added `service-malware.css` for the security page's unique browser-privacy demo component.
+- Centralised the selected Repair, Security and Windows hero-image overrides in `visual-system.css` v12.
+- Replaced one-off inline diagnostic-helper styling with a shared `.optional-helper` component.
+- Preserved service copy, pricing, URLs, SEO metadata, WhatsApp/email CTAs and existing JavaScript behaviour.
+- Corrected a small typo in the security page enquiry copy.
