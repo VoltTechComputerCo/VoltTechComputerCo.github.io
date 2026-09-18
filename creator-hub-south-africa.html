@@ -78,6 +78,7 @@ footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;colo
 </div></main>
 <footer>SOUTH AFRICAN CREATOR HUB · VOLTTECH COMPUTER CO. · <a href="streaming-setup-south-africa.html">STREAMING TECH SUPPORT</a> · <a href="index.html">VOLTTECH HOME</a></footer>
 
+<script src="streamer-feed.js?v=1"></script>
 <script>
 (function(){
 const REFRESH_MS=5*60*1000;
@@ -168,7 +169,6 @@ function renderLive(autoRotate=true){
    return;
  }
 
- // Keep the side buttons familiar and useful, but do not make viewer count decide the main feature.
  const sideLive=[...live].sort((a,b)=>(b.activity_score||0)-(a.activity_score||0)||(a.viewer_count||0)-(b.viewer_count||0));
  liveList.innerHTML=sideLive.slice(0,6).map(s=>'<button class="stream-choice" type="button" data-login="'+esc(s.login)+'"><span class="stream-choice-top"><b>'+esc(s.display_name||s.login)+'</b><span class="status">LIVE</span></span><span class="detail">'+esc([s.game_name,Number(s.viewer_count||0).toLocaleString()+' viewers'].filter(Boolean).join(' · '))+'</span></button>').join('');
  liveList.querySelectorAll('.stream-choice').forEach(btn=>btn.addEventListener('click',()=>{
@@ -195,7 +195,7 @@ function renderGrid(q=''){
 }
 async function load(){
  try{
-   const r=await fetch('sa-streamers-live.json?ts='+Date.now(),{cache:'no-store'});
+   const r=await window.VoltTechStreamerFeed.fetchLegacy();
    if(!r.ok)throw new Error('feed');
    const data=await r.json();
    creators=Array.isArray(data.streamers)?data.streamers:[];
