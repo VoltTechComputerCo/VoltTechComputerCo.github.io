@@ -64,3 +64,12 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Kept diagnostic progress values such as `--fill` inline because they are component data rather than layout rules.
 - Updated the migrated pages to the already-current `visual-system.css` v12.
 - Preserved page content, URLs, SEO metadata, Supabase streamer behaviour, service pricing and direct-contact flows.
+
+### Phase 2 — diagnostic scan cleanup, batch 3 — 2026-09-18
+- Moved Signal Scan's existing embedded CSS into `signal-scan.css`.
+- Moved Stream Scan's existing embedded CSS into `stream-scan.css`.
+- Added `scan-system.css` for shared narrow-phone and keyboard-focus behaviour.
+- Updated Signal Scan and Stream Scan to `visual-system.css` v12.
+- Removed duplicate direct contact-icon stylesheet requests because `visual-block-fix.css` already imports the shared contact-icon system.
+- Preserved all questions, pricing logic, JavaScript, result generation and WhatsApp/email message behaviour.
+- Left Exposure Scan unchanged for a separate privacy-demo refactor to avoid mixing unrelated risk into the diagnostic-tool batch.

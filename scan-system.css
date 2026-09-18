@@ -1,0 +1,15 @@
+/* VoltTech 2.0 shared scan-tool mobile/accessibility layer v1 */
+@media(max-width:480px){
+  body{padding-left:12px;padding-right:12px}
+  .scan-actions{grid-template-columns:1fr}
+  .scan-contact{min-height:50px}
+}
+.back:focus-visible,
+.btn:focus-visible,
+.secondary:focus-visible{
+  outline:2px solid currentColor;
+  outline-offset:2px;
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
