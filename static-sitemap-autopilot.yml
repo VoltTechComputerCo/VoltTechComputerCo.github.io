@@ -1,0 +1,86 @@
+name: STATIC Sitemap Autopilot
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "static.html"
+      - "static-*.html"
+      - ".github/workflows/static-sitemap-autopilot.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: static-sitemap-autopilot
+  cancel-in-progress: true
+
+jobs:
+  refresh-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync STATIC pages into sitemap
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          import subprocess
+          import xml.etree.ElementTree as ET
+
+          BASE = "https://volttechcomputerco.github.io/"
+          sitemap_path = Path("sitemap.xml")
+          sitemap = sitemap_path.read_text(encoding="utf-8")
+          pages = [Path("static.html"), *sorted(Path(".").glob("static-*.html"))]
+
+          def git_date(path):
+              result = subprocess.run(
+                  ["git", "log", "-1", "--format=%cs", "--", str(path)],
+                  capture_output=True,
+                  text=True,
+                  check=True,
+              )
+              date = result.stdout.strip()
+              if not date:
+                  raise RuntimeError(f"No Git date found for {path}")
+              return date
+
+          for page in pages:
+              url = BASE + page.name
+              lastmod = git_date(page)
+              pattern = re.compile(
+                  r"(<url><loc>" + re.escape(url) + r"</loc><lastmod>)([^<]+)(</lastmod></url>)"
+              )
+
+              if pattern.search(sitemap):
+                  sitemap = pattern.sub(
+                      lambda m: m.group(1) + lastmod + m.group(3),
+                      sitemap,
+                      count=1,
+                  )
+              else:
+                  entry = f"  <url><loc>{url}</loc><lastmod>{lastmod}</lastmod></url>\n"
+                  sitemap = sitemap.replace("</urlset>", entry + "</urlset>")
+
+          sitemap_path.write_text(sitemap, encoding="utf-8")
+          ET.parse(sitemap_path)
+          print(f"STATIC sitemap synced for {len(pages)} pages.")
+
+      - name: Commit sitemap if it changed
+        shell: bash
+        run: |
+          if git diff --quiet -- sitemap.xml; then
+            echo "Sitemap already current."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "chore: refresh STATIC sitemap"
+          git push
