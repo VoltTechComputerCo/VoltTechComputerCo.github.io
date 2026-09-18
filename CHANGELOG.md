@@ -39,3 +39,9 @@ Versioning should follow a practical semantic pattern where possible:
 ## Historical note
 
 Before VoltTech 2.0, the repository grew rapidly through iterative feature development. Many customer, commerce, admin and editorial systems already exist. VoltTech 2.0 is a consolidation and commercial-readiness programme, not a clean-slate rewrite.
+
+### Phase 1 completion — pricing clarity — 2026-09-18
+- Added direct, visible pricing guidance to the main PC service pages.
+- Reused the same estimate ranges already used by VoltTech diagnostic tooling to avoid conflicting public prices.
+- Kept final pricing explicitly dependent on diagnosis, scope and any additional work or parts.
+- Clarified that upgrade advice can begin free over WhatsApp/email while component sales and sourcing remain paused.
