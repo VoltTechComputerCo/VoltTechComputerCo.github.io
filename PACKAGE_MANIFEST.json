@@ -1,0 +1,21 @@
+{
+  "package": "VoltTech 2.0 Foundation",
+  "created": "2026-09-17",
+  "purpose": "Repository documentation and migration baseline. No production code changes.",
+  "files": [
+    "CHANGELOG.md",
+    "README.md",
+    "V2_START_HERE.md",
+    "docs/ARCHITECTURE.md",
+    "docs/CURRENT_SYSTEM.md",
+    "docs/DECISIONS.md",
+    "docs/DEPLOYMENT.md",
+    "docs/FILE_MAP.md",
+    "docs/HANDOVER.md",
+    "docs/MIGRATION_PLAN.md",
+    "docs/OPERATIONS.md",
+    "docs/SECURITY.md",
+    "docs/SEO.md",
+    "docs/SUPABASE.md"
+  ]
+}
