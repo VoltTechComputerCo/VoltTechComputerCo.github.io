@@ -191,3 +191,12 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Recorded the 19 September Store gate, Builder gate, compatibility-shim and Android workflow decisions in `docs/DECISIONS.md`.
 - Replaced the obsolete foundation-only `PACKAGE_MANIFEST.json` description with a living VoltTech 2.0 documentation-set manifest.
 - Made documentation-only changes; no runtime, database, layout, SEO directives or customer-facing behaviour changed.
+
+### Phase 3 — service ecosystem and internal-link foundation, batch 1 — 2026-09-19
+- Added a shared `service-network.css` component that connects the five core PC service pages as one VoltTech support ecosystem.
+- Added an early-page service navigator to Repair, Performance, Upgrades, Security and Windows, with the current service highlighted using `aria-current`.
+- Strengthened cross-service internal linking without changing established service URLs, pricing, contact flows or diagnostic behaviour.
+- Kept the navigator compact on desktop and horizontally scrollable on mobile to preserve conversion-first layouts.
+- Removed the launch-gated `store.html` from `sitemap.xml` while it remains `noindex`.
+- Added the indexable `exposure-scan.html` to the sitemap and refreshed current VoltTech core-page modification dates.
+- No Supabase, Store/Builder launch-state, customer account or admin behaviour changed.

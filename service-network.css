@@ -1,0 +1,107 @@
+/* VoltTech 2.0 — Phase 3 shared service network
+   Connects the five core PC service pages as one customer journey. */
+
+.service-network{
+  margin:0 0 34px;
+  border:1px solid rgba(47,230,200,.18);
+  border-radius:8px;
+  background:
+    linear-gradient(135deg,rgba(47,230,200,.055),transparent 38%),
+    #091011;
+  overflow:hidden;
+}
+.service-network-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:11px 13px;
+  border-bottom:1px solid var(--line);
+}
+.service-network-head span,
+.service-network-head a{
+  font:700 8px var(--mono);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.service-network-head span{color:var(--muted)}
+.service-network-head a{color:var(--teal)}
+.service-network-links{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+}
+.service-network-links a{
+  --network-accent:var(--teal);
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  min-width:0;
+  padding:13px 12px 14px;
+  border-right:1px solid var(--line);
+  color:var(--muted);
+  transition:.18s ease;
+}
+.service-network-links a:last-child{border-right:0}
+.service-network-links a:before{
+  content:"";
+  position:absolute;
+  left:12px;
+  right:12px;
+  bottom:0;
+  height:2px;
+  background:var(--network-accent);
+  opacity:0;
+  transform:scaleX(.4);
+  transition:.18s ease;
+}
+.service-network-links a:nth-child(2){--network-accent:#ff6b6b}
+.service-network-links a:nth-child(3){--network-accent:#ffb454}
+.service-network-links a:nth-child(4){--network-accent:#62a8ff}
+.service-network-links a:nth-child(5){--network-accent:#b779ff}
+.service-network-links small{
+  font:700 8px var(--mono);
+  color:#526965;
+}
+.service-network-links b{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-size:12px;
+  white-space:nowrap;
+}
+.service-network-links a:hover,
+.service-network-links a:focus-visible,
+.service-network-links a.active{
+  background:color-mix(in srgb,var(--network-accent) 8%,transparent);
+  color:var(--text);
+  outline:none;
+}
+.service-network-links a:hover:before,
+.service-network-links a:focus-visible:before,
+.service-network-links a.active:before{
+  opacity:1;
+  transform:scaleX(1);
+}
+.service-network-links a.active small{color:var(--network-accent)}
+.service-network-links a.active b{color:var(--network-accent)}
+
+@media(max-width:620px){
+  .service-network{margin-bottom:28px}
+  .service-network-head{padding:10px 12px}
+  .service-network-links{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+  }
+  .service-network-links::-webkit-scrollbar{display:none}
+  .service-network-links a{
+    flex:0 0 112px;
+    scroll-snap-align:start;
+    border-right:1px solid var(--line);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .service-network-links a,
+  .service-network-links a:before{transition:none!important}
+}
