@@ -12,8 +12,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css?v=2.2.0">
 <link rel="stylesheet" href="../commerce-ui.css?v=3.2.0">
+<link rel="stylesheet" href="./builder-gate.css?v=1">
 </head>
-<body>
+<body class="builder-gated">
 <header class="topbar">
   <div class="wrap topbar-inner">
     <a class="logo" href="../index.html" aria-label="Back to VoltTech Computer Co.">
@@ -22,10 +23,21 @@
     </a>
     <div class="top-actions">
       <a class="top-link" href="../builds.html">My Builds</a>
-      <span class="prototype">Builder Preview</span>
+      <span class="prototype" id="builderState">Coming Soon</span>
     </div>
   </div>
 </header>
+
+<section class="builder-gate" id="builderGate" aria-live="polite">
+  <div class="builder-gate-card">
+    <span class="eyebrow">PC BUILDER // VOLTTECH</span>
+    <h1>PC Builder coming soon.</h1>
+    <div class="builder-gate-actions">
+      <a class="btn hero-primary" href="../index.html">Back to VoltTech</a>
+      <a class="btn hero-secondary" href="../builds.html">My saved builds</a>
+    </div>
+  </div>
+</section>
 
 <main class="wrap">
   <section class="hero" aria-labelledby="builder-title">
@@ -181,7 +193,9 @@
 </div>
 
 <script src="../volttech-dialog.js?v=3.2.0"></script>
-<script type="module" src="./js/app.js?v=3.2.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase-config.js"></script>
+<script src="./builder-access.js?v=1"></script>
 <script src="../site-notifications-loader.js?v=5.0.0"></script>
 </body>
 </html>

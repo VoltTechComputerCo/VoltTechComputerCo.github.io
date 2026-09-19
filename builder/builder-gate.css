@@ -1,0 +1,36 @@
+/* VoltTech PC Builder launch gate — Phase 2 Batch 9 */
+.builder-gate{
+  display:grid;
+  min-height:calc(100dvh - 64px);
+  place-items:center;
+  padding:48px 20px 80px;
+}
+.builder-gate-card{
+  width:min(650px,100%);
+  padding:36px 24px;
+  border:1px solid rgba(47,230,200,.28);
+  border-radius:18px;
+  background:radial-gradient(circle at 50% 0,rgba(47,230,200,.1),transparent 44%),var(--panel);
+  box-shadow:0 24px 70px rgba(0,0,0,.4);
+  text-align:center;
+}
+.builder-gate-card h1{
+  margin:10px 0 24px;
+  font-size:clamp(38px,8vw,64px);
+  line-height:1;
+  letter-spacing:-.05em;
+}
+.builder-gate-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.builder-gated main.wrap,
+.builder-gated .mobile-buildbar{display:none!important}
+.builder-open .builder-gate{display:none}
+@media(max-width:560px){
+  .builder-gate{padding-top:32px}
+  .builder-gate-card{padding:30px 18px}
+  .builder-gate-actions{display:grid}
+}
