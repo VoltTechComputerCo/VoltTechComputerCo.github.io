@@ -174,3 +174,11 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Updated `builder/index.html` to reference `site-notifications-loader.js?v=6.0.0` directly instead of relying on the service worker to rewrite the older v5.0.0 source reference.
 - Preserved the fail-closed Builder launch gate, `builder_enabled` control, saved-build access, catalogue logic and all Builder behaviour.
 - Made no layout, copy, SEO, pricing, Supabase schema or launch-state changes.
+
+### Phase 2 — documentation reality-sync, batch 18 — 2026-09-19
+- Updated the VoltTech 2.0 start/handover documentation to reflect that Phase 1 is substantially complete and Phase 2 consolidation is actively underway.
+- Documented the current fail-closed Store and PC Builder launch gates and their separate `catalogue_enabled` / `builder_enabled` controls.
+- Updated current-system and file-map documentation to reflect the newer shared styles, Store/Builder gate files and current source-version cleanup state.
+- Corrected automation documentation: current GitHub Actions are the STATIC Discord publisher and STATIC sitemap autopilot; South African streamer refresh is represented by Supabase backend assets rather than a GitHub Actions updater.
+- Updated deployment guidance to match the current Android/manual-upload workflow and read-only GitHub integration behaviour.
+- Made documentation-only changes; no runtime, SEO, layout, Supabase or customer-facing behaviour changed.

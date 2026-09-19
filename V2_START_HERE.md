@@ -1,40 +1,59 @@
 # VoltTech 2.0 — Start Here
 
-This package is the **foundation only**.
+VoltTech 2.0 is now an active consolidation branch, not a foundation-only package.
 
-It does not move or delete current website files.
+The working development branch is:
 
-## First upload
+`v2-rebuild`
 
-On the `v2-rebuild` branch:
+Production remains:
 
-1. Replace the current minimal `README.md` with the new `README.md` from this package.
-2. Add `CHANGELOG.md`.
-3. Add the entire `docs/` folder.
-4. Add `V2_START_HERE.md` temporarily if you want an obvious marker while the rebuild is underway.
+`main`
 
-Do **not** move existing public HTML/CSS/JS files yet.
+## Current state — 19 September 2026
 
-## Why
+The documentation baseline, conversion-first public pass and a substantial portion of Phase 2 cleanup are already complete.
 
-The current repository already contains working business systems and indexed URLs. VoltTech 2.0 should reorganise them gradually with a documented migration rather than creating avoidable breakage.
+Completed work includes:
+- repository handover/documentation baseline
+- pricing clarity on core PC service pages
+- shared service-page styling
+- homepage and creator shared styling
+- Signal Scan / Stream Scan stylesheet cleanup
+- Exposure Scan stylesheet and inline-style cleanup
+- customer/admin portal stylesheet cleanup
+- checkout and order-status cleanup
+- Store launch gating
+- Builder launch gating
+- global commerce-navigation gating
+- customer/admin shared asset version normalisation
+- public `analytics.js` source-version normalisation
+- Builder notification-loader source-version normalisation
 
-## Next development task
+## Current operating rules
 
-After this package is in the branch, the first actual code phase should be:
+- `main` is production.
+- `v2-rebuild` is the active VoltTech 2.0 development branch.
+- Do not casually move or rename established public URLs.
+- Store and PC Builder remain fail-closed until their Supabase launch flags are explicitly enabled.
+- Direct human contact remains the primary conversion path.
+- Diagnostic tools are optional helpers, not mandatory funnels.
+- Preserve customer records, quotes, documents and saved-build history during cleanup.
 
-**Conversion-first public foundation**
+## Current development focus
 
-That means:
-- shared VoltTech 2.0 navigation
-- shared contact/CTA system
-- homepage hierarchy
-- mobile-first service conversion
-- consistent trust language
-- direct human contact everywhere it matters
+Continue Phase 2 consolidation carefully:
+- remove stale compatibility dependencies only after source files are normalised
+- reduce duplicated legacy styling and shell code
+- keep documentation aligned with actual runtime behaviour
+- avoid mixing unrelated high-risk systems into one batch
 
-Not:
-- Privacy Lab
-- elaborate diagnostic tools
-- cosmetic admin rewrites
-- speculative direct commerce before operations are ready
+After Phase 2 stabilises, continue with the documented migration plan for service/SEO consolidation, account simplification and future commerce readiness.
+
+## Before each batch
+
+1. Read the current branch state first.
+2. Change only the files required for that batch.
+3. Preserve public URLs and working business flows.
+4. Test mobile and customer-contact paths.
+5. Record the batch in `CHANGELOG.md`.
