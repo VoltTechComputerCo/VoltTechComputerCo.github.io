@@ -73,3 +73,10 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Removed duplicate direct contact-icon stylesheet requests because `visual-block-fix.css` already imports the shared contact-icon system.
 - Preserved all questions, pricing logic, JavaScript, result generation and WhatsApp/email message behaviour.
 - Left Exposure Scan unchanged for a separate privacy-demo refactor to avoid mixing unrelated risk into the diagnostic-tool batch.
+
+### Phase 2 — exposure scan cleanup, batch 4 — 2026-09-19
+- Moved Exposure Scan's embedded stylesheet into `exposure-scan.css`.
+- Kept the privacy demo, browser capability checks, fingerprint demo and optional geolocation permission flow unchanged.
+- Added clearer keyboard focus states for interactive controls.
+- Tightened narrow-phone spacing and made the primary scan control easier to use on small screens.
+- Preserved the existing privacy-first wording: results remain local to the browser and geolocation is only requested after an explicit user action.
