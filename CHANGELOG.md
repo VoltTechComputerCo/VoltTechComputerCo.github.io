@@ -130,3 +130,10 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Loads the existing Store discovery/navigation module only after Supabase explicitly reports `catalogue_enabled = true`.
 - Preserved customer notifications and onboarding for signed-in users.
 - Updated the service worker to roll the shared loader forward to v6.0.0 so existing Android/browser sessions receive the navigation fix without editing every page individually.
+
+### Phase 2 — customer portal source-version normalization, batch 11 — 2026-09-19
+- Updated Account, Activity, Document Vault and Saved Builds to reference the current shared notification and portal-shell assets directly instead of relying on service-worker rewrites.
+- Standardised `notifications.css` and `notifications.js` references at v5.2.0 across the four customer portal pages.
+- Standardised `portal-shell.css` and `portal-shell.js` references at v5.2.0 across the same customer portal surface.
+- Updated the Account dashboard loader reference to `account-dashboard.js` v5.2.0 so source HTML matches the cache-safe runtime version already used by the service worker.
+- Preserved authentication, saved-build history, document access, notifications, activity search/filtering and all customer account behaviour.
