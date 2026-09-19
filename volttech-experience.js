@@ -11,6 +11,18 @@
 
   body.classList.add('vt-experience-ready');
 
+  // Decorative ambient layers are explicit elements so they never overwrite
+  // existing page ::before/::after artwork.
+  const ambientGrid = d.createElement('div');
+  ambientGrid.className = 'vt-ambient-grid';
+  ambientGrid.setAttribute('aria-hidden', 'true');
+  body.prepend(ambientGrid);
+
+  const pointerGlow = d.createElement('div');
+  pointerGlow.className = 'vt-pointer-glow';
+  pointerGlow.setAttribute('aria-hidden', 'true');
+  body.prepend(pointerGlow);
+
   // Global scroll progress.
   const progress = d.createElement('div');
   progress.className = 'vt-scroll-progress';
@@ -29,6 +41,27 @@
     if (!scrollRaf) scrollRaf = requestAnimationFrame(updateScroll);
   }, { passive: true });
   updateScroll();
+
+  // Hero signal is an injected child to preserve any existing hero pseudo-elements.
+  const hero = d.querySelector('main .hero, main > .wrap > header, header.hero');
+  if (hero) {
+    const signal = d.createElement('span');
+    signal.className = 'vt-hero-signal';
+    signal.setAttribute('aria-hidden', 'true');
+    hero.appendChild(signal);
+  }
+
+  // Decorative sheen is also a real child, avoiding collisions with existing card artwork.
+  const sheenTargets = d.querySelectorAll(
+    '.service,.scope-card,.hub-card,.panel,.diagnostic-card,.support-card,.package,.community-card'
+  );
+  sheenTargets.forEach(el => {
+    el.classList.add('vt-sheen-host');
+    const sheen = d.createElement('span');
+    sheen.className = 'vt-sheen';
+    sheen.setAttribute('aria-hidden', 'true');
+    el.appendChild(sheen);
+  });
 
   // Reveal choreography. Choose structural surfaces, never form options/results
   // that are dynamically inserted by diagnostic tools.

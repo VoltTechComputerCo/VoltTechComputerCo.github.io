@@ -10,17 +10,16 @@
   --vt-ease:cubic-bezier(.2,.8,.2,1);
 }
 
-/* Ambient technical grid + pointer glow. */
-body.vt-experience-ready{
-  position:relative;
-  isolation:isolate;
-}
-body.vt-experience-ready::before{
-  content:"";
+/* Ambient technical grid + pointer glow.
+   Injected as real decorative elements so existing page pseudo-elements remain untouched. */
+.vt-ambient-grid,
+.vt-pointer-glow{
   position:fixed;
-  inset:0;
-  z-index:-2;
   pointer-events:none;
+  z-index:-2;
+}
+.vt-ambient-grid{
+  inset:0;
   opacity:.18;
   background-image:
     linear-gradient(rgba(47,230,200,.045) 1px,transparent 1px),
@@ -28,17 +27,13 @@ body.vt-experience-ready::before{
   background-size:52px 52px;
   mask-image:linear-gradient(to bottom,rgba(0,0,0,.95),transparent 78%);
 }
-body.vt-experience-ready::after{
-  content:"";
-  position:fixed;
+.vt-pointer-glow{
   left:var(--vt-x);
   top:var(--vt-y);
   width:46rem;
   height:46rem;
   transform:translate(-50%,-50%);
   border-radius:50%;
-  pointer-events:none;
-  z-index:-1;
   background:radial-gradient(circle,rgba(47,230,200,.075),rgba(47,230,200,.018) 34%,transparent 68%);
   transition:left .12s linear,top .12s linear;
 }
@@ -119,19 +114,15 @@ body.vt-experience-ready::after{
 }
 [data-vt-tilt]:hover::after{opacity:1}
 
-/* Hero energy: moving signal line + depth. */
-body.vt-experience-ready .hero,
-body.vt-experience-ready main> .wrap > header{
-  position:relative;
-}
-body.vt-experience-ready .hero::after,
-body.vt-experience-ready main> .wrap > header::after{
-  content:"";
+/* Hero energy: moving signal line + depth.
+   Uses an injected child instead of ::before/::after so existing hero artwork stays intact. */
+.vt-hero-signal{
   position:absolute;
   left:0;
   bottom:-8px;
   width:min(220px,52vw);
   height:1px;
+  pointer-events:none;
   background:linear-gradient(90deg,#2fe6c8,rgba(47,230,200,.18),transparent);
   transform-origin:left;
   animation:vt-signal-pulse 3.6s ease-in-out infinite;
@@ -143,37 +134,24 @@ body.vt-experience-ready h2 span{
   text-shadow:0 0 26px rgba(47,230,200,.08);
 }
 
-/* Animated card edge sweep for key surfaces. */
-body.vt-experience-ready .service,
-body.vt-experience-ready .scope-card,
-body.vt-experience-ready .hub-card,
-body.vt-experience-ready .panel,
-body.vt-experience-ready .creator-network,
-body.vt-experience-ready .service-network,
-body.vt-experience-ready .diagnostic-card{
+/* Animated card sheen for key surfaces.
+   A real child element avoids collisions with existing card ::before/::after artwork. */
+.vt-sheen-host{
   position:relative;
   overflow:hidden;
 }
-body.vt-experience-ready .service::before,
-body.vt-experience-ready .scope-card::before,
-body.vt-experience-ready .hub-card::before,
-body.vt-experience-ready .panel::before,
-body.vt-experience-ready .diagnostic-card::before{
-  content:"";
+.vt-sheen{
   position:absolute;
   inset:-1px auto -1px -35%;
   width:28%;
   pointer-events:none;
   opacity:0;
+  z-index:3;
   background:linear-gradient(105deg,transparent,rgba(47,230,200,.08),transparent);
   transform:skewX(-18deg);
-  transition:opacity .2s ease;
 }
-body.vt-experience-ready .service:hover::before,
-body.vt-experience-ready .scope-card:hover::before,
-body.vt-experience-ready .hub-card:hover::before,
-body.vt-experience-ready .panel:hover::before,
-body.vt-experience-ready .diagnostic-card:hover::before{
+.vt-sheen-host:hover > .vt-sheen,
+.vt-sheen-host:focus-within > .vt-sheen{
   opacity:1;
   animation:vt-edge-sweep .85s var(--vt-ease) forwards;
 }
@@ -256,7 +234,7 @@ body.vt-page-home.vt-experience-ready .creator-hub-live-dot{
 
 /* Mobile: keep the energy, drop expensive/awkward effects. */
 @media(max-width:760px){
-  body.vt-experience-ready::after{width:28rem;height:28rem;opacity:.65}
+  .vt-pointer-glow{width:28rem;height:28rem;opacity:.65}
   [data-vt-tilt]:hover{--vt-lift:0px}
   body.vt-experience-ready[class*="vt-page-"] main .wrap::before,
   body.vt-experience-ready[class*="vt-page-"] main .wrap:hover::before{
@@ -277,9 +255,8 @@ body.vt-page-home.vt-experience-ready .creator-hub-live-dot{
     transition:none!important;
   }
   .vt-scroll-progress{display:none}
-  body.vt-experience-ready::after{display:none}
-  body.vt-experience-ready .hero::after,
-  body.vt-experience-ready main> .wrap > header::after,
+  .vt-pointer-glow{display:none}
+  .vt-hero-signal,
   body.vt-experience-ready .dot,
   body.vt-experience-ready .creator-dot,
   body.vt-experience-ready .creator-hub-live-dot,
@@ -293,6 +270,6 @@ body.vt-page-home.vt-experience-ready .creator-hub-live-dot{
   }
 }
 @media(prefers-reduced-data:reduce){
-  body.vt-experience-ready::before,
-  body.vt-experience-ready::after{display:none}
+  .vt-ambient-grid,
+  .vt-pointer-glow{display:none}
 }
