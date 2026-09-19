@@ -89,3 +89,10 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Removed simple layout-only inline styles from the Admin Hub and Privacy & Data pages.
 - Preserved Supabase authentication, admin workflow logic, account deletion behaviour, quote acceptance/decline logic and document printing/email behaviour.
 
+### Phase 2 — commerce flow cleanup, batch 6 — 2026-09-19
+- Moved Checkout's embedded page styling into `checkout.css`.
+- Moved Order Status page styling into `order-status.css`.
+- Removed the remaining layout-only inline skeleton heights from both pages and replaced them with page-specific classes.
+- Preserved Supabase access, cart/order state, checkout submission, stock/delivery confirmation messaging and private order-status behaviour.
+- Left the main Store and Product catalogue pages unchanged for a separate commerce catalogue pass.
+
