@@ -13,6 +13,7 @@ const VT_VERSION_REWRITES=[
  ['site-notifications-loader.js?v=5.2.0','site-notifications-loader.js?v=6.0.0'],
  ['site-notifications-loader.js?v=5.3.0','site-notifications-loader.js?v=6.0.0'],
  ['site-notifications-loader.js?v=5.4.0','site-notifications-loader.js?v=6.0.0'],
+ ['analytics.js?v=5','analytics.js?v=6'],
  ['account-dashboard.js?v=3.1.0','account-dashboard.js?v=5.2.0']
 ];
 

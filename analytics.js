@@ -125,7 +125,6 @@ function initMobileNavigation(){
  drawer.innerHTML=
    '<div class="vt-mobile-drawer-head"><span>VoltTech</span><b>Menu</b></div>'+ 
    '<div class="vt-mobile-links">'+
-     '<a class="vt-mobile-link vt-menu-builder" href="builder/"><span class="vt-card-image vt-image-builder"></span><div class="vt-card-copy"><small>Build</small><strong>PC Builder</strong><em>Plan and configure your PC</em></div></a>'+ 
      '<a class="vt-mobile-link vt-menu-services" href="index.html#services"><span class="vt-card-image vt-image-services"></span><div class="vt-card-copy"><small>Services</small><strong>PC Services</strong><em>Repair, upgrades & Windows</em></div></a>'+ 
      '<a class="vt-mobile-link vt-menu-scan" href="signal-scan.html"><span class="vt-card-image vt-image-scan"></span><div class="vt-card-copy"><small>Free tool</small><strong>Signal Scan</strong><em>Symptoms, triage & estimates</em></div></a>'+ 
      '<a class="vt-mobile-link vt-menu-creator" href="creator-hub-south-africa.html"><span class="vt-card-image vt-image-creator"></span><div class="vt-card-copy"><div class="vt-creator-top"><small>Creator Hub</small><span class="vt-live-pill"><i></i><b id="vtMenuLiveCount">LIVE</b></span></div><strong>SA Creators</strong><em id="vtMenuCreatorMeta">Checking live creators…</em></div></a>'+ 

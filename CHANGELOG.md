@@ -157,3 +157,9 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Removed the JavaScript-created layout margin from the location-demo clear button and moved it into a small page-specific stylesheet.
 - Left runtime progress-bar width assignments intact because they represent live component state rather than static layout styling.
 - Preserved Exposure Scan's local-only processing, browser capability checks, fingerprint demo, optional geolocation permission flow, report copying and privacy messaging.
+
+### Phase 2 — shared mobile navigation source cleanup, batch 15 — 2026-09-19
+- Removed the paused PC Builder card from the shared `analytics.js` mobile-navigation source instead of relying on the launch-state loader to remove it after page load.
+- Kept Batch 10's Supabase-controlled Builder re-add behaviour intact, so the PC Builder returns to the mobile menu automatically only when `builder_enabled = true`.
+- Added a service-worker rewrite from `analytics.js?v=5` to v6 so existing Android/browser sessions receive the cleaned navigation source without manually editing every public page.
+- Preserved analytics, WhatsApp event tracking, PWA metadata, Creator Hub live-count behaviour, accessibility focus trapping and all non-commerce mobile-menu entries.
