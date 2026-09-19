@@ -182,3 +182,12 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Corrected automation documentation: current GitHub Actions are the STATIC Discord publisher and STATIC sitemap autopilot; South African streamer refresh is represented by Supabase backend assets rather than a GitHub Actions updater.
 - Updated deployment guidance to match the current Android/manual-upload workflow and read-only GitHub integration behaviour.
 - Made documentation-only changes; no runtime, SEO, layout, Supabase or customer-facing behaviour changed.
+
+### Phase 2 — remaining documentation sync, batch 19 — 2026-09-19
+- Updated architecture documentation to reflect the active Phase 2 shared frontend layers, launch-gated Store/Builder architecture and service-worker compatibility role.
+- Updated operations documentation for the current Android/manual-upload workflow, Store/Builder launch checks, STATIC sitemap automation and Supabase-backed streamer refresh.
+- Updated Supabase documentation with the separate `catalogue_enabled` and `builder_enabled` launch controls and clarified that the 17 September security/performance findings are baseline findings pending revalidation.
+- Updated SEO documentation to reflect Store/Product restricted indexing and the Builder `noindex,nofollow` posture while launch-gated.
+- Recorded the 19 September Store gate, Builder gate, compatibility-shim and Android workflow decisions in `docs/DECISIONS.md`.
+- Replaced the obsolete foundation-only `PACKAGE_MANIFEST.json` description with a living VoltTech 2.0 documentation-set manifest.
+- Made documentation-only changes; no runtime, database, layout, SEO directives or customer-facing behaviour changed.

@@ -1,7 +1,10 @@
 {
-  "package": "VoltTech 2.0 Foundation",
-  "created": "2026-09-17",
-  "purpose": "Repository documentation and migration baseline. No production code changes.",
+  "package": "VoltTech 2.0 Documentation Set",
+  "original_created": "2026-09-17",
+  "last_synced": "2026-09-19",
+  "purpose": "Living repository documentation, architecture, deployment, operations and migration record for VoltTech 2.0.",
+  "branch": "v2-rebuild",
+  "status": "Phase 2 consolidation in progress",
   "files": [
     "CHANGELOG.md",
     "README.md",
