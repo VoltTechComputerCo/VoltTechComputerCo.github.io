@@ -137,3 +137,10 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Standardised `portal-shell.css` and `portal-shell.js` references at v5.2.0 across the same customer portal surface.
 - Updated the Account dashboard loader reference to `account-dashboard.js` v5.2.0 so source HTML matches the cache-safe runtime version already used by the service worker.
 - Preserved authentication, saved-build history, document access, notifications, activity search/filtering and all customer account behaviour.
+
+### Phase 2 — admin portal source-version normalization, batch 12 — 2026-09-19
+- Updated Admin Hub, Build Requests, Customer Detail, Customers, Account Deletions and Records Search to reference the current shared notification and portal-shell assets directly.
+- Standardised `notifications.css` and `notifications.js` references at v5.2.0 across the six admin pages.
+- Standardised `portal-shell.css` and `portal-shell.js` references at v5.2.0 across the same admin surface.
+- Removed reliance on service-worker runtime rewrites for these admin asset versions, improving first-load and private-browser consistency.
+- Preserved all admin authentication, work queue, quote creation, customer lookup, build-request review, deletion handling and record-search behaviour.
