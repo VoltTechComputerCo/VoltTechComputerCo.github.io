@@ -10,6 +10,15 @@ Convert the current fast-grown repository into a maintainable commercial platfor
 
 Do not start by moving every file.
 
+## Current progress — 19 September 2026
+
+- Phase 0: substantially complete
+- Phase 1: substantially complete
+- Phase 2: active and well underway
+- Later phases: not yet considered complete
+
+See `CHANGELOG.md` for the authoritative batch-by-batch implementation record.
+
 ## Phase 0 — Baseline and safety
 
 - create `v2-rebuild`
@@ -21,7 +30,7 @@ Do not start by moving every file.
 - avoid major public URL changes
 - establish change log
 
-**No visual overhaul yet.**
+**Status: substantially complete.**
 
 ## Phase 1 — Conversion-first public foundation
 
@@ -41,9 +50,11 @@ Signal Scan must be optional, not the dominant route.
 
 Privacy Lab remains deferred.
 
-Stream Scan naming/role remains under review.
+Stream Scan remains an optional creator diagnostic helper while naming/positioning is reviewed.
 
-## Phase 2 — Shared design system
+**Status: substantially complete for the current public service foundation.**
+
+## Phase 2 — Shared design system and consolidation
 
 Introduce shared 2.0 CSS/components gradually:
 - tokens
@@ -56,9 +67,16 @@ Introduce shared 2.0 CSS/components gradually:
 - modal/dialog patterns
 - responsive spacing
 
-Migrate pages one group at a time.
+Also:
+- remove duplicated page-level styles where safe
+- normalise shared asset source versions
+- remove stale runtime dependencies only after source files are corrected
+- keep Store and Builder fail-closed while paused
+- keep documentation synchronised with actual branch behaviour
 
-Do not mass-delete legacy CSS until all dependent pages are confirmed migrated.
+Do not mass-delete legacy CSS or compatibility shims until all dependent pages and cached-session behaviour are confirmed migrated.
+
+**Status: active.**
 
 ## Phase 3 — Services and SEO consolidation
 
@@ -84,7 +102,8 @@ Do not add features simply because tables exist.
 
 ## Phase 5 — Commerce readiness
 
-Before Store promotion:
+Before Store promotion or enabling `catalogue_enabled`:
+- company/operating readiness
 - real sourcing workflow
 - verified supplier offers
 - pricing/margin policy
@@ -99,13 +118,14 @@ The Store should make accurate promises, not look finished before operations can
 
 ## Phase 6 — Builder/store unification
 
-Progressively converge Builder and Store product data so one canonical catalogue can power both.
+Before enabling or broadly promoting `builder_enabled`, progressively converge Builder and Store product data so one canonical catalogue can power both.
 
 Do this only after:
 - product IDs/spec schema are stable
 - current compatibility engine behaviour is documented
 - Store product model contains required compatibility data
 - migration tests cover representative builds
+- supplier and pricing inputs are dependable
 
 ## Phase 7 — VoltTech HQ
 
@@ -128,7 +148,7 @@ Preserve STATIC as its own publication while improving:
 - content templates
 - article navigation
 - internal linking
-- appropriate Store/Builder cross-links
+- appropriate Store/Builder cross-links only when those products are actually available
 - RSS automation
 - analytics
 - monetisation readiness

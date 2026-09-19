@@ -26,23 +26,30 @@ Use this branch for structural work before merging into production.
 
 The owner primarily works from Android.
 
-At this baseline, treat external ChatGPT/GitHub integration as read/audit access only unless the owner explicitly states that a write-enabled workflow has been established.
+The connected GitHub integration is currently reliable for reading and auditing repository state, but write/commit attempts from ChatGPT are blocked by GitHub integration permissions.
 
-Do not assume automated repository commits are available.
+The practical edit workflow is therefore:
+1. prepare exact replacement files
+2. preserve their repository paths
+3. upload them manually from Android to `v2-rebuild`
+4. verify the resulting commit through the connected GitHub reader
+
+Do not assume automated repository commits are available unless that capability is explicitly re-tested successfully.
 
 ## Safe deployment process
 
 1. Make changes on `v2-rebuild`.
 2. Review changed files.
-3. Test key pages using branch preview/local tooling when available.
+3. Test key pages using available branch-preview/local tooling.
 4. Confirm no indexed URL was accidentally removed.
 5. Confirm navigation and internal links.
 6. Confirm mobile layout.
 7. Confirm contact paths.
 8. Confirm Supabase/auth operations if touched.
-9. Merge the reviewed version into `main`.
-10. Confirm GitHub Pages deployment.
-11. Smoke-test the live site.
+9. Confirm Store/Builder launch gates if commerce code was touched.
+10. Merge the reviewed version into `main`.
+11. Confirm GitHub Pages deployment.
+12. Smoke-test the live site.
 
 ## Live smoke test
 
@@ -50,7 +57,8 @@ Minimum:
 - homepage loads
 - primary service pages load
 - WhatsApp/call/email links work
-- Store loads if enabled
+- Store stays gated unless explicitly enabled
+- Builder stays gated unless explicitly enabled
 - account page loads
 - STATIC loads
 - CSS/images are not 404ing
@@ -70,8 +78,10 @@ Do not leave a broken conversion or customer-account flow live while debugging a
 
 ## GitHub Actions
 
-Current known workflows include:
-- STATIC Discord Publisher
-- South African streamer update workflow
+Current workflows under `.github/workflows/` are:
+- `static-discord-publisher.yml`
+- `static-sitemap-autopilot.yml`
+
+Streamer-directory refresh is not currently represented by a GitHub Actions workflow in the repository. Its backend refresh implementation lives under Supabase function/migration assets.
 
 Review `.github/workflows/` before changing file names that trigger automation.

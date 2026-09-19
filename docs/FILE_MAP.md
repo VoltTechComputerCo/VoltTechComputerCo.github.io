@@ -5,15 +5,15 @@ This is a functional map, not a complete file-by-file inventory.
 ## Root public pages
 
 `index.html` — main public homepage  
-`store.html` — Store catalogue  
-`product.html` — product detail  
+`store.html` — Store catalogue shell; currently launch-gated  
+`product.html` — product detail shell; currently launch-gated with Store  
 `checkout.html` — commerce checkout/request flow  
 `order-status.html` — customer order/request status  
 `signal-scan.html` — optional diagnostic/estimate tool; lower strategic emphasis  
-`stream-scan.html` — current streaming tool; rename under review  
-`exposure-scan.html` — current exposure/privacy experiment; not launch priority  
+`stream-scan.html` — optional streaming diagnostic helper  
+`exposure-scan.html` — browser privacy/security demonstration  
 `static.html` — STATIC publication home  
-`creator-hub-south-africa.html` — creator/streaming hub
+`creator-hub-south-africa.html` — South African creator discovery hub
 
 ## Core service SEO pages
 
@@ -53,23 +53,32 @@ This is a functional map, not a complete file-by-file inventory.
 `admin-records.html` / `admin-records.js`  
 `admin-deletions.html` / `admin-deletions.js`  
 `admin-store.html`  
-`admin-workflow.js`
+`admin-workflow.js`  
+`admin-launch-controls.js`
 
 ## Builder
 
 `builder/index.html`  
 `builder/styles.css`  
+`builder/builder-gate.css`  
+`builder/builder-access.js`  
 `builder/js/*`  
 `builder/data/*`
 
+Public Builder access is controlled by the Supabase `builder_enabled` launch flag.
+
 ## Commerce
 
+`store-access.js` — fail-closed public Store launch gate  
+`store-gate.css` — Store coming-soon/gate presentation  
 `commerce/store.css`  
 `commerce/js/*`  
 `commerce/schema/*`  
 `commerce/suppliers/*`
 
 Mock supplier datasets under `commerce/suppliers/` are development data.
+
+Public Store access is controlled by the Supabase `catalogue_enabled` launch flag.
 
 ## Shared frontend
 
@@ -82,7 +91,8 @@ Mock supplier datasets under `commerce/suppliers/` are development data.
 `commerce-ui.css`  
 `volttech-dialog.js`  
 `site-notifications-loader.js`  
-`analytics.js`
+`analytics.js`  
+`sw.js`
 
 ## Brand/media
 
@@ -94,14 +104,19 @@ Mock supplier datasets under `commerce/suppliers/` are development data.
 
 `supabase-config.js` — frontend Supabase project URL + publishable client key  
 `manifest.webmanifest` — web app manifest  
-`sw.js` — service worker  
+`sw.js` — service worker and compatibility layer  
 `robots.txt` — crawler instructions  
 `sitemap.xml` — indexed/public URL inventory
 
 ## Automation
 
-`.github/workflows/static-discord-publisher.yml`  
-`.github/workflows/update-sa-streamers.yml`
+Current GitHub Actions workflows:
+- `.github/workflows/static-discord-publisher.yml`
+- `.github/workflows/static-sitemap-autopilot.yml`
+
+Streamer-directory refresh is currently represented by Supabase backend assets rather than a GitHub Actions workflow:
+- `Supabase/functions/refresh-sa-streamers/`
+- `Supabase/migrations/*streamer*`
 
 ## STATIC content
 
