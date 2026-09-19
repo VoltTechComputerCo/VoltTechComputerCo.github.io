@@ -200,3 +200,16 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Removed the launch-gated `store.html` from `sitemap.xml` while it remains `noindex`.
 - Added the indexable `exposure-scan.html` to the sitemap and refreshed current VoltTech core-page modification dates.
 - No Supabase, Store/Builder launch-state, customer account or admin behaviour changed.
+
+### Phase 3 — service hierarchy and breadcrumb SEO, batch 2 — 2026-09-19
+- Added a visible `Home → PC Support → Current Service` breadcrumb trail to all five core PC service pages.
+- Added matching `BreadcrumbList` structured data to Repair, Performance, Upgrades, Security and Windows.
+- Kept breadcrumb labels aligned with the customer-facing service hierarchy introduced in Phase 3 Batch 1.
+- Used Google's currently supported breadcrumb structured-data pattern rather than adding deprecated FAQ rich-result markup.
+- Extended the shared `service-network.css` component so the breadcrumb hierarchy stays consistent and mobile-safe across all five pages.
+- Made no pricing, contact-flow, service-copy, diagnostic-JavaScript, Supabase, Store/Builder or customer-account changes.
+
+### Phase 3 — sitemap preservation correction — 2026-09-19
+- Preserved all currently published STATIC article URLs already present in the production sitemap while applying the Phase 3 sitemap cleanup.
+- Kept the launch-gated Store excluded from the V2 sitemap and kept Exposure Scan included.
+- This correction prevents the V2 sitemap from regressing editorial URL discovery when it is eventually merged to production.

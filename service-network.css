@@ -105,3 +105,41 @@
   .service-network-links a,
   .service-network-links a:before{transition:none!important}
 }
+
+
+/* Phase 3 breadcrumb hierarchy */
+.service-breadcrumb{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin:0 0 18px;
+  min-width:0;
+  color:#526965;
+  font:700 8px var(--mono);
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.service-breadcrumb a,
+.service-breadcrumb strong{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.service-breadcrumb a{color:var(--muted)}
+.service-breadcrumb a:hover,
+.service-breadcrumb a:focus-visible{
+  color:var(--teal);
+  outline:none;
+}
+.service-breadcrumb strong{
+  color:var(--teal);
+  font-weight:700;
+}
+.service-breadcrumb span{
+  flex:0 0 auto;
+  color:#30433f;
+}
+@media(max-width:390px){
+  .service-breadcrumb{gap:5px;font-size:7px}
+}
