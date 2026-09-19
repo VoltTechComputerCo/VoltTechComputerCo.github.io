@@ -3,7 +3,7 @@
 ## Project
 
 **Project name:** VoltTech Production  
-**Purpose:** customer/auth, business records, quotes/documents, service jobs, Store/commerce data and related application state.
+**Purpose:** customer/auth, business records, quotes/documents, service jobs, creator data, Store/commerce data and related application state.
 
 The browser frontend uses a Supabase publishable key. Publishable keys are designed for frontend use with correct RLS. Secret/service-role keys must never be exposed in this repository.
 
@@ -59,41 +59,58 @@ The browser frontend uses a Supabase publishable key. Publishable keys are desig
 - `order_items`
 - `order_events`
 
+## Launch controls
+
+Current public commerce launch settings include:
+- `store_settings.catalogue_enabled`
+- `store_settings.builder_enabled`
+
+The public Store and PC Builder must fail closed unless the relevant flag is explicitly enabled.
+
+Frontend visibility must not be treated as the security boundary; backend/order submission rules still need to enforce valid commerce state.
+
 ## Current commerce posture
 
-At the 17 September 2026 baseline:
-- the Store catalogue exists in Supabase
-- product/category structures exist
-- request/order/payment/shipping structures exist
-- direct payment is not intended to be assumed production-ready merely because schema exists
+As of the current VoltTech 2.0 branch:
+- Store and Builder infrastructure exists
+- Store and Builder public launch are paused/gated
 - supplier offers are not yet a dependable live sourcing layer
+- product/category/request/order/payment/shipping structures exist
+- direct payment must not be assumed production-ready merely because schema exists
 - customer-facing stock/pricing must remain confirmation-first until sourcing is reliable
+
+## Creator backend
+
+Creator/streamer refresh assets include:
+- `Supabase/functions/refresh-sa-streamers/`
+- streamer-directory backend migrations
+- scheduled-refresh migration/configuration
+
+This is the current backend refresh path represented in the repository.
 
 ## RLS
 
-RLS is enabled on the public tables reviewed at baseline.
-
 RLS must remain enabled for exposed customer/business tables.
 
-Do not "fix" an access issue by disabling RLS.
+Do not fix an access issue by disabling RLS.
 
-## Security advisor findings at baseline
+## Security advisor baseline
 
-Supabase's security advisor reported:
+The following findings were recorded on 17 September 2026 and should be treated as a baseline until revalidated:
 
-1. `public.admin_users` has RLS enabled but no explicit RLS policy.
-2. Multiple `SECURITY DEFINER` functions are executable by the generic `authenticated` role.
-3. Leaked-password protection is disabled.
+1. `public.admin_users` had RLS enabled but no explicit RLS policy.
+2. Multiple `SECURITY DEFINER` functions were executable by the generic `authenticated` role.
+3. Leaked-password protection was disabled.
 
-The `SECURITY DEFINER` warning affects functions including admin quote, invoice, customer and Store operations. This does **not automatically prove an exploit**, because functions may perform their own admin checks, but the permission model must be reviewed before relying on these functions for production commerce.
+These findings do not automatically prove an exploit, but they must be rechecked before high-trust commerce is enabled.
 
 See `SECURITY.md`.
 
-## Performance advisor findings at baseline
+## Performance advisor baseline
 
-The performance advisor reported:
+The baseline performance review reported:
 - multiple foreign keys without covering indexes
-- a group of RLS policies using per-row auth-function evaluation patterns
+- RLS policies using per-row auth-function evaluation patterns
 - multiple permissive SELECT policies on some tables
 - unused indexes
 
@@ -110,6 +127,7 @@ Before modifying schema, functions or RLS:
 6. test authenticated customer access
 7. test admin access
 8. test that one customer cannot access another customer's records
+9. test Store/Builder launch-state behaviour if commerce settings were touched
 
 ## Credentials
 

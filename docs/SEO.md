@@ -14,23 +14,27 @@ Do not mix these strategies blindly.
 
 ## Protected public URLs
 
-The following current URLs are known sitemap assets and should not be renamed or removed casually:
+The following established URLs should not be renamed or removed casually:
 
 - `/`
-- `/store.html`
 - `/pc-repair-pretoria.html`
 - `/pc-performance-optimisation.html`
 - `/pc-upgrades-pretoria.html`
 - `/virus-malware-removal-pretoria.html`
 - `/windows-installation-pretoria.html`
 - `/signal-scan.html`
+- `/exposure-scan.html`
 - `/streaming-setup-south-africa.html`
 - `/creator-hub-south-africa.html`
 - `/stream-scan.html`
 - `/static.html`
 - existing `static-*.html` articles
 
-A 2.0 redesign may change the UI around these URLs without discarding their accumulated search value.
+`store.html` and `product.html` currently exist but are intentionally restricted while the Store is launch-gated. Do not restore normal indexing/promotion until Store readiness is deliberately approved.
+
+The PC Builder remains `noindex,nofollow` while `builder_enabled` is disabled.
+
+A 2.0 redesign may change the UI around established URLs without discarding accumulated search value.
 
 ## Service-page principles
 
@@ -57,14 +61,28 @@ For public pages:
 - unique `<title>`
 - useful meta description
 - canonical URL
-- crawl/index directive
+- crawl/index directive appropriate to current launch state
 - Open Graph basics
 - sensible heading hierarchy
 - fast/mobile layout
 - descriptive link text
 - image alt text
 - relevant structured data
-- inclusion in sitemap when appropriate
+- inclusion in sitemap only when appropriate
+
+## Store / Builder launch SEO
+
+Before enabling Store discovery:
+- restore indexing only when catalogue content and operations are genuinely ready
+- confirm canonical URLs
+- update sitemap intentionally
+- verify internal navigation
+- verify product metadata and structured data are accurate
+
+Before promoting Builder:
+- confirm `builder_enabled = true`
+- decide whether its current `noindex,nofollow` posture should change
+- update public navigation and sitemap deliberately rather than incidentally
 
 ## Renaming tools
 
@@ -85,6 +103,7 @@ Each article should have:
 - publication/update dates where relevant
 - strong internal links to other STATIC articles
 - only contextually appropriate links into VoltTech commercial pages
+- no Store/Builder promotion while those systems remain launch-gated
 - accurate reporting and useful original synthesis rather than thin rewrites
 
 ## Search Console

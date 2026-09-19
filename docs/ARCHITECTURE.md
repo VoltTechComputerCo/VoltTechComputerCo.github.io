@@ -17,7 +17,7 @@ Auth / Database       Analytics / Discord / future payments/shipping
       |
       v
 Customer, service, quote, document,
-build and commerce data
+build, creator and commerce data
 ```
 
 ## Architectural principle for VoltTech 2.0
@@ -26,45 +26,24 @@ VoltTech 2.0 is a **consolidation**, not a clean-slate rewrite.
 
 Existing working business data and backend workflows should be preserved unless there is a documented reason to replace them.
 
-## Target frontend layers
+## Current frontend direction
 
-New code should gradually converge toward:
+Phase 2 is consolidating the existing frontend incrementally rather than moving everything into a new directory structure at once.
 
-```text
-assets/
-  brand/
-  images/
-    shared/
-    services/
-    commerce/
-    static/
-  icons/
+Current shared/runtime layers include:
+- `visual-system.css`
+- `visual-block-fix.css`
+- `mobile-nav.css`
+- `service-pages.css`
+- `creator-system.css`
+- `scan-system.css`
+- `portal-shell.css`
+- `commerce-ui.css`
+- `site-notifications-loader.js`
+- `analytics.js`
+- `sw.js`
 
-css/
-  vt-tokens.css
-  vt-base.css
-  vt-components.css
-  vt-navigation.css
-  vt-services.css
-  vt-commerce.css
-  vt-account.css
-
-js/
-  core/
-    config.js
-    auth.js
-    analytics.js
-    navigation.js
-    ui.js
-  services/
-  commerce/
-  account/
-  admin/
-
-docs/
-```
-
-This is a target structure, not an instruction to move all legacy files at once.
+New shared files should be introduced only when they reduce real duplication or improve maintainability without breaking established URLs and customer flows.
 
 ## Product domains
 
@@ -80,7 +59,7 @@ Includes:
 - profile
 - quotes
 - invoices/documents
-- saved builds
+- saved builds/history
 - service activity
 - privacy/deletion requests
 - notifications
@@ -88,13 +67,28 @@ Includes:
 ### Commerce
 Purpose: component discovery, quotation and eventual direct sales.
 
-Must use reliable supplier/stock/pricing information before direct-sale claims are enabled.
+Current public Store access is controlled by the Supabase `catalogue_enabled` launch flag and must fail closed when not enabled.
+
+Reliable supplier/stock/pricing information is required before direct-sale promises are enabled.
 
 ### PC Builder
 Purpose: help customers construct compatible systems and feed useful structured build information into VoltTech quotes/store journeys.
 
+Current public Builder access is controlled by the Supabase `builder_enabled` launch flag and must fail closed when not enabled.
+
+Historical saved builds remain accessible through the customer portal.
+
 ### Admin / VoltTech HQ
-Purpose: internal operating interface for customers, quotes, jobs, builds, store and records.
+Purpose: internal operating interface for customers, quotes, jobs, builds, Store and records.
+
+### Creator systems
+Purpose: creator discovery and streaming technical support.
+
+Includes:
+- Creator Hub
+- streaming support page
+- Stream Scan
+- Supabase-backed South African streamer refresh/data
 
 ### STATIC
 Purpose: editorial traffic, brand authority, audience growth and future monetisation.
@@ -110,18 +104,30 @@ The frontend must never be treated as the authoritative source for:
 - payment state
 - administrative authorization
 - order status
+- Store/Builder launch state
 
 Those belong in Supabase/backend-controlled data.
 
-Product catalogue data is currently split between Supabase and Builder JSON datasets. VoltTech 2.0 should progressively move toward one canonical product model, but only when doing so does not destabilise the working Builder/Store.
+Product catalogue data is still split between Supabase and Builder JSON datasets. VoltTech 2.0 should progressively move toward one canonical product model, but only when doing so does not destabilise the existing Store/Builder systems.
+
+## Service worker and compatibility layer
+
+`sw.js` currently:
+- rewrites selected old asset-version references for cached/legacy pages
+- injects the current site notification loader into same-origin HTML navigation when absent
+
+These rewrites are compatibility shims, not the preferred source state.
+
+Source HTML should be normalised first. Compatibility rules should only be removed after dependent pages and cached-session behaviour are confirmed safe.
 
 ## Naming direction
 
 Current naming decisions:
 
-- `Signal Scan`: remains temporarily for URL continuity but should be de-emphasised and renamed in a controlled future migration.
-- `Stream Scan`: rename/positioning pending.
-- `Privacy Lab`: deferred and not part of the current commercial launch priority.
+- `Signal Scan`: retained for URL continuity and de-emphasised as an optional helper.
+- `Stream Scan`: active as an optional creator diagnostic helper while positioning remains under review.
+- `Exposure Scan`: active optional browser privacy/security demonstration.
+- `Privacy Lab`: broader concept deferred and not part of the current commercial launch priority.
 
 ## Direct-contact architecture
 
@@ -129,8 +135,8 @@ Direct contact must be available independently of diagnostic tools.
 
 Every major service journey should allow a visitor to:
 - WhatsApp
-- call
+- call where appropriate
 - email
-- send/request an enquiry
+- explain/request help without completing a tool first
 
 Tools may enrich the enquiry; they must not be required to reach a human.
