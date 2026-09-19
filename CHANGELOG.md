@@ -163,3 +163,9 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Kept Batch 10's Supabase-controlled Builder re-add behaviour intact, so the PC Builder returns to the mobile menu automatically only when `builder_enabled = true`.
 - Added a service-worker rewrite from `analytics.js?v=5` to v6 so existing Android/browser sessions receive the cleaned navigation source without manually editing every public page.
 - Preserved analytics, WhatsApp event tracking, PWA metadata, Creator Hub live-count behaviour, accessibility focus trapping and all non-commerce mobile-menu entries.
+### Phase 2 — analytics cache reference normalization, batch 16 — 2026-09-19
+- Updated the remaining 10 public pages that directly referenced `analytics.js?v=5` to `analytics.js?v=6`.
+- Removed normal-page reliance on the service worker's v5-to-v6 compatibility rewrite.
+- Preserved the service-worker compatibility rewrite as fallback protection for older cached pages and sessions.
+- Made no layout, copy, SEO metadata, CTA, Supabase, Store/Builder availability or page-behaviour changes.
+- Updated `index.html`, `creator-hub-south-africa.html`, `pc-performance-optimisation.html`, `pc-repair-pretoria.html`, `pc-upgrades-pretoria.html`, `virus-malware-removal-pretoria.html`, `windows-installation-pretoria.html`, `signal-scan.html`, `stream-scan.html` and `streaming-setup-south-africa.html`.
