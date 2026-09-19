@@ -169,3 +169,8 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Preserved the service-worker compatibility rewrite as fallback protection for older cached pages and sessions.
 - Made no layout, copy, SEO metadata, CTA, Supabase, Store/Builder availability or page-behaviour changes.
 - Updated `index.html`, `creator-hub-south-africa.html`, `pc-performance-optimisation.html`, `pc-repair-pretoria.html`, `pc-upgrades-pretoria.html`, `virus-malware-removal-pretoria.html`, `windows-installation-pretoria.html`, `signal-scan.html`, `stream-scan.html` and `streaming-setup-south-africa.html`.
+
+### Phase 2 — Builder loader source-version normalization, batch 17 — 2026-09-19
+- Updated `builder/index.html` to reference `site-notifications-loader.js?v=6.0.0` directly instead of relying on the service worker to rewrite the older v5.0.0 source reference.
+- Preserved the fail-closed Builder launch gate, `builder_enabled` control, saved-build access, catalogue logic and all Builder behaviour.
+- Made no layout, copy, SEO, pricing, Supabase schema or launch-state changes.
