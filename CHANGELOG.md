@@ -96,3 +96,11 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Preserved Supabase access, cart/order state, checkout submission, stock/delivery confirmation messaging and private order-status behaviour.
 - Left the main Store and Product catalogue pages unchanged for a separate commerce catalogue pass.
 
+### Phase 2 — store launch gate and catalogue cleanup, batch 7 — 2026-09-19
+- Restored the production `store_settings.catalogue_enabled` switch to `false` and set the public banner to `Store coming soon.` while company registration and supplier access are still unfinished.
+- Added a fail-closed `store-access.js` launch gate: catalogue, product and checkout logic only loads after Supabase confirms the store is enabled.
+- Added a static coming-soon surface so the catalogue does not flash briefly before the database setting is checked.
+- Kept the existing server-side `submit-store-checkout` catalogue check in place, so order submission remains blocked even if the front end is bypassed.
+- Removed current PC Builder promotion from the Store and Product surfaces while custom PC building remains paused.
+- Removed the remaining static inline catalogue styles and moved the launch/cleanup rules into `store-gate.css`.
+- Temporarily changed Store and Product pages to `noindex,follow`; restore normal indexing when the store officially launches.
