@@ -1,0 +1,108 @@
+/* VoltTech 2.0 — Phase 3 creator ecosystem navigation */
+
+.creator-breadcrumb{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin:16px 0 14px;
+  min-width:0;
+  color:#5f5969;
+  font:700 8px 'JetBrains Mono',monospace;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.creator-breadcrumb a,.creator-breadcrumb strong{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.creator-breadcrumb a{color:#8a8197}
+.creator-breadcrumb a:hover,.creator-breadcrumb a:focus-visible{color:#c791ff;outline:none}
+.creator-breadcrumb strong{color:#c791ff}
+.creator-breadcrumb span{flex:0 0 auto;color:#413a4a}
+
+.creator-network{
+  margin:0 0 28px;
+  border:1px solid rgba(199,145,255,.18);
+  border-radius:10px;
+  background:
+    linear-gradient(135deg,rgba(199,145,255,.06),transparent 42%),
+    rgba(9,7,15,.86);
+  overflow:hidden;
+}
+.creator-network-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:10px 12px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.creator-network-head span,.creator-network-head a{
+  font:700 8px 'JetBrains Mono',monospace;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.creator-network-head span{color:#7d7488}
+.creator-network-head a{color:#c791ff}
+.creator-network-links{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+}
+.creator-network-links a{
+  --accent:#c791ff;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  padding:13px 14px 14px;
+  border-right:1px solid rgba(255,255,255,.07);
+  color:#8a8197;
+  transition:.18s ease;
+}
+.creator-network-links a:nth-child(2){--accent:#2fe6c8}
+.creator-network-links a:nth-child(3){--accent:#ff6b9f}
+.creator-network-links a:last-child{border-right:0}
+.creator-network-links a:before{
+  content:"";
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:0;
+  height:2px;
+  background:var(--accent);
+  opacity:0;
+  transform:scaleX(.45);
+  transition:.18s ease;
+}
+.creator-network-links small{
+  color:#5d5567;
+  font:700 8px 'JetBrains Mono',monospace;
+}
+.creator-network-links b{font-size:12px}
+.creator-network-links a:hover,
+.creator-network-links a:focus-visible,
+.creator-network-links a.active{
+  color:#fff;
+  background:color-mix(in srgb,var(--accent) 8%,transparent);
+  outline:none;
+}
+.creator-network-links a:hover:before,
+.creator-network-links a:focus-visible:before,
+.creator-network-links a.active:before{
+  opacity:1;
+  transform:scaleX(1);
+}
+.creator-network-links a.active small,
+.creator-network-links a.active b{color:var(--accent)}
+
+@media(max-width:560px){
+  .creator-network-links{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .creator-network-links::-webkit-scrollbar{display:none}
+  .creator-network-links a{flex:0 0 145px;scroll-snap-align:start}
+  .creator-breadcrumb{font-size:7px;gap:5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .creator-network-links a,.creator-network-links a:before{transition:none!important}
+}

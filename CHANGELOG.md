@@ -213,3 +213,11 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Preserved all currently published STATIC article URLs already present in the production sitemap while applying the Phase 3 sitemap cleanup.
 - Kept the launch-gated Store excluded from the V2 sitemap and kept Exposure Scan included.
 - This correction prevents the V2 sitemap from regressing editorial URL discovery when it is eventually merged to production.
+
+### Phase 3 — creator ecosystem consolidation, batch 3 — 2026-09-19
+- Added a shared creator ecosystem navigator linking Creator Hub, Streaming Support and Stream Scan.
+- Added visible creator breadcrumbs and matching `BreadcrumbList` structured data across all three creator-facing pages.
+- Kept Creator Hub focused on discovery, Streaming Support focused on paid technical help and Stream Scan positioned as an optional diagnostic helper.
+- Preserved all existing live-stream feed logic, Stream Scan logic, pricing, contact CTAs and creator community links.
+- Added `creator-network.css` as the shared presentation layer for the creator hierarchy.
+- Made no Supabase schema, streamer refresh, Store/Builder, customer-account or admin changes.
