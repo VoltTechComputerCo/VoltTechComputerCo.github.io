@@ -1,0 +1,26 @@
+/* VoltTech Parts Desk — Phase 2 Batch 9 */
+.launch-controls{margin-bottom:16px}
+.launch-card{border-color:rgba(47,230,200,.28)}
+.launch-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+.launch-option{display:flex;align-items:flex-start;gap:10px;padding:13px;border:1px solid var(--line);border-radius:10px;background:#071012;cursor:pointer}
+.launch-option input{margin-top:3px;accent-color:var(--teal)}
+.launch-option span{display:grid;gap:3px}
+.launch-option b{font-size:12px}
+.launch-option small{color:#78918d;font-size:10px;line-height:1.45}
+.admin-details-summary{cursor:pointer;margin:12px 0;color:var(--teal)}
+.admin-private-note{font-size:10px}
+.request-address{margin-top:5px}
+.parcel-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.catalogue-admin-row{display:block}
+.catalogue-row-head{display:flex;justify-content:space-between;gap:10px}
+.catalogue-row-toggles{display:flex;gap:10px}
+.package-details{margin-top:10px}
+.package-summary{cursor:pointer;color:#829b97;font:8px var(--mono)}
+.package-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:9px}
+@media(max-width:700px){
+  .launch-grid{grid-template-columns:1fr}
+  .package-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .parcel-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .catalogue-row-head{display:grid}
+  .catalogue-row-toggles{flex-wrap:wrap}
+}

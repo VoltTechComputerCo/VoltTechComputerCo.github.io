@@ -112,3 +112,12 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Removed Resume Build and Request Quote actions from `builds.js` so the paused builder cannot be re-entered from the customer portal.
 - Preserved existing saved-build data, historical statuses, formal quotes, document exports, account authentication and deletion behaviour.
 - Updated edited portal pages to `portal-shell.css` v5.1.0 and `builds.js` v3.3.0 for cache-safe delivery.
+
+### Phase 2 — builder access gate and admin launch controls, batch 9 — 2026-09-19
+- Added the tracked Supabase `store_settings.builder_enabled` feature flag, defaulting to `false`, matching the production migration already applied.
+- Added a fail-closed PC Builder launch gate: the interactive Builder app is not loaded unless Supabase explicitly reports `builder_enabled = true`.
+- Kept existing saved PC build records accessible through the customer portal while new Builder access remains paused.
+- Added separate PC Parts Store and PC Builder launch switches to the Admin Parts Desk for deliberate future release control.
+- Kept the existing Parts Desk workflow JavaScript untouched and added launch controls as a small isolated admin module.
+- Kept direct payment settings independent from the new launch switches.
+- Preserved the existing Builder application, component catalogue, compatibility logic, saved-build history, Parts Desk order workflow and shipping automation.
