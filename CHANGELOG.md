@@ -28,7 +28,7 @@ Versioning should follow a practical semantic pattern where possible:
 - Routed service symptom cards toward direct human contact instead of requiring a tool first.
 - Kept existing public URLs, SEO metadata and service-page structure intact.
 - Clarified that VoltTech is not currently selling or sourcing upgrade components while supplier arrangements are still being established.
-- Kept the browser privacy/security demo optional rather than a primary enquiry path.
+- Kept the browser privacy/security demo optional rather than a primary enquiry
 
 ### Security backlog identified
 - Review executable permissions on Supabase `SECURITY DEFINER` functions.
@@ -121,3 +121,12 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Kept the existing Parts Desk workflow JavaScript untouched and added launch controls as a small isolated admin module.
 - Kept direct payment settings independent from the new launch switches.
 - Preserved the existing Builder application, component catalogue, compatibility logic, saved-build history, Parts Desk order workflow and shipping automation.
+
+### Phase 2 — global commerce navigation gating, batch 10 — 2026-09-19
+- Stopped the shared loader from advertising the PC Parts Store before the public `catalogue_enabled` launch flag is checked.
+- Added a public fail-closed launch-state check for both `catalogue_enabled` and `builder_enabled` using the existing Supabase publishable configuration.
+- Removed stale PC Builder mobile-menu entries while `builder_enabled = false`, including links injected by older cached navigation code.
+- Re-adds the PC Builder mobile-menu entry only after Supabase explicitly reports `builder_enabled = true`.
+- Loads the existing Store discovery/navigation module only after Supabase explicitly reports `catalogue_enabled = true`.
+- Preserved customer notifications and onboarding for signed-in users.
+- Updated the service worker to roll the shared loader forward to v6.0.0 so existing Android/browser sessions receive the navigation fix without editing every page individually.
