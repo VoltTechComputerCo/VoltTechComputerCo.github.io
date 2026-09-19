@@ -151,3 +151,9 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Standardised `portal-shell.css` and `portal-shell.js` at v5.2.0 on both pages.
 - Removed the final customer-account dependency on service-worker runtime rewrites for these shared asset versions.
 - Preserved quote review/approval, printable quote access, personal-data export, privacy requests and account-deletion behaviour.
+
+### Phase 2 — Exposure Scan inline-style completion, batch 14 — 2026-09-19
+- Removed the final two static inline colour declarations from Exposure Scan and replaced them with named classes.
+- Removed the JavaScript-created layout margin from the location-demo clear button and moved it into a small page-specific stylesheet.
+- Left runtime progress-bar width assignments intact because they represent live component state rather than static layout styling.
+- Preserved Exposure Scan's local-only processing, browser capability checks, fingerprint demo, optional geolocation permission flow, report copying and privacy messaging.

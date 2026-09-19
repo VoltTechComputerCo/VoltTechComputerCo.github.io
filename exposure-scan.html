@@ -33,6 +33,7 @@
 }
 </script>
 <link rel="stylesheet" href="exposure-scan.css?v=1" data-vt-exposure-system="1">
+<link rel="stylesheet" href="exposure-scan-refinements.css?v=1">
 </head>
 <body>
 <nav>
@@ -117,7 +118,7 @@
   </div>
 
   <div class="fingerprint">
-    <div class="fingerprint-top"><div><div class="label" style="color:var(--purple)">LOCAL FINGERPRINT DEMO</div><h3>Lots of boring details become less boring when combined.</h3></div></div>
+    <div class="fingerprint-top"><div><div class="label label-purple">LOCAL FINGERPRINT DEMO</div><h3>Lots of boring details become less boring when combined.</h3></div></div>
     <p>Web tracking can combine many small characteristics into a probabilistic fingerprint. This demo hashes a selection of the signals above plus a local canvas rendering. It is <strong>not guaranteed to be unique</strong> and VoltTech does not store it.</p>
     <div class="fp-code" id="fingerprintCode">WAITING FOR SCAN…</div>
     <div class="fp-note">A fingerprint is not the same thing as your name, password or identity — but it can help sites distinguish one browser/device configuration from another.</div>
@@ -139,7 +140,7 @@
   </div>
 
   <div class="location-card">
-    <div class="label" style="color:var(--warn)">OPTIONAL PERMISSION DEMO</div>
+    <div class="label label-warn">OPTIONAL PERMISSION DEMO</div>
     <h3>Want to make it slightly scarier?</h3>
     <p>A webpage can ask for your location too — but modern browsers are supposed to put <strong>you</strong> in control. VoltTech will only request it if you press the button below. Your browser should show a real permission prompt unless you have already made a choice for this site.</p>
     <div class="permission-explain">
@@ -511,7 +512,7 @@ $("locationButton").addEventListener("click",function(){
       const s=document.createElement("small");s.textContent="LOCATION PROVIDED BY YOUR BROWSER";
       const strong=document.createElement("strong");strong.textContent=lat+", "+lon+" · accuracy ≈ "+acc+" m";
       const p=document.createElement("p");p.textContent="You just authorised this webpage to receive coordinates. They are shown here and are not uploaded by this tool. To revoke the permission itself, use your browser's site-permission controls.";
-      const clear=document.createElement("button");clear.type="button";clear.className="action-button";clear.style.marginTop="10px";clear.textContent="Clear This Display";
+      const clear=document.createElement("button");clear.type="button";clear.className="action-button";clear.classList.add("location-clear");clear.textContent="Clear This Display";
       clear.onclick=()=>{box.classList.remove("show");box.textContent="";$("locationButton").disabled=false;$("locationButton").textContent="Show What Location Permission Can Reveal";};
       box.append(s,strong,p,clear);
       $("locationButton").textContent="Location Was Allowed";$("locationButton").disabled=true;
