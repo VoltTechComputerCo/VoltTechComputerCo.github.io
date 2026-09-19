@@ -80,3 +80,12 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Added clearer keyboard focus states for interactive controls.
 - Tightened narrow-phone spacing and made the primary scan control easier to use on small screens.
 - Preserved the existing privacy-first wording: results remain local to the browser and geolocation is only requested after an explicit user action.
+
+### Phase 2 — portal and admin cleanup, batch 5 — 2026-09-19
+- Moved the Admin Hub page stylesheet into `admin-hub.css`.
+- Moved PC Build Requests admin styling into `admin-builds.css`.
+- Moved Privacy & Data page-specific styling into `privacy-center.css`.
+- Moved quote approval/decline presentation styling into `quote-decision.css`.
+- Removed simple layout-only inline styles from the Admin Hub and Privacy & Data pages.
+- Preserved Supabase authentication, admin workflow logic, account deletion behaviour, quote acceptance/decline logic and document printing/email behaviour.
+

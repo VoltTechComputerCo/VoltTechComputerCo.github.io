@@ -8,35 +8,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root{--b:#05080a;--p:#0b1415;--l:#1a2b2b;--t:#2fe6c8;--x:#eaf4f1;--m:#78918d;--d:#ff7474}
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--b);color:var(--x);font-family:'Space Grotesk',sans-serif}
-    .w{width:min(1050px,100%);margin:auto;padding:18px}
-    a{color:var(--t);text-decoration:none}
-    .top{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid var(--l);padding-bottom:16px}
-    .tools{display:flex;gap:8px;flex-wrap:wrap}
-    .tool{border:1px solid var(--l);padding:9px 11px;border-radius:5px;font:9px 'JetBrains Mono';text-transform:uppercase}
-    .panel{border:1px solid var(--l);background:var(--p);border-radius:8px;padding:18px;margin-top:16px}
-    h1,h2{margin-top:0}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    label{display:block;color:var(--m);font:9px 'JetBrains Mono';text-transform:uppercase;margin-bottom:6px}
-    input,select,textarea{width:100%;background:#07100f;color:var(--x);border:1px solid #263a38;border-radius:5px;padding:11px}
-    textarea{min-height:85px}
-    .btn{border:1px solid var(--t);background:transparent;color:var(--t);border-radius:5px;padding:10px 12px;font-weight:700}
-    .danger{border-color:#6b3437;color:#ff9696}
-    .item{border:1px solid var(--l);padding:12px;border-radius:6px;margin:10px 0}
-    .itemgrid{display:grid;grid-template-columns:2fr .5fr 1fr 1fr;gap:8px}
-    .supplier{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px}
-    .row{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:10px}
-    .quote{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--l);padding:13px 0}
-    .muted,small,#status{color:var(--m)}
-    #total{color:var(--t);font-size:22px}
-    @media(max-width:700px){
-      .grid,.itemgrid,.supplier{grid-template-columns:1fr}
-      .top{align-items:flex-start;flex-direction:column}
-    }
-  </style>
+  <link rel="stylesheet" href="admin-hub.css?v=1" data-vt-admin-hub="1">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
@@ -60,7 +32,7 @@
 
   <div class="top">
     <div>
-      <h1 style="margin:0">VoltTech Admin Hub</h1>
+      <h1 class="admin-title">VoltTech Admin Hub</h1>
       <small>Owner operations</small>
     </div>
 
@@ -163,12 +135,12 @@
           </div>
         </div>
 
-        <div style="margin-top:12px">
+        <div class="admin-spaced">
           <label>Customer note</label>
           <textarea id="customerNote"></textarea>
         </div>
 
-        <div style="margin-top:12px">
+        <div class="admin-spaced">
           <label>Internal note</label>
           <textarea id="internalNote"></textarea>
         </div>
@@ -177,7 +149,7 @@
 
         <button class="btn" id="add" type="button">Add line item</button>
 
-        <div class="grid" style="margin-top:12px">
+        <div class="grid admin-spaced">
           <div>
             <label>Delivery</label>
             <input id="delivery" type="number" min="0" step=".01" value="0">
