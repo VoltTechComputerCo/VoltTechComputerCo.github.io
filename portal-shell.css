@@ -1,4 +1,4 @@
-/* VoltTech Portal Shell v5
+/* VoltTech Portal Shell v5.1
    Navigation/layout refinements only. Business/auth logic remains untouched. */
 
 .portal-section-label{
@@ -295,3 +295,8 @@
 #overviewAction[data-state="urgent"] small{color:#ff8c92!important;text-shadow:0 0 10px rgba(255,102,112,.20)}
 #overviewAction[data-state="clear"]{border-color:rgba(80,255,159,.20)!important}
 #overviewAction[data-state="clear"] small{color:#68ffae!important}
+
+/* Phase 2 Batch 8 — shared customer portal cleanup */
+.portal-link{color:var(--teal,#2fe6c8)}
+.portal-stack-gap{margin-top:10px}
+.portal-notice-gap{margin-top:16px}

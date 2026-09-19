@@ -104,3 +104,11 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Removed current PC Builder promotion from the Store and Product surfaces while custom PC building remains paused.
 - Removed the remaining static inline catalogue styles and moved the launch/cleanup rules into `store-gate.css`.
 - Temporarily changed Store and Product pages to `noindex,follow`; restore normal indexing when the store officially launches.
+
+### Phase 2 — customer portal and builder-pause cleanup, batch 8 — 2026-09-19
+- Removed the remaining layout-only inline styles from Account, Activity and Document Vault and moved them into the shared portal shell.
+- Removed active PC Builder promotion from the customer Account and Saved Builds pages while custom PC building remains paused.
+- Converted Saved Builds into a history/read-only surface for existing records: customers can still view/print, email, delete eligible saved records and open any formal quote already issued.
+- Removed Resume Build and Request Quote actions from `builds.js` so the paused builder cannot be re-entered from the customer portal.
+- Preserved existing saved-build data, historical statuses, formal quotes, document exports, account authentication and deletion behaviour.
+- Updated edited portal pages to `portal-shell.css` v5.1.0 and `builds.js` v3.3.0 for cache-safe delivery.
