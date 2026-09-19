@@ -144,3 +144,10 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Standardised `portal-shell.css` and `portal-shell.js` references at v5.2.0 across the same admin surface.
 - Removed reliance on service-worker runtime rewrites for these admin asset versions, improving first-load and private-browser consistency.
 - Preserved all admin authentication, work queue, quote creation, customer lookup, build-request review, deletion handling and record-search behaviour.
+
+### Phase 2 — customer account completion, batch 13 — 2026-09-19
+- Updated Quotes & Approvals and Privacy & Data to reference the current shared notification and portal-shell assets directly.
+- Standardised `notifications.css` and `notifications.js` at v5.2.0 on both remaining customer-account pages.
+- Standardised `portal-shell.css` and `portal-shell.js` at v5.2.0 on both pages.
+- Removed the final customer-account dependency on service-worker runtime rewrites for these shared asset versions.
+- Preserved quote review/approval, printable quote access, personal-data export, privacy requests and account-deletion behaviour.
