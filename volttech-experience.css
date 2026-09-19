@@ -1,0 +1,298 @@
+/* VoltTech Experience System v1
+   Shared premium motion/depth layer for VoltTech V2.
+   Lightweight, progressive-enhancement only. */
+
+:root{
+  --vt-x:50vw;
+  --vt-y:30vh;
+  --vt-scroll:0;
+  --vt-progress:0%;
+  --vt-ease:cubic-bezier(.2,.8,.2,1);
+}
+
+/* Ambient technical grid + pointer glow. */
+body.vt-experience-ready{
+  position:relative;
+  isolation:isolate;
+}
+body.vt-experience-ready::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  opacity:.18;
+  background-image:
+    linear-gradient(rgba(47,230,200,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(47,230,200,.035) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.95),transparent 78%);
+}
+body.vt-experience-ready::after{
+  content:"";
+  position:fixed;
+  left:var(--vt-x);
+  top:var(--vt-y);
+  width:46rem;
+  height:46rem;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-1;
+  background:radial-gradient(circle,rgba(47,230,200,.075),rgba(47,230,200,.018) 34%,transparent 68%);
+  transition:left .12s linear,top .12s linear;
+}
+
+/* Global scroll telemetry. */
+.vt-scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  width:var(--vt-progress);
+  height:2px;
+  z-index:9999;
+  pointer-events:none;
+  background:linear-gradient(90deg,#2fe6c8,#42d9ff);
+  box-shadow:0 0 14px rgba(47,230,200,.65);
+}
+.vt-scroll-progress::after{
+  content:"";
+  position:absolute;
+  right:-2px;
+  top:-2px;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#dffff9;
+  box-shadow:0 0 12px #2fe6c8;
+}
+
+/* Reveal choreography. */
+.vt-reveal{
+  --vt-reveal-y:26px;
+  --vt-reveal-scale:.985;
+  --vt-tilt-x:0deg;
+  --vt-tilt-y:0deg;
+  --vt-lift:0px;
+  opacity:0;
+  transform:
+    translate3d(0,var(--vt-reveal-y),0)
+    scale(var(--vt-reveal-scale))
+    perspective(1000px)
+    rotateX(var(--vt-tilt-x))
+    rotateY(var(--vt-tilt-y))
+    translateY(var(--vt-lift));
+  transition:
+    opacity .7s var(--vt-ease),
+    transform .82s var(--vt-ease),
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background-color .22s ease;
+  transition-delay:var(--vt-delay,0ms);
+  will-change:transform,opacity;
+}
+.vt-reveal.vt-in{
+  --vt-reveal-y:0px;
+  --vt-reveal-scale:1;
+  opacity:1;
+}
+
+/* Premium interaction depth. Fine pointer only gets actual tilt. */
+[data-vt-tilt]{
+  transform-style:preserve-3d;
+}
+[data-vt-tilt]:hover{
+  --vt-lift:-4px;
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.28),
+    0 0 0 1px rgba(47,230,200,.08);
+}
+[data-vt-tilt]::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  opacity:0;
+  background:linear-gradient(125deg,rgba(255,255,255,.09),transparent 28%,transparent 70%,rgba(47,230,200,.07));
+  transition:opacity .22s ease;
+}
+[data-vt-tilt]:hover::after{opacity:1}
+
+/* Hero energy: moving signal line + depth. */
+body.vt-experience-ready .hero,
+body.vt-experience-ready main> .wrap > header{
+  position:relative;
+}
+body.vt-experience-ready .hero::after,
+body.vt-experience-ready main> .wrap > header::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:min(220px,52vw);
+  height:1px;
+  background:linear-gradient(90deg,#2fe6c8,rgba(47,230,200,.18),transparent);
+  transform-origin:left;
+  animation:vt-signal-pulse 3.6s ease-in-out infinite;
+}
+
+/* Large headings subtly breathe into view, not "bouncy". */
+body.vt-experience-ready h1 span,
+body.vt-experience-ready h2 span{
+  text-shadow:0 0 26px rgba(47,230,200,.08);
+}
+
+/* Animated card edge sweep for key surfaces. */
+body.vt-experience-ready .service,
+body.vt-experience-ready .scope-card,
+body.vt-experience-ready .hub-card,
+body.vt-experience-ready .panel,
+body.vt-experience-ready .creator-network,
+body.vt-experience-ready .service-network,
+body.vt-experience-ready .diagnostic-card{
+  position:relative;
+  overflow:hidden;
+}
+body.vt-experience-ready .service::before,
+body.vt-experience-ready .scope-card::before,
+body.vt-experience-ready .hub-card::before,
+body.vt-experience-ready .panel::before,
+body.vt-experience-ready .diagnostic-card::before{
+  content:"";
+  position:absolute;
+  inset:-1px auto -1px -35%;
+  width:28%;
+  pointer-events:none;
+  opacity:0;
+  background:linear-gradient(105deg,transparent,rgba(47,230,200,.08),transparent);
+  transform:skewX(-18deg);
+  transition:opacity .2s ease;
+}
+body.vt-experience-ready .service:hover::before,
+body.vt-experience-ready .scope-card:hover::before,
+body.vt-experience-ready .hub-card:hover::before,
+body.vt-experience-ready .panel:hover::before,
+body.vt-experience-ready .diagnostic-card:hover::before{
+  opacity:1;
+  animation:vt-edge-sweep .85s var(--vt-ease) forwards;
+}
+
+/* Hardware-photo parallax illusion for the existing lead-image system. */
+body.vt-experience-ready[class*="vt-page-"] main .wrap::before{
+  background-size:108% auto;
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.34),
+    inset 0 0 0 1px rgba(47,230,200,.04);
+  transition:background-size .8s var(--vt-ease),filter .8s var(--vt-ease);
+}
+body.vt-experience-ready[class*="vt-page-"] main .wrap:hover::before{
+  background-size:112% auto;
+  filter:saturate(1.06) contrast(1.02);
+}
+
+/* Diagnostic telemetry feels alive. */
+body.vt-page-home.vt-experience-ready .sensor-row em,
+body.vt-page-home.vt-experience-ready .mark-bars em,
+body.vt-page-home.vt-experience-ready .crystal-row em,
+body.vt-page-home.vt-experience-ready .mem-progress em{
+  transform-origin:left;
+  animation:vt-meter-in 1.15s var(--vt-ease) both;
+}
+body.vt-page-home.vt-experience-ready .score-ring{
+  animation:vt-soft-glow 4s ease-in-out infinite;
+}
+body.vt-page-home.vt-experience-ready .diagnostic-swipe-hint b{
+  display:inline-block;
+  animation:vt-nudge 1.7s ease-in-out infinite;
+}
+
+/* Creator "live" status stays intentionally red but gets signal energy. */
+body.vt-page-creatorhub.vt-experience-ready .dot,
+body.vt-page-streamscan.vt-experience-ready .dot,
+body.vt-page-home.vt-experience-ready .creator-dot,
+body.vt-page-home.vt-experience-ready .creator-hub-live-dot{
+  animation:vt-live-pulse 1.9s ease-in-out infinite;
+}
+
+/* Sticky narrative feeling on larger screens. */
+@media(min-width:900px){
+  body.vt-page-home.vt-experience-ready .diagnostic-cards > .label,
+  body.vt-page-home.vt-experience-ready .diagnostic-cards > h2{
+    position:relative;
+    z-index:2;
+  }
+  body.vt-page-streaming.vt-experience-ready .panel,
+  body.vt-page-creatorhub.vt-experience-ready .directory{
+    transform-origin:center top;
+  }
+}
+
+/* Keyframes */
+@keyframes vt-signal-pulse{
+  0%,100%{transform:scaleX(.35);opacity:.35}
+  45%{transform:scaleX(1);opacity:1}
+}
+@keyframes vt-edge-sweep{
+  from{left:-35%}
+  to{left:120%}
+}
+@keyframes vt-meter-in{
+  from{transform:scaleX(.08);opacity:.35}
+  to{transform:scaleX(1);opacity:1}
+}
+@keyframes vt-soft-glow{
+  0%,100%{filter:drop-shadow(0 0 0 rgba(47,230,200,0))}
+  50%{filter:drop-shadow(0 0 12px rgba(47,230,200,.18))}
+}
+@keyframes vt-nudge{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(6px)}
+}
+@keyframes vt-live-pulse{
+  0%,100%{box-shadow:0 0 5px rgba(255,88,109,.45);opacity:.82}
+  50%{box-shadow:0 0 15px rgba(255,88,109,.9);opacity:1}
+}
+
+/* Mobile: keep the energy, drop expensive/awkward effects. */
+@media(max-width:760px){
+  body.vt-experience-ready::after{width:28rem;height:28rem;opacity:.65}
+  [data-vt-tilt]:hover{--vt-lift:0px}
+  body.vt-experience-ready[class*="vt-page-"] main .wrap::before,
+  body.vt-experience-ready[class*="vt-page-"] main .wrap:hover::before{
+    background-size:cover;
+    filter:none;
+  }
+}
+
+/* Accessibility / low-data first. */
+@media(prefers-reduced-motion:reduce){
+  .vt-reveal{
+    opacity:1!important;
+    --vt-reveal-y:0px!important;
+    --vt-reveal-scale:1!important;
+    --vt-tilt-x:0deg!important;
+    --vt-tilt-y:0deg!important;
+    --vt-lift:0px!important;
+    transition:none!important;
+  }
+  .vt-scroll-progress{display:none}
+  body.vt-experience-ready::after{display:none}
+  body.vt-experience-ready .hero::after,
+  body.vt-experience-ready main> .wrap > header::after,
+  body.vt-experience-ready .dot,
+  body.vt-experience-ready .creator-dot,
+  body.vt-experience-ready .creator-hub-live-dot,
+  body.vt-page-home.vt-experience-ready .sensor-row em,
+  body.vt-page-home.vt-experience-ready .mark-bars em,
+  body.vt-page-home.vt-experience-ready .crystal-row em,
+  body.vt-page-home.vt-experience-ready .mem-progress em,
+  body.vt-page-home.vt-experience-ready .score-ring,
+  body.vt-page-home.vt-experience-ready .diagnostic-swipe-hint b{
+    animation:none!important;
+  }
+}
+@media(prefers-reduced-data:reduce){
+  body.vt-experience-ready::before,
+  body.vt-experience-ready::after{display:none}
+}

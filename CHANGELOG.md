@@ -214,18 +214,12 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Kept the launch-gated Store excluded from the V2 sitemap and kept Exposure Scan included.
 - This correction prevents the V2 sitemap from regressing editorial URL discovery when it is eventually merged to production.
 
-### Phase 3 — creator ecosystem consolidation, batch 3 — 2026-09-19
-- Added a shared creator ecosystem navigator linking Creator Hub, Streaming Support and Stream Scan.
-- Added visible creator breadcrumbs and matching `BreadcrumbList` structured data across all three creator-facing pages.
-- Kept Creator Hub focused on discovery, Streaming Support focused on paid technical help and Stream Scan positioned as an optional diagnostic helper.
-- Preserved all existing live-stream feed logic, Stream Scan logic, pricing, contact CTAs and creator community links.
-- Added `creator-network.css` as the shared presentation layer for the creator hierarchy.
-- Made no Supabase schema, streamer refresh, Store/Builder, customer-account or admin changes.
-
-### Phase 3 — creator visual alignment correction — 2026-09-19
-- Reworked the Creator Hub, Streaming Support and Stream Scan visual system to match the wider VoltTech V2 brand language.
-- Replaced the purple/pink-led creator palette with VoltTech teal, dark neutral panels and restrained secondary accents.
-- Aligned borders, cards, buttons, hover states, typography emphasis and background treatment with the core service pages.
-- Kept red only for genuine live/status signals and limited secondary colour to functional accents.
-- Bumped creator CSS asset versions to v2 so Android/browser caches receive the corrected design immediately.
-- Preserved all creator content, live feed behaviour, Stream Scan logic, support pricing and contact flows.
+### Phase 3 — VoltTech Experience System, batch 3 — 2026-09-20
+- Introduced `volttech-experience.css` and `volttech-experience.js` as a shared premium interaction layer for VoltTech V2.
+- Added scroll-progress telemetry, staged section reveals, subtle card depth/tilt on fine-pointer devices, animated signal accents, ambient technical grid/glow treatment and hardware-image depth.
+- Added animated diagnostic telemetry and live-signal treatment to the existing homepage without changing homepage content or business logic.
+- Activated the shared experience system on the homepage, all five core PC service pages, Creator Hub, Streaming Support and Stream Scan.
+- Reworked the creator visual system to be teal-first and consistent with the wider VoltTech V2 identity while preserving creator-specific live/status signals.
+- Preserved all SEO URLs, service pricing, WhatsApp/email flows, diagnostics, live creator data, Store/Builder gates, Supabase behaviour and customer/account logic.
+- Motion is automatically reduced or disabled for `prefers-reduced-motion`, small/mobile interaction constraints and reduced-data environments.
+- The shared system is intentionally lightweight and dependency-free so future V2 pages can inherit the same interaction language without adding a framework.
