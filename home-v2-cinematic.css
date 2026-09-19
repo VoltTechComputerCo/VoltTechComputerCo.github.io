@@ -1,0 +1,408 @@
+/* VoltTech V2 — Phase 3 Batch 4
+   Homepage cinematic experience. Mobile-first, no framework. */
+
+.vt-scroll-progress{display:none!important}
+
+/* ===== CINEMATIC HERO ===== */
+.vt-home-cinematic{
+  position:relative;
+  margin:16px -20px 0;
+  min-height:min(760px,88svh);
+  overflow:hidden;
+  border-top:1px solid rgba(47,230,200,.22);
+  border-bottom:1px solid rgba(47,230,200,.22);
+  background:#030607;
+}
+.vt-home-cinematic-media{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+.vt-home-cinematic-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1.04);
+  filter:saturate(1.05) contrast(1.05) brightness(.76);
+}
+.vt-home-cinematic-media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(2,5,6,.22),rgba(2,5,6,.38) 35%,rgba(2,5,6,.94) 88%),
+    linear-gradient(90deg,rgba(2,5,6,.92),rgba(2,5,6,.36) 68%,rgba(2,5,6,.22));
+}
+.vt-home-cinematic-grid{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.26;
+  background-image:
+    linear-gradient(rgba(47,230,200,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(47,230,200,.05) 1px,transparent 1px);
+  background-size:30px 30px;
+  mask-image:linear-gradient(to bottom,#000,transparent 82%);
+}
+.vt-home-cinematic-copy{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  min-height:min(760px,88svh);
+  padding:28px 20px 34px;
+}
+.vt-home-cinematic-kicker{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-bottom:11px;
+  color:var(--teal);
+  font:700 9px var(--mono);
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+.vt-home-cinematic-kicker::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:var(--teal);
+  box-shadow:12px 0 0 rgba(47,230,200,.3);
+}
+.vt-home-cinematic h1{
+  margin:0;
+  max-width:850px;
+  font-size:clamp(42px,12vw,86px);
+  line-height:.88;
+  letter-spacing:-.055em;
+  text-wrap:balance;
+}
+.vt-home-cinematic h1 span{
+  display:block;
+  color:var(--teal);
+}
+.vt-home-cinematic .vt-home-lead{
+  max-width:640px;
+  margin-top:16px;
+  color:#b8cbc6;
+  font-size:14px;
+  line-height:1.55;
+}
+.vt-home-cinematic-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:20px;
+  max-width:470px;
+}
+.vt-home-cinematic-actions a{
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(47,230,200,.34);
+  background:rgba(4,12,12,.76);
+  color:#dbe8e5;
+  font:700 9px var(--mono);
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.vt-home-cinematic-actions a:first-child{
+  background:var(--teal);
+  color:#03110e;
+  border-color:var(--teal);
+}
+.vt-home-telemetry{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:6px;
+  margin-top:22px;
+  max-width:540px;
+}
+.vt-home-telemetry div{
+  min-width:0;
+  padding:10px 10px 9px;
+  border:1px solid rgba(47,230,200,.18);
+  background:rgba(3,10,10,.66);
+  backdrop-filter:blur(8px);
+}
+.vt-home-telemetry small{
+  display:block;
+  margin-bottom:4px;
+  color:#63827c;
+  font:700 7px var(--mono);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.vt-home-telemetry b{
+  display:block;
+  color:#eaf4f1;
+  font-size:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.vt-home-scroll-cue{
+  position:absolute;
+  z-index:3;
+  right:16px;
+  bottom:20px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#78938e;
+  font:700 7px var(--mono);
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  writing-mode:vertical-rl;
+}
+.vt-home-scroll-cue::after{
+  content:"";
+  width:1px;
+  height:38px;
+  background:linear-gradient(var(--teal),transparent);
+  animation:vtHomeScroll 1.7s ease-in-out infinite;
+}
+@keyframes vtHomeScroll{
+  0%,100%{transform:scaleY(.35);transform-origin:top;opacity:.35}
+  50%{transform:scaleY(1);opacity:1}
+}
+
+/* ===== MOVING SIGNAL BELT ===== */
+.vt-signal-belt{
+  margin:0 -20px;
+  overflow:hidden;
+  border-top:1px solid #152423;
+  border-bottom:1px solid #152423;
+  background:#07100f;
+}
+.vt-signal-belt-track{
+  display:flex;
+  width:max-content;
+  animation:vtBelt 24s linear infinite;
+}
+.vt-signal-belt span{
+  padding:11px 18px;
+  color:#7f9a95;
+  font:700 8px var(--mono);
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.vt-signal-belt b{color:var(--teal)}
+@keyframes vtBelt{to{transform:translateX(-50%)}}
+
+/* ===== STICKY HARDWARE STORY ===== */
+.vt-hardware-story{
+  position:relative;
+  margin:0 -20px;
+  padding:56px 20px 30px;
+  border-top:0;
+  background:
+    radial-gradient(circle at 50% 0,rgba(47,230,200,.08),transparent 38%),
+    #05090a;
+}
+.vt-hardware-story-head{
+  margin-bottom:22px;
+}
+.vt-hardware-story-head h2{
+  margin:7px 0 9px;
+  font-size:31px;
+  line-height:1.02;
+  letter-spacing:-.035em;
+}
+.vt-hardware-story-head p{
+  max-width:560px;
+  color:#8da49f;
+  font-size:12px;
+  line-height:1.55;
+}
+.vt-hardware-stage{
+  position:sticky;
+  top:72px;
+  z-index:2;
+  height:46svh;
+  min-height:310px;
+  margin:0 0 20px;
+  overflow:hidden;
+  border:1px solid rgba(47,230,200,.22);
+  border-radius:8px;
+  background:#020506;
+  box-shadow:0 22px 60px rgba(0,0,0,.42);
+}
+.vt-hardware-stage-image{
+  position:absolute;
+  inset:0;
+}
+.vt-hardware-stage-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  opacity:1;
+  transform:scale(1.03);
+  transition:opacity .42s ease,transform .7s ease;
+}
+.vt-hardware-stage-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(2,5,6,.12),rgba(2,5,6,.22) 45%,rgba(2,5,6,.87)),
+    linear-gradient(90deg,rgba(2,5,6,.64),transparent 60%);
+}
+.vt-hardware-stage[data-changing="1"] img{
+  opacity:.18;
+  transform:scale(1.08);
+}
+.vt-hardware-stage-ui{
+  position:absolute;
+  inset:auto 0 0;
+  z-index:2;
+  padding:16px;
+}
+.vt-hardware-stage-ui small{
+  color:var(--teal);
+  font:700 8px var(--mono);
+  letter-spacing:.13em;
+}
+.vt-hardware-stage-ui h3{
+  margin:5px 0 8px;
+  font-size:24px;
+  line-height:1;
+}
+.vt-hardware-stage-ui p{
+  max-width:500px;
+  margin:0;
+  color:#aabdb9;
+  font-size:11px;
+  line-height:1.45;
+}
+.vt-hardware-meters{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:6px;
+  margin-top:12px;
+}
+.vt-hardware-meter{
+  padding:8px 9px;
+  border:1px solid rgba(47,230,200,.16);
+  background:rgba(3,10,10,.72);
+}
+.vt-hardware-meter span{
+  display:block;
+  color:#607c76;
+  font:700 6.5px var(--mono);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.vt-hardware-meter b{
+  display:block;
+  margin-top:3px;
+  color:#e9f3f0;
+  font-size:11px;
+}
+
+.vt-hardware-steps{
+  display:grid;
+  gap:13px;
+}
+.vt-hardware-step{
+  position:relative;
+  min-height:50svh;
+  padding:22px 18px;
+  border:1px solid rgba(47,230,200,.12);
+  background:linear-gradient(145deg,rgba(47,230,200,.035),rgba(7,13,14,.94));
+  border-radius:7px;
+  opacity:.56;
+  transition:opacity .3s ease,border-color .3s ease,transform .3s ease;
+}
+.vt-hardware-step.active{
+  opacity:1;
+  border-color:rgba(47,230,200,.44);
+  transform:translateY(-2px);
+}
+.vt-hardware-step small{
+  display:block;
+  color:var(--teal);
+  font:700 8px var(--mono);
+  letter-spacing:.14em;
+}
+.vt-hardware-step h3{
+  margin:8px 0 8px;
+  font-size:25px;
+  line-height:1.03;
+}
+.vt-hardware-step p{
+  margin:0;
+  color:#8fa7a2;
+  font-size:12px;
+  line-height:1.55;
+}
+.vt-hardware-step a{
+  display:inline-flex;
+  margin-top:15px;
+  color:var(--teal);
+  font:700 8px var(--mono);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+/* ===== TRANSITION INTO EXISTING SITE ===== */
+.vt-home-existing{
+  position:relative;
+}
+.vt-home-existing::before{
+  content:"";
+  display:block;
+  height:1px;
+  margin:0 -20px;
+  background:linear-gradient(90deg,transparent,var(--teal),transparent);
+  opacity:.45;
+}
+
+/* Desktop scales up, mobile is already primary. */
+@media(min-width:760px){
+  .vt-home-cinematic{
+    margin-left:0;
+    margin-right:0;
+    border:1px solid rgba(47,230,200,.22);
+    border-radius:12px;
+  }
+  .vt-home-cinematic-copy{padding:54px 52px 48px}
+  .vt-home-cinematic h1{font-size:clamp(58px,7vw,94px)}
+  .vt-home-cinematic .vt-home-lead{font-size:16px}
+  .vt-signal-belt{margin-left:0;margin-right:0}
+  .vt-hardware-story{
+    margin-left:0;
+    margin-right:0;
+    padding:70px 0 40px;
+  }
+  .vt-hardware-story-inner{
+    display:grid;
+    grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);
+    gap:28px;
+    align-items:start;
+  }
+  .vt-hardware-stage{
+    top:86px;
+    height:68vh;
+    min-height:520px;
+    margin:0;
+  }
+  .vt-hardware-steps{padding-top:6px}
+  .vt-hardware-step{min-height:62vh;padding:36px 30px}
+  .vt-hardware-step h3{font-size:34px}
+  .vt-hardware-stage-ui{padding:24px}
+  .vt-hardware-stage-ui h3{font-size:34px}
+}
+
+/* Accessibility: keep the visual structure, only stop motion. */
+@media(prefers-reduced-motion:reduce){
+  .vt-home-scroll-cue::after,
+  .vt-signal-belt-track{animation:none!important}
+  .vt-hardware-stage-image img,
+  .vt-hardware-step{transition:none!important}
+}

@@ -230,3 +230,12 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Added an explicit `?vtmotion=full` preview override for testing full animation on devices that report reduced-motion preferences.
 - Kept normal production behaviour respectful of `prefers-reduced-motion`.
 - Bumped the shared Experience CSS/JS references to v2 to avoid stale branch/browser asset caches.
+
+### Phase 3 — homepage cinematic redesign, batch 4 — 2026-09-20
+- Removed the visible teal scroll-progress bar from the V2 homepage experience.
+- Added a new full-bleed, image-led VoltTech hero using existing repository hardware photography.
+- Added an animated signal belt for an immediate high-energy technology-brand feel.
+- Added a mobile-first sticky hardware story: the visual stage, copy and telemetry change as the customer scrolls through platform, thermals, upgrade and creator-system layers.
+- Added real VoltTech/PC imagery from the existing repository rather than decorative gradients alone.
+- Kept existing homepage services, diagnostics, reviews, Creator Hub feed and contact sections intact below the new cinematic layer.
+- Preserved direct WhatsApp conversion, existing public URLs, analytics, SEO metadata and all backend behaviour.
