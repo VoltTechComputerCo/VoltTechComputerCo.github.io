@@ -221,3 +221,11 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Preserved all existing live-stream feed logic, Stream Scan logic, pricing, contact CTAs and creator community links.
 - Added `creator-network.css` as the shared presentation layer for the creator hierarchy.
 - Made no Supabase schema, streamer refresh, Store/Builder, customer-account or admin changes.
+
+### Phase 3 — creator visual alignment correction — 2026-09-19
+- Reworked the Creator Hub, Streaming Support and Stream Scan visual system to match the wider VoltTech V2 brand language.
+- Replaced the purple/pink-led creator palette with VoltTech teal, dark neutral panels and restrained secondary accents.
+- Aligned borders, cards, buttons, hover states, typography emphasis and background treatment with the core service pages.
+- Kept red only for genuine live/status signals and limited secondary colour to functional accents.
+- Bumped creator CSS asset versions to v2 so Android/browser caches receive the corrected design immediately.
+- Preserved all creator content, live feed behaviour, Stream Scan logic, support pricing and contact flows.
