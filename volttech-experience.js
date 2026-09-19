@@ -6,10 +6,13 @@
   const body = d.body;
   if (!body) return;
 
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const forceMotion = new URLSearchParams(location.search).get('vtmotion') === 'full';
+  const reducedMotion = !forceMotion && matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = matchMedia('(pointer:fine)').matches;
 
   body.classList.add('vt-experience-ready');
+  if (forceMotion) body.classList.add('vt-force-motion');
+  body.dataset.vtMotion = reducedMotion ? 'reduced' : 'full';
 
   // Decorative ambient layers are explicit elements so they never overwrite
   // existing page ::before/::after artwork.

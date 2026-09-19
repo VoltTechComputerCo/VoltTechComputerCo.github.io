@@ -223,3 +223,10 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Preserved all SEO URLs, service pricing, WhatsApp/email flows, diagnostics, live creator data, Store/Builder gates, Supabase behaviour and customer/account logic.
 - Motion is automatically reduced or disabled for `prefers-reduced-motion`, small/mobile interaction constraints and reduced-data environments.
 - The shared system is intentionally lightweight and dependency-free so future V2 pages can inherit the same interaction language without adding a framework.
+
+### Phase 3 — Experience System runtime visibility fix — 2026-09-20
+- Fixed the ambient technical grid and pointer glow being layered behind page backgrounds.
+- Strengthened the static mobile visual treatment so the Experience System remains visibly present even without hover interactions.
+- Added an explicit `?vtmotion=full` preview override for testing full animation on devices that report reduced-motion preferences.
+- Kept normal production behaviour respectful of `prefers-reduced-motion`.
+- Bumped the shared Experience CSS/JS references to v2 to avoid stale branch/browser asset caches.

@@ -16,7 +16,17 @@
 .vt-pointer-glow{
   position:fixed;
   pointer-events:none;
-  z-index:-2;
+  z-index:0;
+}
+body.vt-experience-ready{
+  isolation:isolate;
+}
+body.vt-experience-ready > nav,
+body.vt-experience-ready > main,
+body.vt-experience-ready > .wrap,
+body.vt-experience-ready > footer{
+  position:relative;
+  z-index:1;
 }
 .vt-ambient-grid{
   inset:0;
@@ -272,4 +282,60 @@ body.vt-page-home.vt-experience-ready .creator-hub-live-dot{
 @media(prefers-reduced-data:reduce){
   .vt-ambient-grid,
   .vt-pointer-glow{display:none}
+}
+
+
+/* Runtime-fix visibility layer: mobile should look different even before motion. */
+@media(max-width:760px){
+  .vt-ambient-grid{opacity:.26;background-size:34px 34px}
+  .vt-pointer-glow{
+    display:block;
+    left:78vw;
+    top:22vh;
+    width:24rem;
+    height:24rem;
+    opacity:.85;
+    background:radial-gradient(circle,rgba(47,230,200,.13),rgba(47,230,200,.035) 38%,transparent 70%);
+  }
+  body.vt-experience-ready .service,
+  body.vt-experience-ready .scope-card,
+  body.vt-experience-ready .panel,
+  body.vt-experience-ready .hub-card,
+  body.vt-experience-ready .creator-network,
+  body.vt-experience-ready .service-network{
+    box-shadow:0 12px 34px rgba(0,0,0,.22),inset 0 0 0 1px rgba(47,230,200,.025);
+  }
+}
+
+/* Explicit preview opt-in: ?vtmotion=full.
+   This is only an override when the viewer deliberately requests full motion. */
+@media(prefers-reduced-motion:reduce){
+  body.vt-force-motion .vt-scroll-progress{display:block}
+  body.vt-force-motion .vt-pointer-glow{display:block}
+  body.vt-force-motion .vt-reveal{
+    opacity:0!important;
+    --vt-reveal-y:26px!important;
+    --vt-reveal-scale:.985!important;
+    transition:
+      opacity .7s var(--vt-ease)!important,
+      transform .82s var(--vt-ease)!important,
+      border-color .22s ease!important,
+      box-shadow .22s ease!important,
+      background-color .22s ease!important;
+  }
+  body.vt-force-motion .vt-reveal.vt-in{
+    opacity:1!important;
+    --vt-reveal-y:0px!important;
+    --vt-reveal-scale:1!important;
+  }
+  body.vt-force-motion .vt-hero-signal{animation:vt-signal-pulse 3.6s ease-in-out infinite!important}
+  body.vt-force-motion .dot,
+  body.vt-force-motion .creator-dot,
+  body.vt-force-motion .creator-hub-live-dot{animation:vt-live-pulse 1.9s ease-in-out infinite!important}
+  body.vt-force-motion.vt-page-home .sensor-row em,
+  body.vt-force-motion.vt-page-home .mark-bars em,
+  body.vt-force-motion.vt-page-home .crystal-row em,
+  body.vt-force-motion.vt-page-home .mem-progress em{animation:vt-meter-in 1.15s var(--vt-ease) both!important}
+  body.vt-force-motion.vt-page-home .score-ring{animation:vt-soft-glow 4s ease-in-out infinite!important}
+  body.vt-force-motion.vt-page-home .diagnostic-swipe-hint b{animation:vt-nudge 1.7s ease-in-out infinite!important}
 }
