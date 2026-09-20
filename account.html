@@ -1,7 +1,87 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Customer Account | VoltTech Computer Co.</title><meta name="robots" content="noindex,nofollow"><link rel="icon" href="favicon-512.png"><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="account-v3.css?v=3.1.1"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script defer src="account.js"></script><script defer src="account-dashboard.js?v=5.2.0"></script><script defer src="admin-shortcut.js"></script><script defer src="account-filters.js?v=3.2.0"></script><link rel="stylesheet" href="commerce-ui.css?v=3.2.0"><script defer src="volttech-dialog.js?v=3.2.0"></script><link rel="stylesheet" href="v4-nav.css?v=4.0.0"><link rel="stylesheet" href="notifications.css?v=5.2.0"><script defer src="account-v4-nav.js?v=4.0.0"></script><script defer src="notifications.js?v=5.2.0"></script><link rel="stylesheet" href="portal-shell.css?v=5.2.0"><script defer src="portal-shell.js?v=5.2.0"></script></head><body><nav><div class="wrap"><a class="brand" href="index.html"><img src="brand/VoltTech_Full_Logo_Transparent.png" alt="VoltTech Computer Co."><span><b>Volt</b>Tech Computer Co.</span></a><a class="home" href="index.html">← Home</a></div></nav><main>
-<section id="authGate" class="wrap auth-shell" hidden><div class="auth-card"><h1>Your VoltTech account</h1><p>One place for PC builds, quotes, invoices, payments, orders and service history.</p><button class="btn primary google" id="googleSignIn" type="button">Continue with Google</button><div class="divider">or use email</div><form id="authForm"><div class="field"><label for="authEmail">Email</label><input id="authEmail" type="email" autocomplete="email" required></div><div class="field"><label for="authPassword">Password</label><input id="authPassword" type="password" autocomplete="current-password" minlength="8" required></div><div class="auth-actions"><button class="btn primary" type="submit">Sign in</button><button class="btn secondary" id="createAccount" type="button">Create account</button></div></form><div class="auth-links"><button id="forgotPassword" type="button">Forgot password?</button><a href="legal.html">Legal & privacy</a></div><p id="authStatus" role="status" aria-live="polite"></p><p class="legal-note">By creating an acknowledge our <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Notice</a>.</p></div></section>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Customer Account | VoltTech Computer Co.</title><meta name="robots" content="noindex,nofollow"><link rel="icon" href="favicon-512.png"><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="account-v3.css?v=3.1.1"><link rel="stylesheet" href="account-phase4.css?v=1" data-vt-account-phase4="1"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script defer src="account.js"></script><script defer src="account-dashboard.js?v=5.2.0"></script><script defer src="admin-shortcut.js"></script><script defer src="account-filters.js?v=3.2.0"></script><link rel="stylesheet" href="commerce-ui.css?v=3.2.0"><script defer src="volttech-dialog.js?v=3.2.0"></script><link rel="stylesheet" href="v4-nav.css?v=4.0.0"><link rel="stylesheet" href="notifications.css?v=5.2.0"><script defer src="account-v4-nav.js?v=4.0.0"></script><script defer src="notifications.js?v=5.2.0"></script><link rel="stylesheet" href="portal-shell.css?v=5.2.0"><script defer src="portal-shell.js?v=5.2.0"></script></head><body><nav><div class="wrap"><a class="brand" href="index.html"><img src="brand/VoltTech_Full_Logo_Transparent.png" alt="VoltTech Computer Co."><span><b>Volt</b>Tech Computer Co.</span></a><a class="home" href="index.html">← Home</a></div></nav><main>
+<section id="authGate" class="wrap auth-shell" hidden><div class="auth-card"><h1>Your VoltTech account</h1><p>One place for PC builds, quotes, invoices, payments, orders and service history.</p><button class="btn primary google" id="googleSignIn" type="button">Continue with Google</button><div class="divider">or use email</div><form id="authForm"><div class="field"><label for="authEmail">Email</label><input id="authEmail" type="email" autocomplete="email" required></div><div class="field"><label for="authPassword">Password</label><input id="authPassword" type="password" autocomplete="current-password" minlength="8" required></div><div class="auth-actions"><button class="btn primary" type="submit">Sign in</button><button class="btn secondary" id="createAccount" type="button">Create account</button></div></form><div class="auth-links"><button id="forgotPassword" type="button">Forgot password?</button><a href="legal.html">Legal & privacy</a></div><p id="authStatus" role="status" aria-live="polite"></p><p class="legal-note">By creating an account, you acknowledge our <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Notice</a>.</p></div></section>
 <section id="recoveryGate" class="wrap auth-shell" hidden><div class="auth-card"><h1>Choose a new password</h1><p>Enter a new password for your VoltTech account.</p><form id="recoveryForm"><div class="field"><label for="newPassword">New password</label><input id="newPassword" type="password" autocomplete="new-password" minlength="8" required></div><div class="button-row"><button class="btn primary" type="submit">Update password</button></div></form><p id="recoveryStatus" role="status" aria-live="polite"></p></div></section>
-<div id="accountHub" class="wrap" hidden><header class="profile-head"><img class="avatar" id="accountAvatar" alt="" hidden><div><h1 id="accountName">VoltTech customer</h1><p id="accountEmail"></p></div></header><div class="account-primary-nav" role="navigation" aria-label="Customer account"><button class="tab active" data-tab="overview" type="button">Overview</button><a class="tab" href="activity.html">Activity</a><a class="tab" href="builds.html">PC Builds</a><a class="tab" href="documents.html">Documents</a><button class="tab" id="accountMenuToggle" type="button" aria-expanded="false">Account</button><a class="tab" id="adminShortcut" href="admin.html" hidden>Admin Hub</a></div><div id="accountMenu" class="account-more-panel" hidden><div class="account-more-grid"><button class="tab" data-tab="purchases" type="button">Orders</button><button class="tab" data-tab="services" type="button">Service Jobs</button><button class="tab" data-tab="profile" type="button">Profile</button><button class="tab" data-tab="locations" type="button">Addresses</button><button class="tab" data-tab="security" type="button">Security</button><a class="tab" href="privacy-center.html">Privacy & Data</a></div></div><section class="panel" data-panel="overview"><h2 class="section-title">Account overview</h2><p class="section-copy">Anything that needs your attention appears first. Everything else is one tap away.</p><div id="overviewAction" class="dash-card action" data-state="clear"><small>Action required</small><strong>Checking your account…</strong><span>Please wait a moment.</span></div><div class="dashboard-grid portal-stack-gap"><a class="dash-card" href="builds.html"><small>PC Builds</small><strong id="countBuilds">—</strong><span>Saved configurations and existing build records</span></a><a class="dash-card" href="quotes.html"><small>Quotes</small><strong id="countQuotes">—</strong><span>Review and approve quotations</span></a><a class="dash-card" href="documents.html"><small>Invoices & Documents</small><strong id="countInvoices">—</strong><span>Printable business documents</span></a><button class="dash-card" data-tab="purchases" type="button"><small>Orders</small><strong id="countOrders">—</strong><span>Purchases and payment status</span></button><button class="dash-card" data-tab="services" type="button"><small>Service Jobs</small><strong id="countJobs">—</strong><span>Repair and support history</span></button><a class="dash-card" href="privacy-center.html"><small>Privacy & Data</small><strong>↗</strong><span>Export data or manage account deletion</span></a></div><div class="quick-row"><a class="btn primary" href="activity.html">View activity</a><a class="btn secondary" href="documents.html">Document vault</a></div><div id="deletionNotice" class="notice warn portal-notice-gap" hidden></div></section>
+<div id="accountHub" class="wrap account-phase4" hidden>
+<header class="profile-head account-welcome">
+  <img class="avatar" id="accountAvatar" alt="" hidden>
+  <div class="account-welcome-copy">
+    <div class="account-kicker">// MY VOLTTECH</div>
+    <h1 id="accountName">VoltTech customer</h1>
+    <p id="accountEmail"></p>
+  </div>
+  <a class="account-home-link" href="index.html">VoltTech Home ↗</a>
+</header>
+
+<div class="account-primary-nav" role="navigation" aria-label="Customer account">
+  <button class="tab active" data-tab="overview" type="button">Home</button>
+  <a class="tab" href="activity.html">Activity</a>
+  <a class="tab" href="documents.html">Documents</a>
+  <button class="tab" id="accountMenuToggle" type="button" aria-expanded="false">Account</button>
+  <a class="tab admin-only-tab" id="adminShortcut" href="admin.html" hidden>Admin</a>
+</div>
+
+<div id="accountMenu" class="account-more-panel" hidden>
+  <div class="account-more-head"><span>// ACCOUNT SETTINGS</span><small>Profile, addresses, security and privacy</small></div>
+  <div class="account-more-grid">
+    <button class="tab" data-tab="profile" type="button">Profile</button>
+    <button class="tab" data-tab="locations" type="button">Addresses</button>
+    <button class="tab" data-tab="security" type="button">Security</button>
+    <a class="tab" href="privacy-center.html">Privacy & Data</a>
+    <a class="tab" href="builds.html">Saved Build History</a>
+  </div>
+</div>
+
+<section class="panel account-overview" data-panel="overview">
+  <div class="account-overview-head">
+    <div>
+      <div class="account-kicker">// ACCOUNT HOME</div>
+      <h2 class="section-title">What needs your attention?</h2>
+      <p class="section-copy">Important quotes, invoices and account actions appear here first.</p>
+    </div>
+  </div>
+
+  <div id="overviewAction" class="dash-card action account-action-card" data-state="clear">
+    <small>Checking account</small>
+    <strong>Checking your account…</strong>
+    <span>Please wait a moment.</span>
+  </div>
+
+  <div class="account-section-label"><span>YOUR VOLTTECH</span><small>Everything important, without the clutter.</small></div>
+  <div class="dashboard-grid account-core-grid">
+    <a class="dash-card account-core-card" href="quotes.html">
+      <small>Quotes & approvals</small>
+      <strong id="countQuotes">—</strong>
+      <span>Review work waiting for your decision.</span>
+      <em>Open quotes →</em>
+    </a>
+    <a class="dash-card account-core-card" href="documents.html">
+      <small>Documents</small>
+      <strong id="countInvoices">—</strong>
+      <span>Invoices, receipts, quotes and service records.</span>
+      <em>Open vault →</em>
+    </a>
+    <button class="dash-card account-core-card" data-tab="services" type="button">
+      <small>Service jobs</small>
+      <strong id="countJobs">—</strong>
+      <span>Repairs, diagnostics and technical support.</span>
+      <em>View jobs →</em>
+    </button>
+    <button class="dash-card account-core-card" data-tab="purchases" type="button">
+      <small>Orders</small>
+      <strong id="countOrders">—</strong>
+      <span>Your purchase and payment history.</span>
+      <em>View orders →</em>
+    </button>
+  </div>
+
+  <div class="account-secondary-row">
+    <a class="account-secondary-link" href="activity.html"><b>Activity</b><span>See everything that changed on your account.</span><i>→</i></a>
+    <a class="account-secondary-link" href="builds.html"><b>Saved build history</b><span><strong id="countBuilds">—</strong> existing build records.</span><i>→</i></a>
+    <a class="account-secondary-link" href="privacy-center.html"><b>Privacy & Data</b><span>Export data or manage account deletion.</span><i>→</i></a>
+  </div>
+
+  <div id="deletionNotice" class="notice warn portal-notice-gap" hidden></div>
+</section>
 <section class="panel" data-panel="profile" hidden><h2 class="section-title">Customer profile</h2><p class="section-copy">Contact and billing details used for your VoltTech records.</p><form id="profileForm"><div class="grid"><div class="field"><label for="profileName">Full name</label><input id="profileName" autocomplete="name" maxlength="120"></div><div class="field"><label for="companyName">Company name</label><input id="companyName" autocomplete="organization" maxlength="160"></div><div class="field"><label for="profilePhone">Phone / WhatsApp</label><input id="profilePhone" type="tel" autocomplete="tel" maxlength="40"></div><div class="field"><label for="profileSuburb">Primary suburb</label><input id="profileSuburb" autocomplete="address-level3" maxlength="120"></div><div class="field"><label for="billingEmail">Billing / receipt email</label><input id="billingEmail" type="email" autocomplete="email"></div><div class="field"><label for="preferredContact">Preferred contact</label><select id="preferredContact"><option value="whatsapp">WhatsApp</option><option value="phone">Phone</option><option value="email">Email</option></select></div></div><div class="button-row"><button class="btn primary" type="submit">Save profile</button></div></form></section>
 <section class="panel" data-panel="locations" hidden><h2 class="section-title">Delivery locations</h2><p class="section-copy">Saved delivery and billing locations for future orders and on-site work.</p><div id="addressList" class="history-list"></div><div class="subsection"><h3 id="addressFormTitle">Add delivery location</h3><form id="addressForm"><input id="addressId" type="hidden"><div class="grid"><div class="field"><label for="addressLabel">Label</label><input id="addressLabel" maxlength="80"></div><div class="field"><label for="recipientName">Recipient</label><input id="recipientName" autocomplete="name"></div><div class="field"><label for="addressPhone">Phone</label><input id="addressPhone" type="tel" autocomplete="tel"></div><div class="field"><label for="addressLine1">Address line 1</label><input id="addressLine1" autocomplete="address-line1" required></div><div class="field"><label for="addressLine2">Address line 2</label><input id="addressLine2" autocomplete="address-line2"></div><div class="field"><label for="addressSuburb">Suburb</label><input id="addressSuburb" autocomplete="address-level3"></div><div class="field"><label for="addressCity">City</label><input id="addressCity" autocomplete="address-level2" required></div><div class="field"><label for="addressProvince">Province</label><input id="addressProvince" autocomplete="address-level1"></div><div class="field"><label for="postalCode">Postal code</label><input id="postalCode" autocomplete="postal-code"></div><div class="field"><label for="addressCountry">Country</label><input id="addressCountry" autocomplete="country-name"></div></div><label class="check"><input id="defaultShipping" type="checkbox"> Use as default delivery location</label><div class="button-row"><button class="btn primary" type="submit">Save location</button><button class="btn secondary" id="cancelAddressEdit" type="button" hidden>Cancel edit</button></div></form></div></section>
 <section class="panel" data-panel="purchases" hidden><h2 class="section-title">Orders</h2><p class="section-copy">Products, orders and payment status linked to this account.</p><div class="vt-searchbar"><label class="vt-search"><input id="accountOrderSearch" type="search" placeholder="Search order number, item or status…" autocomplete="off"></label></div><div id="ordersList" class="history-list"></div></section><section class="panel" data-panel="services" hidden><h2 class="section-title">Service jobs</h2><p class="section-copy">Repair, diagnostics, upgrade and creator-support work linked to this account.</p><div class="vt-searchbar"><label class="vt-search"><input id="accountJobSearch" type="search" placeholder="Search job number, device, service or status…" autocomplete="off"></label></div><div id="jobsList" class="history-list"></div></section>

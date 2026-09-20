@@ -271,3 +271,13 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Preserved the existing `noindex,follow` policy on legal pages so they remain available to customers without becoming search landing pages.
 - Left the working `privacy-policy.html` and old streaming-page redirect aliases unchanged because their canonical + redirect behaviour is already correct.
 - Made no changes to legal wording, customer records, authentication, Supabase, Store/Builder launch state, quote logic or document workflows.
+
+### Phase 4 — account simplification foundation, batch 1 — 2026-09-20
+- Reorganised the customer account landing page around four primary destinations: Home, Activity, Documents and Account.
+- Moved the paused PC Builder out of primary account navigation and repositioned existing saved builds as historical records rather than an active purchase funnel.
+- Reworked the account overview hierarchy so pending quotes/invoices remain first, followed by Quotes, Documents, Service Jobs and Orders.
+- Moved Activity, Saved Build History and Privacy & Data into a quieter secondary row.
+- Added a compact account-settings drawer for Profile, Addresses, Security, Privacy & Data and Saved Build History.
+- Added a mobile-first Phase 4 account presentation layer without changing existing Supabase, authentication, quote, invoice, order, service-job, notification or deletion logic.
+- Preserved all existing element IDs and `data-tab` hooks used by the account JavaScript.
+- Corrected the account creation legal sentence to read naturally.
