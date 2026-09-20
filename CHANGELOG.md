@@ -255,3 +255,11 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Explicitly marked Signal Scan as free and allowed `max-image-preview:large`.
 - Refreshed Signal Scan's modification date in `sitemap.xml`.
 - Preserved all Signal Scan questions, estimate logic, WhatsApp/email handoff, analytics and diagnostic behaviour.
+
+### Phase 3 — public + customer portal consolidation, batch 7 — 2026-09-20
+- Brought the V2 homepage up to the same search/social preview standard as the service, creator and diagnostic surfaces: large-image previews, dedicated homepage artwork, Twitter/X metadata and representative organization imagery.
+- Brought Exposure Scan into metadata parity using the existing VoltTech security artwork while preserving its entire local-only scan, permission, fingerprint and privacy behaviour.
+- Normalised Account, Quotes, Document Vault, Privacy & Data and gated Checkout to `noindex,nofollow` so private/account-specific surfaces do not pass crawl signals through customer navigation.
+- Kept already-correct private surfaces such as Activity, Saved Builds, Personal Data and Order Status unchanged.
+- Refreshed only the edited public homepage and Exposure Scan modification dates in `sitemap.xml`; private/account pages remain outside the sitemap.
+- Made no service pricing, customer data, Supabase, Store/Builder launch-state, notification, document, checkout or diagnostic-logic changes.
