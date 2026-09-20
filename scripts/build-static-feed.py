@@ -125,6 +125,22 @@ def parse_date_string(value: str) -> datetime | None:
 
     return None
 
+
+def visible_publish_date(html: str) -> datetime | None:
+    """
+    Older STATIC articles keep the publication date in visible copy near the H1
+    rather than JSON-LD/meta. Search a tight window around the first H1 so event
+    dates later in the article cannot be mistaken for the publish date.
+    """
+    h1 = H1_RE.search(html)
+    if not h1:
+        return None
+
+    start = max(0, h1.start() - 1200)
+    end = min(len(html), h1.end() + 1200)
+    window = text_only(html[start:end])
+    return parse_date_string(window)
+
 def git_date(path: Path) -> datetime:
     result = subprocess.run(
         ["git", "log", "-1", "--format=%aI", "--", str(path.relative_to(ROOT))],
@@ -146,12 +162,15 @@ def published_at(html: str, meta: dict[str, str], path: Path) -> datetime:
         meta.get("datepublished", ""),
         *jsonld_dates(html),
     ]
-    # Visible article header is a useful fallback for older STATIC files.
-    candidates.append(text_only(html[:12000]))
     for value in candidates:
         parsed = parse_date_string(value)
         if parsed:
             return parsed
+
+    visible = visible_publish_date(html)
+    if visible:
+        return visible
+
     return git_date(path)
 
 def story(path: Path) -> dict:
