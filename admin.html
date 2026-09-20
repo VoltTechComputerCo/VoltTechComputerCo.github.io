@@ -5,37 +5,24 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>VoltTech Admin Hub</title>
   <meta name="robots" content="noindex,nofollow">
-
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="admin-hub.css?v=1" data-vt-admin-hub="1">
-
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <script defer src="admin.js?v=3.2.0"></script>
   <script defer src="admin-workflow.js?v=3.3.0"></script>
-
   <link rel="stylesheet" href="commerce-ui.css?v=3.3.0">
   <script defer src="volttech-dialog.js?v=3.2.0"></script>
-
   <link rel="stylesheet" href="v4-nav.css?v=4.0.0">
-
   <link rel="stylesheet" href="notifications.css?v=5.2.0">
   <script defer src="notifications.js?v=5.2.0"></script>
-
-  <link rel="stylesheet" href="portal-shell.css?v=5.2.0">
-  <script defer src="portal-shell.js?v=5.2.0"></script>
+  <link rel="stylesheet" href="portal-shell.css?v=6.1.0">
+  <script defer src="portal-shell.js?v=6.1.0"></script>
 </head>
-
 <body>
 <main class="w">
-
   <div class="top">
-    <div>
-      <h1 class="admin-title">VoltTech Admin Hub</h1>
-      <small>Owner operations</small>
-    </div>
-
+    <div><h1 class="admin-title">VoltTech Admin Hub</h1><small>Owner operations</small></div>
     <div class="tools">
       <a class="tool" href="admin.html">Work Queue</a>
       <a class="tool" href="admin-store.html">PC Parts Desk</a>
@@ -45,13 +32,10 @@
       <a class="tool" href="account.html">My Account</a>
     </div>
   </div>
-
   <section id="app" hidden>
-
     <div class="panel" id="workflowPanel">
       <h2>What needs your attention</h2>
       <p class="muted">Start here. Every customer job follows the same path from request to payment, and each card below tells you the next action.</p>
-
       <div class="vt-flow">
         <div class="vt-flow-step"><b>1 · Request</b><span>Customer submits a build or service request.</span></div>
         <div class="vt-flow-step"><b>2 · Quote</b><span>You review it and issue the formal quotation.</span></div>
@@ -59,143 +43,14 @@
         <div class="vt-flow-step"><b>4 · Invoice</b><span>Accepted work becomes an invoice.</span></div>
         <div class="vt-flow-step"><b>5 · Payment</b><span>Payment closes the commercial record.</span></div>
       </div>
-
       <div class="vt-searchbar">
-        <label class="vt-search">
-          <input id="queueSearch" type="search" placeholder="Search active work by customer, build, quote or invoice…" autocomplete="off">
-        </label>
-
-        <select id="queueStage" class="vt-filter">
-          <option value="">All active stages</option>
-          <option value="review">Needs review</option>
-          <option value="draft">Ready to send</option>
-          <option value="waiting">Waiting on customer</option>
-          <option value="invoice">Ready to invoice</option>
-          <option value="payment">Awaiting payment</option>
-        </select>
+        <label class="vt-search"><input id="queueSearch" type="search" placeholder="Search active work by customer, build, quote or invoice…" autocomplete="off"></label>
+        <select id="queueStage" class="vt-filter"><option value="">All active stages</option><option value="review">Needs review</option><option value="draft">Ready to send</option><option value="waiting">Waiting on customer</option><option value="invoice">Ready to invoice</option><option value="payment">Awaiting payment</option></select>
       </div>
-
-      <p id="queueStatus" class="muted"></p>
-      <div id="workQueue" class="vt-queue">
-        <div class="vt-queue-empty">Loading workflow…</div>
-      </div>
+      <p id="queueStatus" class="muted"></p><div id="workQueue" class="vt-queue"><div class="vt-queue-empty">Loading workflow…</div></div>
     </div>
-
-    <div class="panel">
-      <h2>Customer lookup</h2>
-      <p class="muted">Search by name, email, phone, company or suburb. Tap a customer to use them in a new quote.</p>
-
-      <div class="vt-searchbar">
-        <label class="vt-search">
-          <input id="customerLookupSearch" type="search" placeholder="Search customers…" autocomplete="off">
-        </label>
-      </div>
-
-      <div id="customerLookupResults" class="vt-customer-grid"></div>
-    </div>
-
-    <div class="panel">
-      <h2>Create quotation</h2>
-
-      <form id="quoteForm">
-        <div class="grid">
-
-          <div>
-            <label>Customer</label>
-            <div class="vt-picker">
-              <input id="customer" type="hidden">
-
-              <label class="vt-search">
-                <input id="customerSearch" type="search" placeholder="Search customer name or email…" autocomplete="off">
-              </label>
-
-              <div id="customerResults" class="vt-picker-results" hidden></div>
-              <div id="selectedCustomer" class="vt-selected">No customer selected</div>
-            </div>
-          </div>
-
-          <div>
-            <label>Quote type</label>
-            <select id="type">
-              <option value="repair">Repair</option>
-              <option value="system_build">System build</option>
-              <option value="product">Product</option>
-              <option value="service">Service</option>
-            </select>
-          </div>
-
-          <div>
-            <label>Title</label>
-            <input id="title" required>
-          </div>
-
-          <div>
-            <label>Valid until</label>
-            <input id="valid" type="date" required>
-          </div>
-        </div>
-
-        <div class="admin-spaced">
-          <label>Customer note</label>
-          <textarea id="customerNote"></textarea>
-        </div>
-
-        <div class="admin-spaced">
-          <label>Internal note</label>
-          <textarea id="internalNote"></textarea>
-        </div>
-
-        <div id="items"></div>
-
-        <button class="btn" id="add" type="button">Add line item</button>
-
-        <div class="grid admin-spaced">
-          <div>
-            <label>Delivery</label>
-            <input id="delivery" type="number" min="0" step=".01" value="0">
-          </div>
-
-          <div>
-            <label>Discount</label>
-            <input id="discount" type="number" min="0" step=".01" value="0">
-          </div>
-        </div>
-
-        <div class="row">
-          <b>Total</b>
-          <b id="total">R0</b>
-        </div>
-
-        <div class="row">
-          <button class="btn" type="submit">Create draft quote</button>
-        </div>
-      </form>
-    </div>
-
-    <div class="panel">
-      <h2>Recent quotes</h2>
-
-      <div class="vt-searchbar">
-        <label class="vt-search">
-          <input id="adminQuoteSearch" type="search" placeholder="Search quote number, customer, title or status…" autocomplete="off">
-        </label>
-
-        <select id="adminQuoteStatus" class="vt-filter">
-          <option value="">All statuses</option>
-          <option value="draft">Draft</option>
-          <option value="sent">Sent</option>
-          <option value="viewed">Viewed</option>
-          <option value="accepted">Accepted</option>
-          <option value="declined">Declined</option>
-          <option value="expired">Expired</option>
-        </select>
-      </div>
-
-      <div id="recent"></div>
-    </div>
-
-    <p id="status"></p>
+    <div class="panel"><h2>Customer lookup</h2><p class="muted">Search by name, email, phone, company or suburb. Tap a customer to use them in a new quote.</p><div class="vt-searchbar"><label class="vt-search"><input id="customerLookupSearch" type="search" placeholder="Search customers…" autocomplete="off"></label></div><div id="customerLookupResults" class="vt-customer-grid"></div></div>
+    <div class="panel"><h2>Create quotation</h2><form id="quoteForm"><div class="grid"><div><label>Customer</label><div class="vt-picker"><input id="customer" type="hidden"><label class="vt-search"><input id="customerSearch" type="search" placeholder="Search customer name or email…" autocomplete="off"></label><div id="customerResults" class="vt-picker-results" hidden></div><div id="selectedCustomer" class="vt-selected">No customer selected</div></div></div><div><label>Quote type</label><select id="type"><option value="repair">Repair</option><option value="system_build">System build</option><option value="product">Product</option><option value="service">Service</option></select></div><div><label>Title</label><input id="title" required></div><div><label>Valid until</label><input id="valid" type="date" required></div></div><div class="admin-spaced"><label>Customer note</label><textarea id="customerNote"></textarea></div><div class="admin-spaced"><label>Internal note</label><textarea id="internalNote"></textarea></div><div id="items"></div><button class="btn" id="add" type="button">Add line item</button><div class="grid admin-spaced"><div><label>Delivery</label><input id="delivery" type="number" min="0" step=".01" value="0"></div><div><label>Discount</label><input id="discount" type="number" min="0" step=".01" value="0"></div></div><div class="row"><b>Total</b><b id="total">R0</b></div><div class="row"><button class="btn" type="submit">Create draft quote</button></div></form></div>
+    <div class="panel"><h2>Recent quotes</h2><div class="vt-searchbar"><label class="vt-search"><input id="adminQuoteSearch" type="search" placeholder="Search quote number, customer, title or status…" autocomplete="off"></label><select id="adminQuoteStatus" class="vt-filter"><option value="">All statuses</option><option value="draft">Draft</option><option value="sent">Sent</option><option value="viewed">Viewed</option><option value="accepted">Accepted</option><option value="declined">Declined</option><option value="expired">Expired</option></select></div><div id="recent"></div></div><p id="status"></p>
   </section>
-</main>
-</body>
-</html>
+</main></body></html>

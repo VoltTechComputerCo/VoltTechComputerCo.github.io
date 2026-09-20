@@ -306,3 +306,9 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Reframed legacy PC Builder requests as build request history because new custom PC build requests remain paused.
 - Integrated the Parts Desk into the shared admin shell without changing order, catalogue, delivery, launch-control or payment logic.
 - Made no changes to Supabase permissions, RPCs, quote creation, customer records, deletion finalisation, shipping or commerce business logic.
+
+### Phase 4 — portal cache-bust + final consistency, batch 6 — 2026-09-20
+- Updated every customer/admin portal page still referencing Portal Shell v5.2 to explicitly request Portal Shell v6.1.
+- Prevented browsers and branch-preview hosts from reusing stale portal-shell CSS/JS after the Phase 4 information-architecture changes.
+- Covered Account, Activity, Saved Build History, Quotes, Documents, Privacy & Data, Admin Hub, Customers, Customer Record, Records Search, Build Request History and Account Deletions.
+- Preserved all existing page markup, IDs, Supabase/authentication logic, admin permissions and business workflows apart from the cache-key update.
