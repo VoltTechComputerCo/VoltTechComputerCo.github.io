@@ -82,8 +82,6 @@ function loadVisualCSS(){
  loadCSS('visual-block-fix.css?v=3','visual-fix');
 }
 function enableContactIcons(){
- // Use the CSS-only icon system. It renders the same WhatsApp/Gmail marks
- // without mutating link contents after first paint.
  loadCSS('contact-icons-static.css?v=2','contact-icons-static');
 }
 function enhanceWhatsAppLinks(){
@@ -183,10 +181,7 @@ function initMobileNavigation(){
  });
  window.addEventListener('resize',()=>{if(innerWidth>700)setOpen(false)});
 }
-
 function ensureOfficialHeaderLogo(){
- // Stabilised public pages already ship the official logo in their HTML.
- // Keep this only as a fallback for older pages that still use a legacy mark.
  const logo=document.querySelector('nav .brand img');
  if(!logo)return;
  const official='brand/VoltTech_Full_Logo_Transparent.png';
@@ -194,10 +189,20 @@ function ensureOfficialHeaderLogo(){
  if(current!==official)logo.src=official;
  if(!logo.alt)logo.alt='VoltTech Computer Co.';
 }
+function loadScanHandoff(){
+ if(!['/signal-scan.html','/stream-scan.html'].includes(location.pathname))return;
+ if(document.querySelector('script[data-vt-scan-handoff]'))return;
+ const s=document.createElement('script');
+ s.src='scan-handoff.js?v=1';
+ s.defer=true;
+ s.dataset.vtScanHandoff='1';
+ document.head.appendChild(s);
+}
 function init(){
  installAppMetadata();
  ensureOfficialHeaderLogo();
  enableContactIcons();
+ loadScanHandoff();
  if(/\/static(?:-|\.html|\/)/.test(location.pathname))return;
  const cls=pages[location.pathname];
  if(cls&&!document.body.classList.contains(cls))document.body.classList.add(cls);
