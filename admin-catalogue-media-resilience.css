@@ -1,0 +1,50 @@
+/* VoltTech Phase 5 — Media Resilience */
+.vt-image-fallback{
+  position:relative
+}
+.vt-image-fallback::after{
+  content:"IMAGE FALLBACK";
+  position:absolute;
+  right:8px;
+  bottom:8px;
+  padding:4px 6px;
+  border:1px solid rgba(255,190,84,.3);
+  border-radius:999px;
+  background:rgba(3,8,9,.85);
+  color:#ffd06f;
+  font:800 6px var(--mono);
+  letter-spacing:.06em
+}
+.qa-state-stack{
+  display:grid;
+  justify-items:end;
+  gap:5px
+}
+.qa-health-state{
+  padding:4px 6px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:#78918d;
+  font:800 6px var(--mono);
+  white-space:nowrap
+}
+.qa-health-state.healthy{
+  color:#68ffae;
+  border-color:rgba(80,255,159,.28)
+}
+.qa-health-state.broken{
+  color:#ff8c92;
+  border-color:rgba(255,102,112,.35)
+}
+.qa-health-state.testing{
+  color:#9fb3af
+}
+.qa-stat.danger{
+  border-color:rgba(255,102,112,.28)
+}
+.qa-stat.danger b{
+  color:#ff8c92
+}
+@media(max-width:620px){
+  .qa-state-stack{justify-items:start}
+}
