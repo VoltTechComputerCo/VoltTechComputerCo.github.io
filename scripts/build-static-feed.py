@@ -174,14 +174,9 @@ def main() -> None:
     if not stories:
         raise SystemExit("No STATIC articles found.")
 
-    rss = ET.Element(
-        "rss",
-        {
-            "version": "2.0",
-            "xmlns:atom": "http://www.w3.org/2005/Atom",
-            "xmlns:media": "http://search.yahoo.com/mrss/",
-        },
-    )
+    ET.register_namespace("atom", "http://www.w3.org/2005/Atom")
+    ET.register_namespace("media", "http://search.yahoo.com/mrss/")
+    rss = ET.Element("rss", {"version": "2.0"})
     channel = ET.SubElement(rss, "channel")
     ET.SubElement(channel, "title").text = "STATIC — Tech, Gaming & Nerd Culture"
     ET.SubElement(channel, "link").text = BASE + "static.html"
@@ -219,9 +214,6 @@ def main() -> None:
 
     ET.indent(rss, space="  ")
     xml = ET.tostring(rss, encoding="unicode", xml_declaration=True)
-    # ElementTree uses ns0 for atom unless namespace is registered.
-    xml = xml.replace('xmlns:ns0="http://www.w3.org/2005/Atom"', 'xmlns:atom="http://www.w3.org/2005/Atom"')
-    xml = xml.replace("<ns0:link", "<atom:link").replace("</ns0:link>", "</atom:link>")
     OUTPUT.write_text(xml + "\n", encoding="utf-8")
 
     # Parse our own output as a hard validation step.
