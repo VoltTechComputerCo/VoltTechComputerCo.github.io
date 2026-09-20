@@ -198,11 +198,30 @@ function loadScanHandoff(){
  s.dataset.vtScanHandoff='1';
  document.head.appendChild(s);
 }
+
+function loadSymptomHandoff(){
+ const supported=[
+  '/pc-repair-pretoria.html',
+  '/pc-performance-optimisation.html',
+  '/pc-upgrades-pretoria.html',
+  '/virus-malware-removal-pretoria.html',
+  '/windows-installation-pretoria.html'
+ ];
+ if(!supported.includes(location.pathname))return;
+ if(document.querySelector('script[data-vt-symptom-handoff]'))return;
+ const s=document.createElement('script');
+ s.src='symptom-handoff.js?v=1';
+ s.defer=true;
+ s.dataset.vtSymptomHandoff='1';
+ document.head.appendChild(s);
+}
+
 function init(){
  installAppMetadata();
  ensureOfficialHeaderLogo();
  enableContactIcons();
  loadScanHandoff();
+ loadSymptomHandoff();
  if(/\/static(?:-|\.html|\/)/.test(location.pathname))return;
  const cls=pages[location.pathname];
  if(cls&&!document.body.classList.contains(cls))document.body.classList.add(cls);
