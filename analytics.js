@@ -40,6 +40,14 @@ function loadCSS(href,key){
  l.rel='stylesheet'; l.href=href; l.dataset['vt'+key.replace(/(^|-)([a-z])/g,(_,a,b)=>b.toUpperCase())]='1';
  document.head.appendChild(l);
 }
+function loadScript(src,key){
+ if(document.querySelector('script[data-vt-'+key+']'))return;
+ const s=document.createElement('script');
+ s.src=src;
+ s.defer=true;
+ s.dataset['vt'+key.replace(/(^|-)([a-z])/g,(_,a,b)=>b.toUpperCase())]='1';
+ document.head.appendChild(s);
+}
 function ensureHeadLink(rel,href,sizes){
  let q='link[rel="'+rel+'"]'+(sizes?'[sizes="'+sizes+'"]':'');
  let link=document.querySelector(q);
@@ -121,15 +129,15 @@ function initMobileNavigation(){
  drawer.id='vtMobileDrawer';
  drawer.setAttribute('aria-hidden','true');
  drawer.innerHTML=
-   '<div class="vt-mobile-drawer-head"><span>VoltTech</span><b>Menu</b></div>'+ 
+   '<div class="vt-mobile-drawer-head"><span>VoltTech</span><b>Menu</b></div>'+
    '<div class="vt-mobile-links">'+
-     '<a class="vt-mobile-link vt-menu-services" href="index.html#services"><span class="vt-card-image vt-image-services"></span><div class="vt-card-copy"><small>Services</small><strong>PC Services</strong><em>Repair, upgrades & Windows</em></div></a>'+ 
-     '<a class="vt-mobile-link vt-menu-scan" href="signal-scan.html"><span class="vt-card-image vt-image-scan"></span><div class="vt-card-copy"><small>Free tool</small><strong>Signal Scan</strong><em>Symptoms, triage & estimates</em></div></a>'+ 
-     '<a class="vt-mobile-link vt-menu-creator" href="creator-hub-south-africa.html"><span class="vt-card-image vt-image-creator"></span><div class="vt-card-copy"><div class="vt-creator-top"><small>Creator Hub</small><span class="vt-live-pill"><i></i><b id="vtMenuLiveCount">LIVE</b></span></div><strong>SA Creators</strong><em id="vtMenuCreatorMeta">Checking live creators…</em></div></a>'+ 
-     '<a class="vt-mobile-link vt-menu-streaming" href="streaming-setup-south-africa.html"><span class="vt-card-image vt-image-streaming"></span><div class="vt-card-copy"><small>Streaming</small><strong>Creator Support</strong><em>OBS, audio & performance</em></div></a>'+ 
-     '<a class="vt-mobile-link vt-menu-account" href="account.html"><span class="vt-card-image vt-image-account"></span><div class="vt-card-copy"><small>Account</small><strong>My Account</strong><em>Quotes, builds & profile</em></div></a>'+ 
-     '<a class="vt-mobile-link vt-menu-contact" href="index.html#contact"><span class="vt-card-image vt-image-contact"></span><div class="vt-card-copy"><small>Contact</small><strong>Get Help</strong><em>WhatsApp or email</em></div></a>'+ 
-     '<a class="vt-mobile-link vt-menu-static" href="static.html"><span class="vt-card-image vt-image-static"></span><div class="vt-card-copy"><small>Editorial</small><strong>STATIC</strong><em>Tech, gaming & hardware</em></div></a>'+ 
+     '<a class="vt-mobile-link vt-menu-services" href="index.html#services"><span class="vt-card-image vt-image-services"></span><div class="vt-card-copy"><small>Services</small><strong>PC Services</strong><em>Repair, upgrades & Windows</em></div></a>'+
+     '<a class="vt-mobile-link vt-menu-scan" href="signal-scan.html"><span class="vt-card-image vt-image-scan"></span><div class="vt-card-copy"><small>Free tool</small><strong>Signal Scan</strong><em>Symptoms, triage & estimates</em></div></a>'+
+     '<a class="vt-mobile-link vt-menu-creator" href="creator-hub-south-africa.html"><span class="vt-card-image vt-image-creator"></span><div class="vt-card-copy"><div class="vt-creator-top"><small>Creator Hub</small><span class="vt-live-pill"><i></i><b id="vtMenuLiveCount">LIVE</b></span></div><strong>SA Creators</strong><em id="vtMenuCreatorMeta">Checking live creators…</em></div></a>'+
+     '<a class="vt-mobile-link vt-menu-streaming" href="streaming-setup-south-africa.html"><span class="vt-card-image vt-image-streaming"></span><div class="vt-card-copy"><small>Streaming</small><strong>Creator Support</strong><em>OBS, audio & performance</em></div></a>'+
+     '<a class="vt-mobile-link vt-menu-account" href="account.html"><span class="vt-card-image vt-image-account"></span><div class="vt-card-copy"><small>Account</small><strong>My Account</strong><em>Quotes, builds & profile</em></div></a>'+
+     '<a class="vt-mobile-link vt-menu-contact" href="index.html#contact"><span class="vt-card-image vt-image-contact"></span><div class="vt-card-copy"><small>Contact</small><strong>Get Help</strong><em>WhatsApp or email</em></div></a>'+
+     '<a class="vt-mobile-link vt-menu-static" href="static.html"><span class="vt-card-image vt-image-static"></span><div class="vt-card-copy"><small>Editorial</small><strong>STATIC</strong><em>Tech, gaming & hardware</em></div></a>'+
    '</div>';
 
  document.body.append(backdrop,drawer);
@@ -191,14 +199,8 @@ function ensureOfficialHeaderLogo(){
 }
 function loadScanHandoff(){
  if(!['/signal-scan.html','/stream-scan.html'].includes(location.pathname))return;
- if(document.querySelector('script[data-vt-scan-handoff]'))return;
- const s=document.createElement('script');
- s.src='scan-handoff.js?v=1';
- s.defer=true;
- s.dataset.vtScanHandoff='1';
- document.head.appendChild(s);
+ loadScript('scan-handoff.js?v=1','scan-handoff');
 }
-
 function loadSymptomHandoff(){
  const supported=[
   '/pc-repair-pretoria.html',
@@ -208,20 +210,30 @@ function loadSymptomHandoff(){
   '/windows-installation-pretoria.html'
  ];
  if(!supported.includes(location.pathname))return;
- if(document.querySelector('script[data-vt-symptom-handoff]'))return;
- const s=document.createElement('script');
- s.src='symptom-handoff.js?v=1';
- s.defer=true;
- s.dataset.vtSymptomHandoff='1';
- document.head.appendChild(s);
+ loadScript('symptom-handoff.js?v=1','symptom-handoff');
 }
-
+function loadPhase9Finish(){
+ const supported=[
+  '/',
+  '/index.html',
+  '/pc-repair-pretoria.html',
+  '/pc-performance-optimisation.html',
+  '/pc-upgrades-pretoria.html',
+  '/virus-malware-removal-pretoria.html',
+  '/windows-installation-pretoria.html',
+  '/streaming-setup-south-africa.html'
+ ];
+ if(!supported.includes(location.pathname))return;
+ loadCSS('phase9-business-finish.css?v=1','phase9-business');
+ loadScript('phase9-business-finish.js?v=1','phase9-business');
+}
 function init(){
  installAppMetadata();
  ensureOfficialHeaderLogo();
  enableContactIcons();
  loadScanHandoff();
  loadSymptomHandoff();
+ loadPhase9Finish();
  if(/\/static(?:-|\.html|\/)/.test(location.pathname))return;
  const cls=pages[location.pathname];
  if(cls&&!document.body.classList.contains(cls))document.body.classList.add(cls);

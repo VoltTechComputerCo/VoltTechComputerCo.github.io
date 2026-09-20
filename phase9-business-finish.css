@@ -1,0 +1,240 @@
+/* VoltTech V2 — Phase 9 business + visual finish */
+:root{
+  --vt9-teal:#2fe6c8;
+  --vt9-ink:#05080a;
+  --vt9-panel:#0b1315;
+  --vt9-line:rgba(121,167,159,.18);
+  --vt9-soft:rgba(47,230,200,.08);
+}
+
+/* Premium page depth without altering the core brand system */
+body.vt9-finished{
+  position:relative;
+  isolation:isolate;
+}
+body.vt9-finished:before{
+  content:"";
+  position:fixed;
+  z-index:-2;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 18%,rgba(47,230,200,.045),transparent 24%),
+    radial-gradient(circle at 88% 42%,rgba(98,168,255,.035),transparent 22%),
+    linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.009) 1px,transparent 1px);
+  background-size:auto,auto,56px 56px,56px 56px;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.72) 55%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.72) 55%,transparent 100%);
+}
+body.vt9-finished nav{
+  box-shadow:0 10px 35px rgba(0,0,0,.18);
+}
+
+/* Compact confidence rail */
+.vt9-trust-rail{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  margin:0 0 30px;
+  border:1px solid rgba(47,230,200,.16);
+  border-radius:10px;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(47,230,200,.05),transparent 48%),
+    rgba(7,14,15,.88);
+  box-shadow:0 18px 45px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.025);
+}
+.vt9-trust-item{
+  position:relative;
+  min-width:0;
+  padding:14px 16px;
+  border-right:1px solid rgba(121,167,159,.13);
+}
+.vt9-trust-item:last-child{border-right:0}
+.vt9-trust-item:before{
+  content:"";
+  position:absolute;
+  left:16px;
+  top:0;
+  width:30px;
+  height:2px;
+  background:var(--vt9-teal);
+  box-shadow:0 0 12px rgba(47,230,200,.38);
+}
+.vt9-trust-item small{
+  display:block;
+  margin-bottom:4px;
+  color:#5e7c77;
+  font:700 7px 'JetBrains Mono',monospace;
+  letter-spacing:.11em;
+}
+.vt9-trust-item b{
+  display:block;
+  overflow:hidden;
+  color:#dceae7;
+  font-size:11px;
+  line-height:1.35;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+/* Existing cards get more dimensional without changing layout */
+.vt9-premium-card{
+  position:relative;
+  isolation:isolate;
+}
+.vt9-premium-card:after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.025),transparent 38%);
+  opacity:.72;
+}
+@media(hover:hover){
+  .vt9-premium-card{
+    transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background-color .22s ease;
+  }
+  .vt9-premium-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 18px 34px rgba(0,0,0,.2);
+  }
+}
+
+/* Buttons feel more tactile */
+body.vt9-finished .btn,
+body.vt9-finished .contact-cta{
+  box-shadow:0 0 0 rgba(47,230,200,0);
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease;
+}
+@media(hover:hover){
+  body.vt9-finished .btn.primary:hover,
+  body.vt9-finished .contact-cta.whatsapp:hover{
+    box-shadow:0 10px 24px rgba(47,230,200,.14);
+  }
+}
+
+/* Scroll choreography — subtle, not gimmicky */
+.vt9-reveal{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .48s cubic-bezier(.2,.7,.2,1),transform .48s cubic-bezier(.2,.7,.2,1);
+}
+.vt9-reveal.vt9-visible{
+  opacity:1;
+  transform:none;
+}
+
+/* Mobile conversion dock */
+.vt9-mobile-dock{display:none}
+@media(max-width:700px){
+  body.vt9-finished{
+    padding-bottom:max(82px,calc(68px + env(safe-area-inset-bottom)));
+  }
+  .vt9-mobile-dock{
+    position:fixed;
+    z-index:84;
+    left:10px;
+    right:10px;
+    bottom:max(9px,env(safe-area-inset-bottom));
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+    padding:7px;
+    border:1px solid rgba(121,167,159,.22);
+    border-radius:13px;
+    background:rgba(5,9,10,.92);
+    box-shadow:0 20px 45px rgba(0,0,0,.48),inset 0 1px rgba(255,255,255,.035);
+    backdrop-filter:blur(16px);
+    transition:opacity .2s ease,transform .2s ease;
+  }
+  .vt9-mobile-dock.vt9-contact-visible{
+    opacity:.2;
+    transform:translateY(8px);
+    pointer-events:none;
+  }
+  .vt9-mobile-dock a{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    min-width:0;
+    min-height:50px;
+    padding:8px 11px;
+    border-radius:8px;
+    text-decoration:none!important;
+  }
+  .vt9-mobile-dock small{
+    overflow:hidden;
+    margin-bottom:2px;
+    font:700 6.5px 'JetBrains Mono',monospace;
+    letter-spacing:.09em;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .vt9-mobile-dock b{
+    overflow:hidden;
+    font:700 11px 'Space Grotesk',sans-serif;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .vt9-dock-scan{
+    border:1px solid rgba(47,230,200,.26);
+    background:rgba(47,230,200,.07);
+    color:#ddfbf5!important;
+  }
+  .vt9-dock-scan small{color:#72a79f}
+  .vt9-dock-wa{
+    border:1px solid rgba(47,230,200,.8);
+    background:#2fe6c8;
+    color:#04120f!important;
+  }
+  .vt9-dock-wa small{color:#0d5e51}
+  .vt9-trust-rail{
+    margin:0 0 24px;
+    grid-template-columns:1fr;
+  }
+  .vt9-trust-item{
+    padding:11px 13px 11px 16px;
+    border-right:0;
+    border-bottom:1px solid rgba(121,167,159,.11);
+  }
+  .vt9-trust-item:last-child{border-bottom:0}
+  .vt9-trust-item:before{
+    left:0;
+    top:10px;
+    bottom:10px;
+    width:2px;
+    height:auto;
+  }
+  .vt9-trust-item small{
+    display:inline;
+    margin:0 7px 0 0;
+  }
+  .vt9-trust-item b{
+    display:inline;
+    white-space:normal;
+  }
+}
+
+/* Do not compete with the open mobile menu */
+body.vt-menu-open .vt9-mobile-dock{
+  opacity:0;
+  transform:translateY(12px);
+  pointer-events:none;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .vt9-reveal{
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+  }
+  .vt9-premium-card,
+  .vt9-mobile-dock,
+  body.vt9-finished .btn,
+  body.vt9-finished .contact-cta{
+    transition:none!important;
+  }
+}
