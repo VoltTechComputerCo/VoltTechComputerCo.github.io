@@ -281,3 +281,12 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Added a mobile-first Phase 4 account presentation layer without changing existing Supabase, authentication, quote, invoice, order, service-job, notification or deletion logic.
 - Preserved all existing element IDs and `data-tab` hooks used by the account JavaScript.
 - Corrected the account creation legal sentence to read naturally.
+
+### Phase 4 — customer portal consistency, batch 2 — 2026-09-20
+- Standardised Activity, Quotes, Documents and Privacy & Data around one customer navigation model: Home, Activity, Documents and Account.
+- Removed the old page-to-page navigation drift where different portal pages exposed different combinations of Builds, Quotes and Account links.
+- Reframed Quotes as an action destination rather than a permanent global navigation tab.
+- Reworded build-related labels as saved/history records while the active PC Builder remains paused.
+- Added concise cross-links between Activity, Quotes and Documents so customers can move between progress, approvals and paperwork without hunting.
+- Added one lightweight shared `portal-phase4.css` layer; no database, authentication, quote, document, notification or deletion logic changed.
+- Preserved every existing JavaScript ID and data hook on all four pages.
