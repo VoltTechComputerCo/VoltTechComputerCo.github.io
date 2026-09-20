@@ -1,0 +1,46 @@
+name: STATIC Feed Autopilot
+
+on:
+  push:
+    branches:
+      - main
+      - v2-rebuild
+    paths:
+      - "static-*.html"
+      - "scripts/build-static-feed.py"
+      - ".github/workflows/static-feed-autopilot.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: static-feed-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rebuild-feed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out current branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+
+      - name: Build STATIC RSS from article metadata
+        run: python scripts/build-static-feed.py
+
+      - name: Commit feed if changed
+        shell: bash
+        run: |
+          if git diff --quiet -- static-feed.xml; then
+            echo "STATIC feed already current."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add static-feed.xml
+          git commit -m "chore: rebuild STATIC RSS feed"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
