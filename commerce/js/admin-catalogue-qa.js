@@ -12,6 +12,7 @@ const search=document.getElementById('catalogueQaSearch');
 const filter=document.getElementById('catalogueQaFilter');
 
 let products=[];
+const contractResults=new Map();
 const imageHealth=new Map();
 
 function esc(v){return VT.esc(v)}
@@ -40,10 +41,17 @@ function identityIssues(p){
 
 function structureIssues(p){
   const issues=[];
+  const contract=contractResults.get(p.id);
   if(!p.short_description)issues.push('Description');
   if(!Array.isArray(p.highlights)||p.highlights.length<1)issues.push('Highlights');
-  if(!p.specs||Object.keys(p.specs).length<2)issues.push('Specifications');
-  if(!p.compatibility||Object.keys(p.compatibility).length<1)issues.push('Compatibility');
+
+  if(contract){
+    (contract.missing_required||[]).forEach(k=>issues.push(`Required spec: ${VT.formatSpecKey(k)}`));
+    (contract.missing_compatibility||[]).forEach(k=>issues.push(`Compatibility: ${VT.formatSpecKey(k)}`));
+  }else{
+    if(!p.specs||Object.keys(p.specs).length<2)issues.push('Specifications');
+    if(!p.compatibility||Object.keys(p.compatibility).length<1)issues.push('Compatibility');
+  }
   return issues;
 }
 
@@ -71,13 +79,15 @@ function supplierGaps(p){
 }
 
 function structureScore(p){
+  const contract=contractResults.get(p.id);
+  const contractValid=contract?contract.valid:false;
   const groups=[
     {ok:!!p.brand&&!!p.model,weight:14},
     {ok:identityIssues(p).length===0,weight:12},
     {ok:!!p.short_description,weight:10},
     {ok:Array.isArray(p.highlights)&&p.highlights.length>0,weight:8},
-    {ok:p.specs&&Object.keys(p.specs).length>=2,weight:20},
-    {ok:p.compatibility&&Object.keys(p.compatibility).length>=1,weight:16},
+    {ok:contract?((contract.missing_required||[]).length===0):(p.specs&&Object.keys(p.specs).length>=2),weight:20},
+    {ok:contract?((contract.missing_compatibility||[]).length===0):(p.compatibility&&Object.keys(p.compatibility).length>=1),weight:16},
     {ok:!!mediaUrl(p),weight:10},
     {ok:!p.metadata?.media_review_required&&!isOgProxy(p),weight:10}
   ];
@@ -190,9 +200,20 @@ function card(p){
       <div class="qa-meta">
         <span><b>Specs</b>${Object.keys(p.specs||{}).length}</span>
         <span><b>Compatibility</b>${Object.keys(p.compatibility||{}).length}</span>
-        <span><b>Image source</b>${isOgProxy(p)?'OG proxy':'Direct / approved'}</span>
+        <span><b>Category contract</b>${contractResults.get(p.id)?.valid?'Pass':'Needs work'}</span>
         <span><b>Supplier data</b>Not required yet</span>
       </div>
+
+      ${contractResults.get(p.id)?`
+      <details class="qa-contract">
+        <summary>CATEGORY CONTRACT · ${esc(String(p.type||'component').toUpperCase())}</summary>
+        <div class="qa-contract-grid">
+          <div><b>Required specs</b><span>${(contractResults.get(p.id).required_specs||[]).map(VT.formatSpecKey).join(', ')||'—'}</span></div>
+          <div><b>Compatibility</b><span>${(contractResults.get(p.id).required_compatibility||[]).map(VT.formatSpecKey).join(', ')||'—'}</span></div>
+          <div><b>Future filters</b><span>${(contractResults.get(p.id).filter_fields||[]).map(VT.formatSpecKey).join(', ')||'—'}</span></div>
+          <div><b>Recommended</b><span>${(contractResults.get(p.id).recommended_specs||[]).map(VT.formatSpecKey).join(', ')||'—'}</span></div>
+        </div>
+      </details>`:''}
 
       <details class="qa-supplier-gaps">
         <summary>FUTURE SUPPLIER DATA (${supplierGaps(p).length} GAP${supplierGaps(p).length===1?'':'S'})</summary>
@@ -310,6 +331,12 @@ async function load(){
     .order('name');
   if(error)throw error;
   products=data||[];
+
+  await Promise.all(products.map(async p=>{
+    const {data:validation,error:validationError}=await client.rpc('admin_validate_store_product',{p_product_id:p.id});
+    if(!validationError&&validation) contractResults.set(p.id,validation);
+  }));
+
   render();
 
   await Promise.all(products.map(async p=>{
