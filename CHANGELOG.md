@@ -247,3 +247,11 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Allowed `max-image-preview:large` on all three pages and marked Stream Scan as free in its WebApplication schema.
 - Refreshed the three creator-page dates in `sitemap.xml`.
 - Preserved creator feed behaviour, streaming pricing, Stream Scan logic, breadcrumbs, navigation and all backend functionality.
+
+### Phase 3 — Signal Scan search-preview metadata, batch 6 — 2026-09-20
+- Replaced Signal Scan's generic logo preview with its matching VoltTech diagnostic image.
+- Added Open Graph image-alt metadata and complete Twitter/X large-card metadata.
+- Added the representative Signal Scan image to its WebApplication structured data.
+- Explicitly marked Signal Scan as free and allowed `max-image-preview:large`.
+- Refreshed Signal Scan's modification date in `sitemap.xml`.
+- Preserved all Signal Scan questions, estimate logic, WhatsApp/email handoff, analytics and diagnostic behaviour.
