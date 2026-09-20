@@ -23,6 +23,11 @@ window.addEventListener('DOMContentLoaded',()=>{
       const productId=card.querySelector('[data-add]')?.dataset.add;
       const product=productId&&window.__vtPreviewProductMap?.get?.(productId);
 
+      if(product){
+        const img=card.querySelector('.product-media img');
+        VT.applyImageFallback?.(img,product);
+      }
+
       if(product?.is_demo&&!card.querySelector('.demo-card-badge')){
         const badge=document.createElement('span');
         badge.className='demo-card-badge';

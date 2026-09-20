@@ -219,6 +219,8 @@ function render(p,{documents,relations}){
     VT.addToCart(p.id,1);
     VT.toast(`${p.name} added to your cart.`);
   });
+
+  VT.applyImageFallback?.(host.querySelector('.product-image-large img'),p);
 }
 
 function specRow(k,v){

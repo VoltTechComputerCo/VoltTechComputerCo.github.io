@@ -12,6 +12,7 @@ const search=document.getElementById('catalogueQaSearch');
 const filter=document.getElementById('catalogueQaFilter');
 
 let products=[];
+const imageHealth=new Map();
 
 function esc(v){return VT.esc(v)}
 function safe(v){return VT.safeUrl(v)}
@@ -48,7 +49,9 @@ function structureIssues(p){
 
 function mediaIssues(p){
   const issues=[];
+  const health=imageHealth.get(p.id);
   if(!mediaUrl(p))issues.push('Missing image');
+  if(health && !health.ok)issues.push('Image fails to load');
   if(isOgProxy(p))issues.push('OG proxy image');
   if(p.metadata?.media_review_required)issues.push('Image needs review');
   return issues;
@@ -124,6 +127,7 @@ function visibleProducts(){
 
 function renderSummary(){
   const image=products.filter(p=>mediaIssues(p).length).length;
+  const broken=products.filter(p=>imageHealth.has(p.id)&&!imageHealth.get(p.id).ok).length;
   const identity=products.filter(p=>identityIssues(p).length).length;
   const structure=products.filter(p=>structureIssues(p).length).length;
   const avg=products.length?Math.round(products.reduce((n,p)=>n+structureScore(p),0)/products.length):0;
@@ -131,6 +135,7 @@ function renderSummary(){
   summary.innerHTML=`
     <div class="qa-stat"><b>${products.length}</b><span>Demo fixtures</span></div>
     <div class="qa-stat ${image?'warn':''}"><b>${image}</b><span>Media reviews</span></div>
+    <div class="qa-stat ${broken?'danger':''}"><b>${broken}</b><span>Broken images</span></div>
     <div class="qa-stat ${identity?'warn':''}"><b>${identity}</b><span>Identity gaps</span></div>
     <div class="qa-stat ${structure?'warn':''}"><b>${structure}</b><span>Structure gaps</span></div>
     <div class="qa-stat"><b>${avg}%</b><span>Architecture score</span></div>`;
@@ -155,6 +160,8 @@ function card(p){
   const official=safe(p.media?.officialUrl);
   const score=structureScore(p);
   const reviewed=!p.metadata?.media_review_required&&!isOgProxy(p);
+  const health=imageHealth.get(p.id);
+  const healthLabel=!mediaUrl(p)?'NO IMAGE':!health?'TESTING':health.ok?`LOADS · ${health.width}×${health.height}`:'BROKEN';
 
   return `<article class="qa-card" data-qa-card="${esc(p.id)}">
     <div class="qa-image">
@@ -171,7 +178,10 @@ function card(p){
           <h3>${esc(p.name)}</h3>
           <small>${esc(p.model||'Model not loaded')}</small>
         </div>
-        <span class="qa-review-state ${reviewed?'reviewed':'pending'}">${reviewed?'MEDIA APPROVED':'MEDIA REVIEW NEEDED'}</span>
+        <div class="qa-state-stack">
+          <span class="qa-review-state ${reviewed?'reviewed':'pending'}">${reviewed?'MEDIA APPROVED':'MEDIA REVIEW NEEDED'}</span>
+          <span class="qa-health-state ${health?.ok?'healthy':health?'broken':'testing'}">${healthLabel}</span>
+        </div>
       </div>
 
       <div class="qa-section-label">ARCHITECTURE</div>
@@ -252,6 +262,7 @@ async function saveImage(id,button){
 
     p.media=media;
     p.metadata=metadata;
+    imageHealth.set(p.id,await VT.probeImage(mediaUrl(p),6500));
     VT.toast('Demo image updated. Review it before approving.');
     render();
   }catch(error){
@@ -299,6 +310,14 @@ async function load(){
     .order('name');
   if(error)throw error;
   products=data||[];
+  render();
+
+  await Promise.all(products.map(async p=>{
+    const url=mediaUrl(p);
+    const result=await VT.probeImage(url,6500);
+    imageHealth.set(p.id,result);
+  }));
+
   render();
 }
 

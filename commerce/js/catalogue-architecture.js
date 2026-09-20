@@ -91,6 +91,41 @@ VT.loadStore=async function(){
   return data;
 };
 
+
+function applyImageFallback(img,product){
+  if(!img||img.dataset.vtFallbackBound==="1") return;
+  img.dataset.vtFallbackBound="1";
+  img.addEventListener("error",()=>{
+    if(img.dataset.vtFallbackApplied==="1") return;
+    img.dataset.vtFallbackApplied="1";
+    const fallback=baseMediaFor({...product,media:{...(product?.media||{}),primaryImage:"",primary_image:""}});
+    if(fallback?.src && fallback.src!==img.src){
+      img.src=fallback.src;
+      img.alt=`${VT.categoryLabel(product?.type||"component")} category visual`;
+      img.closest(".product-media,.product-image-large,.qa-image")?.classList.add("vt-image-fallback");
+    }
+  });
+}
+async function probeImage(url,timeoutMs=6000){
+  const src=safeProbeUrl(url);
+  if(!src) return {ok:false,reason:"missing"};
+  return await new Promise(resolve=>{
+    const img=new Image();
+    let done=false;
+    const finish=result=>{if(done)return;done=true;clearTimeout(timer);resolve(result)};
+    const timer=setTimeout(()=>finish({ok:false,reason:"timeout"}),timeoutMs);
+    img.onload=()=>finish({ok:true,width:img.naturalWidth,height:img.naturalHeight,reason:"loaded"});
+    img.onerror=()=>finish({ok:false,reason:"error"});
+    img.src=src;
+  });
+}
+function safeProbeUrl(url){
+  try{
+    const u=new URL(String(url||""),location.href);
+    return /^https?:$/.test(u.protocol)?u.href:"";
+  }catch{return ""}
+}
+
 VT.isDemo=isDemo;
 VT.previewMode=previewMode;
 VT.mediaReviewRequired=isMediaReviewRequired;
@@ -101,4 +136,6 @@ VT.mediaFor=mediaFor;
 VT.productAvailability=productAvailability;
 VT.productIdentity=productIdentity;
 VT.fulfilmentInfo=fulfilmentInfo;
+VT.applyImageFallback=applyImageFallback;
+VT.probeImage=probeImage;
 })();
