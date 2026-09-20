@@ -290,3 +290,11 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Added concise cross-links between Activity, Quotes and Documents so customers can move between progress, approvals and paperwork without hunting.
 - Added one lightweight shared `portal-phase4.css` layer; no database, authentication, quote, document, notification or deletion logic changed.
 - Preserved every existing JavaScript ID and data hook on all four pages.
+
+### Phase 4 — saved-build + customer-document consistency, batch 3 — 2026-09-20
+- Reframed `builds.html` as Saved Build History and aligned it with the Phase 4 customer navigation model.
+- Kept all existing saved-build search, status, delete, email and document actions intact while making the paused state of new custom build requests explicit.
+- Added a shared `document-phase4.css` presentation layer to invoices, quotations, receipts, service records, proformas, order records and build specifications.
+- Added clear My VoltTech / Activity context links to generated business documents so customers no longer feel dropped into a disconnected document screen.
+- Preserved document printing, PDF filenames, email-copy actions, quote acceptance/decline logic and all existing Supabase record loading.
+- Left `order-status.html` unchanged because it is intentionally a private share-link flow that does not require a VoltTech account.
