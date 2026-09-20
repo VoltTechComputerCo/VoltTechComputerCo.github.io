@@ -299,10 +299,10 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Preserved document printing, PDF filenames, email-copy actions, quote acceptance/decline logic and all existing Supabase record loading.
 - Left `order-status.html` unchanged because it is intentionally a private share-link flow that does not require a VoltTech account.
 
-### Phase 4 — portal shell compatibility + admin foundation, batch 4 — 2026-09-20
-- Upgraded the shared portal shell to v6 so the legacy navigation helper no longer fights the new Phase 4 customer information architecture.
-- Prevented duplicate navigation from being appended to Activity, Quotes, Documents, Privacy & Data and Saved Build History.
-- Prevented the old account-shell helper from re-adding Quotes/More/Home items or old dashboard labels to the new Phase 4 account home.
-- Corrected shared CSS precedence so the Phase 4 account dashboard keeps its intended two-column desktop / one-column mobile layout instead of inheriting the older three-column portal override.
-- Refined the shared admin navigation to Work, Customers, Parts Desk and More while preserving Records, Build Request History and Account Deletions inside the admin menu.
-- Preserved all authentication, Supabase, notification, customer, quote, document and admin business logic.
+### Phase 4 — admin consolidation, batch 5 — 2026-09-20
+- Upgraded Portal Shell to v6.1 and standardised admin navigation around Work, Customers, Parts Desk and More.
+- Kept Records Search, Build Request History and Account Deletions available through the compact admin More menu.
+- Preserved the Admin Hub work queue as the primary operational surface while keeping manual quote creation and records search one action away.
+- Reframed legacy PC Builder requests as build request history because new custom PC build requests remain paused.
+- Integrated the Parts Desk into the shared admin shell without changing order, catalogue, delivery, launch-control or payment logic.
+- Made no changes to Supabase permissions, RPCs, quote creation, customer records, deletion finalisation, shipping or commerce business logic.

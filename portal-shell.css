@@ -1,241 +1,50 @@
-/* VoltTech Portal Shell v6
-   Phase 4 compatibility + shared admin shell.
-   Business/auth/data logic remains untouched. */
-
-.portal-section-label{
-  margin:18px 0 8px;
-  color:var(--teal,#2fe6c8);
-  font:700 8px 'JetBrains Mono',monospace;
-  letter-spacing:.11em;
-  text-transform:uppercase
+/* VoltTech Portal Shell v6.1 — Phase 4 */
+.portal-header-has-notify{gap:8px!important}
+.portal-customer-nav,.portal-admin-nav{display:flex;align-items:center;gap:6px;min-width:0;position:relative}
+.portal-customer-nav{overflow-x:auto;scrollbar-width:none}
+.portal-customer-nav::-webkit-scrollbar,.portal-admin-nav::-webkit-scrollbar{display:none}
+.portal-customer-nav a,.portal-admin-nav a,.portal-admin-nav button{
+  flex:none;min-height:36px;display:inline-flex;align-items:center;justify-content:center;
+  padding:0 11px;border:1px solid transparent;border-radius:999px;background:transparent;
+  color:var(--teal,#2fe6c8);font:700 8px 'JetBrains Mono',monospace;text-transform:uppercase;text-decoration:none;white-space:nowrap
 }
-
-/* Legacy account shell remains supported, but Phase 4 owns its own IA. */
-#accountHub:not(.account-phase4) .account-primary-nav.portal-account-nav{
-  display:flex!important;
-  align-items:center;
-  gap:6px;
-  overflow-x:auto;
-  overscroll-behavior-x:contain;
-  scrollbar-width:none;
-  margin:0 0 12px;
-  padding:0 0 3px
+.portal-customer-nav a.active,.portal-admin-nav a.active,.portal-admin-nav button.active{
+  color:#04120f!important;background:var(--teal,#2fe6c8);border-color:var(--teal,#2fe6c8)
 }
-#accountHub:not(.account-phase4) .account-primary-nav.portal-account-nav::-webkit-scrollbar{display:none}
-#accountHub:not(.account-phase4) .account-primary-nav.portal-account-nav .tab{
-  flex:0 0 auto!important;
-  min-height:36px!important;
-  border-radius:999px!important;
-  padding:0 12px!important;
-  font-size:8px!important;
-  white-space:nowrap
-}
-#accountHub:not(.account-phase4) .account-more-panel.portal-more-panel{
-  margin:-2px 0 14px;
-  padding:8px;
-  border-radius:9px
-}
-#accountHub:not(.account-phase4) .account-more-panel.portal-more-panel .account-more-grid{
-  display:flex!important;
-  flex-wrap:wrap;
-  gap:6px
-}
-
-/* Phase 4 account dashboard must not inherit the old compact 3-column shell. */
-#accountHub.account-phase4 .dashboard-grid.account-core-grid{
-  grid-template-columns:repeat(2,minmax(0,1fr))!important;
-  gap:9px!important
-}
-#accountHub.account-phase4 .account-core-card{
-  min-height:132px!important;
-  padding:16px!important
-}
-#accountHub.account-phase4 .account-core-card strong{
-  font-size:28px!important;
-  margin:8px 0 4px!important
-}
-#accountHub.account-phase4 .account-core-card span{
-  font-size:12px!important;
-  line-height:1.45!important
-}
-#accountHub.account-phase4 .account-action-card{
-  min-height:0!important;
-  padding:15px!important
-}
-
-/* Legacy customer nav */
-.portal-customer-nav{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  min-width:0;
-  overflow-x:auto;
-  scrollbar-width:none;
-  padding:2px 0
-}
-.portal-customer-nav::-webkit-scrollbar{display:none}
-.portal-customer-nav a{
-  flex:none;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:34px;
-  padding:0 9px;
-  border:1px solid transparent;
-  border-radius:999px;
-  color:var(--muted,#78918d)!important;
-  font:700 7.5px 'JetBrains Mono',monospace!important;
-  text-transform:uppercase;
-  white-space:nowrap
-}
-.portal-customer-nav a.active{
-  color:#04120f!important;
-  background:var(--teal,#2fe6c8);
-  border-color:var(--teal,#2fe6c8)
-}
-
-/* Phase 4 admin shell */
-.portal-admin-nav{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  flex-wrap:wrap;
-  position:relative
-}
-.portal-admin-nav a,
-.portal-admin-nav button{
-  min-height:36px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid var(--l,var(--line,#1a2b2b));
-  border-radius:999px;
-  background:transparent;
-  color:var(--t,var(--teal,#2fe6c8));
-  padding:0 11px;
-  font:700 8px 'JetBrains Mono',monospace;
-  text-transform:uppercase;
-  cursor:pointer;
-  white-space:nowrap
-}
-.portal-admin-nav a:hover,
-.portal-admin-nav a:focus-visible,
-.portal-admin-nav button:hover,
-.portal-admin-nav button:focus-visible{
-  border-color:rgba(47,230,200,.45);
-  outline:none
-}
-.portal-admin-nav a.active,
-.portal-admin-nav button.active{
-  background:var(--t,var(--teal,#2fe6c8));
-  color:#04120f;
-  border-color:var(--t,var(--teal,#2fe6c8))
-}
-.portal-admin-back{
-  color:var(--muted,#78918d)!important
-}
+.portal-admin-back{color:var(--muted,#78918d)!important}
 .portal-admin-more{
-  position:absolute;
-  right:0;
-  top:calc(100% + 7px);
-  z-index:100;
-  width:min(250px,82vw);
-  display:grid;
-  gap:5px;
-  padding:7px;
-  border:1px solid var(--l,var(--line,#1a2b2b));
-  border-radius:9px;
-  background:#07100f;
-  box-shadow:0 18px 55px rgba(0,0,0,.55)
+  position:absolute;right:0;top:calc(100% + 7px);z-index:100;width:min(250px,82vw);
+  display:grid;gap:5px;padding:7px;border:1px solid var(--line,#1a2b2b);border-radius:9px;
+  background:#07100f;box-shadow:0 18px 55px rgba(0,0,0,.55)
 }
 .portal-admin-more[hidden]{display:none!important}
-.portal-admin-more a{
-  width:100%;
-  justify-content:flex-start;
-  border-radius:6px
+.portal-admin-more a{width:100%;justify-content:flex-start;border-radius:6px;border-color:transparent}
+.portal-admin-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:14px}
+.portal-admin-actions a,.portal-admin-actions button{
+  min-height:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line,#1a2b2b);
+  border-radius:6px;background:#081111;color:var(--teal,#2fe6c8);padding:0 10px;
+  font:700 8px 'JetBrains Mono',monospace;text-transform:uppercase;text-decoration:none
 }
-.portal-admin-actions{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:8px;
-  margin-top:14px
-}
-.portal-admin-actions a,
-.portal-admin-actions button{
-  min-height:44px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid var(--l,var(--line,#1a2b2b));
-  border-radius:6px;
-  background:#081111;
-  color:var(--t,var(--teal,#2fe6c8));
-  padding:0 10px;
-  font:700 8px 'JetBrains Mono',monospace;
-  text-transform:uppercase;
-  text-decoration:none
-}
-.portal-admin-actions .primary{
-  background:var(--t,var(--teal,#2fe6c8));
-  border-color:var(--t,var(--teal,#2fe6c8));
-  color:#04120f
-}
-.portal-collapsible{scroll-margin-top:80px}
-.portal-collapsible[hidden],
-[data-portal-hidden="true"]{display:none!important}
-
-/* Compact workflow map. */
-#workflowPanel .vt-flow{
-  display:flex!important;
-  overflow-x:auto;
-  gap:6px!important;
-  scrollbar-width:none;
-  margin:12px 0 16px!important
-}
-#workflowPanel .vt-flow::-webkit-scrollbar{display:none}
-#workflowPanel .vt-flow-step{
-  flex:0 0 145px;
-  min-height:66px;
-  padding:9px!important
-}
-#workflowPanel .vt-flow-step span{
-  font-size:9px!important;
-  line-height:1.3!important
-}
-
-.portal-header-has-notify{gap:8px!important}
-
-/* Semantic status language */
-.pill.vt-status-success,.v4-status.vt-status-success,.vt-work-stage.vt-status-success,[data-status-pill].vt-status-success{color:#68ffae!important;border-color:rgba(80,255,159,.48)!important;background:rgba(45,214,123,.085)!important}
-.pill.vt-status-warning,.v4-status.vt-status-warning,.vt-work-stage.vt-status-warning,[data-status-pill].vt-status-warning{color:#ffd06f!important;border-color:rgba(255,190,84,.46)!important;background:rgba(255,180,84,.075)!important}
-.pill.vt-status-danger,.v4-status.vt-status-danger,.vt-work-stage.vt-status-danger,[data-status-pill].vt-status-danger{color:#ff8c92!important;border-color:rgba(255,102,112,.52)!important;background:rgba(255,77,88,.075)!important}
-.pill.vt-status-active,.v4-status.vt-status-active,.vt-work-stage.vt-status-active,[data-status-pill].vt-status-active{color:#42ead1!important;border-color:rgba(47,230,200,.40)!important;background:rgba(47,230,200,.065)!important}
-.pill.vt-status-neutral,.v4-status.vt-status-neutral,.vt-work-stage.vt-status-neutral,[data-status-pill].vt-status-neutral{color:#98aaa6!important;border-color:rgba(143,164,159,.24)!important;background:rgba(143,164,159,.035)!important}
-.vt-work-stage[class*="vt-status-"]{display:inline-flex!important;align-items:center;min-height:22px;padding:0 8px;border:1px solid;border-radius:999px;font-size:7px!important;letter-spacing:.08em}
-
-#overviewAction[data-state="attention"]{border-color:rgba(255,190,84,.38)!important;background:linear-gradient(135deg,rgba(255,180,84,.065),rgba(8,17,17,.96))!important}
-#overviewAction[data-state="urgent"]{border-color:rgba(255,102,112,.48)!important;background:linear-gradient(135deg,rgba(255,77,88,.075),rgba(8,17,17,.96))!important}
-#overviewAction[data-state="clear"]{border-color:rgba(80,255,159,.20)!important}
-
-.portal-link{color:var(--teal,#2fe6c8)}
-.portal-stack-gap{margin-top:10px}
-.portal-notice-gap{margin-top:16px}
-
+.portal-admin-actions .primary{background:var(--teal,#2fe6c8);border-color:var(--teal,#2fe6c8);color:#04120f}
+.portal-collapsible[hidden],[data-portal-hidden="true"]{display:none!important}
+#workflowPanel .vt-flow{display:flex!important;overflow-x:auto;gap:6px!important;scrollbar-width:none;margin:12px 0 16px!important}
+#workflowPanel .vt-flow-step{flex:0 0 145px;min-height:66px;padding:9px!important}
+#workflowPanel .vt-flow-step span{font-size:9px!important;line-height:1.3!important}
+#accountHub.account-phase4 .dashboard-grid.account-core-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+#accountHub.account-phase4 .account-core-card{min-height:132px!important;padding:16px!important}
+#accountHub.account-phase4 .account-core-card strong{font-size:28px!important;margin:8px 0 4px!important}
+#accountHub.account-phase4 .account-core-card span{font-size:12px!important;line-height:1.45!important}
+.vt-status-success{color:#68ffae!important;border-color:rgba(80,255,159,.48)!important}
+.vt-status-warning{color:#ffd06f!important;border-color:rgba(255,190,84,.46)!important}
+.vt-status-danger{color:#ff8c92!important;border-color:rgba(255,102,112,.52)!important}
+.vt-status-active{color:#42ead1!important;border-color:rgba(47,230,200,.40)!important}
+.vt-status-neutral{color:#98aaa6!important;border-color:rgba(143,164,159,.24)!important}
+.vt-admin-phase4 main.wrap>h1,.vt-admin-phase4 main.wrap>.lead{max-width:760px}
+.vt-admin-phase4 main.wrap>h1{letter-spacing:-.035em}
+.vt-admin-phase4 .notice{line-height:1.55}
+.admin-store-page .portal-admin-nav{margin-left:auto}
 @media(max-width:720px){
-  #accountHub.account-phase4 .dashboard-grid.account-core-grid{
-    grid-template-columns:1fr!important
-  }
-  #accountHub.account-phase4 .account-core-card{
-    min-height:112px!important
-  }
+  #accountHub.account-phase4 .dashboard-grid.account-core-grid{grid-template-columns:1fr!important}
   .portal-admin-actions{grid-template-columns:1fr}
-  .portal-admin-nav{
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    scrollbar-width:none;
-    width:100%
-  }
-  .portal-admin-nav::-webkit-scrollbar{display:none}
-  .portal-admin-nav a,
-  .portal-admin-nav button{flex:none}
+  .portal-admin-nav{overflow-x:auto;scrollbar-width:none;width:100%}
 }
