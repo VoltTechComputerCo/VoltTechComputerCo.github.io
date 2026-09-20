@@ -230,3 +230,11 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Added an explicit `?vtmotion=full` preview override for testing full animation on devices that report reduced-motion preferences.
 - Kept normal production behaviour respectful of `prefers-reduced-motion`.
 - Bumped the shared Experience CSS/JS references to v2 to avoid stale branch/browser asset caches.
+
+### Phase 3 — service search-preview media, batch 4 — 2026-09-20
+- Replaced the generic VoltTech logo Open Graph/Twitter image on the five core PC service pages with the matching service-specific image already in the repository.
+- Added descriptive image-alt metadata for social/search preview context.
+- Added the same representative service image to each page's `Service` structured data.
+- Updated robots directives on the five service pages to allow `max-image-preview:large`.
+- Refreshed the five edited service-page dates in `sitemap.xml`.
+- Preserved page copy, pricing, URLs, breadcrumbs, service-network navigation, contact flows, diagnostic behaviour and all backend functionality.
