@@ -1,14 +1,13 @@
-/* VoltTech 2.0 — Phase 3 shared service network
-   Connects the five core PC service pages as one customer journey. */
+/* VoltTech V2 — Phase 9 navigation clarity
+   Simple service switcher: all options visible, no step-like numbering. */
 
 .service-network{
-  margin:0 0 34px;
-  border:1px solid rgba(47,230,200,.18);
-  border-radius:8px;
-  background:
-    linear-gradient(135deg,rgba(47,230,200,.055),transparent 38%),
-    #091011;
+  margin:0 0 30px;
   overflow:hidden;
+  border:1px solid rgba(47,230,200,.17);
+  border-radius:10px;
+  background:#081011;
+  box-shadow:0 14px 34px rgba(0,0,0,.12);
 }
 .service-network-head{
   display:flex;
@@ -17,97 +16,93 @@
   gap:12px;
   padding:11px 13px;
   border-bottom:1px solid var(--line);
+  background:rgba(47,230,200,.025);
 }
 .service-network-head span,
 .service-network-head a{
   font:700 8px var(--mono);
-  letter-spacing:.1em;
+  letter-spacing:.09em;
   text-transform:uppercase;
 }
-.service-network-head span{color:var(--muted)}
-.service-network-head a{color:var(--teal)}
+.service-network-head span{
+  font-size:0;
+  color:var(--muted);
+}
+.service-network-head span:after{
+  content:"CHOOSE A SERVICE";
+  font:700 8px var(--mono);
+  letter-spacing:.09em;
+}
+.service-network-head a{
+  font-size:0;
+  color:var(--teal);
+}
+.service-network-head a:after{
+  content:"VIEW ALL SERVICES →";
+  font:700 8px var(--mono);
+  letter-spacing:.09em;
+}
+
 .service-network-links{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:0;
 }
 .service-network-links a{
   --network-accent:var(--teal);
   position:relative;
   display:flex;
-  flex-direction:column;
-  gap:3px;
+  align-items:center;
+  justify-content:center;
   min-width:0;
-  padding:13px 12px 14px;
+  min-height:56px;
+  padding:10px 8px;
   border-right:1px solid var(--line);
-  color:var(--muted);
+  background:#081011;
+  color:#78918d;
+  text-align:center;
   transition:.18s ease;
 }
 .service-network-links a:last-child{border-right:0}
-.service-network-links a:before{
-  content:"";
-  position:absolute;
-  left:12px;
-  right:12px;
-  bottom:0;
-  height:2px;
-  background:var(--network-accent);
-  opacity:0;
-  transform:scaleX(.4);
-  transition:.18s ease;
-}
 .service-network-links a:nth-child(2){--network-accent:#ff6b6b}
 .service-network-links a:nth-child(3){--network-accent:#ffb454}
 .service-network-links a:nth-child(4){--network-accent:#62a8ff}
 .service-network-links a:nth-child(5){--network-accent:#b779ff}
-.service-network-links small{
-  font:700 8px var(--mono);
-  color:#526965;
-}
+.service-network-links small{display:none!important}
 .service-network-links b{
   overflow:hidden;
+  font-size:11px;
+  font-weight:650;
+  line-height:1.2;
   text-overflow:ellipsis;
-  font-size:12px;
   white-space:nowrap;
 }
-.service-network-links a:hover,
-.service-network-links a:focus-visible,
+.service-network-links a:before{
+  content:"";
+  position:absolute;
+  left:10px;
+  right:10px;
+  bottom:0;
+  height:2px;
+  border-radius:4px 4px 0 0;
+  background:var(--network-accent);
+  opacity:0;
+}
 .service-network-links a.active{
-  background:color-mix(in srgb,var(--network-accent) 8%,transparent);
+  background:color-mix(in srgb,var(--network-accent) 9%,#081011);
+  color:var(--network-accent);
+}
+.service-network-links a.active:before,
+.service-network-links a:hover:before,
+.service-network-links a:focus-visible:before{opacity:1}
+.service-network-links a:hover,
+.service-network-links a:focus-visible{
   color:var(--text);
+  background:color-mix(in srgb,var(--network-accent) 6%,#081011);
   outline:none;
 }
-.service-network-links a:hover:before,
-.service-network-links a:focus-visible:before,
-.service-network-links a.active:before{
-  opacity:1;
-  transform:scaleX(1);
-}
-.service-network-links a.active small{color:var(--network-accent)}
-.service-network-links a.active b{color:var(--network-accent)}
 
-@media(max-width:620px){
-  .service-network{margin-bottom:28px}
-  .service-network-head{padding:10px 12px}
-  .service-network-links{
-    display:flex;
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
-    scrollbar-width:none;
-  }
-  .service-network-links::-webkit-scrollbar{display:none}
-  .service-network-links a{
-    flex:0 0 112px;
-    scroll-snap-align:start;
-    border-right:1px solid var(--line);
-  }
-}
-@media(prefers-reduced-motion:reduce){
-  .service-network-links a,
-  .service-network-links a:before{transition:none!important}
-}
-
-
-/* Phase 3 breadcrumb hierarchy */
+/* Clear, compact breadcrumb */
 .service-breadcrumb{
   display:flex;
   align-items:center;
@@ -128,18 +123,60 @@
 }
 .service-breadcrumb a{color:var(--muted)}
 .service-breadcrumb a:hover,
-.service-breadcrumb a:focus-visible{
-  color:var(--teal);
-  outline:none;
-}
-.service-breadcrumb strong{
-  color:var(--teal);
-  font-weight:700;
-}
-.service-breadcrumb span{
-  flex:0 0 auto;
-  color:#30433f;
+.service-breadcrumb a:focus-visible{color:var(--teal);outline:none}
+.service-breadcrumb strong{color:var(--teal);font-weight:700}
+.service-breadcrumb span{flex:0 0 auto;color:#30433f}
+
+@media(max-width:620px){
+  .service-network{
+    margin-bottom:26px;
+    overflow:visible;
+  }
+  .service-network-head{
+    padding:10px 12px;
+  }
+  .service-network-links{
+    grid-template-columns:1fr 1fr;
+  }
+  .service-network-links a{
+    justify-content:flex-start;
+    min-height:49px;
+    padding:10px 12px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    text-align:left;
+  }
+  .service-network-links a:nth-child(2n){border-right:0}
+  .service-network-links a:nth-child(5){
+    grid-column:1/-1;
+    border-bottom:0;
+    border-right:0;
+  }
+  .service-network-links a:nth-child(4){border-bottom:1px solid var(--line)}
+  .service-network-links b{
+    font-size:12px;
+    white-space:normal;
+  }
+  .service-network-links a.active{
+    padding-right:72px;
+  }
+  .service-network-links a.active:after{
+    content:"CURRENT";
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+    padding:3px 5px;
+    border:1px solid color-mix(in srgb,var(--network-accent) 45%,transparent);
+    border-radius:999px;
+    color:var(--network-accent);
+    font:700 6px var(--mono);
+    letter-spacing:.06em;
+  }
 }
 @media(max-width:390px){
   .service-breadcrumb{gap:5px;font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){
+  .service-network-links a{transition:none!important}
 }
