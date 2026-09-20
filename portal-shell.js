@@ -1,10 +1,18 @@
 (()=>{
-  if(window.__voltTechPortalShellV5)return;
-  window.__voltTechPortalShellV5=true;
+  if(window.__voltTechPortalShellV6)return;
+  window.__voltTechPortalShellV6=true;
 
   const page=(location.pathname.split("/").pop()||"index.html").toLowerCase();
   const customerPages=new Set(["activity.html","builds.html","quotes.html","documents.html","privacy-center.html"]);
   const esc=v=>String(v??"").replace(/[&<>"']/g,a=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[a]));
+
+  function isPhase4Account(){
+    return !!document.querySelector("#accountHub.account-phase4");
+  }
+
+  function hasPhase4CustomerNav(){
+    return !!document.querySelector(".portal-phase4-nav");
+  }
 
   function labelBefore(target,text){
     if(!target||target.previousElementSibling?.classList.contains("portal-section-label"))return;
@@ -16,8 +24,23 @@
 
   function accountShell(){
     const hub=document.querySelector("#accountHub");
-    const nav=hub?.querySelector(".account-primary-nav");
-    if(!hub||!nav)return;
+    if(!hub)return;
+
+    /* Phase 4 owns its own information architecture. Do not re-add the old
+       Quotes/More/Home nav or old dashboard labels on top of it. */
+    if(isPhase4Account()){
+      const params=new URLSearchParams(location.search);
+      const tab=params.get("tab");
+      if(tab){
+        setTimeout(()=>{
+          document.querySelector(`[data-tab="${CSS.escape(tab)}"]`)?.click();
+        },80);
+      }
+      return;
+    }
+
+    const nav=hub.querySelector(".account-primary-nav");
+    if(!nav)return;
 
     nav.classList.add("portal-account-nav");
 
@@ -71,6 +94,13 @@
     const wrap=nav?.querySelector(".wrap");
     if(!wrap)return;
 
+    /* Phase 4 pages already render the correct customer nav in HTML.
+       Respect it instead of appending a second legacy nav. */
+    if(hasPhase4CustomerNav()){
+      wrap.classList.add("portal-header-has-notify");
+      return;
+    }
+
     let old=wrap.querySelector(".navlinks,.v4-page-nav");
     if(!old){
       old=document.createElement("div");
@@ -96,30 +126,35 @@
 
   function makeAdminNav(active){
     const nav=document.createElement("div");
-    nav.className="portal-admin-nav";
+    nav.className="portal-admin-nav portal-admin-nav-v6";
     nav.innerHTML=`
       <a class="portal-admin-back" href="account.html">← Account</a>
-      <a class="${active==="queue"?"active":""}" href="admin.html">Queue</a>
+      <a class="${active==="queue"?"active":""}" href="admin.html">Work</a>
       <a class="${active==="customers"?"active":""}" href="admin-customers.html">Customers</a>
-      <a class="${active==="parts"?"active":""}" href="admin-store.html">Parts</a>
-      <button class="portal-admin-more-btn ${active==="more"?"active":""}" type="button" aria-expanded="false" aria-label="Open Admin menu">Menu</button>
+      <a class="${active==="parts"?"active":""}" href="admin-store.html">Parts Desk</a>
+      <button class="portal-admin-more-btn ${active==="more"?"active":""}" type="button" aria-expanded="false" aria-label="Open Admin menu">More</button>
       <div class="portal-admin-more" hidden>
-        <a href="admin-records.html">Records</a>
-        <a href="index.html">VoltTech Home</a>
-        <a href="admin-builds.html">Build requests</a>
+        <a href="admin-records.html">Records search</a>
+        <a href="admin-builds.html">Build request history</a>
         <a href="admin-deletions.html">Account deletions</a>
+        <a href="index.html">VoltTech Home</a>
       </div>`;
+
     const btn=nav.querySelector(".portal-admin-more-btn");
     const menu=nav.querySelector(".portal-admin-more");
+
     btn.addEventListener("click",()=>{
       const open=menu.hidden;
       menu.hidden=!open;
       btn.setAttribute("aria-expanded",String(open));
     });
+
     document.addEventListener("click",e=>{
       if(menu.hidden||e.target.closest(".portal-admin-nav"))return;
-      menu.hidden=true;btn.setAttribute("aria-expanded","false");
+      menu.hidden=true;
+      btn.setAttribute("aria-expanded","false");
     });
+
     return nav;
   }
 
@@ -141,15 +176,18 @@
 
     const wrap=document.querySelector("nav .wrap");
     if(!wrap)return;
+
     const old=wrap.querySelector(".navlinks,.v4-page-nav,.back");
     const nav=makeAdminNav(active);
     if(old)old.replaceWith(nav);
     else wrap.appendChild(nav);
+
     wrap.classList.add("portal-header-has-notify");
   }
 
   function adminHome(){
     if(page!=="admin.html")return;
+
     const app=document.querySelector("#app");
     const workflow=document.querySelector("#workflowPanel");
     if(!app||!workflow)return;
@@ -174,9 +212,10 @@
       const actions=document.createElement("div");
       actions.className="portal-admin-actions";
       actions.innerHTML=`
-        <a href="admin-customers.html">Customers</a>
-        <button class="primary" id="portalCreateQuote" type="button">Create manual quote</button>
-        <a href="admin-records.html">Find any record</a>`;
+        <a href="admin-customers.html">Find customer</a>
+        <button class="primary" id="portalCreateQuote" type="button">Create quote</button>
+        <a href="admin-records.html">Find record</a>`;
+
       workflow.appendChild(actions);
 
       actions.querySelector("#portalCreateQuote")?.addEventListener("click",()=>{
@@ -226,7 +265,10 @@
       if(queued)return;
       if(!mutations.some(m=>m.addedNodes.length||m.type==="characterData"))return;
       queued=true;
-      requestAnimationFrame(()=>{queued=false;applyStatusTones(document)});
+      requestAnimationFrame(()=>{
+        queued=false;
+        applyStatusTones(document);
+      });
     });
     observer.observe(document.body,{childList:true,subtree:true,characterData:true});
   }
@@ -239,6 +281,7 @@
       adminNav();
       adminHome();
     }
+
     watchStatuses();
   }
 
