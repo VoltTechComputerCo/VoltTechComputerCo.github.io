@@ -6,20 +6,12 @@
     <description>Breaking tech and gaming stories, PC hardware, performance, security and enthusiast culture from STATIC by VoltTech Computer Co.</description>
     <language>en</language>
     <atom:link href="https://volttechcomputerco.github.io/static-feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Sun, 27 Sep 2026 09:00:00 +0200</lastBuildDate>
-    <item>
-      <title>South African CS2’s Biggest LAN Is Coming — And It Matters More Than the Prize Money</title>
-      <link>https://volttechcomputerco.github.io/static-south-african-counter-strike-vs-gaming-masters-2026.html</link>
-      <guid isPermaLink="true">https://volttechcomputerco.github.io/static-south-african-counter-strike-vs-gaming-masters-2026.html</guid>
-      <pubDate>Sun, 27 Sep 2026 09:00:00 +0200</pubDate>
-      <description>South Africa</description>
-      <media:content url="https://www.proavl-mea.com/img/Comicon-66.jpg" medium="image" />
-    </item>
+    <lastBuildDate>Wed, 16 Sep 2026 09:00:00 +0200</lastBuildDate>
     <item>
       <title>Xbox Just Made Game Pass Very Hard to Ignore</title>
       <link>https://volttechcomputerco.github.io/static-xbox-game-pass-september-2026-stacked-lineup.html</link>
       <guid isPermaLink="true">https://volttechcomputerco.github.io/static-xbox-game-pass-september-2026-stacked-lineup.html</guid>
-      <pubDate>Wed, 16 Sep 2026 13:48:51 +0200</pubDate>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 +0200</pubDate>
       <description>Xbox</description>
       <media:content url="https://xboxwire.thesourcemediaassets.com/sites/2/2026/06/CA_TheWorm-d8162eac2608de43d89b.jpg" medium="image" />
     </item>
@@ -35,7 +27,7 @@
       <title>AMD Just Made Budget PC Building Interesting Again</title>
       <link>https://volttechcomputerco.github.io/static-amd-ryzen-5-5500f-7500-budget-cpus.html</link>
       <guid isPermaLink="true">https://volttechcomputerco.github.io/static-amd-ryzen-5-5500f-7500-budget-cpus.html</guid>
-      <pubDate>Mon, 14 Sep 2026 11:16:51 +0200</pubDate>
+      <pubDate>Mon, 14 Sep 2026 09:00:00 +0200</pubDate>
       <description>AMD quietly launched the Ryzen 5 5500F for AM4 and Ryzen 5 7500 for AM5. Specs, platform costs and which budget CPU makes sense.</description>
       <media:content url="https://altex.com/cdn/shop/files/amd-100-100000593wof-ryzen-5-7600x-am5-6-core-desktop-processor-776628.jpg?v=1733274874&amp;width=2048" medium="image" />
     </item>
@@ -48,20 +40,20 @@
       <media:content url="https://cdn.mos.cms.futurecdn.net/DkxbyRG2ehqpGLMZ2EVvGA.png" medium="image" />
     </item>
     <item>
+      <title>South African CS2’s Biggest LAN Is Coming — And It Matters More Than the Prize Money</title>
+      <link>https://volttechcomputerco.github.io/static-south-african-counter-strike-vs-gaming-masters-2026.html</link>
+      <guid isPermaLink="true">https://volttechcomputerco.github.io/static-south-african-counter-strike-vs-gaming-masters-2026.html</guid>
+      <pubDate>Sat, 12 Sep 2026 09:00:00 +0200</pubDate>
+      <description>South Africa</description>
+      <media:content url="https://www.proavl-mea.com/img/Comicon-66.jpg" medium="image" />
+    </item>
+    <item>
       <title>Metroid Ravenous Makes Samus the Predator — And It’s Switch 2-Only</title>
       <link>https://volttechcomputerco.github.io/static-metroid-ravenous-switch-2.html</link>
       <guid isPermaLink="true">https://volttechcomputerco.github.io/static-metroid-ravenous-switch-2.html</guid>
-      <pubDate>Fri, 11 Sep 2026 08:41:57 +0200</pubDate>
+      <pubDate>Fri, 11 Sep 2026 09:00:00 +0200</pubDate>
       <description>Metroid Ravenous is Nintendo’s next 2D Metroid for Switch 2, launching January 28, 2027. Here’s what is confirmed about Samus, the new devour mechanic and why it matters.</description>
       <media:content url="https://cdn.mos.cms.futurecdn.net/cMp8gVnEv7T6Htvvi5iWpA.jpg" medium="image" />
-    </item>
-    <item>
-      <title>Kojima’s PHYSINT Just Switched Sides — Xbox Will Publish It</title>
-      <link>https://volttechcomputerco.github.io/static-physint-xbox-publishing.html</link>
-      <guid isPermaLink="true">https://volttechcomputerco.github.io/static-physint-xbox-publishing.html</guid>
-      <pubDate>Thu, 10 Sep 2026 10:52:43 +0200</pubDate>
-      <description>Xbox will publish Hideo Kojima’s PHYSINT, expanding its Kojima Productions partnership beyond OD and into film and television.</description>
-      <media:content url="https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/KJPXBOX-a19bab905ef4e406d93c-1600x900.jpg" medium="image" />
     </item>
     <item>
       <title>Apple’s First Foldable iPhone Is Finally Real — Meet iPhone Duo</title>
@@ -70,6 +62,14 @@
       <pubDate>Thu, 10 Sep 2026 09:00:00 +0200</pubDate>
       <description>Apple has unveiled iPhone Duo, its first foldable iPhone. Confirmed display specs, A20 Pro hardware, iOS 27 changes, cameras, price and October 23 release date.</description>
       <media:content url="https://www.apple.com/newsroom/images/2026/09/apple-unveils-iphone-duo/article/Apple-iPhone-Duo-colors-260909_big.jpg.large.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Kojima’s PHYSINT Just Switched Sides — Xbox Will Publish It</title>
+      <link>https://volttechcomputerco.github.io/static-physint-xbox-publishing.html</link>
+      <guid isPermaLink="true">https://volttechcomputerco.github.io/static-physint-xbox-publishing.html</guid>
+      <pubDate>Thu, 10 Sep 2026 09:00:00 +0200</pubDate>
+      <description>Xbox will publish Hideo Kojima’s PHYSINT, expanding its Kojima Productions partnership beyond OD and into film and television.</description>
+      <media:content url="https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/KJPXBOX-a19bab905ef4e406d93c-1600x900.jpg" medium="image" />
     </item>
     <item>
       <title>Valheim 1.0 Launches Today — Deep North Ends a Five-Year Early Access Saga</title>
