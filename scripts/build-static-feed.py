@@ -73,7 +73,6 @@ def description_for(html: str, meta: dict[str, str]) -> str:
     for key in ("description", "og:description", "twitter:description"):
         if meta.get(key):
             return text_only(meta[key])
-    # Fallback to first substantial paragraph.
     for p in re.findall(r"<p[^>]*>(.*?)</p>", html, re.I | re.S):
         clean = text_only(p)
         if len(clean) >= 60:
@@ -101,7 +100,6 @@ def parse_date_string(value: str) -> datetime | None:
     if not value:
         return None
 
-    # ISO first.
     try:
         dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
         if dt.tzinfo is None:
@@ -110,7 +108,6 @@ def parse_date_string(value: str) -> datetime | None:
     except Exception:
         pass
 
-    # Human dates like 16 Sep 2026 / 16 September 2026.
     m = re.search(r"\b(\d{1,2})\s+([A-Za-z]{3,9})\s+(20\d{2})\b", value)
     if m:
         day, month_name, year = int(m.group(1)), m.group(2).lower(), int(m.group(3))
@@ -118,7 +115,6 @@ def parse_date_string(value: str) -> datetime | None:
         if month:
             return datetime(year, month, day, 9, 0, tzinfo=ZA)
 
-    # ISO date embedded in content.
     m = re.search(r"\b(20\d{2})-(\d{2})-(\d{2})\b", value)
     if m:
         return datetime(int(m.group(1)), int(m.group(2)), int(m.group(3)), 9, 0, tzinfo=ZA)
@@ -128,18 +124,37 @@ def parse_date_string(value: str) -> datetime | None:
 
 def visible_publish_date(html: str) -> datetime | None:
     """
-    Older STATIC articles keep the publication date in visible copy near the H1
-    rather than JSON-LD/meta. Search a tight window around the first H1 so event
-    dates later in the article cannot be mistaken for the publish date.
+    Legacy STATIC pages usually place the publication line immediately before
+    the first H1. Prefer that location so dates describing future events in the
+    opening paragraph cannot be mistaken for the article's publish date.
     """
     h1 = H1_RE.search(html)
     if not h1:
         return None
 
-    start = max(0, h1.start() - 1200)
-    end = min(len(html), h1.end() + 1200)
-    window = text_only(html[start:end])
-    return parse_date_string(window)
+    before = text_only(html[max(0, h1.start() - 900):h1.start()])
+    dates = list(re.finditer(
+        r"\b(\d{1,2})\s+([A-Za-z]{3,9})\s+(20\d{2})\b",
+        before,
+        re.I,
+    ))
+    if dates:
+        parsed = parse_date_string(dates[-1].group(0))
+        if parsed:
+            return parsed
+
+    after = text_only(html[h1.end():min(len(html), h1.end() + 700)])
+    m = re.search(
+        r"\b(\d{1,2})\s+([A-Za-z]{3,9})\s+(20\d{2})\b",
+        after,
+        re.I,
+    )
+    if m:
+        parsed = parse_date_string(m.group(0))
+        if parsed:
+            return parsed
+
+    return None
 
 def git_date(path: Path) -> datetime:
     result = subprocess.run(
@@ -204,7 +219,7 @@ def main() -> None:
         "and enthusiast culture from STATIC by VoltTech Computer Co."
     )
     ET.SubElement(channel, "language").text = "en"
-    atom = ET.SubElement(
+    ET.SubElement(
         channel,
         "{http://www.w3.org/2005/Atom}link",
         {
@@ -234,8 +249,6 @@ def main() -> None:
     ET.indent(rss, space="  ")
     xml = ET.tostring(rss, encoding="unicode", xml_declaration=True)
     OUTPUT.write_text(xml + "\n", encoding="utf-8")
-
-    # Parse our own output as a hard validation step.
     ET.parse(OUTPUT)
     print(f"STATIC RSS rebuilt with {len(stories)} article(s). Newest: {stories[0]['title']}")
 
