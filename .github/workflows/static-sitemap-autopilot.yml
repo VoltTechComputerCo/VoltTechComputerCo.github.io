@@ -2,7 +2,9 @@ name: STATIC Sitemap Autopilot
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - v2-rebuild
     paths:
       - "static.html"
       - "static-*.html"
@@ -13,17 +15,18 @@ permissions:
   contents: write
 
 concurrency:
-  group: static-sitemap-autopilot
+  group: static-sitemap-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   refresh-sitemap:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out site
+      - name: Check out current branch
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.ref_name }}
 
       - name: Sync STATIC pages into sitemap
         shell: python
@@ -83,4 +86,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add sitemap.xml
           git commit -m "chore: refresh STATIC sitemap"
-          git push
+          git push origin "HEAD:${GITHUB_REF_NAME}"

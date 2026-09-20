@@ -1,0 +1,28 @@
+name: STATIC Publishing Guard
+
+on:
+  push:
+    branches:
+      - main
+      - v2-rebuild
+    paths:
+      - "static.html"
+      - "static-*.html"
+      - "scripts/validate-static.py"
+      - ".github/workflows/static-publishing-guard.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-static:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out current branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Validate STATIC publishing integrity
+        run: python scripts/validate-static.py
