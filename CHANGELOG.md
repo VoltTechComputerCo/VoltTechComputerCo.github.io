@@ -263,3 +263,11 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Kept already-correct private surfaces such as Activity, Saved Builds, Personal Data and Order Status unchanged.
 - Refreshed only the edited public homepage and Exposure Scan modification dates in `sitemap.xml`; private/account pages remain outside the sitemap.
 - Made no service pricing, customer data, Supabase, Store/Builder launch-state, notification, document, checkout or diagnostic-logic changes.
+
+### Phase 3 — legal + account integrity consolidation, batch 8 — 2026-09-20
+- Fixed the malformed Account navigation markup on the Addresses control (`type="button"`), preventing inconsistent browser parsing of that account tab.
+- Updated the homepage footer to link directly to the canonical `privacy.html` page instead of routing customers through the legacy `privacy-policy.html` redirect alias.
+- Added self-referencing canonical URLs, favicon metadata and the VoltTech theme colour to the eight real legal/customer-policy pages.
+- Preserved the existing `noindex,follow` policy on legal pages so they remain available to customers without becoming search landing pages.
+- Left the working `privacy-policy.html` and old streaming-page redirect aliases unchanged because their canonical + redirect behaviour is already correct.
+- Made no changes to legal wording, customer records, authentication, Supabase, Store/Builder launch state, quote logic or document workflows.
