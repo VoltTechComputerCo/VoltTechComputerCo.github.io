@@ -238,3 +238,12 @@ Before VoltTech 2.0, the repository grew rapidly through iterative feature devel
 - Updated robots directives on the five service pages to allow `max-image-preview:large`.
 - Refreshed the five edited service-page dates in `sitemap.xml`.
 - Preserved page copy, pricing, URLs, breadcrumbs, service-network navigation, contact flows, diagnostic behaviour and all backend functionality.
+
+### Phase 3 — creator search-preview media, batch 5 — 2026-09-20
+- Brought Creator Hub, Streaming Support and Stream Scan up to the same search/social preview standard as the five core PC service pages.
+- Added service/creator-specific Open Graph images and descriptive image-alt metadata.
+- Added complete Twitter/X large-card metadata for all three creator-facing pages.
+- Added representative imagery to the relevant CollectionPage, Service and WebApplication structured data.
+- Allowed `max-image-preview:large` on all three pages and marked Stream Scan as free in its WebApplication schema.
+- Refreshed the three creator-page dates in `sitemap.xml`.
+- Preserved creator feed behaviour, streaming pricing, Stream Scan logic, breadcrumbs, navigation and all backend functionality.
