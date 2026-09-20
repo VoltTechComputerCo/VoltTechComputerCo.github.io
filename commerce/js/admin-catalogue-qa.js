@@ -15,10 +15,15 @@ let products=[];
 
 function esc(v){return VT.esc(v)}
 function safe(v){return VT.safeUrl(v)}
-function value(v){return v==null||v===''?'—':String(v)}
 
 function mediaUrl(p){
   return safe(p.media?.primaryImage||p.media?.primary_image||'');
+}
+
+function isOgProxy(p){
+  const strategy=String(p.media?.imageStrategy||'').toLowerCase();
+  const url=String(p.media?.primaryImage||p.media?.primary_image||'');
+  return strategy==='official-og'||url.includes('api.microlink.io/');
 }
 
 function identityIssues(p){
@@ -26,78 +31,78 @@ function identityIssues(p){
   const issues=[];
   if(!p.brand)issues.push('Brand');
   if(!p.model)issues.push('Model');
-  if(!p.manufacturer)issues.push('Manufacturer');
-  if(!ids.mpn&&!ids.manufacturerPartNumber&&!ids.manufacturer_part_number&&!ids.partNumber&&!ids.part_number)issues.push('MPN');
-  if(!ids.sku&&!ids.supplierSku&&!ids.supplier_sku)issues.push('Supplier SKU');
+  if(!p.manufacturer&&!p.brand)issues.push('Manufacturer');
+  if(!ids.mpn&&!ids.manufacturerPartNumber&&!ids.manufacturer_part_number&&!ids.partNumber&&!ids.part_number&&!ids.sku&&!ids.model&&!ids.intelSku)
+    issues.push('Part identifier');
   return issues;
 }
 
-function specIssues(p){
+function structureIssues(p){
   const issues=[];
-  if(!p.specs||Object.keys(p.specs).length<2)issues.push('Specifications');
-  if(!p.compatibility||Object.keys(p.compatibility).length<1)issues.push('Compatibility');
   if(!p.short_description)issues.push('Description');
   if(!Array.isArray(p.highlights)||p.highlights.length<1)issues.push('Highlights');
-  return issues;
-}
-
-function shippingIssues(p){
-  const issues=[];
-  if(p.warranty_months==null)issues.push('Warranty');
-  if(p.lead_time_days==null)issues.push('Lead time');
-  if(p.shipping_weight_kg==null)issues.push('Weight');
-  if(p.shipping_length_cm==null||p.shipping_width_cm==null||p.shipping_height_cm==null)issues.push('Package size');
-  if(!p.shipping_class)issues.push('Shipping class');
-  if(!p.shipping_packaging_verified)issues.push('Packaging verification');
+  if(!p.specs||Object.keys(p.specs).length<2)issues.push('Specifications');
+  if(!p.compatibility||Object.keys(p.compatibility).length<1)issues.push('Compatibility');
   return issues;
 }
 
 function mediaIssues(p){
   const issues=[];
   if(!mediaUrl(p))issues.push('Missing image');
+  if(isOgProxy(p))issues.push('OG proxy image');
   if(p.metadata?.media_review_required)issues.push('Image needs review');
   return issues;
 }
 
-function score(p){
+function supplierGaps(p){
+  const gaps=[];
+  if(p.warranty_months==null)gaps.push('Warranty');
+  if(p.lead_time_days==null)gaps.push('Lead time');
+  if(p.shipping_weight_kg==null)gaps.push('Shipping weight');
+  if(p.shipping_length_cm==null||p.shipping_width_cm==null||p.shipping_height_cm==null)gaps.push('Package dimensions');
+  if(!p.shipping_class)gaps.push('Shipping class');
+  if(!p.shipping_packaging_verified)gaps.push('Packaging verification');
+  if(p.retail_price==null||Number(p.retail_price)<=0)gaps.push('Supplier price');
+  if(!p.stock_status||['unknown',''].includes(String(p.stock_status).toLowerCase()))gaps.push('Supplier stock');
+  return gaps;
+}
+
+function structureScore(p){
   const groups=[
-    {ok:!!p.brand&&!!p.model,weight:10},
-    {ok:!!p.short_description,weight:8},
-    {ok:Array.isArray(p.highlights)&&p.highlights.length>0,weight:6},
-    {ok:p.specs&&Object.keys(p.specs).length>=2,weight:14},
-    {ok:p.compatibility&&Object.keys(p.compatibility).length>=1,weight:12},
-    {ok:!!mediaUrl(p),weight:12},
-    {ok:!p.metadata?.media_review_required,weight:8},
+    {ok:!!p.brand&&!!p.model,weight:14},
     {ok:identityIssues(p).length===0,weight:12},
-    {ok:p.warranty_months!=null,weight:6},
-    {ok:p.shipping_weight_kg!=null&&p.shipping_length_cm!=null&&p.shipping_width_cm!=null&&p.shipping_height_cm!=null,weight:8},
-    {ok:!!p.shipping_class&&!!p.shipping_packaging_verified,weight:4}
+    {ok:!!p.short_description,weight:10},
+    {ok:Array.isArray(p.highlights)&&p.highlights.length>0,weight:8},
+    {ok:p.specs&&Object.keys(p.specs).length>=2,weight:20},
+    {ok:p.compatibility&&Object.keys(p.compatibility).length>=1,weight:16},
+    {ok:!!mediaUrl(p),weight:10},
+    {ok:!p.metadata?.media_review_required&&!isOgProxy(p),weight:10}
   ];
   return groups.reduce((n,g)=>n+(g.ok?g.weight:0),0);
 }
 
-function issuesFor(p){
+function issueGroups(p){
   return {
-    image:mediaIssues(p),
+    media:mediaIssues(p),
     identity:identityIssues(p),
-    specs:specIssues(p),
-    shipping:shippingIssues(p)
+    structure:structureIssues(p),
+    supplier:supplierGaps(p)
   };
 }
 
-function allIssues(p){
-  const x=issuesFor(p);
-  return [...x.image,...x.identity,...x.specs,...x.shipping];
+function allStructureIssues(p){
+  const g=issueGroups(p);
+  return [...g.media,...g.identity,...g.structure];
 }
 
 function matchesFilter(p){
   const f=filter?.value||'all';
-  const issues=issuesFor(p);
-  if(f==='image')return issues.image.length>0;
-  if(f==='identity')return issues.identity.length>0;
-  if(f==='specs')return issues.specs.length>0;
-  if(f==='shipping')return issues.shipping.length>0;
-  if(f==='ready')return allIssues(p).length===0;
+  const g=issueGroups(p);
+  if(f==='image')return g.media.length>0;
+  if(f==='identity')return g.identity.length>0;
+  if(f==='specs')return g.structure.length>0;
+  if(f==='shipping')return g.supplier.length>0;
+  if(f==='ready')return allStructureIssues(p).length===0;
   return true;
 }
 
@@ -106,9 +111,10 @@ function visibleProducts(){
   return products.filter(p=>{
     if(!matchesFilter(p))return false;
     if(!q)return true;
+    const g=issueGroups(p);
     const hay=[
       p.name,p.brand,p.model,p.type,
-      ...(allIssues(p)),
+      ...g.media,...g.identity,...g.structure,...g.supplier,
       JSON.stringify(p.specs||{}),
       JSON.stringify(p.compatibility||{})
     ].join(' ').toLowerCase();
@@ -119,36 +125,43 @@ function visibleProducts(){
 function renderSummary(){
   const image=products.filter(p=>mediaIssues(p).length).length;
   const identity=products.filter(p=>identityIssues(p).length).length;
-  const shipping=products.filter(p=>shippingIssues(p).length).length;
-  const avg=products.length?Math.round(products.reduce((n,p)=>n+score(p),0)/products.length):0;
+  const structure=products.filter(p=>structureIssues(p).length).length;
+  const avg=products.length?Math.round(products.reduce((n,p)=>n+structureScore(p),0)/products.length):0;
 
   summary.innerHTML=`
     <div class="qa-stat"><b>${products.length}</b><span>Demo fixtures</span></div>
-    <div class="qa-stat ${image?'warn':''}"><b>${image}</b><span>Images to review</span></div>
+    <div class="qa-stat ${image?'warn':''}"><b>${image}</b><span>Media reviews</span></div>
     <div class="qa-stat ${identity?'warn':''}"><b>${identity}</b><span>Identity gaps</span></div>
-    <div class="qa-stat ${shipping?'warn':''}"><b>${shipping}</b><span>Shipping-data gaps</span></div>
-    <div class="qa-stat"><b>${avg}%</b><span>Avg structure score</span></div>`;
+    <div class="qa-stat ${structure?'warn':''}"><b>${structure}</b><span>Structure gaps</span></div>
+    <div class="qa-stat"><b>${avg}%</b><span>Architecture score</span></div>`;
 }
 
-function issueTags(p){
-  const issues=allIssues(p);
-  if(!issues.length)return '<span class="qa-issue ok">Structure complete</span>';
+function structureTags(p){
+  const issues=allStructureIssues(p);
+  if(!issues.length)return '<span class="qa-issue ok">Architecture complete</span>';
   return issues.slice(0,8).map(x=>`<span class="qa-issue">${esc(x)}</span>`).join('')+
     (issues.length>8?`<span class="qa-issue">+${issues.length-8} more</span>`:'');
+}
+
+function supplierTags(p){
+  const gaps=supplierGaps(p);
+  if(!gaps.length)return '<span class="qa-supplier-chip ready">Supplier data complete</span>';
+  return gaps.slice(0,8).map(x=>`<span class="qa-supplier-chip">${esc(x)}</span>`).join('')+
+    (gaps.length>8?`<span class="qa-supplier-chip">+${gaps.length-8} more</span>`:'');
 }
 
 function card(p){
   const img=mediaUrl(p);
   const official=safe(p.media?.officialUrl);
-  const s=score(p);
-  const reviewed=!p.metadata?.media_review_required;
+  const score=structureScore(p);
+  const reviewed=!p.metadata?.media_review_required&&!isOgProxy(p);
 
   return `<article class="qa-card" data-qa-card="${esc(p.id)}">
     <div class="qa-image">
       ${img?`<img src="${esc(img)}" alt="${esc(p.name)}" loading="lazy">`:
         `<div class="qa-image-missing">NO IMAGE</div>`}
       <span class="qa-demo">DEMO</span>
-      <span class="qa-score ${s<65?'low':s<85?'mid':'high'}">${s}%</span>
+      <span class="qa-score ${score<65?'low':score<85?'mid':'high'}">${score}%</span>
     </div>
 
     <div class="qa-body">
@@ -158,26 +171,34 @@ function card(p){
           <h3>${esc(p.name)}</h3>
           <small>${esc(p.model||'Model not loaded')}</small>
         </div>
-        <span class="qa-review-state ${reviewed?'reviewed':'pending'}">${reviewed?'IMAGE REVIEWED':'IMAGE REVIEW NEEDED'}</span>
+        <span class="qa-review-state ${reviewed?'reviewed':'pending'}">${reviewed?'MEDIA APPROVED':'MEDIA REVIEW NEEDED'}</span>
       </div>
 
-      <div class="qa-issues">${issueTags(p)}</div>
+      <div class="qa-section-label">ARCHITECTURE</div>
+      <div class="qa-issues">${structureTags(p)}</div>
 
       <div class="qa-meta">
         <span><b>Specs</b>${Object.keys(p.specs||{}).length}</span>
         <span><b>Compatibility</b>${Object.keys(p.compatibility||{}).length}</span>
-        <span><b>Warranty</b>${p.warranty_months!=null?esc(p.warranty_months+' mo'):'—'}</span>
-        <span><b>Package</b>${p.shipping_packaging_verified?'Verified':'Missing'}</span>
+        <span><b>Image source</b>${isOgProxy(p)?'OG proxy':'Direct / approved'}</span>
+        <span><b>Supplier data</b>Not required yet</span>
       </div>
+
+      <details class="qa-supplier-gaps">
+        <summary>FUTURE SUPPLIER DATA (${supplierGaps(p).length} GAP${supplierGaps(p).length===1?'':'S'})</summary>
+        <div class="qa-supplier-chips">${supplierTags(p)}</div>
+        <p>These fields are intentionally excluded from the architecture score until real supplier inventory is connected.</p>
+      </details>
 
       <details class="qa-editor">
         <summary>IMAGE & SOURCE QA</summary>
+        ${isOgProxy(p)?'<div class="qa-proxy-warning"><b>OG proxy image</b><span>This is pulled from the manufacturer page metadata and is not considered an approved product photo. It may be generic, cropped incorrectly or change without notice.</span></div>':''}
         <label>Primary image URL
           <input class="admin-input" type="url" value="${esc(img)}" data-qa-image="${esc(p.id)}" placeholder="https://…">
         </label>
         <div class="qa-editor-actions">
           <button class="btn small" type="button" data-qa-save-image="${esc(p.id)}">Save image URL</button>
-          <button class="btn small" type="button" data-qa-review="${esc(p.id)}">${reviewed?'Mark review needed':'Mark image reviewed'}</button>
+          <button class="btn small" type="button" data-qa-review="${esc(p.id)}">${reviewed?'Mark review needed':'Approve current media'}</button>
         </div>
         <p class="muted qa-source-note">Official source: ${official?`<a href="${esc(official)}" target="_blank" rel="noopener">Open manufacturer page ↗</a>`:'Not loaded'}</p>
       </details>
@@ -209,11 +230,7 @@ function bindRows(){
 async function saveImage(id,button){
   const input=document.querySelector(`[data-qa-image="${CSS.escape(id)}"]`);
   const url=(input?.value||'').trim();
-
-  if(url&&!safe(url)){
-    VT.toast('Enter a valid http/https image URL.','error');
-    return;
-  }
+  if(url&&!safe(url)){VT.toast('Enter a valid http/https image URL.','error');return}
 
   const p=products.find(x=>x.id===id);
   if(!p)return;
@@ -221,17 +238,18 @@ async function saveImage(id,button){
   button.disabled=true;
   try{
     const media={...(p.media||{})};
-    if(url)media.primaryImage=url;
-    else delete media.primaryImage;
+    if(url){
+      media.primaryImage=url;
+      media.imageStrategy='manual-review';
+    }else{
+      delete media.primaryImage;
+      delete media.imageStrategy;
+    }
 
     const metadata={...(p.metadata||{}),media_review_required:true};
-    const {error}=await client.from('store_products').update({
-      media,
-      metadata,
-      updated_at:new Date().toISOString()
-    }).eq('id',id);
-
+    const {error}=await client.from('store_products').update({media,metadata,updated_at:new Date().toISOString()}).eq('id',id);
     if(error)throw error;
+
     p.media=media;
     p.metadata=metadata;
     VT.toast('Demo image updated. Review it before approving.');
@@ -248,19 +266,21 @@ async function toggleReview(id,button){
   const p=products.find(x=>x.id===id);
   if(!p)return;
 
+  if(isOgProxy(p)&&p.metadata?.media_review_required){
+    VT.toast('Replace the OG proxy with a direct product image before approving it.','error');
+    return;
+  }
+
   const next=!p.metadata?.media_review_required;
   button.disabled=true;
 
   try{
     const metadata={...(p.metadata||{}),media_review_required:next};
-    const {error}=await client.from('store_products').update({
-      metadata,
-      updated_at:new Date().toISOString()
-    }).eq('id',id);
-
+    const {error}=await client.from('store_products').update({metadata,updated_at:new Date().toISOString()}).eq('id',id);
     if(error)throw error;
+
     p.metadata=metadata;
-    VT.toast(next?'Image marked for another review.':'Image marked reviewed.');
+    VT.toast(next?'Media marked for another review.':'Media approved.');
     render();
   }catch(error){
     console.error(error);
@@ -277,7 +297,6 @@ async function load(){
     .order('type')
     .order('brand')
     .order('name');
-
   if(error)throw error;
   products=data||[];
   render();
@@ -296,7 +315,6 @@ function setupTabs(){
       });
     }
   }));
-
   search?.addEventListener('input',render);
   filter?.addEventListener('change',render);
 }
