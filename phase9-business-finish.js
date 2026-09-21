@@ -1,4 +1,4 @@
-/* VoltTech V2 — Phase 9 / Business + visual finish
+/* VoltTech V2 — Phase 9 / Business + visual finish v2
    Public conversion polish only. No pricing or commerce logic. */
 (() => {
   if (window.__voltTechPhase9BusinessFinish) return;

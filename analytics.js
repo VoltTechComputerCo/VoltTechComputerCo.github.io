@@ -224,8 +224,8 @@ function loadPhase9Finish(){
   '/streaming-setup-south-africa.html'
  ];
  if(!supported.includes(location.pathname))return;
- loadCSS('phase9-business-finish.css?v=1','phase9-business');
- loadScript('phase9-business-finish.js?v=1','phase9-business');
+ loadCSS('phase9-business-finish.css?v=2','phase9-business');
+ loadScript('phase9-business-finish.js?v=2','phase9-business');
 }
 function init(){
  installAppMetadata();
