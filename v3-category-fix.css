@@ -1,0 +1,30 @@
+/* VoltTech V3 category image correction
+   Loaded after v3-prototype.css so these intentional V3 assets override
+   the older placeholder backgrounds without disturbing the rest of V3. */
+
+.v3-cat-gpu{
+  background-image:url('assets/v3/categories/gpu.webp') !important;
+}
+.v3-cat-cpu{
+  background-image:url('assets/v3/categories/cpu.webp') !important;
+}
+.v3-cat-ram{
+  background-image:url('assets/v3/categories/memory.webp') !important;
+}
+.v3-cat-storage{
+  background-image:url('assets/v3/categories/storage.webp') !important;
+}
+.v3-cat-cooling{
+  background-image:url('assets/v3/categories/cooling.webp') !important;
+}
+
+/* Keep the current peripherals asset until a dedicated V3 peripheral image is supplied. */
+.v3-cat-peripherals{
+  background-image:url('vt-own-keyboard.webp') !important;
+}
+
+/* Better presentation for the curated component photography. */
+.v3-category-media{
+  background-repeat:no-repeat;
+  background-color:#08171a;
+}
