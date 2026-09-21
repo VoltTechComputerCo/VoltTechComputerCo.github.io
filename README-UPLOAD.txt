@@ -1,30 +1,22 @@
-VOLTTECH V3 — REFERENCE MATCH HOMEPAGE
+VOLTTECH V3 — CACHE-SAFE HOMEPAGE FIX
 
-Branch: v3-prototype
+Problem fixed:
+The homepage HTML and cached external stylesheet were from different V3 class systems.
+That caused the near-unformatted vertical page shown in the screenshot.
 
-Upload these to the repository root:
-- index.html
-- v3-prototype.css
-- v3-prototype.js
+This version embeds the exact matching homepage CSS and JS directly into index.html.
+For the prototype homepage, RawGitHack/browser CSS caching can no longer mismatch it.
 
-Also upload:
-- assets/v3/hero/reference-rig.webp
+Upload to v3-prototype:
 
-This build deliberately follows the supplied reference screenshot's:
-- compact 64px navigation
-- short cinematic hero
-- brand strip
-- 6-card component rail
-- Builder + Signal Scan split
-- compact service strip
-- horizontal STATIC section
-- horizontal reviews section
-- trust band
-- dense footer
+1. /index.html
+   Replace the current root index.html.
 
-The new hero art is cropped from the user's supplied reference screenshot to preserve the visual balance they approved.
+2. /assets/v3/hero/reference-rig.webp
+   Keep/replace the existing copy at this exact path.
 
-No existing Store, Builder, Signal Scan, account, Supabase, service page, STATIC article, analytics or backend JavaScript has been modified.
+You do NOT need to replace v3-prototype.css or v3-prototype.js for this fix.
+Other pages may still use those files; leaving them untouched protects the rest of the prototype.
 
 Preview:
-https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/v3-prototype/index.html?rev=reference-match-v7
+https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/v3-prototype/index.html?rev=cache-safe-v8
