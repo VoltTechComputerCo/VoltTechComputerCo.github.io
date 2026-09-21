@@ -222,25 +222,47 @@ body.vt-page-creatorhub.vt9-v5 .creator-breadcrumb{
   }
 }
 
-/* Homepage mobile service rail remains intentionally swipeable. */
+/* Homepage mobile service rail: compact, useful and never clipped. */
 @media(max-width:700px){
   body.vt-page-home.vt9-v5 #services{overflow:hidden!important}
   body.vt-page-home.vt9-v5 #services .services{
     display:flex!important;
-    gap:12px!important;
+    gap:9px!important;
     overflow-x:auto!important;
     overflow-y:hidden!important;
     scroll-snap-type:x mandatory!important;
+    scroll-padding-left:0!important;
     -webkit-overflow-scrolling:touch!important;
     scrollbar-width:none!important;
-    margin:0 -20px!important;
-    padding:2px 20px 14px!important;
+    margin:0!important;
+    padding:2px 18px 10px 0!important;
   }
   body.vt-page-home.vt9-v5 #services .services::-webkit-scrollbar{display:none!important}
   body.vt-page-home.vt9-v5 #services .service{
-    flex:0 0 min(78vw,290px)!important;
+    flex:0 0 min(62vw,220px)!important;
     width:auto!important;
-    min-height:190px!important;
+    min-height:150px!important;
+    padding:14px 13px 13px!important;
     scroll-snap-align:start!important;
+  }
+  body.vt-page-home.vt9-v5 #services .service h3{
+    margin-top:8px!important;
+    margin-bottom:5px!important;
+    font-size:15px!important;
+  }
+  body.vt-page-home.vt9-v5 #services .service p{
+    font-size:10.5px!important;
+    line-height:1.42!important;
+    -webkit-line-clamp:3!important;
+  }
+  body.vt-page-home.vt9-v5 #services .service .card-link{
+    padding-top:8px!important;
+    font-size:8px!important;
+  }
+}
+@media(max-width:390px){
+  body.vt-page-home.vt9-v5 #services .service{
+    flex-basis:64vw!important;
+    min-height:146px!important;
   }
 }

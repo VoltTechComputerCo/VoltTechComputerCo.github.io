@@ -180,8 +180,8 @@ function loadPhase9Finish(){
   'creator-hub-south-africa.html'
  ];
  if(!supported.includes(pageName))return;
- loadCSS('phase9-business-finish.css?v=5','phase9-business-v5');
- loadScript('phase9-business-finish.js?v=5','phase9-business-v5');
+ loadCSS('phase9-business-finish.css?v=5b','phase9-business-v5b');
+ loadScript('phase9-business-finish.js?v=5b','phase9-business-v5b');
 }
 function init(){
  installAppMetadata();
