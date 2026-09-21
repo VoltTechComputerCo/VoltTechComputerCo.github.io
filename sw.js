@@ -38,7 +38,10 @@ self.addEventListener('fetch',event=>{
   const type=response.headers.get('content-type')||'';
   if(!response.ok||!type.includes('text/html'))return response;
 
-  let html=await response.text();
+  // Converted pages own their complete shell. Never inject legacy loaders into them.
+  // Unconverted routes retain their existing version and notification behaviour.
+  let html=await response.clone().text();
+  if(/<html\b[^>]*\bdata-vt-shell\s*=\s*["']clean["']/i.test(html))return response;
   for(const [from,to] of VT_VERSION_REWRITES){
     if(html.includes(from))html=html.split(from).join(to);
   }
