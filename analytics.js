@@ -4,29 +4,29 @@ gtag('js',new Date());
 gtag('config','G-QQ3CC70MBE');
 
 (function(){
+const pageName=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+
 const pages={
-'/':'vt-page-home',
-'/index.html':'vt-page-home',
-'/pc-repair-pretoria.html':'vt-page-repair',
-'/pc-performance-optimisation.html':'vt-page-performance',
-'/pc-upgrades-pretoria.html':'vt-page-upgrades',
-'/virus-malware-removal-pretoria.html':'vt-page-malware',
-'/windows-installation-pretoria.html':'vt-page-windows',
-'/signal-scan.html':'vt-page-signal',
-'/streaming-setup-south-africa.html':'vt-page-streaming',
-'/stream-scan.html':'vt-page-streamscan',
-'/creator-hub-south-africa.html':'vt-page-creatorhub'
+'index.html':'vt-page-home',
+'pc-repair-pretoria.html':'vt-page-repair',
+'pc-performance-optimisation.html':'vt-page-performance',
+'pc-upgrades-pretoria.html':'vt-page-upgrades',
+'virus-malware-removal-pretoria.html':'vt-page-malware',
+'windows-installation-pretoria.html':'vt-page-windows',
+'signal-scan.html':'vt-page-signal',
+'streaming-setup-south-africa.html':'vt-page-streaming',
+'stream-scan.html':'vt-page-streamscan',
+'creator-hub-south-africa.html':'vt-page-creatorhub'
 };
 
 const pageMessages={
-'/':"Hi VoltTech! I'd like some help with my PC. My issue is: ",
-'/index.html':"Hi VoltTech! I'd like some help with my PC. My issue is: ",
-'/pc-repair-pretoria.html':"Hi VoltTech! I'd like help with a PC repair or diagnostic. The problem I'm having is: ",
-'/pc-performance-optimisation.html':"Hi VoltTech! I'd like help improving my PC's performance. The main issue I'm noticing is: ",
-'/pc-upgrades-pretoria.html':"Hi VoltTech! I'm interested in upgrading my PC. I'm considering: ",
-'/virus-malware-removal-pretoria.html':"Hi VoltTech! I think my PC may have a virus or malware. The symptoms I'm seeing are: ",
-'/windows-installation-pretoria.html':"Hi VoltTech! I'd like help with a Windows installation or Windows-related issue. What I need is: ",
-'/streaming-setup-south-africa.html':"Hi VoltTech! I'd like help with my streaming setup. The problem I'm having is: "
+'index.html':"Hi VoltTech! I'd like some help with my PC. My issue is: ",
+'pc-repair-pretoria.html':"Hi VoltTech! I'd like help with a PC repair or diagnostic. The problem I'm having is: ",
+'pc-performance-optimisation.html':"Hi VoltTech! I'd like help improving my PC's performance. The main issue I'm noticing is: ",
+'pc-upgrades-pretoria.html':"Hi VoltTech! I'm interested in upgrading my PC. I'm considering: ",
+'virus-malware-removal-pretoria.html':"Hi VoltTech! I think my PC may have a virus or malware. The symptoms I'm seeing are: ",
+'windows-installation-pretoria.html':"Hi VoltTech! I'd like help with a Windows installation or Windows-related issue. What I need is: ",
+'streaming-setup-south-africa.html':"Hi VoltTech! I'd like help with my streaming setup. The problem I'm having is: "
 };
 
 function loadCSS(href,key){
@@ -93,7 +93,7 @@ function enableContactIcons(){
  loadCSS('contact-icons-static.css?v=2','contact-icons-static');
 }
 function enhanceWhatsAppLinks(){
- const msg=pageMessages[location.pathname];
+ const msg=pageMessages[pageName];
  document.querySelectorAll('a[href^="https://wa.me/27618435775"]').forEach(a=>{
    if(msg && !/[?&]text=/.test(a.href)){
      a.href='https://wa.me/27618435775?text='+encodeURIComponent(msg);
@@ -198,34 +198,34 @@ function ensureOfficialHeaderLogo(){
  if(!logo.alt)logo.alt='VoltTech Computer Co.';
 }
 function loadScanHandoff(){
- if(!['/signal-scan.html','/stream-scan.html'].includes(location.pathname))return;
+ if(!['signal-scan.html','stream-scan.html'].includes(pageName))return;
  loadScript('scan-handoff.js?v=1','scan-handoff');
 }
 function loadSymptomHandoff(){
  const supported=[
-  '/pc-repair-pretoria.html',
-  '/pc-performance-optimisation.html',
-  '/pc-upgrades-pretoria.html',
-  '/virus-malware-removal-pretoria.html',
-  '/windows-installation-pretoria.html'
+  'pc-repair-pretoria.html',
+  'pc-performance-optimisation.html',
+  'pc-upgrades-pretoria.html',
+  'virus-malware-removal-pretoria.html',
+  'windows-installation-pretoria.html'
  ];
- if(!supported.includes(location.pathname))return;
+ if(!supported.includes(pageName))return;
  loadScript('symptom-handoff.js?v=1','symptom-handoff');
 }
 function loadPhase9Finish(){
  const supported=[
-  '/',
-  '/index.html',
-  '/pc-repair-pretoria.html',
-  '/pc-performance-optimisation.html',
-  '/pc-upgrades-pretoria.html',
-  '/virus-malware-removal-pretoria.html',
-  '/windows-installation-pretoria.html',
-  '/streaming-setup-south-africa.html'
+  'index.html',
+  'pc-repair-pretoria.html',
+  'pc-performance-optimisation.html',
+  'pc-upgrades-pretoria.html',
+  'virus-malware-removal-pretoria.html',
+  'windows-installation-pretoria.html',
+  'streaming-setup-south-africa.html',
+  'creator-hub-south-africa.html'
  ];
- if(!supported.includes(location.pathname))return;
- loadCSS('phase9-business-finish.css?v=2','phase9-business');
- loadScript('phase9-business-finish.js?v=2','phase9-business');
+ if(!supported.includes(pageName))return;
+ loadCSS('phase9-business-finish.css?v=3','phase9-business-v3');
+ loadScript('phase9-business-finish.js?v=3','phase9-business-v3');
 }
 function init(){
  installAppMetadata();
@@ -234,8 +234,8 @@ function init(){
  loadScanHandoff();
  loadSymptomHandoff();
  loadPhase9Finish();
- if(/\/static(?:-|\.html|\/)/.test(location.pathname))return;
- const cls=pages[location.pathname];
+ if(/^static(?:-|\.html)/.test(pageName))return;
+ const cls=pages[pageName];
  if(cls&&!document.body.classList.contains(cls))document.body.classList.add(cls);
  loadVisualCSS();
  enhanceWhatsAppLinks();
