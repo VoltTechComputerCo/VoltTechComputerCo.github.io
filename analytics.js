@@ -168,28 +168,12 @@ function loadSymptomHandoff(){
  if(!supported.includes(pageName))return;
  loadScript('symptom-handoff.js?v=1','symptom-handoff');
 }
-function loadPhase9Finish(){
- const supported=[
-  'index.html',
-  'pc-repair-pretoria.html',
-  'pc-performance-optimisation.html',
-  'pc-upgrades-pretoria.html',
-  'virus-malware-removal-pretoria.html',
-  'windows-installation-pretoria.html',
-  'streaming-setup-south-africa.html',
-  'creator-hub-south-africa.html'
- ];
- if(!supported.includes(pageName))return;
- loadCSS('phase9-business-finish.css?v=5b','phase9-business-v5b');
- loadScript('phase9-business-finish.js?v=5b','phase9-business-v5b');
-}
 function init(){
  installAppMetadata();
  ensureOfficialHeaderLogo();
  enableContactIcons();
  loadScanHandoff();
  loadSymptomHandoff();
- loadPhase9Finish();
  if(/^static(?:-|\.html)/.test(pageName))return;
  const cls=pages[pageName];
  if(cls&&!document.body.classList.contains(cls))document.body.classList.add(cls);
