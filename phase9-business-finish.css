@@ -405,3 +405,23 @@ body.vt-page-creatorhub.vt9-v4 .hero{
     transition:none!important;
   }
 }
+
+
+/* Phase 9 v4B — remove legacy visual-system lead images.
+   These pseudo-elements appeared before breadcrumbs/titles and duplicated
+   the newer hero imagery. The page must establish identity first. */
+body.vt-page-repair main .wrap::before,
+body.vt-page-performance main .wrap::before,
+body.vt-page-upgrades main .wrap::before,
+body.vt-page-malware main .wrap::before,
+body.vt-page-windows main .wrap::before,
+body.vt-page-streaming main .wrap::before{
+  content:none!important;
+  display:none!important;
+  height:0!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  background:none!important;
+  box-shadow:none!important;
+}
