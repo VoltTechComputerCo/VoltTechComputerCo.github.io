@@ -139,7 +139,6 @@ function initMobileNavigation(){
      '<a class="vt-mobile-link vt-menu-contact" href="index.html#contact"><span class="vt-card-image vt-image-contact"></span><div class="vt-card-copy"><small>Contact</small><strong>Get Help</strong><em>WhatsApp or email</em></div></a>'+
      '<a class="vt-mobile-link vt-menu-static" href="static.html"><span class="vt-card-image vt-image-static"></span><div class="vt-card-copy"><small>Editorial</small><strong>STATIC</strong><em>Tech, gaming & hardware</em></div></a>'+
    '</div>';
-
  document.body.append(backdrop,drawer);
 
  async function updateCreatorMenu(){
@@ -224,8 +223,8 @@ function loadPhase9Finish(){
   'creator-hub-south-africa.html'
  ];
  if(!supported.includes(pageName))return;
- loadCSS('phase9-business-finish.css?v=3','phase9-business-v3');
- loadScript('phase9-business-finish.js?v=3','phase9-business-v3');
+ loadCSS('phase9-business-finish.css?v=4','phase9-business-v4');
+ loadScript('phase9-business-finish.js?v=4','phase9-business-v4');
 }
 function init(){
  installAppMetadata();
