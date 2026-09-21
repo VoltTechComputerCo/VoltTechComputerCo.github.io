@@ -1,28 +1,29 @@
 (() => {
-  const btn = document.querySelector('[data-menu]');
-  const drawer = document.querySelector('[data-drawer]');
+  const btn = document.querySelector('[data-v3-menu]');
+  const drawer = document.querySelector('.v3-mobile-drawer');
   if (btn && drawer) {
-    const setOpen = open => {
-      drawer.classList.toggle('open', open);
+    btn.addEventListener('click', () => {
+      const open = drawer.classList.toggle('open');
       btn.setAttribute('aria-expanded', String(open));
-      btn.textContent = open ? '×' : '☰';
-    };
-    btn.addEventListener('click', () => setOpen(!drawer.classList.contains('open')));
-    drawer.addEventListener('click', e => {
-      if (e.target.closest('a')) setOpen(false);
     });
-    document.addEventListener('click', e => {
-      if (drawer.classList.contains('open') && !drawer.contains(e.target) && !btn.contains(e.target)) setOpen(false);
+    drawer.addEventListener('click', e => {
+      if (e.target.closest('a')) {
+        drawer.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      }
     });
   }
-  document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
-  const form = document.querySelector('[data-newsletter]');
-  if (form) {
-    form.addEventListener('submit', e => {
+
+  const year = document.querySelector('[data-year]');
+  if (year) year.textContent = new Date().getFullYear();
+
+  const newsletter = document.querySelector('[data-newsletter]');
+  if (newsletter) {
+    newsletter.addEventListener('submit', e => {
       e.preventDefault();
-      const email = form.querySelector('input[type=email]')?.value.trim();
+      const email = newsletter.querySelector('input[type="email"]')?.value.trim();
       if (!email) return;
-      location.href = 'mailto:volttechcomputerco@gmail.com?subject=' + encodeURIComponent('VoltTech updates') + '&body=' + encodeURIComponent('Please add ' + email + ' to the VoltTech updates list.');
+      window.location.href = `mailto:volttechcomputerco@gmail.com?subject=${encodeURIComponent('VoltTech updates')}&body=${encodeURIComponent('Please add ' + email + ' to the VoltTech updates list.')}`;
     });
   }
 })();
