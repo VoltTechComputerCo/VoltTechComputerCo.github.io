@@ -1,12 +1,10 @@
-/* VoltTech V2 — Phase 9 v4
-   Hierarchy first. Page identity before imagery or navigation. */
+/* VoltTech V2 — Phase 9 v5
+   Stable hierarchy + compact service navigation. */
 
 :root{
   --vt-service-accent:#2fe6c8;
   --vt-service-rgb:47,230,200;
-  --vt9-panel:#0a1214;
   --vt9-line:#172526;
-  --vt9-text:#e7f1ee;
   --vt9-muted:#6f8984;
 }
 
@@ -16,13 +14,13 @@ body.vt9-service-page main>.wrap{
   padding-right:20px!important;
 }
 
-/* Service hero: content is always the primary element. */
+/* Service hero */
 .vt-service-hero{
   display:grid!important;
   grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr)!important;
   grid-template-areas:"copy media";
   min-height:410px!important;
-  margin:12px 0 22px!important;
+  margin:0 0 34px!important;
   padding:0!important;
   overflow:hidden!important;
   border:1px solid rgba(var(--vt-service-rgb),.28)!important;
@@ -55,8 +53,8 @@ body.vt9-service-page main>.wrap{
   position:absolute;
   inset:0;
   background:
-    linear-gradient(90deg,rgba(5,10,11,.12),transparent 30%),
-    linear-gradient(0deg,rgba(5,8,10,.22),transparent 32%)!important;
+    linear-gradient(90deg,rgba(5,10,11,.10),transparent 30%),
+    linear-gradient(0deg,rgba(5,8,10,.18),transparent 32%)!important;
   pointer-events:none;
 }
 .vt-service-identity{
@@ -106,7 +104,6 @@ body.vt9-service-page main>.wrap{
   line-height:1.7!important;
 }
 .vt-service-hero .ctas{margin-top:22px!important}
-
 .vt-media-top,.vt-media-bottom{
   position:absolute;
   z-index:2;
@@ -139,122 +136,66 @@ body.vt9-service-page main>.wrap{
   background:var(--vt-service-accent);
 }
 
-/* Shared service menu lives AFTER the hero. */
-.vt-all-services{
-  margin:0 0 38px!important;
-  padding:0!important;
-  overflow:hidden;
-  border:1px solid rgba(47,230,200,.16)!important;
-  border-radius:12px;
-  background:#071011;
-}
-.vt-service-menu-head{
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:24px;
-  padding:21px 22px 18px;
-  border-bottom:1px solid #172526;
-  background:#081113;
-}
-.vt-service-menu-head small{
-  display:block;
-  color:#2fe6c8;
-  font:700 8px 'JetBrains Mono',monospace;
-  letter-spacing:.12em;
-}
-.vt-service-menu-head h2{
-  margin:5px 0 4px!important;
-  font-size:24px!important;
-}
-.vt-service-menu-head p{
-  margin:0;
-  color:#68837e;
-  font-size:11px;
-}
-.vt-service-menu-head>a{
-  flex:none;
-  color:#2fe6c8;
-  font:700 8px 'JetBrains Mono',monospace;
-  text-decoration:none;
-}
-.vt-service-menu-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-}
-.vt-service-option{
-  --card-accent:#2fe6c8;
-  --card-rgb:47,230,200;
-  position:relative;
-  min-width:0;
-  min-height:180px;
-  padding:17px 16px 15px;
-  overflow:hidden;
-  border-right:1px solid #172526;
-  border-bottom:1px solid #172526;
-  background:
-    radial-gradient(circle at 100% 0,rgba(var(--card-rgb),.08),transparent 28%),
-    #091214;
-  color:#e7f1ee!important;
-  text-decoration:none!important;
-}
-.vt-service-option:nth-child(3n){border-right:0}
-.vt-service-option:nth-last-child(-n+3){border-bottom:0}
-.vt-service-option:before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  bottom:0;
-  width:2px;
-  background:var(--card-accent);
-  opacity:.45;
-}
-.vt-service-option-top{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-}
-.vt-service-option-top small{
-  color:var(--card-accent);
-  font:700 7px 'JetBrains Mono',monospace;
-}
-.vt-service-option-top span{
-  color:#526965;
-  font:700 6px 'JetBrains Mono',monospace;
-}
-.vt-service-option h3{
-  margin:24px 0 7px!important;
-  font-size:18px!important;
-}
-.vt-service-option p{
-  margin:0 0 18px;
-  color:#718b86;
-  font-size:10.5px;
-  line-height:1.55;
-}
-.vt-service-option>b{
-  position:absolute;
-  left:16px;
-  bottom:13px;
-  color:var(--card-accent);
-  font:700 7px 'JetBrains Mono',monospace;
-}
-.vt-service-option.active{
-  background:
-    linear-gradient(145deg,rgba(var(--card-rgb),.12),rgba(var(--card-rgb),.025) 58%),
-    #0a1416;
-  box-shadow:inset 0 0 0 1px rgba(var(--card-rgb),.26);
-}
-.vt-service-option.active .vt-service-option-top span{color:var(--card-accent)}
+/* Never show the old large generated service menu. */
+.vt-all-services{display:none!important}
 
-/* Creator Hub returns to title-first. */
-body.vt-page-creatorhub.vt9-v4 main{padding-top:28px!important}
-body.vt-page-creatorhub.vt9-v4 .hero{
-  padding-top:10px!important;
+/* Creator Hub remains title-first. */
+body.vt-page-creatorhub.vt9-v5 main{padding-top:28px!important}
+body.vt-page-creatorhub.vt9-v5 .creator-network,
+body.vt-page-creatorhub.vt9-v5 .creator-breadcrumb{
+  display:none!important;
 }
 
-/* Mobile: title and actions ALWAYS before image. */
+/* Compact floating conversion CTA */
+.vt9-wa-dock{display:none}
+@media(max-width:700px){
+  body.vt9-service-page{
+    padding-bottom:max(70px,calc(56px + env(safe-area-inset-bottom)));
+  }
+  .vt9-wa-dock{
+    position:fixed;
+    z-index:88;
+    right:12px;
+    bottom:max(12px,env(safe-area-inset-bottom));
+    display:flex;
+    align-items:center;
+    gap:8px;
+    min-height:46px;
+    padding:8px 14px 8px 10px;
+    border:1px solid rgba(47,230,200,.9);
+    border-radius:999px;
+    background:#2fe6c8;
+    color:#03120f!important;
+    text-decoration:none!important;
+    box-shadow:0 14px 34px rgba(0,0,0,.38);
+    transition:opacity .18s ease,transform .18s ease;
+  }
+  .vt9-wa-dock.is-hidden,
+  body.vt-menu-open .vt9-wa-dock{
+    opacity:0;
+    transform:translateY(8px);
+    pointer-events:none;
+  }
+  .vt9-wa-icon{
+    width:29px;
+    height:29px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:#25d366;
+    color:#fff;
+    font-size:16px;
+    line-height:1;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.75);
+  }
+  .vt9-wa-dock b{
+    font:700 11px 'Space Grotesk',sans-serif;
+    letter-spacing:.01em;
+    white-space:nowrap;
+  }
+}
+
+/* Mobile hero: copy first, image second */
 @media(max-width:820px){
   body.vt9-service-page main>.wrap{
     padding-left:14px!important;
@@ -279,29 +220,12 @@ body.vt-page-creatorhub.vt9-v4 .hero{
   .vt-service-hero h1{
     font-size:clamp(34px,9vw,46px)!important;
   }
-  .vt-service-menu-head{
-    align-items:flex-start;
-    flex-direction:column;
-    padding:17px 15px 14px;
-  }
-  .vt-service-menu-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-  .vt-service-option{
-    min-height:165px;
-    border-right:1px solid #172526!important;
-    border-bottom:1px solid #172526!important;
-  }
-  .vt-service-option:nth-child(2n){border-right:0!important}
-  .vt-service-option:nth-last-child(-n+2){border-bottom:0!important}
 }
 
-/* HOME MOBILE: restore intentional horizontal swipe rail. */
+/* Homepage mobile service rail remains intentionally swipeable. */
 @media(max-width:700px){
-  body.vt-page-home.vt9-v4 #services{
-    overflow:hidden!important;
-  }
-  body.vt-page-home.vt9-v4 #services .services{
+  body.vt-page-home.vt9-v5 #services{overflow:hidden!important}
+  body.vt-page-home.vt9-v5 #services .services{
     display:flex!important;
     gap:12px!important;
     overflow-x:auto!important;
@@ -312,116 +236,11 @@ body.vt-page-creatorhub.vt9-v4 .hero{
     margin:0 -20px!important;
     padding:2px 20px 14px!important;
   }
-  body.vt-page-home.vt9-v4 #services .services::-webkit-scrollbar{
-    display:none!important;
-  }
-  body.vt-page-home.vt9-v4 #services .service{
+  body.vt-page-home.vt9-v5 #services .services::-webkit-scrollbar{display:none!important}
+  body.vt-page-home.vt9-v5 #services .service{
     flex:0 0 min(78vw,290px)!important;
     width:auto!important;
     min-height:190px!important;
     scroll-snap-align:start!important;
   }
-}
-
-@media(max-width:430px){
-  .vt-service-menu-grid{grid-template-columns:1fr}
-  .vt-service-option{
-    min-height:132px;
-    border-right:0!important;
-    border-bottom:1px solid #172526!important;
-  }
-  .vt-service-option:last-child{border-bottom:0!important}
-  .vt-service-option h3{margin-top:15px!important}
-}
-
-/* Mobile quick actions */
-.vt9-v3-dock{display:none}
-@media(max-width:700px){
-  body.vt9-service-page{
-    padding-bottom:max(84px,calc(70px + env(safe-area-inset-bottom)));
-  }
-  .vt9-v3-dock{
-    position:fixed;
-    z-index:88;
-    left:10px;
-    right:10px;
-    bottom:max(9px,env(safe-area-inset-bottom));
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:7px;
-    padding:7px;
-    border:1px solid #233537;
-    border-radius:13px;
-    background:rgba(5,9,10,.94);
-    box-shadow:0 20px 44px rgba(0,0,0,.5);
-    backdrop-filter:blur(16px);
-  }
-  .vt9-v3-dock.is-hidden,
-  body.vt-menu-open .vt9-v3-dock{
-    opacity:0;
-    pointer-events:none;
-  }
-  .vt9-v3-dock a{
-    min-height:50px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding:8px 11px;
-    border-radius:8px;
-    text-decoration:none!important;
-  }
-  .vt9-v3-dock small{
-    margin-bottom:2px;
-    font:700 6px 'JetBrains Mono',monospace;
-  }
-  .vt9-v3-dock b{
-    font:700 11px 'Space Grotesk',sans-serif;
-  }
-  .vt9-v3-scan{
-    border:1px solid rgba(47,230,200,.25);
-    background:rgba(47,230,200,.06);
-    color:#dff9f4!important;
-  }
-  .vt9-v3-wa{
-    border:1px solid #2fe6c8;
-    background:#2fe6c8;
-    color:#03120f!important;
-  }
-}
-
-.vt9-v3-reveal{
-  opacity:0;
-  transform:translateY(12px);
-  transition:opacity .38s ease,transform .38s ease;
-}
-.vt9-v3-reveal.is-visible{
-  opacity:1;
-  transform:none;
-}
-@media(prefers-reduced-motion:reduce){
-  .vt9-v3-reveal{
-    opacity:1!important;
-    transform:none!important;
-    transition:none!important;
-  }
-}
-
-
-/* Phase 9 v4B — remove legacy visual-system lead images.
-   These pseudo-elements appeared before breadcrumbs/titles and duplicated
-   the newer hero imagery. The page must establish identity first. */
-body.vt-page-repair main .wrap::before,
-body.vt-page-performance main .wrap::before,
-body.vt-page-upgrades main .wrap::before,
-body.vt-page-malware main .wrap::before,
-body.vt-page-windows main .wrap::before,
-body.vt-page-streaming main .wrap::before{
-  content:none!important;
-  display:none!important;
-  height:0!important;
-  margin:0!important;
-  padding:0!important;
-  border:0!important;
-  background:none!important;
-  box-shadow:none!important;
 }

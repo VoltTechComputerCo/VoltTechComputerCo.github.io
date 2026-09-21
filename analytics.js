@@ -64,7 +64,6 @@ function installAppMetadata(){
  ensureHeadLink('apple-touch-icon','icons/apple-touch-icon.png','180x180');
  ensureHeadLink('icon','icons/favicon-32.png','32x32');
  ensureHeadLink('icon','icons/favicon-16.png','16x16');
-
  let theme=document.querySelector('meta[name="theme-color"]');
  if(!theme){
    theme=document.createElement('meta');
@@ -72,7 +71,6 @@ function installAppMetadata(){
    document.head.appendChild(theme);
  }
  theme.content='#05080a';
-
  let apple=document.querySelector('meta[name="apple-mobile-web-app-capable"]');
  if(!apple){
    apple=document.createElement('meta');
@@ -80,18 +78,15 @@ function installAppMetadata(){
    document.head.appendChild(apple);
  }
  apple.content='yes';
-
  if('serviceWorker' in navigator){
    window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}),{once:true});
  }
 }
 function loadVisualCSS(){
- loadCSS('visual-system.css?v=11','visual-system');
+ loadCSS('visual-system.css?v=13','visual-system-v13');
  loadCSS('visual-block-fix.css?v=3','visual-fix');
 }
-function enableContactIcons(){
- loadCSS('contact-icons-static.css?v=2','contact-icons-static');
-}
+function enableContactIcons(){loadCSS('contact-icons-static.css?v=2','contact-icons-static')}
 function enhanceWhatsAppLinks(){
  const msg=pageMessages[pageName];
  document.querySelectorAll('a[href^="https://wa.me/27618435775"]').forEach(a=>{
@@ -109,9 +104,7 @@ function initMobileNavigation(){
  const nav=document.querySelector('nav');
  const wrap=nav&&nav.querySelector('.wrap');
  if(!nav||!wrap)return;
-
  loadCSS('mobile-nav.css?v=5','mobile-nav');
-
  const button=document.createElement('button');
  button.className='vt-mobile-menu-btn';
  button.type='button';
@@ -119,11 +112,9 @@ function initMobileNavigation(){
  button.setAttribute('aria-controls','vtMobileDrawer');
  button.innerHTML='<span class="vt-menu-bars" aria-hidden="true"><i></i><i></i><i></i></span><span>Menu</span>';
  wrap.appendChild(button);
-
  const backdrop=document.createElement('div');
  backdrop.className='vt-mobile-backdrop';
  backdrop.setAttribute('aria-hidden','true');
-
  const drawer=document.createElement('div');
  drawer.className='vt-mobile-drawer';
  drawer.id='vtMobileDrawer';
@@ -133,35 +124,13 @@ function initMobileNavigation(){
    '<div class="vt-mobile-links">'+
      '<a class="vt-mobile-link vt-menu-services" href="index.html#services"><span class="vt-card-image vt-image-services"></span><div class="vt-card-copy"><small>Services</small><strong>PC Services</strong><em>Repair, upgrades & Windows</em></div></a>'+
      '<a class="vt-mobile-link vt-menu-scan" href="signal-scan.html"><span class="vt-card-image vt-image-scan"></span><div class="vt-card-copy"><small>Free tool</small><strong>Signal Scan</strong><em>Symptoms, triage & estimates</em></div></a>'+
-     '<a class="vt-mobile-link vt-menu-creator" href="creator-hub-south-africa.html"><span class="vt-card-image vt-image-creator"></span><div class="vt-card-copy"><div class="vt-creator-top"><small>Creator Hub</small><span class="vt-live-pill"><i></i><b id="vtMenuLiveCount">LIVE</b></span></div><strong>SA Creators</strong><em id="vtMenuCreatorMeta">Checking live creators…</em></div></a>'+
+     '<a class="vt-mobile-link vt-menu-creator" href="creator-hub-south-africa.html"><span class="vt-card-image vt-image-creator"></span><div class="vt-card-copy"><small>Creator Hub</small><strong>SA Creators</strong><em>Discover local creators</em></div></a>'+
      '<a class="vt-mobile-link vt-menu-streaming" href="streaming-setup-south-africa.html"><span class="vt-card-image vt-image-streaming"></span><div class="vt-card-copy"><small>Streaming</small><strong>Creator Support</strong><em>OBS, audio & performance</em></div></a>'+
      '<a class="vt-mobile-link vt-menu-account" href="account.html"><span class="vt-card-image vt-image-account"></span><div class="vt-card-copy"><small>Account</small><strong>My Account</strong><em>Quotes, builds & profile</em></div></a>'+
      '<a class="vt-mobile-link vt-menu-contact" href="index.html#contact"><span class="vt-card-image vt-image-contact"></span><div class="vt-card-copy"><small>Contact</small><strong>Get Help</strong><em>WhatsApp or email</em></div></a>'+
      '<a class="vt-mobile-link vt-menu-static" href="static.html"><span class="vt-card-image vt-image-static"></span><div class="vt-card-copy"><small>Editorial</small><strong>STATIC</strong><em>Tech, gaming & hardware</em></div></a>'+
    '</div>';
  document.body.append(backdrop,drawer);
-
- async function updateCreatorMenu(){
-   const count=document.getElementById('vtMenuLiveCount');
-   const meta=document.getElementById('vtMenuCreatorMeta');
-   if(!count||!meta)return;
-   try{
-     const res=await fetch('sa-streamers-live.json?menu=1',{cache:'no-store'});
-     if(!res.ok)throw new Error('feed');
-     const data=await res.json();
-     const creators=Array.isArray(data.streamers)?data.streamers:[];
-     const live=creators.filter(s=>s.live);
-     count.textContent=live.length?live.length+' LIVE':'LIVE';
-     meta.textContent=live.length
-       ? live.length+' creator'+(live.length===1?' is':'s are')+' live now'
-       : 'Discover South African creators';
-   }catch(e){
-     count.textContent='LIVE';
-     meta.textContent='Discover South African creators';
-   }
- }
- updateCreatorMenu();
-
  function setOpen(open){
    button.setAttribute('aria-expanded',String(open));
    drawer.classList.toggle('open',open);
@@ -169,23 +138,11 @@ function initMobileNavigation(){
    drawer.setAttribute('aria-hidden',String(!open));
    backdrop.setAttribute('aria-hidden',String(!open));
    document.body.classList.toggle('vt-menu-open',open);
-   if(open){requestAnimationFrame(()=>drawer.querySelector('a')?.focus())}
-   else if(document.activeElement&&drawer.contains(document.activeElement))button.focus();
  }
  button.addEventListener('click',()=>setOpen(button.getAttribute('aria-expanded')!=='true'));
  backdrop.addEventListener('click',()=>setOpen(false));
  drawer.addEventListener('click',e=>{if(e.target.closest('a'))setOpen(false)});
- document.addEventListener('keydown',e=>{
-   if(button.getAttribute('aria-expanded')!=='true')return;
-   if(e.key==='Escape'){e.preventDefault();setOpen(false);return}
-   if(e.key==='Tab'){
-     const focusable=[...drawer.querySelectorAll('a[href],button:not([disabled])')];
-     if(!focusable.length)return;
-     const first=focusable[0],last=focusable[focusable.length-1];
-     if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
-     else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
-   }
- });
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false)});
  window.addEventListener('resize',()=>{if(innerWidth>700)setOpen(false)});
 }
 function ensureOfficialHeaderLogo(){
@@ -223,8 +180,8 @@ function loadPhase9Finish(){
   'creator-hub-south-africa.html'
  ];
  if(!supported.includes(pageName))return;
- loadCSS('phase9-business-finish.css?v=4b','phase9-business-v4b');
- loadScript('phase9-business-finish.js?v=4','phase9-business-v4');
+ loadCSS('phase9-business-finish.css?v=5','phase9-business-v5');
+ loadScript('phase9-business-finish.js?v=5','phase9-business-v5');
 }
 function init(){
  installAppMetadata();
