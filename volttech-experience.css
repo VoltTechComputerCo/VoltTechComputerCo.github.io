@@ -179,37 +179,13 @@ body.vt-experience-ready[class*="vt-page-"] main .wrap:hover::before{
   filter:saturate(1.06) contrast(1.02);
 }
 
-/* Diagnostic telemetry feels alive. */
-body.vt-page-home.vt-experience-ready .sensor-row em,
-body.vt-page-home.vt-experience-ready .mark-bars em,
-body.vt-page-home.vt-experience-ready .crystal-row em,
-body.vt-page-home.vt-experience-ready .mem-progress em{
-  transform-origin:left;
-  animation:vt-meter-in 1.15s var(--vt-ease) both;
-}
-body.vt-page-home.vt-experience-ready .score-ring{
-  animation:vt-soft-glow 4s ease-in-out infinite;
-}
-body.vt-page-home.vt-experience-ready .diagnostic-swipe-hint b{
-  display:inline-block;
-  animation:vt-nudge 1.7s ease-in-out infinite;
-}
-
-/* Creator "live" status stays intentionally red but gets signal energy. */
 body.vt-page-creatorhub.vt-experience-ready .dot,
-body.vt-page-streamscan.vt-experience-ready .dot,
-body.vt-page-home.vt-experience-ready .creator-dot,
-body.vt-page-home.vt-experience-ready .creator-hub-live-dot{
+body.vt-page-streamscan.vt-experience-ready .dot{
   animation:vt-live-pulse 1.9s ease-in-out infinite;
 }
 
 /* Sticky narrative feeling on larger screens. */
 @media(min-width:900px){
-  body.vt-page-home.vt-experience-ready .diagnostic-cards > .label,
-  body.vt-page-home.vt-experience-ready .diagnostic-cards > h2{
-    position:relative;
-    z-index:2;
-  }
   body.vt-page-streaming.vt-experience-ready .panel,
   body.vt-page-creatorhub.vt-experience-ready .directory{
     transform-origin:center top;
@@ -225,18 +201,8 @@ body.vt-page-home.vt-experience-ready .creator-hub-live-dot{
   from{left:-35%}
   to{left:120%}
 }
-@keyframes vt-meter-in{
-  from{transform:scaleX(.08);opacity:.35}
-  to{transform:scaleX(1);opacity:1}
-}
-@keyframes vt-soft-glow{
-  0%,100%{filter:drop-shadow(0 0 0 rgba(47,230,200,0))}
-  50%{filter:drop-shadow(0 0 12px rgba(47,230,200,.18))}
-}
-@keyframes vt-nudge{
-  0%,100%{transform:translateX(0)}
-  50%{transform:translateX(6px)}
-}
+
+
 @keyframes vt-live-pulse{
   0%,100%{box-shadow:0 0 5px rgba(255,88,109,.45);opacity:.82}
   50%{box-shadow:0 0 15px rgba(255,88,109,.9);opacity:1}
@@ -269,13 +235,7 @@ body.vt-page-home.vt-experience-ready .creator-hub-live-dot{
   .vt-hero-signal,
   body.vt-experience-ready .dot,
   body.vt-experience-ready .creator-dot,
-  body.vt-experience-ready .creator-hub-live-dot,
-  body.vt-page-home.vt-experience-ready .sensor-row em,
-  body.vt-page-home.vt-experience-ready .mark-bars em,
-  body.vt-page-home.vt-experience-ready .crystal-row em,
-  body.vt-page-home.vt-experience-ready .mem-progress em,
-  body.vt-page-home.vt-experience-ready .score-ring,
-  body.vt-page-home.vt-experience-ready .diagnostic-swipe-hint b{
+  body.vt-experience-ready .creator-hub-live-dot{
     animation:none!important;
   }
 }
@@ -283,7 +243,6 @@ body.vt-page-home.vt-experience-ready .creator-hub-live-dot{
   .vt-ambient-grid,
   .vt-pointer-glow{display:none}
 }
-
 
 /* Runtime-fix visibility layer: mobile should look different even before motion. */
 @media(max-width:760px){
@@ -298,7 +257,6 @@ body.vt-page-home.vt-experience-ready .creator-hub-live-dot{
     background:radial-gradient(circle,rgba(47,230,200,.13),rgba(47,230,200,.035) 38%,transparent 70%);
   }
   body.vt-experience-ready .service,
-  body.vt-experience-ready .scope-card,
   body.vt-experience-ready .panel,
   body.vt-experience-ready .hub-card,
   body.vt-experience-ready .creator-network,
@@ -332,10 +290,4 @@ body.vt-page-home.vt-experience-ready .creator-hub-live-dot{
   body.vt-force-motion .dot,
   body.vt-force-motion .creator-dot,
   body.vt-force-motion .creator-hub-live-dot{animation:vt-live-pulse 1.9s ease-in-out infinite!important}
-  body.vt-force-motion.vt-page-home .sensor-row em,
-  body.vt-force-motion.vt-page-home .mark-bars em,
-  body.vt-force-motion.vt-page-home .crystal-row em,
-  body.vt-force-motion.vt-page-home .mem-progress em{animation:vt-meter-in 1.15s var(--vt-ease) both!important}
-  body.vt-force-motion.vt-page-home .score-ring{animation:vt-soft-glow 4s ease-in-out infinite!important}
-  body.vt-force-motion.vt-page-home .diagnostic-swipe-hint b{animation:vt-nudge 1.7s ease-in-out infinite!important}
 }

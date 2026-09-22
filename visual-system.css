@@ -30,35 +30,14 @@ body.vt-page-streamscan{
   background-attachment:fixed!important;
 }
 
-/* Layout safeguards. */
-body[class*="vt-page-"] main .wrap,body.vt-page-home .wrap{overflow-x:clip}
-body.vt-page-home .contact{gap:16px;min-width:0}
-body.vt-page-home .contact span{min-width:0;overflow-wrap:anywhere}
-body.vt-page-home .contact a{flex:0 0 auto;white-space:nowrap}
+
+body[class*="vt-page-"] main .wrap{overflow-x:clip}
 
 @media(max-width:620px){
  body.vt-page-signal{background-attachment:scroll!important;background-position:center 38%!important}
  body.vt-page-streamscan{background-attachment:scroll!important;background-position:76% 50%!important}
 }
-@media(max-width:560px){
- body.vt-page-home .contact{
-   display:grid!important;
-   grid-template-columns:minmax(0,1fr);
-   align-items:start!important;
-   gap:10px!important;
-   padding:18px!important
- }
- body.vt-page-home .contact span{
-   display:block;
-   width:100%;
-   font-size:clamp(15px,5.2vw,21px)!important;
-   line-height:1.4!important
- }
- body.vt-page-home .contact a{
-   justify-self:start;
-   font-size:11px!important
- }
-}
+
 @media(prefers-reduced-data:reduce){
  body.vt-page-signal,body.vt-page-streamscan{background-image:none!important}
 }

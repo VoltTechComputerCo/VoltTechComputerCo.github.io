@@ -45,15 +45,3 @@ body.vt9-service-page main>.wrap{max-width:1080px!important;padding-left:20px!im
   .vt-service-hero-media{order:2!important;min-height:185px!important;border-top:1px solid rgba(var(--vt-service-rgb),.22);background-position:center 42%!important;filter:brightness(1.31) saturate(1.12) contrast(1.01)!important}
   .vt-service-hero h1{font-size:clamp(34px,9vw,46px)!important}
 }
-
-/* Homepage mobile rail: compact, inset and swipeable from first paint. */
-@media(max-width:700px){
-  body.vt-page-home #services{overflow:hidden!important}
-  body.vt-page-home #services .services{display:flex!important;gap:9px!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:none!important;margin:0!important;padding:2px 18px 10px 0!important}
-  body.vt-page-home #services .services::-webkit-scrollbar{display:none!important}
-  body.vt-page-home #services .service{flex:0 0 min(62vw,220px)!important;width:auto!important;min-height:150px!important;padding:14px 13px 13px!important;scroll-snap-align:start!important}
-  body.vt-page-home #services .service h3{margin-top:8px!important;margin-bottom:5px!important;font-size:15px!important}
-  body.vt-page-home #services .service p{font-size:10.5px!important;line-height:1.42!important;-webkit-line-clamp:3!important}
-  body.vt-page-home #services .service .card-link{padding-top:8px!important;font-size:8px!important}
-}
-@media(max-width:390px){body.vt-page-home #services .service{flex-basis:64vw!important;min-height:146px!important}}

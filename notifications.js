@@ -36,6 +36,7 @@
   };
 
   async function ensureServiceWorker(){
+    if(document.documentElement.dataset.vtShell==="clean")return;
     if(!("serviceWorker" in navigator)||location.protocol!=="https:")return;
     try{
       const reg=await navigator.serviceWorker.register("/sw.js?v=5.2.0");
@@ -44,6 +45,8 @@
   }
 
   function findPlacement(){
+    const cleanHost=document.querySelector("[data-notifications-host]");
+    if(cleanHost)return cleanHost;
     if(adminContext){
       return document.querySelector(".top .portal-admin-nav,.top .tools,nav .portal-admin-nav,nav .wrap");
     }
@@ -107,6 +110,10 @@
     if(button)button.setAttribute("aria-expanded",String(opened));
     document.documentElement.classList.toggle("vt-notify-open",opened);
     if(opened)requestAnimationFrame(positionPanel);
+    if(document.documentElement.dataset.vtShell==="clean"){
+      if(opened)q("#vtNotifyClose")?.focus();
+      else if(panel?.contains(document.activeElement))button?.focus();
+    }
   }
 
   function positionPanel(){
@@ -139,6 +146,7 @@
       button.type="button";
       button.setAttribute("aria-label","Open notifications");
       button.setAttribute("aria-expanded","false");
+      button.setAttribute("aria-controls","vtNotifyPanel");
       button.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg><span class="vt-notify-count" id="vtNotifyCount" hidden>0</span>';
       placeButton();
     }else{
@@ -160,6 +168,9 @@
       panel.className="vt-notify-panel";
       panel.hidden=true;
       panel.setAttribute("aria-label","Notifications");
+      if(document.documentElement.dataset.vtShell==="clean"){
+        panel.setAttribute("role","dialog");panel.setAttribute("aria-modal","true");
+      }
       document.body.append(panel);
     }
 
@@ -183,6 +194,18 @@
       document.addEventListener("click",e=>{
         if(!opened||e.target.closest("#vtNotifyPanel,#vtNotifyButton"))return;
         setOpen(false);
+      });
+      document.addEventListener("keydown",e=>{
+        if(!opened||document.documentElement.dataset.vtShell!=="clean")return;
+        if(e.key==="Escape"){
+          e.preventDefault();setOpen(false);button?.focus();
+        }
+        if(e.key==="Tab"){
+          const controls=[...panel.querySelectorAll("button:not([disabled]),a[href]")];
+          const first=controls[0],last=controls[controls.length-1];
+          if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus()}
+          else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus()}
+        }
       });
       window.addEventListener("resize",()=>{placeButton();positionPanel()},{passive:true});
       window.addEventListener("scroll",positionPanel,{passive:true});

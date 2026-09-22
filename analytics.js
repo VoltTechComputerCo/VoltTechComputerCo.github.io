@@ -7,7 +7,6 @@ gtag('config','G-QQ3CC70MBE');
 const pageName=(location.pathname.split('/').pop()||'index.html').toLowerCase();
 
 const pages={
-'index.html':'vt-page-home',
 'pc-repair-pretoria.html':'vt-page-repair',
 'pc-performance-optimisation.html':'vt-page-performance',
 'pc-upgrades-pretoria.html':'vt-page-upgrades',
@@ -20,7 +19,6 @@ const pages={
 };
 
 const pageMessages={
-'index.html':"Hi VoltTech! I'd like some help with my PC. My issue is: ",
 'pc-repair-pretoria.html':"Hi VoltTech! I'd like help with a PC repair or diagnostic. The problem I'm having is: ",
 'pc-performance-optimisation.html':"Hi VoltTech! I'd like help improving my PC's performance. The main issue I'm noticing is: ",
 'pc-upgrades-pretoria.html':"Hi VoltTech! I'm interested in upgrading my PC. I'm considering: ",

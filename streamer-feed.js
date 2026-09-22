@@ -84,13 +84,14 @@
         title: row.title || '',
         started_at: row.started_at || null,
         last_live_at: row.last_live_at || null,
-        activity_score: Number(row.activity_score || 0)
+        activity_score: Number(row.activity_score || 0),
+        checked_at: row.checked_at || null
       };
     });
 
     return legacyResponse({
       source: 'supabase',
-      generated_at: latestCheck ? latestCheck.toISOString() : new Date().toISOString(),
+      generated_at: latestCheck ? latestCheck.toISOString() : null,
       tracked_count: streamers.length,
       valid_count: streamers.length,
       streamers: streamers

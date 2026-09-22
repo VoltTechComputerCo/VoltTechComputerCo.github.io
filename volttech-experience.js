@@ -56,7 +56,7 @@
 
   // Decorative sheen is also a real child, avoiding collisions with existing card artwork.
   const sheenTargets = d.querySelectorAll(
-    '.service,.scope-card,.hub-card,.panel,.diagnostic-card,.support-card,.package,.community-card'
+    '.service,.hub-card,.panel,.support-card,.package,.community-card'
   );
   sheenTargets.forEach(el => {
     el.classList.add('vt-sheen-host');
@@ -73,12 +73,8 @@
     'main section',
     '.service-network',
     '.creator-network',
-    '.scope-card',
     '.service',
-    '.diagnostic-card',
     '.trust',
-    '.review-card',
-    '.creator-promo',
     '.hub-card',
     '.directory',
     '.community-card',
@@ -109,7 +105,7 @@
   // Fine-pointer card tilt only. Mobile gets clean reveal/hover states instead.
   if (finePointer && !reducedMotion) {
     const tiltSelectors = [
-      '.service','.scope-card','.diagnostic-card','.trust','.review-card',
+      '.service','.trust',
       '.creator-card','.support-card','.package','.community-card'
     ];
     const tiltItems = [...d.querySelectorAll(tiltSelectors.join(','))];
