@@ -1,0 +1,29 @@
+/* Presentation for the preserved notifications.js controller on clean pages. */
+[data-notifications-host] { display: flex; }
+.vt-notify-button { position: relative; display: grid; place-items: center; width: 44px; height: 44px; padding: .7rem; color: var(--text-secondary); background: transparent; border: 0; }
+.vt-notify-button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.vt-notify-count { position: absolute; top: 0; right: 0; padding: 0 .25rem; background: var(--teal); color: var(--black); font: 600 .625rem/1.5 var(--font-mono); }
+.vt-notify-scrim { position: fixed; inset: 0; z-index: 39; background: rgba(2,9,10,.65); }
+.vt-notify-panel { position: fixed; z-index: 40; max-height: min(68dvh, 620px); overflow: auto; background: var(--panel); border: 1px solid var(--border-strong); border-radius: var(--radius); box-shadow: 0 12px 48px var(--black); }
+.vt-notify-head { position: relative; padding: 1rem; border-bottom: 1px solid var(--border); }
+.vt-notify-head h2 { font-size: 1.25rem; margin: .35rem 2.5rem .75rem 0; }
+.vt-notify-head small { font: 400 .65rem var(--font-mono); color: var(--teal); }
+.vt-notify-head-actions { display: flex; gap: .5rem; }
+.vt-notify-panel button, .vt-notify-panel a { min-height: 44px; }
+.vt-notify-head button { padding: .5rem .65rem; background: var(--panel-raised); border: 1px solid var(--border); border-radius: var(--radius); font-size: .75rem; }
+.vt-notify-close { position: absolute; right: .6rem; top: .6rem; width: 44px; font-size: 1.3rem !important; }
+.vt-notify-item { display: block; width: 100%; padding: 1rem; text-align: left; background: var(--panel); border: 0; border-bottom: 1px solid var(--border); }
+.vt-notify-item:hover { background: var(--panel-raised); }
+.vt-notify-item.unread { border-left: 3px solid var(--teal); }
+.vt-notify-item.high { border-left: 3px solid var(--warning); }
+.vt-notify-title { display: flex; justify-content: space-between; gap: .75rem; font-size: .95rem; margin: .4rem 0; }
+.vt-notify-title time { flex-shrink: 0; color: var(--text-secondary); font: 400 .65rem var(--font-mono); }
+.vt-notify-message { display: block; color: var(--text-secondary); font-size: .8rem; overflow-wrap: anywhere; }
+.vt-notify-role { font: 400 .6rem/1.5 var(--font-mono); color: var(--text-secondary); }
+.vt-notify-action { display: block; color: var(--teal); font-size: .75rem; margin-top: .75rem; }
+.vt-notify-section-label { padding: .7rem 1rem; font: 500 .65rem var(--font-mono); color: var(--teal); text-transform: uppercase; border-bottom: 1px solid var(--border); }
+.vt-notify-clear { display: grid; gap: .4rem; padding: 1.25rem; font-size: .85rem; color: var(--text-secondary); }
+.vt-notify-toast { position: fixed; bottom: 1rem; right: 1rem; z-index: 50; max-width: calc(100% - 2rem); padding: 1rem; background: var(--panel-raised); border: 1px solid var(--border-strong); }
+.vt-notify-toast > * { display: block; margin-bottom: .4rem; }
+.vt-notify-toast small, .vt-notify-toast em { font: 400 .65rem var(--font-mono); color: var(--teal); }
+.vt-notify-toast span { font-size: .8rem; color: var(--text-secondary); }
