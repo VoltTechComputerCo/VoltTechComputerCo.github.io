@@ -1,0 +1,28 @@
+@media (max-width: 70rem) {
+  .brand-promise { display: none; }
+  .header-inner { gap: var(--space-3); }
+}
+@media (max-width: 56rem) {
+  .header-inner { flex-wrap: wrap; padding-block: .5rem; }
+  .header-account { margin-left: auto; }
+  .primary-nav { width: 100%; margin: 0; order: 4; border-top: 1px solid var(--border); padding-top: var(--space-2); }
+  .primary-nav ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2); }
+  .primary-nav a { border: 1px solid var(--border); padding-inline: var(--space-3); }
+  .menu-toggle:not([hidden]) { display: inline-flex; min-width: 72px; }
+  .grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .footer-brand { grid-column: 1 / -1; max-width: 30rem; }
+}
+@media (max-width: 40rem) {
+  .section { padding-block: var(--space-6); }
+  .section-heading { align-items: flex-start; flex-direction: column; gap: var(--space-2); }
+  .section-heading h2 { font-size: 1.125rem; }
+  .grid-two { grid-template-columns: minmax(0, 1fr); }
+  .grid { gap: var(--space-3); }
+  .feature-panel { padding: var(--space-5); }
+  .primary-nav ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+  .footer-bottom { flex-direction: column; }
+  .hardware-card .card-body { padding: var(--space-3); }
+  .hardware-card h3 { font-size: 1rem; }
+}
