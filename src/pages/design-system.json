@@ -1,0 +1,8 @@
+{
+  "output": "design-system.html",
+  "title": "Design system preview | VoltTech Computer Co.",
+  "description": "Internal preview of the VoltTech design foundation: typography, colour, hardware cards, navigation and accessible controls.",
+  "robots": "noindex, nofollow",
+  "styles": ["assets/css/pages/design-system.css"],
+  "scripts": ["assets/js/pages/design-system.js"]
+}
