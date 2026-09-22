@@ -19,6 +19,7 @@ def render(source):
     prefix = '../' * (len(output.parts) - 1)
     styles = [f'assets/css/{name}.css' for name in CSS] + config.get('styles', [])
     values = {
+        'PAGE': html.escape(source.stem, quote=True),
         'TITLE': html.escape(config['title']),
         'DESCRIPTION': html.escape(config['description'], quote=True),
         'ROBOTS': html.escape(config['robots'], quote=True),
@@ -26,7 +27,8 @@ def render(source):
         'FOOTER': (ROOT / 'src/templates/footer.html').read_text().strip(),
         'CONTENT': source.with_suffix('.html').read_text().strip(),
         'STYLES': '\n'.join(f'  <link rel="stylesheet" href="{prefix}{path}">' for path in styles),
-        'SCRIPTS': '\n'.join(f'  <script type="module" src="{prefix}{path}"></script>' for path in config.get('scripts', [])),
+        'SCRIPTS': '\n'.join(f'  <script defer src="{prefix}{path}"></script>' for path in config.get('classic_scripts', [])) + '\n' + '\n'.join(f'  <script type="module" src="{prefix}{path}"></script>' for path in config.get('scripts', [])),
+        'HEAD': source.with_suffix('.head.html').read_text().strip() if source.with_suffix('.head.html').exists() else '',
     }
     page = (ROOT / 'src/templates/page.html').read_text()
     for key, value in values.items():

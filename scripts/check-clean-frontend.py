@@ -24,7 +24,8 @@ class Page(HTMLParser):
 def check_reference(source, ref, ids=None):
     url = urlsplit(ref)
     if url.scheme or url.netloc:
-        errors.append(f'{source}: unexpected external dependency/link {ref}')
+        if url.scheme not in ('https', 'mailto'):
+            errors.append(f'{source}: unsupported URL scheme {ref}')
         return
     target = ROOT / unquote(url.path.lstrip('/')) if url.path.startswith('/') else source.parent / unquote(url.path)
     if not url.path:
@@ -35,6 +36,12 @@ def check_reference(source, ref, ids=None):
         errors.append(f'{source.relative_to(ROOT)}: missing {ref}')
     if not url.path and url.fragment and ids is not None and unquote(url.fragment) not in ids:
         errors.append(f'Missing anchor: {ref}')
+    if url.path and url.fragment and target.is_file() and target.suffix == '.html':
+        linked = Page()
+        linked.feed(target.read_text())
+        target_ids = {attrs.get('id') for _, attrs in linked.tags}
+        if unquote(url.fragment) not in target_ids:
+            errors.append(f'Missing destination anchor: {ref}')
 
 
 subprocess.run([sys.executable, str(ROOT / 'scripts/build-clean-frontend.py'), '--check'], check=True)
@@ -71,7 +78,8 @@ for source in (ROOT / 'src/pages').glob('*.json'):
         errors.append('Inspection page must stay noindex')
     for tag, attrs in parser.tags:
         path = attrs.get('src', '') if tag == 'script' else attrs.get('href', '') if tag == 'link' and attrs.get('rel') == 'stylesheet' else ''
-        if path and not path.startswith('assets/'):
+        preserved = {'supabase-config.js', 'streamer-feed.js', 'conversion-context.js'} if output.name == 'index.html' else set()
+        if path and not path.startswith('assets/') and path not in preserved:
             errors.append(f'Legacy runtime dependency on converted page: {path}')
 
 for css in (ROOT / 'assets/css').rglob('*.css'):
@@ -81,10 +89,13 @@ for js in (ROOT / 'assets/js').rglob('*.js'):
     code = js.read_text()
     for ref in re.findall(r'from\s+[\'"]([^\'\"]+)', code):
         check_reference(js, ref)
-    if re.search(r'\b(fetch|localStorage|sessionStorage|supabase|gtag)\b', code):
+    pure = js.parent.name != 'services' and js.name != 'home.js'
+    if pure and re.search(r'\b(fetch|localStorage|sessionStorage|supabase|gtag)\b', code):
         errors.append(f'Unexpected integration in pure inspection shell: {js}')
     subprocess.run(['node', '--input-type=module', '--check'], input=code, text=True, check=True)
 subprocess.run(['node', '--check', str(ROOT / 'sw.js')], check=True)
+for name in ('notifications.js', 'streamer-feed.js', 'analytics.js', 'volttech-experience.js'):
+    subprocess.run(['node', '--check', str(ROOT / name)], check=True)
 if errors:
     print('\n'.join(errors), file=sys.stderr)
     sys.exit(1)

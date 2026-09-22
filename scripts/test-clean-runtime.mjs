@@ -75,3 +75,50 @@ toggle.listeners.click();
 nav.listeners.click({ target: { closest: () => link } });
 assert.equal(nav.hidden, true);
 console.log('PASS: mobile disclosure, Escape, link selection and resize focus contracts');
+
+const integrationContext = {
+  URL, AbortController, setTimeout, clearTimeout, fetch: () => { throw new Error('Unexpected network'); },
+  location: { origin: 'https://raw.githack.com' },
+  window: new Proxy({}, { get() { throw new Error('Preview accessed production services'); } }),
+  localStorage: new Proxy({}, { get() { throw new Error('Preview accessed authentication storage'); } })
+};
+const integrationSource = source('assets/js/services/home-integrations.js')
+  .replaceAll('export ', '')
+  .replaceAll('import.meta.url', JSON.stringify('https://example.test/assets/js/services/home-integrations.js'));
+vm.runInNewContext(integrationSource + '\nthis.contracts = {normaliseLaunchSettings, readLaunchSettings, cartQuantity, freshLiveCreators, connectAccount, connectProductionServices};', integrationContext);
+const c = integrationContext.contracts;
+assert.equal(c.normaliseLaunchSettings({catalogue_enabled: 'true', builder_enabled: 1}).catalogue_enabled, false);
+assert.equal(c.normaliseLaunchSettings({builder_enabled: true}).builder_enabled, true);
+assert.equal(c.normaliseLaunchSettings(null).builder_enabled, false);
+const config = {url: 'https://example.test', publishableKey: 'public-test-key'};
+assert.equal(await c.readLaunchSettings(null), null);
+assert.equal(await c.readLaunchSettings(config, async () => { throw new Error('offline'); }), null);
+assert.equal(await c.readLaunchSettings(config, async () => ({ok: false})), null);
+for (const payload of [null, {}, [], [{}, {}]]) {
+  assert.equal(await c.readLaunchSettings(config, async () => ({ok: true, json: async () => payload})), null);
+}
+const enabled = await c.readLaunchSettings(config, async (url, options) => {
+  assert.ok(url.includes('id=eq.store&select=catalogue_enabled,builder_enabled'));
+  assert.equal(options.headers.apikey, 'public-test-key');
+  assert.equal(options.cache, 'no-store');
+  return {ok: true, json: async () => [{catalogue_enabled: true, builder_enabled: false}]};
+});
+assert.equal(enabled.catalogue_enabled, true);
+assert.equal(enabled.builder_enabled, false);
+assert.equal(c.cartQuantity('invalid'), 0);
+assert.equal(c.cartQuantity('{"quantity":9}'), 0);
+assert.equal(c.cartQuantity(JSON.stringify([{productId:'one',quantity:2},{productId:'two',quantity:25},{productId:'bad',quantity:-1},{quantity:4},{productId:'bad',quantity:999}])), 27);
+const now = Date.parse('2026-09-22T12:00:00Z');
+const live = {login: 'valid_creator', display_name: 'Creator', live: true, checked_at: '2026-09-22T11:59:00Z'};
+const feed = {source: 'supabase', generated_at: '2026-09-22T11:59:00Z', streamers: [live]};
+assert.equal(c.freshLiveCreators(feed, now).length, 1);
+assert.equal(c.freshLiveCreators({...feed, generated_at:'2026-09-18T12:00:00Z'}, now), null);
+assert.equal(c.freshLiveCreators({...feed, generated_at:null}, now), null);
+assert.equal(c.freshLiveCreators({...feed, generated_at:'2026-09-22T13:00:00Z'}, now), null);
+for (const row of [{...live, checked_at:null}, {...live, checked_at:'2026-09-18T12:00:00Z'}, {...live, login:'../not-a-creator'}, {...live, live:'true'}]) {
+  assert.equal(c.freshLiveCreators({...feed, streamers:[row]}, now).length, 0);
+}
+assert.equal(c.freshLiveCreators({...feed, source:'legacy', streamers:[{...live,checked_at:null}]}, now).length, 1);
+await c.connectAccount(config);
+c.connectProductionServices();
+console.log('PASS: launch flags fail closed; cart data validated; stale/unsafe creator data rejected; previews do not access production account or tracking');
