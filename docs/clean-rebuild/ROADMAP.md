@@ -5,7 +5,7 @@ Previous major Step: **Step 0 — Repository audit (complete)**. Current: **Step
 | Step | Scope | Status / completion gate |
 |---|---|---|
 | 0 | Repository and system audit | Complete; recorded in Step 0 delivery |
-| 1 | Shared frontend foundation and homepage | In progress; Step 1.1 packaged, upload and visual review pending |
+| 1 | Shared frontend foundation and homepage | In progress; Step 1.1 uploaded, hash-verified and visually approved; Step 1.2 packaged for upload |
 | 2 | Store, categories, product, cart, checkout and tracking | Not started; respect launch gates and resolve documented commerce gaps |
 | 3 | PC Builder | Not started; preserve engines, estimates, saving and handoffs |
 | 4 | Signal Scan and service pages | Not started; truthful diagnostics, service leads and support |
@@ -18,13 +18,13 @@ Previous major Step: **Step 0 — Repository audit (complete)**. Current: **Step
 
 ## Step 1 sequence
 
-- **Step 1.1 — Shared foundation and inspection page:** code and source checks complete; awaiting manual upload to clean-rebuild and visual review. A pure, noindex inspection route exercises the shared shell without backend calls. Root service worker now respects explicitly converted pages.
-- **Step 1.2 — Homepage and shared navigation:** re-inspect uploaded HEAD first, verify Step 1.1 hashes and feedback, then rebuild the homepage against the supplied reference. Connect shared shell responsibilities to actual launch/account/notification/analytics contracts. Retire the V2-only finaliser and obsolete homepage code atomically. Plan adoption across remaining page families with explicit adapters.
-- **Step 1.3 — Foundation QA and removal closure:** test 360/390/412, tablets and desktops; source/path checks; native dialog and keyboard handling; installed service-worker transitions; no legacy injections on migrated routes. Continue only after user inspection and concrete upload verification.
+- **Step 1.1 — Shared foundation and inspection page:** uploaded to `8c120bc74512583cfb3f4cf3be292d13368b320e`; 32 files verified exactly; user visual approval received.
+- **Step 1.2 — Homepage and shared navigation:** new source-owned homepage, truthful launch/creator states, preserved backend adapters and obsolete-homepage cleanup. Automated checks complete; upload and manual visual review pending.
+- **Step 1.3 — Foundation QA and removal closure:** verify Step 1.2 uploaded HEAD/files first, then address visual feedback at 360/390/412, tablets and desktops; check keyboard/native dialogs, authenticated notifications and installed service-worker transitions in their appropriate environments.
 
 ## Sequencing clarification from Step 0
 
-Splitting analytics, launch access, app registration and notification responsibilities is coupled to migration of their first business-page consumers in Step 1.2. Step 1.1 establishes the pure shell and the service-worker isolation boundary first. Existing runtime integrations are not removed while old routes still depend on them. No production flags are enabled by a visual Step.
+Step 1.2 reconnects analytics, launch access, app registration and notifications explicitly for the homepage. The shared inspection shell remains backend-free. Existing runtime integrations remain for unconverted consumers. No production launch flags are enabled by a visual Step.
 
 ## Every delivery
 
