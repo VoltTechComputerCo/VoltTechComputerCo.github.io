@@ -1,6 +1,3 @@
-import { enhanceDialogs } from '../components/dialog.js';
-
-enhanceDialogs();
 const form = document.querySelector('#inspection-form');
 const button = document.querySelector('#check-example');
 const notes = document.querySelector('#inspection-notes');
