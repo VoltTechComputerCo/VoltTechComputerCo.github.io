@@ -1,4 +1,4 @@
-# Clean rebuild architecture — Step 1.3
+# Clean rebuild architecture — Step 2.1
 
 Authoritative branch: `clean-rebuild`. Step 1.3 parent: `d659bad184e002aaa28468663dab83f213225613`, inspected from a fresh clean-rebuild checkout. Step 1.2 delivery bytes are unchanged and its upload placeholders have been removed. Step 1.1 upload was verified against all 32 delivered files and visually approved by the user. No v3-prototype code was used. User-provided V3-named image files are media sources only.
 
@@ -6,7 +6,7 @@ Authoritative branch: `clean-rebuild`. Step 1.3 parent: `d659bad184e002aaa284686
 
 `src/templates/page.html`, `header.html` and `footer.html` own the shared shell. `src/pages/*.json` supplies output path, metadata, styles and scripts; adjacent HTML supplies content. Optional `.head.html` supplies page-specific canonical/social/structured metadata. `scripts/build-clean-frontend.py` emits complete upload-ready HTML. Edit sources, then regenerate; generated HTML is never a separate implementation.
 
-Converted routes: `index.html` and `design-system.html`. Other page families retain their working audited implementation until their own migration. Shared design changes propagate to converted routes. There is one new shell, not a second independently authored homepage shell.
+Converted routes: `index.html`, `design-system.html`, `store.html` and `product.html`. Other page families retain their working audited implementation until their own migration. Shared design changes propagate to converted routes. There is one new shell, not a second independently authored homepage shell.
 
 | Source | Responsibility |
 |---|---|
@@ -43,7 +43,7 @@ No framework, package manager or runtime build is required. Native content and e
 | Signal Scan | Existing `signal-scan.html?source=home`; no fabricated telemetry |
 | WhatsApp/email | Existing public contact destinations and contextual handoffs retained |
 
-Production-only account bootstrap, analytics and service-worker registration run only on `https://volttechcomputerco.github.io`. GitHack may read public launch/creator data but cannot share production authentication or send homepage analytics. An account label is display state only; authorisation remains in the existing backend/RLS. Existing destination pages keep their original behaviour and access controls.
+Production-only account bootstrap, analytics and service-worker registration run only on the explicit production-origin allowlist (`volttechcomputerco.github.io`, `volttechcomputerco.co.za`, `www.volttechcomputerco.co.za`). GitHack may read public launch/creator data but cannot share production authentication or send homepage analytics. An account label is display state only; authorisation remains in the existing backend/RLS. Existing destination pages keep their original behaviour and access controls.
 
 `notifications.js` adaptations are limited to clean host placement, delegating clean worker registration, ARIA dialog metadata, Escape/Tab/focus management. Database queries and notification actions are unchanged. `streamer-feed.js` retains its response shape and adds a timestamp; unknown `generated_at` is null rather than a fabricated fresh date.
 
@@ -66,3 +66,25 @@ The user uploads ZIP contents manually and reviews changed pages through GitHack
 The phone header intentionally omits the cart icon at 40rem and below to retain comfortable header controls; the same breakpoint now exposes a Cart item in the mobile menu. Both links use the existing `store.html?cart=1` route and launch gate. No new cart implementation is introduced. Desktop layout is unchanged. The inspection page shows the route without accessing customer cart storage.
 
 The uploaded Step 1.2 page was checked in the available desktop browser: no horizontal overflow, working search/results/empty state, native Escape dismissal, and shared local validation. Headline fonts were verified as the intended variable Space Grotesk and JetBrains Mono files. The Step 1.3 phone-menu update has source/runtime checks; 360/390/412 visual review follows manual upload. No new authenticated or payment operation was attempted.
+
+## Step 2.1 commerce boundary
+
+Store/product sources live in `src/pages/` and use the same templates, tokens, controls, typography and navigation as the homepage. `assets/css/pages/commerce.css` owns commerce composition. There is no retained Store/product override stack. The nine existing category types remain query-addressable at `store.html?category=...`.
+
+| File | Responsibility / adaptation |
+|---|---|
+| `assets/js/services/site-config.js` | Shared explicit production origins and pinned SDK URL; consumed by homepage and commerce adapters |
+| `assets/js/services/catalogue.js` | Strict launch check, timed client loading, verified `getUser` + `is_volttech_admin` preview, public demo exclusion, shared status feedback |
+| `assets/js/components/catalogue-view.js` | Escaped cards, valid pricing states, filters, product images with labelled category fallback, identity/specification rows |
+| `assets/js/pages/store.js` | Category/query navigation, search, brand, sort, reset, gated catalogue state |
+| `assets/js/pages/product.js` | Product/related data, identity, specifications, compatibility, fulfilment, documents and error states |
+| `assets/js/services/catalogue-cart.js` | Native dialog, existing cart reads/writes/events, quantity/removal, missing-item recovery and existing checkout route; no new checkout/payment API |
+| `commerce/js/store-core.js` | Existing public API preserved. Two bootstrap adaptations: clean pages reuse the supplied client and leave worker registration to the clean adapter. Legacy clients/registration still work. |
+
+Old presentation hook IDs (`productGrid`, `brandFilters`, `productHost`, old cart drawer IDs and `data-store-script`) are retired together with their Store/product controllers. New generated sources, controllers and selectors are changed atomically. The old `store-access.js` remains solely for the unconverted checkout. `commerce/store.css` retains shared admin/checkout/order styles; retired public Store/product rules are removed. `site-store-entry.js` retains its navigation and Builder handoff, but its obsolete Store CSS injection is removed.
+
+`?preview=1` is never sufficient to open the catalogue. Preview requires a production origin, a server-verified user and a true admin RPC result. Public views require `catalogue_enabled === true` and exclude demo/unclassified records. Fixture purchases are disabled even in authorised preview. A second settings check after `loadStore` protects Store display against a launch-state change during loading. Product reads use the public launch gate and existing published-product queries/RLS. GitHack uses a non-persistent anonymous client and no production tracking, auth bootstrap or worker.
+
+The live backend remains locked with 15 demo records and zero real active records. This delivery does not publish supplier offers. All example records used for browser checks were intercepted locally and never written to Supabase or shipped as site data.
+
+Reuse of repository category and hardware media is deliberate; category fallback is labelled and never described as the exact product. No new manufacturer specification, pricing, stock, warranty or delivery claim is authored.
