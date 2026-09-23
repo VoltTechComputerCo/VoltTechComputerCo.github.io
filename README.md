@@ -1,76 +1,67 @@
-# Step 4.2 — Core service-page family
+# Step 4.3 — Service funnel QA and legacy cleanup
 
-Objective: rebuild the five local PC support pages on the clean VoltTech shell while preserving their service intent, local SEO, pricing guidance, truthful business boundaries and Signal Scan continuity.
+Objective: close Step 4 by regression-testing the full service-page ↔ Signal Scan funnel, documenting retained legacy dependencies, and removing only service/Signal assets proven unused by the audited clean-rebuild branch.
 
 Parent Step: Step 4 — Signal Scan and service pages.  
-Previous: Step 4.1 Signal Scan uploaded and byte-verified at `4d77081f6bed0706edf22b193f30af35986ef55b`.  
-Current: Step 4.2 — packaged; repository upload verification pending.  
-Next: Step 4.3 — service-funnel QA, dependency audit and legacy cleanup.
+Previous: Step 4.2 uploaded and byte-verified at `8532030b7a11d79850b7cd1ffa672be233cea57e`.  
+Current: Step 4.3 — packaged; repository upload/deletion verification pending.  
+Next major Step after verification: Step 5 — Customer accounts and operations.
 
-Branch: `clean-rebuild`. Exact repository rollback commit: `4d77081f6bed0706edf22b193f30af35986ef55b`.
-
-## Pages rebuilt
-
-- `pc-repair-pretoria.html`
-- `pc-performance-optimisation.html`
-- `pc-upgrades-pretoria.html`
-- `virus-malware-removal-pretoria.html`
-- `windows-installation-pretoria.html`
+Branch: `clean-rebuild`. Exact repository rollback commit: `8532030b7a11d79850b7cd1ffa672be233cea57e`.
 
 ## Upload instructions
 
-1. Extract **Step-4.2.zip** and stay on **clean-rebuild**.
-2. Upload everything inside **Step 4.2/** to matching repository paths, replacing existing files when prompted.
-3. There are **no deletions in this step**.
-4. There are **no new folder placeholders required**; every required directory already exists.
-5. Inspect all five GitHack pages on mobile after upload, then report `Done`.
+1. Extract **Step-4.3.zip** and stay on **clean-rebuild**.
+2. Upload everything inside **Step 4.3/** to matching repository paths, replacing `README.md` when prompted.
+3. Delete the three proven-unused files listed below after upload. ZIP upload does not remove files.
+4. No new folder placeholders are required.
+5. Report `Done`; the remote HEAD, every delivered file and all three deletions will be verified before Step 4 is closed.
 
-## What changes
+## Delete separately
 
-- Moves all five pages onto the generated clean shell and the shared local font/design-token stack.
-- Replaces five duplicated inline symptom handlers with `assets/js/pages/service.js`.
-- Replaces the old separate symptom/CTA handoff layer with `assets/js/services/service-contact.js`.
-- Preserves each page's current title, description, canonical URL, Open Graph media, Service structured data, breadcrumb structured data, local service areas and pricing language.
-- Preserves the Security page's Exposure Scan privacy-demo link.
-- Preserves the Upgrades page's current operating boundary: compatibility advice remains available, but VoltTech is not currently selling/sourcing components and full custom builds remain paused.
-- Keeps Signal Scan continuity and now updates its `source` and `issue` parameters from the currently selected service symptom.
-- Keeps production analytics/service-worker loading and cart-count continuity through existing clean services.
-- Fixes the malformed legacy `Unknown apps` Security symptom markup.
-- Does not change Supabase, customer records, commerce settings, launch flags, Store, Builder or STATIC.
+- `service-pages.css`
+- `service-malware.css`
+- `signal-scan.css`
 
-## Intentionally retained until Step 4.3
+## Intentionally retained
 
-No legacy shared file is deleted merely because these five pages stopped using it. Step 4.3 will re-audit remaining repository consumers first, then retire only proven-unused service assets/scripts.
+- `service-network.css` — still used by `streaming-setup-south-africa.html`.
+- `scan-system.css` — still used by `stream-scan.html`.
+- `scan-handoff.js` — still used by the legacy Stream Scan path through `analytics.js`.
+- `symptom-handoff.js` — retained because the still-live legacy `analytics.js` contains a loader reference. The five rebuilt service pages do not load that legacy analytics bootstrap, but the referenced file is not deleted until that older layer is migrated safely.
 
-## Visual inspection links
+## Final Step 4 QA
 
-PC Repair:
-https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/pc-repair-pretoria.html
+The new cross-funnel test verifies:
 
-Performance:
-https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/pc-performance-optimisation.html
+- each service page stays on the clean shell;
+- every service-page `data-issue` key exactly matches the matching Signal Scan issue set;
+- Signal Scan sends each source back to the correct service route;
+- selected issue labels survive into WhatsApp/email enquiry text;
+- Repair, Performance, Upgrades, Security and Windows price guidance remains aligned;
+- Signal Scan keeps the visible statement that it does not remotely scan the PC;
+- the Upgrades page still says VoltTech is not currently selling/sourcing components;
+- the Security page still links to Exposure Scan;
+- the rebuilt six-page funnel contains no references to the three files being deleted.
 
-Upgrades:
-https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/pc-upgrades-pretoria.html
-
-Security:
-https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/virus-malware-removal-pretoria.html
-
-Windows:
-https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/windows-installation-pretoria.html
-
-## Package tests
+Package-side tests:
 
 ```text
-node --check assets/js/pages/service.js
-node --check assets/js/services/service-contact.js
+node scripts/test-clean-signal-scan.mjs
 node scripts/test-clean-services.mjs
+node scripts/test-clean-service-funnel.mjs
 ```
 
-Result: PASS.
+All pass before packaging.
+
+## Backend / operations
+
+Step 4.3 changes no Supabase schema, data, launch flag, payment setting, customer record or commerce state.
 
 ## Rollback
 
-Repository rollback target: `4d77081f6bed0706edf22b193f30af35986ef55b`.
+Repository rollback target: `8532030b7a11d79850b7cd1ffa672be233cea57e`.
 
-Full audit notes: `docs/clean-rebuild/step-4.2-QA.md`.
+The cleanup deletes only superseded frontend assets. If a repository rollback is needed, restore those three files from the rollback commit together with the older frontend state.
+
+Full audit notes: `docs/clean-rebuild/step-4.3-QA.md`.
