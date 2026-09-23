@@ -16,7 +16,7 @@ function script(path) {
 export function publicProducts(products, preview = false) {
   return (products || []).filter(p => p && typeof p.id === 'string' && p.status === 'active' && p.visibility === 'public' && p.sale_mode !== 'hidden' && (preview || p.is_demo === false));
 }
-async function core() {
+export async function getCommerceCore() {
   if (!ready) ready = (async () => {
     if (!window.supabase) await script(sdkUrl);
     const config = window.VOLTTECH_SUPABASE;
@@ -37,7 +37,7 @@ export async function openCatalogue() {
   if (!settings) return { open: false, reason: 'connection' };
   if (previewRequested && isProduction()) {
     try {
-      const VT = await core();
+      const VT = await getCommerceCore();
       const { data: { user }, error } = await withTimeout(VT.getClient().auth.getUser());
       if (user && !error) { const result = await withTimeout(VT.getClient().rpc('is_volttech_admin')); preview = !result.error && result.data === true; }
     } catch { /* No verified administrator: the public launch gate still applies. */ }
@@ -46,7 +46,7 @@ export async function openCatalogue() {
     connectAccount(window.VOLTTECH_SUPABASE);
     return { open: false, reason: previewRequested ? 'preview' : 'closed' };
   }
-  const VT = await core();
+  const VT = await getCommerceCore();
   document.body.classList.toggle('store-preview', preview);
   connectAccount(window.VOLTTECH_SUPABASE);
   return { open: true, preview, VT, settings };

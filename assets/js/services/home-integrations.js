@@ -3,7 +3,7 @@ const base = new URL('../../../', import.meta.url);
 const cartKey = 'vt_store_quote_cart_v1';
 
 export function normaliseLaunchSettings(row) {
-  return { catalogue_enabled: row?.catalogue_enabled === true, builder_enabled: row?.builder_enabled === true };
+  return { catalogue_enabled: row?.catalogue_enabled === true, builder_enabled: row?.builder_enabled === true, direct_payment_enabled: row?.direct_payment_enabled === true };
 }
 
 export async function readLaunchSettings(config, request = fetch) {
@@ -11,7 +11,7 @@ export async function readLaunchSettings(config, request = fetch) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8000);
   try {
-    const response = await request(`${config.url}/rest/v1/store_settings?id=eq.store&select=catalogue_enabled,builder_enabled`, {
+    const response = await request(`${config.url}/rest/v1/store_settings?id=eq.store&select=catalogue_enabled,builder_enabled,direct_payment_enabled`, {
       headers: { apikey: config.publishableKey, Accept: 'application/json' }, cache: 'no-store', signal: controller.signal
     });
     if (!response.ok) return null;
