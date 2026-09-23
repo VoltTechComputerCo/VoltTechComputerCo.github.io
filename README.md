@@ -1,89 +1,107 @@
-# Step 3.1 — PC Builder foundation and safe inspection
+# Step 3.2 — PC Builder experience and engine consistency
 
-Objective: move the existing PC Builder onto the clean generated VoltTech shell without rewriting its compatibility/guided engines, preserve the fail-closed launch boundary, and create a safe read-only GitHack inspection path for the full Builder.
+Objective: replace the last legacy Builder presentation dependency with a clean VoltTech page stylesheet, refine the Guided + Manual Builder experience, and fix the integrated-graphics completion mismatch without changing launch flags, account/quote workflow or compatibility-rule scope.
 
 Parent Step: Step 3 — PC Builder.  
-Previous major Step: Step 2 — Core commerce, fully uploaded and byte-verified at `70691bb5d3a390a185210bdd7c1d188f6f014546`.  
-Current: Step 3.1 — Packaged; upload verification and user visual review pending.  
-Next: Step 3.2 — Builder experience and engine-consistency pass.
+Previous: Step 3.1 uploaded, deletion-verified and byte-verified at `217582dc623d24ade8e6ce129f3c0290edeea6e6`.  
+Current: Step 3.2 — packaged; upload verification and user visual review pending.  
+Next: Step 3.3 — account/quote handoff, saved-build provenance and final Builder QA.
 
-Branch: `clean-rebuild`. Exact parent / rollback commit: `70691bb5d3a390a185210bdd7c1d188f6f014546`. No v3-prototype code used.
+Branch: `clean-rebuild`. Exact parent / rollback commit: `217582dc623d24ade8e6ce129f3c0290edeea6e6`. No v3-prototype code used.
 
 ## Upload instructions
 
-1. Extract **Step-3.1.zip** and stay on **clean-rebuild**.
-2. Upload the contents inside **Step 3.1/** to their matching repository paths; replace existing files where prompted. Do not upload the enclosing Step folder as a website directory.
-3. Delete the three superseded Builder files listed below after the upload. ZIP uploads do not remove files.
+1. Extract **Step-3.2.zip** and stay on **clean-rebuild**.
+2. Upload the contents inside **Step 3.2/** to their matching repository paths; replace existing files where prompted. Do not upload the enclosing Step folder as a website directory.
+3. Delete the single superseded file listed below after the upload. ZIP uploads do not remove files.
 4. **No new folder placeholders are required.** Every target directory already exists in the audited repository.
-5. Tell me when uploaded. I will verify the new HEAD, all delivered hashes and all three deletions before continuing.
+5. Tell me when uploaded. I will verify the new HEAD, every delivered file and the deletion before continuing.
 
-**16 delivered files: 5 changed, 11 added; 3 deletions to perform separately.**
+## Delete separately
 
-## Files deleted separately
+- `builder/styles.css`
 
-- `builder/builder-access.js`
-- `builder/builder-gate.css`
-- `builder/phase6-unification.css`
-
-Do **not** delete `builder/styles.css`. Step 3.1 intentionally carries it as the current inner-Builder presentation layer; Step 3.2 will own its replacement.
+Do not delete any Builder engine, catalogue, media, account or handoff file.
 
 ## Builder links after upload
 
-Normal gate (must stay closed):
+Normal gate — must remain closed:
 
 https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/builder/index.html
 
-Read-only owner inspection:
+Full read-only inspection:
 
 https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/builder/index.html?inspect=1
 
-`?inspect=1` is accepted only on non-production origins. It does not bypass the Builder flag on VoltTech's production origins.
+`?inspect=1` remains non-production-only and cannot bypass the Builder flag on VoltTech production origins.
 
 ## What changes
 
-- `builder/index.html` becomes a generated `data-vt-shell="clean"` route using the shared VoltTech header, navigation, search, footer, self-hosted fonts and clean shell.
-- Production Builder access remains fail-closed behind `builder_enabled`.
-- Production `?preview=1` still requires a verified signed-in VoltTech administrator.
-- Non-production `?inspect=1` opens a clearly labelled read-only Builder using only local prototype catalogue data.
-- Inspection does not initialise account saving, quote requests, Store overlay, analytics, notifications or service-worker registration.
-- Builder catalogue loading no longer imports account/auth integration as a side effect.
-- Store overlay loading reuses the clean shared Supabase client when the live Builder is eventually enabled.
-- Builder confirmations use a clean native-dialog adapter rather than the root legacy dialog dependency.
-- The clean dependency checker now correctly resolves nested generated routes such as `builder/index.html`.
+- Replaces the transitional `builder/styles.css` with clean page-scoped `assets/css/pages/builder.css`.
+- Keeps the Step 3.1 clean shell, fail-closed launch gate and isolated read-only inspection path unchanged.
+- Reworks the Guided and Manual Builder presentation around the shared VoltTech design tokens, cleaner hierarchy, improved mobile layouts and clearer progress/navigation.
+- Guided questions now adapt to the selected workload instead of asking every user gaming-only questions:
+  - Gaming / Gaming + Streaming keep resolution and FPS choices.
+  - Creator / Workstation keep a workload-resolution choice but do not ask an FPS-target question.
+  - Office / Home hides gaming resolution/FPS questions and uses everyday-storage language.
+- Fixes the completion contract for CPUs with integrated graphics: a discrete GPU becomes optional when the selected CPU explicitly reports integrated graphics.
+- CPUs without integrated graphics still require a GPU.
+- Manual automatic-next-category logic now skips the GPU step only when integrated graphics genuinely satisfy it.
+- The Builder UI marks that state explicitly as `Integrated graphics available · discrete GPU optional`.
+- Read-only inspection now labels mock/stale supplier pricing and stock as prototype data directly in the Builder UI.
+- Adds an explicit four-stage Builder flow rail: route → brief → parts → review.
+- Removes the clean-checker exception that temporarily allowed the old Builder stylesheet.
 
-## What deliberately does not change yet
+## What deliberately does not change
 
-The compatibility engine, guided recommendation engine, performance-intelligence data, account save/restore contract, quote workflow, product catalogue JSON and supplier mock datasets remain in place. `builder/styles.css` remains transitional so Step 3.1 does not mix architecture migration with the Step 3.2 visual/UX rebuild.
+No Supabase schema, RLS, Edge Function, secret, launch setting, customer data, saved-build record or quote is changed.
 
-No Supabase schema/RLS/function/secret/launch setting is changed. No customer record or quote is created.
+The underlying compatibility checks remain intact. The local catalogue, mock supplier feeds, performance-intelligence dataset, external product-media map, account save/restore implementation, quote-request status transition and admin build-to-quote workflow are not replaced in this step.
 
-## Audit findings carried forward
+Those account/data-provenance items remain Step 3.3 work.
 
-The Builder currently has 136 local prototype products and 423 mock supplier offers. All supplier datasets explicitly identify themselves as temporary test data and are stale at the current date. Its 136 product-image mappings use external proxy URLs rather than repository-owned product media.
+## Known data truth
 
-Two important functional/data-truth issues are recorded for later Builder work: Office/Home guided builds can omit a GPU while the main build engine still treats GPU as universally required; and saved-build serialisation currently does not use the same offer/freshness selection contract as the Builder itself. Full details: `docs/clean-rebuild/step-3.1-QA.md`.
+The inspection experience still uses the existing 136-product prototype catalogue and 423 mock supplier offers. Those offers are test data and stale. Displayed price/stock values must not be treated as a quote or live inventory.
+
+The 136 product media mappings remain external proxy URLs; the new presentation improves the fallback state but does not claim those mappings are production-owned media.
 
 ## Tests
 
-Run after upload/deletions:
+Package-side checks completed:
 
 ```text
-python scripts/build-clean-frontend.py --check
-python scripts/check-clean-frontend.py
-node scripts/test-clean-runtime.mjs
-node scripts/test-clean-commerce.mjs
-node scripts/test-clean-transactions.mjs
 node scripts/test-clean-builder.mjs
+node --input-type=module --check < assets/js/pages/builder.js
+node --input-type=module --check < assets/js/pages/builder-experience.js
+node --input-type=module --check < builder/js/build-engine.js
 ```
 
-Step 3.1 package-side checks already pass for the new JavaScript syntax and generated Builder HTML structure. Full repository checks are re-run against the actual uploaded branch before Step 3.2.
+The Builder contract regression verifies both integrated-graphics and non-integrated-graphics completion behavior, clean stylesheet ownership, adaptive Guided behavior, inspection data labelling and removal of the transitional clean-checker exception.
+
+After upload I will re-run the remote delta/hash/deletion verification before Step 3.3.
+
+## Visual review
+
+On Android, use the `?inspect=1` link and check:
+
+- route chooser;
+- Gaming Guided flow;
+- Office/Home Guided flow — gaming-only questions should disappear;
+- generated Guided recommendation;
+- Manual category strip and search;
+- Compatible-only filter;
+- product cards/images/fallbacks;
+- selecting/removing components;
+- mobile Review Build bar;
+- build summary and compatibility report;
+- a CPU with integrated graphics showing GPU as optional;
+- Clear Build dialog.
+
+The normal URL must continue to show the closed Builder gate.
 
 ## Rollback
 
-**Rollback target: `70691bb5d3a390a185210bdd7c1d188f6f014546`.**
+**Rollback target: `217582dc623d24ade8e6ce129f3c0290edeea6e6`.**
 
-Restore changed/deleted paths from that commit and remove Step 3.1 added paths. No backend rollback is required because this delivery makes no backend mutation.
-
-## Next
-
-After hash/deletion verification and your visual approval of both Builder states, Step 3.2 will fix the Office/iGPU completion contract and migrate/refine the Guided + Manual Builder experience on the clean design system without replacing the underlying compatibility logic unnecessarily.
+Restore changed paths from that commit, remove Step 3.2 added files and restore `builder/styles.css`. No backend rollback is required.
