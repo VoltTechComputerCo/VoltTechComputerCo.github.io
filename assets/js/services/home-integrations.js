@@ -1,4 +1,4 @@
-const productionOrigin = 'https://volttechcomputerco.github.io';
+import { isProduction, sdkUrl } from './site-config.js';
 const base = new URL('../../../', import.meta.url);
 const cartKey = 'vt_store_quote_cart_v1';
 
@@ -65,12 +65,12 @@ function loadScript(path) {
 
 export async function connectAccount(config) {
   // GitHack cannot share the site's authenticated session. Keep it public-only.
-  if (location.origin !== productionOrigin || !config) return;
+  if (!isProduction() || !config) return;
   let cached = false;
   try { cached = Object.keys(localStorage).some(key => /^sb-.*-auth-token$/.test(key)); } catch { return; }
   if (!cached) return;
   try {
-    if (!window.supabase) await loadScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js');
+    if (!window.supabase) await loadScript(sdkUrl);
     window.volttechAuth ||= window.supabase.createClient(config.url, config.publishableKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
     const client = window.volttechAuth;
     const label = document.querySelector('[data-account-label]');
@@ -83,7 +83,7 @@ export async function connectAccount(config) {
 }
 
 export function connectProductionServices() {
-  if (location.origin !== productionOrigin) return;
+  if (!isProduction()) return;
   window.dataLayer ||= [];
   window.gtag ||= function () { window.dataLayer.push(arguments); };
   window.gtag('js', new Date());
