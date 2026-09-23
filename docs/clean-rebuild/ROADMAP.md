@@ -80,3 +80,12 @@ Step 3.1 was uploaded and fully verified at `217582dc623d24ade8e6ce129f3c0290ede
 Step 3.2 removes the final transitional `builder/styles.css` dependency and moves Builder presentation into `assets/css/pages/builder.css`. Guided questions adapt to Gaming/Streaming, Creator/Workstation and Office/Home use cases while preserving the existing recommendation engine. The main completion helper now agrees with the existing account snapshot rule that a discrete GPU is optional only when the selected CPU explicitly reports integrated graphics; non-iGPU builds still require a GPU.
 
 Read-only inspection continues to use local prototype data only and now labels mock/stale supplier price and stock data directly in the UI. No Supabase setting, schema, RLS, production record, quote or saved build is changed. Saved-build price provenance, status-transition hardening, restore/admin handoff verification and remaining media/data QA remain Step 3.3.
+
+
+## Step 3.3 delivery position
+
+Step 3.2 was uploaded and fully verified at `bbf3001d8b0a206ca95401d18e3d507fef040b65`: all 13 delivered files matched the package bytes and `builder/styles.css` was absent.
+
+Step 3.3 makes saved-build and quote transitions server-authoritative, moves Builder account and Store handoff integrations into the clean services layer, preserves supplier SKU/freshness/actual source timestamps, removes fabricated price-check timestamps and converts a requested Builder configuration to a linked draft quote atomically on the server. Supabase migration `20260923164957_builder_handoff_hardening_v1` has already been applied and verified without changing any of the five existing historical quoted builds. Catalogue, Builder and direct-payment launch flags remain disabled.
+
+After repository upload/hash/deletion verification, Step 3 is complete and the roadmap moves to **Step 4 — Signal Scan and service pages**.

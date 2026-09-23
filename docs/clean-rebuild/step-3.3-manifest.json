@@ -1,0 +1,28 @@
+{
+  "step": "3.3",
+  "title": "PC Builder account, quote handoff and final QA",
+  "branch": "clean-rebuild",
+  "parent": "bbf3001d8b0a206ca95401d18e3d507fef040b65",
+  "supabase_migration": {
+    "version": "20260923164957",
+    "name": "builder_handoff_hardening_v1",
+    "applied": true
+  },
+  "delete": [
+    "builder/js/account-integration.js",
+    "commerce/js/builder-handoff.js"
+  ],
+  "sha256": {
+    "README.md": "d3982a46e630d6ceb6d00a60996afb5ad89c56846396c47e5c22b6fcbcaca319",
+    "assets/css/pages/builder.css": "07db26afacda3ec4355b8182d44a0d31db99c321844f8203354493aedbe1fd45",
+    "assets/js/pages/builder.js": "2e23962dcd2884b223108f8f69a233fcaf25f5725414d83fdad2611094c3d966",
+    "assets/js/services/builder-account.js": "ac2998fc646fd85809b2d3c00802a63bd70300d2fee49d6879877ceb9bf1c827",
+    "assets/js/services/builder-handoff.js": "baf37bf4a902ef829202d484253db7e8a1770e8ecb6878d11b7733c43a11de82",
+    "admin-builds.js": "c890fc55158668f15ae92eaba46668a8f36fddeb46078e807fed95d2b948bfd9",
+    "Supabase/migrations/20260923164957_builder_handoff_hardening_v1.sql": "ef90d0f20667440ca7b5cd8f16ca7507655f30abaa99b996c40a2c73d3c3dcf2",
+    "docs/clean-rebuild/ROADMAP.md": "315fbd54517645e3bbb86b03ab5c76b9316a3a8ebf46fac809444c645e5d694f",
+    "docs/clean-rebuild/step-3.3-QA.md": "be45073b0af55781e9518e1ef642bd6b356df4b67276184ecb03e719c7613282",
+    "docs/clean-rebuild/step-3.3-folder.png": "9ab01f344c829a9bfc9e5942e2b0ef81ecdee44e9e218879b4c40c2b472cf1cf",
+    "scripts/test-clean-builder.mjs": "912b6a4f68dcfdb05a1a0d692130350fb44d33659b6dca9abeb1c53ed4b5f233"
+  }
+}
