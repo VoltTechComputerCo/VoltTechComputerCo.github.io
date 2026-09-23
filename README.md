@@ -1,77 +1,76 @@
-# Step 4.1 — Signal Scan clean rebuild
+# Step 4.2 — Core service-page family
 
-Objective: migrate VoltTech Signal Scan onto the generated clean frontend, preserve the five service-page entry routes and answer-driven triage contract, align its displayed service estimates with the audited service pages, and remove the new route's dependency on legacy scan/navigation/analytics presentation layers.
+Objective: rebuild the five local PC support pages on the clean VoltTech shell while preserving their service intent, local SEO, pricing guidance, truthful business boundaries and Signal Scan continuity.
 
 Parent Step: Step 4 — Signal Scan and service pages.  
-Previous major Step: Step 3 — PC Builder, fully uploaded and byte-verified at `add3637fa3872aace38d72f8a7497f4918b92933`.  
-Current: Step 4.1 — packaged; repository upload and device review pending.  
-Next: Step 4.2 — Repair, Performance, Upgrades, Security and Windows service-page rebuild.
+Previous: Step 4.1 Signal Scan uploaded and byte-verified at `4d77081f6bed0706edf22b193f30af35986ef55b`.  
+Current: Step 4.2 — packaged; repository upload verification pending.  
+Next: Step 4.3 — service-funnel QA, dependency audit and legacy cleanup.
 
-Branch: `clean-rebuild`. Exact parent / rollback commit: `add3637fa3872aace38d72f8a7497f4918b92933`.
+Branch: `clean-rebuild`. Exact repository rollback commit: `4d77081f6bed0706edf22b193f30af35986ef55b`.
+
+## Pages rebuilt
+
+- `pc-repair-pretoria.html`
+- `pc-performance-optimisation.html`
+- `pc-upgrades-pretoria.html`
+- `virus-malware-removal-pretoria.html`
+- `windows-installation-pretoria.html`
 
 ## Upload instructions
 
-1. Extract **Step-4.1.zip** and stay on **clean-rebuild**.
-2. Upload the contents inside **Step 4.1/** to matching repository paths; replace `signal-scan.html` and `README.md` when prompted.
-3. There are **no deletions in Step 4.1**.
-4. **No new folder placeholders are required.** Every target directory already exists in the audited branch.
-5. Tell me when uploaded. I will verify the new HEAD and all delivered hashes before Step 4.2.
-
-## Changed page
-
-https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/signal-scan.html
-
-Useful route checks after upload:
-
-- Repair: `signal-scan.html?source=repair&issue=boot`
-- Performance: `signal-scan.html?source=performance&issue=fps`
-- Upgrades: `signal-scan.html?source=upgrades&issue=gaming`
-- Security: `signal-scan.html?source=security&issue=account`
-- Windows: `signal-scan.html?source=windows&issue=fresh`
+1. Extract **Step-4.2.zip** and stay on **clean-rebuild**.
+2. Upload everything inside **Step 4.2/** to matching repository paths, replacing existing files when prompted.
+3. There are **no deletions in this step**.
+4. There are **no new folder placeholders required**; every required directory already exists.
+5. Inspect all five GitHack pages on mobile after upload, then report `Done`.
 
 ## What changes
 
-- `signal-scan.html` becomes a generated `data-vt-shell="clean"` route using the shared VoltTech header, navigation, search, footer and self-hosted fonts.
-- Signal Scan presentation moves to `assets/css/pages/signal-scan.css`.
-- Answer/service data and pure triage rules move to `assets/js/services/signal-scan-model.js` so they can be regression tested.
-- Page interaction lives in `assets/js/pages/signal-scan.js`.
-- Journey storage and optional analytics tracking live in `assets/js/services/signal-scan-handoff.js` rather than in the page controller.
-- Production analytics/service-worker startup uses the same shared integration used by the clean homepage rather than the legacy `analytics.js` bootstrap.
-- Existing `?source=` and `?issue=` service-page handoffs are preserved for Repair, Performance, Upgrades, Security and Windows.
-- WhatsApp and email messages are generated from the visible result and are only sent when the customer chooses a contact link.
-- The waveform/priority language now explicitly says it is answer-based triage and not a hardware-health reading or remote scan.
-- Windows results now show `R350–R650`, matching the audited Windows service page instead of the previous contradictory `Quote after scope` label.
+- Moves all five pages onto the generated clean shell and the shared local font/design-token stack.
+- Replaces five duplicated inline symptom handlers with `assets/js/pages/service.js`.
+- Replaces the old separate symptom/CTA handoff layer with `assets/js/services/service-contact.js`.
+- Preserves each page's current title, description, canonical URL, Open Graph media, Service structured data, breadcrumb structured data, local service areas and pricing language.
+- Preserves the Security page's Exposure Scan privacy-demo link.
+- Preserves the Upgrades page's current operating boundary: compatibility advice remains available, but VoltTech is not currently selling/sourcing components and full custom builds remain paused.
+- Keeps Signal Scan continuity and now updates its `source` and `issue` parameters from the currently selected service symptom.
+- Keeps production analytics/service-worker loading and cart-count continuity through existing clean services.
+- Fixes the malformed legacy `Unknown apps` Security symptom markup.
+- Does not change Supabase, customer records, commerce settings, launch flags, Store, Builder or STATIC.
 
-## What deliberately does not change yet
+## Intentionally retained until Step 4.3
 
-The five legacy service pages are not rebuilt in this ZIP. Their current symptom controls, journey context and direct-contact handoff remain intact so they can continue feeding Signal Scan until Step 4.2 replaces them together.
+No legacy shared file is deleted merely because these five pages stopped using it. Step 4.3 will re-audit remaining repository consumers first, then retire only proven-unused service assets/scripts.
 
-`scan-system.css` and `scan-handoff.js` are not deleted because Stream Scan still belongs to the later creator/streaming migration and continues to use that older scan stack. The old root `signal-scan.css` is left in place until Step 4.3 performs a final repository consumer/residue audit.
+## Visual inspection links
 
-No Supabase schema, RLS, function, setting or production record is changed. No diagnostic answers are uploaded to a backend by Signal Scan.
+PC Repair:
+https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/pc-repair-pretoria.html
 
-## Tests
+Performance:
+https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/pc-performance-optimisation.html
 
-Package-side checks already pass:
+Upgrades:
+https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/pc-upgrades-pretoria.html
+
+Security:
+https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/virus-malware-removal-pretoria.html
+
+Windows:
+https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/windows-installation-pretoria.html
+
+## Package tests
 
 ```text
-node --check assets/js/pages/signal-scan.js
-node --check assets/js/services/signal-scan-model.js
-node --check assets/js/services/signal-scan-handoff.js
-node scripts/test-clean-signal-scan.mjs
+node --check assets/js/pages/service.js
+node --check assets/js/services/service-contact.js
+node scripts/test-clean-services.mjs
 ```
 
-After upload the normal clean-frontend checks should also be run against the authoritative branch:
-
-```text
-python scripts/build-clean-frontend.py --check
-python scripts/check-clean-frontend.py
-node scripts/test-clean-runtime.mjs
-node scripts/test-clean-signal-scan.mjs
-```
+Result: PASS.
 
 ## Rollback
 
-Repository rollback target: `add3637fa3872aace38d72f8a7497f4918b92933`.
+Repository rollback target: `4d77081f6bed0706edf22b193f30af35986ef55b`.
 
-No backend rollback is required.
+Full audit notes: `docs/clean-rebuild/step-4.2-QA.md`.
