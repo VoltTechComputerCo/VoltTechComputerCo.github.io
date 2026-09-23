@@ -44,6 +44,17 @@ def check_reference(source, ref, ids=None):
             errors.append(f'Missing destination anchor: {ref}')
 
 
+def dependency_path(output, ref):
+    url = urlsplit(ref)
+    if url.scheme or url.netloc or not url.path:
+        return None
+    target = (ROOT / unquote(url.path.lstrip('/')) if url.path.startswith('/') else output.parent / unquote(url.path)).resolve()
+    try:
+        return target.relative_to(ROOT.resolve()).as_posix()
+    except ValueError:
+        return ref
+
+
 subprocess.run([sys.executable, str(ROOT / 'scripts/build-clean-frontend.py'), '--check'], check=True)
 for source in (ROOT / 'src/pages').glob('*.json'):
     import json
@@ -76,18 +87,29 @@ for source in (ROOT / 'src/pages').glob('*.json'):
         errors.append('Missing service-worker isolation marker')
     if output.name == 'design-system.html' and 'content="noindex, nofollow"' not in text:
         errors.append('Inspection page must stay noindex')
+
+    output_key = output.relative_to(ROOT).as_posix()
+    preserved = {
+        'index.html': {'supabase-config.js', 'streamer-feed.js', 'conversion-context.js'},
+        'store.html': {'supabase-config.js', 'conversion-context.js'},
+        'product.html': {'supabase-config.js', 'conversion-context.js'},
+        'checkout.html': {'supabase-config.js'},
+        'order-status.html': {'supabase-config.js'},
+        # Transitional Step 3.1 dependency: Builder engines are preserved while Step 3.2 owns presentation migration.
+        'builder/index.html': {'supabase-config.js', 'builder/styles.css'},
+    }.get(output_key, set())
     for tag, attrs in parser.tags:
-        path = attrs.get('src', '') if tag == 'script' else attrs.get('href', '') if tag == 'link' and attrs.get('rel') == 'stylesheet' else ''
-        preserved = {'supabase-config.js', 'streamer-feed.js', 'conversion-context.js'} if output.name == 'index.html' else {'supabase-config.js', 'conversion-context.js'} if output.name in ('store.html', 'product.html') else {'supabase-config.js'} if output.name in ('checkout.html', 'order-status.html') else set()
-        if path and not path.startswith('assets/') and path not in preserved:
-            errors.append(f'Legacy runtime dependency on converted page: {path}')
+        ref = attrs.get('src', '') if tag == 'script' else attrs.get('href', '') if tag == 'link' and attrs.get('rel') == 'stylesheet' else ''
+        dep = dependency_path(output, ref) if ref else None
+        if dep and not dep.startswith('assets/') and dep not in preserved:
+            errors.append(f'Legacy runtime dependency on converted page: {ref}')
 
 for css in (ROOT / 'assets/css').rglob('*.css'):
-    for ref in re.findall(r'url\([\'"]?([^\)\'\"]+)', css.read_text()):
+    for ref in re.findall(r'url\([\'\"]?([^\)\'\"]+)', css.read_text()):
         check_reference(css, ref)
 for js in (ROOT / 'assets/js').rglob('*.js'):
     code = js.read_text()
-    for ref in re.findall(r'from\s+[\'"]([^\'\"]+)', code):
+    for ref in re.findall(r'from\s+[\'\"]([^\'\"]+)', code):
         check_reference(js, ref)
     pure = js.parent.name != 'services' and js.name != 'home.js'
     if pure and re.search(r'\b(fetch|localStorage|sessionStorage|supabase|gtag)\b', code):
