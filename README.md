@@ -1,188 +1,193 @@
-# Step 1.3 — Foundation QA and cleanup
+# Step 2.1 — Store catalogue and product discovery
 
-Project position: previous major **Step 0 — Repository audit ✅**; current major **Step 1 — Frontend foundation ⚡**; next major **Step 2 — Core commerce 🚫**.
+Objective: replace Store and product presentation with the shared clean VoltTech frontend while preserving the commerce API and launch controls.
 
-Previous: **Step 1.2 — Homepage upload verified ✅**. Current: **Step 1.3 — QA fixes ready; upload verification pending 🧪**. Next: **Step 2.1 — Store catalogue and product discovery 🚫**.
+Parent Step: Step 2 — Core commerce.
+Previous Step: Step 1.3 — Foundation QA. All 13 upload files verified at `70ecedf7acd4f4f2042e592b882c7a3958ada9c3`; five pending deletions carried forward. User visual review remains pending.
+Current: Step 2.1 — Packaged; upload verification and user review pending.
+Next planned Step: Step 2.2 — Cart, checkout and order tracking.
+Previous major Step: Step 1 — Frontend foundation. Current major Step: Step 2 — Core commerce. Next major Step: Step 3 — PC Builder.
 
-## Objective and lineage
+Branch: `clean-rebuild`. Exact parent/rollback commit: `70ecedf7acd4f4f2042e592b882c7a3958ada9c3`. No v3-prototype code used.
 
-Close the initial foundation QA pass with a usable cart route on narrow phones, consistent cart labels, clearer component enquiries and removal of replaced/empty files.
+## Upload instructions
 
-- Step identifier: **Step 1.3**
-- Parent Step: **Step 1 — Frontend foundation**
-- Previous Step: **Step 1.2 — Homepage and shared navigation**
-- Next planned Step: **Step 2.1 — Store catalogue and product discovery**
-- Repository: `VoltTechComputerCo/VoltTechComputerCo.github.io`
-- Working branch: **clean-rebuild**
-- Latest inspected parent: `d659bad184e002aaa28468663dab83f213225613` — `Delete assets/js/services/Placeholder.txt`
+1. Stay on `clean-rebuild`. Extract **Step-2.1.zip**.
+2. Upload the contents **inside `Step 2.1/`** to the matching repository paths. Do not upload the enclosing Step folder as a site folder. Replace existing files exactly.
+3. Delete the 10 paths listed below. Deletions already completed can be skipped. ZIP uploads alone do not remove old files.
+4. All required directories already exist at the inspected HEAD. **No folder placeholders are needed.**
+5. Tell me when uploaded. I will check every expected file, deletion, import and the actual HEAD, then supply commit-specific previews.
 
-A fresh checkout was used. Step 1.2's 43 delivered files and 12 listed deletions had already been verified at `7db853fb7f22e949ca82c27e8cc67e2e4cdeadea`. The current checkout preserves the delivery bytes and includes the user's three subsequent folder-placeholder deletions. HEAD was checked again before packaging. No files from v3-prototype were inherited. No repository push or production deployment was performed.
+31 delivered files: 19 added, 12 changed; 10 deleted separately. The manifest records SHA-256 for all delivered files except itself.
 
-## Files added (2)
+## Preview URLs
 
-- `docs/clean-rebuild/step-1.3-folder.png`
-- `docs/clean-rebuild/step-1.3-manifest.json`
+These branch previews show the new pages **after this upload** (until then they show the previous Store).
 
-## Files changed (11)
+- [Store](https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/store.html)
+- [Product page](https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/product.html)
+
+After verification, replace `clean-rebuild` with the exact uploaded commit SHA. Product detail requires a published product slug and the launch/admin gate; the current public product page intentionally shows a closed state. Do not enable Store to inspect this design.
+
+Immediate offline visual inspection: `docs/clean-rebuild/step-2.1-store-desktop.png`, `step-2.1-store-mobile.png`. These show the new Store rendered locally. Fixture product screenshots are not published as site content.
+
+## Files added
+
+- `assets/css/pages/commerce.css`
+- `assets/js/components/catalogue-view.js`
+- `assets/js/pages/product.js`
+- `assets/js/pages/store.js`
+- `assets/js/services/catalogue-cart.js`
+- `assets/js/services/catalogue.js`
+- `assets/js/services/site-config.js`
+- `docs/clean-rebuild/step-2.1-QA.md`
+- `docs/clean-rebuild/step-2.1-folder.png`
+- `docs/clean-rebuild/step-2.1-manifest.json`
+- `docs/clean-rebuild/step-2.1-store-desktop.png`
+- `docs/clean-rebuild/step-2.1-store-mobile.png`
+- `scripts/test-clean-commerce.mjs`
+- `src/pages/product.head.html`
+- `src/pages/product.html`
+- `src/pages/product.json`
+- `src/pages/store.head.html`
+- `src/pages/store.html`
+- `src/pages/store.json`
+
+## Files changed
 
 - `README.md`
-- `assets/css/navigation.css`
-- `assets/css/responsive.css`
 - `assets/js/services/home-integrations.js`
-- `design-system.html`
+- `commerce/js/site-store-entry.js`
+- `commerce/js/store-core.js`
+- `commerce/store.css`
 - `docs/clean-rebuild/ARCHITECTURE.md`
 - `docs/clean-rebuild/ROADMAP.md`
-- `index.html`
+- `product.html`
+- `scripts/check-clean-frontend.py`
 - `scripts/test-clean-runtime.mjs`
-- `src/pages/home.html`
-- `src/templates/header.html`
+- `store-gate.css`
+- `store.html`
 
-## Files deleted (5) — remove manually
+## Files deleted
 
+- `commerce/catalogue-architecture.css`
 - `commerce/js/Placeholder.html`
+- `commerce/js/product-architecture.js`
+- `commerce/js/product.js`
+- `commerce/js/store-architecture.js`
+- `commerce/js/store.js`
 - `commerce/schema/Placeholder.html`
 - `docs/Placeholder.html`
 - `volttech-home-hero-logo.png`
 - `volttech-home-hero.webp`
 
-The three `Placeholder.html` files are older baseline stubs, separate from the folder placeholders already deleted by the user. Their contents were empty or the word “Placeholder”; no imports or links referenced them. The two old homepage image files also had no remaining references. The current hero remains at `assets/brand/home-hero.webp`; the official source logo and optimised shared logo remain intact.
+The three old placeholders and two root hero files are the five pending Step 1.3 removals. Current `assets/brand/home-hero.webp` and source brand logo remain.
 
-ZIP upload cannot delete files. Remove the five paths above as part of this Step, leaving their directories and other files intact.
+## Files / implementations superseded
 
-## Files superseded
-
-- Previous shared header output is regenerated from `src/templates/header.html` on both converted pages.
-- Previous single-control cart presentation is replaced by a shared update for both `[data-cart-link]` controls.
-- The unused legacy hero files are removed; their replacements were already delivered in Step 1.2.
-- This README supersedes the Step 1.2 root handover. The exact prior commit and manifest remain the rollback record.
-
-## Backend systems touched
-
-No backend system was changed. The homepage cart display reads the same existing `vt_store_quote_cart_v1` storage key and listens to the same `vt-store-cart-change` / storage events. It updates both desktop and phone-menu labels, handles singular/plural wording, and makes no storage writes. Both controls link to the existing `store.html?cart=1` route, whose launch gate remains authoritative.
-
-## Backend systems untouched
-
-Supabase data/schema/RLS/authentication, account sessions, profiles, notification queries/actions, orders, quotes, invoices, receipts, documents, saved builds, service history, Store catalogue and checkout controllers, Yoco, Builder compatibility engines, Signal Scan/Stream Scan, creator feed jobs, analytics IDs/events, email, Discord/webhooks and STATIC publishing. No flags, stock, prices or payment settings were enabled or changed. The account and production-service functions within the edited integration file are unchanged.
+- Previous README handover.
+- Old `store.html` and `product.html` document structures and page controllers. New source templates regenerate complete ready-to-upload pages.
+- Old Store/product CSS, catalogue overlay CSS and runtime CSS injection. Retained `commerce/store.css` and `store-gate.css` serve checkout/admin/order consumers only; replaced page rules are removed.
+- Old Store-specific DOM IDs and drawer hooks are replaced atomically with the new controllers and generated markup; mappings are in ARCHITECTURE.md.
 
 ## Visual changes
 
-- At 40rem and below, the mobile menu gains a Cart item where the header cart icon is hidden. It fills the sixth position in the two-column menu without compressing the header touch targets.
-- The existing desktop composition, hero, cards, fonts, colours and footer remain the approved direction.
-- Component enquiry links now ask naturally about “a processor upgrade”, “a new PC case”, etc.
-- No new images, fonts, visual overrides or page-specific navigation implementation were introduced.
+Shared premium dark/teal navigation, footer, type, buttons and panels across Store/product. Hardware hero, nine compact category cards, mobile filter controls, product identity/specification/compatibility/fulfilment sections, labelled image fallbacks and a native cart dialog. Existing repository media only; no new third-party brand identity or generated product image.
 
 ## Functional changes
 
-Both cart displays use one read-only update function. They update on same-tab cart events and cross-tab storage changes; blocked/malformed storage shows a safe empty state. Counts never become product availability claims. The shared inspection page has the route but does not load customer cart/account integrations.
+Preserved category/slug URLs, name/brand search and sorting, source documents, related products, quote-first cart storage/events and existing checkout destination. Public catalogue filters out demo and unclassified records. Strict launch state and server-verified admin preview; demo/preview purchase actions disabled. Error, empty, missing-product, offline and missing-image states are explicit. Unknown cart rows stay visible/removable and block checkout. Cart quantity controls retain keyboard focus.
 
-Homepage component messages preserve each card's intent through existing WhatsApp handoff logic. JavaScript-disabled links remain usable. Search and native dialogs retain their tested shared behaviour.
+The user-confirmed production domain (`volttechcomputerco.co.za`, including www) joins the explicit origin allowlist for existing optional account/analytics/worker enhancements. GitHack remains anonymous and does not run production tracking or worker registration.
+
+## Backend systems touched
+
+Frontend adapters only: read-only `store_settings`; existing `store_products`, categories, documents and relations reads; existing `getUser` + `is_volttech_admin` checks; existing local cart key `vt_store_quote_cart_v1` and `vt-store-cart-change`. Two bootstrap lines in `store-core.js` adapt shared-client reuse and worker ownership for clean pages while retaining the legacy path. No database mutation, migration or policy change.
+
+## Backend systems untouched
+
+Launch flags remain false. Supabase schema/RLS/functions; Yoco and Bob Go calls; checkout/order submission; orders/quotes/invoices/receipts; accounts/profiles/documents/service history; Signal Scan; Builder engines/compatibility/saving; creator data; STATIC publishing; Discord/webhooks and email. Existing analytics ID/events and notification queries remain. Live transactions were not submitted.
 
 ## SEO changes
 
-No metadata, canonical, structured-data or indexing policy changed. The rebuild homepage stays noindex until the release Step; the inspection route remains noindex. No residential address or fabricated business claims were introduced.
+New page titles/descriptions, en-ZA, canonical/social metadata, semantic breadcrumbs/headings and contextual service links. Both converted commerce pages remain `noindex, follow` on the rebuild. No Product/Offer/Review/stock structured claims are manufactured. Existing GitHub canonical domain is retained until Step 8 handles the deliberate custom-domain/redirect/Search Console migration.
 
 ## Dependencies
 
-No new dependencies or folders. Existing shared styles, source generator, modern browser ES modules/native dialogs, Node.js 18+ and Python 3 remain sufficient. Uploading requires no development tools. Existing Supabase SDK configuration and production-only analytics/account/service-worker boundaries are unchanged.
+Native HTML/CSS/ES modules; existing self-hosted fonts/assets; Supabase browser SDK pinned to **2.116.0**, loaded only when catalogue/admin access requires it. Existing commerce core and catalogue architecture remain the backend interface. Python 3 + Node run the repository checks. Browser QA used isolated local Chromium and intercepted fixture data; no browser tooling package is a site dependency.
 
-```sh
-python3 scripts/build-clean-frontend.py
-python3 scripts/check-clean-frontend.py
-node scripts/test-clean-runtime.mjs
-```
+## Test checklist
 
-## Test checklist and actual evidence
+- [x] Source generation, local imports/assets/links/anchors, labels/ARIA and JS syntax.
+- [x] Launch flags, preview-origin isolation, demo exclusion and legacy boundary tests.
+- [x] Chromium widths: 360, 390, 412, 768, 1366, 1920; no horizontal overflow.
+- [x] Search/brand/category/reset, cart add/quantity/close, image failure, no-JS and offline states using isolated fixtures.
+- [x] Desktop/mobile Store screenshots inspected.
+- [x] Superseded imports and runtime CSS injection removed.
+- [x] ZIP overlay and exact rollback rehearsal.
+- [ ] Uploaded commit/files/deletions verified.
+- [ ] User physical-phone visual review.
+- [ ] Intended-origin authenticated and payment release QA (later Steps; no live transaction attempted).
 
-Completed:
-
-- [x] Fresh clean-rebuild checkout, latest commit, prior README, source files and current deletion state inspected.
-- [x] Step 1.2 delivery checksums preserved; user-created folder placeholders removed in the actual parent.
-- [x] Uploaded parent homepage renders in the desktop browser with no horizontal overflow (1363px viewport; 1348px document width).
-- [x] All 20 uploaded homepage image elements complete, with zero broken images.
-- [x] Uploaded search opens, finds repair results, reports an empty result state, and closes with native Escape.
-- [x] Uploaded inspection form rejects short notes and accepts valid local-only notes without sending or saving.
-- [x] Font metadata confirms actual variable Space Grotesk and JetBrains Mono binaries.
-- [x] Both generated pages match source; local/cross-page links, imports, image paths, IDs and ARIA references pass.
-- [x] JS syntax and preserved service-worker migration contracts pass.
-- [x] Mobile navigation disclosure, Escape, selection and breakpoint focus contracts pass.
-- [x] Launch flags, malformed cart data, stale creator data and preview isolation tests pass.
-- [x] Added regression checks: both cart labels synchronise, singular/plural wording is correct, unrelated storage events are ignored, blocked storage fails safely, and no cart write/delete occurs.
-- [x] Deleted files have no runtime/source references; no duplicate navigation or new override stylesheet.
-- [x] Package overlay checks pass and exact rollback restores the parent tree byte-for-byte.
-- [x] Git whitespace/diff check.
-
-After upload — not claimed as passed:
-
-- [ ] On Android at 360/390/412px: open Menu and confirm Cart appears, then closes/navigates correctly.
-- [ ] Confirm header controls remain comfortable and there is no phone horizontal overflow.
-- [ ] Inspect the shared shell on tablet/desktop/wide desktop and with enlarged text.
-- [ ] Check a component enquiry message in WhatsApp without sending unless intended.
-- [ ] Verify this ZIP's actual uploaded HEAD, hashes, deletions and fresh commit-pinned previews.
-
-The desktop browser checks above concern the uploaded parent. The new phone-cart patch has source/runtime tests; it awaits user upload and device inspection. The available browser does not expose viewport resizing, so automated 360/390/412 rendering is not claimed. Authenticated notifications, payment paths and installed production service-worker transitions still require their appropriate-origin QA in later operational/release Steps. No real customer data, cart, payment, notification read-state or outgoing message was changed.
-
-## Upload instructions
-
-1. Extract **Step-1.3.zip**; its outer folder is exactly **Step 1.3/**.
-2. Select **clean-rebuild** in GitHub.
-3. Upload the **contents** of `Step 1.3/` at the repository root, preserving paths and replacing existing files. Do not upload the outer Step folder itself.
-4. Delete the five paths listed under **Files deleted**. Do not delete directories.
-5. **No new folders or placeholder files are required.** Every destination directory exists at the inspected parent.
-6. Suggested commit message: `Step 1.3 — foundation QA and cleanup`.
-7. Tell me when uploaded. I will verify the actual commit/files/deletions and provide commit-pinned links before Step 2.1.
-
-The manifest lists every added/changed/deleted file and SHA-256 hashes for all delivered files except the manifest itself. The visual folder map and normal text tree are included below.
-
-## Preview URLs — changed pages only
-
-**New Step 1.3 version available after uploading this ZIP:**
-
-- [Homepage](https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/index.html)
-- [Shared-shell inspection page](https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/design-system.html)
-
-Branch links can cache older assets. New commit-specific links will be issued from the actual verified upload SHA; no future SHA is invented. The parent version was checked at `d659bad184e002aaa28468663dab83f213225613`. GitHack is a public visual preview and does not share production customer sessions.
+Run: `python scripts/check-clean-frontend.py`, `node scripts/test-clean-runtime.mjs`, `node scripts/test-clean-commerce.mjs`, `git diff --check`. Details: `docs/clean-rebuild/step-2.1-QA.md`.
 
 ## Rollback
 
-**Rollback target: Step 1.2 — verified homepage plus user placeholder cleanup**, exact commit `d659bad184e002aaa28468663dab83f213225613`.
+**Rollback target: Step 1.3 — exact uploaded state `70ecedf7acd4f4f2042e592b882c7a3958ada9c3`.** Restore every changed/deleted path from that commit and remove every added path listed in this README. This deliberately restores its five not-yet-deleted obsolete files too, preserving the exact prior state. No backend rollback is needed. A requested rollback ZIP will use that exact commit, not an approximation.
 
-Restore the manifest's `changed` and `deleted` paths byte-for-byte from this commit and remove the manifest's `added` paths. This restores the exact parent tracked state; do not reset unrelated subsequent edits. A requested **Rollback to Step 1.2.zip** will use these exact Git bytes. Packaging rehearses the overlay and rollback before delivery.
+## Known limitations
 
-## Known limitations and next Step
+Store remains locked; all 15 existing products are demo fixtures, with no real active inventory. Public previews therefore show enquiry/category and closed product states. Authorised product catalogue behaviour was exercised with local fixtures, not live customer orders. Checkout/order tracking still use their existing frontend pending Step 2.2. Physical Android and post-upload GitHack verification remain outstanding. Production-origin support does not alter Supabase redirect settings or migrate sessions between domains. Canonical/redirect migration remains planned, not silently completed.
 
-- This is a focused QA patch; upload verification and phone visual inspection are pending.
-- Other customer-facing pages retain their current implementation until their scheduled rebuild.
-- Catalogue/Builder/payment launch states remain unchanged. A Cart link does not bypass a closed Store.
-- Appropriate-origin auth/notifications/service-worker and full transaction tests remain future QA gates.
-- Next: **Step 2.1 — Store catalogue and product discovery**, beginning with another fresh repo and public-data inspection. Preserve filtering, category slugs, correct product imagery, launch gates and truthful price/availability states.
-
-## Folder map
-
-![Step 1.3 folder map](docs/clean-rebuild/step-1.3-folder.png)
+## Folder tree
 
 ```text
-Step 1.3/
-├── README.md
+Step 2.1/
 ├── assets/
 │   ├── css/
-│   │   ├── navigation.css
-│   │   └── responsive.css
+│   │   └── pages/
+│   │       └── commerce.css
 │   └── js/
+│       ├── components/
+│       │   └── catalogue-view.js
+│       ├── pages/
+│       │   ├── product.js
+│       │   └── store.js
 │       └── services/
-│           └── home-integrations.js
-├── design-system.html
+│           ├── catalogue-cart.js
+│           ├── catalogue.js
+│           ├── home-integrations.js
+│           └── site-config.js
+├── commerce/
+│   ├── js/
+│   │   ├── site-store-entry.js
+│   │   └── store-core.js
+│   └── store.css
 ├── docs/
 │   └── clean-rebuild/
 │       ├── ARCHITECTURE.md
 │       ├── ROADMAP.md
-│       ├── step-1.3-folder.png
-│       └── step-1.3-manifest.json
-├── index.html
+│       ├── step-2.1-QA.md
+│       ├── step-2.1-folder.png
+│       ├── step-2.1-manifest.json
+│       ├── step-2.1-store-desktop.png
+│       └── step-2.1-store-mobile.png
 ├── scripts/
+│   ├── check-clean-frontend.py
+│   ├── test-clean-commerce.mjs
 │   └── test-clean-runtime.mjs
-└── src/
-    ├── pages/
-    │   └── home.html
-    └── templates/
-        └── header.html
+├── src/
+│   └── pages/
+│       ├── product.head.html
+│       ├── product.html
+│       ├── product.json
+│       ├── store.head.html
+│       ├── store.html
+│       └── store.json
+├── README.md
+├── product.html
+├── store-gate.css
+└── store.html
 ```
+
+The colour folder map is `docs/clean-rebuild/step-2.1-folder.png`.

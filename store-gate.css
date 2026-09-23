@@ -1,7 +1,4 @@
-/* VoltTech PC Parts launch gate — Phase 2 Batch 7 */
-.store-filter-hint{font-size:10px;margin:0}
-.cart-note-label{font-size:8px;text-transform:uppercase;color:var(--muted)}
-.product-loading-skeleton{min-height:560px}
+/* Retained checkout launch gate. Store and product use the clean catalogue adapter. */
 
 .store-gate{
   display:none;
@@ -31,15 +28,6 @@
 .store-gated .store-gate{display:grid}
 .store-open .store-gate{display:none}
 
-.store-gated.store-catalogue-page .hero,
-.store-gated.store-catalogue-page .trust-strip,
-.store-gated.store-catalogue-page .store-main,
-.store-gated.store-catalogue-page .scrim,
-.store-gated.store-catalogue-page .cart-drawer,
-.store-gated.store-catalogue-page .mobile-cart,
-.store-gated.store-catalogue-page #cartButton,
-.store-gated.store-product-page .product-page,
-.store-gated.store-product-page #cartLink,
 .store-gated.store-checkout-page .checkout-main,
 .store-gated .toast{
   display:none!important;
