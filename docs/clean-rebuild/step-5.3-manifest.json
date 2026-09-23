@@ -1,0 +1,29 @@
+{
+  "step": "5.3",
+  "title": "Privacy, Notifications and Customer Operations QA",
+  "branch": "clean-rebuild",
+  "parent": "27acc00654a2b8e3f1c1eb47efd6f9b514723336",
+  "delete": [
+    "privacy-center.css",
+    "privacy-center.js"
+  ],
+  "supabase_migration_applied": "20260923215631_customer_privacy_notifications_hardening_v1",
+  "sha256": {
+    "README.md": "d33434030d6ae3f469707ab58a961ea43db2b2419a48a13a77259166feac6247",
+    "Supabase/migrations/20260923215631_customer_privacy_notifications_hardening_v1.sql": "38e3de60f677d37c267fa6335cd880d2e0f68a1bf3c5aaa4def6e99f21f2a223",
+    "assets/css/pages/privacy-center.css": "fc479af6f72ed216b13a9b2b953d9f317c3aadf801520fb6d9013f72cf31c247",
+    "assets/js/pages/privacy-center.js": "c5ad7ad9483a033af5741559e3339f119a1f4f1e4b303f9e2a3aaef12b385af6",
+    "assets/js/services/account-session.js": "9939312f9ae54f710b79af66ccb826a5fa54abfbc9b9e800333233578e33f85d",
+    "assets/js/services/customer-notifications.js": "ea0331f8b7cfe8e2b59c0c120afc64d025a93cee31967b6b5a56e76225ec2b17",
+    "assets/js/services/privacy-data.js": "cd51be2b8ddb191b95a9fb714f609063aa6c18c7d5efe690029ddfbac6df31e1",
+    "docs/clean-rebuild/ROADMAP.md": "73719c7679116afab58b9bdbb8f5283b332c9886a9c6580f9735e7c2c0f471ba",
+    "docs/clean-rebuild/step-5.3-QA.md": "85ec75941798b7e212692f1e705b283fe34dede9fffe75a4f3c8c084610b15d1",
+    "docs/clean-rebuild/step-5.3-folder.png": "71f5ea8f435b18081942680f4bb40a1dcde40082e8a5fc58672d19b89f1a7236",
+    "privacy-center.html": "c6d5c235b13fcf56e967a1863cf8ccf49397c04bfb6cb090315a37edeba243a1",
+    "scripts/check-clean-frontend.py": "fdc283c6c4c474492241022b54347ebda6998892e2167968c78a1feb12dc523c",
+    "scripts/test-clean-customer-ops.mjs": "13f34e968e7e7930bdbeddfbe52cf8e61beee6f336d6b25c5632ce9075644974",
+    "src/pages/privacy-center.head.html": "25337f0bc8175bd8cee22498ae74ca777c22d1da6b21df4e6a45e0c5ef62cef9",
+    "src/pages/privacy-center.html": "b27749923163658cf7e78f253c615fb47d0c2f225c747183b3cd37b2fdb96849",
+    "src/pages/privacy-center.json": "bf5bf6b8fcf3c825cf8548db7616ab75094e97fa9dc9457464449d08555e130d"
+  }
+}
