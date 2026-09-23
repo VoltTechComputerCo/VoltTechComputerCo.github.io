@@ -82,7 +82,7 @@ const integrationContext = {
   window: new Proxy({}, { get() { throw new Error('Preview accessed production services'); } }),
   localStorage: new Proxy({}, { get() { throw new Error('Preview accessed authentication storage'); } })
 };
-const integrationSource = source('assets/js/services/home-integrations.js')
+const integrationSource = (source('assets/js/services/site-config.js') + '\n' + source('assets/js/services/home-integrations.js').replace(/import \{[^}]+\} from '.\/site-config.js';/, ''))
   .replaceAll('export ', '')
   .replaceAll('import.meta.url', JSON.stringify('https://example.test/assets/js/services/home-integrations.js'));
 vm.runInNewContext(integrationSource + '\nthis.contracts = {normaliseLaunchSettings, readLaunchSettings, cartQuantity, freshLiveCreators, connectCart, connectAccount, connectProductionServices};', integrationContext);
