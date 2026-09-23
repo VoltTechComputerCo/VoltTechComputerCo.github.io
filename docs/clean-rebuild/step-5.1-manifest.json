@@ -1,9 +1,14 @@
 {
   "step": "5.1",
-  "title": "Account foundation",
+  "title": "Account foundation \u2014 corrected source manifest",
   "branch": "clean-rebuild",
   "parent": "a8a76ddcc1b3c93fc9407e285e04c5e331f36cd5",
-  "delete": [],
+  "verified_upload_head": "8ac46e6c39064c31efc6a16719462e6e3d654dc2",
+  "cleanup_carried_by": "Step 5.2",
+  "delete": [
+    "scripts/__pycache__/check-clean-frontend.cpython-313.pyc",
+    "scripts/__pycache__/Placeholder.txt"
+  ],
   "supabase_migration_applied": "20260923210205_customer_address_atomic_v1",
   "sha256": {
     "README.md": "11c1dee11aecefdd3817c8c3f1647e90cb81cb05c0a89be44cd3fb5f71923cd1",
@@ -13,9 +18,8 @@
     "assets/js/pages/account.js": "d234ccac25e6f9201d4d17c43b4906712492e7606e91a3afe059a950124ac421",
     "assets/js/services/account-data.js": "d5f10a555ed77f81e48b7bc619341b408cb204399496d554b860abf58fc5dfcf",
     "assets/js/services/account-session.js": "9f3787dee29743be39d9a27668a1fd1bc749b04725f42ee80ddc4c3e108c527a",
-    "docs/clean-rebuild/step-5.1-QA.md": "9dd403b5453f9851f53b4e33409f7f40ff325c47570efc2d25086f11de5fe39f",
-    "docs/clean-rebuild/step-5.1-folder.png": "9c9902b6e949e9d8040976e0e424b8326693349afd3c9f4714fc3c2403483b23",
-    "scripts/__pycache__/check-clean-frontend.cpython-313.pyc": "35e72ef4ff921e62712814b2fa9fc10d77197dcda5e69c5e49cc7f3cbc04f3ba",
+    "docs/clean-rebuild/step-5.1-QA.md": "0e95233dd71ca19e09a4451a591d8387a133cad67a48940809619269b7ffc888",
+    "docs/clean-rebuild/step-5.1-folder.png": "ea2afed13c0ad1906a538765f0b25ca6f1470dc2a9527d2d6fe5a9ba27fe2e46",
     "scripts/check-clean-frontend.py": "915d37993b26191a23d76abc34b3f58e66188fcc4d7ad2b9c359abf05b8e6853",
     "scripts/test-clean-account.mjs": "58cbcf7bd68cbaba12d4c859786ed4b251ae92c3c1cfbe7806c2e01c0fd19d4a",
     "src/pages/account.head.html": "6e9e3ec225af24e4bc2bce584731eb66b257db8c5f9ced5f1e0187ab2b2882a4",

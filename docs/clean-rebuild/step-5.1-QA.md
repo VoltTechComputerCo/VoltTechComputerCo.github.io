@@ -68,3 +68,8 @@ The generated account page:
 `node scripts/test-clean-account.mjs`
 
 PASS: clean account shell, preview isolation, auth boundary and atomic address contract.
+
+
+## Package hygiene correction
+
+Remote verification confirmed all intended Step 5.1 runtime/source files matched the delivered bytes. The initial ZIP also contained generated `scripts/__pycache__/check-clean-frontend.cpython-313.pyc`, and a `Placeholder.txt` was added only to create that cache directory. Both are build/check artifacts rather than source and are removed by the Step 5.1 cleanup. The corrected manifest and folder map exclude `scripts/__pycache__/`.
