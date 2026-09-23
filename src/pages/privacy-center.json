@@ -1,0 +1,16 @@
+{
+  "output": "privacy-center.html",
+  "title": "Privacy & Data | VoltTech Account",
+  "description": "Secure VoltTech customer privacy tools for data export, corrections and protected account deletion.",
+  "robots": "noindex, nofollow",
+  "styles": [
+    "assets/css/notifications.css",
+    "assets/css/pages/privacy-center.css"
+  ],
+  "classic_scripts": [
+    "supabase-config.js"
+  ],
+  "scripts": [
+    "assets/js/pages/privacy-center.js"
+  ]
+}
