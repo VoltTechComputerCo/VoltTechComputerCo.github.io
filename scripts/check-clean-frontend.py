@@ -78,7 +78,7 @@ for source in (ROOT / 'src/pages').glob('*.json'):
         errors.append('Inspection page must stay noindex')
     for tag, attrs in parser.tags:
         path = attrs.get('src', '') if tag == 'script' else attrs.get('href', '') if tag == 'link' and attrs.get('rel') == 'stylesheet' else ''
-        preserved = {'supabase-config.js', 'streamer-feed.js', 'conversion-context.js'} if output.name == 'index.html' else {'supabase-config.js', 'conversion-context.js'} if output.name in ('store.html', 'product.html') else set()
+        preserved = {'supabase-config.js', 'streamer-feed.js', 'conversion-context.js'} if output.name == 'index.html' else {'supabase-config.js', 'conversion-context.js'} if output.name in ('store.html', 'product.html') else {'supabase-config.js'} if output.name in ('checkout.html', 'order-status.html') else set()
         if path and not path.startswith('assets/') and path not in preserved:
             errors.append(f'Legacy runtime dependency on converted page: {path}')
 
