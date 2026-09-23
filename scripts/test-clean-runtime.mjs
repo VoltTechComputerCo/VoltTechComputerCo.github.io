@@ -85,7 +85,7 @@ const integrationContext = {
 const integrationSource = source('assets/js/services/home-integrations.js')
   .replaceAll('export ', '')
   .replaceAll('import.meta.url', JSON.stringify('https://example.test/assets/js/services/home-integrations.js'));
-vm.runInNewContext(integrationSource + '\nthis.contracts = {normaliseLaunchSettings, readLaunchSettings, cartQuantity, freshLiveCreators, connectAccount, connectProductionServices};', integrationContext);
+vm.runInNewContext(integrationSource + '\nthis.contracts = {normaliseLaunchSettings, readLaunchSettings, cartQuantity, freshLiveCreators, connectCart, connectAccount, connectProductionServices};', integrationContext);
 const c = integrationContext.contracts;
 assert.equal(c.normaliseLaunchSettings({catalogue_enabled: 'true', builder_enabled: 1}).catalogue_enabled, false);
 assert.equal(c.normaliseLaunchSettings({builder_enabled: true}).builder_enabled, true);
@@ -122,3 +122,36 @@ assert.equal(c.freshLiveCreators({...feed, source:'legacy', streamers:[{...live,
 await c.connectAccount(config);
 c.connectProductionServices();
 console.log('PASS: launch flags fail closed; cart data validated; stale/unsafe creator data rejected; previews do not access production account or tracking');
+
+// The phone-menu and desktop cart must stay consistent without writing to the cart.
+let storedCart = '[{"productId":"gpu","quantity":1}]';
+const cartEvents = {};
+const cartLinks = [0, 1].map(() => ({
+  badge: {hidden: true, textContent: ''}, label: '',
+  querySelector() { return this.badge; },
+  setAttribute(_name, value) { this.label = value; }
+}));
+integrationContext.document = {querySelectorAll: () => cartLinks};
+integrationContext.window = {addEventListener: (name, handler) => { cartEvents[name] = handler; }};
+integrationContext.localStorage = {
+  getItem(key) { assert.equal(key, 'vt_store_quote_cart_v1'); return storedCart; },
+  setItem() { assert.fail('Header must not rewrite the cart'); },
+  removeItem() { assert.fail('Header must not clear the cart'); }
+};
+c.connectCart();
+assert.ok(cartLinks.every(link => link.badge.textContent === '1' && !link.badge.hidden && link.label === 'Open cart, 1 item'));
+storedCart = '[{"productId":"gpu","quantity":2}]';
+cartEvents['vt-store-cart-change']();
+assert.ok(cartLinks.every(link => link.badge.textContent === '2' && link.label === 'Open cart, 2 items'));
+storedCart = '[]';
+cartEvents.storage({key: 'another-key'});
+assert.ok(cartLinks.every(link => link.badge.textContent === '2'), 'Unrelated storage changes are ignored');
+cartEvents.storage({key: 'vt_store_quote_cart_v1'});
+assert.ok(cartLinks.every(link => link.badge.hidden && link.label === 'Open cart'));
+storedCart = '[{"productId":"gpu","quantity":3}]';
+cartEvents.storage({key: null});
+assert.ok(cartLinks.every(link => link.badge.textContent === '3'), 'Storage-clear events refresh both views');
+integrationContext.localStorage.getItem = () => { throw new Error('Storage blocked'); };
+cartEvents['vt-store-cart-change']();
+assert.ok(cartLinks.every(link => link.badge.hidden && link.label === 'Open cart'));
+console.log('PASS: phone and desktop cart labels synchronise across cart/storage events, fail safely and never write cart data');
