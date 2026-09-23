@@ -1,0 +1,32 @@
+/* Step 3.1 bridge: clean VoltTech shell + fail-closed Builder access. The inner Builder stylesheet remains transitional until Step 3.2. */
+[data-page="builder"] .builder-app { display:none; }
+[data-page="builder"].builder-open .builder-app { display:block; }
+[data-page="builder"].builder-open .builder-gate { display:none; }
+[data-page="builder"].builder-gated .builder-gate { display:block; }
+[data-page="builder"] .builder-gate { min-height:70vh; padding-block:clamp(3rem,8vw,7rem); }
+[data-page="builder"] .builder-gate-card { width:min(48rem,100%); padding:clamp(1.5rem,4vw,3rem); border:1px solid var(--border-strong); background:radial-gradient(circle at 80% 0,rgba(53,234,215,.11),transparent 42%),var(--panel); }
+[data-page="builder"] .builder-gate-card h2 { margin-block:.75rem 1rem; font-size:clamp(2.4rem,6vw,4rem); }
+[data-page="builder"] .builder-gate-card > p:not(.eyebrow):not(.micro) { max-width:60ch; color:var(--text-secondary); }
+[data-page="builder"] .builder-gate-card .actions { margin-block:1.5rem; }
+[data-page="builder"] .builder-gate-card .micro { margin-bottom:0; }
+[data-page="builder"] .builder-app { padding-bottom:2rem; }
+[data-page="builder"] .builder-title-row { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
+[data-page="builder"] .builder-state { margin:0; padding:.4rem .6rem; border:1px solid var(--border); color:var(--teal); }
+[data-page="builder"] .builder-safety { margin:1rem auto 0; border-left:3px solid var(--teal); }
+[data-page="builder"].builder-preview .builder-safety { border-left-color:var(--warning); }
+[data-page="builder"] .builder-safety strong { color:var(--text); }
+[data-page="builder"] .builder-confirm-dialog { width:min(36rem,calc(100% - 2rem)); }
+[data-page="builder"] .builder-confirm-dialog pre { max-height:18rem; overflow:auto; white-space:pre-wrap; overflow-wrap:anywhere; padding:1rem; border:1px solid var(--border); background:var(--black); color:var(--text-secondary); font:var(--text-xs)/1.6 var(--font-mono); }
+[data-page="builder"] .builder-confirm-dialog.is-danger { border-color:var(--error); }
+[data-page="builder"] .builder-confirm-dialog .dialog-close { float:right; }
+[data-page="builder"] .button-danger { border-color:var(--error)!important; color:var(--error)!important; }
+[data-page="builder"] .site-footer { margin-top:0; }
+@media(max-width:40rem){
+  [data-page="builder"] .builder-gate-card .actions { display:grid; }
+  [data-page="builder"] .builder-title-row { align-items:flex-start; flex-direction:column; }
+}
+
+[data-page="builder"] .builder-hero-title { max-width:900px; margin-top:12px; font-size:clamp(48px,9vw,92px); line-height:.91; letter-spacing:-.065em; }
+[data-page="builder"] .builder-hero-title span { color:var(--teal); text-shadow:0 0 24px rgba(47,230,200,.15); }
+@media(max-width:700px){[data-page="builder"] .builder-hero-title{font-size:clamp(45px,14vw,64px)}}
+@media(max-width:390px){[data-page="builder"] .builder-hero-title{font-size:43px}}
