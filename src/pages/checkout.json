@@ -1,0 +1,16 @@
+{
+  "output": "checkout.html",
+  "title": "Checkout | VoltTech Computer Co.",
+  "description": "Review your PC component order and delivery details. VoltTech confirms availability, final pricing and delivery before payment.",
+  "robots": "noindex, nofollow",
+  "styles": [
+    "assets/css/pages/commerce.css",
+    "assets/css/pages/transactions.css"
+  ],
+  "classic_scripts": [
+    "supabase-config.js"
+  ],
+  "scripts": [
+    "assets/js/pages/checkout.js"
+  ]
+}

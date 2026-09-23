@@ -1,0 +1,16 @@
+{
+  "output": "order-status.html",
+  "title": "Order Tracking | VoltTech Computer Co.",
+  "description": "Check your VoltTech order confirmation, payment and delivery status using your private order link.",
+  "robots": "noindex, nofollow",
+  "styles": [
+    "assets/css/pages/commerce.css",
+    "assets/css/pages/transactions.css"
+  ],
+  "classic_scripts": [
+    "supabase-config.js"
+  ],
+  "scripts": [
+    "assets/js/pages/order-status.js"
+  ]
+}
