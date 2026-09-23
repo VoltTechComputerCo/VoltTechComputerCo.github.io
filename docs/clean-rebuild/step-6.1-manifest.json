@@ -1,0 +1,23 @@
+{
+  "step": "6.1",
+  "title": "Creator Hub and live-status truthfulness",
+  "branch": "clean-rebuild",
+  "parent": "4c399b694e72e0135723879e06d8e570a695a463",
+  "delete": [],
+  "supabase_changes": [],
+  "operational_blocker": "Twitch OAuth token endpoint currently returns HTTP 403; refresh credentials require secret-management repair.",
+  "sha256": {
+    "README.md": "bdf2fc0bb38709443033efec9d36c64c23fbf33b3a092bc136e3b2d1d14867ac",
+    "assets/css/pages/creator-hub.css": "46c8a9afbec56d3040cd3798ec02e13b92ef6ec8fb973afd1eb3d260763481a7",
+    "assets/js/pages/creator-hub.js": "7fb335313709dc66df7d99ee02fcb3cebcb2cbcf07eadf7f45c43cecbd652b6a",
+    "assets/js/services/creator-feed.js": "39e432ae0c836107cd920adc40ee44a132a545ce0f7e11665ee1cc017e9efe2c",
+    "creator-hub-south-africa.html": "ca3c0ff4f97a763dd2b9ae6c8c7a5bef9cf6be98ea31e42c321ec826b800799e",
+    "docs/clean-rebuild/ROADMAP.md": "0e52482b9ac675eed0db067dd998d5140c41cb723c72f777fce2c8f4aafc5359",
+    "docs/clean-rebuild/step-6.1-QA.md": "ae19956fda486f9c63ae0c225ec3e1aa49fb7d28917efdd65ca53886de21e28e",
+    "docs/clean-rebuild/step-6.1-folder.png": "1b3f090e0320674178e06efd494c6265bd7189ffb5fe5c1ec7aa0a35a84062c9",
+    "scripts/test-clean-creator-hub.mjs": "1962d8b702628c01c74f3dd1028fa1788e8c45bd79f1bcd7c171dc0e1272b7fd",
+    "src/pages/creator-hub-south-africa.head.html": "0daa5536827fa3522d996df9eec503e6dd3c25ebd98c2e32768ec3276e5da58c",
+    "src/pages/creator-hub-south-africa.html": "696bc5c6c20773d7e095e4b2ea864fd8665e99369f4d8d0bfe8a3902a666aa70",
+    "src/pages/creator-hub-south-africa.json": "8eddee48d2f9f8c51d87678c06ec2bcf74383f289e2a9a7fa6f3925ffe44532a"
+  }
+}
