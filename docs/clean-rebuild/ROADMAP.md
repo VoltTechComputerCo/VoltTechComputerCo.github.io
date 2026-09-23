@@ -1,13 +1,13 @@
 # VoltTech master roadmap
 
-Previous major Step: **Step 1 — Frontend foundation (uploaded)**. Current: **Step 2 — Core commerce (Step 2.3 QA packaged)**. Next major Step: **Step 3 — PC Builder**.
+Previous major Step: **Step 2 — Core commerce (complete and verified at `70691bb5d3a390a185210bdd7c1d188f6f014546`)**. Current: **Step 3 — PC Builder (Step 3.1 packaged)**. Next major Step: **Step 4 — Signal Scan and service pages**.
 
 | Step | Scope | Status / completion gate |
 |---|---|---|
 | 0 | Repository and system audit | Complete; recorded in Step 0 delivery |
 | 1 | Shared frontend foundation and homepage | Steps 1.1–1.3 uploaded and hash-verified; Step 1.3 visual review still pending. Five pending deletions carried into Step 2.1. |
-| 2 | Store, categories, product, cart, checkout and tracking | Steps 2.1 and 2.2 are uploaded and verified; the Step 2.2 cleanup deletions are complete at `fd0a981dee1c3ddb2e4f1342dbf61858dc49cafe`. Step 2.3 commerce QA is packaged with one order-timeline consistency fix. Launch gates stay closed. |
-| 3 | PC Builder | Not started; preserve engines, estimates, saving and handoffs |
+| 2 | Store, categories, product, cart, checkout and tracking | Complete. Step 2.3 uploaded and byte-verified at `70691bb5d3a390a185210bdd7c1d188f6f014546`; launch gates remain closed. |
+| 3 | PC Builder | Active. Step 3.1 clean-shell/gate/inspection foundation packaged; preserve compatibility/guided engines, estimates, saving and handoffs. |
 | 4 | Signal Scan and service pages | Not started; truthful diagnostics, service leads and support |
 | 5 | Customer accounts and operations | Not started; authentication, history, documents, notifications and privacy |
 | 6 | Creator ecosystem and STATIC | Not started; creator freshness and editorial publishing continuity |
@@ -58,4 +58,17 @@ Step 2.3 re-audits the complete commerce journey and live read-only backend boun
 
 No Supabase schema, RLS, Edge Function, secret, launch flag or production data is changed by this delivery. Backend release blockers remain documented: `.co.za` transaction-origin alignment and Yoco return URLs, server-side demo/stock safeguards, checkout idempotency, server enforcement of the direct-payment switch, stale pending-payment reuse/amount validation, delivery-selection enforcement and live payment/courier certification. Current Supabase security/performance advisor findings remain a later security/operations review rather than being silently changed during commerce QA.
 
-**Next after upload verification: Step 3 — PC Builder.** Re-audit Builder files, engines, compatibility data, saved-build/account handoffs and launch gate before changing presentation or behaviour.
+Step 2.3 was uploaded and all six delivered files were byte-verified at `70691bb5d3a390a185210bdd7c1d188f6f014546`. **Step 2 is closed.**
+
+
+## Step 3 sequence
+
+- **Step 3.1 — Builder foundation and safe inspection:** move `builder/index.html` onto the generated clean shell; replace the legacy Builder gate/bootstrap with a fail-closed clean controller; add an explicit non-production-only `?inspect=1` path that uses local prototype data and does not initialise account/save/quote/production services; decouple catalogue loading from account bootstrap. Keep the existing compatibility/guided engines and transitional `builder/styles.css`.
+- **Step 3.2 — Builder experience and engine consistency:** migrate/refine Guided + Manual presentation on shared design tokens, fix the integrated-graphics/GPU-required completion mismatch, improve product/media fallbacks and mobile interaction while preserving compatibility rules.
+- **Step 3.3 — Account/quote handoff and Builder QA:** unify truthful offer/freshness provenance for saved builds, harden status transitions, verify restore/admin quote handoffs, retire remaining replaced Builder presentation code and run full responsive/regression QA.
+
+## Step 3.1 audit position
+
+The audited Builder contains 136 local prototype products and 423 mock supplier offers. The mock offers are explicitly temporary data and are stale at the current audit date. All 136 mapped product images currently use external proxy URLs. Existing compatibility, guided recommendation, saved-build, quote-request and admin conversion contracts are retained for staged migration.
+
+The Builder and Store launch flags remain off; no backend mutation is part of Step 3.1. One engine inconsistency is recorded for Step 3.2: Guided Office/Home builds can omit a discrete GPU, while the main completion helper still treats GPU as universally required. Saved-build offer/freshness provenance and browser-driven quote-status transitions are recorded for Step 3.3.

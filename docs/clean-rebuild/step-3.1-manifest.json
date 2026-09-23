@@ -1,0 +1,55 @@
+{
+  "step": "3.1",
+  "title": "PC Builder foundation and safe inspection",
+  "branch": "clean-rebuild",
+  "parent_commit": "70691bb5d3a390a185210bdd7c1d188f6f014546",
+  "delivered_file_count": 16,
+  "hash_covered_file_count": 15,
+  "changed": [
+    "README.md",
+    "builder/index.html",
+    "builder/js/data-loader.js",
+    "docs/clean-rebuild/ROADMAP.md",
+    "scripts/check-clean-frontend.py"
+  ],
+  "added": [
+    "assets/css/pages/builder-foundation.css",
+    "assets/js/components/builder-dialog.js",
+    "assets/js/pages/builder.js",
+    "assets/js/services/builder-access.js",
+    "docs/clean-rebuild/step-3.1-QA.md",
+    "docs/clean-rebuild/step-3.1-folder.png",
+    "docs/clean-rebuild/step-3.1-manifest.json",
+    "scripts/test-clean-builder.mjs",
+    "src/pages/builder.head.html",
+    "src/pages/builder.html",
+    "src/pages/builder.json"
+  ],
+  "deleted": [
+    "builder/builder-access.js",
+    "builder/builder-gate.css",
+    "builder/phase6-unification.css"
+  ],
+  "sha256": {
+    "README.md": "eed89231c365f0cdd7a8b1a45b467407f97513653ff82bd1485bc1551da9f3b7",
+    "assets/css/pages/builder-foundation.css": "bb6faa9ef4a74cb87133eba5fec5c50a05731e849d635724ab58f0e1ae146c95",
+    "assets/js/components/builder-dialog.js": "bfeadf5cfdd6ae47310cf1f282731cbeec6dcfe5d4927be4a447cbe0027ad7f3",
+    "assets/js/pages/builder.js": "d6e56e25e58e35c1ccc58fbc177a164f3394fc3ab2563641c07ae4be1c017c79",
+    "assets/js/services/builder-access.js": "63aea63893ab1e9f54a789f447a33ab8560288fb6d6170364e02f0fdf03e03cb",
+    "builder/index.html": "541241d4ad1754da5ea5a0e04be058690d9dd59cd792cb30793df8dee9be48aa",
+    "builder/js/data-loader.js": "bdcc1558167717f50b7b68cbf9bb8ab559def61213037660b4da038f5a4c0b48",
+    "docs/clean-rebuild/ROADMAP.md": "3c68b8e793d41e0f33bf69de822d95b961242556555e497757b7a29150484744",
+    "docs/clean-rebuild/step-3.1-QA.md": "07e1e2f92a102eacc220d38c012914ad14d713b39ff05617e92ce1664b7ed535",
+    "docs/clean-rebuild/step-3.1-folder.png": "9c9b2d5266ae4ce7b08ca25645ac36721c67d951becae2d9155676d2f7980a5b",
+    "scripts/check-clean-frontend.py": "fa26758e9fdd50ad22d729aac411fdd67237e44f280bb8b9577c529eaaacb9e0",
+    "scripts/test-clean-builder.mjs": "80b8b07fcb733e593478c7a4f29bb3e414f8ab63dcf513b9914856de22dfa01d",
+    "src/pages/builder.head.html": "d74ebc282118b2d7ef2f2be934d462113a2440a888de50cd7171fe5e6547aba4",
+    "src/pages/builder.html": "d586892907ddfa85f8624c66df3f4c8f7100471a3db39315f2845d5a14dee7c6",
+    "src/pages/builder.json": "ec0af16f2677a952016b2f87903f24ac00efdf1d59ef886132b9cdabc70173ce"
+  },
+  "notes": [
+    "Manifest excludes its own hash.",
+    "builder/styles.css is intentionally retained unchanged as a transitional Step 3.1 dependency.",
+    "No backend mutation or launch-flag change is part of this package."
+  ]
+}
