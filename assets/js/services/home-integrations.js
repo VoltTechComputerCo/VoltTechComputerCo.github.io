@@ -36,15 +36,19 @@ export function freshLiveCreators(payload, now = Date.now()) {
 }
 
 export function connectCart() {
-  const badge = document.querySelector('[data-cart-count]');
-  const link = document.querySelector('.header-cart');
-  if (!badge || !link) return;
+  const links = document.querySelectorAll('[data-cart-link]');
+  if (!links.length) return;
   function update() {
     let count = 0;
     try { count = cartQuantity(localStorage.getItem(cartKey)); } catch { /* Storage may be blocked. */ }
-    badge.textContent = count > 99 ? '99+' : String(count);
-    badge.hidden = !count;
-    link.setAttribute('aria-label', count ? `Open cart, ${count} items` : 'Open cart');
+    links.forEach(link => {
+      const badge = link.querySelector('[data-cart-count]');
+      if (badge) {
+        badge.textContent = count > 99 ? '99+' : String(count);
+        badge.hidden = !count;
+      }
+      link.setAttribute('aria-label', count ? `Open cart, ${count} ${count === 1 ? 'item' : 'items'}` : 'Open cart');
+    });
   }
   update();
   window.addEventListener('storage', event => { if (!event.key || event.key === cartKey) update(); });
