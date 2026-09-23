@@ -1,1 +1,148 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Privacy & Data | VoltTech Account</title><meta name="robots" content="noindex,nofollow"><link rel="icon" href="favicon-512.png"><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="customer-shell.css?v=3.1.1"><link rel="stylesheet" href="privacy-center.css?v=1" data-vt-privacy-center="1"><link rel="stylesheet" href="portal-phase4.css?v=1"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script defer src="privacy-center.js?v=3.2.0"></script><link rel="stylesheet" href="commerce-ui.css?v=3.2.0"><script defer src="volttech-dialog.js?v=3.2.0"></script><link rel="stylesheet" href="notifications.css?v=5.2.0"><script defer src="notifications.js?v=5.2.0"></script><link rel="stylesheet" href="portal-shell.css?v=6.1.0"><script defer src="portal-shell.js?v=6.1.0"></script></head><body><nav><div class="wrap"><a class="brand" href="account.html"><span><b>Volt</b>Tech</span></a><div class="portal-phase4-nav" aria-label="Customer account"><a href="account.html">Home</a><a href="activity.html">Activity</a><a href="documents.html">Documents</a><a class="active" href="account.html?tab=profile">Account</a></div></div></nav><main class="wrap"><header class="portal-phase4-header"><div class="portal-phase4-kicker">// ACCOUNT SETTINGS</div><h1>Privacy & Data</h1><p class="lead">Download your account data, request corrections and manage account deletion.</p><div class="portal-phase4-actions"><a href="account.html?tab=profile">Profile</a><a href="documents.html">Documents</a></div></header><div id="privacyStatus" class="status" role="status" aria-live="polite"></div><div id="pendingDeletion" class="pending" hidden></div><div class="privacy-grid"><section class="privacy-card"><h2>Your data</h2><p>Download a machine-readable copy of the account information VoltTech can retrieve for you from the customer system.</p><div class="actions"><button id="downloadData" class="btn primary" type="button">Download my data</button><a class="btn teal" href="personal-data.html">Printable data report</a></div></section><section class="privacy-card"><h2>Correction or privacy request</h2><p>You can update your profile directly, or contact VoltTech if information is inaccurate, excessive, outdated or should be corrected/deleted under applicable law.</p><div class="actions"><a class="btn teal" href="account.html?tab=profile">Edit profile</a><a class="btn" href="mailto:volttechcomputerco@gmail.com?subject=VoltTech%20privacy%20request">Privacy request</a></div></section></div><section class="danger-zone"><h2>Delete my VoltTech account</h2><p class="lead">Deletion removes your login and deletes or anonymises personal information VoltTech no longer needs. Transaction, tax, warranty, dispute or other records may still have to be retained where law requires it.</p><p class="notice">VoltTech uses a 7-day recovery window. During those 7 days you can cancel the deletion request. After the recovery period, deletion can be finalised and the login deletion is irreversible.</p><div id="deleteForm"><div class="step"><label class="checkline"><input id="confirmExport" type="checkbox"><span>I have downloaded anything I want to keep, or I understand I can do so before the recovery period ends.</span></label></div><div class="step"><label class="checkline"><input id="confirmRetention" type="checkbox"><span>I understand VoltTech may retain limited transaction, invoice, warranty, fraud-prevention or legal records when retention is required or authorised by law.</span></label></div><div class="step"><label for="confirmEmail">Confirm your account email</label><input id="confirmEmail" type="email" autocomplete="email" placeholder="you@example.com"></div><div class="step"><label for="confirmPhrase">Type DELETE MY ACCOUNT</label><input id="confirmPhrase" type="text" autocomplete="off" placeholder="DELETE MY ACCOUNT"></div><div class="actions"><button id="requestDeletion" class="btn danger" type="button">Request account deletion</button></div></div><div id="cancelArea" hidden><div class="actions"><button id="cancelDeletion" class="btn primary" type="button">Cancel deletion request</button></div></div></section><p class="portal-phase4-note">Self-service tools do not remove your formal POPIA/PAIA rights. See the <a href="privacy.html" class="portal-link">Privacy Notice</a> and <a href="paia.html" class="portal-link">PAIA information</a>.</p></main></body></html>
+<!doctype html>
+<html lang="en-ZA" data-vt-shell="clean">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy &amp; Data | VoltTech Account</title>
+  <meta name="description" content="Secure VoltTech customer privacy tools for data export, corrections and protected account deletion.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#031012">
+  <link rel="icon" href="icons/favicon.ico">
+  <link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/navigation.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/print.css">
+  <link rel="stylesheet" href="assets/css/notifications.css">
+  <link rel="stylesheet" href="assets/css/pages/privacy-center.css">
+<link rel="canonical" href="https://volttechcomputerco.github.io/privacy-center.html">
+<meta property="og:type" content="website"><meta property="og:locale" content="en_ZA"><meta property="og:title" content="Privacy & Data | VoltTech Account"><meta property="og:url" content="https://volttechcomputerco.github.io/privacy-center.html">
+  <script type="module" src="assets/js/site-shell.js"></script>
+  <script defer src="supabase-config.js"></script>
+  <script type="module" src="assets/js/pages/privacy-center.js"></script>
+</head>
+<body data-page="privacy-center">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="VoltTech Computer Co. home">
+      <img src="assets/brand/volttech-logo.webp" alt="VoltTech Computer Co." width="360" height="210">
+    </a>
+    <span class="brand-promise micro">BUILT FOR<br>HIGHER STANDARDS</span>
+    <nav class="primary-nav" id="primary-navigation" aria-label="Main navigation">
+      <ul>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="builder/index.html">PC Builder</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="signal-scan.html">Signal Scan</a></li>
+        <li><a href="static.html">STATIC</a></li>
+        <li class="mobile-nav-cart"><a href="store.html?cart=1" data-cart-link aria-label="Open cart">Cart <span class="nav-cart-count" data-cart-count hidden></span></a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <button class="icon-button" type="button" data-dialog-open="site-search" aria-label="Search VoltTech" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
+      <a class="header-account" href="account.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M5 21v-3a7 7 0 0 1 14 0v3Z"/></svg><span data-account-label>Account</span></a>
+      <span data-notifications-host></span>
+      <a class="icon-button header-cart" href="store.html?cart=1" data-cart-link aria-label="Open cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="cart-count" data-cart-count hidden></span></a>
+    </div>
+    <button class="button button-secondary menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation" hidden>Menu</button>
+  </div>
+</header>
+<dialog class="dialog search-dialog" id="site-search" aria-labelledby="site-search-title">
+  <button class="button button-secondary dialog-close" type="button" data-dialog-close aria-label="Close search">×</button>
+  <p class="eyebrow">VOLTTECH / EXPLORE</p>
+  <h2 id="site-search-title">Find your next move.</h2>
+  <label for="site-search-input">Search services, tools and guides</label>
+  <input id="site-search-input" type="search" placeholder="Try upgrades, repair or streaming" autocomplete="off" autofocus>
+  <p class="micro" id="site-search-status" role="status"></p>
+  <ul class="search-results" id="site-search-results"></ul>
+</dialog>
+<main id="main-content" class="privacy-page">
+  <div class="container privacy-shell">
+    <section class="privacy-hero">
+      <p class="eyebrow">MY VOLTTECH / PRIVACY</p>
+      <h1>Privacy &amp; Data</h1>
+      <p class="privacy-lead">Download the customer data available through your VoltTech account, request corrections, and manage the protected account-deletion process.</p>
+      <nav class="privacy-nav" aria-label="Customer account sections">
+        <a href="account.html">Account home</a><a href="activity.html">Activity</a><a href="documents.html">Documents</a><a href="builds.html">Saved builds</a>
+      </nav>
+    </section>
+
+    <div id="privacyPreview" class="privacy-preview" hidden></div>
+    <p id="privacyStatus" class="privacy-status" role="status" aria-live="polite"></p>
+    <div id="pendingDeletion" class="privacy-pending" hidden></div>
+
+    <section class="privacy-grid" aria-label="Privacy tools">
+      <article class="privacy-card">
+        <p class="eyebrow">EXPORT</p><h2>Your account data</h2>
+        <p>Download a machine-readable JSON copy of customer information your signed-in account is currently allowed to retrieve.</p>
+        <div class="privacy-actions"><button id="downloadData" class="button" type="button">Download my data</button><a class="button button-secondary" href="personal-data.html">Printable data report</a></div>
+      </article>
+      <article class="privacy-card">
+        <p class="eyebrow">CORRECTIONS</p><h2>Update or question your information</h2>
+        <p>Edit profile information directly, or contact VoltTech when information is inaccurate, outdated, excessive or needs a formal privacy review.</p>
+        <div class="privacy-actions"><a class="button" href="account.html?tab=profile">Edit profile</a><a class="button button-secondary" href="mailto:volttechcomputerco@gmail.com?subject=VoltTech%20privacy%20request">Privacy request</a></div>
+      </article>
+    </section>
+
+    <section class="privacy-danger" aria-labelledby="delete-title">
+      <p class="eyebrow">ACCOUNT DELETION</p><h2 id="delete-title">Delete my VoltTech account</h2>
+      <p>VoltTech uses a seven-day recovery window. You can cancel while that window is open. After finalisation, the login deletion is irreversible.</p>
+      <p class="privacy-retention">Transaction, tax, warranty, fraud-prevention, dispute or other records may still need to be retained when applicable law requires or authorises it.</p>
+      <div id="deleteForm" class="privacy-delete-form">
+        <div class="privacy-check"><input id="confirmExport" type="checkbox"><label for="confirmExport">I have downloaded anything I want to keep, or I understand I can do so before the recovery window ends.</label></div>
+        <div class="privacy-check"><input id="confirmRetention" type="checkbox"><label for="confirmRetention">I understand that limited records may still need to be retained for lawful operational, tax, warranty, fraud-prevention or dispute purposes.</label></div>
+        <div class="form-field"><label for="confirmEmail">Confirm your account email</label><input id="confirmEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+        <div class="form-field"><label for="confirmPhrase">Type DELETE MY ACCOUNT</label><input id="confirmPhrase" type="text" autocomplete="off" placeholder="DELETE MY ACCOUNT"></div>
+        <button id="requestDeletion" class="button button-danger" type="button">Request account deletion</button>
+      </div>
+      <div id="cancelArea" hidden><button id="cancelDeletion" class="button" type="button">Cancel deletion request</button></div>
+    </section>
+
+    <aside class="privacy-note">Self-service tools do not replace your formal POPIA/PAIA rights. See the <a href="privacy.html">Privacy Notice</a> and <a href="paia.html">PAIA information</a>.</aside>
+  </div>
+</main>
+
+<dialog class="dialog privacy-dialog" id="privacyDecisionDialog" aria-labelledby="privacyDecisionTitle">
+  <form method="dialog">
+    <p class="eyebrow">PRIVACY / CONFIRM</p><h2 id="privacyDecisionTitle">Confirm privacy action</h2><p id="privacyDecisionBody"></p>
+    <div class="dialog-actions"><button id="privacyDecisionCancel" class="button button-secondary" value="cancel">Cancel</button><button id="privacyDecisionConfirm" class="button" value="default">Confirm</button></div>
+  </form>
+</dialog>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/brand/volttech-logo.webp" alt="VoltTech Computer Co." width="360" height="210" loading="lazy">
+        <p class="eyebrow">South Africa builds differently.</p>
+        <p class="muted">PC hardware, practical advice and support for your next move.</p>
+      </div>
+      <div><h2 class="footer-title">Explore</h2><ul class="footer-links">
+        <li><a href="store.html">Store</a></li>
+        <li><a href="builder/index.html">PC Builder</a></li>
+        <li><a href="static.html">STATIC</a></li>
+        <li><a href="creator-hub-south-africa.html">Creator Hub</a></li>
+      </ul></div>
+      <div><h2 class="footer-title">Get support</h2><ul class="footer-links">
+        <li><a href="pc-repair-pretoria.html">PC repair</a></li>
+        <li><a href="signal-scan.html">Signal Scan</a></li>
+        <li><a href="account.html">Your account</a></li>
+      </ul></div>
+      <div><h2 class="footer-title">Information</h2><ul class="footer-links">
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="legal.html">Legal centre</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="micro">© VoltTech Computer Co. All rights reserved.</p>
+      <p class="micro">PERFORMANCE / PRECISION / POSSIBILITY</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
