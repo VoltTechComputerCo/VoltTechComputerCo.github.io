@@ -1,0 +1,23 @@
+{
+  "step": "4.3",
+  "title": "Service funnel QA and legacy cleanup",
+  "branch": "clean-rebuild",
+  "parent": "8532030b7a11d79850b7cd1ffa672be233cea57e",
+  "delete": [
+    "service-pages.css",
+    "service-malware.css",
+    "signal-scan.css"
+  ],
+  "retained": {
+    "service-network.css": "still used by streaming-setup-south-africa.html",
+    "scan-system.css": "still used by stream-scan.html",
+    "scan-handoff.js": "still used by Stream Scan legacy analytics path",
+    "symptom-handoff.js": "analytics.js still contains a loader reference"
+  },
+  "sha256": {
+    "README.md": "69c98060e1715b528ca06be7d625a43296e44b6e65d08b1a3f5cc5a438e768d1",
+    "docs/clean-rebuild/step-4.3-QA.md": "9cfb54dacc186af63484dd43a603e94b60419bed822c2a22bb35fcf27fb63fd4",
+    "docs/clean-rebuild/step-4.3-folder.png": "6d08cc1a11974e16afdf23762a16ad1eefeae4b08edaba12a3e69ec256b1fb1d",
+    "scripts/test-clean-service-funnel.mjs": "a8b214118697c7e0962b70d9a145e7791a7eba5fb0709efd8af19564cdba88fe"
+  }
+}
