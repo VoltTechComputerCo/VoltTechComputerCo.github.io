@@ -324,3 +324,21 @@
   [data-page="builder"] .builder-flowrail{grid-template-columns:1fr 1fr;}
   [data-page="builder"] .part-actions,[data-page="builder"] .summary-actions{grid-template-columns:1fr;}
 }
+
+/* Step 3.3 — account and Store handoff presentation now lives in the clean Builder stylesheet. */
+[data-page="builder"] .vt-account-actions{margin:.75rem;padding:.8rem;border:1px solid rgba(53,234,215,.24);background:linear-gradient(145deg,rgba(53,234,215,.055),#041211 65%);clip-path:polygon(.5rem 0,100% 0,100% calc(100% - .5rem),calc(100% - .5rem) 100%,0 100%,0 .5rem);}
+[data-page="builder"] .vt-account-head{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.6rem;}
+[data-page="builder"] .vt-account-head span{color:var(--teal);font:600 .58rem var(--font-mono);letter-spacing:.1em;text-transform:uppercase;}
+[data-page="builder"] .vt-account-head b{max-width:58%;overflow:hidden;color:var(--text-muted);font:.58rem var(--font-mono);text-overflow:ellipsis;white-space:nowrap;text-align:right;}
+[data-page="builder"] .vt-account-btn{width:100%;min-height:2.75rem;margin-top:.45rem;padding:.6rem;border:1px solid rgba(120,145,141,.24);background:#051315;color:var(--text-secondary);font:600 .62rem var(--font-mono);letter-spacing:.05em;text-transform:uppercase;clip-path:polygon(.45rem 0,100% 0,100% calc(100% - .45rem),calc(100% - .45rem) 100%,0 100%,0 .45rem);}
+[data-page="builder"] .vt-account-btn.primary{border-color:rgba(53,234,215,.5);background:linear-gradient(100deg,rgba(53,234,215,.13),rgba(53,234,215,.035));color:var(--teal);box-shadow:inset 2px 0 0 rgba(53,234,215,.6);}
+[data-page="builder"] .vt-account-btn:disabled{cursor:wait;opacity:.55;}
+[data-page="builder"] .vt-account-link{display:block;margin-top:.65rem;color:var(--text-muted);font:600 .58rem var(--font-mono);text-transform:uppercase;text-decoration:none;}
+[data-page="builder"] .vt-account-link:hover,[data-page="builder"] .vt-account-link:focus-visible{color:var(--teal);}
+[data-page="builder"] .vt-account-message{min-height:0;margin:.55rem 0 0;color:var(--text-muted);font:.6rem/1.55 var(--font-mono);}
+[data-page="builder"] .vt-account-message.good{color:var(--success);}
+[data-page="builder"] .vt-account-message.bad{color:var(--error);}
+[data-page="builder"] .vt-account-message.warn{color:var(--warning);}
+[data-page="builder"] .builder-toast{position:fixed;left:50%;bottom:1.1rem;transform:translateX(-50%);z-index:90;width:min(34rem,calc(100% - 1.5rem));padding:.75rem .9rem;border:1px solid rgba(53,234,215,.48);background:#071719;color:#dff8f2;box-shadow:0 .8rem 2rem rgba(0,0,0,.38);font:600 .65rem/1.5 var(--font-mono);text-align:center;}
+[data-page="builder"] .builder-toast.warn{border-color:rgba(255,180,84,.5);color:#ffd79a;}
+@media(max-width:61.25rem){[data-page="builder"] .vt-account-actions{margin:.75rem 1.1rem .15rem;}}
