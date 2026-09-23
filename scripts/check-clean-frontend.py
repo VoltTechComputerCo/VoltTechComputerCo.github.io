@@ -95,8 +95,7 @@ for source in (ROOT / 'src/pages').glob('*.json'):
         'product.html': {'supabase-config.js', 'conversion-context.js'},
         'checkout.html': {'supabase-config.js'},
         'order-status.html': {'supabase-config.js'},
-        # Transitional Step 3.1 dependency: Builder engines are preserved while Step 3.2 owns presentation migration.
-        'builder/index.html': {'supabase-config.js', 'builder/styles.css'},
+        'builder/index.html': {'supabase-config.js'},
     }.get(output_key, set())
     for tag, attrs in parser.tags:
         ref = attrs.get('src', '') if tag == 'script' else attrs.get('href', '') if tag == 'link' and attrs.get('rel') == 'stylesheet' else ''
