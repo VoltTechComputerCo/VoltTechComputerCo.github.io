@@ -1,12 +1,12 @@
 # VoltTech master roadmap
 
-Previous major Step: **Step 1 — Frontend foundation (uploaded)**. Current: **Step 2 — Core commerce (Step 2.2 packaged)**. Next major Step: **Step 3 — PC Builder**.
+Previous major Step: **Step 1 — Frontend foundation (uploaded)**. Current: **Step 2 — Core commerce (Step 2.3 QA packaged)**. Next major Step: **Step 3 — PC Builder**.
 
 | Step | Scope | Status / completion gate |
 |---|---|---|
 | 0 | Repository and system audit | Complete; recorded in Step 0 delivery |
 | 1 | Shared frontend foundation and homepage | Steps 1.1–1.3 uploaded and hash-verified; Step 1.3 visual review still pending. Five pending deletions carried into Step 2.1. |
-| 2 | Store, categories, product, cart, checkout and tracking | Step 2.1 files verified and user visual approval received. Step 2.2 checkout/tracking packaged; upload and visual review pending. Step 2.3 commerce QA next. Launch gates stay closed. |
+| 2 | Store, categories, product, cart, checkout and tracking | Steps 2.1 and 2.2 are uploaded and verified; the Step 2.2 cleanup deletions are complete at `fd0a981dee1c3ddb2e4f1342dbf61858dc49cafe`. Step 2.3 commerce QA is packaged with one order-timeline consistency fix. Launch gates stay closed. |
 | 3 | PC Builder | Not started; preserve engines, estimates, saving and handoffs |
 | 4 | Signal Scan and service pages | Not started; truthful diagnostics, service leads and support |
 | 5 | Customer accounts and operations | Not started; authentication, history, documents, notifications and privacy |
@@ -42,7 +42,7 @@ Base: `70ecedf7acd4f4f2042e592b882c7a3958ada9c3` on `clean-rebuild`, freshly clo
 
 Step 2.1 rebuilds Store/category browsing and product detail on the existing shared shell. Public closed, public open and authorised admin preview states are separate; no launch flag was changed. Existing cart/data contracts are retained, with accessible native cart presentation. Local browser checks passed; see `step-2.1-QA.md`.
 
-**Next: Step 2.2 — Cart, checkout and order tracking.** First verify Step 2.1 uploaded hashes, deletions, imports and actual HEAD. Resolve user visual feedback before extending commerce. Payment enablement and real supplier onboarding are separate operational gates.
+**Historical next at the time:** Step 2.2 — Cart, checkout and order tracking. Payment enablement and real supplier onboarding remained separate operational gates.
 
 Production-origin allowlist now includes the user-confirmed apex and www `.co.za` domain as well as the existing GitHub domain. Canonical/redirect/Search Console migration remains Step 8 / release work; there is no silent site-wide URL migration in this ZIP.
 
@@ -50,6 +50,12 @@ Production-origin allowlist now includes the user-confirmed apex and www `.co.za
 
 Step 2.1: all 31 delivered files match the uploaded Git blobs at `0ed405a7b406bfb923ebd54308c6831f233ef194`; user visual inspection approved. Its ten requested deletions were still present at this HEAD and are explicitly carried into Step 2.2. Earlier pending-review entries above are historical handover records.
 
-Step 2.2: checkout and private order tracking now use the shared generated shell and design tokens. Cart, profile, submission, courier estimate, order status and Yoco contracts retained; no backend deployment or launch-setting change. Local responsive and failure tests completed. Upload verification and user visual review pending.
+Step 2.2: checkout and private order tracking use the shared generated shell and design tokens. All 29 manifest-hashed files were reverified after upload, the exact 30-file upload delta was confirmed, and all 16 requested legacy deletions are now absent at `fd0a981dee1c3ddb2e4f1342dbf61858dc49cafe`. User visual review was already approved before cleanup.
 
-**Next: Step 2.3 — Commerce QA and cleanup**, before Step 3 — PC Builder. Verify the upload/deletions first, review both pages, then audit the complete commerce journey and record release blockers. Backend domain alignment, server-side demo/stock validation, checkout idempotency and payment enablement enforcement remain operational release gates.
+## Step 2.3 delivery position
+
+Step 2.3 re-audits the complete commerce journey and live read-only backend boundary. The frontend remains fail-closed with catalogue, Builder and direct payment disabled; the live catalogue still contains 15 demo records and zero real public products, with zero Store requests/payments at audit time. One customer-state inconsistency was found and fixed: refunded and partially refunded orders now keep the Payment received timeline milestone recorded. A regression assertion covers both states.
+
+No Supabase schema, RLS, Edge Function, secret, launch flag or production data is changed by this delivery. Backend release blockers remain documented: `.co.za` transaction-origin alignment and Yoco return URLs, server-side demo/stock safeguards, checkout idempotency, server enforcement of the direct-payment switch, stale pending-payment reuse/amount validation, delivery-selection enforcement and live payment/courier certification. Current Supabase security/performance advisor findings remain a later security/operations review rather than being silently changed during commerce QA.
+
+**Next after upload verification: Step 3 — PC Builder.** Re-audit Builder files, engines, compatibility data, saved-build/account handoffs and launch gate before changing presentation or behaviour.

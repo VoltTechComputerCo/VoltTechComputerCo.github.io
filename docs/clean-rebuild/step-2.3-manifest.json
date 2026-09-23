@@ -1,0 +1,32 @@
+{
+  "step": "Step 2.3",
+  "parent_step": "Step 2 — Core commerce",
+  "previous_step": "Step 2.2 — Checkout and private order tracking",
+  "next_step": "Step 3 — PC Builder",
+  "branch": "clean-rebuild",
+  "base_commit": "fd0a981dee1c3ddb2e4f1342dbf61858dc49cafe",
+  "rollback_target": "Step 2.2 cleanup — exact uploaded state",
+  "added": [
+    "docs/clean-rebuild/step-2.3-QA.md",
+    "docs/clean-rebuild/step-2.3-manifest.json"
+  ],
+  "changed": [
+    "README.md",
+    "assets/js/components/order-view.js",
+    "docs/clean-rebuild/ROADMAP.md",
+    "scripts/test-clean-transactions.mjs"
+  ],
+  "deleted": [],
+  "superseded": [
+    "Step 2.2 upload-pending handover state",
+    "Refund timeline logic that marked payment incomplete after a refund"
+  ],
+  "missing_directories": [],
+  "sha256": {
+    "README.md": "38cd6dfa683da19ada6398cda4b20900a750fd6075052d6cbae2dc5ebbbb06e6",
+    "assets/js/components/order-view.js": "d97474cba0143d8ce323fd6a9f78230b33497fa0e66e6a7c9a45c3888b9f9df4",
+    "docs/clean-rebuild/ROADMAP.md": "23f1a445a222587d97e4a818ab39c83d00e671b6fef060b5ffc1d1b041eecbc2",
+    "docs/clean-rebuild/step-2.3-QA.md": "a4f693da343e785ec0c33916a997acedcdf195f521d2b5c48e00d100a6405fb5",
+    "scripts/test-clean-transactions.mjs": "2d9b3beee30cd90c9b524348abc517254ae660fa00b131cadf20a34239856722"
+  }
+}
