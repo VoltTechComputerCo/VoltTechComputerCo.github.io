@@ -14,7 +14,8 @@ export function stageInfo(order) {
   return {title:'Order update',copy:'Your latest recorded order details are below. Contact VoltTech if you need clarification.',tone:'normal'};
 }
 export function timeline(order) {
-  const stages=[['Order received',!!order.submitted_at],['Details confirmed',!!order.confirmed_at],['Payment received',order.payment_status==='paid'],['Courier booked',['booked','in_transit','delivered'].includes(order.delivery_status)],['Delivered',order.delivery_status==='delivered']];
+  const paymentRecorded=['paid','refunded','partially_refunded'].includes(order.payment_status);
+  const stages=[['Order received',!!order.submitted_at],['Details confirmed',!!order.confirmed_at],['Payment received',paymentRecorded],['Courier booked',['booked','in_transit','delivered'].includes(order.delivery_status)],['Delivered',order.delivery_status==='delivered']];
   return stages.map(([label,done],i) => `<li class="${done?'is-complete':''}"><span aria-hidden="true">${done?'✓':String(i+1).padStart(2,'0')}</span><div><strong>${label}</strong><small>${done?'Recorded':'Awaiting update'}</small></div></li>`).join('');
 }
 export function orderItems(items) {
