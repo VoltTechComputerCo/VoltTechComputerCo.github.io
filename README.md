@@ -1,92 +1,89 @@
-# Step 2.3 — Commerce QA and cleanup
+# Step 3.1 — PC Builder foundation and safe inspection
 
-Objective: close the clean-rebuild commerce frontend after verifying the real Step 2.2 upload/deletions, re-auditing Store → Product → Cart → Checkout → Order Status, fixing the one frontend state inconsistency found, and recording the remaining backend release gates without enabling commerce.
+Objective: move the existing PC Builder onto the clean generated VoltTech shell without rewriting its compatibility/guided engines, preserve the fail-closed launch boundary, and create a safe read-only GitHack inspection path for the full Builder.
 
-Parent Step: Step 2 — Core commerce.
-Previous Step: Step 2.2 — Checkout and private order tracking; upload hashes verified and all 16 requested legacy deletions confirmed absent.
-Current: Step 2.3 — Packaged; upload verification pending.
-Next major Step: Step 3 — PC Builder.
+Parent Step: Step 3 — PC Builder.  
+Previous major Step: Step 2 — Core commerce, fully uploaded and byte-verified at `70691bb5d3a390a185210bdd7c1d188f6f014546`.  
+Current: Step 3.1 — Packaged; upload verification and user visual review pending.  
+Next: Step 3.2 — Builder experience and engine-consistency pass.
 
-Branch: `clean-rebuild`. Exact parent / rollback commit: `fd0a981dee1c3ddb2e4f1342dbf61858dc49cafe`. No v3-prototype code used.
+Branch: `clean-rebuild`. Exact parent / rollback commit: `70691bb5d3a390a185210bdd7c1d188f6f014546`. No v3-prototype code used.
 
 ## Upload instructions
 
-1. Extract **Step-2.3.zip** and stay on **clean-rebuild**.
-2. Upload the contents inside **Step 2.3/** at their matching repository paths; replace existing files where prompted. Do not upload the enclosing Step folder as a website directory.
-3. **No files need to be deleted in this step.** The 16 Step 2.2 cleanup deletions are already verified complete.
-4. **No new folders or placeholder paths are required.** All target directories already exist.
-5. Tell me when uploaded. I will verify the new HEAD and every delivered file against the manifest before starting Step 3.
+1. Extract **Step-3.1.zip** and stay on **clean-rebuild**.
+2. Upload the contents inside **Step 3.1/** to their matching repository paths; replace existing files where prompted. Do not upload the enclosing Step folder as a website directory.
+3. Delete the three superseded Builder files listed below after the upload. ZIP uploads do not remove files.
+4. **No new folder placeholders are required.** Every target directory already exists in the audited repository.
+5. Tell me when uploaded. I will verify the new HEAD, all delivered hashes and all three deletions before continuing.
 
-6 delivered files: 4 changed, 2 added. No deletions.
+**16 delivered files: 5 changed, 11 added; 3 deletions to perform separately.**
 
-## Page changed
+## Files deleted separately
 
-- [Order tracking](https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/order-status.html)
+- `builder/builder-access.js`
+- `builder/builder-gate.css`
+- `builder/phase6-unification.css`
 
-The public/private-link entry layout is intentionally unchanged. The runtime change only affects refunded and partially refunded order timelines, which cannot be demonstrated safely with a fabricated production customer link on GitHack.
+Do **not** delete `builder/styles.css`. Step 3.1 intentionally carries it as the current inner-Builder presentation layer; Step 3.2 will own its replacement.
 
-## Files changed
+## Builder links after upload
 
-- `README.md`
-- `assets/js/components/order-view.js`
-- `docs/clean-rebuild/ROADMAP.md`
-- `scripts/test-clean-transactions.mjs`
+Normal gate (must stay closed):
 
-## Files added
+https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/builder/index.html
 
-- `docs/clean-rebuild/step-2.3-QA.md`
-- `docs/clean-rebuild/step-2.3-manifest.json`
+Read-only owner inspection:
 
-## Files deleted
+https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/builder/index.html?inspect=1
 
-None.
+`?inspect=1` is accepted only on non-production origins. It does not bypass the Builder flag on VoltTech's production origins.
 
-## Runtime change
+## What changes
 
-Refunded and partially refunded orders now keep the **Payment received** timeline milestone marked as recorded. The existing refund headline remains unchanged. No payment, refund, total, delivery, cart or backend behaviour is modified.
+- `builder/index.html` becomes a generated `data-vt-shell="clean"` route using the shared VoltTech header, navigation, search, footer, self-hosted fonts and clean shell.
+- Production Builder access remains fail-closed behind `builder_enabled`.
+- Production `?preview=1` still requires a verified signed-in VoltTech administrator.
+- Non-production `?inspect=1` opens a clearly labelled read-only Builder using only local prototype catalogue data.
+- Inspection does not initialise account saving, quote requests, Store overlay, analytics, notifications or service-worker registration.
+- Builder catalogue loading no longer imports account/auth integration as a side effect.
+- Store overlay loading reuses the clean shared Supabase client when the live Builder is eventually enabled.
+- Builder confirmations use a clean native-dialog adapter rather than the root legacy dialog dependency.
+- The clean dependency checker now correctly resolves nested generated routes such as `builder/index.html`.
 
-A regression assertion covers both refund states in `scripts/test-clean-transactions.mjs`.
+## What deliberately does not change yet
 
-## QA position
+The compatibility engine, guided recommendation engine, performance-intelligence data, account save/restore contract, quote workflow, product catalogue JSON and supplier mock datasets remain in place. `builder/styles.css` remains transitional so Step 3.1 does not mix architecture migration with the Step 3.2 visual/UX rebuild.
 
-- Step 2.2 uploaded files and exact cleanup were independently reverified against the actual branch.
-- Active commerce source was re-read from current `clean-rebuild`.
-- The modified transaction contract suite passes, including the new refund timeline assertions.
-- Live Supabase state was checked read-only: Store, Builder and direct payments remain off; all 15 catalogue rows remain demo data; there are zero real public products, Store requests and Store payments at audit time.
-- No live transaction was submitted and no Supabase mutation occurred.
+No Supabase schema/RLS/function/secret/launch setting is changed. No customer record or quote is created.
 
-Full findings and release blockers: `docs/clean-rebuild/step-2.3-QA.md`.
+## Audit findings carried forward
 
-## Backend / launch boundary
+The Builder currently has 136 local prototype products and 423 mock supplier offers. All supplier datasets explicitly identify themselves as temporary test data and are stale at the current date. Its 136 product-image mappings use external proxy URLs rather than repository-owned product media.
 
-Step 2 frontend completion does not mean Store launch readiness. The backend still needs coordinated `.co.za` transaction-origin/Yoco return alignment, server-side demo/stock enforcement, checkout idempotency, server-side direct-payment flag enforcement, safe pending-payment reuse, delivery-selection enforcement and live Yoco/Bob Go/webhook certification before commerce is opened.
-
-Current broader Supabase security/performance advisor findings are recorded for the later account/admin/security pass; this package does not silently modify grants, RLS or production configuration.
+Two important functional/data-truth issues are recorded for later Builder work: Office/Home guided builds can omit a GPU while the main build engine still treats GPU as universally required; and saved-build serialisation currently does not use the same offer/freshness selection contract as the Builder itself. Full details: `docs/clean-rebuild/step-3.1-QA.md`.
 
 ## Tests
 
-The Step 2.3 transaction contract test passes locally for:
+Run after upload/deletions:
 
-- cart shape and quantity limits;
-- demo/stock exclusion;
-- private access token validation;
-- same-origin status destinations;
-- Yoco redirect allowlisting;
-- production-only ZAR delivery-rate selection;
-- strict payment eligibility;
-- paid/delivered/refund state derivation;
-- refunded and partially refunded payment timeline completion;
-- escaped order-item output;
-- definitive 4xx versus ambiguous 5xx/network checkout failures.
+```text
+python scripts/build-clean-frontend.py --check
+python scripts/check-clean-frontend.py
+node scripts/test-clean-runtime.mjs
+node scripts/test-clean-commerce.mjs
+node scripts/test-clean-transactions.mjs
+node scripts/test-clean-builder.mjs
+```
 
-Existing Step 2.2 responsive/browser evidence remains unchanged because this package makes no HTML/CSS/layout change.
+Step 3.1 package-side checks already pass for the new JavaScript syntax and generated Builder HTML structure. Full repository checks are re-run against the actual uploaded branch before Step 3.2.
 
 ## Rollback
 
-**Rollback target: `fd0a981dee1c3ddb2e4f1342dbf61858dc49cafe`.**
+**Rollback target: `70691bb5d3a390a185210bdd7c1d188f6f014546`.**
 
-Restore the four changed paths from that commit and remove the two added Step 2.3 documentation files. No backend rollback is required because this delivery makes no backend change.
+Restore changed/deleted paths from that commit and remove Step 3.1 added paths. No backend rollback is required because this delivery makes no backend mutation.
 
 ## Next
 
-After upload/hash verification, Step 2 is closed and work moves to **Step 3 — PC Builder**. The Builder will be re-audited from the actual branch before any visual or functional migration so its compatibility engines, saved-build behaviour, account handoff and fail-closed launch gate are preserved.
+After hash/deletion verification and your visual approval of both Builder states, Step 3.2 will fix the Office/iGPU completion contract and migrate/refine the Guided + Manual Builder experience on the clean design system without replacing the underlying compatibility logic unnecessarily.
