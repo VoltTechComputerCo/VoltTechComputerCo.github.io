@@ -1,0 +1,12 @@
+{
+  "output": "windows-installation-pretoria.html",
+  "title": "Windows Installation Pretoria | Clean Install & Setup | VoltTech",
+  "description": "Windows installation in Pretoria, Wonderboom and Pretoria North. Clean Windows setup with drivers, updates, system checks and sensible post-install configuration.",
+  "robots": "index, follow, max-image-preview:large",
+  "styles": [
+    "assets/css/pages/services.css"
+  ],
+  "scripts": [
+    "assets/js/pages/service.js"
+  ]
+}
