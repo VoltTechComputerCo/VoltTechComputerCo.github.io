@@ -1,145 +1,89 @@
-# Step 1.2 — Homepage and shared navigation
+# Step 1.3 — Foundation QA and cleanup
 
 Project position: previous major **Step 0 — Repository audit ✅**; current major **Step 1 — Frontend foundation ⚡**; next major **Step 2 — Core commerce 🚫**.
 
-Previous: **Step 1.1 — Foundation uploaded, verified and approved ✅**. Current: **Step 1.2 — Implementation and automated checks complete; upload/visual review pending 🧪**. Next: **Step 1.3 — Homepage verification and refinement 🚫**.
+Previous: **Step 1.2 — Homepage upload verified ✅**. Current: **Step 1.3 — QA fixes ready; upload verification pending 🧪**. Next: **Step 2.1 — Store catalogue and product discovery 🚫**.
 
 ## Objective and lineage
 
-Rebuild the homepage from new source markup against the supplied visual reference, connect its working integrations, and retire the replaced frontend implementation.
+Close the initial foundation QA pass with a usable cart route on narrow phones, consistent cart labels, clearer component enquiries and removal of replaced/empty files.
 
-- Step identifier: **Step 1.2**
+- Step identifier: **Step 1.3**
 - Parent Step: **Step 1 — Frontend foundation**
-- Previous Step: **Step 1.1 — Shared frontend foundation**
-- Next planned Step: **Step 1.3 — Homepage verification and refinement**
+- Previous Step: **Step 1.2 — Homepage and shared navigation**
+- Next planned Step: **Step 2.1 — Store catalogue and product discovery**
 - Repository: `VoltTechComputerCo/VoltTechComputerCo.github.io`
-- Branch: **clean-rebuild**
-- Exact parent / rollback commit: `8c120bc74512583cfb3f4cf3be292d13368b320e` — `Add files via upload`
+- Working branch: **clean-rebuild**
+- Latest inspected parent: `d659bad184e002aaa28468663dab83f213225613` — `Delete assets/js/services/Placeholder.txt`
 
-The remote branch was inspected before implementation and again before packaging. Step 1.1's 32 uploaded files matched its delivery, and the user approved its appearance. No v3-prototype code was inherited. The user-supplied V3-named image archive supplied product photos only. No push, deployment, payment or database mutation is included in this delivery.
+A fresh checkout was used. Step 1.2's 43 delivered files and 12 listed deletions had already been verified at `7db853fb7f22e949ca82c27e8cc67e2e4cdeadea`. The current checkout preserves the delivery bytes and includes the user's three subsequent folder-placeholder deletions. HEAD was checked again before packaging. No files from v3-prototype were inherited. No repository push or production deployment was performed.
 
-## Files added (19)
+## Files added (2)
 
-- `assets/brand/home-hero.webp`
-- `assets/brand/volttech-logo.webp`
-- `assets/categories/cpu.webp`
-- `assets/categories/gpu.webp`
-- `assets/categories/memory.webp`
-- `assets/categories/motherboard.webp`
-- `assets/categories/psu.webp`
-- `assets/categories/storage.webp`
-- `assets/css/notifications.css`
-- `assets/css/pages/home.css`
-- `assets/js/components/search.js`
-- `assets/js/pages/home.js`
-- `assets/js/services/home-integrations.js`
-- `docs/clean-rebuild/step-1.2-assets.md`
-- `docs/clean-rebuild/step-1.2-folder.png`
-- `docs/clean-rebuild/step-1.2-manifest.json`
-- `src/pages/home.head.html`
-- `src/pages/home.html`
-- `src/pages/home.json`
+- `docs/clean-rebuild/step-1.3-folder.png`
+- `docs/clean-rebuild/step-1.3-manifest.json`
 
-## Files changed (24)
+## Files changed (11)
 
 - `README.md`
-- `analytics.js`
 - `assets/css/navigation.css`
 - `assets/css/responsive.css`
-- `assets/js/pages/design-system.js`
-- `assets/js/site-shell.js`
-- `contact-icons-static.css`
+- `assets/js/services/home-integrations.js`
 - `design-system.html`
 - `docs/clean-rebuild/ARCHITECTURE.md`
 - `docs/clean-rebuild/ROADMAP.md`
 - `index.html`
-- `notifications.js`
-- `phase9-business-finish.css`
-- `scripts/build-clean-frontend.py`
-- `scripts/check-clean-frontend.py`
 - `scripts/test-clean-runtime.mjs`
-- `src/templates/footer.html`
+- `src/pages/home.html`
 - `src/templates/header.html`
-- `src/templates/page.html`
-- `streamer-feed.js`
-- `visual-block-fix.css`
-- `visual-system.css`
-- `volttech-experience.css`
-- `volttech-experience.js`
 
-## Files deleted (12) — manual removal required
+## Files deleted (5) — remove manually
 
-- `.github/workflows/finalize-v2-static-shell.yml`
-- `assets/css/pages/placeholder.txt`
-- `assets/css/placeholder.txt`
-- `assets/fonts/placeholder.txt`
-- `assets/js/components/placeholder.txt`
-- `assets/js/pages/placeholder.txt`
-- `docs/clean-rebuild/placeholder.txt`
-- `home.css`
-- `scripts/finalize-v2-static-shell.py`
-- `service-backgrounds.css`
-- `src/pages/placeholder.txt`
-- `src/templates/placeholder.txt`
+- `commerce/js/Placeholder.html`
+- `commerce/schema/Placeholder.html`
+- `docs/Placeholder.html`
+- `volttech-home-hero-logo.png`
+- `volttech-home-hero.webp`
 
-A ZIP upload does not delete repository files. Remove all paths in this list on **clean-rebuild** as part of this Step. The eight placeholder files have been replaced by real files in their folders. Do not delete the directories or other contents.
+The three `Placeholder.html` files are older baseline stubs, separate from the folder placeholders already deleted by the user. Their contents were empty or the word “Placeholder”; no imports or links referenced them. The two old homepage image files also had no remaining references. The current hero remains at `assets/brand/home-hero.webp`; the official source logo and optimised shared logo remain intact.
+
+ZIP upload cannot delete files. Remove the five paths above as part of this Step, leaving their directories and other files intact.
 
 ## Files superseded
 
-- Root `home.css` and `service-backgrounds.css` are replaced by new source markup and `assets/css/pages/home.css` with shared foundation styles.
-- The old `index.html` structure, inline diagnostic/review/creator presentation and legacy imports are replaced completely.
-- The old V2 finaliser script/workflow is retired. Its source-rewriting job must not overwrite the clean templates.
-- Homepage-only rules and hooks were removed from retained legacy CSS/JS. Those files still support unconverted routes.
-- This README supersedes the Step 1.1 root handover. The prior commit and Step 1.1 manifest preserve its exact record.
+- Previous shared header output is regenerated from `src/templates/header.html` on both converted pages.
+- Previous single-control cart presentation is replaced by a shared update for both `[data-cart-link]` controls.
+- The unused legacy hero files are removed; their replacements were already delivered in Step 1.2.
+- This README supersedes the Step 1.2 root handover. The exact prior commit and manifest remain the rollback record.
 
 ## Backend systems touched
 
-No backend data, schema, settings, RLS, deployed functions or secrets were changed. Frontend integration adaptations:
-
-1. Public Store/Builder flags are read from existing `store_settings`; eight-second timeout, strict boolean handling, fail closed. Category slugs were verified against the actual `store_categories` table. At audit time both launch flags and direct payment were off.
-2. Category cards use contextual WhatsApp enquiries while the catalogue is off/unavailable. The Builder CTA remains an enquiry until enabled. Existing Store and Builder access gates remain authoritative.
-3. Cart count reads the existing storage key and listens to its existing event; it never changes cart data.
-4. On the production origin only, existing cached sessions can initialise the pinned Supabase client and existing notification engine. Clean notifications have explicit header placement and accessible dialog/focus handling. Notification queries, roles, read actions, realtime and sound remain intact.
-5. Existing analytics IDs/events and `conversion-context.js` handoffs are retained; homepage analytics and worker registration do not run on GitHack.
-6. The creator adapter now exposes each row's `checked_at`; an unknown overall timestamp remains null. Homepage live labels require a check within twenty minutes. The inspected feed was stale, so this does not claim live creators from old data.
-
-See `docs/clean-rebuild/ARCHITECTURE.md` for the dependency map and exact adaptation boundaries.
+No backend system was changed. The homepage cart display reads the same existing `vt_store_quote_cart_v1` storage key and listens to the same `vt-store-cart-change` / storage events. It updates both desktop and phone-menu labels, handles singular/plural wording, and makes no storage writes. Both controls link to the existing `store.html?cart=1` route, whose launch gate remains authoritative.
 
 ## Backend systems untouched
 
-Authentication policies, customer profiles, orders, quotes, invoices, receipts, documents, saved builds, service/activity history, privacy workflows, Store catalogue/payment/checkout controllers, Yoco endpoints, compatibility engines, Signal Scan logic, Stream Scan logic, Supabase schemas/RLS, Discord/webhooks, email delivery and STATIC publishing/feed workflows. No launch flags or product prices were changed. Previously documented backend readiness issues remain open; this homepage is not a commerce-launch certification.
+Supabase data/schema/RLS/authentication, account sessions, profiles, notification queries/actions, orders, quotes, invoices, receipts, documents, saved builds, service history, Store catalogue and checkout controllers, Yoco, Builder compatibility engines, Signal Scan/Stream Scan, creator feed jobs, analytics IDs/events, email, Discord/webhooks and STATIC publishing. No flags, stock, prices or payment settings were enabled or changed. The account and production-service functions within the edited integration file are unchanged.
 
 ## Visual changes
 
-- Wide teal-lit concept hero, powerful heading, clear upgrade/component CTAs and compact coverage facts.
-- Eight correctly illustrated component cards; structured Builder/Signal Scan split; six compact service cards.
-- Setup inspiration, upgrade guidance and STATIC reading in a dense desktop composition.
-- Creator Hub and direct contact sections with truthful status and coverage language.
-- Shared search, account/cart controls, native dialogs, self-hosted fonts, thin borders and unified palette.
-- Deliberate 2-column phone category/service grids, stacked tools and editorial rows. Android sizes are included in the pending visual checklist.
-- One optimised official logo source for the new shell (20,414 bytes); concept hero 140,788 bytes. Existing photos reused without duplicate root assets.
-
-No invented stock, prices, reviews, ratings, delivery guarantees, partnership status or hardware telemetry. The hero is an illustrative brand concept. Product photos identify categories and do not advertise those specific SKUs as available.
+- At 40rem and below, the mobile menu gains a Cart item where the header cart icon is hidden. It fills the sixth position in the two-column menu without compressing the header touch targets.
+- The existing desktop composition, hero, cards, fonts, colours and footer remain the approved direction.
+- Component enquiry links now ask naturally about “a processor upgrade”, “a new PC case”, etc.
+- No new images, fonts, visual overrides or page-specific navigation implementation were introduced.
 
 ## Functional changes
 
-Shared navigation/footer remain source-owned and regenerate on both converted pages. Search covers named public service/tool/guide routes; product search remains inside the existing Store. Navigation and enquiry links remain usable without JavaScript. Search is progressively exposed when native dialogs are supported. Homepage anchors `services`, `contact`, creator IDs and enquiry destinations survive. Both converted pages use the tested clean service-worker boundary.
+Both cart displays use one read-only update function. They update on same-tab cart events and cross-tab storage changes; blocked/malformed storage shows a safe empty state. Counts never become product availability claims. The shared inspection page has the route but does not load customer cart/account integrations.
 
-The shared-shell edits also update `design-system.html`, which is the only secondary changed page. Its inspection form is still local-only and sends nothing. No dummy newsletter or purchase form is introduced.
+Homepage component messages preserve each card's intent through existing WhatsApp handoff logic. JavaScript-disabled links remain usable. Search and native dialogs retain their tested shared behaviour.
 
 ## SEO changes
 
-Homepage title and description target practical PC repair/upgrade intent in Pretoria and remote support across South Africa. Includes en-ZA, production canonical, Open Graph metadata, one H1, semantic sections, real alt text and truthful Organization/Service structured data without a residential address. No Product/Offer/Review schema is invented.
-
-**This rebuild branch remains noindex.** Remove the homepage noindex only in the approved release Step after whole-site SEO verification. The internal design-system route stays noindex. Existing routes and STATIC URLs are preserved.
+No metadata, canonical, structured-data or indexing policy changed. The rebuild homepage stays noindex until the release Step; the inspection route remains noindex. No residential address or fabricated business claims were introduced.
 
 ## Dependencies
 
-Runtime: browser CSS Grid, ES modules, Fetch/AbortController and native dialog enhancement. No frontend framework or package installation needed. Local WOFF2 fonts/licences remain from Step 1.1. Existing `supabase-config.js`, `streamer-feed.js`, `conversion-context.js`, `notifications.js`, manifest/icons and reused photos must remain in the repository.
-
-For a cached production session only: Supabase JavaScript SDK is pinned to `2.116.0` via the existing jsDelivr delivery pattern. Current official Supabase auth documentation and changelog were consulted. Existing Google Analytics loads on the production homepage only. Search adds no external dependency.
-
-Developer checks require Python 3 and Node.js 18+:
+No new dependencies or folders. Existing shared styles, source generator, modern browser ES modules/native dialogs, Node.js 18+ and Python 3 remain sufficient. Uploading requires no development tools. Existing Supabase SDK configuration and production-only analytics/account/service-worker boundaries are unchanged.
 
 ```sh
 python3 scripts/build-clean-frontend.py
@@ -147,148 +91,98 @@ python3 scripts/check-clean-frontend.py
 node scripts/test-clean-runtime.mjs
 ```
 
-## Test checklist
+## Test checklist and actual evidence
 
-Completed automatically / by source inspection:
+Completed:
 
-- [x] Actual clean-rebuild HEAD and Step 1.1 upload verified.
-- [x] Both generated pages match shared source.
-- [x] Internal page paths, cross-page anchors, CSS/font/image paths and module imports resolve.
-- [x] Image dimensions match actual files; repeated media references remain shared.
-- [x] One header/main/H1/footer; no duplicate IDs or unresolved labels/ARIA references.
-- [x] All changed/new JS parses; no inline event handlers/styles in generated HTML.
-- [x] Mobile disclosure, Escape, link selection and breakpoint focus contracts.
-- [x] Clean service-worker isolation plus preserved legacy/error/non-HTML behaviour.
-- [x] Launch flags: enabled/disabled, invalid shapes, HTTP failure and network failure.
-- [x] Cart: valid quantities and malformed/invalid storage.
-- [x] Creator feed: recent data, stale/missing/future timestamps and unsafe login values.
-- [x] GitHack-origin adapters do not access production auth storage, analytics or app registration.
-- [x] Retired homepage files/imports/hooks removed; no V2 finaliser remains active.
-- [x] Existing commerce/payment/Builder/Scan controllers and database writes untouched.
-- [x] ZIP overlay matches working tree and rollback restores the exact parent tracked tree.
-- [x] Whitespace/diff check.
+- [x] Fresh clean-rebuild checkout, latest commit, prior README, source files and current deletion state inspected.
+- [x] Step 1.2 delivery checksums preserved; user-created folder placeholders removed in the actual parent.
+- [x] Uploaded parent homepage renders in the desktop browser with no horizontal overflow (1363px viewport; 1348px document width).
+- [x] All 20 uploaded homepage image elements complete, with zero broken images.
+- [x] Uploaded search opens, finds repair results, reports an empty result state, and closes with native Escape.
+- [x] Uploaded inspection form rejects short notes and accepts valid local-only notes without sending or saving.
+- [x] Font metadata confirms actual variable Space Grotesk and JetBrains Mono binaries.
+- [x] Both generated pages match source; local/cross-page links, imports, image paths, IDs and ARIA references pass.
+- [x] JS syntax and preserved service-worker migration contracts pass.
+- [x] Mobile navigation disclosure, Escape, selection and breakpoint focus contracts pass.
+- [x] Launch flags, malformed cart data, stale creator data and preview isolation tests pass.
+- [x] Added regression checks: both cart labels synchronise, singular/plural wording is correct, unrelated storage events are ignored, blocked storage fails safely, and no cart write/delete occurs.
+- [x] Deleted files have no runtime/source references; no duplicate navigation or new override stylesheet.
+- [x] Package overlay checks pass and exact rollback restores the parent tree byte-for-byte.
+- [x] Git whitespace/diff check.
 
-After upload / manual verification — not claimed as passed:
+After upload — not claimed as passed:
 
-- [ ] 360, 390, 412px: no horizontal overflow; readable labels and comfortable tap targets.
-- [ ] Tablet, desktop and wide desktop: hero crop, grid density, heading sizes and footer.
-- [ ] Search open/close, keyboard Tab/Escape/focus return, results and empty state.
-- [ ] Mobile Menu behaviour and no-JavaScript fallback.
-- [ ] Correct Store/Builder coming-soon/unavailable messages and enquiry links.
-- [ ] Creator stale state, Signal Scan navigation, WhatsApp/email handoffs.
-- [ ] Account/notification logged-in states and cart cross-tab behaviour on the intended origin.
-- [ ] No missing assets, console errors or unexpected legacy imports in the uploaded preview.
-- [ ] Installed service-worker update and navigation transitions on production/staging.
-- [ ] User visual approval against the supplied reference.
+- [ ] On Android at 360/390/412px: open Menu and confirm Cart appears, then closes/navigates correctly.
+- [ ] Confirm header controls remain comfortable and there is no phone horizontal overflow.
+- [ ] Inspect the shared shell on tablet/desktop/wide desktop and with enlarged text.
+- [ ] Check a component enquiry message in WhatsApp without sending unless intended.
+- [ ] Verify this ZIP's actual uploaded HEAD, hashes, deletions and fresh commit-pinned previews.
 
-The browser security policy blocks local-file navigation; this package has not been rendered in that browser. Source/runtime checks do not certify pixel accuracy or production auth/payment flows. The user will manually inspect GitHack after upload. No test order, payment, notification read mutation or message was sent.
+The desktop browser checks above concern the uploaded parent. The new phone-cart patch has source/runtime tests; it awaits user upload and device inspection. The available browser does not expose viewport resizing, so automated 360/390/412 rendering is not claimed. Authenticated notifications, payment paths and installed production service-worker transitions still require their appropriate-origin QA in later operational/release Steps. No real customer data, cart, payment, notification read-state or outgoing message was changed.
 
 ## Upload instructions
 
-1. Extract **Step-1.2.zip**. Its root folder is exactly **Step 1.2/**.
+1. Extract **Step-1.3.zip**; its outer folder is exactly **Step 1.3/**.
 2. Select **clean-rebuild** in GitHub.
-3. If using the Android folder-creation method, create only these currently missing folders with these copy/paste filenames:
+3. Upload the **contents** of `Step 1.3/` at the repository root, preserving paths and replacing existing files. Do not upload the outer Step folder itself.
+4. Delete the five paths listed under **Files deleted**. Do not delete directories.
+5. **No new folders or placeholder files are required.** Every destination directory exists at the inspected parent.
+6. Suggested commit message: `Step 1.3 — foundation QA and cleanup`.
+7. Tell me when uploaded. I will verify the actual commit/files/deletions and provide commit-pinned links before Step 2.1.
 
-```text
-assets/brand/placeholder.txt
-assets/categories/placeholder.txt
-assets/js/services/placeholder.txt
-```
+The manifest lists every added/changed/deleted file and SHA-256 hashes for all delivered files except the manifest itself. The visual folder map and normal text tree are included below.
 
-4. Upload the **contents** of `Step 1.2/` at the repository root, preserving all paths; replace every changed file. Do not upload the enclosing Step folder as a repository directory.
-5. Remove the paths under **Files deleted**, and delete any new placeholders created in step 3 once the real files are uploaded. Keep all real files inside those directories.
-6. Suggested commit message: `Step 1.2 — clean homepage rebuild`.
-7. Open the two links below and inspect the result. Tell me when uploaded; I will verify actual HEAD, hashes, removals and imports before issuing commit-pinned links and starting Step 1.3.
+## Preview URLs — changed pages only
 
-The manifest records SHA-256 hashes for every delivered file except itself, avoiding circular checksums. The folder image shows new/replacement/deleted paths and is included below. No local development setup is required for upload.
-
-## Preview URLs — only pages worked on
-
-**The new version is available after uploading this ZIP:**
+**New Step 1.3 version available after uploading this ZIP:**
 
 - [Homepage](https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/index.html)
 - [Shared-shell inspection page](https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/design-system.html)
 
-These are branch links and can cache old content. A new commit-specific URL cannot exist before upload. After the upload is verified, use the issued actual SHA links for reliable review. GitHack is a visual/public-data preview; it does not share the production session. Destination pages outside these two remain their prior design pending their own Steps.
+Branch links can cache older assets. New commit-specific links will be issued from the actual verified upload SHA; no future SHA is invented. The parent version was checked at `d659bad184e002aaa28468663dab83f213225613`. GitHack is a public visual preview and does not share production customer sessions.
 
 ## Rollback
 
-**Rollback target: Step 1.1 — approved uploaded foundation.** Exact commit: `8c120bc74512583cfb3f4cf3be292d13368b320e`.
+**Rollback target: Step 1.2 — verified homepage plus user placeholder cleanup**, exact commit `d659bad184e002aaa28468663dab83f213225613`.
 
-Restore every path in the manifest's `changed` and `deleted` arrays from that exact commit, and remove every path in `added`. This returns the tracked repository to its previous state, including the old homepage and all original deleted files. Do not reset unrelated later work. An exact rollback rehearsal is included in the packaging checks. If requested, an exact **Rollback to Step 1.1.zip** will be delivered from these original Git bytes.
+Restore the manifest's `changed` and `deleted` paths byte-for-byte from this commit and remove the manifest's `added` paths. This restores the exact parent tracked state; do not reset unrelated subsequent edits. A requested **Rollback to Step 1.2.zip** will use these exact Git bytes. Packaging rehearses the overlay and rollback before delivery.
 
-## Known limitations
+## Known limitations and next Step
 
-- Upload, device rendering and visual approval are pending. No new commit SHA is invented.
-- Only the homepage and shared inspection shell are migrated; service, commerce, account and creator destination pages retain their current design.
-- Store, Builder and direct payment remain off in the inspected live settings. Real commerce requires later data/readiness work.
-- Creator freshness was stale at inspection; the homepage reports live status unavailable until genuinely recent checks exist.
-- Logged-in notifications and production worker transitions need their appropriate-origin QA; GitHack cannot validate production sessions.
-- Supplied product-photo usage does not imply availability or a manufacturer relationship; provenance is recorded in `step-1.2-assets.md`.
-- The homepage noindex must be deliberately removed during the release Step, not forgotten on production.
+- This is a focused QA patch; upload verification and phone visual inspection are pending.
+- Other customer-facing pages retain their current implementation until their scheduled rebuild.
+- Catalogue/Builder/payment launch states remain unchanged. A Cart link does not bypass a closed Store.
+- Appropriate-origin auth/notifications/service-worker and full transaction tests remain future QA gates.
+- Next: **Step 2.1 — Store catalogue and product discovery**, beginning with another fresh repo and public-data inspection. Preserve filtering, category slugs, correct product imagery, launch gates and truthful price/availability states.
 
 ## Folder map
 
-![Step 1.2 folder map](docs/clean-rebuild/step-1.2-folder.png)
+![Step 1.3 folder map](docs/clean-rebuild/step-1.3-folder.png)
 
 ```text
-Step 1.2/
+Step 1.3/
 ├── README.md
-├── analytics.js
 ├── assets/
-│   ├── brand/
-│   │   ├── home-hero.webp
-│   │   └── volttech-logo.webp
-│   ├── categories/
-│   │   ├── cpu.webp
-│   │   ├── gpu.webp
-│   │   ├── memory.webp
-│   │   ├── motherboard.webp
-│   │   ├── psu.webp
-│   │   └── storage.webp
 │   ├── css/
 │   │   ├── navigation.css
-│   │   ├── notifications.css
-│   │   ├── pages/
-│   │   │   └── home.css
 │   │   └── responsive.css
 │   └── js/
-│       ├── components/
-│       │   └── search.js
-│       ├── pages/
-│       │   ├── design-system.js
-│       │   └── home.js
-│       ├── services/
-│       │   └── home-integrations.js
-│       └── site-shell.js
-├── contact-icons-static.css
+│       └── services/
+│           └── home-integrations.js
 ├── design-system.html
 ├── docs/
 │   └── clean-rebuild/
 │       ├── ARCHITECTURE.md
 │       ├── ROADMAP.md
-│       ├── step-1.2-assets.md
-│       ├── step-1.2-folder.png
-│       └── step-1.2-manifest.json
+│       ├── step-1.3-folder.png
+│       └── step-1.3-manifest.json
 ├── index.html
-├── notifications.js
-├── phase9-business-finish.css
 ├── scripts/
-│   ├── build-clean-frontend.py
-│   ├── check-clean-frontend.py
 │   └── test-clean-runtime.mjs
-├── src/
-│   ├── pages/
-│   │   ├── home.head.html
-│   │   ├── home.html
-│   │   └── home.json
-│   └── templates/
-│       ├── footer.html
-│       ├── header.html
-│       └── page.html
-├── streamer-feed.js
-├── visual-block-fix.css
-├── visual-system.css
-├── volttech-experience.css
-└── volttech-experience.js
+└── src/
+    ├── pages/
+    │   └── home.html
+    └── templates/
+        └── header.html
 ```
