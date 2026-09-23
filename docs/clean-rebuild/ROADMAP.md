@@ -1,13 +1,13 @@
 # VoltTech master roadmap
 
-Previous major Step: **Step 2 — Core commerce (complete and verified at `70691bb5d3a390a185210bdd7c1d188f6f014546`)**. Current: **Step 3 — PC Builder (Step 3.1 packaged)**. Next major Step: **Step 4 — Signal Scan and service pages**.
+Previous major Step: **Step 2 — Core commerce (complete and verified at `70691bb5d3a390a185210bdd7c1d188f6f014546`)**. Current: **Step 3 — PC Builder (Step 3.2 packaged)**. Next major Step: **Step 4 — Signal Scan and service pages**.
 
 | Step | Scope | Status / completion gate |
 |---|---|---|
 | 0 | Repository and system audit | Complete; recorded in Step 0 delivery |
 | 1 | Shared frontend foundation and homepage | Steps 1.1–1.3 uploaded and hash-verified; Step 1.3 visual review still pending. Five pending deletions carried into Step 2.1. |
 | 2 | Store, categories, product, cart, checkout and tracking | Complete. Step 2.3 uploaded and byte-verified at `70691bb5d3a390a185210bdd7c1d188f6f014546`; launch gates remain closed. |
-| 3 | PC Builder | Active. Step 3.1 clean-shell/gate/inspection foundation packaged; preserve compatibility/guided engines, estimates, saving and handoffs. |
+| 3 | PC Builder | Active. Step 3.1 clean-shell/gate/inspection foundation verified; Step 3.2 clean Guided/Manual experience and iGPU completion consistency packaged. |
 | 4 | Signal Scan and service pages | Not started; truthful diagnostics, service leads and support |
 | 5 | Customer accounts and operations | Not started; authentication, history, documents, notifications and privacy |
 | 6 | Creator ecosystem and STATIC | Not started; creator freshness and editorial publishing continuity |
@@ -72,3 +72,11 @@ Step 2.3 was uploaded and all six delivered files were byte-verified at `70691bb
 The audited Builder contains 136 local prototype products and 423 mock supplier offers. The mock offers are explicitly temporary data and are stale at the current audit date. All 136 mapped product images currently use external proxy URLs. Existing compatibility, guided recommendation, saved-build, quote-request and admin conversion contracts are retained for staged migration.
 
 The Builder and Store launch flags remain off; no backend mutation is part of Step 3.1. One engine inconsistency is recorded for Step 3.2: Guided Office/Home builds can omit a discrete GPU, while the main completion helper still treats GPU as universally required. Saved-build offer/freshness provenance and browser-driven quote-status transitions are recorded for Step 3.3.
+
+## Step 3.2 delivery position
+
+Step 3.1 was uploaded and fully verified at `217582dc623d24ade8e6ce129f3c0290edeea6e6`: all 16 delivered files matched the package bytes and all three requested legacy deletions were absent.
+
+Step 3.2 removes the final transitional `builder/styles.css` dependency and moves Builder presentation into `assets/css/pages/builder.css`. Guided questions adapt to Gaming/Streaming, Creator/Workstation and Office/Home use cases while preserving the existing recommendation engine. The main completion helper now agrees with the existing account snapshot rule that a discrete GPU is optional only when the selected CPU explicitly reports integrated graphics; non-iGPU builds still require a GPU.
+
+Read-only inspection continues to use local prototype data only and now labels mock/stale supplier price and stock data directly in the UI. No Supabase setting, schema, RLS, production record, quote or saved build is changed. Saved-build price provenance, status-transition hardening, restore/admin handoff verification and remaining media/data QA remain Step 3.3.
