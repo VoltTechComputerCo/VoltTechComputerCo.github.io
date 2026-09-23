@@ -1,0 +1,9 @@
+{
+  "output": "quotes.html",
+  "title": "My Quotes | VoltTech Computer Co.",
+  "description": "Secure VoltTech customer quotations, approvals and quote history.",
+  "robots": "noindex, nofollow",
+  "styles": ["assets/css/notifications.css", "assets/css/pages/customer-records.css"],
+  "classic_scripts": ["supabase-config.js"],
+  "scripts": ["assets/js/pages/customer-records.js"]
+}
