@@ -1,7 +1,6 @@
 import { isProduction, sdkUrl } from './site-config.js';
 
 let clientPromise = null;
-const base = new URL('../../../', import.meta.url);
 
 export function isAccountInspection() {
   return !isProduction() && new URLSearchParams(location.search).get('inspect') === '1';
@@ -63,13 +62,13 @@ export function continueAfterAuth(returnPath = safeReturnPath()) {
   return true;
 }
 
+let notificationModulePromise = null;
 export async function loadAccountNotifications(client) {
   if (!isProduction() || !client) return;
   const { data: { session } } = await client.auth.getSession();
   if (!session?.user) return;
-  const src = new URL('notifications.js', base).href;
-  if ([...document.scripts].some(script => script.src === src)) return;
-  await loadClassicScript(src).catch(() => {});
+  notificationModulePromise ||= import('./customer-notifications.js');
+  try { const module = await notificationModulePromise; await module.initialiseCustomerNotifications(client); } catch {}
 }
 
 export async function accountIsAdmin(client) {
