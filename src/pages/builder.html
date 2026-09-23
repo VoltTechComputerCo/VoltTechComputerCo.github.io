@@ -1,0 +1,175 @@
+<main id="main-content" class="builder-page-shell">
+  <h1 class="visually-hidden">VoltTech PC Builder</h1>
+  <section class="builder-gate section" id="builderGate" aria-live="polite">
+    <div class="container builder-gate-card">
+      <p class="eyebrow">VOLTTECH / PC BUILDER</p>
+      <h2 data-builder-gate-title>PC Builder coming soon.</h2>
+      <p data-builder-gate-copy>We’re preparing the component data, compatibility checks and quotation workflow before opening the Builder to customers.</p>
+      <div class="actions">
+        <a class="button" href="{{ROOT}}index.html">BACK TO VOLTTECH →</a>
+        <a class="button button-secondary" href="{{ROOT}}builds.html">MY SAVED BUILDS</a>
+      </div>
+      <p class="micro">BUILDER ACCESS FAILS CLOSED / EXISTING SAVED BUILDS REMAIN AVAILABLE</p>
+    </div>
+  </section>
+
+  <div class="builder-app" id="builderApp" hidden>
+    <div class="wrap">
+      <p class="builder-safety notice" id="builderSafety" hidden></p>
+      <section class="hero" aria-labelledby="builder-title">
+        <div class="builder-title-row">
+          <span class="eyebrow">PC BUILDER / VOLTTECH STORE</span>
+          <span class="micro builder-state" id="builderState">BUILDER PAUSED</span>
+        </div>
+        <h2 class="builder-hero-title" id="builder-title">Build your next PC.<br><span>Without the guesswork.</span></h2>
+        <p>Tell us what you want the machine to do, set a budget, and get a compatible starting build you can customise component by component.</p>
+        <div class="hero-actions">
+          <button class="btn hero-primary" id="hero-guided" type="button">Help me build one <span>→</span></button>
+          <button class="btn hero-secondary" id="hero-advanced" type="button">Choose my own parts <span>→</span></button>
+          <a class="btn hero-secondary" href="{{ROOT}}builds.html">My saved builds <span>→</span></a>
+        </div>
+        <div class="notice" id="catalogue-note" role="status">Preparing the component catalogue…</div>
+      </section>
+
+      <section class="builder-trust" aria-label="Builder features">
+        <div><b>✓ Compatibility checked</b><span>Socket, memory, case, cooling and power rules</span></div>
+        <div><b>⚡ Power-aware</b><span>PSU headroom calculated from the selected hardware</span></div>
+        <div><b>↻ Fully customisable</b><span>Change any recommended component afterwards</span></div>
+      </section>
+
+      <section class="mode-shell" id="mode-shell">
+        <div class="section-kicker">CHOOSE YOUR ROUTE</div>
+        <h2>Expert help when you want it. Full control when you don’t.</h2>
+        <div class="mode-grid">
+          <button class="mode-card primary" type="button" id="choose-guided">
+            <span class="mode-kicker">Recommended</span>
+            <strong>Help Me Build</strong>
+            <small>Answer six quick questions and get a complete compatible starting PC matched to your goals and budget.</small>
+            <span class="mode-arrow">→</span>
+          </button>
+          <button class="mode-card" type="button" id="choose-advanced">
+            <span class="mode-kicker">Full control</span>
+            <strong>Choose My Own Parts</strong>
+            <small>Pick every component yourself while VoltTech checks compatibility, power and physical limits as you go.</small>
+            <span class="mode-arrow">→</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="guided-panel panel" id="guided-panel" hidden>
+        <div class="guided-head">
+          <span class="eyebrow">VOLTTECH GUIDED BUILD</span>
+          <h2>Tell us what you want. <span>We’ll handle the technical part.</span></h2>
+          <p>Six quick choices. No spec-sheet homework. We’ll spend the budget where it actually matters for the way you use the PC.</p>
+        </div>
+
+        <form id="guided-form" class="guided-form" novalidate>
+          <div class="guided-question full">
+            <div class="question-head"><span class="question-number">01</span><div><b>What are we building this monster for?</b><small>This decides where the budget makes the biggest difference.</small></div></div>
+            <input type="hidden" name="useCase" value="gaming">
+            <div class="choice-grid choice-grid-5" data-choice-group="useCase">
+              <button type="button" class="choice-card active" data-value="gaming"><strong>Gaming</strong><span>Games first. Put the money into the parts you actually feel.</span></button>
+              <button type="button" class="choice-card" data-value="streaming"><strong>Gaming + Streaming</strong><span>Play, stream, clip and keep everything moving at once.</span></button>
+              <button type="button" class="choice-card" data-value="creator"><strong>Content Creation</strong><span>Premiere, Resolve, Blender and heavier creative work.</span></button>
+              <button type="button" class="choice-card" data-value="workstation"><strong>Workstation</strong><span>Serious work, heavy multitasking and sustained workloads.</span></button>
+              <button type="button" class="choice-card" data-value="office"><strong>Office / Home</strong><span>Fast, quiet and responsive without buying hardware you do not need.</span></button>
+            </div>
+          </div>
+
+          <div class="guided-question full budget-question">
+            <div class="question-head"><span class="question-number">02</span><div><b>How deep are we going?</b><small>Set the ceiling. We’ll spend it where you’ll actually notice it.</small></div></div>
+            <div class="budget-display"><span>Your comfort zone</span><output id="budget-output" for="budget-slider">R30 000</output></div>
+            <input id="budget-slider" class="budget-slider" type="range" name="budget" min="10000" max="100000" step="5000" value="30000" aria-label="Maximum PC build budget">
+            <div class="budget-scale"><span>R10k</span><span>R25k</span><span>R50k</span><span>R75k</span><span>R100k</span></div>
+          </div>
+
+          <div class="guided-question full">
+            <div class="question-head"><span class="question-number">03</span><div><b>What are your games going to look like?</b><small>Resolution changes how heavily we should weight the graphics card.</small></div></div>
+            <input type="hidden" name="target" value="1440p">
+            <div class="choice-grid choice-grid-4" data-choice-group="target">
+              <button type="button" class="choice-card" data-value="1080p"><strong>1080p</strong><span>Fast, affordable and excellent for competitive gaming.</span></button>
+              <button type="button" class="choice-card active" data-value="1440p"><strong>1440p</strong><span>The sweet spot: sharp without 4K-level GPU pain.</span></button>
+              <button type="button" class="choice-card" data-value="4k"><strong>4K</strong><span>Turn up the eye candy. Serious GPU power matters here.</span></button>
+              <button type="button" class="choice-card" data-value="unsure"><strong>Not sure</strong><span>No stress. We’ll balance it around the rest of your answers.</span></button>
+            </div>
+          </div>
+
+          <div class="guided-question">
+            <div class="question-head"><span class="question-number">04</span><div><b>How hard do you want this thing to go?</b><small>Be sensible or chase frames. We’re not judging.</small></div></div>
+            <input type="hidden" name="fpsTarget" value="120">
+            <div class="choice-grid choice-grid-2" data-choice-group="fpsTarget">
+              <button type="button" class="choice-card" data-value="60"><strong>60+ FPS</strong><span>Smooth gaming without going wild on budget.</span></button>
+              <button type="button" class="choice-card active" data-value="120"><strong>120+ FPS</strong><span>High refresh feels fantastic. Hard to go back.</span></button>
+              <button type="button" class="choice-card" data-value="144"><strong>144+ FPS</strong><span>A seriously quick gaming setup.</span></button>
+              <button type="button" class="choice-card" data-value="240"><strong>240+ FPS</strong><span>Okay. We are officially chasing frames.</span></button>
+            </div>
+          </div>
+
+          <div class="guided-question">
+            <div class="question-head"><span class="question-number">05</span><div><b>What kind of buyer are you?</b><small>Tell us what deserves the extra cash.</small></div></div>
+            <input type="hidden" name="priority" value="balanced">
+            <div class="choice-grid choice-grid-2" data-choice-group="priority">
+              <button type="button" class="choice-card" data-value="value"><strong>Make every rand hurt</strong><span>Maximum useful performance before the price gets silly.</span></button>
+              <button type="button" class="choice-card active" data-value="balanced"><strong>Give me the sweet spot</strong><span>Strong everywhere. No pointless flex.</span></button>
+              <button type="button" class="choice-card" data-value="performance"><strong>I want the fast one</strong><span>If useful performance remains in budget, go get it.</span></button>
+              <button type="button" class="choice-card" data-value="quiet"><strong>Keep it classy</strong><span>Fast, cool and quiet. Less jet engine, more premium machine.</span></button>
+            </div>
+          </div>
+
+          <div class="guided-question full">
+            <div class="question-head"><span class="question-number">06</span><div><b>How big is the game library situation?</b><small>Storage is easy to expand later, so choose what feels comfortable now.</small></div></div>
+            <input type="hidden" name="storageNeed" value="1000">
+            <div class="choice-grid choice-grid-4" data-choice-group="storageNeed">
+              <button type="button" class="choice-card" data-value="500"><strong>500GB</strong><span>I keep things lean and uninstall what I finish.</span></button>
+              <button type="button" class="choice-card active" data-value="1000"><strong>1TB</strong><span>A sensible starting point for Windows, apps and games.</span></button>
+              <button type="button" class="choice-card" data-value="2000"><strong>2TB</strong><span>The “I hate uninstalling games” option.</span></button>
+              <button type="button" class="choice-card" data-value="4000"><strong>4TB+</strong><span>Big library. Zero interest in storage anxiety.</span></button>
+            </div>
+          </div>
+
+          <div class="guided-actions full">
+            <button type="button" class="flow-btn secondary" id="guided-back">← Back</button>
+            <button type="submit" class="flow-btn primary-action" id="guided-submit">Show Me My PC →</button>
+          </div>
+          <p class="guided-error" id="guided-error" hidden role="alert"></p>
+        </form>
+        <div class="guided-result" id="guided-result" hidden></div>
+      </section>
+
+      <section class="layout builder-layout" id="builder-layout" hidden>
+        <aside class="panel steps-panel sticky">
+          <div class="panel-head"><span class="panel-kicker">BUILD MAP</span><h2>Choose your parts</h2><p>Follow the order or jump around. Compatibility updates as you go.</p></div>
+          <div class="steps" id="steps"></div>
+        </aside>
+
+        <section class="panel catalogue">
+          <div class="picker-profile" id="picker-profile" hidden></div>
+          <div class="catalogue-toolbar">
+            <label class="search-shell" for="search"><span aria-hidden="true">⌕</span><span class="visually-hidden">Search this category</span><input class="search" id="search" type="search" placeholder="Search this category…" autocomplete="off"></label>
+            <label class="toggle" for="compatible-only"><input id="compatible-only" type="checkbox" checked><span>Compatible only</span></label>
+          </div>
+          <div class="category-head"><div><span class="panel-kicker">PARTS CATALOGUE</span><h2 id="category-title">Processor</h2></div><span id="product-count" role="status"></span></div>
+          <div class="products" id="products"><div class="empty">Loading catalogue…</div></div>
+        </section>
+
+        <aside class="panel summary sticky">
+          <div class="panel-head"><span class="panel-kicker">LIVE BUILD</span><h2>Your build</h2><p>Preview pricing · final stock and quotation confirmed by VoltTech.</p></div>
+          <div class="build-list" id="build-list"></div>
+          <div class="total"><span>Parts total</span><strong id="total">R0</strong></div>
+          <div class="power" id="power"></div>
+          <div class="report" id="report"></div>
+          <div class="summary-actions">
+            <button class="summary-action primary" id="copy-build" type="button">Copy Build Summary</button>
+            <button class="summary-action" id="change-mode" type="button">Change Mode</button>
+          </div>
+          <button class="clear" id="clear-build" type="button">Clear build</button>
+        </aside>
+      </section>
+    </div>
+  </div>
+</main>
+
+<div class="mobile-buildbar" id="mobile-buildbar" hidden>
+  <div><span>YOUR BUILD</span><strong id="mobile-total">R0</strong></div>
+  <button type="button" id="mobile-summary">Review</button>
+</div>

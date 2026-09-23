@@ -1,0 +1,16 @@
+{
+  "output": "builder/index.html",
+  "title": "PC Builder | VoltTech Computer Co.",
+  "description": "Build and customise a compatible PC with VoltTech Computer Co. The Builder remains launch-gated while catalogue and quotation operations are being prepared.",
+  "robots": "noindex, nofollow",
+  "styles": [
+    "builder/styles.css",
+    "assets/css/pages/builder-foundation.css"
+  ],
+  "classic_scripts": [
+    "supabase-config.js"
+  ],
+  "scripts": [
+    "assets/js/pages/builder.js"
+  ]
+}
