@@ -1,12 +1,12 @@
 # VoltTech master roadmap
 
-Previous major Step: **Step 1 — Frontend foundation (uploaded; user visual review pending)**. Current: **Step 2 — Core commerce (Step 2.1 ready for upload)**. Next major Step: **Step 3 — PC Builder**.
+Previous major Step: **Step 1 — Frontend foundation (uploaded)**. Current: **Step 2 — Core commerce (Step 2.2 packaged)**. Next major Step: **Step 3 — PC Builder**.
 
 | Step | Scope | Status / completion gate |
 |---|---|---|
 | 0 | Repository and system audit | Complete; recorded in Step 0 delivery |
 | 1 | Shared frontend foundation and homepage | Steps 1.1–1.3 uploaded and hash-verified; Step 1.3 visual review still pending. Five pending deletions carried into Step 2.1. |
-| 2 | Store, categories, product, cart, checkout and tracking | Step 2.1 Store/product frontend packaged; manual upload verification and visual review pending. Launch gates stay closed. |
+| 2 | Store, categories, product, cart, checkout and tracking | Step 2.1 files verified and user visual approval received. Step 2.2 checkout/tracking packaged; upload and visual review pending. Step 2.3 commerce QA next. Launch gates stay closed. |
 | 3 | PC Builder | Not started; preserve engines, estimates, saving and handoffs |
 | 4 | Signal Scan and service pages | Not started; truthful diagnostics, service leads and support |
 | 5 | Customer accounts and operations | Not started; authentication, history, documents, notifications and privacy |
@@ -45,3 +45,11 @@ Step 2.1 rebuilds Store/category browsing and product detail on the existing sha
 **Next: Step 2.2 — Cart, checkout and order tracking.** First verify Step 2.1 uploaded hashes, deletions, imports and actual HEAD. Resolve user visual feedback before extending commerce. Payment enablement and real supplier onboarding are separate operational gates.
 
 Production-origin allowlist now includes the user-confirmed apex and www `.co.za` domain as well as the existing GitHub domain. Canonical/redirect/Search Console migration remains Step 8 / release work; there is no silent site-wide URL migration in this ZIP.
+
+## Step 2.2 delivery position
+
+Step 2.1: all 31 delivered files match the uploaded Git blobs at `0ed405a7b406bfb923ebd54308c6831f233ef194`; user visual inspection approved. Its ten requested deletions were still present at this HEAD and are explicitly carried into Step 2.2. Earlier pending-review entries above are historical handover records.
+
+Step 2.2: checkout and private order tracking now use the shared generated shell and design tokens. Cart, profile, submission, courier estimate, order status and Yoco contracts retained; no backend deployment or launch-setting change. Local responsive and failure tests completed. Upload verification and user visual review pending.
+
+**Next: Step 2.3 — Commerce QA and cleanup**, before Step 3 — PC Builder. Verify the upload/deletions first, review both pages, then audit the complete commerce journey and record release blockers. Backend domain alignment, server-side demo/stock validation, checkout idempotency and payment enablement enforcement remain operational release gates.

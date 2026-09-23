@@ -6,7 +6,7 @@ Authoritative branch: `clean-rebuild`. Step 1.3 parent: `d659bad184e002aaa284686
 
 `src/templates/page.html`, `header.html` and `footer.html` own the shared shell. `src/pages/*.json` supplies output path, metadata, styles and scripts; adjacent HTML supplies content. Optional `.head.html` supplies page-specific canonical/social/structured metadata. `scripts/build-clean-frontend.py` emits complete upload-ready HTML. Edit sources, then regenerate; generated HTML is never a separate implementation.
 
-Converted routes: `index.html`, `design-system.html`, `store.html` and `product.html`. Other page families retain their working audited implementation until their own migration. Shared design changes propagate to converted routes. There is one new shell, not a second independently authored homepage shell.
+Converted routes: `index.html`, `design-system.html`, `store.html`, `product.html`, `checkout.html` and `order-status.html`. Other page families retain their working audited implementation until their own migration. Shared design changes propagate to converted routes. There is one new shell, not a second independently authored homepage shell.
 
 | Source | Responsibility |
 |---|---|
@@ -88,3 +88,26 @@ Old presentation hook IDs (`productGrid`, `brandFilters`, `productHost`, old car
 The live backend remains locked with 15 demo records and zero real active records. This delivery does not publish supplier offers. All example records used for browser checks were intercepted locally and never written to Supabase or shipped as site data.
 
 Reuse of repository category and hardware media is deliberate; category fallback is labelled and never described as the exact product. No new manufacturer specification, pricing, stock, warranty or delivery claim is authored.
+
+## Step 2.2 transaction boundary (supersedes earlier checkout retention notes)
+
+Checkout and order tracking use `src/pages/{checkout,order-status}.*`, the existing templates, shared shell, and `assets/css/pages/transactions.css`. Shared typography, buttons, fields and palette remain central. `commerce/store.css` now serves the legacy admin route only; old checkout/order controllers and styles and the last `store-access.js`/`store-gate.css` consumer are removed.
+
+| File | Responsibility / deliberate hook adaptation |
+|---|---|
+| `services/catalogue.js` | Exposes `getCommerceCore()` so private pages can load existing commerce APIs without the public catalogue analytics bootstrap |
+| `services/site-config.js` | Explicit `transactionOrigin` matches deployed functions; apex/www/GitHack fail closed for transaction calls |
+| `services/home-integrations.js` | Reads and strictly normalises existing `direct_payment_enabled` alongside catalogue/Builder flags |
+| `services/transactions.js` | Cart eligibility, access tokens, same-origin status URL, Yoco URL allowlist, production courier estimates and payment eligibility |
+| `components/order-view.js` | Escaped order items, ZAR confirmed amounts, server-derived stages, timeline and safe tracking links |
+| `pages/checkout.js` | New `checkout-form`, `checkout-fields`, `checkout-state`, `checkout-items`, `checkout-confirmation` hooks; native validation, saved profile, cart concurrency, exact original submission payload |
+| `pages/order-status.js` | New `order-state`, `order-detail`, `order-timeline`, `refresh-order`, `pay-order` hooks; private status refresh and rechecked payment availability |
+| `commerce/js/store-core.js` | Original API unchanged; `submitCheckout` errors now retain HTTP status/uncertainty for safe retry UX |
+
+All paths above except the explicitly qualified core are under `assets/js/`. Legacy page DOM IDs are replaced together with their controllers; backend payload fields and API names are preserved. Checkout payload: `items`, `customer`, `delivery` (door/address), `customerNote`, `shippingSelection`, `website`. Existing cart key/event and profile queries remain. No customer details or tokens are newly persisted in browser storage.
+
+Checkout clears only an unchanged cart after a valid success acknowledgement. An ambiguous dispatched request remains locked pending confirmation because the deployed submission function has no idempotency key. This mitigates accidental retries within the current page; it cannot make retries after reload idempotent. Live product eligibility and launch flags are re-read before submission. The server remains authoritative.
+
+Private order pages have `no-referrer` and `noindex,nofollow`, no GA/conversion-context/notification bootstrap, no external product images, and no worker registration. SDK/core loading is origin-guarded; valid reference plus 64-hex access token required. Payment query strings only explain the return, never assert paid. Status refreshes every 30 seconds while visible (60 after failure); errors retain the last view and hide payment until refreshed. Payment is rechecked immediately before the existing function and redirects only to HTTPS `c.yoco.com`.
+
+The transaction origin deliberately remains `https://volttechcomputerco.github.io` because deployed submit/status/payment/rates functions enforce it. Aligning `.co.za` requires coordinated backend CORS/allowed-origin/return-URL deployment, not just expanding a frontend list. No external deployment occurred.
