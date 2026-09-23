@@ -5,7 +5,7 @@ Previous major Step: **Step 0 — Repository audit (complete)**. Current: **Step
 | Step | Scope | Status / completion gate |
 |---|---|---|
 | 0 | Repository and system audit | Complete; recorded in Step 0 delivery |
-| 1 | Shared frontend foundation and homepage | In progress; Step 1.1 uploaded, hash-verified and visually approved; Step 1.2 packaged for upload |
+| 1 | Shared frontend foundation and homepage | Step 1.2 uploaded and hash-verified; Step 1.3 QA fixes packaged, upload verification pending |
 | 2 | Store, categories, product, cart, checkout and tracking | Not started; respect launch gates and resolve documented commerce gaps |
 | 3 | PC Builder | Not started; preserve engines, estimates, saving and handoffs |
 | 4 | Signal Scan and service pages | Not started; truthful diagnostics, service leads and support |
@@ -19,8 +19,14 @@ Previous major Step: **Step 0 — Repository audit (complete)**. Current: **Step
 ## Step 1 sequence
 
 - **Step 1.1 — Shared foundation and inspection page:** uploaded to `8c120bc74512583cfb3f4cf3be292d13368b320e`; 32 files verified exactly; user visual approval received.
-- **Step 1.2 — Homepage and shared navigation:** new source-owned homepage, truthful launch/creator states, preserved backend adapters and obsolete-homepage cleanup. Automated checks complete; upload and manual visual review pending.
-- **Step 1.3 — Foundation QA and removal closure:** verify Step 1.2 uploaded HEAD/files first, then address visual feedback at 360/390/412, tablets and desktops; check keyboard/native dialogs, authenticated notifications and installed service-worker transitions in their appropriate environments.
+- **Step 1.2 — Homepage and shared navigation:** uploaded at `7db853fb7f22e949ca82c27e8cc67e2e4cdeadea`; all 43 delivery files and all 12 deletions verified. Follow-up folder placeholders removed by `d659bad184e002aaa28468663dab83f213225613`. User requested continuation.
+- **Step 1.3 — Foundation QA and removal closure:** desktop preview/search/native Escape/local-form checks completed; phone-menu Cart route added, shared cart labels synchronised, enquiry wording refined, unused legacy hero files and older placeholders removed. Source/runtime and exact rollback checks pass. Upload verification and device visual review remain pending. Authenticated notifications and installed production-worker transitions remain appropriate-origin release QA, not certified by GitHack.
+
+## Step 2 sequence
+
+- **Step 2.1 — Store catalogue and product discovery:** inspect the newly verified branch and live public catalogue contract again. Build Store/category browsing and product detail on the shared shell; retain filters, correct imagery, launch gating and truthful stock/pricing states. Do not enable catalogue or payments merely to show the design.
+- **Step 2.2 — Cart, checkout and order tracking:** preserve existing cart storage/events, quote-first handoff, account linkage and payment availability boundaries. Use explicit pending/unavailable states where operational data is absent.
+- **Step 2.3 — Commerce QA and cleanup:** verify mobile browsing, filters, product links, quantity changes, failures and customer/order handoffs; retire replaced frontend code atomically. Resolve or document operational blockers before release.
 
 ## Sequencing clarification from Step 0
 

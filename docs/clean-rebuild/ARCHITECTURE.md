@@ -1,6 +1,6 @@
-# Clean rebuild architecture — Step 1.2
+# Clean rebuild architecture — Step 1.3
 
-Authoritative branch: `clean-rebuild`. Step 1.2 parent: `8c120bc74512583cfb3f4cf3be292d13368b320e`, rechecked before implementation and packaging. Step 1.1 upload was verified against all 32 delivered files and visually approved by the user. No v3-prototype code was used. User-provided V3-named image files are media sources only.
+Authoritative branch: `clean-rebuild`. Step 1.3 parent: `d659bad184e002aaa28468663dab83f213225613`, inspected from a fresh clean-rebuild checkout. Step 1.2 delivery bytes are unchanged and its upload placeholders have been removed. Step 1.1 upload was verified against all 32 delivered files and visually approved by the user. No v3-prototype code was used. User-provided V3-named image files are media sources only.
 
 ## Source ownership
 
@@ -33,7 +33,7 @@ No framework, package manager or runtime build is required. Native content and e
 | Public launch flags | Anonymous GET to `store_settings`, selecting only `catalogue_enabled,builder_enabled`; strict booleans, eight-second timeout, fail closed |
 | Category navigation | Existing category slugs validated against `store_categories`; enquiry links remain until catalogue is enabled |
 | Builder | Existing route and gate retained; enquiry CTA until enabled; no engine/data changes |
-| Cart | Read-only `vt_store_quote_cart_v1`; listens to `vt-store-cart-change` and cross-tab storage; never rewrites the cart |
+| Cart | Read-only `vt_store_quote_cart_v1`; synchronises both `[data-cart-link]` controls on `vt-store-cart-change` and cross-tab storage; never rewrites the cart |
 | Account | Existing `VOLTTECH_SUPABASE` config and cached auth; pinned SDK 2.116.0; shared `volttechAuth` client; existing account route |
 | Notifications | Existing queries, RLS, read state, realtime, role checks and sound retained; explicit header host and accessible clean dialog presentation |
 | Analytics | Existing GA ID and `whatsapp_click`; existing `conversion-context.js` retains `vt_conversion_intent` and `vt_journey_context` |
@@ -49,7 +49,7 @@ Production-only account bootstrap, analytics and service-worker registration run
 
 ## Cleanup ownership
 
-Retired: root `home.css`, `service-backgrounds.css`, the V2 finaliser script/workflow, eight upload placeholders, and homepage-only selectors in retained shared legacy files. Other legacy files still have real consumers; they are not imported by converted pages. STATIC feed generation, Discord publishing and guards remain intact. No old implementation is hidden under a new CSS layer.
+Retired: root `home.css`, `service-backgrounds.css`, the V2 finaliser script/workflow, eight upload placeholders, and homepage-only selectors in retained shared legacy files. Other legacy files still have real consumers; they are not imported by converted pages. STATIC feed generation, Discord publishing and guards remain intact. No old implementation is hidden under a new CSS layer. Step 1.3 also removes the unreferenced `volttech-home-hero.webp`, duplicate `volttech-home-hero-logo.png` and three older `Placeholder.html` files. The new hero and official source logo remain intact.
 
 ## Assets and typography
 
@@ -60,3 +60,9 @@ New images are organised under `assets/brand/` and `assets/categories/`. See `st
 Both converted pages are noindex on this rebuild branch. The homepage includes production canonical, en-ZA, truthful Organization/Service structured data and social metadata. Removing noindex is an explicit Step 10 release gate, after whole-site verification. No Product, Offer, Review or AggregateRating claims are emitted.
 
 The user uploads ZIP contents manually and reviews changed pages through GitHack. Before advancing, verify remote HEAD, hashes, removals and imports, then issue commit-pinned links. Local source/runtime checks do not claim browser, payment or accessibility certification. Browser local-file navigation is blocked by its URL policy; HTTP preview rendering and Android 360/390/412 checks happen after upload. Production auth/notification behaviour requires the intended origin and is not certified by a public GitHack preview.
+
+## Step 1.3 QA scope
+
+The phone header intentionally omits the cart icon at 40rem and below to retain comfortable header controls; the same breakpoint now exposes a Cart item in the mobile menu. Both links use the existing `store.html?cart=1` route and launch gate. No new cart implementation is introduced. Desktop layout is unchanged. The inspection page shows the route without accessing customer cart storage.
+
+The uploaded Step 1.2 page was checked in the available desktop browser: no horizontal overflow, working search/results/empty state, native Escape dismissal, and shared local validation. Headline fonts were verified as the intended variable Space Grotesk and JetBrains Mono files. The Step 1.3 phone-menu update has source/runtime checks; 360/390/412 visual review follows manual upload. No new authenticated or payment operation was attempted.

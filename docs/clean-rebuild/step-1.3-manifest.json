@@ -1,0 +1,53 @@
+{
+  "step": "Step 1.3",
+  "parent_step": "Step 1",
+  "previous_step": "Step 1.2",
+  "next_step": "Step 2.1",
+  "branch": "clean-rebuild",
+  "base_commit": "d659bad184e002aaa28468663dab83f213225613",
+  "rollback_target": "Step 1.2 \u2014 verified homepage plus user placeholder cleanup",
+  "added": [
+    "docs/clean-rebuild/step-1.3-folder.png",
+    "docs/clean-rebuild/step-1.3-manifest.json"
+  ],
+  "changed": [
+    "README.md",
+    "assets/css/navigation.css",
+    "assets/css/responsive.css",
+    "assets/js/services/home-integrations.js",
+    "design-system.html",
+    "docs/clean-rebuild/ARCHITECTURE.md",
+    "docs/clean-rebuild/ROADMAP.md",
+    "index.html",
+    "scripts/test-clean-runtime.mjs",
+    "src/pages/home.html",
+    "src/templates/header.html"
+  ],
+  "deleted": [
+    "commerce/js/Placeholder.html",
+    "commerce/schema/Placeholder.html",
+    "docs/Placeholder.html",
+    "volttech-home-hero-logo.png",
+    "volttech-home-hero.webp"
+  ],
+  "superseded": [
+    "README.md (Step 1.2 handover)",
+    "single-control cart presentation",
+    "unused legacy homepage artwork"
+  ],
+  "missing_directories": [],
+  "sha256": {
+    "README.md": "2c77e5489a170b80ccba3a2fb57b9569a5c97511030860b054cd2d87ed33cf5b",
+    "assets/css/navigation.css": "f291bf529332a9617cfe611871fce8ebbc21067419eac3639fce5d77a800fa60",
+    "assets/css/responsive.css": "f94a12910777324298a91be11c6adb621e5f17ec6e961b21c041f8b0c4905691",
+    "assets/js/services/home-integrations.js": "b425611efb6f123d0993b8b5387848f751d8beba909a554ab996660abb5770f7",
+    "design-system.html": "a0e9b1940654f1264a08cbee27fc32b00b86c094f87376704bc3d11c760523e1",
+    "docs/clean-rebuild/ARCHITECTURE.md": "397cf73c8034e01fe2b6619311f4ad0c1de6c78aa8dc14ed850e792c8e5a8cfd",
+    "docs/clean-rebuild/ROADMAP.md": "60a26fc18fee53f7c8a50fb1129a4e745cd76fd4c158a54a899bf957b90529f9",
+    "docs/clean-rebuild/step-1.3-folder.png": "f5ba86d491fd089fd3676e803fb3a7a38b5638d722295826c177480403fa393c",
+    "index.html": "3ab6ea015d84f22137375a7f30aaaba845375aa93bd91eb7cb0f27a4342cdf3a",
+    "scripts/test-clean-runtime.mjs": "e66b0f7dc56bb785efb8de783ab3c91420ca05b44ff3daf5c09c9e2c2e14a64e",
+    "src/pages/home.html": "b1d59c030f8c0e7f8489692c50896e212bf2b2f115349827b0964dafbe745a62",
+    "src/templates/header.html": "73d29308b7dd80251dcdc62571205f40c7afc1ffd57f1b6cc4ff7a0358d7dcea"
+  }
+}
