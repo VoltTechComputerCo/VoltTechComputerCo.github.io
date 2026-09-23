@@ -19,6 +19,7 @@
   .header-inner { gap: .25rem; min-height: 72px; }
   .brand img { width: 88px; height: 52px; }
   .header-cart { display: none; }
+  .mobile-nav-cart { display: list-item; }
   .section { padding-block: var(--space-6); }
   .section-heading { align-items: flex-start; flex-direction: column; gap: var(--space-2); }
   .section-heading h2 { font-size: 1.125rem; }

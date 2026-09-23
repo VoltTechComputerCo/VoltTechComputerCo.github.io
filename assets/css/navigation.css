@@ -7,6 +7,8 @@
 .primary-nav ul { display: flex; align-items: center; gap: .25rem; margin: 0; padding: 0; list-style: none; }
 .primary-nav a { display: flex; align-items: center; min-height: 44px; padding: .5rem .7rem; color: var(--text-secondary); text-decoration: none; font-size: var(--text-sm); font-weight: 500; }
 .primary-nav a:hover, .primary-nav a[aria-current="page"] { color: var(--teal); }
+.mobile-nav-cart { display: none; }
+.nav-cart-count { margin-left: auto; color: var(--teal); font: 500 var(--text-xs)/1.5 var(--font-mono); }
 .header-tools { display: flex; align-items: center; gap: .125rem; }
 .header-account { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; padding: .5rem .65rem; color: var(--text-secondary); border-inline: 1px solid var(--border); text-decoration: none; font-size: var(--text-xs); }
 .header-account svg, .icon-button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; }
