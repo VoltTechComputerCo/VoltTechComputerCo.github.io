@@ -1,107 +1,87 @@
-# Step 3.2 — PC Builder experience and engine consistency
+# Step 3.3 — PC Builder account, quote handoff and final QA
 
-Objective: replace the last legacy Builder presentation dependency with a clean VoltTech page stylesheet, refine the Guided + Manual Builder experience, and fix the integrated-graphics completion mismatch without changing launch flags, account/quote workflow or compatibility-rule scope.
+Objective: close the PC Builder rebuild with truthful saved-build pricing provenance, server-authoritative customer/admin status transitions, atomic Builder-to-quote conversion and removal of the remaining legacy Builder integration files.
 
 Parent Step: Step 3 — PC Builder.  
-Previous: Step 3.1 uploaded, deletion-verified and byte-verified at `217582dc623d24ade8e6ce129f3c0290edeea6e6`.  
-Current: Step 3.2 — packaged; upload verification and user visual review pending.  
-Next: Step 3.3 — account/quote handoff, saved-build provenance and final Builder QA.
+Previous: Step 3.2 uploaded and byte-verified at `bbf3001d8b0a206ca95401d18e3d507fef040b65`.  
+Current: Step 3.3 — packaged; repository upload verification pending.  
+Next major Step after verification: Step 4 — Signal Scan and service pages.
 
-Branch: `clean-rebuild`. Exact parent / rollback commit: `217582dc623d24ade8e6ce129f3c0290edeea6e6`. No v3-prototype code used.
+Branch: `clean-rebuild`. Exact repository rollback commit: `bbf3001d8b0a206ca95401d18e3d507fef040b65`.
+
+## Important: Supabase migration already applied
+
+The production migration was safely applied and verified before this ZIP was packaged:
+
+`20260923164957_builder_handoff_hardening_v1`
+
+The matching SQL file is included under `Supabase/migrations/` so Git remains the source-of-truth record. **Do not run the SQL manually again.**
+
+After migration verification there are still exactly 5 historical saved-build records, all 5 remain `quoted`, and catalogue / Builder / direct-payment launch flags remain disabled.
 
 ## Upload instructions
 
-1. Extract **Step-3.2.zip** and stay on **clean-rebuild**.
-2. Upload the contents inside **Step 3.2/** to their matching repository paths; replace existing files where prompted. Do not upload the enclosing Step folder as a website directory.
-3. Delete the single superseded file listed below after the upload. ZIP uploads do not remove files.
-4. **No new folder placeholders are required.** Every target directory already exists in the audited repository.
-5. Tell me when uploaded. I will verify the new HEAD, every delivered file and the deletion before continuing.
+1. Extract **Step-3.3.zip** and stay on **clean-rebuild**.
+2. Upload the contents inside **Step 3.3/** to matching repository paths; replace existing files where prompted.
+3. Delete the two superseded files listed below after upload. ZIP upload does not remove files.
+4. **No new folder placeholders are required.** `assets/js/services`, `docs/clean-rebuild`, `scripts` and `Supabase/migrations` already exist.
+5. Tell me when uploaded. I will verify the actual HEAD, every delivered file and both deletions before closing Step 3.
 
 ## Delete separately
 
-- `builder/styles.css`
+- `builder/js/account-integration.js`
+- `commerce/js/builder-handoff.js`
 
-Do not delete any Builder engine, catalogue, media, account or handoff file.
-
-## Builder links after upload
-
-Normal gate — must remain closed:
-
-https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/builder/index.html
-
-Full read-only inspection:
-
-https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/builder/index.html?inspect=1
-
-`?inspect=1` remains non-production-only and cannot bypass the Builder flag on VoltTech production origins.
+Do not delete any Builder engine, catalogue, compatibility or guided-recommendation file.
 
 ## What changes
 
-- Replaces the transitional `builder/styles.css` with clean page-scoped `assets/css/pages/builder.css`.
-- Keeps the Step 3.1 clean shell, fail-closed launch gate and isolated read-only inspection path unchanged.
-- Reworks the Guided and Manual Builder presentation around the shared VoltTech design tokens, cleaner hierarchy, improved mobile layouts and clearer progress/navigation.
-- Guided questions now adapt to the selected workload instead of asking every user gaming-only questions:
-  - Gaming / Gaming + Streaming keep resolution and FPS choices.
-  - Creator / Workstation keep a workload-resolution choice but do not ask an FPS-target question.
-  - Office / Home hides gaming resolution/FPS questions and uses everyday-storage language.
-- Fixes the completion contract for CPUs with integrated graphics: a discrete GPU becomes optional when the selected CPU explicitly reports integrated graphics.
-- CPUs without integrated graphics still require a GPU.
-- Manual automatic-next-category logic now skips the GPU step only when integrated graphics genuinely satisfy it.
-- The Builder UI marks that state explicitly as `Integrated graphics available · discrete GPU optional`.
-- Read-only inspection now labels mock/stale supplier pricing and stock as prototype data directly in the Builder UI.
-- Adds an explicit four-stage Builder flow rail: route → brief → parts → review.
-- Removes the clean-checker exception that temporarily allowed the old Builder stylesheet.
+- Moves account/save/restore/quote-request integration to `assets/js/services/builder-account.js`.
+- Reuses the shared authorised Supabase client instead of creating another client/SDK bootstrap.
+- Uses the Builder's existing `getBestOffer()` rule for saved-build price selection.
+- Preserves supplier SKU, stock state, freshness, stale state and the real source `lastChecked`; absent timestamps remain NULL.
+- Customer quote request now calls the server-owned `customer_request_build_quote` RPC.
+- Database guard prevents customers from directly promoting a build to `quoted`, editing quote linkage fields or rewriting a build after quote request.
+- Admin conversion now calls one atomic `admin_quote_saved_build` RPC instead of performing three browser-side operations.
+- Admin review flags estimates whose source pricing is stale/unknown/missing so pricing can be refreshed before a formal quote is sent.
+- Moves Store→Builder handoff to `assets/js/services/builder-handoff.js`, fixes current `vt-storage-*` IDs and removes inline toast styling / old Signal Build wording.
+- Moves account and handoff presentation into the clean Builder CSS.
+- Keeps the Builder launch flag closed.
 
-## What deliberately does not change
+## Builder inspection links after upload
 
-No Supabase schema, RLS, Edge Function, secret, launch setting, customer data, saved-build record or quote is changed.
+Normal production-style gate — must remain closed:
 
-The underlying compatibility checks remain intact. The local catalogue, mock supplier feeds, performance-intelligence dataset, external product-media map, account save/restore implementation, quote-request status transition and admin build-to-quote workflow are not replaced in this step.
+https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/builder/index.html
 
-Those account/data-provenance items remain Step 3.3 work.
+Read-only Builder:
 
-## Known data truth
+https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/builder/index.html?inspect=1
 
-The inspection experience still uses the existing 136-product prototype catalogue and 423 mock supplier offers. Those offers are test data and stale. Displayed price/stock values must not be treated as a quote or live inventory.
+Read-only Store→Builder preselection test:
 
-The 136 product media mappings remain external proxy URLs; the new presentation improves the fallback state but does not claim those mappings are production-owned media.
+https://raw.githack.com/VoltTechComputerCo/VoltTechComputerCo.github.io/clean-rebuild/builder/index.html?inspect=1&add=vt-cpu-amd-7600
 
-## Tests
+The preselection test should open Manual Builder and select the AMD Ryzen 5 7600 prototype entry automatically. It does not save anything or contact Supabase in inspection mode.
 
-Package-side checks completed:
+## Tests completed
+
+Package-side checks pass:
 
 ```text
 node scripts/test-clean-builder.mjs
-node --input-type=module --check < assets/js/pages/builder.js
-node --input-type=module --check < assets/js/pages/builder-experience.js
-node --input-type=module --check < builder/js/build-engine.js
+node --check assets/js/services/builder-account.js
+node --check assets/js/services/builder-handoff.js
+node --check assets/js/pages/builder.js
+node --check admin-builds.js
 ```
 
-The Builder contract regression verifies both integrated-graphics and non-integrated-graphics completion behavior, clean stylesheet ownership, adaptive Guided behavior, inspection data labelling and removal of the transitional clean-checker exception.
-
-After upload I will re-run the remote delta/hash/deletion verification before Step 3.3.
-
-## Visual review
-
-On Android, use the `?inspect=1` link and check:
-
-- route chooser;
-- Gaming Guided flow;
-- Office/Home Guided flow — gaming-only questions should disappear;
-- generated Guided recommendation;
-- Manual category strip and search;
-- Compatible-only filter;
-- product cards/images/fallbacks;
-- selecting/removing components;
-- mobile Review Build bar;
-- build summary and compatibility report;
-- a CPU with integrated graphics showing GPU as optional;
-- Clear Build dialog.
-
-The normal URL must continue to show the closed Builder gate.
+The live database migration was then verified read-only for trigger/function/policy presence, launch flags and historical row counts.
 
 ## Rollback
 
-**Rollback target: `217582dc623d24ade8e6ce129f3c0290edeea6e6`.**
+Repository rollback target: `bbf3001d8b0a206ca95401d18e3d507fef040b65`.
 
-Restore changed paths from that commit, remove Step 3.2 added files and restore `builder/styles.css`. No backend rollback is required.
+The Step 3.3 database hardening is backwards compatible with the Step 3.2 frontend, so a frontend rollback does **not** require removing the database guard/RPCs. Keeping that migration in place is safer.
+
+Full details: `docs/clean-rebuild/step-3.3-QA.md`.
