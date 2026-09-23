@@ -1,4 +1,4 @@
-/* Retained styles for admin, checkout and order status. Clean Store/product styles live in assets/css/pages/commerce.css. */
+/* Retained admin Store styles. Customer commerce pages use assets/css/pages/commerce.css and transactions.css. */
 :root{
   --bg:#05080a;--bg2:#071012;--panel:#0b1315;--panel2:#0f1a1c;--line:#183033;
   --teal:#2fe6c8;--teal-d:#168f7c;--text:#edf7f4;--muted:#7d9994;--soft:#b6c7c3;
