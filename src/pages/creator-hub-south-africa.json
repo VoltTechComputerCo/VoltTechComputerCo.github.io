@@ -1,0 +1,8 @@
+{
+  "output": "creator-hub-south-africa.html",
+  "title": "South African Creator Hub | Live Twitch Streamers | VoltTech",
+  "description": "Discover South African Twitch creators through VoltTech's creator directory, with live status shown only when the feed has a fresh backend check.",
+  "robots": "index, follow, max-image-preview:large",
+  "styles": ["assets/css/pages/creator-hub.css"],
+  "scripts": ["assets/js/pages/creator-hub.js"]
+}
