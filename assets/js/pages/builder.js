@@ -1,5 +1,6 @@
 import { builderAccess } from '../services/builder-access.js';
 import { installBuilderDialog } from '../components/builder-dialog.js';
+import { enhanceBuilderExperience } from './builder-experience.js';
 
 const body = document.body;
 const gate = document.getElementById('builderGate');
@@ -46,7 +47,8 @@ async function openBuilder(access) {
   }
 
   installBuilderDialog();
-  await import(new URL('../../../builder/js/app.js?v=3.1.0', import.meta.url));
+  await import(new URL('../../../builder/js/app.js?v=3.2.0', import.meta.url));
+  enhanceBuilderExperience();
   await import(new URL('../../../commerce/js/builder-handoff.js?v=1.1.0', import.meta.url));
 
   if (access.live) {
