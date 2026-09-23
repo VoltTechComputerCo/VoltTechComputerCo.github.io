@@ -68,6 +68,10 @@ for source in (ROOT / 'src/pages').glob('*.json'):
         'order-status.html': {'supabase-config.js'},
         'builder/index.html': {'supabase-config.js'},
         'account.html': {'supabase-config.js'},
+        'activity.html': {'supabase-config.js'},
+        'builds.html': {'supabase-config.js'},
+        'quotes.html': {'supabase-config.js'},
+        'documents.html': {'supabase-config.js'},
     }.get(output_key, set())
     for tag, attrs in parser.tags:
         ref = attrs.get('src', '') if tag == 'script' else attrs.get('href', '') if tag == 'link' and attrs.get('rel') == 'stylesheet' else ''
