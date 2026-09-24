@@ -1,0 +1,16 @@
+{
+  "output": "build-document.html",
+  "title": "PC Build Specification | VoltTech",
+  "description": "VoltTech saved PC build specification.",
+  "robots": "noindex, nofollow",
+  "styles": [
+    "assets/css/notifications.css",
+    "assets/css/pages/document.css"
+  ],
+  "classic_scripts": [
+    "supabase-config.js"
+  ],
+  "scripts": [
+    "assets/js/pages/customer-document.js"
+  ]
+}

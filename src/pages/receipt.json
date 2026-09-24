@@ -1,0 +1,16 @@
+{
+  "output": "receipt.html",
+  "title": "Payment Receipt | VoltTech",
+  "description": "VoltTech customer payment receipt.",
+  "robots": "noindex, nofollow",
+  "styles": [
+    "assets/css/notifications.css",
+    "assets/css/pages/document.css"
+  ],
+  "classic_scripts": [
+    "supabase-config.js"
+  ],
+  "scripts": [
+    "assets/js/pages/customer-document.js"
+  ]
+}
