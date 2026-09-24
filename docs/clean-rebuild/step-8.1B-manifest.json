@@ -1,0 +1,19 @@
+{
+  "step": "8.1B",
+  "title": "Generated output sync and active-domain crawl",
+  "branch": "clean-rebuild",
+  "parent": "946bc651a447ffea45ea8f3f9d74a228a73b0fc2",
+  "canonical_origin": "https://volttechcomputerco.co.za",
+  "delete": [],
+  "supabase_changes": [],
+  "workflow_commit_expected": true,
+  "sha256": {
+    ".github/workflows/clean-frontend-sync.yml": "9d6a826102e9a97b7adca2f6aa0fb73adfb2aae590fbf8e65fbe16219c6192e6",
+    "README.md": "7e49001a035c45c855504c6e03f142002058f81761c0a355456e7e13d6905228",
+    "docs/clean-rebuild/ROADMAP.md": "efe7c3aff3bfba655071595d2aad627056da9ca103431f7ca7af08b2166aebdf",
+    "docs/clean-rebuild/step-8.1B-QA.md": "873bcfff044efb0b3638aaab93a2e54e0e016fbfdf1c09e19d323db463cedd06",
+    "docs/clean-rebuild/step-8.1B-folder.txt": "f20919379a630786ea1084bf7b3dba18260bc4f0c942213acdb5c741f4f1203d",
+    "scripts/check-domain-residue.py": "d2e3f837445d3f568d8fdb687f9a9b6fb4fed195fc258391201ff029a8d8542c",
+    "scripts/sync-domain-compat.py": "15eddcc0f4ca4cad82815a7d9d5cb44ba57e7c57244ce527f65cebe6961064b0"
+  }
+}

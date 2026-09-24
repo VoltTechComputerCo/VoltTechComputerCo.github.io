@@ -1,0 +1,11 @@
+Step 8.1B/
+├── README.md
+├── .github/workflows/clean-frontend-sync.yml
+├── scripts/
+│   ├── sync-domain-compat.py
+│   └── check-domain-residue.py
+└── docs/clean-rebuild/
+    ├── ROADMAP.md
+    ├── step-8.1B-QA.md
+    ├── step-8.1B-folder.txt
+    └── step-8.1B-manifest.json
