@@ -1,6 +1,6 @@
 # VoltTech master roadmap
 
-Current major Step: **Step 8 — SEO, accessibility and performance (Step 8.1B packaged)**.
+Current major Step: **Step 8 — SEO, accessibility and performance (Step 8.2 packaged)**.
 
 | Step | Scope | Status / completion gate |
 |---|---|---|
@@ -12,15 +12,15 @@ Current major Step: **Step 8 — SEO, accessibility and performance (Step 8.1B p
 | 5 | Customer accounts and operations | Complete |
 | 6 | Creator ecosystem and STATIC | Complete |
 | 7 | Legal, support and customer documents | Complete |
-| 8 | SEO, accessibility and performance | Active. 8.1A verified; 8.1B packaged |
+| 8 | SEO, accessibility and performance | Active. 8.1A + 8.1B verified; 8.2 packaged |
 | 9 | Full QA | Pending |
 | 10 | Release candidate | Pending |
 
 ## Step 8 sequence
-- **8.1A — Canonical source + SEO infrastructure:** verified at `946bc651a447ffea45ea8f3f9d74a228a73b0fc2`.
-- **8.1B — Generated output sync + domain crawl:** packaged; source-owned HTML and compatibility outputs sync to `.co.za`.
-- **8.2 — Accessibility + performance:** keyboard/focus, semantics, contrast, image/font/script loading and mobile performance.
-- **8.3 — Final SEO/residue QA:** migrate the 30 historical STATIC article templates/canonicals, close remaining legacy root-file debt and run final crawl/link/structured-data checks.
+- **8.1A — Canonical source + SEO infrastructure:** complete.
+- **8.1B — Generated output sync + domain crawl:** complete and verified at `7087681ad359a38ae1bcaa6704c99944aab52519`.
+- **8.2 — Accessibility + performance:** packaged; checker returns to hard-gate status.
+- **8.3 — Final SEO/residue QA:** historical STATIC article template/canonical migration and final repository/crawl cleanup.
 
 ## Operational blockers carried forward
 - Store catalogue, Builder and direct payments remain disabled.
