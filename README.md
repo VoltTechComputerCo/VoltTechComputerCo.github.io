@@ -1,30 +1,30 @@
-# Step 8.1B — Generated output sync + active-domain crawl
+# Step 8.2 — Accessibility + performance
 
-Previous: Step 8.1A verified at `946bc651a447ffea45ea8f3f9d74a228a73b0fc2`.
-Current: Step 8.1B — packaged.
-Next: Step 8.2 — accessibility + performance.
+Previous: Step 8.1B fully verified at `7087681ad359a38ae1bcaa6704c99944aab52519`.
+Current: Step 8.2 — packaged.
+Next: Step 8.3 — historical STATIC + final SEO/residue QA.
 
 ## Upload
-Upload everything inside `Step 8.1B/` to matching paths on `clean-rebuild`.
+Upload everything inside `Step 8.2/` to matching paths on `clean-rebuild`.
 
 Deletions: none.
 Folder placeholders: none.
 Supabase migrations: none.
 
-## Important
-This package includes a hidden GitHub Actions file:
+## Important hidden file
+This package updates:
 
 `.github/workflows/clean-frontend-sync.yml`
 
-Make sure that file is uploaded too.
+Make sure it is uploaded.
 
-Once the package lands on `clean-rebuild`, the action regenerates every clean page from `src/pages/`, migrates the three compatibility outputs, runs the clean frontend checker and runs the old-domain crawler. If generated HTML changed, the action commits those outputs back to `clean-rebuild`.
+## What happens after upload
+The existing clean frontend sync workflow regenerates the 8 printable document pages and 5 service pages from source, then runs:
+1. the full clean accessibility/structure checker as a hard gate;
+2. the `.co.za` domain-residue checker as a hard gate;
+3. the generated-output commit only if both pass.
 
-Do not manually edit generated HTML during this sync.
+Expected bot commit:
+`chore: sync clean frontend outputs`
 
-## No historical STATIC rewrite yet
-The 30 historical `static-*.html` article files remain unchanged until Step 8.3.
-
-## Workflow note
-
-The broad clean-frontend checker remains visible as an informational audit. Its existing Step 8.2 findings do not block the domain migration. `scripts/check-domain-residue.py` remains the hard gate for this step.
+No visual redesign, customer-data change or launch-state change is part of this step.
