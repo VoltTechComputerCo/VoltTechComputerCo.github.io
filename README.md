@@ -24,3 +24,7 @@ Do not manually edit generated HTML during this sync.
 
 ## No historical STATIC rewrite yet
 The 30 historical `static-*.html` article files remain unchanged until Step 8.3.
+
+## Workflow note
+
+The broad clean-frontend checker remains visible as an informational audit. Its existing Step 8.2 findings do not block the domain migration. `scripts/check-domain-residue.py` remains the hard gate for this step.
