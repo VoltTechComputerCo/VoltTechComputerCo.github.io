@@ -66,151 +66,97 @@
   <ul class="search-results" id="site-search-results"></ul>
 </dialog>
 <main id="main-content" class="account-page">
-  <section class="section account-hero">
-    <div class="container account-container">
-      <p class="eyebrow">VOLTTECH / CUSTOMER ACCOUNT</p>
-      <h1>Your VoltTech, in one place.</h1>
-      <p class="account-lead">Sign in to review quotes, documents, PC builds, account details and anything that needs your attention.</p>
-      <div class="notice account-preview" id="accountPreview" hidden></div>
-    </div>
-  </section>
+  <div class="container account-container">
+    <section class="account-hero">
+      <div>
+        <p class="eyebrow">MY VOLTTECH</p>
+        <h1>Your VoltTech account.</h1>
+        <p class="account-lead">One place for your profile, quotes, invoices, saved PC builds and account preferences.</p>
+      </div>
+      <div class="account-state" id="accountState"><span class="account-state-dot"></span><span>Checking account…</span></div>
+    </section>
 
-  <section class="section account-body">
-    <div class="container account-container">
-      <section id="authGate" class="account-auth" hidden aria-labelledby="authTitle">
-        <div class="account-auth-copy">
-          <p class="eyebrow">SECURE ACCESS</p>
-          <h2 id="authTitle">Sign in to your account.</h2>
-          <p>Quotes, invoices, saved builds and personal details stay behind your authenticated VoltTech session.</p>
-          <ul class="account-assurances">
-            <li>Customer records are protected by row-level access rules.</li>
-            <li>VoltTech never asks for your Google password or 2FA code.</li>
-            <li>You can reset your password from the email on your account.</li>
-          </ul>
-        </div>
-        <div class="account-auth-card">
-          <button class="button account-google" id="googleSignIn" type="button">Continue with Google</button>
-          <div class="account-divider"><span>or use email</span></div>
-          <form id="authForm" class="account-form">
-            <label for="authEmail">Email<input id="authEmail" type="email" autocomplete="email" required></label>
-            <label for="authPassword">Password<input id="authPassword" type="password" autocomplete="current-password" minlength="8" required></label>
+    <section class="account-preview notice" id="accountPreview" hidden>
+      <strong>Read-only layout inspection.</strong> No Supabase session, account data or database write is loaded on this preview host.
+    </section>
+
+    <section class="account-auth" id="authPanel" hidden aria-labelledby="authTitle">
+      <div class="account-auth-copy">
+        <p class="eyebrow">SECURE ACCESS</p>
+        <h2 id="authTitle">Sign in to continue.</h2>
+        <p>Use your email and password, or continue with Google. VoltTech account data is available only after authentication.</p>
+      </div>
+      <div class="account-auth-actions">
+        <button class="button" type="button" id="googleSignIn">Continue with Google</button>
+        <div class="account-divider"><span>or</span></div>
+        <form id="emailAuthForm" class="account-form">
+          <label for="authEmail">Email</label>
+          <input id="authEmail" type="email" autocomplete="email" required>
+          <label for="authPassword">Password</label>
+          <input id="authPassword" type="password" autocomplete="current-password" minlength="6" required>
+          <div class="account-form-actions">
+            <button class="button" type="submit" data-auth-mode="signin">Sign in</button>
+            <button class="button button-secondary" type="button" id="createAccount">Create account</button>
+          </div>
+        </form>
+        <p class="account-feedback" id="authFeedback" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="account-dashboard" id="accountDashboard" hidden>
+      <nav class="account-tabs" aria-label="Account sections">
+        <a href="activity.html">Activity</a>
+        <a href="builds.html">Builds</a>
+        <a href="quotes.html">Quotes</a>
+        <a href="documents.html">Documents</a>
+        <a href="privacy-center.html">Privacy &amp; Data</a>
+      </nav>
+
+      <div class="account-grid">
+        <section class="account-card account-profile" aria-labelledby="profileTitle">
+          <div class="account-card-head">
+            <div class="account-profile-title">
+              <img id="accountAvatar" class="account-avatar" alt="" width="56" height="56" hidden>
+              <div>
+                <p class="eyebrow">PROFILE</p>
+                <h2 id="profileTitle">Account details</h2>
+              </div>
+            </div>
+            <span class="account-badge" id="accountRole">Customer</span>
+          </div>
+          <form id="profileForm" class="account-form">
+            <label for="profileName">Name</label>
+            <input id="profileName" type="text" autocomplete="name">
+            <label for="profileCompany">Company</label>
+            <input id="profileCompany" type="text" autocomplete="organization">
+            <label for="profileEmail">Billing email</label>
+            <input id="profileEmail" type="email" autocomplete="email">
+            <label for="profilePhone">Phone</label>
+            <input id="profilePhone" type="tel" autocomplete="tel">
+            <label for="profileSuburb">Suburb</label>
+            <input id="profileSuburb" type="text" autocomplete="address-level3">
             <div class="account-form-actions">
-              <button class="button" type="submit">Sign in</button>
-              <button class="button button-secondary" id="createAccount" type="button">Create account</button>
+              <button class="button" type="submit">Save profile</button>
+              <button class="button button-secondary" type="button" id="signOut">Sign out</button>
             </div>
           </form>
-          <button class="account-text-button" id="forgotPassword" type="button">Forgot password?</button>
-          <p class="micro account-status" id="authStatus" role="status" aria-live="polite"></p>
-          <p class="micro">By creating an account, you acknowledge the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Notice</a>.</p>
-        </div>
-      </section>
-
-      <section id="recoveryGate" class="account-recovery" hidden aria-labelledby="recoveryTitle">
-        <div class="feature-panel">
-          <p class="eyebrow">ACCOUNT RECOVERY</p>
-          <h2 id="recoveryTitle">Choose a new password.</h2>
-          <form id="recoveryForm" class="account-form">
-            <label for="newPassword">New password<input id="newPassword" type="password" autocomplete="new-password" minlength="8" required></label>
-            <button class="button" type="submit">Update password</button>
-          </form>
-          <p class="micro account-status" id="recoveryStatus" role="status" aria-live="polite"></p>
-        </div>
-      </section>
-
-      <section id="accountHub" class="account-hub" hidden>
-        <div class="account-welcome">
-          <div class="account-identity">
-            <img id="accountAvatar" class="account-avatar" alt="" hidden>
-            <div><p class="eyebrow">MY VOLTTECH</p><h2 id="accountName">VoltTech customer</h2><p id="accountEmail" class="muted"></p></div>
-          </div>
-          <div class="account-welcome-actions"><a class="button button-secondary" id="adminShortcut" href="admin.html" hidden>Admin</a><a class="button button-secondary" href="index.html">VoltTech home</a></div>
-        </div>
-
-        <nav class="account-tabs" aria-label="Account sections">
-          <button class="account-tab active" type="button" data-account-tab="overview">Overview</button>
-          <button class="account-tab" type="button" data-account-tab="profile">Profile</button>
-          <button class="account-tab" type="button" data-account-tab="addresses">Addresses</button>
-          <button class="account-tab" type="button" data-account-tab="security">Security</button>
-          <a class="account-tab" href="activity.html">Activity</a>
-          <a class="account-tab" href="documents.html">Documents</a>
-        </nav>
-
-        <section class="account-panel active" data-account-panel="overview">
-          <div class="account-panel-head"><div><p class="eyebrow">ACCOUNT HOME</p><h2>What needs your attention?</h2></div><button class="account-text-button" id="openTour" type="button">How VoltTech works</button></div>
-          <article class="account-action" id="overviewAction" data-state="loading"><small>Checking account</small><strong>Checking your account…</strong><span>Please wait a moment.</span></article>
-          <div class="account-stat-grid">
-            <a class="account-stat" href="quotes.html"><span>Quotes</span><strong id="countQuotes">—</strong><small>Review and approve quotations.</small></a>
-            <a class="account-stat" href="documents.html"><span>Invoices</span><strong id="countInvoices">—</strong><small>Formal invoices and receipts.</small></a>
-            <a class="account-stat" href="builds.html"><span>Saved builds</span><strong id="countBuilds">—</strong><small>Builder configurations and requests.</small></a>
-            <a class="account-stat" href="activity.html"><span>Orders</span><strong id="countOrders">—</strong><small>Purchase and payment history.</small></a>
-            <a class="account-stat" href="activity.html"><span>Service jobs</span><strong id="countJobs">—</strong><small>Repair and support progress.</small></a>
-          </div>
-          <div class="account-link-grid">
-            <a href="activity.html"><b>Activity</b><span>Follow builds, quotes, invoices, orders and service work in one timeline.</span><i>→</i></a>
-            <a href="documents.html"><b>Documents</b><span>Open your formal quotes, invoices, receipts and service records.</span><i>→</i></a>
-            <a href="privacy-center.html"><b>Privacy & Data</b><span>Download your data or manage account deletion.</span><i>→</i></a>
-          </div>
-          <div class="notice notice-warning" id="deletionNotice" hidden></div>
+          <p class="account-feedback" id="profileFeedback" role="status" aria-live="polite"></p>
         </section>
 
-        <section class="account-panel" data-account-panel="profile" hidden>
-          <div class="account-panel-head"><div><p class="eyebrow">PROFILE</p><h2>Your customer details.</h2><p class="muted">Contact and billing details used for VoltTech records.</p></div></div>
-          <form id="profileForm" class="account-form account-form-grid">
-            <label for="profileName">Full name<input id="profileName" autocomplete="name" maxlength="120"></label>
-            <label for="companyName">Company name<input id="companyName" autocomplete="organization" maxlength="160"></label>
-            <label for="profilePhone">Phone / WhatsApp<input id="profilePhone" type="tel" autocomplete="tel" maxlength="40"></label>
-            <label for="profileSuburb">Primary suburb<input id="profileSuburb" autocomplete="address-level3" maxlength="120"></label>
-            <label for="billingEmail">Billing / receipt email<input id="billingEmail" type="email" autocomplete="email"></label>
-            <label for="preferredContact">Preferred contact<select id="preferredContact"><option value="whatsapp">WhatsApp</option><option value="phone">Phone</option><option value="email">Email</option></select></label>
-            <div class="account-form-actions account-grid-span"><button class="button" type="submit">Save profile</button></div>
-          </form>
-        </section>
-
-        <section class="account-panel" data-account-panel="addresses" hidden>
-          <div class="account-panel-head"><div><p class="eyebrow">DELIVERY</p><h2>Saved addresses.</h2><p class="muted">Used for future delivery, collection and on-site work where applicable.</p></div></div>
-          <div class="account-address-list" id="addressList"><p class="muted">Loading saved addresses…</p></div>
-          <div class="account-address-editor">
-            <h3 id="addressFormTitle">Add delivery address</h3>
-            <form id="addressForm" class="account-form account-form-grid">
-              <input id="addressId" type="hidden">
-              <label for="addressLabel">Label<input id="addressLabel" maxlength="80"></label>
-              <label for="recipientName">Recipient<input id="recipientName" autocomplete="name"></label>
-              <label for="addressPhone">Phone<input id="addressPhone" type="tel" autocomplete="tel"></label>
-              <label for="addressLine1">Address line 1<input id="addressLine1" autocomplete="address-line1" required></label>
-              <label for="addressLine2">Address line 2<input id="addressLine2" autocomplete="address-line2"></label>
-              <label for="addressSuburb">Suburb<input id="addressSuburb" autocomplete="address-level3"></label>
-              <label for="addressCity">City<input id="addressCity" autocomplete="address-level2" required></label>
-              <label for="addressProvince">Province<input id="addressProvince" autocomplete="address-level1"></label>
-              <label for="postalCode">Postal code<input id="postalCode" autocomplete="postal-code"></label>
-              <label for="addressCountry">Country<input id="addressCountry" autocomplete="country-name"></label>
-              <label class="account-check account-grid-span" for="defaultShipping"><input id="defaultShipping" type="checkbox"> Use as default delivery address</label>
-              <div class="account-form-actions account-grid-span"><button class="button" type="submit">Save address</button><button class="button button-secondary" id="cancelAddressEdit" type="button" hidden>Cancel edit</button></div>
-            </form>
+        <section class="account-card" aria-labelledby="accountOverviewTitle">
+          <p class="eyebrow">ACCOUNT OVERVIEW</p>
+          <h2 id="accountOverviewTitle">Your VoltTech workspace</h2>
+          <div class="account-stats" id="accountStats">
+            <a href="activity.html"><strong id="statActivity">—</strong><span>Recent activity</span></a>
+            <a href="builds.html"><strong id="statBuilds">—</strong><span>Saved builds</span></a>
+            <a href="quotes.html"><strong id="statQuotes">—</strong><span>Quotes</span></a>
+            <a href="documents.html"><strong id="statDocuments">—</strong><span>Documents</span></a>
           </div>
+          <p class="account-note">Your VoltTech records stay tied to your authenticated account. Use Privacy &amp; Data for export and deletion controls.</p>
         </section>
-
-        <section class="account-panel" data-account-panel="security" hidden>
-          <div class="account-panel-head"><div><p class="eyebrow">SECURITY</p><h2>Account access.</h2><p class="muted">Manage your sign-in email, password recovery and privacy controls.</p></div></div>
-          <div class="account-security-grid">
-            <article class="account-security-card"><h3>Login email</h3><p>Changing your login email may require confirmation.</p><form id="emailForm" class="account-form"><label for="loginEmail">Account email<input id="loginEmail" type="email" autocomplete="email" required></label><button class="button" type="submit">Change email</button></form></article>
-            <article class="account-security-card"><h3>Password</h3><p>Send a secure password-reset link to your account email.</p><button class="button button-secondary" id="passwordReset" type="button">Send password reset</button></article>
-            <article class="account-security-card"><h3>Privacy & data</h3><p>Download your personal data or manage the protected account-deletion process.</p><a class="button button-secondary" href="privacy-center.html">Open Privacy & Data</a></article>
-            <article class="account-security-card"><h3>Sign out</h3><p>End this VoltTech session on the current browser.</p><button class="button button-secondary" id="signOut" type="button">Sign out</button></article>
-          </div>
-        </section>
-        <p class="micro account-status" id="hubStatus" role="status" aria-live="polite"></p>
-      </section>
-    </div>
-  </section>
-
-  <dialog class="dialog account-tour" id="accountTour" aria-labelledby="accountTourTitle">
-    <button class="button button-secondary dialog-close" type="button" data-dialog-close aria-label="Close account tour">×</button>
-    <p class="eyebrow" id="accountTourKicker">MY VOLTTECH / 01</p>
-    <h2 id="accountTourTitle">Your account is your control centre.</h2>
-    <p id="accountTourBody" class="muted"></p>
-    <div class="account-tour-progress" id="accountTourProgress"></div>
-    <div class="account-tour-actions"><button class="button button-secondary" id="tourBack" type="button">Back</button><button class="button" id="tourNext" type="button">Next</button></div>
-  </dialog>
+      </div>
+    </section>
+  </div>
 </main>
 <footer class="site-footer">
   <div class="container">
