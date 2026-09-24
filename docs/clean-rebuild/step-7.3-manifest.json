@@ -1,0 +1,35 @@
+{
+  "step": "7.3",
+  "title": "Document/support QA and legacy cleanup",
+  "branch": "clean-rebuild",
+  "parent": "b474112941cff9a4455d719f6e6087b1e57feb6a",
+  "delete": [
+    "document.css",
+    "document-phase4.css",
+    "phase6-customer-provenance.css",
+    "quote-decision.css",
+    "document-print.js",
+    "document-email.js",
+    "quote.js",
+    "invoice.js",
+    "proforma.js",
+    "receipt.js",
+    "order-document.js",
+    "build-document.js",
+    "service-record.js",
+    "personal-data.js",
+    "build-origin-enhancer.js",
+    "customer-origin-enhancer.js",
+    "assets/js/services/document-email.js"
+  ],
+  "supabase_changes": [],
+  "sha256": {
+    "README.md": "50a53ec39b979e380746625428ac67585a2ae80477297003a8287dc325fc5a0c",
+    "assets/css/pages/customer-records.css": "d971a03a1c733fe56f0f338634ed4c0936d0e17fe64a1a676b1441ee132ed7e0",
+    "assets/js/pages/customer-records.js": "516c41c1c884ae3ddd0e1edf225f740a5f2cba0468eab47a61a9a968b4ef69e4",
+    "docs/clean-rebuild/ROADMAP.md": "f7630f6fa189afe0e6819e8ae39feed97826afe3c16a1ea9de9d32e89f5cecd6",
+    "docs/clean-rebuild/step-7.3-QA.md": "efb44cf5da162400838140133d8b72e48aabb82fa7c9c6e6edc1a2029a8479ae",
+    "docs/clean-rebuild/step-7.3-folder.png": "2b09eab51ec0efdf6f2fd3ccbb8073fe545fc83f6fa8ec08e92eb6f652229660",
+    "scripts/test-clean-document-support.mjs": "48392656c0b8c302077122e80b91fe2672409361389e45b501c623ca0e13799f"
+  }
+}
