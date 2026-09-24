@@ -1,7 +1,9 @@
-export const productionOrigins = new Set(['https://volttechcomputerco.github.io', 'https://volttechcomputerco.co.za', 'https://www.volttechcomputerco.co.za']);
+export const canonicalOrigin = 'https://volttechcomputerco.co.za';
+export const productionOrigins = new Set([canonicalOrigin, 'https://www.volttechcomputerco.co.za']);
 export const isProduction = () => productionOrigins.has(location.origin);
 export const sdkUrl = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js';
 
-// Matches the currently deployed commerce Edge Functions. Domain migration must update both ends.
-export const transactionOrigin = 'https://volttechcomputerco.github.io';
+// The browser-side transaction origin now follows the canonical .co.za host.
+// Payment Edge Functions remain launch-gated and must be aligned/certified separately before direct payments are enabled.
+export const transactionOrigin = canonicalOrigin;
 export const canTransactHere = () => location.origin === transactionOrigin;
