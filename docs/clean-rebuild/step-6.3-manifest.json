@@ -1,0 +1,37 @@
+{
+  "step": "6.3",
+  "title": "STATIC publishing and Creator ecosystem closeout",
+  "branch": "clean-rebuild",
+  "parent": "e3243d4bab35e173a860e1cab141b534ffc59c54",
+  "delete": [
+    "creator-hub.css",
+    "creator-network.css",
+    "creator-system.css",
+    "scan-system.css",
+    "service-network.css",
+    "stream-scan.css",
+    "streaming-support.css"
+  ],
+  "supabase_changes": [],
+  "sha256": {
+    ".github/workflows/static-discord-publisher.yml": "836e00eb0f6319733d7476e7c7ed96e797858dc1a6a872bcd1749dd0ad4fe794",
+    ".github/workflows/static-feed-autopilot.yml": "93d80aa94a089778381cce668a6195b62d0fe0d8d794eeba591ec3a5d8d7698c",
+    ".github/workflows/static-publishing-guard.yml": "685a5c1d24cc346df3e871bc6bf9af3d8a93918aeca8104be1aba332abb83499",
+    ".github/workflows/static-sitemap-autopilot.yml": "66a61a83d7da867b79f717c606ea032555c1d81d4f5dc01c24db73d741a60c4a",
+    "README.md": "098a845b1ce6ef250d792f18ad38cbad896e1ffc35dacb703da4cac7e836b904",
+    "assets/css/pages/static-article.css": "7eaf6339f211c39e185dc16ed7ca37270afada4c224f300ff2c771eb24925805",
+    "assets/css/pages/static.css": "05e3dcdb77ef7b5fea4c097f77c3a07516c0be7ea6b846f95c409df9b97e385c",
+    "assets/js/pages/static.js": "20fe1934df6d869b082b752f366bd5038d11d33d7f39af6970758c1b3c720d69",
+    "docs/clean-rebuild/ROADMAP.md": "c2dd6a9d69094c00bf04fa534667143eede85f445ca18f20c76411fed1be121c",
+    "docs/clean-rebuild/STATIC-ARTICLE-TEMPLATE.html": "b252031e484e9caa445a040d72c6ef22e8251309cea0ee88da9ad537f50bebcf",
+    "docs/clean-rebuild/STATIC-PUBLISHING.md": "af65008625520c4de5375e17dff17c18ec8af51de4f98d5fd172889ffdc179c6",
+    "docs/clean-rebuild/step-6.3-QA.md": "e2bb1a064645cc472726216d73f0e324f469331d45593ac103b84843ba38478e",
+    "docs/clean-rebuild/step-6.3-folder.png": "a7caa43cb0e9679bd4783577b461c2c18df0069f5a1e26d30e22afa6a4df587f",
+    "scripts/build-static-feed.py": "015c3b492c259a31c5ae80f09375608f97d773f4bcc1a6745f76c3a65f9d3cb3",
+    "scripts/test-clean-static.mjs": "5637f5452730826b608c93d16f6dad98cf1f21f2c1ecf6d4570b0505d93f43d6",
+    "scripts/validate-static.py": "c339b56dcfcf2a186367b14aaad5d98c2f8451d59918c68d53ef57e4a8f3d74c",
+    "sitemap.xml": "49dd711381fe07f1a2e900d6c7f89ff74f9f20ca9c16e847b42a3a7c00a967ef",
+    "static-feed.xml": "8f17e0b358a0db98083190b702932e13480f6bdc7b21272340b38bc63e410261",
+    "static.html": "6c7342b9604a8f9e4466b0e544036702dfec01acfcbe2690edd327165b8623f0"
+  }
+}
