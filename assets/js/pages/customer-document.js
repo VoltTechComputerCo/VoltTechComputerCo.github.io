@@ -5,11 +5,11 @@ import { setDocumentPrintName, printDocument } from '../services/document-print.
 const q=s=>document.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
 const kind=q('[data-document-kind]')?.dataset.documentKind||'';
-const surface=q('#documentSurface'),status=q('#documentStatus');
+const surface=q('#documentSurface'),status=q('#documentStatus'),pageTitle=q('#documentPageTitle');
 let client=null,user=null,current=null,personalExport=null,pendingAction='';
 
 function brand(title,ref,state,body){
-  return `<article class="document-sheet"><div class="document-top"><div class="document-brand"><img src="logo-badge.png" alt=""><div><h1>VoltTech Computer Co.</h1><p>PC &amp; technology services · Pretoria, Gauteng<br>volttechcomputerco@gmail.com · +27 61 843 5775</p></div></div><div class="document-title"><h2>${esc(title)}</h2><div class="document-ref">${esc(ref||'')}</div>${state?`<p class="document-state">${esc(state)}</p>`:''}</div></div>${body}</article>`;
+  return `<article class="document-sheet"><div class="document-top"><div class="document-brand"><img src="logo-badge.png" alt="" width="512" height="512"><div><p class="document-brand-name">VoltTech Computer Co.</p><p>PC &amp; technology services · Pretoria, Gauteng<br>volttechcomputerco@gmail.com · +27 61 843 5775</p></div></div><div class="document-title"><h2>${esc(title)}</h2><div class="document-ref">${esc(ref||'')}</div>${state?`<p class="document-state">${esc(state)}</p>`:''}</div></div>${body}</article>`;
 }
 const block=(title,html)=>`<div class="document-block"><strong>${esc(title)}</strong><p>${html}</p></div>`;
 const row=(label,value,grand=false)=>`<div class="document-row${grand?' document-grand':''}"><span>${esc(label)}</span><b>${esc(value)}</b></div>`;
@@ -80,7 +80,12 @@ async function loadProduction(){
   if(kind==='service')renderService(result.data);
   if(kind==='personal-data')renderPersonal(result.data);
 }
+function setAccessibleDocumentTitle(){
+  const label={quote:'Quotation',invoice:'Invoice',proforma:'Proforma',receipt:'Payment receipt',order:'Order record',build:'PC build specification',service:'Service record','personal-data':'Personal data report'}[kind]||'Customer document';
+  if(pageTitle) pageTitle.textContent=label;
+}
 async function start(){
+  setAccessibleDocumentTitle();
   q('#printButton')?.addEventListener('click',printDocument);
   q('#downloadJson')?.addEventListener('click',downloadPersonalJson);
   q('#quoteDecisionCancel')?.addEventListener('click',()=>{pendingAction='';q('#quoteDecisionDialog')?.close()});
