@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - v2-rebuild
+      - clean-rebuild
     paths:
       - "static.html"
       - "static-*.html"

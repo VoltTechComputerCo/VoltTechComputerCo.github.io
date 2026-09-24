@@ -1,31 +1,83 @@
 name: STATIC Discord Publisher
+
 on:
   push:
     branches: [main]
     paths: ["static-feed.xml"]
   workflow_dispatch:
+
 permissions:
   contents: read
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Publish newest STATIC article
+        with:
+          fetch-depth: 2
+
+      - name: Publish newest STATIC article only when the lead GUID changes
         env:
           STATIC_DISCORD_WEBHOOK: ${{ secrets.STATIC_DISCORD_WEBHOOK }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
         shell: python
         run: |
-          import json,os,urllib.request,xml.etree.ElementTree as ET
-          item=ET.parse("static-feed.xml").getroot().find("./channel/item")
-          def get(n):
-              x=item.find(n); return (x.text or "").strip() if x is not None else ""
-          title,url,desc=get("title"),get("link"),get("description")
-          media=item.find("{http://search.yahoo.com/mrss/}content")
-          image=media.get("url","").strip() if media is not None else ""
-          embed={"title":title[:256],"url":url,"description":desc[:4096],"color":16757844,"footer":{"text":"STATIC · Tech, gaming & nerd culture"}}
-          if image: embed["image"]={"url":image}
-          payload={"username":"STATIC","content":"🟠 **NEW STATIC SIGNAL**","allowed_mentions":{"parse":[]},"embeds":[embed]}
-          hook=os.environ["STATIC_DISCORD_WEBHOOK"].strip()
-          req=urllib.request.Request(hook+"?wait=true",data=json.dumps(payload).encode(),headers={"Content-Type":"application/json","User-Agent":"STATIC-Publisher/1.1"},method="POST")
+          import json,os,subprocess,urllib.request,xml.etree.ElementTree as ET
+
+          def first_item(xml_text):
+              root=ET.fromstring(xml_text)
+              item=root.find("./channel/item")
+              if item is None:
+                  raise SystemExit("STATIC feed contains no item")
+              def get(n):
+                  x=item.find(n); return (x.text or "").strip() if x is not None else ""
+              media=item.find("{http://search.yahoo.com/mrss/}content")
+              return {
+                  "title":get("title"),
+                  "url":get("link"),
+                  "guid":get("guid"),
+                  "desc":get("description"),
+                  "image":media.get("url","").strip() if media is not None else "",
+              }
+
+          current=first_item(open("static-feed.xml",encoding="utf-8").read())
+          forced=os.environ.get("GITHUB_EVENT_NAME")=="workflow_dispatch"
+
+          if not forced:
+              previous=subprocess.run(
+                  ["git","show","HEAD^:static-feed.xml"],
+                  capture_output=True,text=True,check=False,
+              )
+              if previous.returncode==0:
+                  old=first_item(previous.stdout)
+                  if old["guid"]==current["guid"]:
+                      print("Newest STATIC GUID is unchanged; Discord announcement skipped.")
+                      raise SystemExit(0)
+
+          hook=(os.environ.get("STATIC_DISCORD_WEBHOOK") or "").strip()
+          if not hook:
+              raise SystemExit("STATIC_DISCORD_WEBHOOK is not configured")
+
+          embed={
+              "title":current["title"][:256],
+              "url":current["url"],
+              "description":current["desc"][:4096],
+              "color":16757844,
+              "footer":{"text":"STATIC · Tech, gaming & nerd culture"},
+          }
+          if current["image"]:
+              embed["image"]={"url":current["image"]}
+          payload={
+              "username":"STATIC",
+              "content":"🟠 **NEW STATIC SIGNAL**",
+              "allowed_mentions":{"parse":[]},
+              "embeds":[embed],
+          }
+          req=urllib.request.Request(
+              hook+"?wait=true",
+              data=json.dumps(payload).encode(),
+              headers={"Content-Type":"application/json","User-Agent":"STATIC-Publisher/1.2"},
+              method="POST",
+          )
           urllib.request.urlopen(req,timeout=30).read()

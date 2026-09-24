@@ -5,9 +5,13 @@ on:
     branches:
       - main
       - v2-rebuild
+      - clean-rebuild
     paths:
       - "static.html"
       - "static-*.html"
+      - "static-feed.xml"
+      - "sitemap.xml"
+      - "scripts/build-static-feed.py"
       - "scripts/validate-static.py"
       - ".github/workflows/static-publishing-guard.yml"
   workflow_dispatch:
