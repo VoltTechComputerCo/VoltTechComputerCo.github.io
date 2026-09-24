@@ -11,6 +11,42 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://volttechcomputerco.co.za/"
 OLD = "https://volttechcomputerco.github.io"
 
+# Step 8.3 migrated these articles in place and preserves their individual
+# presentation through extracted legacy stylesheets. New articles use the
+# shared clean STATIC article stylesheet instead.
+LEGACY_ARTICLES = {
+    "static-amd-ryzen-5-5500f-7500-budget-cpus.html",
+    "static-apple-iphone-duo-first-foldable.html",
+    "static-building-a-pc-2026.html",
+    "static-dlss-5-nba-2k27-neural-rendering.html",
+    "static-driver-crashes.html",
+    "static-gpu-price-history.html",
+    "static-lan-culture.html",
+    "static-lego-playstation-1911-piece.html",
+    "static-ltt-best-pc-2026.html",
+    "static-malware-disguises.html",
+    "static-metroid-ravenous-switch-2.html",
+    "static-nopixel-v-rockstar-gta-rp.html",
+    "static-nvidia-hugging-face.html",
+    "static-pc-throttling.html",
+    "static-physint-xbox-publishing.html",
+    "static-ram-myth.html",
+    "static-rpcs3-direct-disc-playback.html",
+    "static-sa-varsity-esports-pretoria-2026.html",
+    "static-scalebound-kamiya.html",
+    "static-silent-pc-build.html",
+    "static-south-african-counter-strike-vs-gaming-masters-2026.html",
+    "static-ssd-vs-hdd-2026.html",
+    "static-starcraft-open-world-shooter-2030.html",
+    "static-tim-sweeney-hardware-crisis.html",
+    "static-valheim-1-0-deep-north-launch.html",
+    "static-white-house-tetris.html",
+    "static-windows-vs-linux-gaming.html",
+    "static-xbox-cloud-gaming-hour-limits.html",
+    "static-xbox-game-pass-september-2026-stacked-lineup.html",
+    "static-zelda-40th-anniversary-direct-today.html",
+}
+
 class Parser(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
@@ -62,9 +98,14 @@ def rss_items():
 def main():
     errors=[]
     articles=sorted(ROOT.glob("static-*.html"))
-    if len(articles)!=30: errors.append(f"Expected 30 STATIC articles; found {len(articles)}.")
+    article_names={p.name for p in articles}
+    missing_history=sorted(LEGACY_ARTICLES-article_names)
+    if missing_history:
+        errors.append("Historical STATIC articles missing: "+", ".join(missing_history))
+
     for path in articles:
         html,p=parse(path); rel=path.name; expected=BASE+rel
+        historical=rel in LEGACY_ARTICLES
         if p.title_count!=1: errors.append(f"{rel}: title count {p.title_count}")
         if p.h1_count!=1: errors.append(f"{rel}: H1 count {p.h1_count}")
         if p.canonical!=expected: errors.append(f"{rel}: canonical mismatch")
@@ -77,10 +118,17 @@ def main():
             if not p.meta.get(key): errors.append(f"{rel}: missing {key}")
         if p.meta.get("og:url")!=expected: errors.append(f"{rel}: og:url mismatch")
         if not any(Path(urlparse(h).path).name=="static.html" for h in p.hrefs): errors.append(f"{rel}: no STATIC home link")
+
         names={Path(urlparse(h).path).as_posix().lstrip("/") for h in p.stylesheets}
-        css=f"assets/css/static-legacy/{path.stem}.css"
         if "assets/css/base.css" not in names: errors.append(f"{rel}: base.css missing")
-        if css not in names or not (ROOT/css).is_file(): errors.append(f"{rel}: migrated stylesheet missing")
+        if historical:
+            css=f"assets/css/static-legacy/{path.stem}.css"
+            if css not in names or not (ROOT/css).is_file(): errors.append(f"{rel}: migrated stylesheet missing")
+        else:
+            if "assets/css/tokens.css" not in names: errors.append(f"{rel}: tokens.css missing for clean article")
+            if "assets/css/pages/static-article.css" not in names: errors.append(f"{rel}: static-article.css missing for clean article")
+            if any(n.startswith("assets/css/static-legacy/") for n in names): errors.append(f"{rel}: new article uses historical legacy CSS")
+
         try:
             objs=jsonld(html)
         except Exception as exc:
@@ -105,11 +153,12 @@ def main():
         if any(u.startswith(OLD) for u in listed): errors.append("Sitemap github.io remains")
     except Exception as exc: errors.append(f"Sitemap parse failed: {exc}")
 
-    print(f"STATIC QA: {len(articles)} article(s)")
+    new_count=len(article_names-LEGACY_ARTICLES)
+    print(f"STATIC QA: {len(articles)} article(s) ({len(LEGACY_ARTICLES)} migrated historical + {new_count} clean new)")
     if errors:
         for e in errors: print("- "+e)
         return 1
-    print("STATIC publishing guard passed with all historical articles migrated.")
+    print("STATIC publishing guard passed for migrated history and clean future articles.")
     return 0
 
 if __name__=="__main__":

@@ -25,13 +25,15 @@ assert(links[0].link.endsWith('/' + lead), 'STATIC lead must match the newest RS
 
 const builder = read('scripts/build-static-feed.py');
 assert(builder.includes('HTMLParser'), 'Feed builder must use HTMLParser');
-assert(builder.includes('HeadMetadataParser'), 'Feed builder metadata parser missing');
+assert(builder.includes('class HeadParser(HTMLParser)'), 'Feed builder metadata parser missing');
+assert(builder.includes('self.meta') && builder.includes('self.canonical'), 'Feed builder head metadata fields missing');
 assert(!builder.includes('META_RE ='), 'Legacy quote-fragile meta regex must not return');
 
 const validator = read('scripts/validate-static.py');
-assert(validator.includes('LEGACY_ARTICLES'), 'Validator must explicitly grandfather historical article debt');
+assert(validator.includes('LEGACY_ARTICLES'), 'Validator must explicitly grandfather historical article presentation');
 assert(validator.includes('static-article.css'), 'Validator must enforce the clean future-article stylesheet');
-assert(validator.includes('article:published_time'), 'Validator must require machine-readable publish dates for new articles');
+assert(validator.includes('article:published_time'), 'Validator must require machine-readable publish dates');
+assert(!validator.includes('len(articles)!=30') && !validator.includes('len(articles) != 30'), 'Validator must allow future STATIC articles beyond the historical 30');
 
 for (const workflow of ['static-feed-autopilot.yml','static-publishing-guard.yml','static-sitemap-autopilot.yml']) {
   const text = read(`.github/workflows/${workflow}`);
@@ -43,10 +45,10 @@ assert(discord.includes('HEAD^:static-feed.xml'), 'Discord publisher must compar
 assert(discord.includes('GUID is unchanged') || discord.includes('guid"]==current["guid'), 'Discord publisher GUID dedupe missing');
 
 const sitemap = read('sitemap.xml');
-assert((sitemap.match(/static(?:-|\.html)/g) || []).length >= 31, 'Sitemap must retain STATIC hub plus 30 articles');
+assert((sitemap.match(/static(?:-|\.html)/g) || []).length >= 31, 'Sitemap must retain STATIC hub plus historical articles');
 
 const contract = read('docs/clean-rebuild/STATIC-PUBLISHING.md');
-assert(contract.includes('new** `static-*.html` article') || contract.includes('**new** `static-*.html` article'), 'STATIC publishing contract missing');
-assert(contract.includes('Discord publishing remains **main-only**'), 'Publishing contract must document Discord boundary');
+assert(contract.includes('New articles use `assets/css/pages/static-article.css`.'), 'STATIC publishing contract missing clean future-article stylesheet');
+assert(contract.includes('RSS, sitemap, publishing guard and Discord automation all use `.co.za`.'), 'Publishing contract must document canonical automation boundary');
 
-console.log('PASS: STATIC hub, feed, publishing workflows and future-article contract');
+console.log('PASS: STATIC hub, feed, migrated-history boundary, future publishing and workflow contracts');
