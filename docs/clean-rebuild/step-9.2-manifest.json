@@ -1,0 +1,23 @@
+{
+  "step": "9.2",
+  "title": "Responsive/device interaction and role-flow QA",
+  "branch": "clean-rebuild",
+  "parent": "e00ff610a7e31459ddc5c2a411fde7fbc5a0e057",
+  "delete": [],
+  "visible_page_changes": [],
+  "workflow": ".github/workflows/device-role-qa.yml",
+  "expected_artifact": "volttech-step-9.2-device-role-qa",
+  "manual_visual_pages": [
+    "index.html",
+    "pc-repair-pretoria.html",
+    "signal-scan.html?source=repair&issue=boot",
+    "account.html?inspect=1"
+  ],
+  "sha256": {
+    ".github/workflows/device-role-qa.yml": "556be5a58e453fe29101eaf927c2d5fa997377c9f124a548e22978c5e2407eaf",
+    "scripts/test-device-role-qa.mjs": "6171f6fb86cc1bb9fd0e174552926c67247b9295932be87db1e24e643e1ea23d",
+    "docs/clean-rebuild/step-9.2-QA.md": "b9112b5ad3a73136be6648f3e6deceb031de47e12366dc4da8264dcdd1bd49d2",
+    "docs/clean-rebuild/ROADMAP.md": "22f5c1ab44fec72dec241d74f2d25f996bbcdbbebaa745b723c1358c9e66bce9",
+    "README.md": "efc6872a39a5af8337397385812be1619f32771d81743b325734b05ad13876de"
+  }
+}
