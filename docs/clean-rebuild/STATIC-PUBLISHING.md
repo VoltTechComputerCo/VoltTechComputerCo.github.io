@@ -30,4 +30,10 @@ Discord publishing remains **main-only**. It announces only when the newest RSS 
 
 ## Domain boundary
 
-Step 6.3 intentionally preserves the existing `volttechcomputerco.github.io` canonical/feed/sitemap base. The canonical domain migration to `volttechcomputerco.co.za` is a Step 8 SEO/domain task and must be done consistently across the whole site rather than piecemeal.
+Step 8.1A moves STATIC publishing infrastructure and the template for all new articles to `https://volttechcomputerco.co.za/`.
+
+The 30 historical articles remain explicitly grandfathered with their old `volttechcomputerco.github.io` canonical tag until their shared-template migration in Step 8.3. During this transition:
+- RSS and sitemap publish the `.co.za` article URLs;
+- the feed builder normalises a grandfathered old article canonical to the `.co.za` URL;
+- the publishing guard warns, rather than fails, only for those 30 known historical canonicals;
+- any new article must use `.co.za` in canonical, Open Graph and JSON-LD metadata.
