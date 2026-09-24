@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 const source=p=>fs.readFileSync(new URL('../'+p, import.meta.url),'utf8');
 const unwrap=s=>s.replace(/^import .*?;\n/gm,'').replace(/^export \{.*?\};\n/gm,'').replaceAll('export ','');
-const c={URL,URLSearchParams,Intl,location:{origin:'https://volttechcomputerco.github.io',href:'https://volttechcomputerco.github.io/checkout.html'},publicProducts:products=>products.filter(p=>p.is_demo===false),esc:s=>String(s).replaceAll('<','&lt;')};
+const c={URL,URLSearchParams,Intl,location:{origin:'https://volttechcomputerco.co.za',href:'https://volttechcomputerco.co.za/checkout.html'},publicProducts:products=>products.filter(p=>p.is_demo===false),esc:s=>String(s).replaceAll('<','&lt;')};
 vm.createContext(c);
 vm.runInContext(unwrap(source('assets/js/services/transactions.js'))+'\nthis.test={checkoutCart,cartFingerprint,eligibleCart,validOrderAccess,statusDestination,paymentDestination,shippingRate,canPay};',c);
 vm.runInContext(unwrap(source('assets/js/components/order-view.js'))+'\nthis.view={money,stageInfo,timeline,trackingLink,orderItems};',c);

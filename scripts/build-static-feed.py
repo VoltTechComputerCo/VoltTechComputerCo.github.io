@@ -11,7 +11,8 @@ import re
 import subprocess
 import xml.etree.ElementTree as ET
 
-BASE = "https://volttechcomputerco.github.io/"
+BASE = "https://volttechcomputerco.co.za/"
+LEGACY_BASE = "https://volttechcomputerco.github.io/"
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "static-feed.xml"
 MAX_ITEMS = 20
@@ -175,7 +176,7 @@ def story(path: Path) -> dict:
     meta = parsed.meta
     return {
         "title": title_for(html, meta),
-        "url": parsed.canonical or BASE + path.name,
+        "url": (BASE + path.name) if parsed.canonical.startswith(LEGACY_BASE) else (parsed.canonical or BASE + path.name),
         "description": description_for(html, meta),
         "image": meta.get("og:image", "").strip(),
         "published": published_at(html, meta, path),

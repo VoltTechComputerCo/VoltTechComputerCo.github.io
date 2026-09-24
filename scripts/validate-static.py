@@ -9,7 +9,8 @@ import sys
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = "https://volttechcomputerco.github.io/"
+BASE = "https://volttechcomputerco.co.za/"
+LEGACY_BASE = "https://volttechcomputerco.github.io/"
 LEGACY_ARTICLES = {
     "static-amd-ryzen-5-5500f-7500-budget-cpus.html",
     "static-apple-iphone-duo-first-foldable.html",
@@ -125,7 +126,11 @@ def main() -> int:
         if not parsed.canonical:
             errors.append(f"{rel}: missing canonical URL.")
         elif parsed.canonical != expected:
-            errors.append(f"{rel}: canonical mismatch. Expected {expected}, got {parsed.canonical}.")
+            legacy_expected = LEGACY_BASE + rel
+            if legacy and parsed.canonical == legacy_expected:
+                warnings.append(f"{rel}: historical github.io canonical remains until Step 8.3 migration.")
+            else:
+                errors.append(f"{rel}: canonical mismatch. Expected {expected}, got {parsed.canonical}.")
         desc = parsed.meta.get("description", "")
         if not desc:
             errors.append(f"{rel}: missing meta description.")
