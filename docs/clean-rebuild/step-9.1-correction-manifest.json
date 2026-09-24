@@ -1,0 +1,43 @@
+{
+  "step": "9.1-correction",
+  "title": "Automated Full Regression QA correction",
+  "branch": "clean-rebuild",
+  "parent": "2bb2257795de565856ed0ae58e9c242fa680a7a4",
+  "first_run": {
+    "workflow_run_id": 36071256137,
+    "passed": 19,
+    "failed": 5,
+    "total": 24
+  },
+  "delete": [],
+  "upload_last": "scripts/run-full-qa.mjs",
+  "expected_workflow": "VoltTech Full QA",
+  "expected_result": "24/24 PASS",
+  "fixes": [
+    "product runtime canonical/OG host residue",
+    "remote Google Fonts on six admin surfaces",
+    "unavailable customer-record email action visibility",
+    "post-Step-8.3 domain test expectations",
+    "STATIC feed parser test expectation",
+    "future STATIC article validation beyond the 30 historical migrated articles"
+  ],
+  "sha256": {
+    "README.md": "ab48996205fb22de88e920227fb547ca3623dd7f05a2ca78021cbcdda70d03c6",
+    "admin-builds.html": "50b13b9391da1dbbdc7661fbf48b2144e31c5d3790086a588188490fa03901b0",
+    "admin-customer.html": "7545f7e156ffa7963862e897f0858ed41145f2a17df5d5f3d57aa11529710517",
+    "admin-customers.html": "f268ec98171814625a0caeb0211159d98628cf9cc1d6aa32ec8dad5710929142",
+    "admin-records.html": "e8b2d11ca920d28f13f72d802570f8a02989e3e7c82b85be9a8eacd7ed9203fb",
+    "admin-store.html": "485ec588af8fb97b3bbb4c383c1fd216dfd32889700f33c9f1968fbdec4c7b75",
+    "admin.html": "8979080face1a4c435bbc05cebf281ca974b0bdba2d74b075c6ac4e9f829ec71",
+    "assets/css/admin-local-fonts.css": "c349390933008e0e6dbfe1d64c4adaff027de1d90a14f453a960925787caa510",
+    "assets/css/pages/customer-records.css": "85276f6a7f30bf616bb23423ddb2654a4ea6c1566110d7e64ba7608afc6e0b60",
+    "assets/js/pages/product.js": "e9aec624d297150eb8a9f1aa9819928f1ed0c10c07c14195292c103c94a09b6c",
+    "docs/clean-rebuild/ROADMAP.md": "2c4d3a43dd1e049a172fb0ab016dbd30f68ca781b5fbcf166942afb9ead772b1",
+    "docs/clean-rebuild/step-9.1-QA.md": "7b480e33f876e18c093898897c1dcb53f5980ea1f70dbdd9e7982803659358f5",
+    "docs/clean-rebuild/step-9.1-correction-folder.png": "495f84a2d0f20d20186e606f5baee4d0731b35607e59295bc4513d45048656c3",
+    "scripts/run-full-qa.mjs": "519072edaffa2d0777f573654bfa6ae869a9493d827b31e432fdb68459ca53e7",
+    "scripts/test-clean-domain.mjs": "b30d52bddd7acc6338a4325710522dff5c47396edc27cb6a680c645ef87ff66b",
+    "scripts/test-clean-static.mjs": "9525b06eaa2e230c15e428c4ddcc4f5e2e0c059fb0c78205f2d943ee502b8d2f",
+    "scripts/validate-static.py": "4b88b1c000df9522d51725b954c7ed8029703d47d198d049147e73a79c1de9b6"
+  }
+}
