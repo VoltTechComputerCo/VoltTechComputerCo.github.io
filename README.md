@@ -1,26 +1,26 @@
-# Step 8.1A — Canonical source + SEO infrastructure
+# Step 8.1B — Generated output sync + active-domain crawl
 
-Objective: move VoltTech's source-of-truth public URL identity from the legacy GitHub host to the live apex domain without mixing in layout, indexing-gate or payment-launch changes.
-
-Previous: Step 7 fully verified at `0c3501d0beefe16e5ce4e1a6d9b6ca897b515f2a`.
-Current: Step 8.1A — packaged.
-Next: Step 8.1B — generated output sync + domain crawl.
+Previous: Step 8.1A verified at `946bc651a447ffea45ea8f3f9d74a228a73b0fc2`.
+Current: Step 8.1B — packaged.
+Next: Step 8.2 — accessibility + performance.
 
 ## Upload
-Upload everything inside `Step 8.1A/` to matching repository paths.
+Upload everything inside `Step 8.1B/` to matching paths on `clean-rebuild`.
 
 Deletions: none.
 Folder placeholders: none.
 Supabase migrations: none.
-Do not create a GitHub Pages `CNAME` file; Cloudflare remains the domain layer.
 
-## Canonical host
-`https://volttechcomputerco.co.za`
+## Important
+This package includes a hidden GitHub Actions file:
 
-## Important transition
-This is source-first. The clean page source heads, global SEO files, STATIC feed/sitemap pipeline and browser production-origin constant migrate now.
+`.github/workflows/clean-frontend-sync.yml`
 
-8.1B immediately follows by syncing generated HTML outputs and running the full active-file crawl. The 30 historical STATIC article canonicals are intentionally left for the shared-template migration in 8.3; sitemap/RSS already normalise those article URLs to `.co.za`.
+Make sure that file is uploaded too.
 
-## No launch-state changes
-Store, Builder and direct-payment gates remain closed.
+Once the package lands on `clean-rebuild`, the action regenerates every clean page from `src/pages/`, migrates the three compatibility outputs, runs the clean frontend checker and runs the old-domain crawler. If generated HTML changed, the action commits those outputs back to `clean-rebuild`.
+
+Do not manually edit generated HTML during this sync.
+
+## No historical STATIC rewrite yet
+The 30 historical `static-*.html` article files remain unchanged until Step 8.3.
