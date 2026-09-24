@@ -22,6 +22,7 @@ const controller=fs.readFileSync(new URL('../assets/js/pages/customer-document.j
 if(controller.includes('create-yoco-checkout'))fail('test checkout exposed in clean document controller');
 if(controller.includes('send-document-email'))fail('missing email backend exposed in controller');
 if(!controller.includes('isAccountInspection'))fail('safe preview contract missing');
+const records=fs.readFileSync(new URL('../assets/js/pages/customer-records.js',import.meta.url),'utf8');
 const recordCss=fs.readFileSync(new URL('../assets/css/pages/customer-records.css',import.meta.url),'utf8');
-if(!recordCss.includes('[data-email-kind][data-email-id]{display:none!important}'))fail('dead record-list email actions are still visible');
+if(records.includes('data-email-kind')||recordCss.includes('data-email-kind'))fail('dead record-list email action residue remains');
 console.log('PASS: clean printable customer document contracts');

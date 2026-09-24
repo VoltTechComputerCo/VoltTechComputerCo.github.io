@@ -42,7 +42,8 @@ for (const workflow of ['static-feed-autopilot.yml','static-publishing-guard.yml
 const discord = read('.github/workflows/static-discord-publisher.yml');
 assert(/branches:\s*\[main\]/.test(discord), 'Discord publisher must remain main-only');
 assert(discord.includes('HEAD^:static-feed.xml'), 'Discord publisher must compare the previous feed');
-assert(discord.includes('GUID is unchanged') || discord.includes('guid"]==current["guid'), 'Discord publisher GUID dedupe missing');
+assert(discord.includes('urlparse'), 'Discord publisher must normalise article URLs before dedupe');
+assert(discord.includes('old_key') && discord.includes('current_key') && discord.includes('old_key==current_key'), 'Discord publisher path dedupe missing');
 
 const sitemap = read('sitemap.xml');
 assert((sitemap.match(/static(?:-|\.html)/g) || []).length >= 31, 'Sitemap must retain STATIC hub plus historical articles');
