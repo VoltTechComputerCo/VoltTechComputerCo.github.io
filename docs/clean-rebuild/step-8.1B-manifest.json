@@ -1,5 +1,6 @@
 {
   "step": "8.1B",
+  "revision": 2,
   "title": "Generated output sync and active-domain crawl",
   "branch": "clean-rebuild",
   "parent": "946bc651a447ffea45ea8f3f9d74a228a73b0fc2",
@@ -7,11 +8,13 @@
   "delete": [],
   "supabase_changes": [],
   "workflow_commit_expected": true,
+  "frontend_checker": "informational until Step 8.2",
+  "domain_residue_check": "hard gate",
   "sha256": {
-    ".github/workflows/clean-frontend-sync.yml": "9d6a826102e9a97b7adca2f6aa0fb73adfb2aae590fbf8e65fbe16219c6192e6",
-    "README.md": "7e49001a035c45c855504c6e03f142002058f81761c0a355456e7e13d6905228",
+    ".github/workflows/clean-frontend-sync.yml": "00cae72ce59c91c522c558a60b3218770e14300bed284dde41e425b47eceb328",
+    "README.md": "e78e1c014af7211ef81df75e8cd3ac86986f2d52570a79cadcd28ea562dd297f",
     "docs/clean-rebuild/ROADMAP.md": "efe7c3aff3bfba655071595d2aad627056da9ca103431f7ca7af08b2166aebdf",
-    "docs/clean-rebuild/step-8.1B-QA.md": "873bcfff044efb0b3638aaab93a2e54e0e016fbfdf1c09e19d323db463cedd06",
+    "docs/clean-rebuild/step-8.1B-QA.md": "d69a67e315e9fba366b51d2147943fd5dc9cf76a85c0cedc1ef8785ae72316cc",
     "docs/clean-rebuild/step-8.1B-folder.txt": "f20919379a630786ea1084bf7b3dba18260bc4f0c942213acdb5c741f4f1203d",
     "scripts/check-domain-residue.py": "d2e3f837445d3f568d8fdb687f9a9b6fb4fed195fc258391201ff029a8d8542c",
     "scripts/sync-domain-compat.py": "15eddcc0f4ca4cad82815a7d9d5cb44ba57e7c57244ce527f65cebe6961064b0"

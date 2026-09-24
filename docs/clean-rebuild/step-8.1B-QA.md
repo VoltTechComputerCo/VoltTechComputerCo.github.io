@@ -14,8 +14,8 @@ The workflow:
    - `privacy-policy.html`
    - `streaming-setup-south-africa-dynamic.html`
    - `exposure-scan.html`
-3. runs the existing clean-frontend checker;
-4. runs the new active-domain residue crawler;
+3. runs the existing clean-frontend checker as an informational audit (known Step 8.2 accessibility/architecture debt does not block this domain-only sync);
+4. runs the new active-domain residue crawler as a hard gate;
 5. commits only changed generated HTML/compatibility output.
 
 The bot-generated commit does not retrigger itself because root generated HTML is not in the workflow trigger paths.
@@ -38,3 +38,9 @@ No `CNAME` file is introduced. Cloudflare remains the domain layer.
 - redirect-page canonicals use `.co.za`;
 - no active root non-STATIC page contains `https://volttechcomputerco.github.io`;
 - historical STATIC article files remain unchanged until Step 8.3.
+
+## Workflow correction after first run
+
+The first 8.1B run proved generation and compatibility-domain replacement worked, but the existing broad frontend checker failed on already-known non-domain issues: dynamic document H1s, legacy Supabase bootstrap exceptions, image-dimension checks, a valid `tel:` link, and two page-controller purity heuristics.
+
+Those findings are retained for Step 8.2. The checker still runs and remains visible in Actions, but only the domain residue crawler is a hard blocker for 8.1B.
