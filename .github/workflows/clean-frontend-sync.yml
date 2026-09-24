@@ -9,6 +9,7 @@ on:
       - "src/pages/**"
       - "src/templates/**"
       - "scripts/build-clean-frontend.py"
+      - "scripts/check-clean-frontend.py"
       - "scripts/sync-domain-compat.py"
       - "scripts/check-domain-residue.py"
       - ".github/workflows/clean-frontend-sync.yml"
@@ -36,8 +37,7 @@ jobs:
       - name: Sync compatibility-page domain metadata
         run: python scripts/sync-domain-compat.py
 
-      - name: Audit clean frontend structure
-        continue-on-error: true
+      - name: Check clean frontend accessibility and structure
         run: python scripts/check-clean-frontend.py
 
       - name: Check canonical-domain residue
