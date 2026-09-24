@@ -1,30 +1,23 @@
-# Step 8.2 — Accessibility + performance
+# Step 8.2 Correction
 
-Previous: Step 8.1B fully verified at `7087681ad359a38ae1bcaa6704c99944aab52519`.
-Current: Step 8.2 — packaged.
-Next: Step 8.3 — historical STATIC + final SEO/residue QA.
+The Step 8.2 workflow reduced the hard accessibility checker to one remaining issue:
 
-## Upload
-Upload everything inside `Step 8.2/` to matching paths on `clean-rebuild`.
+`account.html: image needs intrinsic width and height`
 
-Deletions: none.
-Folder placeholders: none.
-Supabase migrations: none.
+The affected image is the hidden customer avatar. Its CSS reserves a 3.5rem × 3.5rem square, so this correction adds:
 
-## Important hidden file
-This package updates:
+`width="56" height="56"`
 
-`.github/workflows/clean-frontend-sync.yml`
+to `#accountAvatar`.
 
-Make sure it is uploaded.
+Upload only:
 
-## What happens after upload
-The existing clean frontend sync workflow regenerates the 8 printable document pages and 5 service pages from source, then runs:
-1. the full clean accessibility/structure checker as a hard gate;
-2. the `.co.za` domain-residue checker as a hard gate;
-3. the generated-output commit only if both pass.
+`src/pages/account.html`
 
-Expected bot commit:
-`chore: sync clean frontend outputs`
+to the matching path on `clean-rebuild`.
 
-No visual redesign, customer-data change or launch-state change is part of this step.
+This path already exists. No folder placeholder is required.
+No deletions.
+No Supabase changes.
+
+Because `src/pages/**` is watched by the clean frontend sync workflow, this upload should automatically regenerate `account.html`, rerun the hard accessibility checker, rerun the domain residue checker, and commit generated output if all checks pass.
