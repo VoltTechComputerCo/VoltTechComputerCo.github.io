@@ -1,0 +1,19 @@
+{
+  "step": "9.1",
+  "title": "Automated Full Regression QA",
+  "branch": "clean-rebuild",
+  "parent": "d5c6d921eedef89b1beca52c70f42a86b1480c42",
+  "delete": [],
+  "visible_page_changes": [],
+  "workflow": ".github/workflows/full-qa.yml",
+  "expected_artifact": "volttech-step-9.1-qa",
+  "sha256": {
+    ".github/workflows/full-qa.yml": "035e83de50f93234972fdd7628af1b31fa0c144353755b4606656ea6a0285c97",
+    "README.md": "f7943a16b3d7e3dbcfb04dff602d4a28f56db2eaeb007584e6680c082a3c0e1f",
+    "docs/clean-rebuild/ROADMAP.md": "1eb5945a4abe6f1dddbcf28e784c04a76564aa77d86dff36cf27bd2f24f4c9f2",
+    "docs/clean-rebuild/step-9.1-QA.md": "d57687efed8c73da7910d55ba418cefe5a273e22d3aedac48a38603cae87f4e4",
+    "docs/clean-rebuild/step-9.1-folder.png": "bcb3aca680c4be8c8c9c400ea6334265cfeebe0d3fb04208282614b6b51bf313",
+    "scripts/check-full-site.py": "ccd9bea975398c43d9d4459a278572e6ca62d6c908d601e43abf07e86139ccfc",
+    "scripts/run-full-qa.mjs": "91699dea9717ef22f8b753e272d6bd0bed8b7403a2e8a5a0e93e1b32acc66f80"
+  }
+}

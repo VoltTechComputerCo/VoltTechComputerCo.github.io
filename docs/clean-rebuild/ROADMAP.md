@@ -1,14 +1,14 @@
 # VoltTech master roadmap
 
-Current major Step: **Step 8 — SEO, accessibility and performance (8.3 packaged)**.
+Current major Step: **Step 9 — Full QA (9.1 packaged)**.
 
-Steps 0–7: complete.
-Step 8.1A: complete.
-Step 8.1B: complete.
-Step 8.2: complete and hard accessibility/domain workflow gates pass.
-Step 8.3: packaged — historical STATIC migration and final SEO/residue cleanup.
+Steps 0–8: complete through Step 8.3 historical STATIC migration and final SEO/residue cleanup.
 
-Next after verification: **Step 9 — Full QA**.
+Step 9.1: packaged — automated full regression QA across all existing clean-rebuild suites plus repo-wide built/public HTML/link/metadata integrity.
+Step 9.2: next — responsive/device interaction and role-flow QA.
+Step 9.3: queued — failure-state, retry, disabled-commerce/payment and release-blocker certification.
+
+Next after Step 9 verification: **Step 10 — Release Candidate**.
 
 Release blockers carried forward:
 - Store, Builder and direct payments remain disabled.
