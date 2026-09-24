@@ -1,23 +1,22 @@
-# Step 8.2 Correction
+# VoltTech clean rebuild
 
-The Step 8.2 workflow reduced the hard accessibility checker to one remaining issue:
+Branch: `clean-rebuild`
 
-`account.html: image needs intrinsic width and height`
+Current phase: **Step 8.3 — historical STATIC + final SEO/residue cleanup**.
 
-The affected image is the hidden customer avatar. Its CSS reserves a 3.5rem × 3.5rem square, so this correction adds:
+Verified through Step 8.2: clean frontend foundation, commerce foundation, PC Builder, services/Signal Scan, customer accounts/records/documents, Creator Hub/streaming, STATIC hub, legal/support, `.co.za` canonical migration and hard accessibility/domain gates.
 
-`width="56" height="56"`
+## Upload
+Upload everything inside `Step 8.3/` to matching repository paths.
 
-to `#accountAvatar`.
+Delete exactly:
+`correction-manifest.json`
 
-Upload only:
+No folder placeholders are required. The migration workflow creates `assets/css/static-legacy/` itself.
 
-`src/pages/account.html`
+**Upload `.github/workflows/static-history-migration.yml` before `scripts/migrate-static-history.py`.** The script upload triggers the migration automatically. If your phone uploads them in the opposite order, simply upload `scripts/migrate-static-history.py` one more time after the workflow exists.
 
-to the matching path on `clean-rebuild`.
+Expected bot commit:
+`chore: migrate historical STATIC articles`
 
-This path already exists. No folder placeholder is required.
-No deletions.
-No Supabase changes.
-
-Because `src/pages/**` is watched by the clean frontend sync workflow, this upload should automatically regenerate `account.html`, rerun the hard accessibility checker, rerun the domain residue checker, and commit generated output if all checks pass.
+Next after verification: Step 9 — full responsive, role, payment, retry and regression QA.
