@@ -1,0 +1,60 @@
+name: Clean frontend source sync
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "src/pages/**"
+      - "src/templates/**"
+      - "scripts/build-clean-frontend.py"
+      - "scripts/sync-domain-compat.py"
+      - "scripts/check-domain-residue.py"
+      - ".github/workflows/clean-frontend-sync.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: clean-frontend-sync-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    if: github.ref == 'refs/heads/clean-rebuild'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out clean rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate source-owned pages
+        run: python scripts/build-clean-frontend.py
+
+      - name: Sync compatibility-page domain metadata
+        run: python scripts/sync-domain-compat.py
+
+      - name: Check clean frontend structure
+        run: python scripts/check-clean-frontend.py
+
+      - name: Check canonical-domain residue
+        run: python scripts/check-domain-residue.py
+
+      - name: Commit generated outputs
+        run: |
+          if git diff --quiet; then
+            echo "Generated frontend is already in sync."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- '*.html' 'builder/index.html'
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No generated HTML changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: sync clean frontend outputs"
+          git push
