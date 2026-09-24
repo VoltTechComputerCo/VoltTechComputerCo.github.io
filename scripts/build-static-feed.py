@@ -3,7 +3,8 @@ from __future__ import annotations
 
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
-from html import escape, unescape
+from html import unescape
+from html.parser import HTMLParser
 from pathlib import Path
 import json
 import re
@@ -16,18 +17,6 @@ OUTPUT = ROOT / "static-feed.xml"
 MAX_ITEMS = 20
 ZA = timezone(timedelta(hours=2))
 
-META_RE = re.compile(
-    r'<meta\s+[^>]*(?:name|property)=["\']([^"\']+)["\'][^>]*content=["\']([^"\']*)["\'][^>]*>',
-    re.I,
-)
-META_RE_REVERSED = re.compile(
-    r'<meta\s+[^>]*content=["\']([^"\']*)["\'][^>]*(?:name|property)=["\']([^"\']+)["\'][^>]*>',
-    re.I,
-)
-CANONICAL_RE = re.compile(
-    r'<link\s+[^>]*rel=["\']canonical["\'][^>]*href=["\']([^"\']+)["\']',
-    re.I,
-)
 TITLE_RE = re.compile(r'<title>(.*?)</title>', re.I | re.S)
 H1_RE = re.compile(r'<h1[^>]*>(.*?)</h1>', re.I | re.S)
 JSONLD_RE = re.compile(
@@ -43,20 +32,36 @@ MONTHS = {
     "oct": 10, "october": 10, "nov": 11, "november": 11, "dec": 12, "december": 12,
 }
 
+
+class HeadMetadataParser(HTMLParser):
+    """Read head metadata without regex-breaking on apostrophes in content."""
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.meta: dict[str, str] = {}
+        self.canonical = ""
+
+    def handle_starttag(self, tag: str, attrs) -> None:
+        data = {str(k).lower(): (v or "") for k, v in attrs}
+        if tag.lower() == "meta":
+            key = (data.get("name") or data.get("property") or "").strip().lower()
+            content = data.get("content", "").strip()
+            if key and content:
+                self.meta[key] = content
+        elif tag.lower() == "link":
+            rel = {part.lower() for part in data.get("rel", "").split()}
+            if "canonical" in rel and data.get("href"):
+                self.canonical = data["href"].strip()
+
+
+def page_metadata(html: str) -> HeadMetadataParser:
+    parser = HeadMetadataParser()
+    parser.feed(html)
+    return parser
+
+
 def text_only(value: str) -> str:
     return re.sub(r"\s+", " ", unescape(TAG_RE.sub("", value or ""))).strip()
 
-def metas(html: str) -> dict[str, str]:
-    out: dict[str, str] = {}
-    for key, value in META_RE.findall(html):
-        out[key.lower()] = unescape(value.strip())
-    for value, key in META_RE_REVERSED.findall(html):
-        out[key.lower()] = unescape(value.strip())
-    return out
-
-def canonical(html: str, path: Path) -> str:
-    m = CANONICAL_RE.search(html)
-    return m.group(1).strip() if m else BASE + path.name
 
 def title_for(html: str, meta: dict[str, str]) -> str:
     if meta.get("og:title"):
@@ -69,6 +74,7 @@ def title_for(html: str, meta: dict[str, str]) -> str:
         return re.sub(r"\s*\|\s*STATIC\s*$", "", text_only(m.group(1)), flags=re.I)
     return "STATIC"
 
+
 def description_for(html: str, meta: dict[str, str]) -> str:
     for key in ("description", "og:description", "twitter:description"):
         if meta.get(key):
@@ -78,6 +84,7 @@ def description_for(html: str, meta: dict[str, str]) -> str:
         if len(clean) >= 60:
             return clean[:280]
     return "A story from STATIC by VoltTech Computer Co."
+
 
 def jsonld_dates(html: str) -> list[str]:
     found = []
@@ -95,11 +102,11 @@ def jsonld_dates(html: str) -> list[str]:
                         found.append(value)
     return found
 
+
 def parse_date_string(value: str) -> datetime | None:
     value = (value or "").strip()
     if not value:
         return None
-
     try:
         dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
         if dt.tzinfo is None:
@@ -118,43 +125,23 @@ def parse_date_string(value: str) -> datetime | None:
     m = re.search(r"\b(20\d{2})-(\d{2})-(\d{2})\b", value)
     if m:
         return datetime(int(m.group(1)), int(m.group(2)), int(m.group(3)), 9, 0, tzinfo=ZA)
-
     return None
 
 
 def visible_publish_date(html: str) -> datetime | None:
-    """
-    Legacy STATIC pages usually place the publication line immediately before
-    the first H1. Prefer that location so dates describing future events in the
-    opening paragraph cannot be mistaken for the article's publish date.
-    """
     h1 = H1_RE.search(html)
     if not h1:
         return None
-
     before = text_only(html[max(0, h1.start() - 900):h1.start()])
-    dates = list(re.finditer(
-        r"\b(\d{1,2})\s+([A-Za-z]{3,9})\s+(20\d{2})\b",
-        before,
-        re.I,
-    ))
+    dates = list(re.finditer(r"\b(\d{1,2})\s+([A-Za-z]{3,9})\s+(20\d{2})\b", before, re.I))
     if dates:
         parsed = parse_date_string(dates[-1].group(0))
         if parsed:
             return parsed
-
     after = text_only(html[h1.end():min(len(html), h1.end() + 700)])
-    m = re.search(
-        r"\b(\d{1,2})\s+([A-Za-z]{3,9})\s+(20\d{2})\b",
-        after,
-        re.I,
-    )
-    if m:
-        parsed = parse_date_string(m.group(0))
-        if parsed:
-            return parsed
+    m = re.search(r"\b(\d{1,2})\s+([A-Za-z]{3,9})\s+(20\d{2})\b", after, re.I)
+    return parse_date_string(m.group(0)) if m else None
 
-    return None
 
 def git_date(path: Path) -> datetime:
     result = subprocess.run(
@@ -164,11 +151,9 @@ def git_date(path: Path) -> datetime:
         capture_output=True,
         check=False,
     )
-    raw = result.stdout.strip()
-    parsed = parse_date_string(raw)
-    if parsed:
-        return parsed
-    return datetime.now(ZA)
+    parsed = parse_date_string(result.stdout.strip())
+    return parsed or datetime.now(ZA)
+
 
 def published_at(html: str, meta: dict[str, str], path: Path) -> datetime:
     candidates = [
@@ -181,30 +166,27 @@ def published_at(html: str, meta: dict[str, str], path: Path) -> datetime:
         parsed = parse_date_string(value)
         if parsed:
             return parsed
+    return visible_publish_date(html) or git_date(path)
 
-    visible = visible_publish_date(html)
-    if visible:
-        return visible
-
-    return git_date(path)
 
 def story(path: Path) -> dict:
     html = path.read_text(encoding="utf-8")
-    meta = metas(html)
+    parsed = page_metadata(html)
+    meta = parsed.meta
     return {
         "title": title_for(html, meta),
-        "url": canonical(html, path),
+        "url": parsed.canonical or BASE + path.name,
         "description": description_for(html, meta),
         "image": meta.get("og:image", "").strip(),
         "published": published_at(html, meta, path),
     }
+
 
 def main() -> None:
     files = sorted(ROOT.glob("static-*.html"))
     stories = [story(path) for path in files]
     stories.sort(key=lambda x: x["published"], reverse=True)
     stories = stories[:MAX_ITEMS]
-
     if not stories:
         raise SystemExit("No STATIC articles found.")
 
@@ -219,17 +201,12 @@ def main() -> None:
         "and enthusiast culture from STATIC by VoltTech Computer Co."
     )
     ET.SubElement(channel, "language").text = "en"
-    ET.SubElement(
-        channel,
-        "{http://www.w3.org/2005/Atom}link",
-        {
-            "href": BASE + "static-feed.xml",
-            "rel": "self",
-            "type": "application/rss+xml",
-        },
-    )
-    latest = stories[0]["published"]
-    ET.SubElement(channel, "lastBuildDate").text = format_datetime(latest)
+    ET.SubElement(channel, "{http://www.w3.org/2005/Atom}link", {
+        "href": BASE + "static-feed.xml",
+        "rel": "self",
+        "type": "application/rss+xml",
+    })
+    ET.SubElement(channel, "lastBuildDate").text = format_datetime(stories[0]["published"])
 
     for item in stories:
         node = ET.SubElement(channel, "item")
@@ -240,17 +217,15 @@ def main() -> None:
         ET.SubElement(node, "pubDate").text = format_datetime(item["published"])
         ET.SubElement(node, "description").text = item["description"]
         if item["image"]:
-            ET.SubElement(
-                node,
-                "{http://search.yahoo.com/mrss/}content",
-                {"url": item["image"], "medium": "image"},
-            )
+            ET.SubElement(node, "{http://search.yahoo.com/mrss/}content", {
+                "url": item["image"], "medium": "image"
+            })
 
     ET.indent(rss, space="  ")
-    xml = ET.tostring(rss, encoding="unicode", xml_declaration=True)
-    OUTPUT.write_text(xml + "\n", encoding="utf-8")
+    OUTPUT.write_text(ET.tostring(rss, encoding="unicode", xml_declaration=True) + "\n", encoding="utf-8")
     ET.parse(OUTPUT)
     print(f"STATIC RSS rebuilt with {len(stories)} article(s). Newest: {stories[0]['title']}")
+
 
 if __name__ == "__main__":
     main()
