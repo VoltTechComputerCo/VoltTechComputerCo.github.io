@@ -37,7 +37,7 @@ jobs:
           import subprocess
           import xml.etree.ElementTree as ET
 
-          BASE = "https://volttechcomputerco.github.io/"
+          BASE = "https://volttechcomputerco.co.za/"
           sitemap_path = Path("sitemap.xml")
           sitemap = sitemap_path.read_text(encoding="utf-8")
           pages = [Path("static.html"), *sorted(Path(".").glob("static-*.html"))]

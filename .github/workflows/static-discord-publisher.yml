@@ -24,6 +24,7 @@ jobs:
         shell: python
         run: |
           import json,os,subprocess,urllib.request,xml.etree.ElementTree as ET
+          from urllib.parse import urlparse
 
           def first_item(xml_text):
               root=ET.fromstring(xml_text)
@@ -51,8 +52,10 @@ jobs:
               )
               if previous.returncode==0:
                   old=first_item(previous.stdout)
-                  if old["guid"]==current["guid"]:
-                      print("Newest STATIC GUID is unchanged; Discord announcement skipped.")
+                  old_key=urlparse(old["url"] or old["guid"]).path.rstrip("/")
+                  current_key=urlparse(current["url"] or current["guid"]).path.rstrip("/")
+                  if old_key and old_key==current_key:
+                      print("Newest STATIC article path is unchanged; Discord announcement skipped.")
                       raise SystemExit(0)
 
           hook=(os.environ.get("STATIC_DISCORD_WEBHOOK") or "").strip()
