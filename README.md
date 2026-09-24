@@ -1,46 +1,26 @@
-# Step 7.3 — Document/support QA + legacy cleanup
+# Step 8.1A — Canonical source + SEO infrastructure
 
-Objective: close Step 7 by making the clean customer record actions consistent with deployed backends and removing the proven-unused legacy document stack.
+Objective: move VoltTech's source-of-truth public URL identity from the legacy GitHub host to the live apex domain without mixing in layout, indexing-gate or payment-launch changes.
 
-Previous: Step 7.2 verified at `b474112941cff9a4455d719f6e6087b1e57feb6a`.
-Current: Step 7.3 — packaged.
-Next after verification: Step 8 — SEO, accessibility and performance.
-
-Branch: `clean-rebuild`.
-Rollback target: `b474112941cff9a4455d719f6e6087b1e57feb6a`.
+Previous: Step 7 fully verified at `0c3501d0beefe16e5ce4e1a6d9b6ca897b515f2a`.
+Current: Step 8.1A — packaged.
+Next: Step 8.1B — generated output sync + domain crawl.
 
 ## Upload
-Upload everything inside `Step 7.3/` to matching repository paths.
+Upload everything inside `Step 8.1A/` to matching repository paths.
 
-Then delete exactly:
-```text
-document.css
-document-phase4.css
-phase6-customer-provenance.css
-quote-decision.css
-document-print.js
-document-email.js
-quote.js
-invoice.js
-proforma.js
-receipt.js
-order-document.js
-build-document.js
-service-record.js
-personal-data.js
-build-origin-enhancer.js
-customer-origin-enhancer.js
-assets/js/services/document-email.js
-```
+Deletions: none.
+Folder placeholders: none.
+Supabase migrations: none.
+Do not create a GitHub Pages `CNAME` file; Cloudflare remains the domain layer.
 
-No folder placeholders are required.
-No Supabase migration or customer-data mutation is part of this package.
+## Canonical host
+`https://volttechcomputerco.co.za`
 
-## What changes
-- Quotes / Builds / Documents clean record cards no longer contain dead Email Copy buttons or document-email event code.
-- Legacy document CSS, old per-document controllers, old print/email helpers and old origin-enhancer scripts are retired.
-- `volttech-dialog.js` is intentionally retained because admin pages still use it.
+## Important transition
+This is source-first. The clean page source heads, global SEO files, STATIC feed/sitemap pipeline and browser production-origin constant migrate now.
 
-## Operational truth
-`send-document-email` is not deployed in Supabase, so email-copy actions stay unavailable.
-The old Yoco invoice checkout remains test-only and is not exposed from the clean customer documents.
+8.1B immediately follows by syncing generated HTML outputs and running the full active-file crawl. The 30 historical STATIC article canonicals are intentionally left for the shared-template migration in 8.3; sitemap/RSS already normalise those article URLs to `.co.za`.
+
+## No launch-state changes
+Store, Builder and direct-payment gates remain closed.
