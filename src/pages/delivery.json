@@ -1,0 +1,12 @@
+{
+  "output": "delivery-collection.html",
+  "title": "Delivery & Collection | VoltTech",
+  "description": "VoltTech delivery, collection, equipment handover and service-area information.",
+  "robots": "noindex, follow",
+  "styles": [
+    "assets/css/pages/legal.css"
+  ],
+  "scripts": [
+    "assets/js/pages/legal.js"
+  ]
+}

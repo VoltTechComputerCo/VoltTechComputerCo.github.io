@@ -1,0 +1,12 @@
+{
+  "output": "privacy.html",
+  "title": "Privacy Notice | VoltTech",
+  "description": "How VoltTech processes customer, account, quotation, support, order and payment-related personal information.",
+  "robots": "noindex, follow",
+  "styles": [
+    "assets/css/pages/legal.css"
+  ],
+  "scripts": [
+    "assets/js/pages/legal.js"
+  ]
+}

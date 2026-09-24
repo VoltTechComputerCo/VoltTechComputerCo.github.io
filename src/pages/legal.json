@@ -1,0 +1,12 @@
+{
+  "output": "legal.html",
+  "title": "Legal & Customer Information | VoltTech",
+  "description": "VoltTech customer terms, privacy information, returns, delivery, repair authorisation and access-to-information information.",
+  "robots": "noindex, follow",
+  "styles": [
+    "assets/css/pages/legal.css"
+  ],
+  "scripts": [
+    "assets/js/pages/legal.js"
+  ]
+}

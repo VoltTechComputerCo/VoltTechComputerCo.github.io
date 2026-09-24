@@ -1,0 +1,12 @@
+{
+  "output": "quote-terms.html",
+  "title": "Quote Terms | VoltTech",
+  "description": "VoltTech quotation validity, customer approval, payment and document terms.",
+  "robots": "noindex, follow",
+  "styles": [
+    "assets/css/pages/legal.css"
+  ],
+  "scripts": [
+    "assets/js/pages/legal.js"
+  ]
+}

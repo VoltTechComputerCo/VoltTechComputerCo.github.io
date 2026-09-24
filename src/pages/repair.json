@@ -1,0 +1,12 @@
+{
+  "output": "repair-authorisation.html",
+  "title": "Repair Authorisation | VoltTech",
+  "description": "How VoltTech records approval for diagnostics, repair estimates and additional chargeable work.",
+  "robots": "noindex, follow",
+  "styles": [
+    "assets/css/pages/legal.css"
+  ],
+  "scripts": [
+    "assets/js/pages/legal.js"
+  ]
+}
