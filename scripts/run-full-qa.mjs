@@ -116,3 +116,5 @@ console.log(`${summary.passed}/${summary.total} gates passed.`);
 console.log('Evidence written to qa-results/.');
 
 process.exit(failed === 0 ? 0 : 1);
+
+// Step 9.1 correction rerun marker — 2026-09-25.
