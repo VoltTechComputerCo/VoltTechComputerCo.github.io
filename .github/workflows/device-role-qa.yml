@@ -1,0 +1,62 @@
+name: VoltTech Device + Role QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/test-device-role-qa.mjs"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: volttech-device-role-qa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  browser-qa:
+    name: Responsive device and role-flow gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install browser QA runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Start local clean-rebuild server
+        shell: bash
+        run: |
+          mkdir -p qa-results/step-9.2
+          python3 -m http.server 4173 --bind 127.0.0.1 > qa-results/step-9.2/http-server.log 2>&1 &
+          echo $! > qa-results/step-9.2/http-server.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/index.html >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Local QA server did not become ready." >&2
+          exit 1
+
+      - name: Run responsive/device and role-flow QA
+        env:
+          VT_QA_BASE: http://127.0.0.1:4173
+        run: node scripts/test-device-role-qa.mjs
+
+      - name: Upload Step 9.2 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-9.2-device-role-qa
+          path: qa-results/step-9.2/
+          if-no-files-found: warn
+          retention-days: 14
