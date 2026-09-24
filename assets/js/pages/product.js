@@ -20,7 +20,7 @@ async function init() {
     document.querySelector('meta[property="og:title"]').content = document.title;
     document.querySelector('meta[property="og:description"]').content = desc;
     document.getElementById('component-label').textContent = `${p.brand} / ${VT.categoryLabel(p.type)}`;
-    const canonical = 'https://volttechcomputerco.github.io/product.html?slug=' + encodeURIComponent(p.slug);
+    const canonical = 'https://volttechcomputerco.co.za/product.html?slug=' + encodeURIComponent(p.slug);
     document.querySelector('link[rel="canonical"]').href=canonical;
     document.querySelector('meta[property="og:url"]').content=canonical;
     host.hidden = false;
