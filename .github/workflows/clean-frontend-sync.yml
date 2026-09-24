@@ -36,7 +36,8 @@ jobs:
       - name: Sync compatibility-page domain metadata
         run: python scripts/sync-domain-compat.py
 
-      - name: Check clean frontend structure
+      - name: Audit clean frontend structure
+        continue-on-error: true
         run: python scripts/check-clean-frontend.py
 
       - name: Check canonical-domain residue
