@@ -1,3 +1,3 @@
 // VoltTech Step 11.1D staging rerun trigger.
-// Correction: root standalone HTML canonical coverage included.
-console.log('VoltTech Step 11.1D corrected URL normalization trigger ready.');
+// Permission split: workflow file uploaded manually first; bot commits ordinary SEO files only.
+console.log('VoltTech Step 11.1D permission-safe URL normalization trigger ready.');
