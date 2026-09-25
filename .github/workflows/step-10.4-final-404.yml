@@ -1,4 +1,4 @@
-name: VoltTech Step 10.4 Final 404 Output
+name: VoltTech Step 10.4 Final Generated 404
 
 on:
   workflow_dispatch:
@@ -12,17 +12,17 @@ permissions:
   contents: write
 
 concurrency:
-  group: volttech-step-10.4-final-404
+  group: volttech-step-10.4-final-generated-404
   cancel-in-progress: false
 
 jobs:
   finish:
-    name: Publish tracked 404 output and verify live release
+    name: Generate, certify, publish and verify 404
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
     steps:
-      - name: Checkout clean-rebuild
+      - name: Checkout clean-rebuild trigger
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -34,7 +34,7 @@ jobs:
       - name: Fetch production main
         run: git fetch origin main:refs/remotes/origin/main --force
 
-      - name: Prepare 404-only production commit
+      - name: Generate exact 404 on production tree
         run: node /tmp/volttech-final-404.mjs prepare
 
       - name: Verify generated frontend consistency
@@ -58,6 +58,7 @@ jobs:
             if curl -fsS http://127.0.0.1:4173/index.html >/dev/null; then exit 0; fi
             sleep 1
           done
+          echo "Local production-candidate server did not become ready." >&2
           exit 1
 
       - name: Re-run release certification
@@ -65,7 +66,7 @@ jobs:
           VT_QA_BASE: http://127.0.0.1:4173
         run: node scripts/run-step-9.3.mjs
 
-      - name: Certify 404-only promotion
+      - name: Certify generated 404 promotion
         run: node /tmp/volttech-final-404.mjs certify
 
       - name: Re-fetch main immediately before push
@@ -73,7 +74,7 @@ jobs:
           git fetch origin main:refs/remotes/origin/main --force
           node /tmp/volttech-final-404.mjs prepush
 
-      - name: Push only generated 404 to main
+      - name: Push generated 404 to main
         run: |
           git push origin HEAD:main
           node /tmp/volttech-final-404.mjs pushed
@@ -84,7 +85,10 @@ jobs:
           node /tmp/volttech-final-404.mjs verify
 
       - name: Verify real live .co.za release
-        run: node /tmp/volttech-final-404.mjs live
+        shell: bash
+        run: |
+          export VT_EXPECTED_MAIN_SHA="$(git rev-parse HEAD)"
+          node scripts/run-step-10.4.mjs
 
       - name: Upload final release evidence
         if: always()
