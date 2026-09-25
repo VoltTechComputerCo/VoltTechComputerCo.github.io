@@ -27,6 +27,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Run clean-repo full regression
+        run: node scripts/run-full-qa.mjs
+
       - name: Install browser QA runtime
         run: |
           npm install --no-save --no-package-lock playwright@1.56.1
