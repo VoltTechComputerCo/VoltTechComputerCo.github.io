@@ -2,35 +2,38 @@
 
 Branch: `clean-rebuild`
 
-Current phase: **Step 9.3 — Failure, retry and release-blocker certification**.
+Current phase: **Step 10.1 — Release Candidate lock**.
 
-Verified before this package:
-- Step 9.1 Full QA: **24/24**
-- Step 9.2 Device + Role QA: **9/9**
-- Step 9.2 manual mobile visual inspection: **approved**
+Step 9 is fully verified:
+- Full QA: **24/24**
+- Release source: **15/15**
+- Device + Role: **9/9**
+- Release browser: **11/11**
+- Manual mobile visual approval: **approved**
 
 ## Upload
 
-Upload everything inside `Step 9.3/` to matching repository paths.
+Upload everything inside `Step 10.1/` to matching repository paths on `clean-rebuild`.
 
 Delete nothing.
 
 No folder placeholders are required.
 
-Upload `.github/workflows/release-certification.yml` before the test scripts.
+Upload `.github/workflows/release-candidate.yml` before the scripts.
 
-Upload `scripts/run-step-9.3.mjs` **LAST**. That single upload triggers the complete Step 9.3 certification after all support files and blocker documentation are already present.
+Upload `src/pages/home.json` before `scripts/run-step-10.1.mjs`.
 
-Expected workflow:
-`VoltTech Step 9.3 Release Certification`
+Upload `scripts/run-step-10.1.mjs` **LAST**.
 
-Expected artifact:
-`volttech-step-9.3-release-certification`
+That final upload triggers `VoltTech Step 10.1 Release Candidate`.
 
-## What a PASS means
+The workflow may create one bot commit for regenerated `index.html`. This is expected: the homepage release metadata is generated from the clean source.
 
-A green Step 9.3 result means the clean rebuild may proceed to **Step 10 — Release Candidate in non-commerce mode**.
+## Release mode
 
-It does **not** mean Store, Builder, shipping or Yoco are ready for customer launch. Those features remain disabled and their blockers are explicitly carried in `docs/clean-rebuild/RELEASE-BLOCKERS.md`.
+This RC is non-commerce:
+- Store OFF
+- Builder OFF
+- Direct payments OFF
 
-This package changes no customer-facing page or launch setting.
+A Step 10.1 PASS means the branch is ready for Step 10.2 promotion planning. It does not enable ecommerce.
