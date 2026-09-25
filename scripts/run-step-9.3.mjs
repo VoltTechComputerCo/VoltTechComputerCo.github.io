@@ -81,4 +81,4 @@ console.log(`\n=== STEP 9.3 ${summary.status} ===`);
 console.log(summary.meaning);
 process.exit(failed?1:0);
 
-// Step 9.3 harness correction — full repo scan runs before Playwright installation.
+// Step 9.3 final Creator contract assertion correction — 2026-09-25.
