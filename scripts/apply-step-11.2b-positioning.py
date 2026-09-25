@@ -1,3 +1,4 @@
+# TOOL_AREA_RETRY_1
 #!/usr/bin/env python3
 from pathlib import Path
 import re
@@ -10,195 +11,202 @@ css_path = ROOT / "assets/css/pages/home.css"
 home = home_path.read_text(encoding="utf-8")
 css = css_path.read_text(encoding="utf-8")
 
-compact = '''  <section class="stream-support-spotlight" aria-label="VoltTech Stream Support">
-    <div class="container">
-      <a class="stream-support-card" href="{{ROOT}}streaming-setup-south-africa.html">
-        <div class="stream-support-card-media">
-          <img src="{{ROOT}}vt-px-streaming-setup.webp" alt="Streaming and creator setup" width="1200" height="800" loading="lazy">
-          <span class="stream-support-card-badge">STREAM SUPPORT</span>
-        </div>
-        <div class="stream-support-card-copy">
-          <p class="eyebrow">OBS / STREAMLABS / CREATOR TECH</p>
-          <h2>Get your stream dialled in.</h2>
-          <p>Dropped frames, encoder overload, audio routing, capture cards or a full setup—VoltTech helps creators get the whole stream path working properly.</p>
-          <div class="stream-support-card-meta"><span>OBS</span><span>STREAMLABS</span><span>AUDIO</span><span>PERFORMANCE</span></div>
-          <span class="stream-support-card-cta">EXPLORE STREAM SUPPORT <b aria-hidden="true">→</b></span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-'''
-
-# Remove previous oversized feature if it exists.
+# Remove the standalone spotlight near the top of the page.
 home = re.sub(
-    r'\n  <section class="stream-support-feature"[\s\S]*?</section>\n\n',
+    r'\n  <section class="stream-support-spotlight"[\s\S]*?</section>\n\n',
     '\n',
     home,
     count=1
 )
 
-# Insert compact card immediately after hero, before components.
-if 'class="stream-support-spotlight"' not in home:
-    marker = '  <section class="home-section" id="components"'
-    if marker not in home:
-        print("STEP 11.2B COMPACT CARD FAILED")
-        print("- homepage components marker not found")
-        sys.exit(1)
-    home = home.replace(marker, compact + marker, 1)
+mini = '''      <a class="stream-support-mini" href="{{ROOT}}streaming-setup-south-africa.html" aria-label="Explore VoltTech Stream Support">
+        <div class="stream-support-mini-media">
+          <img src="{{ROOT}}vt-px-streaming-setup.webp" alt="Streaming and creator setup" width="1200" height="800" loading="lazy">
+          <span>STREAM SUPPORT</span>
+        </div>
+        <div class="stream-support-mini-copy">
+          <p class="eyebrow">OBS / STREAMLABS / CREATOR TECH</p>
+          <h3>Get your stream dialled in.</h3>
+          <p>Dropped frames, encoder overload, audio, capture cards and creator-PC performance.</p>
+          <span class="stream-support-mini-link">EXPLORE STREAM SUPPORT <b aria-hidden="true">→</b></span>
+        </div>
+      </a>
+'''
 
-if 'class="stream-support-feature"' in home:
-    print("STEP 11.2B COMPACT CARD FAILED")
-    print("- oversized Stream Support feature still remains")
+# Insert into the same tool area as PC Builder and Signal Scan.
+if 'class="stream-support-mini"' not in home:
+    marker = '''        <p class="micro">Guided by your answers. No remote hardware readings.</p>
+      </article>
+    </div>
+  </section>'''
+    replacement = '''        <p class="micro">Guided by your answers. No remote hardware readings.</p>
+      </article>
+''' + mini + '''    </div>
+  </section>'''
+    if marker not in home:
+        print("STEP 11.2B TOOL CARD FAILED")
+        print("- tool-section insertion marker not found")
+        sys.exit(1)
+    home = home.replace(marker, replacement, 1)
+
+if 'class="stream-support-spotlight"' in home:
+    print("STEP 11.2B TOOL CARD FAILED")
+    print("- old standalone spotlight still exists")
     sys.exit(1)
 
 home_path.write_text(home, encoding="utf-8")
 
-compact_css = r'''/* Step 11.2B compact Stream Support spotlight */
-.stream-support-spotlight{
-  padding-block:.85rem;
-  border-bottom:1px solid var(--border-strong);
-  background:var(--black);
+tool_css = r'''/* Step 11.2B compact Stream Support tool card */
+@media(min-width:56.01rem){
+  .builder-panel{
+    grid-column:1;
+    grid-row:1 / span 2;
+  }
+  .scan-panel{
+    grid-column:2;
+    grid-row:1;
+  }
+  .stream-support-mini{
+    grid-column:2;
+    grid-row:2;
+  }
 }
-.stream-support-card{
-  position:relative;
+.stream-support-mini{
   display:grid;
-  grid-template-columns:minmax(180px,.42fr) minmax(0,1fr);
-  min-height:172px;
+  grid-template-columns:118px minmax(0,1fr);
+  min-width:0;
+  min-height:126px;
+  margin:0 0 1.5rem 1.5rem;
   overflow:hidden;
-  border:1px solid rgba(194,140,255,.42);
-  background:linear-gradient(110deg,rgba(96,42,145,.9),rgba(38,20,59,.96) 44%,rgba(10,18,21,.98));
+  border:1px solid rgba(194,140,255,.72);
+  background:
+    linear-gradient(100deg,rgba(194,140,255,.055),transparent 48%),
+    var(--black);
   color:var(--text);
   text-decoration:none;
-  transition:border-color var(--transition),transform var(--transition),background var(--transition);
+  transition:border-color var(--transition),background var(--transition),transform var(--transition);
 }
-.stream-support-card:hover,
-.stream-support-card:focus-visible{
+.stream-support-mini:hover,
+.stream-support-mini:focus-visible{
   color:var(--text);
   border-color:#c28cff;
+  background:
+    linear-gradient(100deg,rgba(194,140,255,.1),transparent 52%),
+    var(--panel-raised);
   transform:translateY(-1px);
   outline:none;
-  background:linear-gradient(110deg,rgba(110,47,166,.95),rgba(45,22,70,.98) 44%,rgba(10,18,21,.98));
 }
-.stream-support-card-media{
+.stream-support-mini-media{
   position:relative;
   min-width:0;
-  overflow:hidden;
-  border-right:1px solid rgba(194,140,255,.28);
+  border-right:1px solid rgba(194,140,255,.34);
 }
-.stream-support-card-media::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,transparent 50%,rgba(42,20,64,.38));
-  pointer-events:none;
-}
-.stream-support-card-media img{
+.stream-support-mini-media img{
   width:100%;
   height:100%;
-  min-height:172px;
+  min-height:124px;
   object-fit:cover;
   object-position:center;
   display:block;
 }
-.stream-support-card-badge{
+.stream-support-mini-media span{
   position:absolute;
-  left:.7rem;
-  bottom:.65rem;
-  z-index:1;
-  padding:.32rem .48rem;
-  border:1px solid rgba(255,255,255,.35);
-  background:rgba(12,7,18,.78);
+  left:.45rem;
+  bottom:.45rem;
+  padding:.25rem .35rem;
+  border:1px solid rgba(218,187,255,.65);
+  background:rgba(9,6,13,.8);
   color:#eadcff;
-  font:600 .56rem/1.2 var(--font-mono);
-  letter-spacing:.09em;
+  font:600 .47rem/1.2 var(--font-mono);
+  letter-spacing:.075em;
 }
-.stream-support-card-copy{
+.stream-support-mini-copy{
   display:flex;
   flex-direction:column;
   justify-content:center;
   min-width:0;
-  padding:1.05rem 1.25rem;
+  padding:.72rem .85rem;
 }
-.stream-support-card-copy .eyebrow{
-  margin:0 0 .45rem;
+.stream-support-mini-copy .eyebrow{
+  margin:0 0 .28rem;
   color:#c28cff;
-  font-size:.58rem;
+  font-size:.49rem;
 }
-.stream-support-card-copy h2{
-  margin:0 0 .5rem;
-  font-size:clamp(1.15rem,2vw,1.8rem);
-  line-height:1.02;
-  letter-spacing:-.025em;
+.stream-support-mini-copy h3{
+  margin:0 0 .28rem;
+  font-size:.95rem;
+  line-height:1.1;
 }
-.stream-support-card-copy>p:not(.eyebrow){
-  max-width:64ch;
+.stream-support-mini-copy>p:not(.eyebrow){
   margin:0;
-  color:rgba(245,241,250,.78);
-  font-size:.76rem;
-  line-height:1.5;
+  color:var(--text-secondary);
+  font-size:.62rem;
+  line-height:1.45;
 }
-.stream-support-card-meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:.35rem;
-  margin-top:.75rem;
-}
-.stream-support-card-meta span{
-  padding:.25rem .4rem;
-  border:1px solid rgba(194,140,255,.25);
-  color:#d9bbff;
-  font:500 .51rem/1 var(--font-mono);
-  letter-spacing:.055em;
-}
-.stream-support-card-cta{
-  align-self:flex-end;
-  margin-top:-1.3rem;
+.stream-support-mini-link{
+  margin-top:.52rem;
   color:#eadcff;
-  font:600 .58rem/1.3 var(--font-mono);
-  letter-spacing:.055em;
+  font:600 .49rem/1.2 var(--font-mono);
+  letter-spacing:.045em;
 }
-.stream-support-card-cta b{
+.stream-support-mini-link b{
   color:#c28cff;
-  font-size:.85rem;
+  font-size:.72rem;
   font-weight:500;
 }
 @media(max-width:56rem){
-  .stream-support-card{grid-template-columns:minmax(150px,.38fr) minmax(0,1fr)}
-  .stream-support-card-copy{padding:.9rem 1rem}
-  .stream-support-card-cta{margin-top:.65rem;align-self:flex-start}
+  .builder-panel,
+  .scan-panel,
+  .stream-support-mini{
+    grid-column:1;
+    grid-row:auto;
+  }
+  .stream-support-mini{
+    margin:0 0 1.5rem;
+    grid-template-columns:minmax(128px,.34fr) minmax(0,1fr);
+    min-height:138px;
+  }
+  .stream-support-mini-media img{
+    min-height:136px;
+  }
 }
 @media(max-width:40rem){
-  .stream-support-spotlight{padding-block:.65rem}
-  .stream-support-card{grid-template-columns:34% minmax(0,1fr);min-height:154px}
-  .stream-support-card-media img{min-height:154px}
-  .stream-support-card-badge{left:.45rem;bottom:.45rem;padding:.25rem .35rem;font-size:.48rem}
-  .stream-support-card-copy{padding:.72rem .75rem}
-  .stream-support-card-copy .eyebrow{font-size:.49rem;margin-bottom:.28rem}
-  .stream-support-card-copy h2{font-size:1.05rem;margin-bottom:.35rem}
-  .stream-support-card-copy>p:not(.eyebrow){
+  .stream-support-mini{
+    margin:0 0 1.25rem;
+    grid-template-columns:34% minmax(0,1fr);
+    min-height:145px;
+  }
+  .stream-support-mini-media img{
+    min-height:143px;
+  }
+  .stream-support-mini-copy{
+    padding:.72rem;
+  }
+  .stream-support-mini-copy h3{
+    font-size:1rem;
+  }
+  .stream-support-mini-copy>p:not(.eyebrow){
     display:-webkit-box;
     -webkit-line-clamp:3;
     -webkit-box-orient:vertical;
     overflow:hidden;
-    font-size:.66rem;
-    line-height:1.4;
+    font-size:.64rem;
   }
-  .stream-support-card-meta{gap:.25rem;margin-top:.5rem}
-  .stream-support-card-meta span{font-size:.45rem;padding:.2rem .28rem}
-  .stream-support-card-meta span:nth-child(n+4){display:none}
-  .stream-support-card-cta{margin-top:.5rem;font-size:.5rem}
 }
 '''
 
-old_pattern = r'/\* Step 11\.2B Stream Support feature \*/[\s\S]*\Z'
+# Replace prior compact spotlight CSS with the tool-card CSS.
+old_pattern = r'/\* Step 11\.2B compact Stream Support spotlight \*/[\s\S]*\Z'
 if re.search(old_pattern, css):
-    css = re.sub(old_pattern, compact_css, css, count=1)
-elif '/* Step 11.2B compact Stream Support spotlight */' not in css:
-    css = css.rstrip() + '\n\n' + compact_css
+    css = re.sub(old_pattern, tool_css, css, count=1)
+elif '/* Step 11.2B compact Stream Support tool card */' not in css:
+    css = css.rstrip() + '\n\n' + tool_css
 
 css_path.write_text(css.rstrip() + '\n', encoding="utf-8")
 
-print("PASS: compact Stream Support spotlight prepared")
+print("PASS: Stream Support moved into the PC Builder / Signal Scan tool area")
+print("- no new asset files")
+print("- no new JavaScript files")
+print("- no new CSS files")
 print("- src/pages/home.html")
 print("- assets/css/pages/home.css")
