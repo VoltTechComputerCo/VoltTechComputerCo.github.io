@@ -2,38 +2,100 @@ import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import { execFileSync } from 'node:child_process';
-const ROOT='https://volttechcomputerco.co.za';
+
+const PROD='https://volttechcomputerco.co.za';
+const GITHUB='https://volttechcomputerco.github.io';
 const git=(...args)=>execFileSync('git',args,{encoding:'utf8'}).trim();
-const EXPECTED_MAIN=process.env.VT_EXPECTED_MAIN_SHA||git('rev-parse','origin/main');
-const outDir=path.resolve('qa-results/step-10.4'); fs.mkdirSync(outDir,{recursive:true});
-const results=[]; let failures=0;
-const record=(name,ok,detail='')=>{const status=ok?'PASS':'FAIL';results.push({name,status,detail});if(!ok)failures++;console.log(`${status}: ${name}${detail?` — ${detail}`:''}`)};
-const assert=(v,m)=>{if(!v)throw new Error(m)};
-const check=async(name,fn)=>{try{await fn();record(name,true)}catch(e){record(name,false,e?.message||String(e))}};
-const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-async function request(pathname,{redirect='follow',expectBody=true}={}){const u=new URL(pathname,ROOT);u.searchParams.set('vt_release_check',EXPECTED_MAIN.slice(0,12));const r=await fetch(u,{redirect,headers:{'user-agent':'VoltTech-Release-Verification/10.4','cache-control':'no-cache'},signal:AbortSignal.timeout(15000)});return{response:r,body:expectBody?await r.text():'',url:u.toString()}}
-async function liveHtml(p){const x=await request(p);assert(x.response.status===200,`${p}: HTTP ${x.response.status}`);assert(x.body.length>500,`${p}: body too short`);return x}
-async function waitFor404(){let last=0;for(let i=1;i<=24;i++){const x=await request('/__volttech_release_check_missing__.html');last=x.response.status;if(last===404&&x.body.includes('VOLTTECH / SIGNAL LOST')&&x.body.includes('That page dropped off the map.'))return;if(i<24)await sleep(5000)}throw new Error(`custom 404 did not propagate; last HTTP ${last}`)}
-const mainHead=git('rev-parse','origin/main'); record('Production main is the expected release SHA',mainHead===EXPECTED_MAIN,`expected=${EXPECTED_MAIN} actual=${mainHead}`);
-await check('HTTPS homepage is reachable',async()=>{const x=await liveHtml('/');assert(x.response.url.startsWith(ROOT),'unexpected final URL')});
-await check('HTTP origin redirects to HTTPS',async()=>{const r=await fetch('http://volttechcomputerco.co.za/',{redirect:'manual',headers:{'user-agent':'VoltTech-Release-Verification/10.4'},signal:AbortSignal.timeout(15000)});assert([301,302,307,308].includes(r.status),`HTTP ${r.status}`);assert((r.headers.get('location')||'').startsWith(ROOT),'unexpected redirect')});
-await check('Live homepage is the clean production-indexable rebuild',async()=>{const {body}=await liveHtml('/');assert(body.includes('data-vt-shell="clean"'),'clean shell missing');assert(body.includes('name="robots" content="index, follow, max-image-preview:large"'),'robots missing');assert(body.includes('<link rel="canonical" href="https://volttechcomputerco.co.za/">'),'canonical missing');assert(body.includes('TUNE YOUR'),'hero marker missing');assert(!body.includes('volttechcomputerco.github.io'),'old host residue')});
-await check('PC Repair live surface is clean and indexable',async()=>{const {body}=await liveHtml('/pc-repair-pretoria.html');assert(body.includes('data-vt-shell="clean"'),'clean shell missing');assert(body.includes('index, follow, max-image-preview:large'),'robots missing');assert(body.includes('https://volttechcomputerco.co.za/pc-repair-pretoria.html'),'canonical missing');assert(body.includes('signal-scan.html'),'Signal Scan handoff missing')});
-await check('Signal Scan live surface is deployed',async()=>{const {body}=await liveHtml('/signal-scan.html?source=repair&issue=boot');assert(body.includes('data-vt-shell="clean"'),'clean shell missing');assert(body.includes('id="panel"'),'panel missing');assert(body.includes('assets/js/pages/signal-scan.js'),'controller missing')});
-await check('STATIC editorial hub and RSS discovery are live',async()=>{const {body}=await liveHtml('/static.html');assert(body.includes('assets/css/pages/static.css'),'STATIC stylesheet missing');assert(body.includes('static-feed.xml'),'RSS discovery missing');assert(body.includes('data-static-lead'),'lead marker missing');assert(body.includes('<link rel="canonical" href="https://volttechcomputerco.co.za/static.html">'),'STATIC canonical missing');assert(!body.includes('volttechcomputerco.github.io'),'old host residue')});
-await check('Store remains live but launch-gated/noindex',async()=>{const {body}=await liveHtml('/store.html');assert(body.includes('data-vt-shell="clean"'),'clean shell missing');assert(body.includes('name="robots" content="noindex, follow"'),'noindex missing');assert(body.includes('id="store-gate"'),'gate missing')});
-await check('PC Builder remains live but launch-gated/noindex',async()=>{const {body}=await liveHtml('/builder/index.html');assert(body.includes('data-vt-shell="clean"'),'clean shell missing');assert(body.includes('name="robots" content="noindex, nofollow"'),'noindex missing');assert(body.includes('id="builderGate"'),'gate missing')});
-await check('Customer Account remains private/noindex with corrected DOM',async()=>{const {body}=await liveHtml('/account.html');assert(body.includes('name="robots" content="noindex, nofollow"'),'noindex missing');assert(body.includes('id="authGate"'),'auth gate missing');assert(body.includes('id="accountHub"'),'hub missing');assert(body.includes('id="profileForm"'),'corrected DOM missing')});
-await check('robots.txt advertises the .co.za sitemap',async()=>{const {response,body}=await request('/robots.txt');assert(response.status===200,`HTTP ${response.status}`);assert(body.includes('Allow: /'),'Allow missing');assert(body.includes('Sitemap: https://volttechcomputerco.co.za/sitemap.xml'),'sitemap directive missing');assert(!body.includes('github.io'),'old host')});
-await check('sitemap.xml is live and .co.za-only',async()=>{const {response,body}=await request('/sitemap.xml');assert(response.status===200,`HTTP ${response.status}`);for(const u of ['https://volttechcomputerco.co.za/','https://volttechcomputerco.co.za/pc-repair-pretoria.html','https://volttechcomputerco.co.za/signal-scan.html','https://volttechcomputerco.co.za/static.html'])assert(body.includes(`<loc>${u}</loc>`),`missing ${u}`);assert(!body.includes('github.io'),'old host')});
-await check('STATIC RSS feed is live and .co.za-only',async()=>{const {response,body}=await request('/static-feed.xml');assert(response.status===200,`HTTP ${response.status}`);assert(body.includes('<rss'),'rss root missing');assert(body.includes('https://volttechcomputerco.co.za/'),'domain missing');assert(!body.includes('github.io'),'old host')});
-await check('Core CSS asset loads from production',async()=>{const {response,body}=await request('/assets/css/tokens.css');assert(response.status===200,`HTTP ${response.status}`);assert(body.includes('--teal'),'token marker missing')});
-await check('Core JavaScript shell loads from production',async()=>{const {response,body}=await request('/assets/js/site-shell.js');assert(response.status===200,`HTTP ${response.status}`);assert(body.includes('navigation'),'shell marker missing')});
-await check('Homepage hero asset loads from production',async()=>{const {response}=await request('/assets/brand/home-hero.webp',{expectBody:false});assert(response.status===200,`HTTP ${response.status}`);assert((response.headers.get('content-type')||'').toLowerCase().includes('image/'),'wrong content type')});
-await check('Unknown live route serves the branded custom 404',waitFor404);
-const summary={step:'10.4',title:'Live .co.za verification',checked_at:new Date().toISOString(),production_origin:ROOT,expected_main_sha:EXPECTED_MAIN,actual_main_sha:mainHead,total:results.length,passed:results.filter(r=>r.status==='PASS').length,failed:failures,status:failures?'FAIL':'PASS',commerce_launch_ready:false,release_mode:'non-commerce',results};
-fs.writeFileSync(path.join(outDir,'step-10.4-summary.json'),JSON.stringify(summary,null,2)+'\n');
-fs.writeFileSync(path.join(outDir,'step-10.4-summary.md'),['# VoltTech Step 10.4 — Live verification','',`Overall: **${summary.status}**`,'',`Production origin: ${ROOT}`,`Main SHA: \`${mainHead}\``,`Passed: ${summary.passed}/${summary.total}`,`Failed: ${summary.failed}/${summary.total}`,'','Release mode: **non-commerce**','Commerce launch ready: **NO**','','| Live check | Result |','| --- | --- |',...results.map(r=>`| ${r.name.replaceAll('|','\\|')} | ${r.status} |`),''].join('\n'));
-console.log(`\n=== STEP 10.4 ${summary.status} ===`);console.log(`${summary.passed}/${summary.total} live checks passed.`);process.exit(failures?1:0);
-// Step 10.4 corrected live verification contract.
-// Step 10.4 post-deployment live rerun marker — 2026-09-25.
+const EXPECTED_MAIN=git('rev-parse','origin/main');
+const outDir=path.resolve('qa-results/step-10.4');
+fs.mkdirSync(outDir,{recursive:true});
+
+async function inspect(base, pathname){
+  const url=new URL(pathname,base);
+  url.searchParams.set('vt_diag',Date.now().toString());
+  const response=await fetch(url,{
+    redirect:'manual',
+    headers:{
+      'user-agent':'VoltTech-Routing-Diagnostic/10.4',
+      'cache-control':'no-cache'
+    },
+    signal:AbortSignal.timeout(15000)
+  });
+  const body=await response.text();
+  const headers={};
+  for(const key of [
+    'server','cf-ray','cf-cache-status','cache-control','content-type',
+    'content-length','location','x-github-request-id','etag','age','via'
+  ]){
+    const value=response.headers.get(key);
+    if(value!==null) headers[key]=value;
+  }
+  return {
+    requested:url.toString(),
+    status:response.status,
+    statusText:response.statusText,
+    headers,
+    markers:{
+      clean_shell:body.includes('data-vt-shell="clean"'),
+      homepage_hero:body.includes('TUNE YOUR'),
+      custom_404:body.includes('VOLTTECH / SIGNAL LOST'),
+      custom_404_heading:body.includes('That page dropped off the map.'),
+      github_404:body.includes("There isn't a GitHub Pages site here.")
+    },
+    title:(body.match(/<title>([^<]*)<\/title>/i)||[])[1]||null,
+    body_length:body.length,
+    body_prefix:body.slice(0,220).replace(/\s+/g,' ')
+  };
+}
+
+const paths=['/','/404.html','/__volttech_release_check_missing__.html'];
+const report={
+  step:'10.4-routing-diagnostic',
+  checked_at:new Date().toISOString(),
+  expected_main_sha:EXPECTED_MAIN,
+  production:{},
+  github_pages:{}
+};
+
+for(const p of paths){
+  report.production[p]=await inspect(PROD,p);
+  report.github_pages[p]=await inspect(GITHUB,p);
+}
+
+fs.writeFileSync(
+  path.join(outDir,'routing-diagnostic.json'),
+  JSON.stringify(report,null,2)+'\n',
+  'utf8'
+);
+
+console.log('=== VOLTTECH ROUTING DIAGNOSTIC ===');
+console.log(JSON.stringify(report,null,2));
+
+const prodMissing=report.production['/__volttech_release_check_missing__.html'];
+const ghMissing=report.github_pages['/__volttech_release_check_missing__.html'];
+const prod404=report.production['/404.html'];
+
+if(prodMissing.status===404 && prodMissing.markers.custom_404){
+  console.log('DIAGNOSIS: production custom 404 is now working.');
+  process.exit(0);
+}
+
+if(ghMissing.status===404 && ghMissing.markers.custom_404 && prodMissing.status===200){
+  console.log('DIAGNOSIS: GitHub Pages 404 works, but the .co.za edge converts the missing route to HTTP 200. Investigate Cloudflare routing/rewrite/SPA fallback.');
+  process.exit(1);
+}
+
+if(prod404.status===200 && prod404.markers.custom_404 && prodMissing.status===200 && prodMissing.markers.homepage_hero){
+  console.log('DIAGNOSIS: custom 404 file is deployed, but missing production routes are being rewritten to the homepage with HTTP 200.');
+  process.exit(1);
+}
+
+if(!prod404.markers.custom_404){
+  console.log('DIAGNOSIS: the custom 404 document is not reaching the .co.za origin.');
+  process.exit(1);
+}
+
+console.log('DIAGNOSIS: routing state is unusual; inspect routing-diagnostic.json.');
+process.exit(1);
+
+// Step 10.4 read-only routing diagnostic trigger.
