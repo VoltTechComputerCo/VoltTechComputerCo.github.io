@@ -1,0 +1,69 @@
+name: VoltTech Step 10.4 Production 404 Fix
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [clean-rebuild]
+    paths: ["scripts/run-step-10.4-hotfix.mjs"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volttech-step-10.4-production-fix
+  cancel-in-progress: false
+
+jobs:
+  hotfix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0, ref: clean-rebuild}
+      - name: Generate clean 404 output
+        run: |
+          python3 scripts/build-clean-frontend.py
+          changed="$(git diff --name-only)"
+          if [ -n "$changed" ] && [ "$changed" != "404.html" ]; then echo "Unexpected generated changes:"; echo "$changed"; exit 1; fi
+          if ! git diff --quiet -- 404.html; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add 404.html
+            git commit -m "release: generate custom 404"
+            git push origin HEAD:clean-rebuild
+          fi
+      - run: git fetch origin main:refs/remotes/origin/main --force
+      - run: node scripts/run-step-10.4-hotfix.mjs prepare
+      - run: python3 scripts/build-clean-frontend.py --check
+      - run: node scripts/run-full-qa.mjs
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - run: |
+          mkdir -p qa-results/step-10.4-hotfix
+          python3 -m http.server 4173 --bind 127.0.0.1 > qa-results/step-10.4-hotfix/http-server.log 2>&1 &
+          for i in {1..30}; do curl -fsS http://127.0.0.1:4173/index.html >/dev/null && exit 0; sleep 1; done
+          exit 1
+      - env: {VT_QA_BASE: http://127.0.0.1:4173}
+        run: node scripts/run-step-9.3.mjs
+      - run: node scripts/run-step-10.4-hotfix.mjs certify
+      - run: |
+          git fetch origin main:refs/remotes/origin/main --force
+          node scripts/run-step-10.4-hotfix.mjs prepush
+      - run: |
+          git push origin HEAD:main
+          node scripts/run-step-10.4-hotfix.mjs pushed
+      - run: |
+          git fetch origin main:refs/remotes/origin/main --force
+          node scripts/run-step-10.4-hotfix.mjs verify
+      - name: Verify real live .co.za deployment
+        run: |
+          export VT_EXPECTED_MAIN_SHA="$(git rev-parse HEAD)"
+          node scripts/run-step-10.4.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-10.4-production-fix
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 60

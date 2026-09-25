@@ -1,0 +1,27 @@
+name: VoltTech Step 10.4 Live Verification
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [clean-rebuild]
+    paths: ["scripts/run-step-10.4.mjs"]
+
+permissions:
+  contents: read
+
+jobs:
+  verify-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0, ref: clean-rebuild}
+      - run: git fetch origin main:refs/remotes/origin/main --force
+      - run: node scripts/run-step-10.4.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-10.4-live-verification
+          path: qa-results/step-10.4/
+          if-no-files-found: warn
+          retention-days: 60

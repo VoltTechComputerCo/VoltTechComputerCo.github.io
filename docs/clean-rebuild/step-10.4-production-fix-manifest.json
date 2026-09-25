@@ -1,0 +1,20 @@
+{
+  "step": "10.4-production-fix",
+  "expected_main": "3eba58456b4a93477f90b1d1fb9673877e0a3479",
+  "pushes_main": true,
+  "force_push": false,
+  "target_live_checks": "17/17",
+  "upload_last": "scripts/run-step-10.4-hotfix.mjs",
+  "sha256": {
+    "README.md": "9541dcac7bbcab9c628a10761be9befad90628229c8651ba5d82765a0993d357",
+    "scripts/run-step-10.4-hotfix.mjs": "8cfdae9e15eeab1d391e4fcd0133942b5dd2c09b9a1497ed9a36cc1c28ffe770",
+    "scripts/run-step-10.4.mjs": "ceac9d10a83147518f383660d6a8bde22be68b7a73b07ac26af0b0a2f6cd004b",
+    ".github/workflows/live-verification.yml": "ab2f6d18eaf66e35c8c59a8968c6324663b5ae37bc1e2a414514454c3dd14831",
+    ".github/workflows/step-10.4-production-fix.yml": "07008b5d7702f114f130f48064c5a2b3b575cbd8524ab40d2ae3d308c11cc2a0",
+    "src/pages/404.html": "ef6624e295aa9285e3fe02483d366121f9c8ce7189c4dc5ee1555857b1adcbaa",
+    "src/pages/404.json": "239f59f0b554982cbd196bef15a2c61d2836a616e15529e9cd484c636ec326dd",
+    "docs/clean-rebuild/ROADMAP.md": "868559701709e9c22467824a3542aeaf151534675f1b3f2ee552f04f3a51cbba",
+    "docs/clean-rebuild/step-10.4-QA.md": "e9530e1147a7afbb90421c8c2faf8266d08acb5624735fc6a6231cd91d1f9fab",
+    "assets/css/pages/error.css": "e26768f61025e26d0bb18d98f9d7f5b29646236702f169afc781f38699253461"
+  }
+}

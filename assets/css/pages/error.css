@@ -1,0 +1,13 @@
+.error-page{min-height:70vh;background:radial-gradient(circle at 18% 12%,rgba(53,234,215,.08),transparent 28%),var(--bg)}
+.error-hero{padding:clamp(4rem,10vw,8rem) 0}
+.error-shell{max-width:72rem}
+.error-code{margin:.35rem 0 0;color:var(--teal);font:700 clamp(5.5rem,20vw,13rem)/.78 var(--font-display);letter-spacing:-.075em}
+.error-page h1{max-width:13ch;margin:1.5rem 0 .9rem;font-size:clamp(2.4rem,6vw,5.25rem);line-height:.94;letter-spacing:-.045em}
+.error-lead{max-width:44rem;margin:0;color:var(--text-secondary);font-size:clamp(1rem,1.7vw,1.15rem);line-height:1.75}
+.error-actions{margin-top:1.6rem}
+.error-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin-top:clamp(2.5rem,6vw,4.5rem)}
+.error-link{display:grid;gap:.35rem;min-height:9rem;padding:1.1rem;text-decoration:none}
+.error-link strong{color:var(--text);font-size:1.05rem}
+.error-link span{color:var(--text-secondary);font-size:.86rem;line-height:1.55}
+.error-link:hover strong,.error-link:focus-visible strong{color:var(--teal)}
+@media(max-width:48rem){.error-links{grid-template-columns:1fr}.error-actions{display:grid}.error-actions .button{width:100%}.error-code{font-size:clamp(5rem,30vw,8rem)}}
