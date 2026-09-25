@@ -61,13 +61,13 @@ def story(path):
     for v in [m.get("article:published_time",""),*dates(html)]:
         pub=parse_date(v)
         if pub:break
-    return {"title":title,"url":p.canonical or BASE+path.name,"description":desc,"image":m.get("og:image",""),"published":pub or git_date(path)}
+    return {"title":title,"url":p.canonical or BASE+path.stem,"description":desc,"image":m.get("og:image",""),"published":pub or git_date(path)}
 def main():
     stories=[story(p) for p in sorted(ROOT.glob("static-*.html"))]
     stories.sort(key=lambda x:x["published"],reverse=True);stories=stories[:MAX_ITEMS]
     ET.register_namespace("atom","http://www.w3.org/2005/Atom");ET.register_namespace("media","http://search.yahoo.com/mrss/")
     rss=ET.Element("rss",{"version":"2.0"});ch=ET.SubElement(rss,"channel")
-    ET.SubElement(ch,"title").text="STATIC — Tech, Gaming & Nerd Culture";ET.SubElement(ch,"link").text=BASE+"static.html"
+    ET.SubElement(ch,"title").text="STATIC — Tech, Gaming & Nerd Culture";ET.SubElement(ch,"link").text=BASE+"static"
     ET.SubElement(ch,"description").text="Breaking tech and gaming stories, PC hardware, performance, security and enthusiast culture from STATIC by VoltTech Computer Co."
     ET.SubElement(ch,"language").text="en";ET.SubElement(ch,"{http://www.w3.org/2005/Atom}link",{"href":BASE+"static-feed.xml","rel":"self","type":"application/rss+xml"})
     ET.SubElement(ch,"lastBuildDate").text=format_datetime(stories[0]["published"])
