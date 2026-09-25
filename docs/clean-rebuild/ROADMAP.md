@@ -1,11 +1,11 @@
 # VoltTech master roadmap
 
-Current major Step: **Step 9 — Full QA (9.2 packaged)**.
+Current major Step: **Step 9 — Full QA (9.2 correction packaged)**.
 
 Steps 0–8: complete through Step 8.3 historical STATIC migration and final SEO/residue cleanup.
 
-Step 9.1: **complete — 24/24 automated full-regression gates passed**.
-Step 9.2: packaged — browser-level responsive/device interaction and public/customer/admin role-flow QA, followed by manual GitHack visual approval.
+Step 9.1: previously verified at **24/24 automated full-regression gates**; rerun is required after the Step 9.2 Account correction.
+Step 9.2: first browser run passed all responsive matrices, Repair/Signal Scan flows and Admin boundary, but exposed an Account source/output DOM regression. Correction packaged and both automated suites will rerun.
 Step 9.3: queued — failure-state, retry, disabled-commerce/payment and release-blocker certification.
 
 Next after Step 9 verification: **Step 10 — Release Candidate**.
