@@ -2,32 +2,35 @@
 
 Branch: `clean-rebuild`
 
-Current phase: **Step 9.2 Correction — Account DOM/source alignment**.
+Current phase: **Step 9.3 — Failure, retry and release-blocker certification**.
 
-The first Step 9.2 browser run passed all responsive matrices, the Repair → Signal Scan journey, Signal Scan completion and the Admin fail-closed boundary. It exposed one real Account regression: the generated Account page and its source template had drifted back to an older DOM that no longer matched the current Account controller.
+Verified before this package:
+- Step 9.1 Full QA: **24/24**
+- Step 9.2 Device + Role QA: **9/9**
+- Step 9.2 manual mobile visual inspection: **approved**
 
 ## Upload
-Upload everything inside `Step 9.2 Correction/` to matching repository paths.
+
+Upload everything inside `Step 9.3/` to matching repository paths.
 
 Delete nothing.
 
-No folder placeholders are required; every destination folder already exists.
+No folder placeholders are required.
 
-### Upload order
-Upload the Account/source/test/documentation files first.
+Upload `.github/workflows/release-certification.yml` before the test scripts.
 
-Upload `scripts/run-full-qa.mjs` **SECOND LAST**. This reruns the 24-gate full regression suite.
+Upload `scripts/run-step-9.3.mjs` **LAST**. That single upload triggers the complete Step 9.3 certification after all support files and blocker documentation are already present.
 
-Upload `scripts/test-device-role-qa.mjs` **LAST**. This reruns the Step 9.2 Chromium device/role suite.
+Expected workflow:
+`VoltTech Step 9.3 Release Certification`
 
-Expected workflows:
-- `VoltTech Full QA`
-- `VoltTech Device + Role QA`
+Expected artifact:
+`volttech-step-9.3-release-certification`
 
-Expected target results:
-- Full QA: **24/24 PASS**
-- Device + Role QA: **9/9 PASS**
+## What a PASS means
 
-No Supabase data/schema, authentication service logic, Store/Builder launch state, payments or other customer-facing pages are altered by this correction.
+A green Step 9.3 result means the clean rebuild may proceed to **Step 10 — Release Candidate in non-commerce mode**.
 
-After both automated runs pass, manually inspect the nominated Step 9.2 GitHack pages before Step 9.3 begins.
+It does **not** mean Store, Builder, shipping or Yoco are ready for customer launch. Those features remain disabled and their blockers are explicitly carried in `docs/clean-rebuild/RELEASE-BLOCKERS.md`.
+
+This package changes no customer-facing page or launch setting.
