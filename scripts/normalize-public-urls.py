@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Normalize VoltTech public SEO URLs to Cloudflare Pages' extensionless contract.
 
-Physical repository files remain .html. Only authoritative public URL signals
-(canonical/OG/JSON-LD/sitemap/RSS generation) become extensionless.
+Physical repository files remain .html. Relative/local navigation paths are left
+alone. Absolute public URLs on the canonical .co.za origin become extensionless.
 """
 from pathlib import Path
 import re
@@ -25,7 +25,6 @@ def write_if_changed(path: Path, content: str):
         changed.append(str(path.relative_to(ROOT)))
 
 def normalize_absolute_urls(text: str) -> str:
-    # Homepage public canonical is the domain root, never /index.
     text = text.replace(f"{ORIGIN}/index.html", f"{ORIGIN}/")
     return ABS_HTML.sub(r"\1", text)
 
@@ -36,19 +35,20 @@ def replace_exact(path: Path, old: str, new: str, label: str):
         return
     write_if_changed(path, text.replace(old, new))
 
-# 1) Generated-page sources: canonical, og:url and JSON-LD absolute URLs.
+# 1) Normalize absolute public URLs in ALL root HTML files.
+# This covers generated pages plus standalone legacy/root surfaces such as
+# exposure-scan.html. Relative href="foo.html" links are deliberately untouched.
+for path in sorted(ROOT.glob("*.html")):
+    write_if_changed(path, normalize_absolute_urls(path.read_text(encoding="utf-8")))
+
+# 2) Normalize generated-page source fragments so rebuilds preserve the contract.
 for path in sorted((ROOT / "src/pages").glob("*.head.html")):
     write_if_changed(path, normalize_absolute_urls(path.read_text(encoding="utf-8")))
 
-# Some source content fragments may contain absolute structured-data/public URLs.
 for path in sorted((ROOT / "src/pages").glob("*.html")):
     write_if_changed(path, normalize_absolute_urls(path.read_text(encoding="utf-8")))
 
-# 2) STATIC hub + articles are standalone pages, not generated from src/pages.
-for path in [ROOT / "static.html", *sorted(ROOT.glob("static-*.html"))]:
-    write_if_changed(path, normalize_absolute_urls(path.read_text(encoding="utf-8")))
-
-# 3) Existing sitemap and STATIC publishing template.
+# 3) Existing sitemap and future STATIC template.
 for rel in (
     "sitemap.xml",
     "docs/clean-rebuild/STATIC-ARTICLE-TEMPLATE.html",
@@ -56,7 +56,7 @@ for rel in (
     path = ROOT / rel
     write_if_changed(path, normalize_absolute_urls(path.read_text(encoding="utf-8")))
 
-# 4) Future RSS fallback/channel URLs must also be extensionless.
+# 4) Future RSS fallback/channel URLs must be extensionless.
 feed_builder = ROOT / "scripts/build-static-feed.py"
 replace_exact(
     feed_builder,
@@ -95,7 +95,7 @@ replace_exact(
     "STATIC sitemap expectation",
 )
 
-# 7) Existing STATIC QA must compare the physical lead href to the public RSS URL.
+# 7) Existing STATIC QA must compare physical lead href to public RSS URL.
 static_test = ROOT / "scripts/test-clean-static.mjs"
 replace_exact(
     static_test,
@@ -126,11 +126,12 @@ if marker not in text:
     )
     write_if_changed(publishing, text)
 
-# Safety scan: authoritative public SEO files must no longer contain absolute .html URLs.
+# Safety scan: no root HTML or authoritative source may retain absolute .html
+# public URLs. Relative/local .html references are intentionally permitted.
 scan_paths = [
+    *sorted(ROOT.glob("*.html")),
     *sorted((ROOT / "src/pages").glob("*.head.html")),
-    ROOT / "static.html",
-    *sorted(ROOT.glob("static-*.html")),
+    *sorted((ROOT / "src/pages").glob("*.html")),
     ROOT / "sitemap.xml",
     ROOT / "docs/clean-rebuild/STATIC-ARTICLE-TEMPLATE.html",
 ]
