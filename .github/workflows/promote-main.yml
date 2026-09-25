@@ -1,0 +1,93 @@
+name: VoltTech Step 10.3 Promote Release Candidate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-10.3.mjs"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volttech-step-10.3-promotion
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    name: Certify and promote clean-rebuild to main
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: clean-rebuild
+
+      - name: Fetch current main
+        run: git fetch origin main:refs/remotes/origin/main --force
+
+      - name: Build exact local promotion merge
+        run: node scripts/run-step-10.3.mjs prepare
+
+      - name: Verify generated frontend on promotion tree
+        run: python3 scripts/build-clean-frontend.py --check
+
+      - name: Run promotion-tree full regression
+        run: node scripts/run-full-qa.mjs
+
+      - name: Install browser QA runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Start promotion-tree local server
+        shell: bash
+        run: |
+          mkdir -p qa-results/step-10.3
+          python3 -m http.server 4173 --bind 127.0.0.1 > qa-results/step-10.3/http-server.log 2>&1 &
+          echo $! > qa-results/step-10.3/http-server.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/index.html >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Local promotion server did not become ready." >&2
+          exit 1
+
+      - name: Re-run complete non-commerce certification
+        env:
+          VT_QA_BASE: http://127.0.0.1:4173
+        run: node scripts/run-step-9.3.mjs
+
+      - name: Final pre-push certification
+        run: node scripts/run-step-10.3.mjs certify
+
+      - name: Re-fetch main immediately before push
+        run: |
+          git fetch origin main:refs/remotes/origin/main --force
+          node scripts/run-step-10.3.mjs prepush
+
+      - name: Promote certified merge to main
+        run: |
+          git push origin HEAD:main
+          node scripts/run-step-10.3.mjs record-push
+
+      - name: Verify remote main promotion
+        run: |
+          git fetch origin main:refs/remotes/origin/main --force
+          node scripts/run-step-10.3.mjs verify-remote
+
+      - name: Upload promotion evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-10.3-main-promotion
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 60
