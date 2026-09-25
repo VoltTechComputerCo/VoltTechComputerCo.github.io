@@ -9,7 +9,6 @@ on:
     paths:
       - "static.html"
       - "static-*.html"
-      - ".github/workflows/static-sitemap-autopilot.yml"
   workflow_dispatch:
 
 permissions:
@@ -55,7 +54,7 @@ jobs:
               return date
 
           for page in pages:
-              url = BASE + page.name
+              url = BASE + page.stem
               lastmod = git_date(page)
               pattern = re.compile(
                   r"(<url><loc>" + re.escape(url) + r"</loc><lastmod>)([^<]+)(</lastmod></url>)"
