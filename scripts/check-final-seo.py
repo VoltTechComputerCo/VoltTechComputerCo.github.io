@@ -15,6 +15,10 @@ for path in sorted(ROOT.glob("*.html")):
     robots=re.search(r'<meta[^>]+name=["\']robots["\'][^>]+content=["\']([^"\']+)',html,re.I)
     indexable=not robots or "noindex" not in robots.group(1).lower()
     if indexable and ("fonts.googleapis.com" in html or "fonts.gstatic.com" in html):errors.append(f"{path.name}: indexable page loads Google Fonts")
+home=(ROOT/"index.html").read_text(encoding="utf-8")
+home_robots=re.search(r'<meta[^>]+name=["\']robots["\'][^>]+content=["\']([^"\']+)',home,re.I)
+if not home_robots or "noindex" in home_robots.group(1).lower():errors.append("index.html: homepage must be indexable for release candidate")
+if "max-image-preview:large" not in (home_robots.group(1).lower() if home_robots else ""):errors.append("index.html: homepage max-image-preview release contract missing")
 for path in sorted((ROOT/"assets/js").rglob("*.js")):
     if OLD in path.read_text(encoding="utf-8"):errors.append(f"{path.relative_to(ROOT)}: runtime JS references github.io")
 for rel in ("robots.txt","sitemap.xml","static-feed.xml"):
@@ -23,4 +27,4 @@ if errors:
     print("FINAL SEO / RESIDUE CHECK FAILED")
     [print("- "+e) for e in errors]
     sys.exit(1)
-print("PASS: final public-domain, font and repository-residue checks")
+print("PASS: final public-domain, homepage-indexing, font and repository-residue checks")
