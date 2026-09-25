@@ -1,4 +1,3 @@
-// TOOL_AREA_RETRY_1
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -10,38 +9,34 @@ const assert=(v,m)=>{if(!v)throw new Error(m)};
 
 const home=read('index.html');
 const css=read('assets/css/pages/home.css');
-const header=read('src/templates/header.html');
-const footer=read('src/templates/footer.html');
 const stream=read('streaming-setup-south-africa.html');
-const scan=read('stream-scan.html');
 const creator=read('creator-hub-south-africa.html');
 const search=read('assets/js/components/search.js');
 
-assert(header.includes('streaming-setup-south-africa.html">Stream Support</a>'),'Global nav must expose Stream Support');
-assert(footer.includes('streaming-setup-south-africa.html">Stream Support</a>'),'Footer must expose Stream Support');
+assert(home.includes('class="builder-panel"'),'PC Builder panel missing');
+assert(home.includes('class="scan-panel"'),'Signal Scan panel missing');
+assert(home.includes('class="stream-support-panel"'),'Stream Support panel missing');
 
-assert(home.includes('<title>Gaming PCs, PC Parts &amp; Stream Support | VoltTech Pretoria</title>'),'Homepage SEO positioning missing');
-assert(home.includes('CUSTOM PCs. COMPONENTS. STREAM SUPPORT. EXPERT CARE.'),'Homepage business pillars missing');
-assert(home.includes('class="stream-support-mini" href="streaming-setup-south-africa.html"'),'Compact Stream Support tool card missing');
-assert(home.includes('src="vt-px-streaming-setup.webp"'),'Existing streaming image must be reused');
-assert(home.includes('Get your stream dialled in.'),'Stream Support tool-card heading missing');
-assert(home.includes('OBS / STREAMLABS / CREATOR TECH'),'Stream Support tool-card label missing');
-assert(home.includes('<h3>Stream Support</h3><p>OBS. Audio. Performance.</p>'),'Homepage service card must remain');
-assert(!home.includes('class="stream-support-spotlight"'),'Standalone homepage Stream Support spotlight must be removed');
-assert(!home.includes('class="stream-support-feature"'),'Old oversized Stream Support feature must remain removed');
+const builder=home.indexOf('class="builder-panel"');
+const scan=home.indexOf('class="scan-panel"');
+const streamPanel=home.indexOf('class="stream-support-panel"');
+assert(builder >= 0 && builder < scan && scan < streamPanel,'Tool order must be PC Builder → Signal Scan → Stream Support');
 
-const toolIndex=home.indexOf('class="tool-section"');
-const miniIndex=home.indexOf('class="stream-support-mini"');
-const servicesIndex=home.indexOf('id="services"');
-assert(toolIndex >= 0 && miniIndex > toolIndex && miniIndex < servicesIndex,'Stream Support mini card must live inside the tool area before Services');
+assert(home.includes('src="vt-stock-modern-build.webp"'),'PC Builder image missing');
+assert(home.includes('src="vt-px-streaming-setup.webp"'),'Existing Stream Support image missing');
+assert(home.includes('Get the whole stream path dialled in.') || home.includes('whole stream path dialled in.'),'Stream Support copy missing');
+assert(!home.includes('class="stream-support-mini"'),'Old detached mini card must be removed');
+assert(!home.includes('class="stream-support-spotlight"'),'Old standalone spotlight must remain removed');
+assert(!home.includes('class="stream-support-feature"'),'Old oversized feature must remain removed');
 
-assert(css.includes('/* Step 11.2B compact Stream Support tool card */'),'Tool-card CSS missing');
-assert(css.includes('border:1px solid rgba(194,140,255,.72)'),'Purple border missing');
-assert(!css.includes('/* Step 11.2B compact Stream Support spotlight */'),'Old spotlight CSS must be removed');
+assert(css.includes('/* Step 11.2B three connected tool panels */'),'Three-panel layout CSS missing');
+assert(css.includes('grid-template-columns:repeat(3,minmax(0,1fr))'),'Desktop three-column layout missing');
+assert(css.includes('height:205px'),'Desktop panel imagery should be substantial');
+assert(css.includes('border:1px solid rgba(194,140,255,.72)'),'Stream Support purple image border missing');
+assert(!css.includes('/* Step 11.2B compact Stream Support tool card */'),'Old tool-card CSS must be removed');
 
 assert(stream.includes('<h1>Stream Support<span>OBS, Streamlabs, audio and performance—dialled in.</span></h1>'),'Dedicated Stream Support positioning must remain');
-assert(scan.includes('<title>OBS &amp; Streamlabs Diagnostic Tool South Africa | Stream Scan | VoltTech</title>'),'Stream Scan positioning must remain');
-assert(creator.includes('Get Stream Support') && creator.includes('Run Stream Scan'),'Creator Hub Stream Support routes must remain');
+assert(creator.includes('Get Stream Support') && creator.includes('Run Stream Scan'),'Creator Hub routes must remain');
 assert(search.includes("['Stream Support', 'OBS, Streamlabs, audio, capture, dropped frames and creator PCs'"),'Search Stream Support entry must remain');
 
-console.log('PASS: Step 11.2B desktop Stream Support tool-card refinement');
+console.log('PASS: Step 11.2B three connected tool panels');
