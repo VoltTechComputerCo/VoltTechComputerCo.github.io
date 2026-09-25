@@ -109,7 +109,7 @@ edit(
 
 edit(
     "src/pages/home.html",
-    '''<h3>Streaming &amp; creators</h3><p>Create. Connect. Go live.</p>''',
+    '''<h3>Streaming & creators</h3><p>Create. Connect. Go live.</p>''',
     '''<h3>Stream Support</h3><p>OBS. Audio. Performance.</p>''',
     "Stream Support service card"
 )
