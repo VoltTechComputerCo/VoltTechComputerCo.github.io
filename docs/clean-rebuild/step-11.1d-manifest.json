@@ -1,0 +1,21 @@
+{
+  "step": "11.1D",
+  "title": "Canonical URL normalization",
+  "staging_branch": "clean-rebuild",
+  "production_branch_changed": false,
+  "public_url_contract": "extensionless",
+  "physical_html_files_retained": true,
+  "customer_facing_visual_changes": false,
+  "backend_changes": false,
+  "upload_last": "scripts/run-step-11.1d.mjs",
+  "expected_workflow": "VoltTech Step 11.1D URL Normalization",
+  "sha256": {
+    ".github/workflows/seo-url-normalization.yml": "e41e9e86dc169dbf58e5a9603ef516ed744b75a6b79510593fe2700b69421ac0",
+    "scripts/normalize-public-urls.py": "2d0ef3435edf35d76dcb72ba6fc06d0a514f6dd8b7e2790a7a2f701f56c17095",
+    "scripts/test-public-url-contract.mjs": "f8f845dba3d7c9c90f9fbce48b157af9d707a137356ca59e5c1ce1f0cbd9cbff",
+    "scripts/run-step-11.1d.mjs": "50aa68e8cd2f28f7e28c41ac0063184baa3eafcd55c89203240471f458786f61",
+    "docs/clean-rebuild/step-11.1d-QA.md": "4b35ea80c21f5e956e9efb37abf8897b89ee075b8a7b104f796fe607701835f2",
+    "docs/clean-rebuild/ROADMAP.md": "508ef41423159165f952388051476b058eacf6892dc845a571cca710d136e0e5",
+    "README.md": "b5701ee71e4ae463a4b708897f69485e14528e4293febd64aebda490aabc36e9"
+  }
+}
