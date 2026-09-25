@@ -1,0 +1,7 @@
+{
+  "step": "11.2B",
+  "title": "Core business positioning",
+  "branch": "clean-rebuild",
+  "production_changed": false,
+  "upload_last": "scripts/run-step-11.2b-positioning.mjs"
+}
