@@ -7,14 +7,21 @@ const root=process.cwd();
 const outDir=path.join(root,'qa-results/step-9.3');
 fs.mkdirSync(outDir,{recursive:true});
 
+const readJson=rel=>{try{return JSON.parse(fs.readFileSync(path.join(root,rel),'utf8'))}catch{return null}};
+const full=readJson('qa-results/step-9.1-summary.json');
+
+const groups=[{
+  name:'Step 9.1 full regression',
+  status:full?.status==='PASS'?'PASS':'FAIL',
+  exit_code:null
+}];
+let failed=groups[0].status==='FAIL'?1:0;
+
 const tasks=[
-  ['Step 9.1 full regression','node',['scripts/run-full-qa.mjs']],
   ['Step 9.3 source/release contracts','node',['scripts/test-release-source.mjs']],
   ['Step 9.2 device + role regression','node',['scripts/test-device-role-qa.mjs']],
   ['Step 9.3 browser failure states','node',['scripts/test-release-browser.mjs']]
 ];
-const groups=[];
-let failed=0;
 
 for(const [name,cmd,args] of tasks){
   console.log(`\n=== ${name} ===`);
@@ -26,8 +33,6 @@ for(const [name,cmd,args] of tasks){
   groups.push({name,status,exit_code:run.status});
 }
 
-const readJson=rel=>{try{return JSON.parse(fs.readFileSync(path.join(root,rel),'utf8'))}catch{return null}};
-const full=readJson('qa-results/step-9.1-summary.json');
 const device=readJson('qa-results/step-9.2/step-9.2-summary.json');
 const source=readJson('qa-results/step-9.3/source-summary.json');
 const browser=readJson('qa-results/step-9.3/browser-summary.json');
@@ -50,6 +55,7 @@ const summary={
   commerce_launch_ready:false,
   meaning:'PASS means safe to proceed to a release candidate only while Store, Builder and direct payments remain disabled.'
 };
+
 fs.writeFileSync(path.join(outDir,'step-9.3-summary.json'),JSON.stringify(summary,null,2)+'\n');
 fs.writeFileSync(path.join(outDir,'step-9.3-summary.md'),[
   '# VoltTech Step 9.3 — Release certification',
@@ -74,3 +80,5 @@ fs.writeFileSync(path.join(outDir,'step-9.3-summary.md'),[
 console.log(`\n=== STEP 9.3 ${summary.status} ===`);
 console.log(summary.meaning);
 process.exit(failed?1:0);
+
+// Step 9.3 harness correction — full repo scan runs before Playwright installation.
