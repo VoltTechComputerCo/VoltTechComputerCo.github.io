@@ -1,17 +1,15 @@
 # VoltTech master roadmap
 
-Current major Step: **Step 9 — Full QA (9.3 packaged)**.
+Current major Step: **Step 10 — Release Candidate / Promotion**.
 
-Steps 0–8: complete through Step 8.3 historical STATIC migration and final SEO/residue cleanup.
+Steps 0–9: complete.
 
-Step 9.1: **complete — 24/24 automated full-regression gates passed**.
-Step 9.2: **complete — 9/9 device/role gates passed and manual mobile visual inspection approved**.
-Step 9.3: packaged — failure-state, retry, disabled-commerce/payment and release-blocker certification.
+Step 10.1: **complete — non-commerce Release Candidate locked and certified**.
+Step 10.2: packaged — controlled local promotion rehearsal from current `main` to `clean-rebuild`; no live push.
+Step 10.3: queued — explicit promotion of the rehearsed merge to `main`.
+Step 10.4: queued — live `https://volttechcomputerco.co.za` smoke test, canonical/robots/sitemap validation and rollback check.
 
-Next after verified Step 9.3: **Step 10 — Release Candidate**.
-
-Release Candidate boundary:
-- The RC is a **non-commerce release**.
-- Store, Builder and direct payments remain disabled.
-- Commerce launch blockers are tracked in `docs/clean-rebuild/RELEASE-BLOCKERS.md`.
-- A green Step 9.3 result does not certify ecommerce launch readiness.
+Promotion safety:
+- `main` must remain at the reviewed head until the rehearsal/promotion pair is complete.
+- Any new main commit invalidates the rehearsal.
+- Store, Builder and direct payments remain disabled throughout this release.
