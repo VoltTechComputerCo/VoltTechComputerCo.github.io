@@ -1,11 +1,27 @@
-# VoltTech clean rebuild
+# VoltTech Computer Co. — Production baseline
 
-Current phase: **Step 10.4 production 404 fix + final live verification**.
+Production release is live at `https://volttechcomputerco.co.za`.
 
-Upload everything in this package to `clean-rebuild`, not `main`. Delete nothing. No placeholder folders required.
+Current work: **Phase 11.1D — Canonical URL normalization**.
 
-Upload workflow/source/CSS/docs first, then `scripts/run-step-10.4.mjs`, and upload `scripts/run-step-10.4-hotfix.mjs` **LAST**.
+Google Search Console confirmed that Cloudflare Pages redirects physical `.html`
+paths to extensionless public URLs. This staging batch aligns canonical metadata,
+sitemap, structured data and STATIC feed automation with the URLs Cloudflare
+actually serves.
 
-The final upload triggers a certified non-force production hotfix. It generates `404.html`, runs Full QA and the full non-commerce certification, verifies `main` is unchanged, pushes the exact clean tree, then checks the real `.co.za` site.
+## Upload target
 
-Target: **17/17 live checks PASS**.
+Upload this Step 11.1D package to **`clean-rebuild` only**.
+
+Do not upload it to `main`.
+
+Upload the workflow, normalizer, URL-contract test and documentation first.
+
+Upload:
+
+`scripts/run-step-11.1d.mjs`
+
+**LAST** to trigger the staging workflow.
+
+The workflow may create one GitHub Actions bot commit on `clean-rebuild` containing
+the normalized SEO files. It does not promote anything to production.
