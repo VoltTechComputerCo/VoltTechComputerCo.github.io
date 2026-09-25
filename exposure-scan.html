@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Browser Exposure Scan | See What Websites Can Learn | VoltTech</title>
 <meta name="description" content="Run VoltTech's free browser exposure demo to see what ordinary websites can learn about your device, browser, hardware, permissions and digital fingerprint — without installing anything.">
-<link rel="canonical" href="https://volttechcomputerco.co.za/exposure-scan.html">
+<link rel="canonical" href="https://volttechcomputerco.co.za/exposure-scan">
 <link rel="icon" type="image/png" href="favicon-512.png">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#05080a">
 <meta property="og:title" content="VoltTech Exposure Scan — What Can a Website See?">
 <meta property="og:description" content="An interactive, privacy-first browser security awareness demo. See what your browser exposes without installing anything.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://volttechcomputerco.co.za/exposure-scan.html">
+<meta property="og:url" content="https://volttechcomputerco.co.za/exposure-scan">
 <meta property="og:image" content="https://volttechcomputerco.co.za/vt-malware.webp">
 <meta property="og:image:alt" content="VoltTech Exposure Scan browser privacy and security awareness tool">
 <meta property="og:site_name" content="VoltTech Computer Co.">
@@ -27,7 +27,7 @@
   "@context":"https://schema.org",
   "@type":"WebApplication",
   "name":"VoltTech Exposure Scan",
-  "url":"https://volttechcomputerco.co.za/exposure-scan.html",
+  "url":"https://volttechcomputerco.co.za/exposure-scan",
   "applicationCategory":"SecurityApplication",
   "operatingSystem":"Any modern web browser",
   "isAccessibleForFree":true,
@@ -490,7 +490,7 @@ $("copyReport").addEventListener("click",async function(){
     "Microphone permission: "+valueOr(report.permissions&&report.permissions.microphone),
     "Demo fingerprint: VT-"+valueOr(report.fingerprint).slice(0,24),
     "",
-    "Generated locally by https://volttechcomputerco.co.za/exposure-scan.html"
+    "Generated locally by https://volttechcomputerco.co.za/exposure-scan"
   ];
   try{
     await navigator.clipboard.writeText(lines.join("\n"));

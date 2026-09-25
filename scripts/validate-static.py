@@ -104,7 +104,7 @@ def main():
         errors.append("Historical STATIC articles missing: "+", ".join(missing_history))
 
     for path in articles:
-        html,p=parse(path); rel=path.name; expected=BASE+rel
+        html,p=parse(path); rel=path.name; expected=BASE+path.stem
         historical=rel in LEGACY_ARTICLES
         if p.title_count!=1: errors.append(f"{rel}: title count {p.title_count}")
         if p.h1_count!=1: errors.append(f"{rel}: H1 count {p.h1_count}")
@@ -147,7 +147,7 @@ def main():
 
     try:
         listed=sitemap_urls()
-        expected={BASE+"static.html",*(BASE+p.name for p in articles)}
+        expected={BASE+"static",*(BASE+p.stem for p in articles)}
         missing=sorted(expected-listed)
         if missing: errors.append("Sitemap missing: "+", ".join(missing))
         if any(u.startswith(OLD) for u in listed): errors.append("Sitemap github.io remains")

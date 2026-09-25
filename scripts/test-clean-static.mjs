@@ -21,7 +21,8 @@ assert(links.length === 20, `STATIC feed must contain 20 items, found ${links.le
 for (const item of links) assert(item.description.length >= 60, `RSS description is too short: ${item.link}`);
 const lead = hub.match(/data-static-lead[^>]*href="([^"]+)"/i)?.[1];
 assert(lead, 'STATIC hub must mark the lead story');
-assert(links[0].link.endsWith('/' + lead), 'STATIC lead must match the newest RSS item');
+const publicLead = lead.replace(/\.html(?=([?#]|$))/, '');
+assert(links[0].link.endsWith('/' + publicLead), 'STATIC lead must match the newest RSS item');
 
 const builder = read('scripts/build-static-feed.py');
 assert(builder.includes('HTMLParser'), 'Feed builder must use HTMLParser');
@@ -46,7 +47,10 @@ assert(discord.includes('urlparse'), 'Discord publisher must normalise article U
 assert(discord.includes('old_key') && discord.includes('current_key') && discord.includes('old_key==current_key'), 'Discord publisher path dedupe missing');
 
 const sitemap = read('sitemap.xml');
-assert((sitemap.match(/static(?:-|\.html)/g) || []).length >= 31, 'Sitemap must retain STATIC hub plus historical articles');
+const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
+assert(sitemapUrls.includes('https://volttechcomputerco.co.za/static'), 'Sitemap must contain extensionless STATIC hub URL');
+assert(sitemapUrls.filter(url => url.includes('/static-')).length >= 30, 'Sitemap must retain historical STATIC articles');
+assert(!sitemapUrls.some(url => /\.html(?:$|[?#])/.test(url)), 'Sitemap public URLs must be extensionless');
 
 const contract = read('docs/clean-rebuild/STATIC-PUBLISHING.md');
 assert(contract.includes('New articles use `assets/css/pages/static-article.css`.'), 'STATIC publishing contract missing clean future-article stylesheet');
