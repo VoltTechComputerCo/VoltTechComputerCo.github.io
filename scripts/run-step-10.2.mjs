@@ -208,3 +208,5 @@ else {
 }
 
 // Step 10.2 promotion rehearsal trigger. Upload this file last.
+
+// Step 10.2 workflow-missing trigger correction — 2026-09-25.
