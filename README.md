@@ -1,31 +1,34 @@
 # VoltTech clean rebuild
 
-Branch: `clean-rebuild`
+Current phase: **Step 10.4 — live `.co.za` verification**.
 
-Current phase: **Step 10.3 — controlled promotion to main**.
+The certified clean rebuild has been promoted to production `main`.
 
-Step 10.2 promotion rehearsal: **PASS**.
+Promoted main:
+`3eba58456b4a93477f90b1d1fb9673877e0a3479`
 
-## This upload can change the live branch
+GitHub Pages deployment for that SHA completed successfully.
 
-Upload everything inside `Step 10.3/` to matching paths on `clean-rebuild`.
+## Upload
+
+Upload everything inside `Step 10.4/` to matching paths on `clean-rebuild`.
+
+Do **not** upload this package to `main`.
 
 Delete nothing.
 
 No folder placeholders are required.
 
-Upload `.github/workflows/promote-main.yml` before the script.
+Upload `.github/workflows/live-verification.yml` before the script.
 
-Upload the documentation files next.
+Upload the documentation next.
 
-Upload `scripts/run-step-10.3.mjs` **LAST ONLY WHEN YOU ARE READY TO PROMOTE**.
+Upload `scripts/run-step-10.4.mjs` **LAST**.
 
-That final upload triggers `VoltTech Step 10.3 Promote Release Candidate`.
+That triggers `VoltTech Step 10.4 Live Verification`.
 
-The workflow will re-run the merge rehearsal and complete release certification before any push. It will abort if `main` moved, if an unexpected conflict exists, if the resulting tree differs from the current clean branch, or if any QA gate fails.
+The workflow makes no repository or backend changes. It only fetches the public production website and records pass/fail evidence.
 
-Only after all checks pass does it push the merge commit to `main` without force.
+After an automated PASS, perform the final phone visual inspection on the real `.co.za` pages.
 
-Store, Builder and direct payments remain disabled after promotion.
-
-Next after a successful push: Step 10.4 live `.co.za` verification.
+Store, Builder and direct payments remain disabled.
