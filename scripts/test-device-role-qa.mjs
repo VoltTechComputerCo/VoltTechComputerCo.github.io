@@ -272,3 +272,5 @@ console.log(`Evidence: ${outDir}`);
 process.exit(failures ? 1 : 0);
 
 // Step 9.2 Account DOM correction rerun — 2026-09-25.
+
+// Step 9.2 final Account avatar correction rerun — 2026-09-25.
