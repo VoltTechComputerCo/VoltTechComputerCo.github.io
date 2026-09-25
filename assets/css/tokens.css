@@ -1,0 +1,39 @@
+/* VoltTech's single design-token source. */
+:root {
+  color-scheme: dark;
+  --bg: #031012;
+  --bg-secondary: #061518;
+  --panel: #07171a;
+  --panel-raised: #0a1d21;
+  --black: #02090a;
+  --teal: #35ead7;
+  --teal-bright: #72fff0;
+  --teal-deep: #1cafa1;
+  --text: #f2f8f7;
+  --text-secondary: #a9beba;
+  --text-muted: #78918d;
+  --metadata: #526d68;
+  --border: rgba(53, 234, 215, .18);
+  --border-strong: rgba(53, 234, 215, .45);
+  --highlight: #ffc55f;
+  --warning: #ffb454;
+  --error: #ff7272;
+  --success: #55e6a5;
+  --font-ui: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --text-xs: .75rem;
+  --text-sm: .875rem;
+  --text-base: 1rem;
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --radius: .25rem;
+  --container: 90rem;
+  --gutter: clamp(1rem, 3vw, 3rem);
+  --transition: 160ms ease;
+}

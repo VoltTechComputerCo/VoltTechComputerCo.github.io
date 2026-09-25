@@ -1,0 +1,12 @@
+{
+  "output": "terms.html",
+  "title": "Service & Sale Terms | VoltTech",
+  "description": "General VoltTech technology-service, account, quotation and future goods-sale terms.",
+  "robots": "noindex, follow",
+  "styles": [
+    "assets/css/pages/legal.css"
+  ],
+  "scripts": [
+    "assets/js/pages/legal.js"
+  ]
+}

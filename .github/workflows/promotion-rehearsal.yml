@@ -1,0 +1,78 @@
+name: VoltTech Step 10.2 Promotion Rehearsal
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-10.2.mjs"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: volttech-step-10.2-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rehearse:
+    name: Rehearse clean-rebuild to main promotion
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout certified clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: clean-rebuild
+
+      - name: Fetch current main
+        run: git fetch origin main:refs/remotes/origin/main --force
+
+      - name: Build local promotion merge
+        run: node scripts/run-step-10.2.mjs prepare
+
+      - name: Verify generated frontend on merged tree
+        run: python3 scripts/build-clean-frontend.py --check
+
+      - name: Run merged-tree full regression
+        run: node scripts/run-full-qa.mjs
+
+      - name: Install browser QA runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Start merged-tree local server
+        shell: bash
+        run: |
+          mkdir -p qa-results/step-10.2
+          python3 -m http.server 4173 --bind 127.0.0.1 > qa-results/step-10.2/http-server.log 2>&1 &
+          echo $! > qa-results/step-10.2/http-server.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/index.html >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Local promotion-rehearsal server did not become ready." >&2
+          exit 1
+
+      - name: Re-run non-commerce release certification on merged tree
+        env:
+          VT_QA_BASE: http://127.0.0.1:4173
+        run: node scripts/run-step-9.3.mjs
+
+      - name: Finalize promotion rehearsal
+        run: node scripts/run-step-10.2.mjs finalize
+
+      - name: Upload promotion rehearsal evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-10.2-promotion-rehearsal
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 30

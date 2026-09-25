@@ -1,0 +1,51 @@
+// Read-only contract tests. Fixture records stay in this test, never in page data.
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const source = name => fs.readFileSync(new URL('../' + name, import.meta.url),'utf8');
+const unwrap = (text, url) => text.replace(/^import .*?;\n/gm,'').replaceAll('export ','').replaceAll('import.meta.url',JSON.stringify(url));
+const context = { URL, Intl, setTimeout, clearTimeout, location:{href:'https://raw.githack.com/test/store.html',origin:'https://raw.githack.com',search:''} };
+vm.createContext(context);
+vm.runInContext(unwrap(source('assets/js/components/catalogue-view.js'),'https://example.test/assets/js/components/catalogue-view.js')+'\nthis.view={safeLink,publicProducts:undefined,commerceState,filterProducts,productCard};', context);
+vm.runInContext(unwrap(source('assets/js/services/catalogue.js'),'https://example.test/assets/js/services/catalogue.js')+'\nthis.publicProducts=publicProducts;',context);
+const { view, publicProducts } = context;
+const real = {id:'test-real',slug:'test-part',name:'Example component',brand:'Example',status:'active',visibility:'public',sale_mode:'quote',is_demo:false,type:'memory',category_slug:'memory',stock_qty:1,stock_status:'in_stock',retail_price:null};
+const demo = {...real,id:'test-demo',is_demo:true};
+assert.equal(publicProducts([real,demo,{...real,is_demo:undefined},{...real,status:'inactive'},{...real,visibility:'private'},{...real,sale_mode:'hidden'}]).length,1,'Public list excludes demo, unclassified and hidden records');
+assert.equal(publicProducts([real,demo],true).length,2,'Verified admin view can inspect fixtures');
+assert.equal(view.safeLink('javascript:alert(1)'), '');
+assert.equal(view.safeLink('data:text/html,hello'), '');
+assert.equal(view.safeLink(''), '');
+assert.ok(view.safeLink('https://example.com/manual.pdf'));
+const VT = {canAdd:()=>true,stockLabel:()=> 'In stock',categoryLabel:x=>x};
+assert.equal(view.commerceState(VT,demo).canAdd,false);
+assert.equal(view.commerceState(VT,real,true).canAdd,false);
+assert.equal(view.commerceState(VT,real).price,'Request pricing');
+assert.equal(view.commerceState(VT,{...real,retail_price:-1}).price,'Request pricing');
+assert.equal(view.commerceState(VT,{...real,retail_price:1250.5,currency:'invalid'}).price,'Request pricing');
+assert.ok(view.commerceState(VT,{...real,retail_price:1250.5,currency:'ZAR'}).price.includes('1'));
+assert.equal(view.filterProducts([real],{category:'memory',brand:'Example',search:'component',sort:'name'}).length,1);
+assert.equal(view.filterProducts([real],{category:'gpu',brand:'',search:'',sort:'featured'}).length,0);
+assert.equal(view.filterProducts([real],{category:'all',brand:'Other',search:'',sort:'featured'}).length,0);
+const card=view.productCard(VT,{...real,name:'<script>alert(1)</script>'},false);
+assert.ok(!card.includes('<script>')); assert.ok(card.includes('&lt;script&gt;'));
+console.log('PASS: public/demo isolation, price validation, safe URLs, escaped product content, category/brand/search filters');
+
+let raw='[]', writes=0, events=0, registrations=0, creates=0;
+const client={marker:'shared'};
+const coreContext={document:{documentElement:{dataset:{vtShell:'clean'}}},navigator:{serviceWorker:{register(){registrations++;}}},window:{volttechAuth:client,supabase:{createClient(){creates++;return client;}},addEventListener(){registrations++;},dispatchEvent(){events++;}},localStorage:{getItem(){return raw;},setItem(k,v){assert.equal(k,'vt_store_quote_cart_v1');raw=v;writes++;},removeItem(){raw='[]';}},CustomEvent:class{constructor(type){this.type=type;}},URL,location:{href:'https://raw.githack.com/test/store.html'}};
+vm.runInNewContext(source('commerce/js/store-core.js'),coreContext);
+const core=coreContext.window.VoltTechStore;
+assert.equal(core.getClient(),client);assert.equal(creates,0);assert.equal(registrations,0);
+core.addToCart('real',1);core.addToCart('real',2);assert.equal(core.readCart()[0].quantity,3);
+core.setCartQty('real',99);assert.equal(core.readCart()[0].quantity,25);
+core.setCartQty('real',0);assert.equal(core.readCart().length,0);
+assert.equal(writes,4);assert.equal(events,4);
+raw='{';assert.equal(core.readCart().length,0);
+console.log('PASS: clean commerce reuses client, owns no worker registration; existing cart key/events/quantity cap/removal preserved');
+
+// Keep the legacy client and worker path available to unconverted checkout/admin routes.
+coreContext.document.documentElement.dataset={};coreContext.window.VOLTTECH_SUPABASE={url:'test',publishableKey:'public'};
+vm.runInNewContext(source('commerce/js/store-core.js'),coreContext);
+coreContext.window.VoltTechStore.getClient();assert.equal(creates,1);assert.equal(registrations,1);
+console.log('PASS: retained legacy checkout/admin bootstrap remains intact');

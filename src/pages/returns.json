@@ -1,0 +1,12 @@
+{
+  "output": "returns-warranty.html",
+  "title": "Returns & Warranty | VoltTech",
+  "description": "VoltTech returns, faults, repair and warranty information for South African customers.",
+  "robots": "noindex, follow",
+  "styles": [
+    "assets/css/pages/legal.css"
+  ],
+  "scripts": [
+    "assets/js/pages/legal.js"
+  ]
+}

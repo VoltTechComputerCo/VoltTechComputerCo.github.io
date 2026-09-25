@@ -1,10 +1,11 @@
 /**
  * VoltTech Streamer Feed
- * Reads current creator/live state from Supabase and exposes the same
- * response shape previously supplied by sa-streamers-live.json.
+ * V2 adapter: reads current creator/live state from Supabase and exposes
+ * the same response shape previously supplied by sa-streamers-live.json.
  *
- * Temporary fallback:
- * If Supabase cannot be reached, the existing JSON feed is used.
+ * Temporary migration fallback:
+ * If Supabase cannot be reached, the existing generated JSON feed is used.
+ * Remove that fallback after the old GitHub streamer workflow is retired.
  */
 (function () {
   'use strict';
@@ -12,7 +13,7 @@
   const SUPABASE_URL = 'https://qdqhfnvwqvgesfdmocir.supabase.co';
   const PUBLISHABLE_KEY = 'sb_publishable_f6rl6o43iQcwlSGDh9kqWw_mrHlxcN1';
 
-  function response(payload, status) {
+  function legacyResponse(payload, status) {
     return new Response(JSON.stringify(payload), {
       status: status || 200,
       headers: {
@@ -44,7 +45,7 @@
       '?select=' + encodeURIComponent(fields) +
       '&order=is_live.desc,activity_score.desc,viewer_count.desc,display_name.asc';
 
-    const res = await fetch(url, {
+    const response = await fetch(url, {
       method: 'GET',
       cache: 'no-store',
       headers: {
@@ -53,17 +54,23 @@
       }
     });
 
-    if (!res.ok) throw new Error('Supabase streamer feed returned HTTP ' + res.status);
+    if (!response.ok) {
+      throw new Error('Supabase streamer feed returned HTTP ' + response.status);
+    }
 
-    const rows = await res.json();
-    if (!Array.isArray(rows)) throw new Error('Invalid Supabase streamer feed payload');
+    const rows = await response.json();
+    if (!Array.isArray(rows)) {
+      throw new Error('Supabase streamer feed returned an invalid payload');
+    }
 
-    let latest = null;
+    let latestCheck = null;
 
     const streamers = rows.map(function (row) {
       if (row.checked_at) {
         const checked = new Date(row.checked_at);
-        if (!Number.isNaN(checked.getTime()) && (!latest || checked > latest)) latest = checked;
+        if (!Number.isNaN(checked.getTime())) {
+          if (!latestCheck || checked > latestCheck) latestCheck = checked;
+        }
       }
 
       return {
@@ -77,13 +84,14 @@
         title: row.title || '',
         started_at: row.started_at || null,
         last_live_at: row.last_live_at || null,
-        activity_score: Number(row.activity_score || 0)
+        activity_score: Number(row.activity_score || 0),
+        checked_at: row.checked_at || null
       };
     });
 
-    return response({
+    return legacyResponse({
       source: 'supabase',
-      generated_at: latest ? latest.toISOString() : new Date().toISOString(),
+      generated_at: latestCheck ? latestCheck.toISOString() : null,
       tracked_count: streamers.length,
       valid_count: streamers.length,
       streamers: streamers
@@ -91,23 +99,25 @@
   }
 
   async function fetchLegacyJson() {
-    return fetch('sa-streamers-live.json?ts=' + Date.now(), { cache: 'no-store' });
+    return fetch('sa-streamers-live.json?ts=' + Date.now(), {
+      cache: 'no-store'
+    });
   }
 
   async function fetchLegacy() {
     try {
       return await fetchSupabase();
     } catch (error) {
-      console.warn('[VoltTech] Supabase streamer feed unavailable; using JSON fallback.', error);
+      console.warn('[VoltTech] Supabase streamer feed unavailable; using migration fallback.', error);
 
       try {
         const fallback = await fetchLegacyJson();
         if (fallback.ok) return fallback;
       } catch (fallbackError) {
-        console.warn('[VoltTech] JSON fallback also unavailable.', fallbackError);
+        console.warn('[VoltTech] Legacy streamer fallback also unavailable.', fallbackError);
       }
 
-      return response({
+      return legacyResponse({
         source: 'unavailable',
         generated_at: new Date().toISOString(),
         tracked_count: 0,

@@ -1,0 +1,16 @@
+{
+  "output": "invoice.html",
+  "title": "Invoice | VoltTech",
+  "description": "VoltTech customer invoice document.",
+  "robots": "noindex, nofollow",
+  "styles": [
+    "assets/css/notifications.css",
+    "assets/css/pages/document.css"
+  ],
+  "classic_scripts": [
+    "supabase-config.js"
+  ],
+  "scripts": [
+    "assets/js/pages/customer-document.js"
+  ]
+}

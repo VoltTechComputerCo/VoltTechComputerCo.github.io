@@ -1,0 +1,12 @@
+{
+  "output": "virus-malware-removal-pretoria.html",
+  "title": "Virus & Malware Removal Pretoria | PC Security Cleanup | VoltTech",
+  "description": "Virus and malware removal in Pretoria and Wonderboom. Cleanup for suspicious pop-ups, browser hijacks, unwanted software and compromised Windows PCs.",
+  "robots": "index, follow, max-image-preview:large",
+  "styles": [
+    "assets/css/pages/services.css"
+  ],
+  "scripts": [
+    "assets/js/pages/service.js"
+  ]
+}

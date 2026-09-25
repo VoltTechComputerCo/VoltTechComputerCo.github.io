@@ -1,106 +1,184 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-ZA" data-vt-shell="clean">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Streaming & Creator Technical Support South Africa | OBS Help | VoltTech</title>
-<meta name="description" content="Remote streaming and creator technical support across South Africa. OBS diagnostics, dropped frames, encoder tuning, stream audio, recording and creator PC optimisation from VoltTech.">
-<link rel="canonical" href="https://volttechcomputerco.github.io/streaming-setup-south-africa.html">
-<link rel="icon" href="favicon-512.png">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#08070d">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Streaming &amp; Creator Technical Support South Africa | OBS Help | VoltTech</title>
+  <meta name="description" content="Remote streaming and creator technical support across South Africa. OBS diagnostics, dropped frames, encoder tuning, audio, recording and creator-PC optimisation from VoltTech.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#031012">
+  <link rel="icon" href="icons/favicon.ico">
+  <link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/navigation.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/print.css">
+  <link rel="stylesheet" href="assets/css/pages/services.css">
+  <link rel="stylesheet" href="assets/css/pages/streaming-support.css">
+<link rel="canonical" href="https://volttechcomputerco.co.za/streaming-setup-south-africa.html">
 <meta property="og:title" content="Streaming & Creator Technical Support South Africa | VoltTech">
 <meta property="og:description" content="Remote OBS, streaming, audio and creator-system support across South Africa.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://volttechcomputerco.github.io/streaming-setup-south-africa.html">
-<meta property="og:image" content="https://volttechcomputerco.github.io/logo-full.png">
-<meta property="og:site_name" content="VoltTech Computer Co.">
+<meta property="og:url" content="https://volttechcomputerco.co.za/streaming-setup-south-africa.html">
+<meta property="og:image" content="https://volttechcomputerco.co.za/vt-streaming.webp">
+<meta property="og:image:alt" content="VoltTech streaming and creator technical support">
 <meta property="og:locale" content="en_ZA">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Service","name":"Streaming & Creator Technical Support","serviceType":"OBS Setup, Streaming Diagnostics, Audio and Creator PC Optimisation","provider":{"@id":"https://volttechcomputerco.github.io/#organization"},"areaServed":{"@type":"Country","name":"South Africa"},"url":"https://volttechcomputerco.github.io/streaming-setup-south-africa.html","description":"Remote streaming and creator technical support including OBS setup, stream diagnostics, encoder tuning, audio optimisation, recording and creator PC performance support across South Africa.","offers":[{"@type":"Offer","name":"Stream Check","priceCurrency":"ZAR","price":"299"},{"@type":"Offer","name":"Stream Tune","priceCurrency":"ZAR","price":"449"},{"@type":"Offer","name":"Stream Setup","priceCurrency":"ZAR","price":"649"}]}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ3CC70MBE"></script>
-<script src="analytics.js?v=5"></script>
-<style>
-:root{--bg:#08070d;--bg2:#0e0c15;--panel:#12101a;--line:#292237;--purple:#9b6cff;--purple2:#6240b8;--red:#ff4057;--teal:#2fe6c8;--text:#f0edf7;--muted:#958da5;--mono:'JetBrains Mono',monospace;--display:'Space Grotesk',sans-serif}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse 75% 38% at 55% -8%,rgba(155,108,255,.19),transparent 62%),linear-gradient(180deg,#08070d,#09080e 55%,#07070a);color:var(--text);font-family:var(--display);line-height:1.6}a{color:inherit}.wrap{width:min(920px,100%);margin:auto;padding:0 20px}
-nav{border-bottom:1px solid var(--line);background:rgba(8,7,13,.94);position:sticky;top:0;z-index:20;backdrop-filter:blur(10px)}nav .wrap{min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none}.brand img{height:34px;width:auto}.brand-name{font:700 12px var(--mono);letter-spacing:.05em}.volt,.co{color:var(--teal)}.navlinks{display:flex;gap:16px;font:10px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}.navlinks a{text-decoration:none}.navlinks a:hover{color:var(--text)}
-main{padding:50px 0 76px}.eyebrow,.tag{font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--purple)}h1{font-size:50px;line-height:1.02;margin:17px 0;letter-spacing:-.035em;max-width:820px}h1 .accent{color:var(--purple)}.lead{font-size:17px;color:var(--muted);max-width:760px;margin:0}.hero-note{font:10px var(--mono);color:var(--teal);letter-spacing:.07em;text-transform:uppercase;margin-top:18px}
-.ctas{display:flex;gap:10px;flex-wrap:wrap;margin:27px 0 4px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 19px;border:1px solid var(--line);border-radius:4px;text-decoration:none;font:700 10px var(--mono);letter-spacing:.07em;text-transform:uppercase}.primary{background:var(--purple);border-color:var(--purple);color:#0b0713}.secondary{border-color:var(--teal);color:var(--teal)}
-.route-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:26px 0 34px}.route{display:block;border:1px solid var(--line);border-radius:6px;background:rgba(18,16,26,.86);padding:18px;text-decoration:none;min-height:126px;transition:.18s ease}.route:hover,.route:focus-visible{transform:translateY(-2px);border-color:var(--purple);outline:none}.route b{display:block;margin-bottom:6px}.route span{font-size:12px;color:var(--muted)}.route small{display:block;margin-top:12px;color:var(--purple);font:700 9px var(--mono);text-transform:uppercase}
-.panel{border:1px solid var(--line);background:rgba(18,16,26,.93);border-radius:6px;padding:28px;margin:18px 0}.panel h2{font-size:25px;line-height:1.2;margin:8px 0 9px}.panel>p{color:var(--muted);font-size:14px;margin:0;line-height:1.7;max-width:780px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:17px}
-.support-card{--accent:#9b6cff;display:block;color:inherit;text-decoration:none;position:relative;border:1px solid var(--line);background:var(--bg2);border-radius:5px;padding:17px 18px 16px 20px;min-height:118px}.support-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}.support-card b{display:block;margin-bottom:5px}.support-card span{color:var(--muted);font-size:13px}.support-card:nth-child(2){--accent:#62a8ff}.support-card:nth-child(3){--accent:#ff4057}.support-card:nth-child(4){--accent:#ffb454}.support-card:nth-child(5){--accent:#2fe6c8}.support-card:nth-child(6){--accent:#e772ff}
-.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.package{border:1px solid var(--line);background:var(--bg2);border-radius:5px;padding:19px}.package.featured{border-color:var(--purple2);background:linear-gradient(180deg,rgba(155,108,255,.08),var(--bg2))}.badge{display:inline-block;padding:3px 7px;border:1px solid var(--purple2);border-radius:999px;font:8px var(--mono);letter-spacing:.08em;color:var(--purple);text-transform:uppercase}.package h3{font-size:18px;margin:9px 0 0}.price{font:700 29px var(--display);margin:5px 0}.price small{font:10px var(--mono);color:var(--muted);font-weight:400}.package ul{padding-left:18px;color:var(--muted);font-size:13px;line-height:1.7}.package .btn{width:100%;margin-top:9px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:17px}.step{border:1px solid var(--line);background:var(--bg2);padding:17px;border-radius:5px}.step b{display:block;font:10px var(--mono);color:var(--purple);margin-bottom:6px}.step span{font-size:13px;color:var(--muted)}
-details{background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:14px 16px;margin-top:9px}summary{cursor:pointer;font-weight:600}details p{color:var(--muted);font-size:13px;line-height:1.7}.final-cta{border-color:rgba(47,230,200,.32);background:linear-gradient(135deg,rgba(47,230,200,.06),rgba(18,16,26,.95))}.final-cta .ctas{margin-bottom:0}
-footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:#655d73;font:9px var(--mono)}footer a{color:var(--teal);text-decoration:none}
-@media(max-width:760px){.navlinks a:not(.hub-link){display:none}.route-grid,.packages,.steps,.grid{grid-template-columns:1fr}h1{font-size:38px}.panel{padding:23px 19px}.route{min-height:0}}
-@media(max-width:480px){main{padding-top:38px}h1{font-size:32px}.lead{font-size:15px}.brand-name{display:none}}
-</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Streaming & Creator Technical Support","serviceType":"OBS Setup, Streaming Diagnostics, Audio and Creator PC Optimisation","provider":{"@id":"https://volttechcomputerco.co.za/#organization"},"areaServed":{"@type":"Country","name":"South Africa"},"url":"https://volttechcomputerco.co.za/streaming-setup-south-africa.html","description":"Remote streaming and creator technical support including OBS setup, stream diagnostics, encoder tuning, audio optimisation, recording and creator PC performance support across South Africa.","offers":[{"@type":"Offer","name":"Stream Check","priceCurrency":"ZAR","price":"299"},{"@type":"Offer","name":"Stream Tune","priceCurrency":"ZAR","price":"449"},{"@type":"Offer","name":"Stream Setup","priceCurrency":"ZAR","price":"649"}],"image":"https://volttechcomputerco.co.za/vt-streaming.webp"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"VoltTech Computer Co.","item":"https://volttechcomputerco.co.za/"},{"@type":"ListItem","position":2,"name":"Creator Hub","item":"https://volttechcomputerco.co.za/creator-hub-south-africa.html"},{"@type":"ListItem","position":3,"name":"Streaming Support","item":"https://volttechcomputerco.co.za/streaming-setup-south-africa.html"}]}</script>
+  <script type="module" src="assets/js/site-shell.js"></script>
 
-<link rel="stylesheet" href="visual-system.css?v=11" data-vt-visual-system="1">
-<link rel="stylesheet" href="visual-block-fix.css?v=3" data-vt-visual-fix="1">
-<link rel="stylesheet" href="mobile-nav.css?v=5" data-vt-mobile-nav="1">
+  <script type="module" src="assets/js/pages/streaming-support.js"></script>
 </head>
-<body class="vt-page-streaming">
-<nav><div class="wrap"><a class="brand" href="index.html"><img src="brand/VoltTech_Full_Logo_Transparent.png" alt="VoltTech Computer Co."></a><div class="navlinks"><a href="index.html">Home</a><a class="hub-link" href="creator-hub-south-africa.html">Creator Hub</a><a href="stream-scan.html">Stream Scan</a><a href="#contact">Contact</a></div></div></nav>
-<main><div class="wrap">
-<header>
-<div class="eyebrow">// STREAMING TECHNICAL SUPPORT · SOUTH AFRICA</div>
-<h1>Your stream should feel as solid as <span class="accent">your game.</span></h1>
-<p class="lead">Remote help for OBS problems, encoder overload, dropped frames, blurry output, audio issues and creator-PC performance. This page is for fixing the technical side of streaming.</p>
-<div class="ctas"><a class="btn primary" href="stream-scan.html">Run Stream Scan →</a><a class="btn secondary" href="https://wa.me/27618435775">Ask VoltTech →</a></div>
+<body data-page="streaming-support">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="VoltTech Computer Co. home">
+      <img src="assets/brand/volttech-logo.webp" alt="VoltTech Computer Co." width="360" height="210">
+    </a>
+    <span class="brand-promise micro">BUILT FOR<br>HIGHER STANDARDS</span>
+    <nav class="primary-nav" id="primary-navigation" aria-label="Main navigation">
+      <ul>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="builder/index.html">PC Builder</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="signal-scan.html">Signal Scan</a></li>
+        <li><a href="static.html">STATIC</a></li>
+        <li class="mobile-nav-cart"><a href="store.html?cart=1" data-cart-link aria-label="Open cart">Cart <span class="nav-cart-count" data-cart-count hidden></span></a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <button class="icon-button" type="button" data-dialog-open="site-search" aria-label="Search VoltTech" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
+      <a class="header-account" href="account.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M5 21v-3a7 7 0 0 1 14 0v3Z"/></svg><span data-account-label>Account</span></a>
+      <span data-notifications-host></span>
+      <a class="icon-button header-cart" href="store.html?cart=1" data-cart-link aria-label="Open cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="cart-count" data-cart-count hidden></span></a>
+    </div>
+    <button class="button button-secondary menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation" hidden>Menu</button>
+  </div>
 </header>
+<dialog class="dialog search-dialog" id="site-search" aria-labelledby="site-search-title">
+  <button class="button button-secondary dialog-close" type="button" data-dialog-close aria-label="Close search">×</button>
+  <p class="eyebrow">VOLTTECH / EXPLORE</p>
+  <h2 id="site-search-title">Find your next move.</h2>
+  <label for="site-search-input">Search services, tools and guides</label>
+  <input id="site-search-input" type="search" placeholder="Try upgrades, repair or streaming" autocomplete="off" autofocus>
+  <p class="micro" id="site-search-status" role="status"></p>
+  <ul class="search-results" id="site-search-results"></ul>
+</dialog>
+<main id="main-content" class="service-page streaming-support-page" data-service-key="streaming">
+  <section class="section service-hero-section">
+    <div class="container service-shell">
+      <nav class="service-breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>›</span><a href="creator-hub-south-africa.html">Creator Hub</a><span>›</span><strong aria-current="page">Streaming Support</strong></nav>
+      <nav class="service-network" aria-label="VoltTech services">
+        <a href="pc-repair-pretoria.html"><span>Repair</span></a><a href="pc-performance-optimisation.html"><span>Performance</span></a><a href="pc-upgrades-pretoria.html"><span>Upgrades</span></a><a href="virus-malware-removal-pretoria.html"><span>Security</span></a><a href="windows-installation-pretoria.html"><span>Windows</span></a><a href="streaming-setup-south-africa.html" aria-current="page" class="active"><span>Streaming</span></a>
+      </nav>
+      <div class="creator-tool-nav" aria-label="Creator tools"><a href="creator-hub-south-africa.html">Creator Hub</a><a class="active" href="streaming-setup-south-africa.html" aria-current="page">Streaming Support</a><a href="stream-scan.html">Stream Scan</a></div>
+      <div class="service-hero">
+        <div class="service-hero-copy">
+          <p class="eyebrow">VOLTTECH SERVICE / CREATOR TECH · SOUTH AFRICA</p>
+          <h1>Streaming Support<span>OBS, audio and performance without the guesswork.</span></h1>
+          <p class="service-lead">Remote help for OBS problems, encoder overload, dropped frames, blurry output, audio issues and creator-PC performance. Start with the symptom; VoltTech helps narrow the technical cause before changing random presets.</p>
+          <div class="service-actions"><a class="button" data-stream-contact="whatsapp" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%20need%20help%20with%20my%20streaming%20setup.">WhatsApp VoltTech</a><a class="button button-secondary" data-stream-contact="email" href="mailto:volttechcomputerco@gmail.com?subject=Streaming%20Support%20Enquiry">Email VoltTech</a></div>
+          <p class="micro service-location">REMOTE SUPPORT · SOUTH AFRICA</p>
+        </div>
+        <figure class="service-hero-media"><img src="vt-streaming.webp" alt="VoltTech streaming and creator technical support" width="1200" height="800"><figcaption><span>CREATOR TECH</span><strong>REMOTE · SOUTH AFRICA</strong></figcaption></figure>
+      </div>
+    </div>
+  </section>
 
-<div class="route-grid route-grid-tech" aria-label="Choose technical support path">
-<a class="route" href="stream-scan.html"><b>Something is wrong</b><span>Use the free Stream Scan to narrow down the likely cause before contacting VoltTech.</span><small>Diagnose it →</small></a>
-<a class="route" href="#packages"><b>I want technical help</b><span>See the three simple support starting points and what each one is for.</span><small>View support →</small></a>
-</div>
+  <section class="section service-section">
+    <div class="container service-shell">
+      <p class="eyebrow">START WITH THE PROBLEM</p>
+      <h2>Streaming problems, without the preset roulette.</h2>
+      <p class="service-section-copy">Settings depend on the game, hardware, connection and platform. The useful first step is identifying whether the bottleneck is encoding, rendering, network, audio or system headroom.</p>
+      <div class="service-grid streaming-help-grid">
+        <article class="service-card"><h3>OBS setup &amp; scenes</h3><p>Capture method, canvas/output choices, source structure and sensible scene configuration.</p></article>
+        <article class="service-card"><h3>Encoder overload</h3><p>NVENC, AMF, Quick Sync and x264 tuning when the encoding workload is too high.</p></article>
+        <article class="service-card"><h3>Dropped frames</h3><p>Bitrate, connection stability and the upload path when the stream cannot hold a clean connection.</p></article>
+        <article class="service-card"><h3>Audio cleanup</h3><p>Mic levels, noise control, compression, limiting, routing and source balance.</p></article>
+        <article class="service-card"><h3>Creator-PC performance</h3><p>Game-versus-stream resource contention, GPU headroom, thermals and background load.</p></article>
+        <article class="service-card"><h3>Capture &amp; recording</h3><p>Capture-card setups, recording quality and combined streaming/recording workflows.</p></article>
+      </div>
+      <div class="stream-scan-callout"><div><p class="eyebrow">NOT SURE WHICH ONE?</p><h3>Run Stream Scan first.</h3><p>Answer only the questions relevant to your symptom and get a practical starting route. It does not inspect OBS, your account or your PC remotely.</p></div><a class="button button-secondary" href="stream-scan.html">Run Stream Scan →</a></div>
+    </div>
+  </section>
 
-<section class="panel" id="support">
-<div class="tag">// WHAT I CAN HELP WITH</div><h2>Streaming problems, without the preset roulette.</h2>
-<p>Settings depend on the game, hardware, connection and platform. The goal is to identify the actual bottleneck and tune around it.</p>
-<div class="grid">
-<a class="support-card" href="stream-scan.html?issue=setup"><b>OBS setup & scenes</b><span>Clean source setup, capture method, canvas/output choices and sensible scene structure.</span></a>
-<a class="support-card" href="stream-scan.html?issue=encoding"><b>Encoder overload</b><span>NVENC, AMF, Quick Sync and x264 tuning when the encoding workload is too high.</span></a>
-<a class="support-card" href="stream-scan.html?issue=network"><b>Dropped frames</b><span>Bitrate, network stability and connection-path checks when the stream cannot hold a clean upload.</span></a>
-<a class="support-card" href="stream-scan.html?issue=audio"><b>Audio cleanup</b><span>Mic levels, noise control, compression, routing and source balance.</span></a>
-<a class="support-card" href="stream-scan.html?issue=fps"><b>Creator PC performance</b><span>Game-versus-stream resource contention, GPU headroom and thermal/performance checks.</span></a>
-<a class="support-card" href="stream-scan.html?issue=setup"><b>Capture & recording</b><span>Capture-card setups, recording quality and dual-use streaming/recording workflows.</span></a>
-</div>
-</section>
+  <section class="section service-section" id="packages">
+    <div class="container service-shell">
+      <p class="eyebrow">SIMPLE STARTING POINTS</p>
+      <h2>Choose the level of help you actually need.</h2>
+      <p class="service-section-copy">These are service starting points, not a promise that every problem needs the most expensive option.</p>
+      <div class="streaming-package-grid">
+        <article class="streaming-package"><span>DIAGNOSE</span><h3>Stream Check</h3><strong>R299</strong><ul><li>Review symptoms and setup</li><li>Identify the likely bottleneck</li><li>Clear next-step recommendation</li></ul><a class="button button-secondary" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%27d%20like%20to%20ask%20about%20Stream%20Check.">Ask about Stream Check</a></article>
+        <article class="streaming-package featured"><span>MOST COMMON</span><h3>Stream Tune</h3><strong>R449</strong><ul><li>OBS and output tuning</li><li>Encoder, quality and stability work</li><li>Audio and performance checks</li></ul><a class="button" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%27d%20like%20to%20ask%20about%20Stream%20Tune.">Ask about Stream Tune</a></article>
+        <article class="streaming-package"><span>FROM SCRATCH</span><h3>Stream Setup</h3><strong>R649</strong><ul><li>First-time creator setup</li><li>OBS and output configuration</li><li>Core audio/capture workflow</li></ul><a class="button button-secondary" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%27d%20like%20to%20ask%20about%20Stream%20Setup.">Ask about Stream Setup</a></article>
+      </div>
+      <p class="streaming-scope-note">Complex dual-PC or capture-card builds can require a broader Creator System Tune and are quoted after assessment.</p>
+    </div>
+  </section>
 
-<section class="panel" id="packages">
-<div class="tag">// SIMPLE STARTING POINTS</div><h2>Choose the level of help you actually need.</h2>
-<p>These are service starting points, not promises that every problem requires the most expensive option.</p>
-<div class="packages">
-<div class="package"><span class="badge">DIAGNOSE</span><h3>Stream Check</h3><div class="price">R299</div><ul><li>Review symptoms and setup</li><li>Identify likely bottleneck</li><li>Clear next-step recommendation</li></ul><a class="btn" href="https://wa.me/27618435775">Ask about Stream Check →</a></div>
-<div class="package featured"><span class="badge">MOST COMMON</span><h3>Stream Tune</h3><div class="price">R449</div><ul><li>OBS/output tuning</li><li>Encoder, quality and stability work</li><li>Audio and performance checks</li></ul><a class="btn primary" href="https://wa.me/27618435775">Ask about Stream Tune →</a></div>
-<div class="package"><span class="badge">FROM SCRATCH</span><h3>Stream Setup</h3><div class="price">R649</div><ul><li>First-time creator setup</li><li>OBS and output configuration</li><li>Core audio/capture workflow</li></ul><a class="btn" href="https://wa.me/27618435775">Ask about Stream Setup →</a></div>
-</div>
-</section>
+  <section class="section service-section">
+    <div class="container service-shell">
+      <p class="eyebrow">HOW REMOTE SUPPORT WORKS</p><h2>A short path from problem to stable stream.</h2>
+      <div class="service-steps">
+        <article class="service-step"><span>01 · DESCRIBE</span><h3>Show us the symptom</h3><p>Send the platform, output target and what happens when you go live.</p></article>
+        <article class="service-step"><span>02 · DIAGNOSE</span><h3>Narrow the bottleneck</h3><p>Work out whether OBS, encoding, rendering, network, audio or system headroom is the limiting factor.</p></article>
+        <article class="service-step"><span>03 · FIX &amp; VERIFY</span><h3>Apply the right change</h3><p>Tune the relevant settings and verify the result instead of stacking random presets.</p></article>
+        <article class="service-step"><span>04 · DOCUMENT</span><h3>Keep a stable baseline</h3><p>Leave the creator with a configuration they can understand and reproduce.</p></article>
+      </div>
+    </div>
+  </section>
 
-<section class="panel">
-<div class="tag">// HOW REMOTE SUPPORT WORKS</div><h2>A short path from problem to stable stream.</h2>
-<div class="steps"><div class="step"><b>01 · DESCRIBE</b><span>Send the symptoms, platform and basic setup details, or start with Stream Scan.</span></div><div class="step"><b>02 · DIAGNOSE</b><span>We narrow down whether the issue is OBS, encoding, rendering, network, audio or system headroom.</span></div><div class="step"><b>03 · FIX & VERIFY</b><span>Apply the right changes and verify the result instead of stacking random presets.</span></div></div>
-</section>
+  <section class="section service-section">
+    <div class="container service-shell">
+      <p class="eyebrow">QUICK ANSWERS</p><h2>Streaming support FAQ</h2>
+      <div class="service-faq">
+        <details><summary>Do I need to be in Pretoria?</summary><div><p>No. Streaming and creator technical support is designed to work remotely across South Africa.</p></div></details>
+        <details><summary>Can you guarantee a specific stream quality?</summary><div><p>No. Final quality depends on hardware, game load, internet stability and platform limits. The goal is the best stable configuration the setup can realistically sustain.</p></div></details>
+        <details><summary>Do you need my Twitch or YouTube password?</summary><div><p>No. Never send passwords, 2FA codes or stream keys. Legitimate technical support does not require those credentials.</p></div></details>
+      </div>
+    </div>
+  </section>
 
-<section class="panel">
-<div class="tag">// QUICK ANSWERS</div><h2>Streaming support FAQ</h2>
-<details><summary>Do I need to be in Pretoria?</summary><p>No. Streaming and creator technical support is designed to be available remotely across South Africa.</p></details>
-<details><summary>Can you guarantee a specific stream quality?</summary><p>No. Final quality depends on the hardware, game load, internet connection, platform limits and the condition of the system. The aim is to find the best stable configuration the setup can realistically sustain.</p></details>
-<details><summary>Do you need my Twitch or YouTube password?</summary><p>No. Never send passwords, 2FA codes or stream keys. Those credentials are not required for legitimate technical support.</p></details>
-</section>
-
-<section class="panel final-cta" id="contact">
-<div class="tag">// NEED HELP NOW?</div><h2>Start with the problem, not a package.</h2>
-<p>If you are not sure what you need, run Stream Scan or send a short description of what happens when you go live.</p>
-<div class="ctas"><a class="btn primary" href="stream-scan.html">Run Stream Scan →</a><a class="btn secondary" href="https://wa.me/27618435775">WhatsApp VoltTech →</a></div>
-</section>
-</div></main>
-<footer>VOLTTECH STREAMING TECHNICAL SUPPORT · REMOTE ACROSS SOUTH AFRICA · <a href="creator-hub-south-africa.html">CREATOR HUB</a> · <a href="index.html">VOLTTECH HOME</a></footer>
-</body></html>
+  <section class="section service-section" id="contact">
+    <div class="container service-shell"><div class="service-final"><p class="eyebrow">NEXT STEP</p><h2>Start with the problem, not a package.</h2><p>If you are not sure what you need, send a short description of what happens when you go live—or run Stream Scan first.</p><div class="service-actions"><a class="button" data-stream-contact="whatsapp" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%20need%20help%20with%20my%20streaming%20setup.">WhatsApp VoltTech</a><a class="button button-secondary" data-stream-contact="email" href="mailto:volttechcomputerco@gmail.com?subject=Streaming%20Support%20Enquiry">Email VoltTech</a></div><p class="service-helper">Prefer to narrow it down first? <a href="stream-scan.html">Try Stream Scan →</a></p><div class="service-related"><a href="creator-hub-south-africa.html">Creator Hub</a><a href="stream-scan.html">Stream Scan</a><a href="pc-performance-optimisation.html">PC Performance</a></div></div></div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/brand/volttech-logo.webp" alt="VoltTech Computer Co." width="360" height="210" loading="lazy">
+        <p class="eyebrow">South Africa builds differently.</p>
+        <p class="muted">PC hardware, practical advice and support for your next move.</p>
+      </div>
+      <div><h2 class="footer-title">Explore</h2><ul class="footer-links">
+        <li><a href="store.html">Store</a></li>
+        <li><a href="builder/index.html">PC Builder</a></li>
+        <li><a href="static.html">STATIC</a></li>
+        <li><a href="creator-hub-south-africa.html">Creator Hub</a></li>
+      </ul></div>
+      <div><h2 class="footer-title">Get support</h2><ul class="footer-links">
+        <li><a href="pc-repair-pretoria.html">PC repair</a></li>
+        <li><a href="signal-scan.html">Signal Scan</a></li>
+        <li><a href="account.html">Your account</a></li>
+      </ul></div>
+      <div><h2 class="footer-title">Information</h2><ul class="footer-links">
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="legal.html">Legal centre</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="micro">© VoltTech Computer Co. All rights reserved.</p>
+      <p class="micro">PERFORMANCE / PRECISION / POSSIBILITY</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "output": "account.html",
+  "title": "Customer Account | VoltTech Computer Co.",
+  "description": "Secure access to your VoltTech quotes, invoices, saved PC builds and account details.",
+  "robots": "noindex, nofollow",
+  "styles": ["assets/css/notifications.css", "assets/css/pages/account.css"],
+  "classic_scripts": ["supabase-config.js"],
+  "scripts": ["assets/js/pages/account.js"]
+}

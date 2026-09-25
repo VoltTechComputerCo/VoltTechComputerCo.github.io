@@ -1,0 +1,12 @@
+{
+  "output": "paia.html",
+  "title": "Access to Information (PAIA) | VoltTech",
+  "description": "VoltTech access-to-information guidance, self-service account access and outstanding PAIA compliance items.",
+  "robots": "noindex, follow",
+  "styles": [
+    "assets/css/pages/legal.css"
+  ],
+  "scripts": [
+    "assets/js/pages/legal.js"
+  ]
+}

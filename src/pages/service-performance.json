@@ -1,0 +1,12 @@
+{
+  "output": "pc-performance-optimisation.html",
+  "title": "PC Performance Optimisation Pretoria | Slow PC & Gaming Tuning | VoltTech",
+  "description": "PC performance optimisation in Pretoria and Wonderboom. Diagnose slow startup, thermal throttling, storage bottlenecks, background load, unstable drivers and gaming performance issues.",
+  "robots": "index, follow, max-image-preview:large",
+  "styles": [
+    "assets/css/pages/services.css"
+  ],
+  "scripts": [
+    "assets/js/pages/service.js"
+  ]
+}

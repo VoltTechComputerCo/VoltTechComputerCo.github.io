@@ -1,0 +1,96 @@
+name: VoltTech Step 10.1 Release Candidate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-10.1.mjs"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volttech-step-10.1-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release-candidate:
+    name: Lock non-commerce release candidate
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: clean-rebuild
+
+      - name: Regenerate clean frontend
+        shell: bash
+        run: |
+          python3 scripts/build-clean-frontend.py
+          changed="$(git diff --name-only)"
+          if [ -n "$changed" ] && [ "$changed" != "index.html" ]; then
+            echo "Unexpected generated changes:"
+            echo "$changed"
+            exit 1
+          fi
+
+      - name: Commit generated homepage metadata
+        shell: bash
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "Generated homepage already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "release: make clean homepage indexable"
+          git push origin HEAD:clean-rebuild
+
+      - name: Run clean-repo full regression
+        run: node scripts/run-full-qa.mjs
+
+      - name: Install browser QA runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Start local clean-rebuild server
+        shell: bash
+        run: |
+          mkdir -p qa-results/step-10.1
+          python3 -m http.server 4173 --bind 127.0.0.1 > qa-results/step-10.1/http-server.log 2>&1 &
+          echo $! > qa-results/step-10.1/http-server.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/index.html >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Local RC server did not become ready." >&2
+          exit 1
+
+      - name: Re-run Step 9 release certification
+        env:
+          VT_QA_BASE: http://127.0.0.1:4173
+        run: node scripts/run-step-9.3.mjs
+
+      - name: Fetch current main
+        run: git fetch origin main:refs/remotes/origin/main --force
+
+      - name: Run Step 10.1 RC lock
+        run: node scripts/run-step-10.1.mjs
+
+      - name: Upload Release Candidate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-10.1-release-candidate
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 30

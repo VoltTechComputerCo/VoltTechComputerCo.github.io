@@ -1,0 +1,60 @@
+/* VoltTech Phase 5 — Catalogue QA scoring refinement */
+.qa-section-label{
+  margin-top:12px;
+  color:#6f8984;
+  font:800 7px var(--mono);
+  letter-spacing:.1em
+}
+.qa-supplier-gaps{
+  margin-top:10px;
+  padding:9px 10px;
+  border:1px dashed rgba(120,145,141,.22);
+  border-radius:8px
+}
+.qa-supplier-gaps summary{
+  cursor:pointer;
+  color:#829b97;
+  font:800 7px var(--mono);
+  letter-spacing:.07em
+}
+.qa-supplier-gaps p{
+  margin:8px 0 0;
+  color:#667d79;
+  font-size:9px;
+  line-height:1.45
+}
+.qa-supplier-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-top:9px
+}
+.qa-supplier-chip{
+  padding:5px 7px;
+  border:1px solid rgba(120,145,141,.18);
+  border-radius:6px;
+  color:#718985;
+  font:700 7px var(--mono)
+}
+.qa-supplier-chip.ready{
+  color:#68ffae;
+  border-color:rgba(80,255,159,.22)
+}
+.qa-proxy-warning{
+  display:grid;
+  gap:3px;
+  margin-top:10px;
+  padding:9px 10px;
+  border:1px solid rgba(255,180,84,.24);
+  border-radius:7px;
+  background:rgba(255,180,84,.04)
+}
+.qa-proxy-warning b{
+  color:#ffd06f;
+  font:800 8px var(--mono)
+}
+.qa-proxy-warning span{
+  color:#a89678;
+  font-size:9px;
+  line-height:1.45
+}

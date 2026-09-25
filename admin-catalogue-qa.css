@@ -1,0 +1,178 @@
+/* VoltTech Phase 5 — Catalogue QA */
+.qa-summary{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:8px;
+  margin:0 0 14px
+}
+.qa-stat{
+  padding:13px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:#081112
+}
+.qa-stat.warn{border-color:rgba(255,180,84,.24)}
+.qa-stat b{
+  display:block;
+  color:var(--teal);
+  font-size:22px;
+  line-height:1
+}
+.qa-stat.warn b{color:var(--amber)}
+.qa-stat span{
+  display:block;
+  margin-top:6px;
+  color:var(--muted);
+  font:700 8px var(--mono);
+  text-transform:uppercase
+}
+.catalogue-qa-list{
+  display:grid;
+  gap:12px;
+  margin-top:14px
+}
+.qa-card{
+  display:grid;
+  grid-template-columns:220px minmax(0,1fr);
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--panel);
+  overflow:hidden
+}
+.qa-image{
+  position:relative;
+  min-height:220px;
+  background:#071012
+}
+.qa-image img{
+  width:100%;
+  height:100%;
+  min-height:220px;
+  object-fit:contain;
+  padding:10px
+}
+.qa-image-missing{
+  min-height:220px;
+  display:grid;
+  place-items:center;
+  color:#637a76;
+  font:800 9px var(--mono)
+}
+.qa-demo,.qa-score{
+  position:absolute;
+  top:9px;
+  padding:5px 7px;
+  border-radius:999px;
+  background:rgba(3,8,9,.86);
+  font:800 7px var(--mono)
+}
+.qa-demo{
+  left:9px;
+  color:#ffd06f;
+  border:1px solid rgba(255,190,84,.35)
+}
+.qa-score{
+  right:9px;
+  border:1px solid var(--line)
+}
+.qa-score.low{color:#ff8c92;border-color:rgba(255,102,112,.4)}
+.qa-score.mid{color:#ffd06f;border-color:rgba(255,190,84,.35)}
+.qa-score.high{color:#68ffae;border-color:rgba(80,255,159,.35)}
+.qa-body{padding:15px}
+.qa-title-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px
+}
+.qa-title-row h3{margin:5px 0 2px;font-size:17px}
+.qa-title-row small{color:var(--muted)}
+.qa-review-state{
+  flex:none;
+  align-self:flex-start;
+  padding:5px 7px;
+  border-radius:999px;
+  font:800 7px var(--mono)
+}
+.qa-review-state.pending{
+  color:#ffd06f;
+  border:1px solid rgba(255,190,84,.35)
+}
+.qa-review-state.reviewed{
+  color:#68ffae;
+  border:1px solid rgba(80,255,159,.35)
+}
+.qa-issues{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin:12px 0
+}
+.qa-issue{
+  padding:5px 7px;
+  border:1px solid rgba(255,180,84,.18);
+  border-radius:6px;
+  background:rgba(255,180,84,.035);
+  color:#b9a88b;
+  font:700 7px var(--mono)
+}
+.qa-issue.ok{
+  color:#68ffae;
+  border-color:rgba(80,255,159,.22);
+  background:rgba(80,255,159,.035)
+}
+.qa-meta{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  margin-bottom:12px
+}
+.qa-meta span{
+  padding:8px;
+  border:1px solid var(--line);
+  border-radius:7px;
+  color:var(--muted);
+  font-size:9px
+}
+.qa-meta b{
+  display:block;
+  margin-bottom:3px;
+  color:#dbe8e5;
+  font:700 7px var(--mono);
+  text-transform:uppercase
+}
+.qa-editor{
+  margin-top:9px;
+  padding:10px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#071012
+}
+.qa-editor summary{
+  cursor:pointer;
+  color:var(--teal);
+  font:800 8px var(--mono)
+}
+.qa-editor label{
+  display:grid;
+  gap:5px;
+  margin-top:10px;
+  color:var(--muted);
+  font:700 8px var(--mono)
+}
+.qa-editor-actions,.qa-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:9px
+}
+.qa-source-note{
+  margin:9px 0 0;
+  font-size:9px
+}
+.qa-source-note a{color:var(--teal)}
+@media(max-width:820px){
+  .qa-summary{grid-template-columns:repeat(2,1fr)}
+  .qa-card{grid-template-columns:1fr}
+  .qa-image{min-height:260px}
+  .qa-meta{grid-template-columns:repeat(2,1fr)}
+}

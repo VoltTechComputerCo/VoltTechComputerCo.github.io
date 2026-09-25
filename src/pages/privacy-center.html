@@ -1,0 +1,52 @@
+<main id="main-content" class="privacy-page">
+  <div class="container privacy-shell">
+    <section class="privacy-hero">
+      <p class="eyebrow">MY VOLTTECH / PRIVACY</p>
+      <h1>Privacy &amp; Data</h1>
+      <p class="privacy-lead">Download the customer data available through your VoltTech account, request corrections, and manage the protected account-deletion process.</p>
+      <nav class="privacy-nav" aria-label="Customer account sections">
+        <a href="account.html">Account home</a><a href="activity.html">Activity</a><a href="documents.html">Documents</a><a href="builds.html">Saved builds</a>
+      </nav>
+    </section>
+
+    <div id="privacyPreview" class="privacy-preview" hidden></div>
+    <p id="privacyStatus" class="privacy-status" role="status" aria-live="polite"></p>
+    <div id="pendingDeletion" class="privacy-pending" hidden></div>
+
+    <section class="privacy-grid" aria-label="Privacy tools">
+      <article class="privacy-card">
+        <p class="eyebrow">EXPORT</p><h2>Your account data</h2>
+        <p>Download a machine-readable JSON copy of customer information your signed-in account is currently allowed to retrieve.</p>
+        <div class="privacy-actions"><button id="downloadData" class="button" type="button">Download my data</button><a class="button button-secondary" href="personal-data.html">Printable data report</a></div>
+      </article>
+      <article class="privacy-card">
+        <p class="eyebrow">CORRECTIONS</p><h2>Update or question your information</h2>
+        <p>Edit profile information directly, or contact VoltTech when information is inaccurate, outdated, excessive or needs a formal privacy review.</p>
+        <div class="privacy-actions"><a class="button" href="account.html?tab=profile">Edit profile</a><a class="button button-secondary" href="mailto:volttechcomputerco@gmail.com?subject=VoltTech%20privacy%20request">Privacy request</a></div>
+      </article>
+    </section>
+
+    <section class="privacy-danger" aria-labelledby="delete-title">
+      <p class="eyebrow">ACCOUNT DELETION</p><h2 id="delete-title">Delete my VoltTech account</h2>
+      <p>VoltTech uses a seven-day recovery window. You can cancel while that window is open. After finalisation, the login deletion is irreversible.</p>
+      <p class="privacy-retention">Transaction, tax, warranty, fraud-prevention, dispute or other records may still need to be retained when applicable law requires or authorises it.</p>
+      <div id="deleteForm" class="privacy-delete-form">
+        <div class="privacy-check"><input id="confirmExport" type="checkbox"><label for="confirmExport">I have downloaded anything I want to keep, or I understand I can do so before the recovery window ends.</label></div>
+        <div class="privacy-check"><input id="confirmRetention" type="checkbox"><label for="confirmRetention">I understand that limited records may still need to be retained for lawful operational, tax, warranty, fraud-prevention or dispute purposes.</label></div>
+        <div class="form-field"><label for="confirmEmail">Confirm your account email</label><input id="confirmEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+        <div class="form-field"><label for="confirmPhrase">Type DELETE MY ACCOUNT</label><input id="confirmPhrase" type="text" autocomplete="off" placeholder="DELETE MY ACCOUNT"></div>
+        <button id="requestDeletion" class="button button-danger" type="button">Request account deletion</button>
+      </div>
+      <div id="cancelArea" hidden><button id="cancelDeletion" class="button" type="button">Cancel deletion request</button></div>
+    </section>
+
+    <aside class="privacy-note">Self-service tools do not replace your formal POPIA/PAIA rights. See the <a href="privacy.html">Privacy Notice</a> and <a href="paia.html">PAIA information</a>.</aside>
+  </div>
+</main>
+
+<dialog class="dialog privacy-dialog" id="privacyDecisionDialog" aria-labelledby="privacyDecisionTitle">
+  <form method="dialog">
+    <p class="eyebrow">PRIVACY / CONFIRM</p><h2 id="privacyDecisionTitle">Confirm privacy action</h2><p id="privacyDecisionBody"></p>
+    <div class="dialog-actions"><button id="privacyDecisionCancel" class="button button-secondary" value="cancel">Cancel</button><button id="privacyDecisionConfirm" class="button" value="default">Confirm</button></div>
+  </form>
+</dialog>

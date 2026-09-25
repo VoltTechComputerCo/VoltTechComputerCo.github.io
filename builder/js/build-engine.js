@@ -7,6 +7,8 @@ export function createEmptyBuild(){return{cpu:null,motherboard:null,memory:null,
 export function isMultiCategory(type){return MULTI_CATEGORIES.has(type)}
 export function getSelections(build,type){const v=build[type];return isMultiCategory(type)?(Array.isArray(v)?v:[]):(v?[v]:[])}
 export function hasCategory(build,type){return getSelections(build,type).length>0}
+export function hasIntegratedGraphics(build){return build?.cpu?.specs?.integratedGraphics===true}
+export function isCategorySatisfied(build,type){return type==="gpu"&&!hasCategory(build,"gpu")&&hasIntegratedGraphics(build)?true:hasCategory(build,type)}
 
 export function selectProduct(build,product){
     if(isMultiCategory(product.type))return{...build,[product.type]:[...getSelections(build,product.type),product]};
@@ -39,15 +41,15 @@ export function getProductPrice(product){return Number(getBestOffer(product)?.pr
 export function calculateBuildTotal(build){return CATEGORY_ORDER.flatMap(c=>getSelections(build,c)).reduce((t,p)=>t+getProductPrice(p),0)}
 export function formatMoney(value,currency="ZAR"){return new Intl.NumberFormat("en-ZA",{style:"currency",currency,maximumFractionDigits:0}).format(Number(value||0))}
 export function getSelectedCount(build){return CATEGORY_ORDER.reduce((n,c)=>n+getSelections(build,c).length,0)}
-export function getCompletedCategoryCount(build){return REQUIRED_CATEGORIES.filter(c=>hasCategory(build,c)).length}
+export function getCompletedCategoryCount(build){return REQUIRED_CATEGORIES.filter(c=>isCategorySatisfied(build,c)).length}
 export function getNextCategory(currentCategory,build){
     const i=REQUIRED_CATEGORIES.indexOf(currentCategory);
-    if(i===-1)return REQUIRED_CATEGORIES.find(c=>!hasCategory(build,c))||currentCategory;
-    return REQUIRED_CATEGORIES.slice(i+1).find(c=>!hasCategory(build,c))
-        ||REQUIRED_CATEGORIES.find(c=>!hasCategory(build,c))
+    if(i===-1)return REQUIRED_CATEGORIES.find(c=>!isCategorySatisfied(build,c))||currentCategory;
+    return REQUIRED_CATEGORIES.slice(i+1).find(c=>!isCategorySatisfied(build,c))
+        ||REQUIRED_CATEGORIES.find(c=>!isCategorySatisfied(build,c))
         ||currentCategory;
 }
-export function getFirstIncompleteCategory(build){return REQUIRED_CATEGORIES.find(c=>!hasCategory(build,c))||REQUIRED_CATEGORIES[0]}
+export function getFirstIncompleteCategory(build){return REQUIRED_CATEGORIES.find(c=>!isCategorySatisfied(build,c))||REQUIRED_CATEGORIES[0]}
 export function getCategorySummary(value,type=null){
     const list=Array.isArray(value)?value:(value?[value]:[]); if(!list.length)return"Not selected";
     const t=type||list[0].type;

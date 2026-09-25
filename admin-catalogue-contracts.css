@@ -1,0 +1,42 @@
+/* VoltTech Phase 5 — Category Contract QA */
+.qa-contract{
+  margin-top:10px;
+  padding:10px;
+  border:1px solid rgba(47,230,200,.18);
+  border-radius:8px;
+  background:rgba(47,230,200,.025)
+}
+.qa-contract summary{
+  cursor:pointer;
+  color:var(--teal);
+  font:800 7px var(--mono);
+  letter-spacing:.08em
+}
+.qa-contract-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+  margin-top:9px
+}
+.qa-contract-grid>div{
+  padding:8px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:#071012
+}
+.qa-contract-grid b{
+  display:block;
+  color:#9db1ad;
+  font:700 7px var(--mono);
+  text-transform:uppercase
+}
+.qa-contract-grid span{
+  display:block;
+  margin-top:4px;
+  color:#6f8782;
+  font-size:9px;
+  line-height:1.45
+}
+@media(max-width:620px){
+  .qa-contract-grid{grid-template-columns:1fr}
+}

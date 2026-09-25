@@ -1,0 +1,36 @@
+<main id="main-content" class="creator-hub-page">
+  <div class="container">
+    <section class="creator-hero" aria-labelledby="creator-title">
+      <p class="eyebrow">SOUTH AFRICAN CREATOR HUB</p>
+      <h1 id="creator-title">Find your next South African creator.</h1>
+      <p class="lead">Browse VoltTech's curated Twitch directory, discover recently active local channels and watch a featured stream when the live feed has a fresh status check.</p>
+      <div class="creator-feed-status" id="creatorFeedState" data-state="loading" role="status" aria-live="polite">
+        <strong>CHECKING CREATOR DIRECTORY…</strong>
+        <p id="creatorFeedDetail">Loading the latest available creator status.</p>
+      </div>
+      <div class="creator-meta"><span><b id="trackedCount">—</b> tracked creators</span><span>Feed checked <b id="updatedAt">—</b></span><span>Source <b id="feedSource">—</b></span></div>
+    </section>
+
+    <section class="creator-panel" aria-labelledby="live-creators-title">
+      <div class="creator-section-head"><div><p class="eyebrow">LIVE / FRESHNESS AWARE</p><h2 id="live-creators-title">Creator spotlight</h2></div><p>VoltTech never labels a creator live from stale data. If the backend refresh is delayed, this section becomes directory-only until freshness returns.</p></div>
+      <div class="creator-live-layout">
+        <div class="creator-player">
+          <div class="creator-player-video" id="playerVideo"><div class="creator-player-placeholder">Checking the creator feed…</div></div>
+          <div class="creator-player-meta"><div><b id="playerName">Creator Hub</b><span id="playerDetail">South African Twitch creators</span></div><a id="playerLink" href="https://www.twitch.tv/directory" target="_blank" rel="noopener">Open Twitch ↗</a></div>
+          <div class="creator-profile" id="creatorProfile" hidden><img id="creatorAvatar" alt="" width="52" height="52"><div><b id="creatorProfileName"></b><p id="creatorBio"></p></div></div>
+        </div>
+        <div class="creator-live-list" id="liveCreatorList"><div class="creator-empty">Checking who is live…</div></div>
+      </div>
+    </section>
+
+    <section class="creator-panel" aria-labelledby="creator-directory-title">
+      <div class="creator-search-row"><div><p class="eyebrow">DISCOVER MORE</p><h2 id="creator-directory-title">Creator directory</h2></div><div class="creator-search-wrap"><label for="creatorSearch">Search creators</label><input id="creatorSearch" type="search" placeholder="Name, channel or game" autocomplete="off"></div></div>
+      <div class="creator-grid" id="creatorGrid"><div class="creator-empty">Loading creator directory…</div></div>
+    </section>
+
+    <section class="creator-community" aria-label="Creator community and technical support">
+      <article><p class="eyebrow">VOLTTECH HQ</p><h2>Join the community.</h2><p>Creators, viewers, gamers and PC enthusiasts can meet inside VoltTech HQ. Streamers can also ask about becoming a verified creator in the community.</p><a class="button" href="https://discord.gg/Uk3PN8k2dA" target="_blank" rel="noopener">Join VoltTech HQ</a></article>
+      <article><p class="eyebrow">TECHNICAL HELP</p><h2>Stream giving you trouble?</h2><p>OBS, encoder, dropped-frame, audio and creator-PC support lives in VoltTech's dedicated creator support flow.</p><a class="button button-secondary" href="streaming-setup-south-africa.html">Streaming tech support</a></article>
+    </section>
+  </div>
+</main>

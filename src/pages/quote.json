@@ -1,0 +1,16 @@
+{
+  "output": "quote.html",
+  "title": "Quotation | VoltTech",
+  "description": "VoltTech customer quotation and approval document.",
+  "robots": "noindex, nofollow",
+  "styles": [
+    "assets/css/notifications.css",
+    "assets/css/pages/document.css"
+  ],
+  "classic_scripts": [
+    "supabase-config.js"
+  ],
+  "scripts": [
+    "assets/js/pages/customer-document.js"
+  ]
+}

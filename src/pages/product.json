@@ -1,0 +1,17 @@
+{
+  "output": "product.html",
+  "title": "PC Component Details | VoltTech Computer Co.",
+  "description": "Explore PC component specifications, compatibility information and availability with VoltTech Computer Co. Contact us about your next upgrade.",
+  "robots": "noindex, follow",
+  "styles": [
+    "assets/css/notifications.css",
+    "assets/css/pages/commerce.css"
+  ],
+  "classic_scripts": [
+    "supabase-config.js",
+    "conversion-context.js"
+  ],
+  "scripts": [
+    "assets/js/pages/product.js"
+  ]
+}

@@ -1,0 +1,37 @@
+// Pure contract checks; no network access or real customer records.
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const source=p=>fs.readFileSync(new URL('../'+p, import.meta.url),'utf8');
+const unwrap=s=>s.replace(/^import .*?;\n/gm,'').replace(/^export \{.*?\};\n/gm,'').replaceAll('export ','');
+const c={URL,URLSearchParams,Intl,location:{origin:'https://volttechcomputerco.co.za',href:'https://volttechcomputerco.co.za/checkout.html'},publicProducts:products=>products.filter(p=>p.is_demo===false),esc:s=>String(s).replaceAll('<','&lt;')};
+vm.createContext(c);
+vm.runInContext(unwrap(source('assets/js/services/transactions.js'))+'\nthis.test={checkoutCart,cartFingerprint,eligibleCart,validOrderAccess,statusDestination,paymentDestination,shippingRate,canPay};',c);
+vm.runInContext(unwrap(source('assets/js/components/order-view.js'))+'\nthis.view={money,stageInfo,timeline,trackingLink,orderItems};',c);
+const t=c.test,v=c.view, cart=[{productId:'real',quantity:2}];
+assert.equal(t.checkoutCart(cart).length,1);
+for(const bad of [null,{},[{productId:'a',quantity:0}],[{productId:'a',quantity:26}],[{productId:'a',quantity:1.5}],[{productId:'a',quantity:1},{productId:'a',quantity:2}],Array(31).fill(cart[0])])assert.equal(t.checkoutCart(bad),null);
+assert.equal(t.cartFingerprint(cart),t.cartFingerprint([...cart].reverse()));
+assert.equal(t.eligibleCart({canAdd:()=>true},cart,[{id:'real',is_demo:true}]),false);
+assert.equal(t.eligibleCart({canAdd:()=>true},cart,[{id:'real',is_demo:false,stock_qty:1}]),false);
+const token='a'.repeat(64),query=new URLSearchParams({ref:'REF',token});assert.ok(t.validOrderAccess(query));assert.equal(t.validOrderAccess(new URLSearchParams({ref:'REF',token:'bad'})),null);
+assert.ok(t.statusDestination({request:{request_number:'REF'},access_token:token}));assert.equal(t.statusDestination({status_url:'https://evil.test/order-status.html?'+query}), '');
+for(const url of ['http://c.yoco.com/a','https://c.yoco.com.evil.test','https://u:p@c.yoco.com','javascript:alert(1)','https://c.yoco.com:444/a'])assert.equal(t.paymentDestination(url),'');
+assert.ok(t.paymentDestination('https://c.yoco.com/checkout/test'));
+assert.equal(t.shippingRate({configured:true,ready:true,environment:'sandbox',rates:[{amount:99,currency:'ZAR'}]}),null);
+assert.equal(t.shippingRate({configured:true,ready:true,environment:'production',rates:[{amount:null,currency:'ZAR'},{amount:50,currency:'USD'},{amount:99,currency:'ZAR'},{amount:0,currency:'ZAR'}]}).amount,0);
+const order={can_pay:true,checkout_stage:'awaiting_payment',payment_status:'pending',total:123};
+assert.equal(t.canPay(order,{direct_payment_enabled:true}),true);
+for(const state of ['paid','cancelled','refunded','partially_refunded'])assert.equal(t.canPay({...order,payment_status:state},{direct_payment_enabled:true}),false);
+assert.equal(t.canPay(order,{direct_payment_enabled:'true'}),false);assert.equal(t.canPay({...order,total:null},{direct_payment_enabled:true}),false);
+assert.equal(v.stageInfo({payment_status:'paid'}).title,'Payment received');assert.equal(v.stageInfo({delivery_status:'delivered'}).title,'Delivered');
+assert.ok(v.timeline({payment_status:'refunded'}).includes('Payment received</strong><small>Recorded'));
+assert.ok(v.timeline({payment_status:'partially_refunded'}).includes('Payment received</strong><small>Recorded'));
+assert.equal(v.money(null),'To be confirmed');assert.equal(v.money(-1),'To be confirmed');assert.equal(v.trackingLink('javascript:alert(1)'),'');assert.ok(!v.orderItems([{product_name:'<script>',quantity:1}]).includes('<script>'));
+console.log('PASS: cart limits/demo/stock, private access, redirect allowlist, production-only delivery rates, strict payment gate, server-derived status and refund timeline');
+let status=400;
+const client={functions:{invoke:async()=>({error:{context:{status,json:async()=>({error:'Fixture error'})}}})}};
+const context={document:{documentElement:{dataset:{vtShell:'clean'}}},window:{volttechAuth:client},navigator:{},URL,location:c.location};
+vm.runInNewContext(source('commerce/js/store-core.js'),context);
+for(const code of [400,429,500,0]){status=code;await assert.rejects(context.window.VoltTechStore.submitCheckout({}),e=>e.status===code&&e.uncertain===(code===0||code>=500));}
+console.log('PASS: definitive 4xx versus ambiguous 5xx/network checkout errors');

@@ -1,0 +1,38 @@
+name: STATIC Historical Migration
+on:
+  push:
+    branches: [clean-rebuild]
+    paths:
+      - "scripts/migrate-static-history.py"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: static-history-migration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  migrate:
+    if: github.ref == 'refs/heads/clean-rebuild'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Migrate historical STATIC articles
+        run: python scripts/migrate-static-history.py
+      - name: Rebuild STATIC RSS
+        run: python scripts/build-static-feed.py
+      - name: Validate migrated STATIC corpus
+        run: python scripts/validate-static.py
+      - name: Commit historical migration
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- 'static-*.html' 'assets/css/static-legacy/*.css' static-feed.xml
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "Historical STATIC migration already current."
+            exit 0
+          fi
+          git commit -m "chore: migrate historical STATIC articles"
+          git push

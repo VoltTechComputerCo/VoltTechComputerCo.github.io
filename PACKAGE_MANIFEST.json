@@ -1,0 +1,24 @@
+{
+  "package": "VoltTech 2.0 Documentation Set",
+  "original_created": "2026-09-17",
+  "last_synced": "2026-09-19",
+  "purpose": "Living repository documentation, architecture, deployment, operations and migration record for VoltTech 2.0.",
+  "branch": "v2-rebuild",
+  "status": "Phase 2 consolidation in progress",
+  "files": [
+    "CHANGELOG.md",
+    "README.md",
+    "V2_START_HERE.md",
+    "docs/ARCHITECTURE.md",
+    "docs/CURRENT_SYSTEM.md",
+    "docs/DECISIONS.md",
+    "docs/DEPLOYMENT.md",
+    "docs/FILE_MAP.md",
+    "docs/HANDOVER.md",
+    "docs/MIGRATION_PLAN.md",
+    "docs/OPERATIONS.md",
+    "docs/SECURITY.md",
+    "docs/SEO.md",
+    "docs/SUPABASE.md"
+  ]
+}

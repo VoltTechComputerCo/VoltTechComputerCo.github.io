@@ -1,0 +1,24 @@
+{
+  "step": "9.3",
+  "title": "Failure, retry and release-blocker certification",
+  "branch": "clean-rebuild",
+  "parent": "b68d6c8c2fb26e962e46e5ec83238df080622817",
+  "delete": [],
+  "customer_facing_changes": [],
+  "launch_setting_changes": [],
+  "certification_mode": "non-commerce",
+  "workflow": ".github/workflows/release-certification.yml",
+  "expected_artifact": "volttech-step-9.3-release-certification",
+  "upload_last": "scripts/run-step-9.3.mjs",
+  "sha256": {
+    ".github/workflows/release-certification.yml": "e3ab28b7de2cf6fe616b6dd0f53566337dbc02784875dd3e9523c7efe7c71a48",
+    "scripts/test-release-source.mjs": "c821f319eb95a9c33bf772ca94453dd9f20e5e9221fda4b9ba54065cce7c7479",
+    "scripts/test-release-browser.mjs": "fbfc1e0e58965f5cbbff1a32ff4cef63fcfe02164dfb201559dd040b2ac35fe7",
+    "scripts/run-step-9.3.mjs": "49cd1155aa9e3a9469b23e24341535284b4d1763538cb23f4481acd23f86bb18",
+    "docs/clean-rebuild/step-9.3-backend-snapshot.json": "41261cbc7f622c66ac2f951add846676b96034ba5299fccdb0b56426ddf2601e",
+    "docs/clean-rebuild/RELEASE-BLOCKERS.md": "3de879e8920f1c3f7ce7cebf4a0cee2dab0c6ebaf7335e3e8d23b1c5826a5eda",
+    "docs/clean-rebuild/step-9.3-QA.md": "05d5d84315eb83680b4d69274dcefd8a11bc9b454146ab99de5927cad99a674a",
+    "docs/clean-rebuild/ROADMAP.md": "77cac7e8bfe9c65a1837f35b6e0efa7b6246d6dd3342b669886f9de50d7c4269",
+    "README.md": "559ebc68150831d2ce9bb1ebb346797e35be0992ff0f052af4f9f43a1a7e864d"
+  }
+}

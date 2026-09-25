@@ -1,0 +1,17 @@
+{
+  "output": "store.html",
+  "title": "PC Components & Upgrade Advice South Africa | VoltTech",
+  "description": "Explore PC component categories and get upgrade advice from VoltTech Computer Co. The online catalogue is coming soon. Enquiries are open across South Africa.",
+  "robots": "noindex, follow",
+  "styles": [
+    "assets/css/notifications.css",
+    "assets/css/pages/commerce.css"
+  ],
+  "classic_scripts": [
+    "supabase-config.js",
+    "conversion-context.js"
+  ],
+  "scripts": [
+    "assets/js/pages/store.js"
+  ]
+}

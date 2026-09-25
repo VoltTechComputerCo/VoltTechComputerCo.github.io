@@ -1,40 +1,22 @@
-/* VoltTech photography system v11
-   Content-first refresh: one strong page hero image is enough.
-   Homepage service-card imagery is owned by service-backgrounds.css.
-   STATIC remains deliberately excluded by analytics.js. */
+/* VoltTech photography system v13
+   Service-page lead photography is now owned by the unified Phase 9 hero.
+   No decorative image is injected before page identity. */
 
 :root{--vt-photo-radius:7px;--vt-photo-border:1px solid rgba(95,124,120,.34)}
 
-/* Service pages: one purposeful lead image, not an image after every content panel. */
+/* Legacy service-page ::before lead images were removed in V2 Phase 9.
+   Keeping the rule explicit prevents regressions / refresh pop-in. */
 body.vt-page-repair main .wrap::before,
 body.vt-page-performance main .wrap::before,
 body.vt-page-upgrades main .wrap::before,
 body.vt-page-malware main .wrap::before,
 body.vt-page-windows main .wrap::before,
 body.vt-page-streaming main .wrap::before{
-  content:"";
-  display:block;
-  width:100%;
-  height:clamp(230px,38vw,360px);
-  margin:0 0 28px;
-  border:var(--vt-photo-border);
-  border-radius:var(--vt-photo-radius);
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  box-shadow:0 14px 34px rgba(0,0,0,.26);
-  box-sizing:border-box;
+  content:none!important;
+  display:none!important;
 }
 
-/* One relevant hero image per service. */
-body.vt-page-repair main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-workbench.webp');background-position:center 58%}
-body.vt-page-performance main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-rgb-cooling.webp');background-position:center 52%}
-body.vt-page-upgrades main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-motherboard.webp');background-position:center 43%}
-body.vt-page-malware main .wrap::before{background-image:linear-gradient(#0002,#0006),url('vt-px-laptop-tech.webp');background-position:center 45%}
-body.vt-page-windows main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-px-pc-workstation.webp');background-position:center 44%}
-body.vt-page-streaming main .wrap::before{background-image:linear-gradient(#0001,#0005),url('vt-drive-creator-desk.webp');background-position:72% 50%}
-
-/* Scan tools use a restrained single background. */
+/* Scan tools retain their restrained page backgrounds. */
 body.vt-page-signal{
   background-image:linear-gradient(rgba(5,8,10,.90),rgba(5,8,10,.98)),url('vt-drive-motherboard.webp')!important;
   background-size:cover!important;
@@ -48,35 +30,14 @@ body.vt-page-streamscan{
   background-attachment:fixed!important;
 }
 
-/* Layout safeguards. */
-body[class*="vt-page-"] main .wrap,body.vt-page-home .wrap{overflow-x:clip}
-body.vt-page-home .contact{gap:16px;min-width:0}
-body.vt-page-home .contact span{min-width:0;overflow-wrap:anywhere}
-body.vt-page-home .contact a{flex:0 0 auto;white-space:nowrap}
 
-/* Mobile composition tuning. */
+body[class*="vt-page-"] main .wrap{overflow-x:clip}
+
 @media(max-width:620px){
- body.vt-page-repair main .wrap::before,
- body.vt-page-performance main .wrap::before,
- body.vt-page-upgrades main .wrap::before,
- body.vt-page-malware main .wrap::before,
- body.vt-page-windows main .wrap::before,
- body.vt-page-streaming main .wrap::before{
-   height:215px;
-   margin-bottom:22px;
- }
- body.vt-page-repair main .wrap::before{background-position:48% 60%}
- body.vt-page-upgrades main .wrap::before{background-position:52% 44%}
- body.vt-page-streaming main .wrap::before{background-position:76% 50%}
  body.vt-page-signal{background-attachment:scroll!important;background-position:center 38%!important}
  body.vt-page-streamscan{background-attachment:scroll!important;background-position:76% 50%!important}
 }
-@media(max-width:560px){
- body.vt-page-home .contact{display:grid!important;grid-template-columns:minmax(0,1fr);align-items:start!important;gap:10px!important;padding:18px!important}
- body.vt-page-home .contact span{display:block;width:100%;font-size:clamp(15px,5.2vw,21px)!important;line-height:1.4!important}
- body.vt-page-home .contact a{justify-self:start;font-size:11px!important}
-}
+
 @media(prefers-reduced-data:reduce){
- body[class*="vt-page-"] main .wrap::before{display:none!important}
  body.vt-page-signal,body.vt-page-streamscan{background-image:none!important}
 }

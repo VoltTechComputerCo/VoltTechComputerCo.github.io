@@ -1,0 +1,44 @@
+/* Composition for the internal inspection page; shared UI stays in components. */
+.specimen-hero { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: var(--space-6); padding-block: var(--space-7); }
+.specimen-hero h1 { max-width: 13ch; margin-bottom: var(--space-5); }
+.specimen-hero .intro { max-width: 46ch; color: var(--text-secondary); font-size: 1.0625rem; }
+.hero-visual { position: relative; border: 1px solid var(--border-strong); background: var(--black); }
+.hero-visual img { width: 100%; aspect-ratio: 6 / 5; object-fit: cover; object-position: 62% center; }
+.hero-caption { display: flex; justify-content: space-between; gap: 1rem; padding: var(--space-3) var(--space-4); border-top: 1px solid var(--border); }
+.hero-caption p { margin: 0; }
+.specimen-anchor-list { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; padding-top: var(--space-5); margin-top: var(--space-6); border-top: 1px solid var(--border); }
+.specimen-anchor-list a { color: var(--text-secondary); }
+.palette { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-3); }
+.swatch { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.swatch-colour { height: 64px; border-bottom: 1px solid var(--border); }
+.swatch-label { padding: var(--space-3); }
+.swatch-label strong { display: block; font-size: var(--text-sm); }
+.swatch-label p { margin: .25rem 0 0; }
+.swatch-bg { background: var(--bg); }
+.swatch-panel { background: var(--panel-raised); }
+.swatch-teal { background: var(--teal); }
+.swatch-bright { background: var(--teal-bright); }
+.swatch-text { background: var(--text); }
+.swatch-secondary { background: var(--text-secondary); }
+.type-sample { margin-block: var(--space-5) 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); padding: var(--space-5); border: 1px solid var(--border); }
+.type-sample p { margin: 0; }
+.type-display { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; line-height: 1.2; letter-spacing: -.04em; }
+.control-examples { display: grid; gap: var(--space-5); }
+.control-examples .actions { align-items: flex-start; }
+.control-examples h3 { margin-bottom: var(--space-3); }
+.inspection-list { margin: 0; padding-left: 1.25rem; }
+.hardware-caption { margin-top: var(--space-4); }
+.inspection-list li + li { margin-top: .5rem; }
+@media (max-width: 56rem) {
+  .specimen-hero { gap: var(--space-5); }
+  .palette { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 40rem) {
+  .specimen-hero { grid-template-columns: minmax(0, 1fr); padding-block: var(--space-6); }
+  .specimen-hero h1 { max-width: 15ch; }
+  .hero-visual img { aspect-ratio: 16 / 10; }
+  .hero-caption { flex-direction: column; gap: .25rem; }
+  .specimen-anchor-list { margin-top: var(--space-5); }
+  .palette { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .type-sample { grid-template-columns: minmax(0, 1fr); }
+}

@@ -1,0 +1,16 @@
+{
+  "output": "personal-data.html",
+  "title": "Personal Data Report | VoltTech",
+  "description": "VoltTech customer self-service personal-data report.",
+  "robots": "noindex, nofollow",
+  "styles": [
+    "assets/css/notifications.css",
+    "assets/css/pages/document.css"
+  ],
+  "classic_scripts": [
+    "supabase-config.js"
+  ],
+  "scripts": [
+    "assets/js/pages/customer-document.js"
+  ]
+}

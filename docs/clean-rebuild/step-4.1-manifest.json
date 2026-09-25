@@ -1,0 +1,21 @@
+{
+  "step": "4.1",
+  "title": "Signal Scan clean rebuild",
+  "branch": "clean-rebuild",
+  "parent": "add3637fa3872aace38d72f8a7497f4918b92933",
+  "delete": [],
+  "sha256": {
+    "README.md": "2cb6652e482a4e5c3983393d75c1ac91cab6f266766d5af3ae1279f1a8c848f9",
+    "assets/css/pages/signal-scan.css": "80b07b5bc371a4600fb6193a0abdd33c96d6d1beca3c09298ef73a92b7fe3025",
+    "assets/js/pages/signal-scan.js": "8dbbd5d909643feeffeacb4010ed3e558e00789687b420c79825ee627f12594d",
+    "assets/js/services/signal-scan-handoff.js": "99ed61635882334a05fa34cc18d8de9fb444e65bb3dfb27eff884fc259ec6b71",
+    "assets/js/services/signal-scan-model.js": "584330f8aac62336c7709b782f6011b13c0d2502f870a8b650dc61def9118cbe",
+    "docs/clean-rebuild/step-4.1-QA.md": "9c2abb33db9f4376ab220e0c782b75fce5345053f725982fb1b4a97ad81d76c8",
+    "docs/clean-rebuild/step-4.1-folder.png": "12021e981994257d2349316a14442e5ced1c6a2584f86926966a80fb49fa99d0",
+    "scripts/test-clean-signal-scan.mjs": "0ea0aca8d1dec7793d5ad1954209db6661a02df7aee9f72dde860f204b75463b",
+    "signal-scan.html": "9e690ab61411a9160c5174a65cb2b95e1d4363d967eab15ed8d709d97fa06191",
+    "src/pages/signal-scan.head.html": "d1667ead889b700807fc37d6c37fd8503120282abe5d637202f79bd9a8af1c51",
+    "src/pages/signal-scan.html": "793acda1d32629dbcbde76cc7ebfad2fb15d3b1138a6ff2034328b2ee4f09885",
+    "src/pages/signal-scan.json": "ca956288ea37bcffbd91badd233cdc211be1e51ede4ecade62f60eff3f8e9452"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "step": "8.3",
+  "title": "Historical STATIC migration and final SEO/residue cleanup",
+  "branch": "clean-rebuild",
+  "parent": "7d21bd710fb8cb1cefa9a35e900589ab87fb9281",
+  "delete": [
+    "correction-manifest.json"
+  ],
+  "workflow_output": {
+    "articles": 30,
+    "extracted_stylesheets": 30,
+    "feed": "static-feed.xml"
+  },
+  "sha256": {
+    ".github/workflows/static-history-migration.yml": "56f9071da162f06ed3afb6cf2f6aa38fb29c8cc95ddb60de51afe467ff85e4d7",
+    "README.md": "c35984c66f215a45b119192c2014564e848e933cf801e9d16dd2b24de90a5188",
+    "docs/clean-rebuild/ROADMAP.md": "fde7f657d209110bb065ffcdc51dc852ec245751b2b70936d8562f7d18ce1eb4",
+    "docs/clean-rebuild/STATIC-PUBLISHING.md": "0f7a47eb779a3f2ed0a1399dd84ed66181ea6c585571daeff6ed7fa77f31e9e0",
+    "docs/clean-rebuild/step-8.3-QA.md": "965372b6e8b3b4ea43c20b7e2cad1e436db33f22a4bc5ccf38ad9cb800b79dfa",
+    "docs/clean-rebuild/step-8.3-folder.png": "e496e88dc27ad54664b42e49ae5c14bfcd1240121b79f62223486bcdbc83ab5c",
+    "scripts/build-static-feed.py": "a86c91cbcad4588ee967e05b996c089d0a5955c7ea3376789c4f019d2799b01b",
+    "scripts/check-final-seo.py": "4558f23fc4874cbb312d37a87fde958709cb7a69942273fac64d9dfa4be83ba7",
+    "scripts/migrate-static-history.py": "74dbab748ebe2fb1d894547320d2d8b987078ababb6d1a9c240faa90e0bafd2d",
+    "scripts/test-static-history-migration.py": "b55a2663144fea1ef4dec9aca6611203d64268a7fd634ffd08e40e74e4c5e1aa",
+    "scripts/validate-static.py": "06ee8bfbba05fec1361aeb17fe617498b9d24cc61d49f19c68ce93546f05528f"
+  }
+}

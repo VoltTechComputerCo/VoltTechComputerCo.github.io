@@ -1,0 +1,23 @@
+{
+  "step": "3.2",
+  "title": "PC Builder experience and engine consistency",
+  "branch": "clean-rebuild",
+  "parent": "217582dc623d24ade8e6ce129f3c0290edeea6e6",
+  "delete": [
+    "builder/styles.css"
+  ],
+  "sha256": {
+    "README.md": "2cd3d3bf53a194bf90e60e9d6e9aff8a06d70b953b15089cca90058d9d2a803d",
+    "assets/css/pages/builder.css": "f5ed2ff2fc71634ec809564d306f9a08e39495a23c81ac23f4958f4031513245",
+    "assets/js/pages/builder-experience.js": "74a40b065dce1c32c5949bb02d5819b02ecec3617d453115417c96b321b0f760",
+    "assets/js/pages/builder.js": "acc539cb1aa84d3e2d26007db2182022b829e0e1f0eaab761a865103a4fa4b51",
+    "builder/index.html": "ddca3d4628a0439f76db61a3c2467bc254ad06d5eb29638d1d4f4e6702e4dfbb",
+    "builder/js/build-engine.js": "ca66e4dd7397b783159d2ccad4ca70ab6e9fa389851006c754d87b4bb35238f4",
+    "docs/clean-rebuild/ROADMAP.md": "b3dadde8957e5b70e628cde7b1fc495a8cf0b7191d09da6374ef88bd28212eb1",
+    "docs/clean-rebuild/step-3.2-QA.md": "b3e1873db2e1ebd0506a8881c95c6925bcf86cfa76a9b6b76a52bc386a397eeb",
+    "docs/clean-rebuild/step-3.2-folder.png": "17b9b4e9c84a9f42c99591e7f372c9a1ecf587686e51edc3c81e3528534e3621",
+    "scripts/check-clean-frontend.py": "143a9bc4a68d9626e05c05115e32dbbd95b0e3e7cc913ae58297f16863bc7365",
+    "scripts/test-clean-builder.mjs": "74d3a62beabe9cbfc37baa0eea8f201bb6254e530b82ef6aec10e88ce9fdd211",
+    "src/pages/builder.json": "80c951fe2390c1ec8b7c367d6a2c08f430a91fd68532f7d30f6aa612c2c0ba1f"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "step": "5.2",
+  "title": "Activity, Saved Builds, Quotes and Documents",
+  "branch": "clean-rebuild",
+  "parent": "8ac46e6c39064c31efc6a16719462e6e3d654dc2",
+  "delete": [
+    "scripts/__pycache__/check-clean-frontend.cpython-313.pyc",
+    "scripts/__pycache__/Placeholder.txt"
+  ],
+  "supabase_changes": [],
+  "sha256": {
+    "README.md": "93c2766d013dc73781b80e5bf2c16a26f22f5e67c278703f86acaa994c190f44",
+    "activity.html": "182540b387136beff72679d4f8448ea17598afdd58c32bd9933232d0f7db09b4",
+    "assets/css/pages/customer-records.css": "f2d243d4766957977308366fb1b98abcd13378e45ab539773eb016ff2d175726",
+    "assets/js/pages/customer-records.js": "9e2e09c8eeebe4f6beb24f9f697e45fb0bbba3ef89d8aecda8bd4ad0247e49a4",
+    "assets/js/services/customer-records.js": "642ff8f39ace25682f1f8517a1adb48890110817ad690b4d9d83768636e4bf49",
+    "assets/js/services/document-email.js": "c0c862583427b25614937eb1242feff43393a17e8edd7f7131ce9b32eb1d8979",
+    "builds.html": "1a3e37736a7bf761f8829cca9358688c4b4c000c9460465055bd51267c623f65",
+    "docs/clean-rebuild/step-5.1-QA.md": "0e95233dd71ca19e09a4451a591d8387a133cad67a48940809619269b7ffc888",
+    "docs/clean-rebuild/step-5.1-folder.png": "ea2afed13c0ad1906a538765f0b25ca6f1470dc2a9527d2d6fe5a9ba27fe2e46",
+    "docs/clean-rebuild/step-5.1-manifest.json": "e2011a0ec5bfa9e6178d92d379f055c029df48be0151c359623cf32fbc992d65",
+    "docs/clean-rebuild/step-5.2-QA.md": "6e5311738ca35b3b3bfd49323322720e0742009ca0c0f7c1bc4cc76ae074000d",
+    "docs/clean-rebuild/step-5.2-folder.png": "0d4de3b7cab0f6e7877a199c19aa67c2a650050a44b3980e8a31374997416e9e",
+    "documents.html": "5e4b1271336835baf0fb747ee4609c51a33f5aafb928e897d8fbf33d6a951ee0",
+    "quotes.html": "cda06208cb68b5e152489ddad03cecf62e2b8f9363fef3e2d7ac6f15ea1f2dcc",
+    "scripts/check-clean-frontend.py": "2c067553e70f7d592e7edca8d7b1ef68b44c245a749ec7cbfd1d68c85d9025f2",
+    "scripts/test-clean-customer-records.mjs": "0015bde9fe518f576eb1868d2a3f03ba16a978151d2de73b7029a39daa2dca9b",
+    "src/pages/activity.head.html": "020005beaf833d44a85a953de0e43d8f81661f668958c31368ab3f32a3327701",
+    "src/pages/activity.html": "c467f6e04b210def66f11290c2fd58155aa2a31247c9dc54b2e42fa08c4fd0bb",
+    "src/pages/activity.json": "c048ba1c0072a1a2720d80cfdcc063c930199996f75c6394f4bef5fd723ebe3f",
+    "src/pages/builds.head.html": "887d7050440d77a39fc24ada4cc1504c2b7a6d46dc758c656381344493586873",
+    "src/pages/builds.html": "21fe94b87d9a001a4c41397d6578bf0c0a352c2bf81bcdccd16bde89ed898cb1",
+    "src/pages/builds.json": "9925d81bea18a363f198ef39edc0c38dbe6a4d4c64edf087049e8653a8cf8701",
+    "src/pages/documents.head.html": "93c90a47b2aa9ce9b2553d844774a3bff94ae685346e091c458d10c2839730bf",
+    "src/pages/documents.html": "89bdd935730fe2f11f3000f1937ebee9762c9625568d8cf8985db3ab6da3d639",
+    "src/pages/documents.json": "190a2b1cb29647cc4517abba3f2e33449685b0fccd0267bfea8604b114d5de7b",
+    "src/pages/quotes.head.html": "83964d5c5d7d28330bdb66aee6542fe470c6f4fc734cb1e655416f11afbe7dfb",
+    "src/pages/quotes.html": "1e0b5b39070be86088be020f8be39941c059890379f10c22d8f94714a6061ed9",
+    "src/pages/quotes.json": "d85878425781d556d28ef1e9d6ca7fb075be35ab0fdc39a4b245b6e60e691373"
+  }
+}

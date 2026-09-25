@@ -1,0 +1,21 @@
+{
+  "step": "10.2",
+  "title": "Controlled promotion rehearsal",
+  "branch": "clean-rebuild",
+  "reviewed_main_head": "12079c9d873cc1601581354829193a322f81d874",
+  "step_10_1_rc_head": "45acf215eef38172e2f601f64f4143cb3479422c",
+  "pushes_main": false,
+  "delete": [],
+  "customer_facing_changes": [],
+  "launch_setting_changes": [],
+  "workflow": ".github/workflows/promotion-rehearsal.yml",
+  "expected_artifact": "volttech-step-10.2-promotion-rehearsal",
+  "upload_last": "scripts/run-step-10.2.mjs",
+  "sha256": {
+    ".github/workflows/promotion-rehearsal.yml": "9cd76914376f14f264a246553c006cb56dac977a7ebe7b4d4e9740d0e4426096",
+    "scripts/run-step-10.2.mjs": "ff92c28322d1ad07c30e75a844502caa299ac2406b70bc181d65c6346562426e",
+    "docs/clean-rebuild/step-10.2-QA.md": "80fddb4949bb0b7901bfe09aede6904d6601b3a0a5438f9a8be0138ec13d997d",
+    "docs/clean-rebuild/ROADMAP.md": "c1965bc43aa431792f66b8753d512359965ef5ee0e6d23bbca64ce7876c9f273",
+    "README.md": "81abf488294c81d53ed02a8569fd064780b6ed1edc25347929087c0384000a27"
+  }
+}

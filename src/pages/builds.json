@@ -1,0 +1,9 @@
+{
+  "output": "builds.html",
+  "title": "Saved Build History | VoltTech Computer Co.",
+  "description": "Secure VoltTech customer history for saved PC Builder configurations and existing quotation requests.",
+  "robots": "noindex, nofollow",
+  "styles": ["assets/css/notifications.css", "assets/css/pages/customer-records.css"],
+  "classic_scripts": ["supabase-config.js"],
+  "scripts": ["assets/js/pages/customer-records.js"]
+}

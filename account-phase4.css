@@ -1,0 +1,209 @@
+/* VoltTech V2 — Phase 4 / Account Simplification
+   Presentation-only layer. Existing account/auth/Supabase logic remains unchanged. */
+
+.account-phase4{padding-bottom:18px}
+.account-kicker{
+  margin-bottom:6px;
+  color:var(--teal);
+  font:700 8px var(--mono);
+  letter-spacing:.14em;
+  text-transform:uppercase
+}
+.account-welcome{
+  position:relative;
+  min-height:78px;
+  margin:4px 0 18px;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:
+    linear-gradient(110deg,rgba(47,230,200,.07),transparent 48%),
+    rgba(8,17,18,.82)
+}
+.account-welcome-copy{min-width:0;flex:1}
+.account-welcome h1{font-size:24px}
+.account-home-link{
+  flex:none;
+  color:var(--teal);
+  font:700 8px var(--mono);
+  letter-spacing:.07em;
+  text-transform:uppercase
+}
+
+.account-primary-nav{
+  position:sticky;
+  top:72px;
+  z-index:18;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:7px;
+  margin-bottom:10px;
+  padding:7px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:rgba(5,8,10,.9);
+  backdrop-filter:blur(12px)
+}
+.account-primary-nav .tab{
+  min-height:41px;
+  border-radius:5px;
+  background:transparent
+}
+.account-primary-nav .tab.active{
+  background:rgba(47,230,200,.12);
+  border-color:rgba(47,230,200,.38);
+  color:var(--teal)
+}
+.account-primary-nav .admin-only-tab{grid-column:1/-1}
+
+.account-more-panel{
+  margin-bottom:12px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:#071011;
+  padding:13px
+}
+.account-more-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:12px;
+  padding:1px 2px 11px
+}
+.account-more-head span{
+  color:var(--teal);
+  font:700 8px var(--mono);
+  letter-spacing:.12em
+}
+.account-more-head small{color:var(--muted);font-size:10px}
+.account-more-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:7px
+}
+.account-more-grid .tab{min-height:44px}
+
+.account-overview{
+  padding:20px;
+  background:
+    radial-gradient(circle at 100% 0,rgba(47,230,200,.045),transparent 32%),
+    rgba(11,20,21,.96)
+}
+.account-overview-head{display:flex;justify-content:space-between;gap:14px}
+.account-overview .section-copy{margin-bottom:14px}
+
+.account-action-card{
+  margin-bottom:20px;
+  border-left:3px solid var(--teal)!important;
+  box-shadow:0 10px 26px rgba(0,0,0,.16)
+}
+.account-action-card[data-state="attention"]{border-left-color:var(--warn)!important}
+.account-action-card[data-state="urgent"]{border-left-color:var(--danger)!important}
+.account-action-card strong{font-size:18px!important}
+
+.account-section-label{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:10px;
+  margin:4px 0 10px
+}
+.account-section-label span{
+  color:#9cb2ad;
+  font:700 8px var(--mono);
+  letter-spacing:.12em
+}
+.account-section-label small{color:#5d7470;font-size:10px}
+
+.account-core-grid{
+  grid-template-columns:repeat(2,1fr);
+  gap:9px
+}
+.account-core-card{
+  min-height:132px;
+  padding:16px
+}
+.account-core-card strong{
+  margin:8px 0 4px;
+  font-size:28px
+}
+.account-core-card em{
+  display:block;
+  margin-top:10px;
+  color:var(--teal);
+  font:700 8px var(--mono);
+  font-style:normal;
+  text-transform:uppercase;
+  letter-spacing:.06em
+}
+
+.account-secondary-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:12px
+}
+.account-secondary-link{
+  position:relative;
+  min-height:88px;
+  padding:13px 34px 13px 13px;
+  border:1px solid var(--line);
+  border-radius:7px;
+  background:#081112
+}
+.account-secondary-link b{display:block;font-size:12px}
+.account-secondary-link span{
+  display:block;
+  margin-top:5px;
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.45
+}
+.account-secondary-link span strong{
+  display:inline;
+  color:var(--text);
+  font-size:inherit;
+  margin:0
+}
+.account-secondary-link i{
+  position:absolute;
+  right:13px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--teal);
+  font-style:normal
+}
+.account-secondary-link:hover,
+.account-secondary-link:focus-visible{
+  border-color:rgba(47,230,200,.42);
+  outline:none
+}
+
+@media(max-width:760px){
+  .account-primary-nav{
+    top:69px;
+    grid-template-columns:repeat(4,1fr);
+    overflow-x:auto;
+    scrollbar-width:none
+  }
+  .account-primary-nav::-webkit-scrollbar{display:none}
+  .account-primary-nav .tab{font-size:8px;padding:8px 6px}
+  .account-more-head{align-items:start;flex-direction:column}
+  .account-more-grid{grid-template-columns:1fr 1fr}
+  .account-secondary-row{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .account-welcome{padding:12px 13px}
+  .account-welcome h1{font-size:21px}
+  .account-home-link{display:none}
+  .account-overview{padding:16px 13px}
+  .account-core-grid{grid-template-columns:1fr}
+  .account-core-card{min-height:112px}
+  .account-section-label{align-items:start;flex-direction:column}
+}
+
+/* Sign-in surface gets the same simplified hierarchy. */
+.auth-card{
+  box-shadow:0 24px 70px rgba(0,0,0,.28)
+}
+.auth-card h1{letter-spacing:-.025em}

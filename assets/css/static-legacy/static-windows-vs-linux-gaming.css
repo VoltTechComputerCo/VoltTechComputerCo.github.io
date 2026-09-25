@@ -1,0 +1,55 @@
+/* Extracted from static-windows-vs-linux-gaming.html; presentation preserved during Step 8.3 migration. */
+
+:root{
+  --bg: #05080a; --bg-alt: #0a1114; --panel: #0d1517; --panel-line: #172526;
+  --static: #ffb454; --static-dim: #7a5a2a;
+  --text: #e7f1ee; --muted: #5f7c78;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --display: 'Space Grotesk', sans-serif;
+}
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{
+  background: radial-gradient(ellipse 80% 40% at 50% -10%, #241708 0%, transparent 60%), var(--bg);
+  color:var(--text); font-family:var(--display); line-height:1.6;
+}
+a{ color:var(--static); text-decoration:none; }
+a:hover{ color:#ffc97e; }
+.wrap{ max-width:680px; margin:0 auto; padding:0 20px; }
+nav{ position:sticky; top:0; z-index:10; background:rgba(5,8,10,0.9); backdrop-filter:blur(6px); border-bottom:1px solid var(--panel-line); }
+nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:60px; }
+.masthead-brand{ font-family:var(--display); font-weight:800; font-size:17px; letter-spacing:-0.01em; display:flex; align-items:center; gap:8px; color:var(--text); }
+.masthead-brand .dot{ width:6px; height:6px; border-radius:50%; background:var(--static); box-shadow:0 0 8px var(--static); }
+.back-link{ font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); }
+.back-link:hover{ color:var(--static); }
+article{ padding:44px 0 20px; }
+.kicker{ font-family:var(--mono); font-size:10px; color:var(--static); letter-spacing:0.16em; text-transform:uppercase; margin-bottom:16px; }
+h1{ font-size:32px; font-weight:800; letter-spacing:-0.02em; line-height:1.2; margin-bottom:14px; }
+.meta-row{ display:flex; gap:14px; font-family:var(--mono); font-size:10.5px; color:var(--muted); letter-spacing:0.04em; margin-bottom:36px; padding-bottom:24px; border-bottom:1px solid var(--panel-line); }
+.lede{ font-size:16.5px; color:var(--text); line-height:1.7; margin-bottom:24px; }
+h2{ font-size:20px; font-weight:700; letter-spacing:-0.01em; margin:34px 0 14px; }
+p{ color:var(--muted); font-size:14.5px; line-height:1.75; margin-bottom:16px; }
+p strong{ color:var(--text); }
+ul, ol{ color:var(--muted); font-size:14.5px; line-height:1.75; margin:0 0 16px 22px; }
+li{ margin-bottom:8px; }
+li strong{ color:var(--text); }
+.pullquote{
+  border-left:2px solid var(--static); padding:4px 0 4px 20px; margin:28px 0;
+  font-size:17px; font-weight:600; color:var(--text); line-height:1.5;
+}
+.more-static{ padding:32px 0 16px; border-top:1px solid var(--panel-line); margin-top:20px; }
+.more-static .section-label{ font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.16em; text-transform:uppercase; margin-bottom:16px; }
+.more-links{ display:flex; flex-direction:column; gap:10px; }
+.more-links a{ font-size:14.5px; color:var(--text); display:block; }
+.more-links a:hover{ color:var(--static); }
+.more-links .tag{ font-family:var(--mono); font-size:9px; color:var(--static); letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:3px; }
+footer{ padding:32px 0 60px; text-align:center; border-top:1px solid var(--panel-line); margin-top:20px; }
+footer p{ font-family:var(--mono); font-size:10px; color:var(--panel-line); letter-spacing:0.08em; }
+.footer-link{ margin-top:10px; }
+.footer-link a{ font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
+.footer-link a:hover{ color:var(--static); }
+@media (max-width:560px){ h1{ font-size:26px; } }
+.kicker{ display:flex; align-items:center; gap:7px; }
+.kicker-icon{ display:inline-flex; flex-shrink:0; color:var(--static); }
+.hero-art{ margin:6px 0 32px; border:1px solid var(--panel-line); border-radius:6px; overflow:hidden; background:var(--panel); }
+.hero-art svg{ display:block; width:100%; height:auto; }
+.hero-caption{ font-family:var(--mono); font-size:9.5px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; border-top:1px solid var(--panel-line); background:var(--bg-alt); text-align:center; }

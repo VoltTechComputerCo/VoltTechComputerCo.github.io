@@ -1,0 +1,12 @@
+{
+  "output": "pc-upgrades-pretoria.html",
+  "title": "PC Upgrades Pretoria | SSD, RAM, GPU & Cooling | VoltTech",
+  "description": "PC upgrades in Pretoria, Wonderboom and Pretoria North. SSD, NVMe, RAM, GPU and cooling upgrades with compatibility checks, installation and testing.",
+  "robots": "index, follow, max-image-preview:large",
+  "styles": [
+    "assets/css/pages/services.css"
+  ],
+  "scripts": [
+    "assets/js/pages/service.js"
+  ]
+}

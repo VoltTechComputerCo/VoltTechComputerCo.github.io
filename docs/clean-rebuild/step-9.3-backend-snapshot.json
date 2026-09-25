@@ -1,0 +1,78 @@
+{
+  "step": "9.3",
+  "checked_at_utc": "2026-09-25T00:31:00Z",
+  "source": "Read-only connected Supabase inspection plus deployed Edge Function source inspection",
+  "project": {
+    "name": "VoltTech Production",
+    "ref": "qdqhfnvwqvgesfdmocir",
+    "status": "ACTIVE_HEALTHY",
+    "region": "eu-west-1"
+  },
+  "release_mode": "non-commerce",
+  "store_settings": {
+    "catalogue_enabled": false,
+    "builder_enabled": false,
+    "direct_payment_enabled": false,
+    "checkout_mode": "hybrid",
+    "currency": "ZAR",
+    "catalogue_schema_version": "money-maker-v1",
+    "catalogue_generated_at": "2026-09-16"
+  },
+  "inventory": {
+    "real_public_products": 0,
+    "demo_public_products": 15
+  },
+  "commerce_activity": {
+    "store_request_count": 0,
+    "pending_store_payments": 0,
+    "confirmed_store_orders": 0
+  },
+  "shipping_readiness": {
+    "vault_bobgo_api_token_configured": false,
+    "private_setting_keys": [
+      "configured",
+      "environment",
+      "handling_time_days",
+      "provider"
+    ],
+    "collection_address_present": false,
+    "collection_contact_present": false
+  },
+  "payment_readiness": {
+    "admin_readiness_vault_yoco_secret_key_configured": false,
+    "admin_readiness_vault_yoco_webhook_secret_configured": false,
+    "edge_function_secret_state": "not exposed by connected tooling",
+    "readiness_contract_mismatch": true,
+    "note": "Admin readiness checks Vault secret names, while deployed store Yoco functions read Edge Function environment variables. Align before commerce launch."
+  },
+  "edge_origin_alignment": {
+    "expected_origin": "https://volttechcomputerco.co.za",
+    "deployed_origin": "https://volttechcomputerco.github.io",
+    "aligned": false,
+    "affected_functions": [
+      "submit-store-checkout",
+      "store-checkout-status",
+      "create-store-payment",
+      "bobgo-checkout-rates"
+    ],
+    "redirect_affected_functions": [
+      "create-store-payment"
+    ]
+  },
+  "twitch_refresh": {
+    "refresh_secret_configured": true,
+    "last_success_at": "2026-09-18T13:10:03.709949Z",
+    "last_error": "Twitch token request failed: 403"
+  },
+  "supabase_security": {
+    "leaked_password_protection": "disabled_warning",
+    "security_definer_authenticated_execute_advisory_count": 23,
+    "security_definer_functions_with_auth_guard_signal": 23,
+    "security_definer_note": "Advisor warning requires privilege review before commerce launch. Read-only inspection found an is_volttech_admin() or auth.uid() guard signal in all 23 flagged functions; this is not a substitute for a full manual privilege audit."
+  },
+  "compliance": {
+    "paia_manual_complete": false,
+    "information_officer_registration_details_complete": false
+  },
+  "certification_meaning": "Safe release candidate only while Store, Builder and direct payments remain disabled. This snapshot does not certify ecommerce launch readiness."
+}

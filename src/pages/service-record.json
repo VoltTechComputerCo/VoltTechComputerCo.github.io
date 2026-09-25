@@ -1,0 +1,16 @@
+{
+  "output": "service-record.html",
+  "title": "Service Record | VoltTech",
+  "description": "VoltTech customer service record.",
+  "robots": "noindex, nofollow",
+  "styles": [
+    "assets/css/notifications.css",
+    "assets/css/pages/document.css"
+  ],
+  "classic_scripts": [
+    "supabase-config.js"
+  ],
+  "scripts": [
+    "assets/js/pages/customer-document.js"
+  ]
+}

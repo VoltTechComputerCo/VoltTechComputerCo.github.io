@@ -1,0 +1,21 @@
+{
+  "step": "10.3",
+  "title": "Controlled promotion to main",
+  "branch": "clean-rebuild",
+  "expected_main_head": "12079c9d873cc1601581354829193a322f81d874",
+  "step_10_2_rehearsal_head": "0aa0eb48677e78751467f741a5e547eb730e6924",
+  "pushes_main": true,
+  "force_push": false,
+  "delete": [],
+  "launch_setting_changes": [],
+  "workflow": ".github/workflows/promote-main.yml",
+  "expected_artifact": "volttech-step-10.3-main-promotion",
+  "upload_last": "scripts/run-step-10.3.mjs",
+  "sha256": {
+    ".github/workflows/promote-main.yml": "184fb2f2896c6af412c8355ddb08338db4eb223db594c1309daa0338147fedba",
+    "scripts/run-step-10.3.mjs": "7c5346504feb30218349503de7b277eef37b8a3c9a7086be3a42ff0237caf825",
+    "docs/clean-rebuild/step-10.3-QA.md": "ead33a739b5d57427ec91daf7dc92216d5bc8029e0aa8a87bd41b0bf6677b5ea",
+    "docs/clean-rebuild/ROADMAP.md": "06b3ce1b3c1139428be3e87c8288356901cda00d3391e79d8bbad5babdf90246",
+    "README.md": "3751507231ac4230ec5f0caefd01a8b0130a13e00956cf119bdc617c59759f8b"
+  }
+}

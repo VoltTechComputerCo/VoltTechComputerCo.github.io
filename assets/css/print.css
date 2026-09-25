@@ -1,0 +1,10 @@
+@media print {
+  :root { color-scheme: light; --text: #102321; --text-secondary: #243d38; --text-muted: #38564e; --teal: #086b60; --black: #fff; --bg: #fff; --bg-secondary: #fff; --panel: #fff; --panel-raised: #fff; --border: #b8cbc6; --border-strong: #6d8c82; }
+  .site-header, .site-footer, .preview-strip, .skip-link, .actions, dialog, form { display: none !important; }
+  .container { width: 100%; padding-inline: 0; }
+  .section { padding-block: 1rem; }
+  .card, .feature-panel { break-inside: avoid; }
+  h1 { font-size: 32pt; }
+  h2 { font-size: 20pt; }
+  a { color: inherit; }
+}

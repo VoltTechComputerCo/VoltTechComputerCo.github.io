@@ -1,0 +1,5 @@
+.stream-scan-page{background:radial-gradient(circle at 78% 0,rgba(194,140,255,.09),transparent 32%),var(--bg)}
+.stream-scan-page .scan-heading .accent,.stream-scan-page .scan-scope-head span,.stream-scan-page .scan-price,.stream-scan-page .scan-badge{color:#c28cff}
+.stream-scan-page .scan-option:after{color:#c28cff}.stream-scan-page .scan-meter i.on{background:#c28cff;box-shadow:0 0 .8rem rgba(194,140,255,.35)}
+.stream-scan-page .scan-truth li{border-left-color:rgba(194,140,255,.42)}
+.stream-tool-nav{margin:0 0 2rem}.stream-context,.stream-security{margin-top:1rem;padding:1rem;border-left:3px solid rgba(194,140,255,.65);background:rgba(194,140,255,.04);color:var(--text-secondary);font-size:.8rem;line-height:1.6}.stream-context strong,.stream-security strong{color:var(--text)}.stream-context p{margin:.35rem 0 0}.stream-security{border-left-color:var(--error)}

@@ -1,10 +1,7 @@
 @import url('contact-icons-static.css?v=2');
 
-/* VoltTech v11 visual reset.
-   Generated panel/section photography from the older visual system is intentionally disabled.
-   Page content now controls its own visual hierarchy. */
-body[class*="vt-page-"] main .wrap>.panel::after,
-body.vt-page-home section::after{
+
+body[class*="vt-page-"] main .wrap>.panel::after{
   content:none!important;
   display:none!important;
 }

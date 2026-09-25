@@ -1,0 +1,13 @@
+{
+  "output": "streaming-setup-south-africa.html",
+  "title": "Streaming & Creator Technical Support South Africa | OBS Help | VoltTech",
+  "description": "Remote streaming and creator technical support across South Africa. OBS diagnostics, dropped frames, encoder tuning, audio, recording and creator-PC optimisation from VoltTech.",
+  "robots": "index, follow, max-image-preview:large",
+  "styles": [
+    "assets/css/pages/services.css",
+    "assets/css/pages/streaming-support.css"
+  ],
+  "scripts": [
+    "assets/js/pages/streaming-support.js"
+  ]
+}

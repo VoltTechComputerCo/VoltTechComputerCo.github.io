@@ -1,0 +1,45 @@
+name: VoltTech Full QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - scripts/run-full-qa.mjs
+
+permissions:
+  contents: read
+
+concurrency:
+  group: volttech-full-qa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  full-qa:
+    name: Full regression gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Runtime versions
+        run: |
+          node --version
+          python3 --version
+
+      - name: Run VoltTech full QA
+        run: node scripts/run-full-qa.mjs
+
+      - name: Upload QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-9.1-qa
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 14

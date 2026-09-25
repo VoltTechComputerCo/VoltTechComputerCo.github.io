@@ -1,0 +1,29 @@
+{
+  "step": "6.2",
+  "title": "Streaming Support and Stream Scan",
+  "branch": "clean-rebuild",
+  "parent": "93e6d62e02310b8dea92fc1471e63245f82f5ddd",
+  "delete": [],
+  "supabase_changes": [],
+  "sha256": {
+    "README.md": "21c511f4ad0c043dc73f18d7ec764c3ebcfe4089ac26785e94700571afdf28dd",
+    "assets/css/pages/stream-scan.css": "14c12851ef01973b50b03895c9e860ab95c613f71dff02ba95acbd9ba943ccd2",
+    "assets/css/pages/streaming-support.css": "b3eefcbc0222eab8fb20ca073be87ef1e40a2bd71c3155f93ff9eb1a920aa6ef",
+    "assets/js/pages/stream-scan.js": "b41940964b9a6500b7761d0970cacd810c0bbf185f9a54c43875d6b34f282e70",
+    "assets/js/pages/streaming-support.js": "7c3f224e441ff93709e0f1aff356dde4e94ff18ce7d7882f6c175ea8dd1c6dd8",
+    "assets/js/services/stream-scan-handoff.js": "6aa1a440e73bcf1428dc1a11364781b51ac8136c751d73aa9e611d037aa4518d",
+    "assets/js/services/stream-scan-model.js": "440bf44e98136c34c47d3267190fba130d4972baa4ac1c0e8f1c478ef81d8fa4",
+    "docs/clean-rebuild/ROADMAP.md": "8a650ca895d83c61f76d257668450fb9cf21df119f680f340ea3fb4c0d9c2465",
+    "docs/clean-rebuild/step-6.2-QA.md": "7915452979ece5a391ca9525de67c0b452ef52ffed0b544def36291e7cf499af",
+    "docs/clean-rebuild/step-6.2-folder.png": "962b7f3da7d88a72731dd59d2fa0bc37f5e59ec477258059e907b116d89b22d1",
+    "scripts/test-clean-streaming.mjs": "8a762a18630e8f84cad0b150066054bc734f337f2649c44557e2b0eec88b4898",
+    "src/pages/stream-scan.head.html": "c975e5fd8393055a834237c7063d659377a06edde5c757267e6b2775e274bb63",
+    "src/pages/stream-scan.html": "86a1bd107ca4350a316b11d85057821f5f1df5e51903de25faf3d067a19fe45c",
+    "src/pages/stream-scan.json": "d5fbd337550e05562e44b54bc49c5058f80ed1fc8debb66ac02c37aaf557c46f",
+    "src/pages/streaming-support.head.html": "dbe864e8b9f3581539e99f31e40cc852cd5033240441f4a0aa1e04e4b60a0b24",
+    "src/pages/streaming-support.html": "d7c2a521bd98c6a7afc25ab906a991a9be34c5fd9fbe9072d9da1a9554912136",
+    "src/pages/streaming-support.json": "3e532da6fabbfd2350a0ccc06b7dc2800c2f1b77e58af800cab80f9b743975d3",
+    "stream-scan.html": "9c420b2f02e3232ad52dabda4d637df56c9058bcbbda7ed09721d9a2bf7007a5",
+    "streaming-setup-south-africa.html": "6f21b856b3c8b481b9860d3a8ec9f8173bc65c742c83d6e420555326108b37ed"
+  }
+}

@@ -1,0 +1,43 @@
+/* VoltTech V2 — Phase 6 / Commercial provenance */
+.vt-build-origin{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin:10px 0;
+  padding:8px 10px;
+  border:1px solid rgba(47,230,200,.16);
+  border-radius:7px;
+  background:rgba(47,230,200,.025)
+}
+.vt-build-origin span{
+  color:var(--teal,#2fe6c8);
+  font:800 7px 'JetBrains Mono',monospace;
+  letter-spacing:.08em
+}
+.vt-build-origin b{
+  color:#7f9893;
+  font-size:9px;
+  font-weight:600
+}
+.vt-work-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  align-items:center
+}
+.vt-work-origin{
+  display:inline-flex;
+  min-height:22px;
+  align-items:center;
+  padding:0 8px;
+  border:1px solid rgba(47,230,200,.18);
+  border-radius:999px;
+  color:#7fc7bc;
+  font:800 7px 'JetBrains Mono',monospace;
+  text-transform:uppercase;
+  letter-spacing:.06em
+}
+@media(max-width:620px){
+  .vt-build-origin{align-items:flex-start;flex-direction:column}
+}

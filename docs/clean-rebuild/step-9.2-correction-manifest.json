@@ -1,0 +1,25 @@
+{
+  "step": "9.2-correction",
+  "title": "Account DOM/source alignment",
+  "branch": "clean-rebuild",
+  "parent": "0aac7c14d3e5235a10213c6398571ceab9c51cd3",
+  "delete": [],
+  "visible_page_changes": [
+    "account.html"
+  ],
+  "restore_from_branch_commit": "b4f2187f90547a482d0aae7bfcfc16bb75887e10",
+  "rerun_workflows": [
+    "VoltTech Full QA",
+    "VoltTech Device + Role QA"
+  ],
+  "sha256": {
+    "account.html": "6d30f5a24eaca4e2e30e64626ae3e900ea7529da9e553be7607c2e57910df311",
+    "src/pages/account.html": "806c93a92390b186f0ed9a2b6f7c57058e68fd0474cb3967130f1130af68f53d",
+    "scripts/test-clean-account.mjs": "5ea97ee4fd0fa9fca5170ce5cebda01cc0365bd9547cd4eb3cbc9536b3465b5c",
+    "scripts/run-full-qa.mjs": "582daf9e4023f975898a9d29648ade43b96432209983cff5b941e99f724bde21",
+    "scripts/test-device-role-qa.mjs": "fd62fa4bacc30fa13ab47389ae130f654109925f91b91b3ee0d2d6e8656650bb",
+    "docs/clean-rebuild/step-9.2-QA.md": "15baf4a52301c223073efb767885539fad5e0b8aeeb7009a1bec4e55e31770c7",
+    "docs/clean-rebuild/ROADMAP.md": "304212c2f7c23139db56afa658c4748ae58511e3d3251260e7d80c241c623fb9",
+    "README.md": "ec0cb8327082515257a589305a123b57072fd30f19714d4b8f57fc33fd672e3c"
+  }
+}
