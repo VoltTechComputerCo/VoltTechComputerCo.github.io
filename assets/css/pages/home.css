@@ -203,3 +203,23 @@
   .scan-panel, .discovery-column + .discovery-column { border-left: 0; padding-left: 0; }
   .home-section, .tool-section, .creator-strip { break-inside: avoid; }
 }
+
+
+/* Step 11.2B Stream Support feature */
+.stream-support-feature{border-bottom:1px solid var(--border-strong);background:linear-gradient(120deg,rgba(53,234,215,.055),transparent 42%),var(--bg-secondary);padding-block:clamp(2rem,4vw,3.5rem)}
+.stream-support-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1.5rem,4vw,4rem);align-items:center}
+.stream-support-copy h2{font-size:clamp(1.8rem,3vw,3rem);line-height:1.02;letter-spacing:-.035em;margin:.5rem 0 1rem}
+.stream-support-copy>p:not(.eyebrow):not(.micro){max-width:52ch;color:var(--text-secondary);font-size:.9rem;line-height:1.65}
+.stream-support-copy .actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.25rem}
+.stream-support-copy .button{font-size:.7rem}
+.stream-support-copy .micro{margin:1rem 0 0;font-size:.58rem;line-height:1.7;color:var(--text-muted)}
+.stream-support-visual{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(13rem,.7fr);border:1px solid var(--border-strong);background:var(--panel);min-width:0}
+.stream-support-visual>img{width:100%;height:100%;min-height:300px;object-fit:cover}
+.stream-support-points{display:grid;align-content:stretch}
+.stream-support-points>div{display:grid;grid-template-columns:2.2rem 1fr;gap:.15rem .65rem;align-content:center;padding:.9rem;border-left:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stream-support-points>div:last-child{border-bottom:0}
+.stream-support-points span{grid-row:1/3;color:var(--teal);font:600 .72rem/1 var(--font-mono);padding-top:.15rem}
+.stream-support-points strong{font-size:.68rem;letter-spacing:.04em}
+.stream-support-points small{color:var(--text-secondary);font-size:.62rem;line-height:1.4}
+@media(max-width:56rem){.stream-support-grid{grid-template-columns:1fr}.stream-support-visual{grid-template-columns:1fr 1fr}.stream-support-points>div:first-child{border-top:1px solid var(--border)}}
+@media(max-width:40rem){.stream-support-feature{padding-block:2rem}.stream-support-copy .actions{display:grid;grid-template-columns:1fr 1fr}.stream-support-copy .button{padding-inline:.65rem;font-size:.625rem}.stream-support-visual{grid-template-columns:1fr}.stream-support-visual>img{min-height:220px}.stream-support-points{grid-template-columns:1fr 1fr}.stream-support-points>div{border-top:1px solid var(--border);border-left:0}.stream-support-points>div:nth-child(odd){border-right:1px solid var(--border)}}

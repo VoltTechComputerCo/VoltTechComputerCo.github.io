@@ -14,3 +14,9 @@
 .creator-community{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.25rem}.creator-community article{padding:1.25rem;border:1px solid var(--border);background:var(--panel)}.creator-community p{color:var(--text-secondary)}
 @media(max-width:820px){.creator-live-layout,.creator-community{grid-template-columns:1fr}.creator-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.creator-section-head,.creator-search-row{align-items:flex-start;flex-direction:column}.creator-search-wrap{width:100%}}
 @media(max-width:520px){.creator-grid{grid-template-columns:1fr}.creator-player-meta{align-items:flex-start;flex-direction:column}.creator-meta{display:grid;gap:.35rem}}
+
+
+/* Step 11.2B creator support routes */
+.creator-hero-actions{display:flex;flex-wrap:wrap;gap:.65rem;align-items:center}
+.creator-hero-actions .button{font-size:.7rem}
+@media(max-width:520px){.creator-hero-actions{display:grid;grid-template-columns:1fr 1fr}.creator-hero-actions .button{padding-inline:.65rem;font-size:.625rem}}
