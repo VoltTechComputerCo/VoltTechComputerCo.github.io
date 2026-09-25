@@ -83,7 +83,8 @@ check('PAIA and ecommerce release boundaries remain explicit',
 
 check('Creator live status fails stale/closed',
   creator.includes('CREATOR_FRESH_MS') &&
-  creator.includes("payload?.source === 'unavailable'") &&
+  creator.includes("source: 'unavailable'") &&
+  integrations.includes("payload?.source === 'unavailable'") &&
   creatorRefresh.includes('Twitch credentials are not configured'));
 
 check('Backend snapshot is a non-commerce certification',
