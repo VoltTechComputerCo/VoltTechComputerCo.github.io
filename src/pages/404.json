@@ -1,0 +1,9 @@
+{
+  "output": "404.html",
+  "title": "Page Not Found | VoltTech Computer Co.",
+  "description": "The VoltTech page you requested could not be found. Return home, find PC support or run Signal Scan.",
+  "robots": "noindex, nofollow",
+  "styles": [
+    "assets/css/pages/error.css"
+  ]
+}
