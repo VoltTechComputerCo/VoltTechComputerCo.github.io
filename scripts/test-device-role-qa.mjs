@@ -270,3 +270,5 @@ console.log(`\n=== STEP 9.2 ${summary.status} ===`);
 console.log(`${summary.passed}/${summary.total} gates passed.`);
 console.log(`Evidence: ${outDir}`);
 process.exit(failures ? 1 : 0);
+
+// Step 9.2 Account DOM correction rerun — 2026-09-25.
