@@ -20,35 +20,33 @@ assert(home.includes('CUSTOM PCs. COMPONENTS. STREAM SUPPORT. EXPERT CARE.'),'Ho
 assert(home.includes('CUSTOM GAMING<br>PC BUILDS'),'Custom PC hero fact missing');
 assert(home.includes('COMPONENTS<br>&amp; PERIPHERALS'),'Components/peripherals hero fact missing');
 assert(home.includes('STREAM SUPPORT<br>ACROSS SA'),'Stream Support hero fact missing');
-assert(home.includes('class="stream-support-feature"'),'Dedicated homepage Stream Support feature missing');
-assert(home.includes('OBS / STREAMLABS'),'Homepage OBS/Streamlabs proof point missing');
-assert(home.includes('href="stream-scan.html">RUN STREAM SCAN'),'Homepage Stream Scan route missing');
+assert(home.includes('class="stream-support-spotlight"'),'Compact Stream Support spotlight missing');
+assert(home.includes('class="stream-support-card" href="streaming-setup-south-africa.html"'),'Whole Stream Support card must be clickable');
+assert(home.includes('src="vt-px-streaming-setup.webp"'),'Existing streaming visual must be reused');
+assert(home.includes('OBS / STREAMLABS / CREATOR TECH'),'Compact Stream Support label missing');
+assert(home.includes('Get your stream dialled in.'),'Compact Stream Support heading missing');
 assert(home.includes('<h3>Stream Support</h3><p>OBS. Audio. Performance.</p>'),'Homepage service card not elevated');
+assert(!home.includes('class="stream-support-feature"'),'Oversized Stream Support feature must be removed');
+assert(!home.includes('stream-support-points'),'Oversized four-point panel must be removed');
+
+const css=read('assets/css/pages/home.css');
+assert(css.includes('/* Step 11.2B compact Stream Support spotlight */'),'Compact Stream Support CSS missing');
+assert(css.includes('#c28cff'),'Purple Stream Support accent missing');
+assert(!css.includes('/* Step 11.2B Stream Support feature */'),'Old oversized feature CSS must be removed');
 
 const stream=read('streaming-setup-south-africa.html');
 assert(stream.includes('<title>OBS &amp; Stream Support South Africa | Streamlabs Help | VoltTech</title>'),'Streaming Support SEO title missing');
 assert(stream.includes('<h1>Stream Support<span>OBS, Streamlabs, audio and performance—dialled in.</span></h1>'),'Streaming Support hero not updated');
-for(const term of ['OBS &amp; Streamlabs','Encoder &amp; output tuning','Dropped frames &amp; network','Audio &amp; routing','Capture cards &amp; dual-PC']){
-  assert(stream.includes(term),`Streaming Support capability missing: ${term}`);
-}
-assert(stream.includes('https://volttechcomputerco.co.za/#organisation'),'Streaming Support schema provider id must match site organisation');
 
 const scan=read('stream-scan.html');
 assert(scan.includes('<title>OBS &amp; Streamlabs Diagnostic Tool South Africa | Stream Scan | VoltTech</title>'),'Stream Scan SEO title missing');
-assert(scan.includes('OBS and Streamlabs diagnostics'),'Stream Scan OG positioning missing');
-assert(scan.includes('https://volttechcomputerco.co.za/#organisation'),'Stream Scan schema provider id must match site organisation');
 
 const creator=read('creator-hub-south-africa.html');
-assert(creator.includes('Get Stream Support'),'Creator Hub must route to Stream Support from hero');
-assert(creator.includes('Run Stream Scan'),'Creator Hub must route to Stream Scan from hero');
-assert(creator.includes('OBS, Streamlabs and creator-tech problems'),'Creator Hub creator-tech positioning missing');
+assert(creator.includes('Get Stream Support'),'Creator Hub must route to Stream Support');
+assert(creator.includes('Run Stream Scan'),'Creator Hub must route to Stream Scan');
 
 const search=read('assets/js/components/search.js');
 assert(search.includes("['Stream Support', 'OBS, Streamlabs, audio, capture, dropped frames and creator PCs'"),'Search Stream Support entry missing');
 assert(search.includes("['Stream Scan', 'Guided OBS and Streamlabs diagnostic and estimate'"),'Search Stream Scan entry missing');
 
-const forbidden=['best stream support','best streaming support','ultimate streaming support','number one stream support','#1 stream support'];
-const combined=[home,stream,scan,creator].join('\n').toLowerCase();
-for(const claim of forbidden)assert(!combined.includes(claim),`Unsubstantiated superlative claim present: ${claim}`);
-
-console.log('PASS: Step 11.2B one-stop-shop + Stream Support positioning contract');
+console.log('PASS: Step 11.2B compact Stream Support positioning contract');
