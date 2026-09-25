@@ -61,9 +61,12 @@ check('Reviewed live-branch surfaces are superseded by clean implementations',
   store.includes('id="store-gate"') &&
   adapter.includes('V2 adapter'));
 
+const blockers=read('docs/clean-rebuild/RELEASE-BLOCKERS.md');
 check('Release blockers remain carried',
-  exists('docs/clean-rebuild/RELEASE-BLOCKERS.md') &&
-  read('docs/clean-rebuild/RELEASE-BLOCKERS.md').includes('Store, Builder and direct payments remain disabled'));
+  blockers.includes('Store catalogue remains disabled.') &&
+  blockers.includes('PC Builder remains disabled for customers.') &&
+  blockers.includes('Direct payments remain disabled.') &&
+  blockers.includes('Deployed Edge Function origin mismatch'));
 
 const tracked=git('ls-files').split('\n').filter(Boolean);
 check('No dependency or QA build debris is tracked',
@@ -71,8 +74,10 @@ check('No dependency or QA build debris is tracked',
 check('No root correction manifest is tracked',
   !tracked.includes('correction-manifest.json'));
 
+const leftMarker='<'.repeat(7)+' ';
+const rightMarker='>'.repeat(7)+' ';
 let conflictText='';
-try{conflictText=git('grep','-n','-e','<<<<<<< ','-e','>>>>>>> ','--','.')}catch(error){
+try{conflictText=git('grep','-n','-e',leftMarker,'-e',rightMarker,'--','.')}catch(error){
   if(error.status!==1)throw error;
 }
 check('No merge-conflict markers remain',!conflictText,conflictText.slice(0,500));
