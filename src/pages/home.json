@@ -2,8 +2,17 @@
   "output": "index.html",
   "title": "PC Repair Pretoria, Upgrades & Creator Support | VoltTech Computer Co.",
   "description": "PC repair and upgrades in Pretoria, with remote PC and streaming support across South Africa. Plan your next upgrade with VoltTech Computer Co.",
-  "robots": "noindex, follow",
-  "styles": ["assets/css/notifications.css", "assets/css/pages/home.css"],
-  "classic_scripts": ["supabase-config.js", "streamer-feed.js", "conversion-context.js"],
-  "scripts": ["assets/js/pages/home.js"]
+  "robots": "index, follow, max-image-preview:large",
+  "styles": [
+    "assets/css/notifications.css",
+    "assets/css/pages/home.css"
+  ],
+  "classic_scripts": [
+    "supabase-config.js",
+    "streamer-feed.js",
+    "conversion-context.js"
+  ],
+  "scripts": [
+    "assets/js/pages/home.js"
+  ]
 }
