@@ -1,0 +1,149 @@
+
+name: VoltTech Step 11.2B Positioning
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-11.2b-positioning.mjs"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volttech-step-11.2b-positioning
+  cancel-in-progress: true
+
+jobs:
+  position:
+    name: Elevate one-stop-shop and Stream Support positioning
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: clean-rebuild
+
+      - name: Apply positioning source changes
+        run: python3 scripts/apply-step-11.2b-positioning.py
+
+      - name: Rebuild clean frontend
+        run: python3 scripts/build-clean-frontend.py
+
+      - name: Verify generated frontend consistency
+        run: python3 scripts/build-clean-frontend.py --check
+
+      - name: Verify Step 11.2B positioning contract
+        run: node scripts/test-step-11.2b-positioning.mjs
+
+      - name: Run complete clean regression
+        run: node scripts/run-full-qa.mjs
+
+      - name: Guard Step 11.2B scope
+        shell: python
+        run: |
+          from pathlib import Path
+          import subprocess,sys
+
+          changed=subprocess.check_output(["git","diff","--name-only"],text=True).splitlines()
+
+          approved_source={
+            "src/templates/header.html",
+            "src/templates/footer.html",
+            "src/pages/home.json",
+            "src/pages/home.head.html",
+            "src/pages/home.html",
+            "src/pages/streaming-support.json",
+            "src/pages/streaming-support.head.html",
+            "src/pages/streaming-support.html",
+            "src/pages/stream-scan.json",
+            "src/pages/stream-scan.head.html",
+            "src/pages/creator-hub-south-africa.json",
+            "src/pages/creator-hub-south-africa.head.html",
+            "src/pages/creator-hub-south-africa.html",
+            "assets/css/pages/home.css",
+            "assets/css/pages/creator-hub.css",
+            "assets/js/components/search.js",
+          }
+
+          def allowed(p):
+              if p in approved_source:
+                  return True
+              path=Path(p)
+              if path.parent == Path(".") and path.suffix == ".html" and p != "static.html" and not p.startswith("static-"):
+                  return True
+              if p == "builder/index.html":
+                  return True
+              return False
+
+          unexpected=[p for p in changed if not allowed(p)]
+          if unexpected:
+              print("Unexpected Step 11.2B changes:")
+              print("\n".join(unexpected))
+              sys.exit(1)
+
+          print(f"PASS: {len(changed)} changed file(s), all inside approved positioning scope.")
+          for p in changed:
+              print("-",p)
+
+      - name: Commit certified staging positioning
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No Step 11.2B changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            src/templates/header.html \
+            src/templates/footer.html \
+            src/pages/home.json \
+            src/pages/home.head.html \
+            src/pages/home.html \
+            src/pages/streaming-support.json \
+            src/pages/streaming-support.head.html \
+            src/pages/streaming-support.html \
+            src/pages/stream-scan.json \
+            src/pages/stream-scan.head.html \
+            src/pages/creator-hub-south-africa.json \
+            src/pages/creator-hub-south-africa.head.html \
+            src/pages/creator-hub-south-africa.html \
+            assets/css/pages/home.css \
+            assets/css/pages/creator-hub.css \
+            assets/js/components/search.js \
+            '*.html' \
+            builder/index.html
+          git reset -- static.html 2>/dev/null || true
+          git reset -- 'static-*.html' 2>/dev/null || true
+          git commit -m "brand: elevate hardware builds and Stream Support"
+          git push origin HEAD:clean-rebuild
+
+      - name: Write QA evidence
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p qa-results/step-11.2b
+          {
+            echo "# VoltTech Step 11.2B — Core business positioning"
+            echo
+            echo "Branch: clean-rebuild"
+            echo "Scope: one-stop-shop hardware/builds + first-class Stream Support"
+            echo "Commerce launch flags changed: NO"
+            echo "Supabase/backend changed: NO"
+            echo "Production main changed: NO"
+          } > qa-results/step-11.2b/summary.md
+
+      - name: Upload QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-11.2b-positioning
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 30
