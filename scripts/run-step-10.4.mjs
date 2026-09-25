@@ -36,3 +36,4 @@ fs.writeFileSync(path.join(outDir,'step-10.4-summary.json'),JSON.stringify(summa
 fs.writeFileSync(path.join(outDir,'step-10.4-summary.md'),['# VoltTech Step 10.4 — Live verification','',`Overall: **${summary.status}**`,'',`Production origin: ${ROOT}`,`Main SHA: \`${mainHead}\``,`Passed: ${summary.passed}/${summary.total}`,`Failed: ${summary.failed}/${summary.total}`,'','Release mode: **non-commerce**','Commerce launch ready: **NO**','','| Live check | Result |','| --- | --- |',...results.map(r=>`| ${r.name.replaceAll('|','\\|')} | ${r.status} |`),''].join('\n'));
 console.log(`\n=== STEP 10.4 ${summary.status} ===`);console.log(`${summary.passed}/${summary.total} live checks passed.`);process.exit(failures?1:0);
 // Step 10.4 corrected live verification contract.
+// Step 10.4 post-deployment live rerun marker — 2026-09-25.
