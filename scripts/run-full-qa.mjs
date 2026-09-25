@@ -117,4 +117,4 @@ console.log('Evidence written to qa-results/.');
 
 process.exit(failed === 0 ? 0 : 1);
 
-// Step 9.1 final assertion-alignment rerun marker — 2026-09-25.
+// Step 9.2 Account DOM correction regression rerun — 2026-09-25.
