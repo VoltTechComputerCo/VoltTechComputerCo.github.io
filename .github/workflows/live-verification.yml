@@ -3,39 +3,22 @@ name: VoltTech Step 10.4 Live Verification
 on:
   workflow_dispatch:
   push:
-    branches:
-      - clean-rebuild
-    paths:
-      - "scripts/run-step-10.4.mjs"
+    branches: [clean-rebuild]
+    paths: ["scripts/run-step-10.4.mjs"]
 
 permissions:
   contents: read
 
-concurrency:
-  group: volttech-step-10.4-live-verification
-  cancel-in-progress: true
-
 jobs:
   verify-live:
-    name: Verify live .co.za release
     runs-on: ubuntu-latest
     timeout-minutes: 15
-
     steps:
-      - name: Checkout verification branch
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: clean-rebuild
-
-      - name: Fetch production main
-        run: git fetch origin main:refs/remotes/origin/main --force
-
-      - name: Verify live VoltTech release
-        run: node scripts/run-step-10.4.mjs
-
-      - name: Upload live verification evidence
-        if: always()
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0, ref: clean-rebuild}
+      - run: git fetch origin main:refs/remotes/origin/main --force
+      - run: node scripts/run-step-10.4.mjs
+      - if: always()
         uses: actions/upload-artifact@v4
         with:
           name: volttech-step-10.4-live-verification
