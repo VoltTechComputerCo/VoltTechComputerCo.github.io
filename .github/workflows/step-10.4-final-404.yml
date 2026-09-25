@@ -1,0 +1,96 @@
+name: VoltTech Step 10.4 Final 404 Output
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-10.4-final.mjs"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volttech-step-10.4-final-404
+  cancel-in-progress: false
+
+jobs:
+  finish:
+    name: Publish tracked 404 output and verify live release
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: clean-rebuild
+
+      - name: Preserve final release runner
+        run: cp scripts/run-step-10.4-final.mjs /tmp/volttech-final-404.mjs
+
+      - name: Fetch production main
+        run: git fetch origin main:refs/remotes/origin/main --force
+
+      - name: Prepare 404-only production commit
+        run: node /tmp/volttech-final-404.mjs prepare
+
+      - name: Verify generated frontend consistency
+        run: python3 scripts/build-clean-frontend.py --check
+
+      - name: Run full regression
+        run: node scripts/run-full-qa.mjs
+
+      - name: Install browser QA runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Start local production-candidate server
+        shell: bash
+        run: |
+          mkdir -p qa-results/step-10.4-final
+          python3 -m http.server 4173 --bind 127.0.0.1 > qa-results/step-10.4-final/http-server.log 2>&1 &
+          echo $! > qa-results/step-10.4-final/http-server.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/index.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+
+      - name: Re-run release certification
+        env:
+          VT_QA_BASE: http://127.0.0.1:4173
+        run: node scripts/run-step-9.3.mjs
+
+      - name: Certify 404-only promotion
+        run: node /tmp/volttech-final-404.mjs certify
+
+      - name: Re-fetch main immediately before push
+        run: |
+          git fetch origin main:refs/remotes/origin/main --force
+          node /tmp/volttech-final-404.mjs prepush
+
+      - name: Push only generated 404 to main
+        run: |
+          git push origin HEAD:main
+          node /tmp/volttech-final-404.mjs pushed
+
+      - name: Verify remote main
+        run: |
+          git fetch origin main:refs/remotes/origin/main --force
+          node /tmp/volttech-final-404.mjs verify
+
+      - name: Verify real live .co.za release
+        run: node /tmp/volttech-final-404.mjs live
+
+      - name: Upload final release evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-10.4-final-release
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 60
