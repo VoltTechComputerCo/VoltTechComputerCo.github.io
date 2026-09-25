@@ -11,4 +11,4 @@ if(run.stdout)process.stdout.write(run.stdout);
 if(run.stderr)process.stderr.write(run.stderr);
 process.exit(run.status ?? 1);
 
-// Step 10.1 RC trigger — upload this file last.
+// Step 10.1 final RC assertion correction — upload this file last.
