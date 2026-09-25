@@ -116,16 +116,38 @@ async function prepare(){
   }
 
   const actual=list(stdout(['diff','--name-only',EXPECTED_MAIN,'HEAD']));
-  const same=expected.length===actual.length && expected.every((p,i)=>p===actual[i]);
-  if(!same){
-    fail(`promotion diff does not exactly match certified normalization.\nExpected:\n${expected.join('\n')}\nActual:\n${actual.join('\n')}`,state);
+  const unexpected=actual.filter(p=>!expected.includes(p));
+  if(unexpected.length){
+    fail(`promotion contains unexpected files:\n${unexpected.join('\n')}`,state);
+  }
+
+  // Correct promotion contract:
+  // every certified target file must end up byte-for-byte identical to the
+  // certified staging commit. A file does not have to appear in the final diff
+  // if production already had the exact certified blob before promotion.
+  const mismatches=[];
+  const alreadyEqual=[];
+  for(const rel of expected){
+    const certified=stdout(['rev-parse',`${NORMALIZATION}:${rel}`]);
+    const promoted=stdout(['rev-parse',`HEAD:${rel}`]);
+    if(certified!==promoted){
+      mismatches.push(`${rel}: certified=${certified} promoted=${promoted}`);
+    }else if(!actual.includes(rel)){
+      alreadyEqual.push(rel);
+    }
+  }
+  if(mismatches.length){
+    fail(`promotion does not match certified staging blobs:\n${mismatches.join('\n')}`,state);
   }
 
   state.expected_files=expected;
+  state.changed_files=actual;
+  state.already_equal_files=alreadyEqual;
   state.promotion_head=stdout(['rev-parse','HEAD']);
   state.status='PREPARED';
   save(state);
-  console.log(`PASS: prepared exact Step 11.1D promotion with ${expected.length} certified files`);
+  console.log(`PASS: prepared Step 11.1D promotion — ${actual.length} changed file(s), ${alreadyEqual.length} already-identical certified file(s)`);
+  if(alreadyEqual.length) console.log(`PASS: already identical before promotion: ${alreadyEqual.join(', ')}`);
 }
 
 async function certify(){
@@ -294,4 +316,4 @@ else{
   process.exit(2);
 }
 
-// Step 11.1D production promotion trigger.
+// Step 11.1D production promotion guard correction trigger.
