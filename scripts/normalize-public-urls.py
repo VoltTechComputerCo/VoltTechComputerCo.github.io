@@ -30,14 +30,15 @@ def normalize_absolute_urls(text: str) -> str:
 
 def replace_exact(path: Path, old: str, new: str, label: str):
     text = path.read_text(encoding="utf-8")
-    if old not in text:
-        errors.append(f"{path.relative_to(ROOT)}: expected {label} pattern not found")
+    if old in text:
+        write_if_changed(path, text.replace(old, new))
         return
-    write_if_changed(path, text.replace(old, new))
+    if new in text:
+        # Already normalized manually or by an earlier safe step.
+        return
+    errors.append(f"{path.relative_to(ROOT)}: neither old nor normalized {label} pattern found")
 
 # 1) Normalize absolute public URLs in ALL root HTML files.
-# This covers generated pages plus standalone legacy/root surfaces such as
-# exposure-scan.html. Relative href="foo.html" links are deliberately untouched.
 for path in sorted(ROOT.glob("*.html")):
     write_if_changed(path, normalize_absolute_urls(path.read_text(encoding="utf-8")))
 
@@ -126,8 +127,7 @@ if marker not in text:
     )
     write_if_changed(publishing, text)
 
-# Safety scan: no root HTML or authoritative source may retain absolute .html
-# public URLs. Relative/local .html references are intentionally permitted.
+# Safety scan.
 scan_paths = [
     *sorted(ROOT.glob("*.html")),
     *sorted((ROOT / "src/pages").glob("*.head.html")),
