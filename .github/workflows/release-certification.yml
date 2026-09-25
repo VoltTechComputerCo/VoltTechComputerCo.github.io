@@ -1,0 +1,62 @@
+name: VoltTech Step 9.3 Release Certification
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-9.3.mjs"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: volttech-step-9.3-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  certify:
+    name: Non-commerce release certification
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install browser QA runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Start local clean-rebuild server
+        shell: bash
+        run: |
+          mkdir -p qa-results/step-9.3
+          python3 -m http.server 4173 --bind 127.0.0.1 > qa-results/step-9.3/http-server.log 2>&1 &
+          echo $! > qa-results/step-9.3/http-server.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/index.html >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Local QA server did not become ready." >&2
+          exit 1
+
+      - name: Run Step 9.3 certification
+        env:
+          VT_QA_BASE: http://127.0.0.1:4173
+        run: node scripts/run-step-9.3.mjs
+
+      - name: Upload Step 9.3 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-9.3-release-certification
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 14
