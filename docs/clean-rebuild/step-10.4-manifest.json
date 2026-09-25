@@ -1,0 +1,21 @@
+{
+  "step": "10.4",
+  "title": "Live .co.za verification",
+  "verification_branch": "clean-rebuild",
+  "production_branch": "main",
+  "expected_main_sha": "3eba58456b4a93477f90b1d1fb9673877e0a3479",
+  "production_origin": "https://volttechcomputerco.co.za",
+  "pushes_main": false,
+  "backend_writes": false,
+  "delete": [],
+  "workflow": ".github/workflows/live-verification.yml",
+  "expected_artifact": "volttech-step-10.4-live-verification",
+  "upload_last": "scripts/run-step-10.4.mjs",
+  "sha256": {
+    ".github/workflows/live-verification.yml": "37655ba86edbd47ee1eb5d38d6f5cb28d7e66db381dd0d9e305c51704cd89d89",
+    "scripts/run-step-10.4.mjs": "53d202c734dc8a3303fc6a471ea226b6ba3c96e62c519d713a7c8780acde0638",
+    "docs/clean-rebuild/step-10.4-QA.md": "27c91db99317a7d450f3226a1313e00b8433c2fa059ed0853e017fe5b42955fa",
+    "docs/clean-rebuild/ROADMAP.md": "ed9a2aaea206747f2c31eb118ece6fc46ebea781b7988132a7f2f87f68d66084",
+    "README.md": "6cb9d6267dde5cba7c4e320fae89b98117f818e0ed1fe3557ed11f510ca4124e"
+  }
+}
