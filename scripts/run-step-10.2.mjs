@@ -54,6 +54,7 @@ async function prepare(){
     reviewed_main_only_paths:REVIEWED_MAIN_ONLY,
     conflicts:[],
     resolved_conflicts:[],
+    normalized_reviewed_paths:[],
     tree_identical_to_clean:false
   };
 
@@ -87,22 +88,23 @@ async function prepare(){
     fail(`unreviewed merge conflict(s): ${unexpectedConflicts.join(', ')}`,state);
   }
 
-  for(const file of conflicts){
+  // Normalize every reviewed main-only path to the certified clean-rebuild tree,
+  // not only paths Git happens to classify as conflicts. This also prevents an
+  // auto-merged newer legacy snapshot from silently surviving promotion.
+  for(const file of REVIEWED_MAIN_ONLY){
     if(existsAt(cleanHead,file)){
       git(['checkout',cleanHead,'--',file]);
       git(['add','--',file]);
     }else{
       git(['rm','-f','--ignore-unmatch','--',file]);
     }
-    state.resolved_conflicts.push(file);
+    state.normalized_reviewed_paths.push(file);
+    if(conflicts.includes(file)) state.resolved_conflicts.push(file);
   }
 
   const unresolved=stdout(['diff','--name-only','--diff-filter=U']).split('\n').filter(Boolean);
   if(unresolved.length) fail(`unresolved conflicts remain: ${unresolved.join(', ')}`,state);
 
-  // If git had no conflicts it may still be in a pending merge. If it did have
-  // conflicts, all resolutions above deliberately choose the certified clean tree
-  // for reviewed legacy paths.
   const mergeHeadExists=fs.existsSync(path.join(root,'.git','MERGE_HEAD'));
   if(mergeHeadExists){
     git(['commit','-m','release: promote clean rebuild RC (rehearsal only)']);
@@ -125,6 +127,7 @@ async function prepare(){
   writeState(state);
   console.log(`PASS: local promotion merge built from main ${mainHead}`);
   console.log(`PASS: reviewed conflicts only (${conflicts.length})`);
+  console.log(`PASS: normalized all ${REVIEWED_MAIN_ONLY.length} reviewed main-only paths to certified clean state`);
   console.log(`PASS: rehearsal tree is identical to clean-rebuild ${cleanHead}`);
 }
 
@@ -140,6 +143,7 @@ async function finalize(){
 
   const checks=[
     ['Promotion tree equals certified clean tree',state.tree_identical_to_clean===true],
+    ['All reviewed main-only paths were normalized',state.normalized_reviewed_paths?.length===REVIEWED_MAIN_ONLY.length],
     ['Full regression is 24/24',full.status==='PASS'&&full.passed===24&&full.total===24],
     ['Step 9.3 certification is green',step9.status==='PASS'],
     ['Device/role is 9/9',step9.gates?.device_role==='9/9'],
@@ -158,6 +162,7 @@ async function finalize(){
     rehearsal_head:state.rehearsal_head,
     conflicts:state.conflicts,
     resolved_conflicts:state.resolved_conflicts,
+    normalized_reviewed_paths:state.normalized_reviewed_paths,
     tree_identical_to_clean:state.tree_identical_to_clean,
     full_regression:`${full.passed}/${full.total}`,
     step_9_gates:step9.gates,
@@ -176,6 +181,7 @@ async function finalize(){
     `Local rehearsal merge: \`${summary.rehearsal_head}\``,
     '',
     `Reviewed conflicts resolved: ${summary.resolved_conflicts.length}`,
+    `Reviewed divergence paths normalized: ${summary.normalized_reviewed_paths.length}`,
     `Merged tree identical to clean RC: ${summary.tree_identical_to_clean ? 'YES' : 'NO'}`,
     `Full regression: ${summary.full_regression}`,
     `Device/role: ${summary.step_9_gates?.device_role||'missing'}`,
@@ -207,6 +213,4 @@ else {
   process.exit(2);
 }
 
-// Step 10.2 promotion rehearsal trigger. Upload this file last.
-
-// Step 10.2 workflow-missing trigger correction — 2026-09-25.
+// Step 10.2 merge-normalization correction — upload this file last.
