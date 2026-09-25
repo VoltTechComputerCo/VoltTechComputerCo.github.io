@@ -2,25 +2,32 @@
 
 Branch: `clean-rebuild`
 
-Current phase: **Step 9.2 — responsive/device interaction and role-flow QA**.
+Current phase: **Step 9.2 Correction — Account DOM/source alignment**.
 
-Verified through Step 9.1: **24/24 automated full-regression gates pass** across the clean rebuild through Step 8.3.
+The first Step 9.2 browser run passed all responsive matrices, the Repair → Signal Scan journey, Signal Scan completion and the Admin fail-closed boundary. It exposed one real Account regression: the generated Account page and its source template had drifted back to an older DOM that no longer matched the current Account controller.
 
 ## Upload
-Upload everything inside `Step 9.2/` to matching repository paths.
+Upload everything inside `Step 9.2 Correction/` to matching repository paths.
 
 Delete nothing.
 
 No folder placeholders are required; every destination folder already exists.
 
-**Upload `.github/workflows/device-role-qa.yml` before `scripts/test-device-role-qa.mjs`, and upload `scripts/test-device-role-qa.mjs` LAST.** The test-script upload triggers the one-time Step 9.2 browser workflow after all support files are present.
+### Upload order
+Upload the Account/source/test/documentation files first.
 
-Expected GitHub Actions workflow:
-`VoltTech Device + Role QA`
+Upload `scripts/run-full-qa.mjs` **SECOND LAST**. This reruns the 24-gate full regression suite.
 
-Expected artifact:
-`volttech-step-9.2-device-role-qa`
+Upload `scripts/test-device-role-qa.mjs` **LAST**. This reruns the Step 9.2 Chromium device/role suite.
 
-This package does not redesign or alter customer-facing pages. It adds browser QA infrastructure and documentation only.
+Expected workflows:
+- `VoltTech Full QA`
+- `VoltTech Device + Role QA`
 
-After the automated workflow passes, manually inspect only the nominated Step 9.2 GitHack pages on the phone. Step 9.3 starts after automated + manual Step 9.2 approval.
+Expected target results:
+- Full QA: **24/24 PASS**
+- Device + Role QA: **9/9 PASS**
+
+No Supabase data/schema, authentication service logic, Store/Builder launch state, payments or other customer-facing pages are altered by this correction.
+
+After both automated runs pass, manually inspect the nominated Step 9.2 GitHack pages before Step 9.3 begins.
