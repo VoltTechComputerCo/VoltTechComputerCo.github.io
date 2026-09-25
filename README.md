@@ -2,38 +2,28 @@
 
 Branch: `clean-rebuild`
 
-Current phase: **Step 10.1 — Release Candidate lock**.
+Current phase: **Step 10.2 — controlled promotion rehearsal**.
 
-Step 9 is fully verified:
-- Full QA: **24/24**
-- Release source: **15/15**
-- Device + Role: **9/9**
-- Release browser: **11/11**
-- Manual mobile visual approval: **approved**
+Step 10.1 Release Candidate: **PASS**.
 
 ## Upload
 
-Upload everything inside `Step 10.1/` to matching repository paths on `clean-rebuild`.
+Upload everything inside `Step 10.2/` to matching repository paths on `clean-rebuild`.
 
 Delete nothing.
 
 No folder placeholders are required.
 
-Upload `.github/workflows/release-candidate.yml` before the scripts.
+Upload `.github/workflows/promotion-rehearsal.yml` before the script.
 
-Upload `src/pages/home.json` before `scripts/run-step-10.1.mjs`.
+Upload `scripts/run-step-10.2.mjs` **LAST**.
 
-Upload `scripts/run-step-10.1.mjs` **LAST**.
+This triggers `VoltTech Step 10.2 Promotion Rehearsal`.
 
-That final upload triggers `VoltTech Step 10.1 Release Candidate`.
+## Important
 
-The workflow may create one bot commit for regenerated `index.html`. This is expected: the homepage release metadata is generated from the clean source.
+This workflow **does not push to `main`**.
 
-## Release mode
+It locally rehearses the real merge, allows conflicts only on the eight already-reviewed legacy divergence paths, resolves those paths in favour of the certified clean rebuild, proves the resulting tree is identical to the RC, and reruns the release certification.
 
-This RC is non-commerce:
-- Store OFF
-- Builder OFF
-- Direct payments OFF
-
-A Step 10.1 PASS means the branch is ready for Step 10.2 promotion planning. It does not enable ecommerce.
+A PASS is the prerequisite for the explicit Step 10.3 live promotion.
