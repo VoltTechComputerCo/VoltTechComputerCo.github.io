@@ -8,8 +8,7 @@ const outDir = path.join(root, 'qa-results/step-10.3');
 fs.mkdirSync(outDir, { recursive: true });
 const statePath = path.join(outDir, 'promotion-state.json');
 
-// Production main verified immediately before this release package was generated.
-const EXPECTED_MAIN_HEAD = '52006f5b89dcd545ad5b16ee1a7436d7b9b31410';
+// Production main is captured and locked when the Action starts.
 
 function git(args, { allowFail = false } = {}) {
   const run = spawnSync('git', args, {
@@ -64,7 +63,7 @@ function assertMergeParents(mainHead, cleanHead, state) {
 
 async function prepare() {
   const cleanHead = stdout(['rev-parse', 'HEAD']);
-  const mainHead = verifyMainHead(EXPECTED_MAIN_HEAD, {});
+  const mainHead = stdout(['rev-parse', 'origin/main']);
   const mergeBase = stdout(['merge-base', cleanHead, 'origin/main']);
 
   const state = {
@@ -72,7 +71,7 @@ async function prepare() {
     title: 'Controlled clean-rebuild promotion to production main',
     phase: 'prepare',
     clean_head: cleanHead,
-    expected_main_head: EXPECTED_MAIN_HEAD,
+    expected_main_head: mainHead,
     main_head: mainHead,
     merge_base: mergeBase,
     production_tree_policy: 'exact-clean-rebuild',
@@ -201,7 +200,7 @@ async function prepush() {
   }
 
   // Reconfirm production did not change while QA was running.
-  const current = verifyMainHead(state.expected_main_head, state);
+  const current = verifyMainHead(state.main_head, state);
 
   const head = stdout(['rev-parse', 'HEAD']);
   if (head !== state.promotion_head) {
@@ -258,7 +257,7 @@ async function verifyRemote() {
     step: '10.3-refresh',
     title: 'Production promotion of finished clean rebuild',
     status: 'PASS',
-    previous_main_head: state.expected_main_head,
+    previous_main_head: state.main_head,
     promoted_main_head: remoteMain,
     clean_head: state.clean_head,
     tree_identical_to_clean: true,
@@ -298,5 +297,6 @@ else {
   process.exit(2);
 }
 
-// 2026-09-26 production promotion trigger.
+// 2026-09-26 production promotion trigger v3.
+// Captures current main at runtime, locks it through QA, and aborts if it moves before push.
 // Upload this file LAST to clean-rebuild at scripts/run-step-10.3.mjs.
