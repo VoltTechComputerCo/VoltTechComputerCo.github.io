@@ -566,95 +566,149 @@ body:not([data-page^="static"]):not([data-page^="admin"]) .vt-image-glass {
   }
 }
 
-/* STEP 11.2I SITE ATMOSPHERE START */
+/* STEP 11.2J PHOTOGRAPHIC SITE CANVAS START */
 /*
-  The glass system needs an environment behind it. This adds quiet technical
-  depth without becoming a wallpaper or compromising readability.
+  Real imagery now provides the depth behind VoltTech glass.
+  Artificial radial glow fields from Step 11.2I are intentionally removed.
 */
 body:not([data-page^="static"]):not([data-page^="admin"]) {
-  background-color: #020b0d;
-  background-image:
-    radial-gradient(ellipse at 12% 8%, rgba(32,210,198,.085) 0%, rgba(32,210,198,.025) 23%, transparent 48%),
-    radial-gradient(ellipse at 88% 28%, rgba(148,78,238,.055) 0%, transparent 38%),
-    radial-gradient(ellipse at 38% 78%, rgba(24,129,128,.045) 0%, transparent 42%),
-    linear-gradient(180deg, #020b0d 0%, #031012 48%, #02090b 100%);
-  background-attachment: fixed;
-}
-
-body:not([data-page^="static"]):not([data-page^="admin"]) main {
+  --vt-page-art: url('../../vt-drive-workbench.webp');
+  --vt-page-art-position: center;
   position: relative;
   isolation: isolate;
+  background: #02090b;
 }
 
-body:not([data-page^="static"]):not([data-page^="admin"]) main::before {
+body:not([data-page^="static"]):not([data-page^="admin"])::before {
   content:"";
-  position:absolute;
-  inset:0;
-  z-index:-2;
-  pointer-events:none;
-  opacity:.33;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
   background-image:
-    linear-gradient(rgba(62,197,187,.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(62,197,187,.022) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%);
+    linear-gradient(180deg,
+      rgba(1,8,10,.42) 0%,
+      rgba(1,8,10,.54) 46%,
+      rgba(1,8,10,.68) 100%),
+    linear-gradient(90deg,
+      rgba(1,8,10,.34) 0%,
+      transparent 28%,
+      transparent 72%,
+      rgba(1,8,10,.28) 100%),
+    var(--vt-page-art);
+  background-size: cover;
+  background-position: var(--vt-page-art-position);
+  background-repeat: no-repeat;
+  filter: saturate(.68) contrast(1.08) brightness(.88);
 }
 
-body:not([data-page^="static"]):not([data-page^="admin"]) main::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 18% 24%, rgba(53,234,215,.045), transparent 19rem),
-    radial-gradient(circle at 81% 57%, rgba(166,86,255,.038), transparent 22rem),
-    radial-gradient(circle at 42% 86%, rgba(53,234,215,.025), transparent 18rem);
+body:not([data-page^="static"]):not([data-page^="admin"]) > * {
+  position: relative;
+  z-index: 1;
 }
 
+/* Page-specific real imagery */
+body[data-page="home"] {
+  --vt-page-art: url('../../vt-drive-workbench.webp');
+  --vt-page-art-position: center;
+}
+
+body[data-page="store"] {
+  --vt-page-art: url('../../vt-own-hardware.webp');
+  --vt-page-art-position: center 42%;
+}
+
+body[data-page="builder"] {
+  --vt-page-art: url('../../vt-stock-modern-build.webp');
+  --vt-page-art-position: center 38%;
+}
+
+body[data-page="signal-scan"] {
+  --vt-page-art: url('../../vt-px-pc-diagnostics.webp');
+  --vt-page-art-position: center;
+}
+
+body[data-page="streaming-support"],
+body[data-page="stream-scan"] {
+  --vt-page-art: url('../../vt-px-streaming-setup.webp');
+  --vt-page-art-position: center 32%;
+}
+
+body[data-page="creator-hub-south-africa"] {
+  --vt-page-art: url('../../vt-drive-creator-desk.webp');
+  --vt-page-art-position: center 36%;
+}
+
+body[data-page="service-repair"] {
+  --vt-page-art: url('../../bg-repair.webp');
+}
+
+body[data-page="service-upgrades"] {
+  --vt-page-art: url('../../bg-upgrades.webp');
+}
+
+body[data-page="service-performance"] {
+  --vt-page-art: url('../../bg-performance.webp');
+}
+
+body[data-page="service-security"] {
+  --vt-page-art: url('../../bg-malware.webp');
+}
+
+body[data-page="service-windows"] {
+  --vt-page-art: url('../../bg-windows.webp');
+}
+
+body[data-page="account"],
+body[data-page="legal"],
+body[data-page="privacy"],
+body[data-page^="customer"],
+body[data-page^="order"],
+body[data-page="checkout"] {
+  --vt-page-art: url('../../vt-own-desk.webp');
+  --vt-page-art-position: center;
+}
+
+/* Sections stay transparent so the photographic canvas remains visible. */
 body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  main,
   .section,
   .home-section,
   .tool-section,
   .contact-section
 ) {
-  position: relative;
   background: transparent;
 }
 
-/* Subtle depth banding helps long pages avoid featureless black gaps. */
+/* No ambient glow pseudo-elements over the page. */
+body:not([data-page^="static"]):not([data-page^="admin"]) main::before,
+body:not([data-page^="static"]):not([data-page^="admin"]) main::after,
 body:not([data-page^="static"]):not([data-page^="admin"]) :is(
   .section,
   .home-section,
   .tool-section
 ):nth-of-type(even)::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background: linear-gradient(110deg, rgba(15,61,63,.035), transparent 38%, rgba(74,38,104,.018));
+  content: none;
 }
 
-/* Creator/streaming pages get a slightly stronger mixed accent environment. */
-body[data-page="creator-hub-south-africa"],
-body[data-page="streaming-support"],
-body[data-page="stream-scan"] {
-  background-image:
-    radial-gradient(ellipse at 10% 10%, rgba(53,234,215,.09), transparent 38%),
-    radial-gradient(ellipse at 88% 18%, rgba(166,86,255,.095), transparent 42%),
-    radial-gradient(ellipse at 58% 72%, rgba(120,65,190,.04), transparent 44%),
-    linear-gradient(180deg, #020b0d 0%, #050a0f 54%, #02090b 100%);
-}
-
-@media (max-width: 40rem) {
-  body:not([data-page^="static"]):not([data-page^="admin"]) {
-    background-attachment: scroll;
-  }
-
-  body:not([data-page^="static"]):not([data-page^="admin"]) main::before {
-    background-size: 36px 36px;
-    opacity:.24;
+@media (max-width: 56rem) {
+  body:not([data-page^="static"]):not([data-page^="admin"])::before {
+    background-image:
+      linear-gradient(180deg,
+        rgba(1,8,10,.46) 0%,
+        rgba(1,8,10,.56) 48%,
+        rgba(1,8,10,.68) 100%),
+      linear-gradient(90deg,
+        rgba(1,8,10,.22) 0%,
+        transparent 26%,
+        transparent 74%,
+        rgba(1,8,10,.18) 100%),
+      var(--vt-page-art);
+    filter: saturate(.70) contrast(1.06) brightness(.90);
   }
 }
-/* STEP 11.2I SITE ATMOSPHERE END */
+
+@media print {
+  body::before { display:none !important; }
+}
+/* STEP 11.2J PHOTOGRAPHIC SITE CANVAS END */

@@ -24,10 +24,11 @@
 .preview-strip .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .25rem 1rem; padding-block: .5rem; }
 .preview-strip p { margin: 0; font-size: .6875rem; }
 
-/* STEP 11.2I PREMIUM NAVIGATION START */
+/* STEP 11.2J IMAGE CARD NAVIGATION START */
 .mobile-nav-intro,
 .nav-copy small,
-.nav-arrow { display: none; }
+.nav-arrow,
+.mobile-nav-creator { display: none; }
 
 .primary-nav .nav-copy b {
   font: inherit;
@@ -45,52 +46,77 @@
     position: relative;
     overflow: hidden;
     padding: 1rem;
-    border: 1px solid rgba(91,241,226,.18);
+    border: 1px solid rgba(111,191,186,.20);
     border-radius: calc(var(--radius) * 1.35);
     background:
-      radial-gradient(circle at 12% 0%, rgba(53,234,215,.10), transparent 32%),
-      radial-gradient(circle at 86% 100%, rgba(166,86,255,.08), transparent 34%),
-      rgba(2,12,14,.88);
-    backdrop-filter: blur(12px) saturate(125%);
-    -webkit-backdrop-filter: blur(12px) saturate(125%);
+      linear-gradient(180deg, rgba(4,18,20,.90), rgba(2,10,12,.96));
+    backdrop-filter: blur(10px) saturate(118%);
+    -webkit-backdrop-filter: blur(10px) saturate(118%);
     box-shadow:
-      0 22px 60px rgba(0,0,0,.38),
-      inset 0 1px 0 rgba(255,255,255,.045);
-  }
-
-  .primary-nav::before {
-    content:"";
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    opacity:.28;
-    background-image:
-      linear-gradient(rgba(80,240,226,.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(80,240,226,.05) 1px, transparent 1px);
-    background-size: 32px 32px;
-    mask-image: linear-gradient(to bottom, black, transparent 78%);
+      0 24px 64px rgba(0,0,0,.42),
+      inset 0 1px 0 rgba(255,255,255,.04);
   }
 
   .mobile-nav-intro {
-    position: relative;
-    z-index: 1;
     display: grid;
     gap: .15rem;
     padding: .2rem .2rem .9rem;
   }
 
   .mobile-nav-intro span { color: var(--teal); }
+
   .mobile-nav-intro strong {
     font-size: 1rem;
     letter-spacing: -.02em;
   }
+
+  .mobile-nav-creator { display: list-item; }
 
   .primary-nav ul {
     position: relative;
     z-index: 1;
   }
 
-  .primary-nav li { min-width: 0; }
+  .primary-nav li {
+    min-width: 0;
+    --nav-card-image: url('../../vt-px-pc-hardware.webp');
+    --nav-card-accent: rgba(53,234,215,.48);
+  }
+
+  .primary-nav .nav-store {
+    --nav-card-image: url('../../vt-own-hardware.webp');
+  }
+
+  .primary-nav .nav-builder {
+    --nav-card-image: url('../../vt-stock-modern-build.webp');
+  }
+
+  .primary-nav .nav-services {
+    --nav-card-image: url('../../vt-px-technician-service.webp');
+  }
+
+  .primary-nav .nav-stream {
+    --nav-card-image: url('../../vt-px-streaming-setup.webp');
+    --nav-card-accent: rgba(194,140,255,.54);
+  }
+
+  .primary-nav .nav-scan {
+    --nav-card-image: url('../../vt-px-pc-diagnostics.webp');
+  }
+
+  .primary-nav .nav-creator {
+    --nav-card-image: url('../../vt-px-creator-desk.webp');
+    --nav-card-accent: rgba(194,140,255,.44);
+  }
+
+  .primary-nav .nav-static {
+    --nav-card-image: url('../../STATIC-logo-master.png');
+    --nav-card-accent: rgba(232,235,234,.28);
+  }
+
+  .primary-nav .mobile-nav-cart {
+    --nav-card-image: url('../../vt-own-gpu-product.webp');
+  }
 
   .primary-nav a {
     position: relative;
@@ -98,28 +124,49 @@
     align-items: flex-end;
     justify-content: space-between;
     gap: .75rem;
-    min-height: 6.25rem;
-    padding: .9rem;
+    min-height: 7rem;
+    padding: 1rem;
     overflow: hidden;
-    border: 1px solid rgba(111,191,186,.22);
+    border: 1px solid rgba(114,176,171,.20);
     border-radius: var(--radius);
-    background:
-      linear-gradient(150deg, rgba(54,104,104,.15), rgba(2,14,16,.58)),
-      rgba(3,16,18,.46);
-    backdrop-filter: blur(7px) saturate(122%);
-    -webkit-backdrop-filter: blur(7px) saturate(122%);
+    background: rgba(4,16,18,.88);
+    backdrop-filter: blur(5px) saturate(112%);
+    -webkit-backdrop-filter: blur(5px) saturate(112%);
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,.035),
-      0 10px 26px rgba(0,0,0,.10);
+      0 10px 24px rgba(0,0,0,.14);
+    isolation: isolate;
   }
 
   .primary-nav a::before {
     content:"";
     position:absolute;
-    inset:0;
-    pointer-events:none;
-    background: radial-gradient(circle at 12% 12%, rgba(53,234,215,.09), transparent 42%);
-    opacity:.9;
+    z-index:-1;
+    inset:0 0 0 38%;
+    background-image:
+      linear-gradient(90deg,
+        rgba(4,16,18,.98) 0%,
+        rgba(4,16,18,.80) 20%,
+        rgba(4,16,18,.20) 72%,
+        rgba(4,16,18,.06) 100%),
+      var(--nav-card-image);
+    background-size: cover;
+    background-position: center;
+    filter: saturate(.78) contrast(1.08);
+    transform: scale(1.015);
+    transition: transform .22s ease, filter .22s ease;
+  }
+
+  .primary-nav a::after {
+    content:"";
+    position:absolute;
+    z-index:-1;
+    left:0;
+    bottom:0;
+    width:62%;
+    height:1px;
+    background: linear-gradient(90deg, var(--nav-card-accent), transparent);
+    opacity:.72;
   }
 
   .primary-nav .nav-copy {
@@ -128,18 +175,19 @@
     display: grid;
     gap: .22rem;
     min-width: 0;
+    max-width: 61%;
   }
 
   .primary-nav .nav-copy b {
-    color: var(--text);
+    color: #f2f7f6;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 650;
   }
 
   .primary-nav .nav-copy small {
     display: block;
-    color: var(--text-muted);
-    font: .63rem/1.35 var(--font-mono);
+    color: #92a9a6;
+    font: .62rem/1.35 var(--font-mono);
     letter-spacing: .035em;
     text-transform: uppercase;
   }
@@ -148,51 +196,33 @@
     position: relative;
     z-index: 1;
     display: block;
+    align-self: flex-start;
     flex: 0 0 auto;
-    color: var(--teal);
-    font-size: 1.05rem;
-    text-shadow: 0 0 12px rgba(53,234,215,.34);
+    color: #d8eeeb;
+    font-size: 1rem;
   }
 
-  .primary-nav .nav-stream a {
-    border-color: rgba(194,140,255,.34);
-    background:
-      linear-gradient(150deg, rgba(166,86,255,.14), rgba(15,8,24,.62)),
-      rgba(15,8,24,.48);
-  }
-
-  .primary-nav .nav-stream a::before {
-    background: radial-gradient(circle at 12% 12%, rgba(194,140,255,.12), transparent 44%);
-  }
-
-  .primary-nav .nav-stream .nav-arrow {
+  .primary-nav .nav-stream .nav-arrow,
+  .primary-nav .nav-creator .nav-arrow {
     color: #d9bbff;
-    text-shadow: 0 0 12px rgba(194,140,255,.38);
-  }
-
-  .primary-nav .nav-static a {
-    border-color: rgba(220,232,232,.18);
-    background:
-      linear-gradient(150deg, rgba(220,232,232,.055), rgba(4,12,14,.64)),
-      rgba(3,14,16,.52);
   }
 
   .primary-nav a:hover,
   .primary-nav a:focus-visible,
   .primary-nav a[aria-current="page"] {
-    transform: translateY(-1px);
-    border-color: rgba(91,241,226,.55);
+    border-color: var(--nav-card-accent);
+    background: rgba(4,16,18,.82);
     box-shadow:
-      0 0 22px rgba(53,234,215,.10),
-      inset 0 1px 0 rgba(255,255,255,.07);
+      0 0 0 1px color-mix(in srgb, var(--nav-card-accent) 18%, transparent),
+      0 16px 32px rgba(0,0,0,.18),
+      inset 0 1px 0 rgba(255,255,255,.06);
+    transform: translateY(-1px);
   }
 
-  .primary-nav .nav-stream a:hover,
-  .primary-nav .nav-stream a:focus-visible {
-    border-color: rgba(194,140,255,.62);
-    box-shadow:
-      0 0 24px rgba(166,86,255,.14),
-      inset 0 1px 0 rgba(255,255,255,.07);
+  .primary-nav a:hover::before,
+  .primary-nav a:focus-visible::before {
+    transform: scale(1.055);
+    filter: saturate(.92) contrast(1.11);
   }
 
   .menu-toggle {
@@ -200,4 +230,31 @@
     justify-content: center;
   }
 }
-/* STEP 11.2I PREMIUM NAVIGATION END */
+
+@media (max-width: 40rem) {
+  .primary-nav {
+    padding: .8rem;
+  }
+
+  .primary-nav ul {
+    gap: .55rem;
+  }
+
+  .primary-nav a {
+    min-height: 7.4rem;
+    padding: .9rem;
+  }
+
+  .primary-nav .nav-copy b {
+    font-size: .94rem;
+  }
+
+  .primary-nav .nav-copy small {
+    font-size: .56rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary-nav a::before { transition:none; }
+}
+/* STEP 11.2J IMAGE CARD NAVIGATION END */

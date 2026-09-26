@@ -47,11 +47,12 @@
         <strong>Where do you want to go?</strong>
       </div>
       <ul>
-        <li><a href="store.html"><span class="nav-copy"><b>Store</b><small>Components &amp; gear</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
-        <li><a href="builder/index.html"><span class="nav-copy"><b>PC Builder</b><small>Plan your system</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
-        <li><a href="index.html#services"><span class="nav-copy"><b>Services</b><small>Repair &amp; upgrades</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
+        <li class="nav-store"><a href="store.html"><span class="nav-copy"><b>Store</b><small>Components &amp; gear</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
+        <li class="nav-builder"><a href="builder/index.html"><span class="nav-copy"><b>PC Builder</b><small>Plan your system</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
+        <li class="nav-services"><a href="index.html#services"><span class="nav-copy"><b>Services</b><small>Repair &amp; upgrades</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
         <li class="nav-stream"><a href="streaming-setup-south-africa.html"><span class="nav-copy"><b>Stream Support</b><small>OBS, audio &amp; performance</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
-        <li><a href="signal-scan.html"><span class="nav-copy"><b>Signal Scan</b><small>Diagnose your next step</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
+        <li class="nav-scan"><a href="signal-scan.html"><span class="nav-copy"><b>Signal Scan</b><small>Diagnose your next step</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
+        <li class="mobile-nav-creator nav-creator"><a href="creator-hub-south-africa.html"><span class="nav-copy"><b>Creator Hub</b><small>South African creators</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
         <li class="nav-static"><a href="static.html"><span class="nav-copy"><b>STATIC</b><small>Tech, gaming &amp; hardware</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
         <li class="mobile-nav-cart"><a href="store.html?cart=1" data-cart-link aria-label="Open cart"><span class="nav-copy"><b>Cart</b><small>Your selected hardware</small></span><span class="nav-cart-count" data-cart-count hidden></span><span class="nav-arrow" aria-hidden="true">→</span></a></li>
       </ul>
@@ -84,16 +85,10 @@
           <p class="lead">Browse VoltTech's curated Twitch directory and discover South African creators. Building your own channel? VoltTech Stream Support and Stream Scan are here for OBS, Streamlabs and creator-tech problems.</p>
           <div class="creator-hero-actions"><a class="button" href="streaming-setup-south-africa.html">Get Stream Support</a><a class="button button-secondary" href="stream-scan.html">Run Stream Scan</a></div>
         </div>
-        <div class="creator-signal-stage" aria-hidden="true">
-          <div class="creator-signal-core"><span>SA</span><small>CREATOR SIGNAL</small></div>
-          <span class="creator-orbit orbit-one"></span>
-          <span class="creator-orbit orbit-two"></span>
-          <span class="creator-node node-one">LIVE</span>
-          <span class="creator-node node-two">OBS</span>
-          <span class="creator-node node-three">TWITCH</span>
-          <span class="creator-node node-four">AUDIO</span>
-          <span class="creator-scan-line"></span>
-        </div>
+        <figure class="creator-hero-visual">
+          <img src="vt-px-creator-desk.webp" alt="Creator desk and streaming setup" width="1600" height="1067" loading="eager" decoding="async">
+          <figcaption class="vt-image-glass vt-image-glass--neutral"><span>CREATOR SETUP</span><b>OBS / AUDIO / STREAM PERFORMANCE</b></figcaption>
+        </figure>
       </div>
       <div class="creator-feed-status" id="creatorFeedState" data-state="loading" role="status" aria-live="polite">
         <strong>CHECKING CREATOR DIRECTORY…</strong>
