@@ -1,0 +1,120 @@
+name: VoltTech Step 11.2G Image Overlay Glass System
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-11.2g-image-overlay-glass.mjs"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volttech-step-11.2g-image-overlay-glass
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    name: Refine image-overlay glass language
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: clean-rebuild
+
+      - name: Apply Step 11.2G image-overlay glass system
+        run: python3 scripts/apply-step-11.2g-image-overlay-glass.py
+
+      - name: Rebuild clean frontend
+        run: python3 scripts/build-clean-frontend.py
+
+      - name: Verify generated frontend consistency
+        run: python3 scripts/build-clean-frontend.py --check
+
+      - name: Verify Step 11.2G contract
+        run: node scripts/test-step-11.2g-image-overlay-glass.mjs
+
+      - name: Run full clean regression
+        run: node scripts/run-full-qa.mjs
+
+      - name: Restore regression-mutated tracked files
+        shell: bash
+        run: |
+          git restore --source=HEAD --worktree --staged --             qa-results/step-9.1-summary.json             scripts/__pycache__/migrate-static-history.cpython-312.pyc
+          echo "PASS: restored regression-mutated tracked files to HEAD"
+
+      - name: Guard Step 11.2G scope
+        shell: python
+        run: |
+          import subprocess, sys
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only"], text=True
+          ).splitlines()
+
+          approved = {
+              "src/pages/home.html",
+              "src/pages/store.html",
+              "assets/css/components.css",
+              "assets/css/pages/home.css",
+              "assets/css/pages/commerce.css",
+              "index.html",
+              "store.html",
+          }
+
+          unexpected = [p for p in changed if p not in approved]
+          if unexpected:
+              print("Unexpected Step 11.2G changes:")
+              print("\n".join(unexpected))
+              sys.exit(1)
+
+          if set(changed) != approved:
+              print("Expected exactly these Step 11.2G files:")
+              print("\n".join(sorted(approved)))
+              print("Found:")
+              print("\n".join(changed))
+              sys.exit(1)
+
+          print("PASS: exact Step 11.2G scope confirmed")
+          for path in changed:
+              print("-", path)
+
+      - name: Commit certified image-overlay glass system
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add             src/pages/home.html             src/pages/store.html             assets/css/components.css             assets/css/pages/home.css             assets/css/pages/commerce.css             index.html             store.html
+
+          git commit -m "design: refine glass overlays on imagery"
+          git push origin HEAD:clean-rebuild
+
+      - name: Upload QA note
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p qa-results/step-11.2g
+          {
+            echo "# VoltTech Step 11.2G — Image Overlay Glass System"
+            echo
+            echo "- Reduced glass blur from 18px to 7px desktop / 5px mobile."
+            echo "- Established reusable teal, purple and neutral image-overlay glass variants."
+            echo "- Applied only to UI floating directly over imagery."
+            echo "- Product/component/setup/catalogue cards containing their own imagery remain unchanged."
+          } > qa-results/step-11.2g/summary.md
+
+      - name: Upload QA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-11.2g-image-overlay-glass
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 30
