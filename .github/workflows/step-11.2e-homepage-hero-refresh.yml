@@ -1,0 +1,112 @@
+name: VoltTech Step 11.2E Homepage Hero Refresh
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-11.2e-homepage-hero-refresh.mjs"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volttech-step-11.2e-homepage-hero-refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    name: Refresh homepage hero message and Stream Support CTA
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: clean-rebuild
+
+      - name: Apply homepage hero refresh
+        run: python3 scripts/apply-step-11.2e-homepage-hero-refresh.py
+
+      - name: Rebuild clean frontend
+        run: python3 scripts/build-clean-frontend.py
+
+      - name: Verify generated frontend consistency
+        run: python3 scripts/build-clean-frontend.py --check
+
+      - name: Verify Step 11.2E contract
+        run: node scripts/test-step-11.2e-homepage-hero-refresh.mjs
+
+      - name: Run full clean regression
+        run: node scripts/run-full-qa.mjs
+
+      - name: Guard Step 11.2E scope
+        shell: python
+        run: |
+          import subprocess, sys
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only"], text=True
+          ).splitlines()
+
+          approved = {
+              "src/pages/home.html",
+              "assets/css/pages/home.css",
+              "index.html",
+          }
+
+          unexpected = [p for p in changed if p not in approved]
+          if unexpected:
+              print("Unexpected Step 11.2E changes:")
+              print("\n".join(unexpected))
+              sys.exit(1)
+
+          print(f"PASS: {len(changed)} changed file(s), all inside approved Step 11.2E scope.")
+          for path in changed:
+              print("-", path)
+
+      - name: Commit certified homepage hero refresh
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No Step 11.2E changes required."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add src/pages/home.html assets/css/pages/home.css index.html
+          git commit -m "design: refresh homepage hero message and stream CTA"
+          git push origin HEAD:clean-rebuild
+
+      - name: Upload QA note
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p qa-results/step-11.2e
+          {
+            echo "# VoltTech Step 11.2E — Homepage Hero Refresh"
+            echo
+            echo "Hero:"
+            echo "- BUILT FOR PERFORMANCE."
+            echo "- READY FOR ANYTHING."
+            echo
+            echo "Strap:"
+            echo "- CUSTOM PCs. COMPONENTS. UPGRADES. REPAIRS. STREAM SUPPORT."
+            echo
+            echo "CTA:"
+            echo "- Homepage Stream Support button gets a transparent purple neon border/glow."
+          } > qa-results/step-11.2e/summary.md
+
+      - name: Upload QA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-11.2e-homepage-hero-refresh
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 30
