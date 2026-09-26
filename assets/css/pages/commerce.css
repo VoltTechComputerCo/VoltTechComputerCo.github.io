@@ -98,3 +98,23 @@
 @media (max-width:70rem) { .catalogue-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } .store-status-panel { grid-template-columns:auto 1fr; } .store-status-panel > .button { grid-column:2; justify-self:start; } }
 @media (max-width:52rem) { .store-hero-grid { grid-template-columns:1.2fr .8fr; } .store-hero-visual { min-height:360px; } .store-hero-copy { padding-right:1rem; } .store-hero h1 { font-size:clamp(2.4rem,5.5vw,3.5rem); } .store-categories { grid-template-columns:repeat(3,minmax(0,1fr)); } .catalogue-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .component-overview { gap:1.5rem; } .component-data-grid { grid-template-columns:1fr; } }
 @media (max-width:40rem) { .store-hero-grid { grid-template-columns:1fr; padding:0; } .store-hero-copy { padding:1.5rem var(--gutter); } .store-hero h1 { font-size:clamp(2.7rem,10.5vw,4.2rem); } .store-hero-visual { min-height:0; height:240px; border-inline:0; } .store-hero-visual img { object-position:center 46%; } .store-hero-visual figcaption { padding:.5rem 1rem; font-size:.625rem; } .store-principles > div { grid-template-columns:1fr; } .store-principles p,.store-principles p:first-child { border:0; border-bottom:1px solid var(--border); padding:1rem 0; } .store-categories { grid-template-columns:repeat(2,minmax(0,1fr)); gap:.5rem; } .store-category img { height:120px; } .store-category { padding:.5rem; } .store-category div { padding:.75rem .25rem .25rem; } .store-category h3 { font-size:.875rem; } .store-category p { font-size:.6875rem; } .store-status-panel { grid-template-columns:1fr; gap:1rem; padding:1.25rem; } .status-symbol { display:none; } .store-status-panel > .button { grid-column:auto; justify-self:stretch; } .store-catalogue-wrap { padding-block:2rem; } .catalogue-toolbar { grid-template-columns:1fr 1fr; gap:.75rem; } .catalogue-toolbar .field:first-child { grid-column:1/-1; } .catalogue-toolbar .field { margin-bottom:0; } .catalogue-results-head { flex-wrap:wrap; margin-top:1rem; } .catalogue-results-head p { width:100%; } .catalogue-grid { grid-template-columns:1fr; } .catalogue-card { display:grid; grid-template-columns:minmax(0,.7fr) minmax(0,1fr); } .catalogue-card .catalogue-media { min-height:190px; height:100%; aspect-ratio:auto; } .catalogue-card-body { padding:.875rem; } .catalogue-description { display:none; } .catalogue-card h3 { font-size:1rem; } .catalogue-card .spec-tags { display:none; } .catalogue-card .actions { flex-direction:column; align-items:stretch; } .catalogue-card .catalogue-price strong { font-size:1.125rem; } .component-overview { grid-template-columns:1fr; } .component-data { padding:1rem; } .component-links a { display:grid; } .catalogue-cart-row { grid-template-columns:1fr; } .catalogue-cart-row .catalogue-media { display:none; } .advice-card { padding:1.5rem; } }
+
+/* STEP 11.2G STORE IMAGE GLASS MAPPING START */
+/* The store hero caption floats directly over the hero photograph. */
+.store-hero-visual figcaption.vt-image-glass {
+  background:
+    linear-gradient(180deg, rgba(78,239,224,.075), rgba(3,34,35,.18)),
+    rgba(2,12,14,.24);
+  border-top-color: rgba(78,239,224,.52);
+  color: #d9f4f1;
+  box-shadow:
+    0 -8px 24px rgba(34,224,210,.055),
+    inset 0 1px 0 rgba(255,255,255,.055);
+}
+
+/*
+  Catalogue/product card captions intentionally stay unchanged:
+  their images live inside the card/media boundary, so they are excluded
+  from the direct-image-overlay glass rule.
+*/
+/* STEP 11.2G STORE IMAGE GLASS MAPPING END */

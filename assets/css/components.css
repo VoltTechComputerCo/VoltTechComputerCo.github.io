@@ -33,3 +33,76 @@ details + details { border-top: 0; }
 summary { display: list-item; cursor: pointer; min-height: 48px; padding: var(--space-3) var(--space-4); font-weight: 600; }
 summary::marker { color: var(--teal); }
 details > div { padding: 0 var(--space-4) var(--space-4); color: var(--text-secondary); font-size: var(--text-sm); }
+
+/* STEP 11.2G IMAGE OVERLAY GLASS SYSTEM START */
+/*
+  Use only when UI floats directly over an image.
+  Do not apply to cards/panels that contain their own image within the card border.
+*/
+.vt-image-glass {
+  --vt-glass-border: rgba(255,255,255,.20);
+  --vt-glass-bg-top: rgba(255,255,255,.06);
+  --vt-glass-bg-bottom: rgba(3,14,16,.22);
+  --vt-glass-glow: rgba(255,255,255,.08);
+  --vt-glass-glow-strong: rgba(255,255,255,.14);
+  --vt-glass-text: var(--text);
+  border: 1px solid var(--vt-glass-border);
+  background:
+    linear-gradient(180deg, var(--vt-glass-bg-top), var(--vt-glass-bg-bottom)),
+    rgba(3,14,16,.18);
+  color: var(--vt-glass-text);
+  backdrop-filter: blur(7px) saturate(125%);
+  -webkit-backdrop-filter: blur(7px) saturate(125%);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--vt-glass-border) 20%, transparent),
+    0 0 16px var(--vt-glass-glow),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.vt-image-glass--teal {
+  --vt-glass-border: rgba(78,239,224,.82);
+  --vt-glass-bg-top: rgba(92,255,241,.12);
+  --vt-glass-bg-bottom: rgba(7,65,64,.20);
+  --vt-glass-glow: rgba(34,224,210,.18);
+  --vt-glass-glow-strong: rgba(34,224,210,.34);
+  --vt-glass-text: #e5fffc;
+}
+
+.vt-image-glass--purple {
+  --vt-glass-border: rgba(194,140,255,.84);
+  --vt-glass-bg-top: rgba(216,187,255,.12);
+  --vt-glass-bg-bottom: rgba(66,37,96,.18);
+  --vt-glass-glow: rgba(166,86,255,.20);
+  --vt-glass-glow-strong: rgba(166,86,255,.36);
+  --vt-glass-text: #f5efff;
+}
+
+.vt-image-glass--neutral {
+  --vt-glass-border: rgba(220,241,241,.22);
+  --vt-glass-bg-top: rgba(226,248,248,.065);
+  --vt-glass-bg-bottom: rgba(2,12,14,.24);
+  --vt-glass-glow: rgba(82,225,218,.09);
+  --vt-glass-glow-strong: rgba(82,225,218,.15);
+  --vt-glass-text: var(--text-secondary);
+}
+
+.button.vt-image-glass:hover,
+.button.vt-image-glass:focus-visible,
+a.vt-image-glass:hover,
+a.vt-image-glass:focus-visible {
+  border-color: color-mix(in srgb, var(--vt-glass-border) 88%, white);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--vt-glass-border) 28%, transparent),
+    0 0 21px var(--vt-glass-glow-strong),
+    inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+@media (max-width: 40rem) {
+  .vt-image-glass {
+    backdrop-filter: blur(5px) saturate(120%);
+    -webkit-backdrop-filter: blur(5px) saturate(120%);
+  }
+}
+/* STEP 11.2G IMAGE OVERLAY GLASS SYSTEM END */

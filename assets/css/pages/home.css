@@ -429,96 +429,61 @@
   }
 }
 
-/* STEP 11.2F HERO CTA GLASS BUTTONS START */
-/* Preserve the tightened hero title scale introduced in Step 11.2E. */
+/* STEP 11.2G HOMEPAGE IMAGE GLASS MAPPING START */
+/* Preserve the Step 11.2E headline scale. */
 .hero-copy h1 {
   font-size: clamp(2.15rem, 3.45vw, 3.55rem);
   line-height: .98;
 }
 
-/* Shared homepage-only glass CTA system. */
+/* Hero CTAs now inherit the lighter shared image-glass blur. */
 .hero-build-button,
 .hero-stream-button {
-  position: relative;
   border-width: 1.5px;
-  border-style: solid;
   background-clip: padding-box;
-  backdrop-filter: blur(18px) saturate(145%);
-  -webkit-backdrop-filter: blur(18px) saturate(145%);
-  box-shadow:
-    0 0 0 1px var(--hero-cta-ring),
-    0 0 18px var(--hero-cta-glow-soft),
-    0 0 42px var(--hero-cta-glow-soft),
-    inset 0 1px 0 rgba(255, 255, 255, .09),
-    inset 0 0 22px var(--hero-cta-glow-inner);
-  text-shadow: 0 0 8px rgba(255, 255, 255, .08);
-}
-
-.hero-build-button span,
-.hero-stream-button span {
-  filter: drop-shadow(0 0 5px currentColor);
-}
-
-.hero-build-button:hover,
-.hero-build-button:focus-visible,
-.hero-stream-button:hover,
-.hero-stream-button:focus-visible {
-  transform: translateY(-1px);
-  box-shadow:
-    0 0 0 1px var(--hero-cta-ring-strong),
-    0 0 22px var(--hero-cta-glow-strong),
-    0 0 52px var(--hero-cta-glow-soft),
-    inset 0 1px 0 rgba(255, 255, 255, .14),
-    inset 0 0 26px var(--hero-cta-glow-inner-strong);
-}
-
-/* Teal glass button */
-.hero-build-button {
-  --hero-cta-ring: rgba(95, 255, 240, .10);
-  --hero-cta-ring-strong: rgba(131, 255, 243, .18);
-  --hero-cta-glow-soft: rgba(34, 224, 210, .22);
-  --hero-cta-glow-strong: rgba(34, 224, 210, .38);
-  --hero-cta-glow-inner: rgba(70, 255, 242, .05);
-  --hero-cta-glow-inner-strong: rgba(70, 255, 242, .09);
-  border-color: rgba(78, 239, 224, .92);
-  background:
-    linear-gradient(180deg, rgba(116, 255, 244, .17), rgba(17, 89, 86, .18)),
-    rgba(15, 39, 42, .18);
-  color: #d7fffb;
+  text-shadow: 0 0 8px rgba(255,255,255,.07);
 }
 
 .hero-build-button span {
   color: #90fff4;
-}
-
-/* Purple glass button */
-.hero-stream-button {
-  --hero-cta-ring: rgba(213, 171, 255, .10);
-  --hero-cta-ring-strong: rgba(226, 198, 255, .18);
-  --hero-cta-glow-soft: rgba(166, 86, 255, .24);
-  --hero-cta-glow-strong: rgba(166, 86, 255, .42);
-  --hero-cta-glow-inner: rgba(194, 140, 255, .05);
-  --hero-cta-glow-inner-strong: rgba(194, 140, 255, .09);
-  border-color: rgba(194, 140, 255, .92);
-  background:
-    linear-gradient(180deg, rgba(216, 187, 255, .15), rgba(59, 32, 89, .16)),
-    rgba(24, 16, 34, .18);
-  color: #f3ebff;
+  filter: drop-shadow(0 0 4px rgba(78,239,224,.34));
 }
 
 .hero-stream-button span {
   color: #d9bbff;
+  filter: drop-shadow(0 0 4px rgba(194,140,255,.34));
 }
 
+/* Small labels that sit directly on imagery share the same glass language. */
+.hero-note.vt-image-glass {
+  padding: .3rem .45rem;
+}
+
+.stream-support-image span.vt-image-glass {
+  padding: .26rem .38rem;
+  background:
+    linear-gradient(180deg, rgba(216,187,255,.12), rgba(66,37,96,.18)),
+    rgba(12,8,18,.22);
+  border-color: rgba(194,140,255,.72);
+}
+
+/* On mobile these facts sit on the hero artwork, so give them restrained glass separation. */
 @media (max-width: 40rem) {
   .hero-copy h1 {
     font-size: clamp(2rem, 8.3vw, 2.9rem);
   }
 
-  .hero-build-button,
-  .hero-stream-button {
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  .hero-facts > span {
+    padding: .46rem .52rem;
+    border: 1px solid rgba(78,239,224,.26);
+    background:
+      linear-gradient(180deg, rgba(78,239,224,.055), rgba(3,32,33,.16)),
+      rgba(2,12,14,.20);
+    backdrop-filter: blur(5px) saturate(120%);
+    -webkit-backdrop-filter: blur(5px) saturate(120%);
+    box-shadow:
+      0 0 12px rgba(34,224,210,.07),
+      inset 0 1px 0 rgba(255,255,255,.045);
   }
 }
-/* STEP 11.2F HERO CTA GLASS BUTTONS END */
+/* STEP 11.2G HOMEPAGE IMAGE GLASS MAPPING END */
