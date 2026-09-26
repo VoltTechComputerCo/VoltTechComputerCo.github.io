@@ -42,6 +42,13 @@ jobs:
       - name: Run full clean regression
         run: node scripts/run-full-qa.mjs
 
+      - name: Remove QA temporary artifacts
+        shell: bash
+        run: |
+          rm -rf scripts/__pycache__
+          rm -rf qa-results
+          echo "Temporary QA artifacts removed before scope validation."
+
       - name: Guard Step 11.2D scope
         shell: python
         run: |
@@ -64,6 +71,8 @@ jobs:
               sys.exit(1)
 
           print(f"PASS: {len(changed)} changed file(s), all inside approved service-hero scope.")
+          for p in changed:
+              print("-",p)
 
       - name: Commit certified staging hero refinement
         shell: bash
