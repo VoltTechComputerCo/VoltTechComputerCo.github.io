@@ -42,12 +42,12 @@ jobs:
       - name: Run full clean regression
         run: node scripts/run-full-qa.mjs
 
-      - name: Remove QA temporary artifacts
+      - name: Restore QA-generated tracked files
         shell: bash
         run: |
-          rm -rf scripts/__pycache__
-          rm -rf qa-results
-          echo "Temporary QA artifacts removed before scope validation."
+          git restore --worktree --staged qa-results 2>/dev/null || true
+          git restore --worktree --staged scripts/__pycache__ 2>/dev/null || true
+          echo "QA-generated tracked files restored to branch state."
 
       - name: Guard Step 11.2D scope
         shell: python
