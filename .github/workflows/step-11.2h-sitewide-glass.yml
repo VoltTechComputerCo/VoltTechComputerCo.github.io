@@ -57,9 +57,15 @@ jobs:
           import sys
           from pathlib import Path
 
-          changed = subprocess.check_output(
+          tracked = subprocess.check_output(
               ["git", "diff", "--name-only"], text=True
           ).splitlines()
+
+          untracked = subprocess.check_output(
+              ["git", "ls-files", "--others", "--exclude-standard"], text=True
+          ).splitlines()
+
+          changed = sorted(set(tracked + untracked))
 
           approved = {
               "scripts/build-clean-frontend.py",
@@ -79,7 +85,7 @@ jobs:
           required = {"scripts/build-clean-frontend.py", "assets/css/glass-system.css"}
           missing = [p for p in required if p not in changed]
           if missing:
-              print("Required Step 11.2H files did not change:")
+              print("Required Step 11.2H files did not change/create:")
               print("\n".join(missing))
               sys.exit(1)
 
@@ -88,8 +94,13 @@ jobs:
               print("No generated HTML picked up the sitewide stylesheet.")
               sys.exit(1)
 
+          if not Path("assets/css/glass-system.css").is_file():
+              print("glass-system.css was not created.")
+              sys.exit(1)
+
           print(f"PASS: exact Step 11.2H scope confirmed ({len(changed)} files).")
           print(f"PASS: {len(html_changed)} generated HTML pages now load glass-system.css.")
+          print("PASS: new untracked stylesheet is included in scope validation.")
 
       - name: Commit certified sitewide glass system
         shell: bash
