@@ -1,0 +1,594 @@
+\
+#!/usr/bin/env python3
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+BUILD = ROOT / "scripts/build-clean-frontend.py"
+GLASS = ROOT / "assets/css/glass-system.css"
+
+build = BUILD.read_text(encoding="utf-8")
+
+old = "styles = [f'assets/css/{name}.css' for name in CSS] + config.get('styles', [])"
+new = "styles = [f'assets/css/{name}.css' for name in CSS] + config.get('styles', []) + ['assets/css/glass-system.css']"
+
+if old in build:
+    build = build.replace(old, new, 1)
+    BUILD.write_text(build, encoding="utf-8")
+    print("Updated build-clean-frontend.py to load glass-system.css last")
+elif new in build:
+    print("PASS: glass-system.css already loads last")
+else:
+    raise RuntimeError("Could not safely locate stylesheet assembly in build-clean-frontend.py")
+
+css = r'''/*
+  VOLTTECH SITEWIDE GLASS DESIGN SYSTEM
+  Step 11.2H
+
+  Scope:
+  - VoltTech clean-shell customer experience
+  - Excludes STATIC editorial pages and admin-prefixed pages
+  - Loaded last so it acts as the final visual material layer
+  - Uses restrained 7px blur / 5px mobile blur
+  - Keeps semantic accent colours for services, streaming, warnings and danger states
+*/
+
+:root {
+  --vt-glass-blur: 7px;
+  --vt-glass-blur-mobile: 5px;
+  --vt-glass-sat: 122%;
+  --vt-glass-panel-top: rgba(28, 55, 58, .24);
+  --vt-glass-panel-bottom: rgba(2, 13, 15, .48);
+  --vt-glass-panel-solid: rgba(3, 16, 18, .48);
+  --vt-glass-border: rgba(118, 190, 186, .22);
+  --vt-glass-border-strong: rgba(91, 241, 226, .44);
+  --vt-glass-glow: rgba(34, 224, 210, .075);
+  --vt-glass-glow-hover: rgba(34, 224, 210, .18);
+  --vt-glass-highlight: rgba(255, 255, 255, .055);
+}
+
+/* ---------- PAGE ACCENT ROUTING ---------- */
+
+body:not([data-page^="static"]):not([data-page^="admin"]) {
+  --vt-surface-accent: var(--teal);
+  --vt-surface-accent-soft: rgba(53, 234, 215, .16);
+  --vt-surface-accent-glow: rgba(53, 234, 215, .14);
+}
+
+body:not([data-page^="static"]):not([data-page^="admin"]) .service-page {
+  --vt-surface-accent: var(--service-accent);
+  --vt-surface-accent-soft: color-mix(in srgb, var(--service-accent) 14%, transparent);
+  --vt-surface-accent-glow: color-mix(in srgb, var(--service-accent) 17%, transparent);
+}
+
+body[data-page="streaming-support"],
+body[data-page="creator-hub-south-africa"],
+body[data-page="stream-scan"] {
+  --vt-surface-accent: #c28cff;
+  --vt-surface-accent-soft: rgba(194, 140, 255, .14);
+  --vt-surface-accent-glow: rgba(166, 86, 255, .17);
+}
+
+/* ---------- GLOBAL MATERIAL ---------- */
+
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  .card,
+  .feature-panel,
+  .notice,
+  .dialog,
+  .preview-strip,
+  .account-auth-card,
+  .account-welcome,
+  .account-panel,
+  .account-action,
+  .account-stat,
+  .account-address-card,
+  .account-security-card,
+  .account-tabs,
+  .privacy-preview,
+  .privacy-pending,
+  .privacy-note,
+  .privacy-card,
+  .privacy-danger,
+  .legal-nav,
+  .legal-link-card,
+  .legal-card,
+  .legal-notice,
+  .legal-contact,
+  .document-sheet,
+  .document-actions-panel,
+  .document-note,
+  .document-json,
+  .transaction-panel,
+  .state-panel,
+  .transaction-sidebar,
+  .transaction-help,
+  .delivery-estimate,
+  .checkout-item,
+  .confirmation-panel,
+  .order-line,
+  .records-preview,
+  .records-toolbar,
+  .record-card,
+  .records-note,
+  .records-section,
+  .activity-card,
+  .records-dialog,
+  .records-inspection-card,
+  .creator-feed-status,
+  .creator-panel,
+  .creator-player,
+  .creator-player-meta,
+  .creator-profile,
+  .creator-live-choice,
+  .creator-directory-card,
+  .creator-community article,
+  .service-network,
+  .service-symptom,
+  .service-detail,
+  .service-card,
+  .service-step,
+  .service-price,
+  .service-trust,
+  .service-trust-item,
+  .service-area,
+  .service-final,
+  .creator-tool-nav,
+  .stream-scan-callout,
+  .streaming-package,
+  .store-principles,
+  .store-category,
+  .store-status-panel,
+  .catalogue-card,
+  .catalogue-media,
+  .advice-card,
+  .component-data,
+  .component-links a,
+  .catalogue-cart,
+  .commerce-status,
+  .builder-app .hero,
+  .builder-app .mode-card,
+  .builder-app .panel,
+  .builder-app .guided-question,
+  .builder-app .choice-card,
+  .builder-app .build-dashboard,
+  .builder-app .build-metric,
+  .builder-app .store-part,
+  .builder-app .product,
+  .builder-app .summary,
+  .builder-app .report-item,
+  .builder-app .diagnostic-action,
+  .builder-app .mobile-buildbar,
+  .builder-app .steps-panel,
+  .builder-app .builder-toast,
+  .scan-status-card,
+  .scan-workspace,
+  .scan-scope,
+  .scan-panel,
+  .scan-option,
+  .scan-diag,
+  .scan-price,
+  .scan-note,
+  .scan-assurance,
+  .component-card,
+  .service-card,
+  .setup-card,
+  .upgrade-card,
+  .builder-panel,
+  .scan-panel,
+  .stream-support-panel,
+  .creator-strip,
+  .trust-row,
+  .error-link
+) {
+  border-color: var(--vt-glass-border);
+  background:
+    linear-gradient(155deg, var(--vt-glass-panel-top), var(--vt-glass-panel-bottom)),
+    var(--vt-glass-panel-solid);
+  backdrop-filter: blur(var(--vt-glass-blur)) saturate(var(--vt-glass-sat));
+  -webkit-backdrop-filter: blur(var(--vt-glass-blur)) saturate(var(--vt-glass-sat));
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .012),
+    0 12px 34px rgba(0, 0, 0, .075),
+    inset 0 1px 0 var(--vt-glass-highlight);
+}
+
+/* Give accent-aware feature surfaces a restrained colour cast. */
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  .service-detail,
+  .service-price,
+  .service-final,
+  .stream-scan-callout,
+  .streaming-package.featured,
+  .account-action,
+  .document-note,
+  .records-note,
+  .scan-price,
+  .scan-assurance
+) {
+  border-color: color-mix(in srgb, var(--vt-surface-accent) 38%, transparent);
+  background:
+    linear-gradient(145deg, var(--vt-surface-accent-soft), rgba(2, 13, 15, .48)),
+    rgba(3, 16, 18, .44);
+  box-shadow:
+    0 0 18px var(--vt-surface-accent-glow),
+    inset 0 1px 0 rgba(255, 255, 255, .055);
+}
+
+/* ---------- SITE CHROME ---------- */
+
+body:not([data-page^="static"]):not([data-page^="admin"]) .site-header {
+  background: rgba(2, 9, 10, .82);
+  border-bottom-color: rgba(90, 196, 189, .20);
+  backdrop-filter: blur(7px) saturate(120%);
+  -webkit-backdrop-filter: blur(7px) saturate(120%);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .12);
+}
+
+body:not([data-page^="static"]):not([data-page^="admin"]) .site-footer {
+  background:
+    linear-gradient(180deg, rgba(6, 25, 27, .58), rgba(1, 8, 10, .94)),
+    var(--black);
+  border-top: 1px solid rgba(90, 196, 189, .16);
+}
+
+body:not([data-page^="static"]):not([data-page^="admin"]) .document-toolbar {
+  background: rgba(3, 16, 18, .76);
+  backdrop-filter: blur(7px) saturate(120%);
+  -webkit-backdrop-filter: blur(7px) saturate(120%);
+}
+
+/* ---------- BUTTONS ---------- */
+
+/* Existing image-overlay buttons keep their dedicated 11.2G treatment. */
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  .button:not(.vt-image-glass),
+  .btn,
+  .flow-btn,
+  .summary-action,
+  .select-btn,
+  .part-action,
+  .primary-action,
+  .diagnostic-action,
+  .vt-account-btn
+) {
+  border: 1px solid color-mix(in srgb, var(--vt-surface-accent) 72%, transparent);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--vt-surface-accent) 16%, transparent),
+      rgba(3, 18, 20, .30)
+    ),
+    rgba(3, 16, 18, .34);
+  color: #edfffd;
+  backdrop-filter: blur(7px) saturate(125%);
+  -webkit-backdrop-filter: blur(7px) saturate(125%);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--vt-surface-accent) 6%, transparent),
+    0 0 15px color-mix(in srgb, var(--vt-surface-accent) 11%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, .065);
+  text-shadow: 0 0 9px rgba(255, 255, 255, .055);
+}
+
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  .button:not(.vt-image-glass),
+  .btn,
+  .flow-btn,
+  .summary-action,
+  .select-btn,
+  .part-action,
+  .primary-action,
+  .diagnostic-action,
+  .vt-account-btn
+):hover,
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  .button:not(.vt-image-glass),
+  .btn,
+  .flow-btn,
+  .summary-action,
+  .select-btn,
+  .part-action,
+  .primary-action,
+  .diagnostic-action,
+  .vt-account-btn
+):focus-visible {
+  border-color: color-mix(in srgb, var(--vt-surface-accent) 92%, white);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--vt-surface-accent) 21%, transparent),
+      rgba(3, 20, 22, .34)
+    ),
+    rgba(3, 16, 18, .38);
+  color: #fff;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--vt-surface-accent) 10%, transparent),
+    0 0 21px color-mix(in srgb, var(--vt-surface-accent) 24%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, .10);
+  transform: translateY(-1px);
+}
+
+/* Secondary variants remain glass, just quieter. */
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  .button-secondary:not(.vt-image-glass),
+  .hero-secondary,
+  .secondary,
+  .alt,
+  .clear
+) {
+  border-color: rgba(166, 208, 204, .25);
+  background:
+    linear-gradient(180deg, rgba(194, 232, 229, .055), rgba(3, 16, 18, .30)),
+    rgba(3, 16, 18, .28);
+  color: var(--text);
+}
+
+/* Semantic danger/warning glass. */
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  .button-danger,
+  .privacy-danger .button,
+  [data-state="urgent"] .button
+) {
+  --vt-surface-accent: #ff7474;
+}
+
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  .notice-warning,
+  .document-note-warning,
+  .privacy-pending
+) {
+  --vt-surface-accent: #ffb454;
+  border-color: rgba(255, 180, 84, .34);
+  background:
+    linear-gradient(145deg, rgba(255, 180, 84, .075), rgba(3, 16, 18, .48)),
+    rgba(3, 16, 18, .42);
+}
+
+/* ---------- FORMS ---------- */
+
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+  select,
+  textarea
+) {
+  border-color: rgba(127, 193, 189, .26);
+  background:
+    linear-gradient(180deg, rgba(15, 44, 46, .28), rgba(2, 12, 14, .50)),
+    rgba(2, 10, 12, .46);
+  color: var(--text);
+  backdrop-filter: blur(7px) saturate(118%);
+  -webkit-backdrop-filter: blur(7px) saturate(118%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .035),
+    0 0 0 1px rgba(53, 234, 215, .018);
+}
+
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+  select,
+  textarea
+):focus {
+  border-color: color-mix(in srgb, var(--vt-surface-accent) 62%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--vt-surface-accent) 16%, transparent),
+    0 0 18px color-mix(in srgb, var(--vt-surface-accent) 11%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, .055);
+}
+
+/* ---------- NAV / TAB / LINK PANELS ---------- */
+
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  .account-tab,
+  .service-network a,
+  .creator-tool-nav a,
+  .records-tabs a,
+  .privacy-nav a,
+  .stream-tool-nav a
+) {
+  background: rgba(3, 16, 18, .18);
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    box-shadow var(--transition);
+}
+
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  .account-tab,
+  .service-network a,
+  .creator-tool-nav a,
+  .records-tabs a,
+  .privacy-nav a,
+  .stream-tool-nav a
+):hover,
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  .account-tab.active,
+  .service-network a.active,
+  .creator-tool-nav a.active
+) {
+  background:
+    linear-gradient(180deg, var(--vt-surface-accent-soft), rgba(3, 16, 18, .30)),
+    rgba(3, 16, 18, .24);
+  box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--vt-surface-accent) 46%, transparent);
+}
+
+/* ---------- INTERACTIVE SURFACE LIFT ---------- */
+
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  a.card,
+  .component-card,
+  .service-card,
+  .setup-card,
+  .upgrade-card,
+  .store-category,
+  .catalogue-card,
+  .mode-card,
+  .choice-card,
+  .product,
+  .creator-directory-card,
+  .creator-live-choice,
+  .account-stat,
+  .account-link-grid a,
+  .error-link,
+  .legal-link-card
+) {
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  a.card,
+  .component-card,
+  .service-card,
+  .setup-card,
+  .upgrade-card,
+  .store-category,
+  .catalogue-card,
+  .mode-card,
+  .choice-card,
+  .product,
+  .creator-directory-card,
+  .creator-live-choice,
+  .account-stat,
+  .account-link-grid a,
+  .error-link,
+  .legal-link-card
+):hover,
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  a.card,
+  .component-card,
+  .service-card,
+  .setup-card,
+  .upgrade-card,
+  .store-category,
+  .catalogue-card,
+  .mode-card,
+  .choice-card,
+  .product,
+  .creator-directory-card,
+  .creator-live-choice,
+  .account-stat,
+  .account-link-grid a,
+  .error-link,
+  .legal-link-card
+):focus-visible {
+  border-color: color-mix(in srgb, var(--vt-surface-accent) 42%, transparent);
+  background:
+    linear-gradient(155deg, color-mix(in srgb, var(--vt-surface-accent) 8%, transparent), rgba(2, 13, 15, .52)),
+    rgba(3, 16, 18, .48);
+  box-shadow:
+    0 0 20px color-mix(in srgb, var(--vt-surface-accent) 9%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, .07);
+  transform: translateY(-1px);
+}
+
+/* ---------- EXISTING IMAGE GLASS COHERENCE ---------- */
+
+/* Keep the 11.2G image-overlay system aligned with the same blur language. */
+body:not([data-page^="static"]):not([data-page^="admin"]) .vt-image-glass {
+  backdrop-filter: blur(7px) saturate(122%);
+  -webkit-backdrop-filter: blur(7px) saturate(122%);
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 40rem) {
+  body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+    .card,
+    .feature-panel,
+    .notice,
+    .dialog,
+    .account-auth-card,
+    .account-welcome,
+    .account-panel,
+    .privacy-card,
+    .legal-card,
+    .document-sheet,
+    .transaction-panel,
+    .record-card,
+    .creator-panel,
+    .service-symptom,
+    .service-detail,
+    .service-card,
+    .service-step,
+    .service-price,
+    .service-trust,
+    .service-trust-item,
+    .service-area,
+    .streaming-package,
+    .store-category,
+    .store-status-panel,
+    .catalogue-card,
+    .builder-app .mode-card,
+    .builder-app .panel,
+    .builder-app .choice-card,
+    .scan-status-card,
+    .scan-workspace,
+    .scan-panel,
+    .scan-option,
+    .component-card,
+    .setup-card,
+    .upgrade-card,
+    .vt-image-glass
+  ) {
+    backdrop-filter: blur(var(--vt-glass-blur-mobile)) saturate(118%);
+    -webkit-backdrop-filter: blur(var(--vt-glass-blur-mobile)) saturate(118%);
+  }
+
+  body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+    .button:not(.vt-image-glass),
+    .btn,
+    input:not([type="checkbox"]):not([type="radio"]),
+    select,
+    textarea
+  ) {
+    backdrop-filter: blur(5px) saturate(118%);
+    -webkit-backdrop-filter: blur(5px) saturate(118%);
+  }
+}
+
+/* ---------- PRINT ---------- */
+
+@media print {
+  body :is(
+    .card,
+    .feature-panel,
+    .notice,
+    .dialog,
+    .account-auth-card,
+    .account-welcome,
+    .account-panel,
+    .privacy-card,
+    .legal-card,
+    .document-sheet,
+    .transaction-panel,
+    .record-card,
+    .creator-panel,
+    .service-card,
+    .service-step,
+    .service-price,
+    .store-category,
+    .catalogue-card,
+    .builder-app .panel,
+    .scan-panel,
+    .vt-image-glass
+  ) {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  body :is(.button, .btn) {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+}
+'''
+
+GLASS.write_text(css, encoding="utf-8")
+print("Created assets/css/glass-system.css")
+print("STEP 11.2H PREPARED")
