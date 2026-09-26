@@ -1,0 +1,205 @@
+{
+  "step": "9.1",
+  "title": "Automated Full Regression QA",
+  "branch": "clean-rebuild",
+  "started_at": "2026-09-26T08:23:15.491Z",
+  "finished_at": "2026-09-26T08:23:19.273Z",
+  "total": 24,
+  "passed": 24,
+  "failed": 0,
+  "status": "PASS",
+  "results": [
+    {
+      "name": "Clean frontend source/output contract",
+      "command": "python3 scripts/check-clean-frontend.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 1869,
+      "signal": null
+    },
+    {
+      "name": "Domain residue gate",
+      "command": "python3 scripts/check-domain-residue.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 36,
+      "signal": null
+    },
+    {
+      "name": "Final SEO gate",
+      "command": "python3 scripts/check-final-seo.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 37,
+      "signal": null
+    },
+    {
+      "name": "STATIC history migration gate",
+      "command": "python3 scripts/test-static-history-migration.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 52,
+      "signal": null
+    },
+    {
+      "name": "STATIC publishing validation",
+      "command": "python3 scripts/validate-static.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 70,
+      "signal": null
+    },
+    {
+      "name": "Repo-wide public HTML/link scan",
+      "command": "python3 scripts/check-full-site.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 477,
+      "signal": null
+    },
+    {
+      "name": "Runtime + launch flags + mobile shell",
+      "command": "node scripts/test-clean-runtime.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 223,
+      "signal": null
+    },
+    {
+      "name": "Accessibility + performance contracts",
+      "command": "node scripts/test-clean-a11y-performance.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 34,
+      "signal": null
+    },
+    {
+      "name": "Account/auth boundary",
+      "command": "node scripts/test-clean-account.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 37,
+      "signal": null
+    },
+    {
+      "name": "Builder contracts",
+      "command": "node scripts/test-clean-builder.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 34,
+      "signal": null
+    },
+    {
+      "name": "Commerce catalogue contracts",
+      "command": "node scripts/test-clean-commerce.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 365,
+      "signal": null
+    },
+    {
+      "name": "Transactions/payment gate",
+      "command": "node scripts/test-clean-transactions.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 36,
+      "signal": null
+    },
+    {
+      "name": "Creator Hub contracts",
+      "command": "node scripts/test-clean-creator-hub.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 61,
+      "signal": null
+    },
+    {
+      "name": "Customer operations",
+      "command": "node scripts/test-clean-customer-ops.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 36,
+      "signal": null
+    },
+    {
+      "name": "Customer records",
+      "command": "node scripts/test-clean-customer-records.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 32,
+      "signal": null
+    },
+    {
+      "name": "Customer document support",
+      "command": "node scripts/test-clean-document-support.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 30,
+      "signal": null
+    },
+    {
+      "name": "Printable documents",
+      "command": "node scripts/test-clean-documents.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 31,
+      "signal": null
+    },
+    {
+      "name": "Canonical/domain source contracts",
+      "command": "node scripts/test-clean-domain.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 32,
+      "signal": null
+    },
+    {
+      "name": "Legal/support family",
+      "command": "node scripts/test-clean-legal.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 33,
+      "signal": null
+    },
+    {
+      "name": "Service funnel round trip",
+      "command": "node scripts/test-clean-service-funnel.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 41,
+      "signal": null
+    },
+    {
+      "name": "Service family contracts",
+      "command": "node scripts/test-clean-services.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 37,
+      "signal": null
+    },
+    {
+      "name": "Signal Scan contracts",
+      "command": "node scripts/test-clean-signal-scan.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 36,
+      "signal": null
+    },
+    {
+      "name": "STATIC hub/feed/workflows",
+      "command": "node scripts/test-clean-static.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 33,
+      "signal": null
+    },
+    {
+      "name": "Streaming/Stream Scan contracts",
+      "command": "node scripts/test-clean-streaming.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 42,
+      "signal": null
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "step": "9.1",
+  "scanner": "check-full-site.py",
+  "status": "PASS",
+  "public_html_pages": 80,
+  "local_references_checked": 2227,
+  "errors": 0,
+  "warnings": 0,
+  "findings": []
+}

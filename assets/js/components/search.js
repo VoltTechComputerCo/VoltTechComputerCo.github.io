@@ -5,7 +5,8 @@ const entries = [
   ['PC performance', 'Cooling, temperatures, FPS and stability', 'pc-performance-optimisation.html'],
   ['Windows support', 'Installation and software support', 'windows-installation-pretoria.html'],
   ['Malware and security', 'Virus removal and PC security', 'virus-malware-removal-pretoria.html'],
-  ['Streaming support', 'OBS, audio, video and creator setups', 'streaming-setup-south-africa.html'],
+  ['Stream Support', 'OBS, Streamlabs, audio, capture, dropped frames and creator PCs', 'streaming-setup-south-africa.html'],
+  ['Stream Scan', 'Guided OBS and Streamlabs diagnostic and estimate', 'stream-scan.html'],
   ['Signal Scan', 'Guided PC diagnostic and estimate', 'signal-scan.html'],
   ['PC Builder', 'Build planning — availability shown on arrival', 'builder/index.html'],
   ['Store', 'Components — availability shown on arrival', 'store.html'],
@@ -36,7 +37,7 @@ export function enhanceSearch() {
       description.textContent = detail;
       link.append(description); li.append(link); list.append(li);
     });
-    status.textContent = results.length ? `Showing ${Math.min(results.length, 8)} ${words.length ? 'matching' : 'popular'} pages.` : 'No matching pages. Try repair, upgrades or streaming.';
+    status.textContent = results.length ? `Showing ${Math.min(results.length, 8)} ${words.length ? 'matching' : 'popular'} pages.` : 'No matching pages. Try builds, repair, OBS or streaming.';
   }
   input.addEventListener('input', render);
   render();

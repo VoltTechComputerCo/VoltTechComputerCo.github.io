@@ -1,0 +1,101 @@
+name: VoltTech Step 11.1D Production Promotion
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-11.1d-promote.mjs"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volttech-step-11.1d-production-promotion
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    name: Certify and promote extensionless SEO contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout clean-rebuild trigger
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: clean-rebuild
+
+      - name: Preserve promotion runner
+        run: cp scripts/run-step-11.1d-promote.mjs /tmp/volttech-step-11.1d-promote.mjs
+
+      - name: Fetch production main and staging commit
+        run: |
+          git fetch origin main:refs/remotes/origin/main --force
+          git fetch origin clean-rebuild:refs/remotes/origin/clean-rebuild --force
+
+      - name: Prepare exact certified SEO promotion
+        run: node /tmp/volttech-step-11.1d-promote.mjs prepare
+
+      - name: Verify generated frontend consistency
+        run: python3 scripts/build-clean-frontend.py --check
+
+      - name: Run complete clean regression
+        run: node scripts/run-full-qa.mjs
+
+      - name: Install browser QA runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Start local production-candidate server
+        shell: bash
+        run: |
+          mkdir -p qa-results/step-11.1d
+          python3 -m http.server 4173 --bind 127.0.0.1 > qa-results/step-11.1d/http-server.log 2>&1 &
+          echo $! > qa-results/step-11.1d/http-server.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/index.html >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Local production-candidate server did not become ready." >&2
+          exit 1
+
+      - name: Re-run complete non-commerce release certification
+        env:
+          VT_QA_BASE: http://127.0.0.1:4173
+        run: node scripts/run-step-9.3.mjs
+
+      - name: Certify extensionless public URL contract
+        run: node /tmp/volttech-step-11.1d-promote.mjs certify
+
+      - name: Re-fetch main immediately before push
+        run: |
+          git fetch origin main:refs/remotes/origin/main --force
+          node /tmp/volttech-step-11.1d-promote.mjs prepush
+
+      - name: Promote certified SEO normalization to main
+        run: |
+          git push origin HEAD:main
+          node /tmp/volttech-step-11.1d-promote.mjs pushed
+
+      - name: Verify remote production branch
+        run: |
+          git fetch origin main:refs/remotes/origin/main --force
+          node /tmp/volttech-step-11.1d-promote.mjs verify
+
+      - name: Verify live .co.za canonical contract
+        run: node /tmp/volttech-step-11.1d-promote.mjs live
+
+      - name: Upload promotion evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-11.1d-production-promotion
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 60

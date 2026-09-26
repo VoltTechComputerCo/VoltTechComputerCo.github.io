@@ -1,7 +1,7 @@
 {
   "output": "stream-scan.html",
-  "title": "Free Stream Diagnostic Tool South Africa | Stream Scan | VoltTech",
-  "description": "Use VoltTech Stream Scan to narrow OBS encoding overload, rendering lag, dropped frames, blurry streams, game FPS loss and creator audio problems with answer-based triage.",
+  "title": "OBS & Streamlabs Diagnostic Tool South Africa | Stream Scan | VoltTech",
+  "description": "Use VoltTech Stream Scan to narrow OBS or Streamlabs encoding overload, rendering lag, dropped frames, blurry output, FPS loss and creator-audio problems.",
   "robots": "index, follow, max-image-preview:large",
   "styles": [
     "assets/css/pages/signal-scan.css",

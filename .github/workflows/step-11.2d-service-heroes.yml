@@ -1,0 +1,90 @@
+name: VoltTech Step 11.2D Integrated Service Heroes
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-11.2d-service-heroes.mjs"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volttech-step-11.2d-service-heroes
+  cancel-in-progress: true
+
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: clean-rebuild
+
+      - name: Apply integrated service hero layout
+        run: python3 scripts/apply-step-11.2d-service-heroes.py
+
+      - name: Rebuild clean frontend
+        run: python3 scripts/build-clean-frontend.py
+
+      - name: Verify generated frontend consistency
+        run: python3 scripts/build-clean-frontend.py --check
+
+      - name: Verify Step 11.2D hero composition
+        run: node scripts/test-step-11.2d-service-heroes.mjs
+
+      - name: Run full clean regression
+        run: node scripts/run-full-qa.mjs
+
+      - name: Restore QA-generated tracked files
+        shell: bash
+        run: |
+          git restore --worktree --staged qa-results 2>/dev/null || true
+          git restore --worktree --staged scripts/__pycache__ 2>/dev/null || true
+          echo "QA-generated tracked files restored to branch state."
+
+      - name: Guard Step 11.2D scope
+        shell: python
+        run: |
+          from pathlib import Path
+          import subprocess,sys
+          changed=subprocess.check_output(["git","diff","--name-only"],text=True).splitlines()
+
+          def allowed(p):
+              if p == "assets/css/pages/services.css":
+                  return True
+              path=Path(p)
+              if path.parent == Path(".") and path.suffix == ".html" and p != "static.html" and not p.startswith("static-"):
+                  return True
+              return False
+
+          unexpected=[p for p in changed if not allowed(p)]
+          if unexpected:
+              print("Unexpected Step 11.2D changes:")
+              print("\n".join(unexpected))
+              sys.exit(1)
+
+          print(f"PASS: {len(changed)} changed file(s), all inside approved service-hero scope.")
+          for p in changed:
+              print("-",p)
+
+      - name: Commit certified staging hero refinement
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No Step 11.2D changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/css/pages/services.css '*.html'
+          git reset -- static.html 2>/dev/null || true
+          git reset -- 'static-*.html' 2>/dev/null || true
+          git commit -m "design: integrate service images into hero blocks"
+          git push origin HEAD:clean-rebuild
