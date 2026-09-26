@@ -565,3 +565,96 @@ body:not([data-page^="static"]):not([data-page^="admin"]) .vt-image-glass {
     box-shadow: none !important;
   }
 }
+
+/* STEP 11.2I SITE ATMOSPHERE START */
+/*
+  The glass system needs an environment behind it. This adds quiet technical
+  depth without becoming a wallpaper or compromising readability.
+*/
+body:not([data-page^="static"]):not([data-page^="admin"]) {
+  background-color: #020b0d;
+  background-image:
+    radial-gradient(ellipse at 12% 8%, rgba(32,210,198,.085) 0%, rgba(32,210,198,.025) 23%, transparent 48%),
+    radial-gradient(ellipse at 88% 28%, rgba(148,78,238,.055) 0%, transparent 38%),
+    radial-gradient(ellipse at 38% 78%, rgba(24,129,128,.045) 0%, transparent 42%),
+    linear-gradient(180deg, #020b0d 0%, #031012 48%, #02090b 100%);
+  background-attachment: fixed;
+}
+
+body:not([data-page^="static"]):not([data-page^="admin"]) main {
+  position: relative;
+  isolation: isolate;
+}
+
+body:not([data-page^="static"]):not([data-page^="admin"]) main::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  opacity:.33;
+  background-image:
+    linear-gradient(rgba(62,197,187,.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(62,197,187,.022) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%);
+}
+
+body:not([data-page^="static"]):not([data-page^="admin"]) main::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(53,234,215,.045), transparent 19rem),
+    radial-gradient(circle at 81% 57%, rgba(166,86,255,.038), transparent 22rem),
+    radial-gradient(circle at 42% 86%, rgba(53,234,215,.025), transparent 18rem);
+}
+
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  .section,
+  .home-section,
+  .tool-section,
+  .contact-section
+) {
+  position: relative;
+  background: transparent;
+}
+
+/* Subtle depth banding helps long pages avoid featureless black gaps. */
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(
+  .section,
+  .home-section,
+  .tool-section
+):nth-of-type(even)::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background: linear-gradient(110deg, rgba(15,61,63,.035), transparent 38%, rgba(74,38,104,.018));
+}
+
+/* Creator/streaming pages get a slightly stronger mixed accent environment. */
+body[data-page="creator-hub-south-africa"],
+body[data-page="streaming-support"],
+body[data-page="stream-scan"] {
+  background-image:
+    radial-gradient(ellipse at 10% 10%, rgba(53,234,215,.09), transparent 38%),
+    radial-gradient(ellipse at 88% 18%, rgba(166,86,255,.095), transparent 42%),
+    radial-gradient(ellipse at 58% 72%, rgba(120,65,190,.04), transparent 44%),
+    linear-gradient(180deg, #020b0d 0%, #050a0f 54%, #02090b 100%);
+}
+
+@media (max-width: 40rem) {
+  body:not([data-page^="static"]):not([data-page^="admin"]) {
+    background-attachment: scroll;
+  }
+
+  body:not([data-page^="static"]):not([data-page^="admin"]) main::before {
+    background-size: 36px 36px;
+    opacity:.24;
+  }
+}
+/* STEP 11.2I SITE ATMOSPHERE END */

@@ -42,14 +42,18 @@
     </a>
     <span class="brand-promise micro">BUILT FOR<br>HIGHER STANDARDS</span>
     <nav class="primary-nav" id="primary-navigation" aria-label="Main navigation">
+      <div class="mobile-nav-intro">
+        <span class="micro">VOLTTECH / EXPLORE</span>
+        <strong>Where do you want to go?</strong>
+      </div>
       <ul>
-        <li><a href="store.html">Store</a></li>
-        <li><a href="builder/index.html">PC Builder</a></li>
-        <li><a href="index.html#services">Services</a></li>
-        <li><a href="streaming-setup-south-africa.html">Stream Support</a></li>
-        <li><a href="signal-scan.html">Signal Scan</a></li>
-        <li><a href="static.html">STATIC</a></li>
-        <li class="mobile-nav-cart"><a href="store.html?cart=1" data-cart-link aria-label="Open cart">Cart <span class="nav-cart-count" data-cart-count hidden></span></a></li>
+        <li><a href="store.html"><span class="nav-copy"><b>Store</b><small>Components &amp; gear</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="builder/index.html"><span class="nav-copy"><b>PC Builder</b><small>Plan your system</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="index.html#services"><span class="nav-copy"><b>Services</b><small>Repair &amp; upgrades</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
+        <li class="nav-stream"><a href="streaming-setup-south-africa.html"><span class="nav-copy"><b>Stream Support</b><small>OBS, audio &amp; performance</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="signal-scan.html"><span class="nav-copy"><b>Signal Scan</b><small>Diagnose your next step</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
+        <li class="nav-static"><a href="static.html"><span class="nav-copy"><b>STATIC</b><small>Tech, gaming &amp; hardware</small></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
+        <li class="mobile-nav-cart"><a href="store.html?cart=1" data-cart-link aria-label="Open cart"><span class="nav-copy"><b>Cart</b><small>Your selected hardware</small></span><span class="nav-cart-count" data-cart-count hidden></span><span class="nav-arrow" aria-hidden="true">→</span></a></li>
       </ul>
     </nav>
     <div class="header-tools">
@@ -73,10 +77,24 @@
 <main id="main-content" class="creator-hub-page">
   <div class="container">
     <section class="creator-hero" aria-labelledby="creator-title">
-      <p class="eyebrow">SOUTH AFRICAN CREATOR HUB</p>
-      <h1 id="creator-title">Find your next South African creator.</h1>
-      <p class="lead">Browse VoltTech's curated Twitch directory and discover South African creators. Building your own channel? VoltTech Stream Support and Stream Scan are here for OBS, Streamlabs and creator-tech problems.</p>
-      <div class="creator-hero-actions"><a class="button" href="streaming-setup-south-africa.html">Get Stream Support</a><a class="button button-secondary" href="stream-scan.html">Run Stream Scan</a></div>
+      <div class="creator-hero-grid">
+        <div class="creator-hero-copy">
+          <p class="eyebrow">SOUTH AFRICAN CREATOR HUB</p>
+          <h1 id="creator-title">Find your next South African creator.</h1>
+          <p class="lead">Browse VoltTech's curated Twitch directory and discover South African creators. Building your own channel? VoltTech Stream Support and Stream Scan are here for OBS, Streamlabs and creator-tech problems.</p>
+          <div class="creator-hero-actions"><a class="button" href="streaming-setup-south-africa.html">Get Stream Support</a><a class="button button-secondary" href="stream-scan.html">Run Stream Scan</a></div>
+        </div>
+        <div class="creator-signal-stage" aria-hidden="true">
+          <div class="creator-signal-core"><span>SA</span><small>CREATOR SIGNAL</small></div>
+          <span class="creator-orbit orbit-one"></span>
+          <span class="creator-orbit orbit-two"></span>
+          <span class="creator-node node-one">LIVE</span>
+          <span class="creator-node node-two">OBS</span>
+          <span class="creator-node node-three">TWITCH</span>
+          <span class="creator-node node-four">AUDIO</span>
+          <span class="creator-scan-line"></span>
+        </div>
+      </div>
       <div class="creator-feed-status" id="creatorFeedState" data-state="loading" role="status" aria-live="polite">
         <strong>CHECKING CREATOR DIRECTORY…</strong>
         <p id="creatorFeedDetail">Loading the latest available creator status.</p>

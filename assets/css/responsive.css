@@ -32,3 +32,40 @@
   .hardware-card .card-body { padding: var(--space-3); }
   .hardware-card h3 { font-size: 1rem; }
 }
+
+/* STEP 11.2I NAV RESPONSIVE START */
+@media (max-width: 56rem) {
+  .header-inner {
+    align-items: center;
+  }
+
+  .primary-nav {
+    margin-top: .35rem;
+    padding-top: 1rem;
+  }
+}
+
+@media (max-width: 40rem) {
+  .primary-nav {
+    margin-inline: calc(var(--gutter) * -.15);
+    padding: .8rem;
+  }
+
+  .primary-nav ul {
+    gap: .55rem;
+  }
+
+  .primary-nav a {
+    min-height: 6.8rem;
+    padding: .85rem;
+  }
+
+  .primary-nav .nav-copy b {
+    font-size: .93rem;
+  }
+
+  .primary-nav .nav-copy small {
+    font-size: .57rem;
+  }
+}
+/* STEP 11.2I NAV RESPONSIVE END */
