@@ -43,12 +43,11 @@ jobs:
       - name: Run full clean regression
         run: node scripts/run-full-qa.mjs
 
-      - name: Clean regression runtime artifacts
+      - name: Restore regression-mutated tracked files
         shell: bash
         run: |
-          rm -f qa-results/step-9.1-summary.json
-          rm -rf scripts/__pycache__
-          echo "PASS: removed regression-only runtime artifacts before scope validation"
+          git restore --source=HEAD --worktree --staged --             qa-results/step-9.1-summary.json             scripts/__pycache__/migrate-static-history.cpython-312.pyc
+          echo "PASS: restored regression-mutated tracked files to HEAD"
 
       - name: Guard Step 11.2E scope
         shell: python
@@ -71,18 +70,20 @@ jobs:
               print("\n".join(unexpected))
               sys.exit(1)
 
-          print(f"PASS: {len(changed)} changed file(s), all inside approved Step 11.2E scope.")
+          if set(changed) != approved:
+              print("Expected exactly these Step 11.2E files:")
+              print("\n".join(sorted(approved)))
+              print("Found:")
+              print("\n".join(changed))
+              sys.exit(1)
+
+          print("PASS: exact Step 11.2E scope confirmed")
           for path in changed:
               print("-", path)
 
       - name: Commit certified homepage hero refresh
         shell: bash
         run: |
-          if git diff --quiet; then
-            echo "No Step 11.2E changes required."
-            exit 0
-          fi
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
