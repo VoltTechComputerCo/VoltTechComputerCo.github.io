@@ -46,7 +46,7 @@ jobs:
       - name: Restore regression-mutated tracked files
         shell: bash
         run: |
-          git restore --source=HEAD --worktree --staged --             qa-results/step-9.1-summary.json             scripts/__pycache__/migrate-static-history.cpython-312.pyc
+          git restore --source=HEAD --worktree --staged --             qa-results/step-9.1-summary.json             qa-results/step-9.1-site-scan.json             qa-results/step-9.1-site-scan.md             scripts/__pycache__/migrate-static-history.cpython-312.pyc
           echo "PASS: restored regression-mutated tracked files to HEAD"
 
       - name: Guard Step 11.2H scope
@@ -66,8 +66,6 @@ jobs:
               "assets/css/glass-system.css",
           }
 
-          # Every generated HTML output is allowed because the build adds one
-          # final sitewide stylesheet link to each clean-shell page.
           for config_path in Path("src/pages").glob("*.json"):
               config = json.loads(config_path.read_text())
               approved.add(config["output"])
