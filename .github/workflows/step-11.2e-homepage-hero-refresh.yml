@@ -43,6 +43,13 @@ jobs:
       - name: Run full clean regression
         run: node scripts/run-full-qa.mjs
 
+      - name: Clean regression runtime artifacts
+        shell: bash
+        run: |
+          rm -f qa-results/step-9.1-summary.json
+          rm -rf scripts/__pycache__
+          echo "PASS: removed regression-only runtime artifacts before scope validation"
+
       - name: Guard Step 11.2E scope
         shell: python
         run: |
