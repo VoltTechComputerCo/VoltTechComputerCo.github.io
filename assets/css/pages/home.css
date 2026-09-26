@@ -428,3 +428,53 @@
     font-size:.43rem;
   }
 }
+
+/* STEP 11.2E HOMEPAGE HERO REFRESH START */
+/* The longer brand statement keeps the same two-line hierarchy without crowding the product collage. */
+.hero-copy h1 {
+  font-size: clamp(2.15rem, 3.45vw, 3.55rem);
+  line-height: .98;
+}
+
+/* Homepage-only Stream Support CTA: transparent purple neon treatment. */
+.hero-stream-button {
+  border-color: rgba(194, 140, 255, .92);
+  background: rgba(194, 140, 255, .025);
+  color: #eadcff;
+  box-shadow:
+    0 0 0 1px rgba(194, 140, 255, .08),
+    0 0 14px rgba(166, 86, 255, .24),
+    0 0 28px rgba(166, 86, 255, .10),
+    inset 0 0 12px rgba(194, 140, 255, .035);
+  text-shadow: 0 0 10px rgba(218, 187, 255, .18);
+}
+
+.hero-stream-button span {
+  color: #d9bbff;
+  filter: drop-shadow(0 0 4px rgba(194, 140, 255, .35));
+}
+
+.hero-stream-button:hover,
+.hero-stream-button:focus-visible {
+  border-color: #d9bbff;
+  background: rgba(194, 140, 255, .085);
+  color: #fff;
+  box-shadow:
+    0 0 0 1px rgba(218, 187, 255, .16),
+    0 0 18px rgba(166, 86, 255, .42),
+    0 0 38px rgba(166, 86, 255, .20),
+    inset 0 0 16px rgba(194, 140, 255, .07);
+}
+
+.hero-stream-button:hover span,
+.hero-stream-button:focus-visible span {
+  color: #fff;
+  filter: drop-shadow(0 0 7px rgba(218, 187, 255, .65));
+}
+
+@media (max-width: 40rem) {
+  .hero-copy h1 {
+    font-size: clamp(2rem, 8.3vw, 2.9rem);
+  }
+}
+/* STEP 11.2E HOMEPAGE HERO REFRESH END */
