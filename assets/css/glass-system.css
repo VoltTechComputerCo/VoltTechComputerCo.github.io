@@ -1,3 +1,9 @@
+/* STEP 11.2K PERFORMANCE RECOVERY
+   Global glass uses colour/alpha/borders instead of backdrop blur.
+   Real backdrop blur remains only on the small image-overlay glass system
+   defined in components.css.
+*/
+
 /*
   VOLTTECH SITEWIDE GLASS DESIGN SYSTEM
   Step 11.2H
@@ -14,9 +20,9 @@
   --vt-glass-blur: 7px;
   --vt-glass-blur-mobile: 5px;
   --vt-glass-sat: 122%;
-  --vt-glass-panel-top: rgba(28, 55, 58, .24);
-  --vt-glass-panel-bottom: rgba(2, 13, 15, .48);
-  --vt-glass-panel-solid: rgba(3, 16, 18, .48);
+  --vt-glass-panel-top: rgba(28, 55, 58, .30);
+  --vt-glass-panel-bottom: rgba(2, 13, 15, .66);
+  --vt-glass-panel-solid: rgba(3, 16, 18, .60);
   --vt-glass-border: rgba(118, 190, 186, .22);
   --vt-glass-border-strong: rgba(91, 241, 226, .44);
   --vt-glass-glow: rgba(34, 224, 210, .075);
@@ -162,8 +168,7 @@ body:not([data-page^="static"]):not([data-page^="admin"]) :is(
   background:
     linear-gradient(155deg, var(--vt-glass-panel-top), var(--vt-glass-panel-bottom)),
     var(--vt-glass-panel-solid);
-  backdrop-filter: blur(var(--vt-glass-blur)) saturate(var(--vt-glass-sat));
-  -webkit-backdrop-filter: blur(var(--vt-glass-blur)) saturate(var(--vt-glass-sat));
+
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, .012),
     0 12px 34px rgba(0, 0, 0, .075),
@@ -195,10 +200,9 @@ body:not([data-page^="static"]):not([data-page^="admin"]) :is(
 /* ---------- SITE CHROME ---------- */
 
 body:not([data-page^="static"]):not([data-page^="admin"]) .site-header {
-  background: rgba(2, 9, 10, .82);
+  background: rgba(2, 9, 10, .96);
   border-bottom-color: rgba(90, 196, 189, .20);
-  backdrop-filter: blur(7px) saturate(120%);
-  -webkit-backdrop-filter: blur(7px) saturate(120%);
+
   box-shadow: 0 8px 28px rgba(0, 0, 0, .12);
 }
 
@@ -211,8 +215,7 @@ body:not([data-page^="static"]):not([data-page^="admin"]) .site-footer {
 
 body:not([data-page^="static"]):not([data-page^="admin"]) .document-toolbar {
   background: rgba(3, 16, 18, .76);
-  backdrop-filter: blur(7px) saturate(120%);
-  -webkit-backdrop-filter: blur(7px) saturate(120%);
+
 }
 
 /* ---------- BUTTONS ---------- */
@@ -238,8 +241,7 @@ body:not([data-page^="static"]):not([data-page^="admin"]) :is(
     ),
     rgba(3, 16, 18, .34);
   color: #edfffd;
-  backdrop-filter: blur(7px) saturate(125%);
-  -webkit-backdrop-filter: blur(7px) saturate(125%);
+
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--vt-surface-accent) 6%, transparent),
     0 0 15px color-mix(in srgb, var(--vt-surface-accent) 11%, transparent),
@@ -333,8 +335,7 @@ body:not([data-page^="static"]):not([data-page^="admin"]) :is(
     linear-gradient(180deg, rgba(15, 44, 46, .28), rgba(2, 12, 14, .50)),
     rgba(2, 10, 12, .46);
   color: var(--text);
-  backdrop-filter: blur(7px) saturate(118%);
-  -webkit-backdrop-filter: blur(7px) saturate(118%);
+
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, .035),
     0 0 0 1px rgba(53, 234, 215, .018);
@@ -466,8 +467,7 @@ body:not([data-page^="static"]):not([data-page^="admin"]) :is(
 
 /* Keep the 11.2G image-overlay system aligned with the same blur language. */
 body:not([data-page^="static"]):not([data-page^="admin"]) .vt-image-glass {
-  backdrop-filter: blur(7px) saturate(122%);
-  -webkit-backdrop-filter: blur(7px) saturate(122%);
+
 }
 
 /* ---------- MOBILE ---------- */
@@ -511,8 +511,7 @@ body:not([data-page^="static"]):not([data-page^="admin"]) .vt-image-glass {
     .upgrade-card,
     .vt-image-glass
   ) {
-    backdrop-filter: blur(var(--vt-glass-blur-mobile)) saturate(118%);
-    -webkit-backdrop-filter: blur(var(--vt-glass-blur-mobile)) saturate(118%);
+
   }
 
   body:not([data-page^="static"]):not([data-page^="admin"]) :is(
@@ -522,8 +521,7 @@ body:not([data-page^="static"]):not([data-page^="admin"]) .vt-image-glass {
     select,
     textarea
   ) {
-    backdrop-filter: blur(5px) saturate(118%);
-    -webkit-backdrop-filter: blur(5px) saturate(118%);
+
   }
 }
 
@@ -553,162 +551,13 @@ body:not([data-page^="static"]):not([data-page^="admin"]) .vt-image-glass {
     .scan-panel,
     .vt-image-glass
   ) {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+
     box-shadow: none !important;
     background: transparent !important;
   }
 
   body :is(.button, .btn) {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+
     box-shadow: none !important;
   }
 }
-
-/* STEP 11.2J PHOTOGRAPHIC SITE CANVAS START */
-/*
-  Real imagery now provides the depth behind VoltTech glass.
-  Artificial radial glow fields from Step 11.2I are intentionally removed.
-*/
-body:not([data-page^="static"]):not([data-page^="admin"]) {
-  --vt-page-art: url('../../vt-drive-workbench.webp');
-  --vt-page-art-position: center;
-  position: relative;
-  isolation: isolate;
-  background: #02090b;
-}
-
-body:not([data-page^="static"]):not([data-page^="admin"])::before {
-  content:"";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(180deg,
-      rgba(1,8,10,.42) 0%,
-      rgba(1,8,10,.54) 46%,
-      rgba(1,8,10,.68) 100%),
-    linear-gradient(90deg,
-      rgba(1,8,10,.34) 0%,
-      transparent 28%,
-      transparent 72%,
-      rgba(1,8,10,.28) 100%),
-    var(--vt-page-art);
-  background-size: cover;
-  background-position: var(--vt-page-art-position);
-  background-repeat: no-repeat;
-  filter: saturate(.68) contrast(1.08) brightness(.88);
-}
-
-body:not([data-page^="static"]):not([data-page^="admin"]) > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Page-specific real imagery */
-body[data-page="home"] {
-  --vt-page-art: url('../../vt-drive-workbench.webp');
-  --vt-page-art-position: center;
-}
-
-body[data-page="store"] {
-  --vt-page-art: url('../../vt-own-hardware.webp');
-  --vt-page-art-position: center 42%;
-}
-
-body[data-page="builder"] {
-  --vt-page-art: url('../../vt-stock-modern-build.webp');
-  --vt-page-art-position: center 38%;
-}
-
-body[data-page="signal-scan"] {
-  --vt-page-art: url('../../vt-px-pc-diagnostics.webp');
-  --vt-page-art-position: center;
-}
-
-body[data-page="streaming-support"],
-body[data-page="stream-scan"] {
-  --vt-page-art: url('../../vt-px-streaming-setup.webp');
-  --vt-page-art-position: center 32%;
-}
-
-body[data-page="creator-hub-south-africa"] {
-  --vt-page-art: url('../../vt-drive-creator-desk.webp');
-  --vt-page-art-position: center 36%;
-}
-
-body[data-page="service-repair"] {
-  --vt-page-art: url('../../bg-repair.webp');
-}
-
-body[data-page="service-upgrades"] {
-  --vt-page-art: url('../../bg-upgrades.webp');
-}
-
-body[data-page="service-performance"] {
-  --vt-page-art: url('../../bg-performance.webp');
-}
-
-body[data-page="service-security"] {
-  --vt-page-art: url('../../bg-malware.webp');
-}
-
-body[data-page="service-windows"] {
-  --vt-page-art: url('../../bg-windows.webp');
-}
-
-body[data-page="account"],
-body[data-page="legal"],
-body[data-page="privacy"],
-body[data-page^="customer"],
-body[data-page^="order"],
-body[data-page="checkout"] {
-  --vt-page-art: url('../../vt-own-desk.webp');
-  --vt-page-art-position: center;
-}
-
-/* Sections stay transparent so the photographic canvas remains visible. */
-body:not([data-page^="static"]):not([data-page^="admin"]) :is(
-  main,
-  .section,
-  .home-section,
-  .tool-section,
-  .contact-section
-) {
-  background: transparent;
-}
-
-/* No ambient glow pseudo-elements over the page. */
-body:not([data-page^="static"]):not([data-page^="admin"]) main::before,
-body:not([data-page^="static"]):not([data-page^="admin"]) main::after,
-body:not([data-page^="static"]):not([data-page^="admin"]) :is(
-  .section,
-  .home-section,
-  .tool-section
-):nth-of-type(even)::before {
-  content: none;
-}
-
-@media (max-width: 56rem) {
-  body:not([data-page^="static"]):not([data-page^="admin"])::before {
-    background-image:
-      linear-gradient(180deg,
-        rgba(1,8,10,.46) 0%,
-        rgba(1,8,10,.56) 48%,
-        rgba(1,8,10,.68) 100%),
-      linear-gradient(90deg,
-        rgba(1,8,10,.22) 0%,
-        transparent 26%,
-        transparent 74%,
-        rgba(1,8,10,.18) 100%),
-      var(--vt-page-art);
-    filter: saturate(.70) contrast(1.06) brightness(.90);
-  }
-}
-
-@media print {
-  body::before { display:none !important; }
-}
-/* STEP 11.2J PHOTOGRAPHIC SITE CANVAS END */
