@@ -1,0 +1,136 @@
+name: VoltTech Step 11.2H Sitewide Glass Design System
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-11.2h-sitewide-glass.mjs"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volttech-step-11.2h-sitewide-glass
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    name: Apply unified VoltTech glass design system
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: clean-rebuild
+
+      - name: Apply Step 11.2H global glass system
+        run: python3 scripts/apply-step-11.2h-sitewide-glass.py
+
+      - name: Rebuild clean frontend
+        run: python3 scripts/build-clean-frontend.py
+
+      - name: Verify generated frontend consistency
+        run: python3 scripts/build-clean-frontend.py --check
+
+      - name: Verify Step 11.2H contract
+        run: node scripts/test-step-11.2h-sitewide-glass.mjs
+
+      - name: Run full clean regression
+        run: node scripts/run-full-qa.mjs
+
+      - name: Restore regression-mutated tracked files
+        shell: bash
+        run: |
+          git restore --source=HEAD --worktree --staged --             qa-results/step-9.1-summary.json             scripts/__pycache__/migrate-static-history.cpython-312.pyc
+          echo "PASS: restored regression-mutated tracked files to HEAD"
+
+      - name: Guard Step 11.2H scope
+        shell: python
+        run: |
+          import json
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only"], text=True
+          ).splitlines()
+
+          approved = {
+              "scripts/build-clean-frontend.py",
+              "assets/css/glass-system.css",
+          }
+
+          # Every generated HTML output is allowed because the build adds one
+          # final sitewide stylesheet link to each clean-shell page.
+          for config_path in Path("src/pages").glob("*.json"):
+              config = json.loads(config_path.read_text())
+              approved.add(config["output"])
+
+          unexpected = [p for p in changed if p not in approved]
+          if unexpected:
+              print("Unexpected Step 11.2H changes:")
+              print("\n".join(unexpected))
+              sys.exit(1)
+
+          required = {"scripts/build-clean-frontend.py", "assets/css/glass-system.css"}
+          missing = [p for p in required if p not in changed]
+          if missing:
+              print("Required Step 11.2H files did not change:")
+              print("\n".join(missing))
+              sys.exit(1)
+
+          html_changed = [p for p in changed if p.endswith(".html")]
+          if not html_changed:
+              print("No generated HTML picked up the sitewide stylesheet.")
+              sys.exit(1)
+
+          print(f"PASS: exact Step 11.2H scope confirmed ({len(changed)} files).")
+          print(f"PASS: {len(html_changed)} generated HTML pages now load glass-system.css.")
+
+      - name: Commit certified sitewide glass system
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add scripts/build-clean-frontend.py assets/css/glass-system.css
+          git diff --name-only -- '*.html' | while read -r file; do
+            [ -n "$file" ] && git add "$file"
+          done
+
+          git commit -m "design: unify VoltTech with sitewide glass system"
+          git push origin HEAD:clean-rebuild
+
+      - name: Upload QA note
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p qa-results/step-11.2h
+          {
+            echo "# VoltTech Step 11.2H — Sitewide Glass Design System"
+            echo
+            echo "- Loads a final global VoltTech glass stylesheet across clean-shell pages."
+            echo "- Primary actions: teal glass."
+            echo "- Secondary actions: neutral/accent glass."
+            echo "- Panels/cards/forms/dialogs/navigation: restrained low-blur glass."
+            echo "- Service pages inherit service accent colours."
+            echo "- Creator/stream surfaces inherit purple."
+            echo "- Warning/danger surfaces retain amber/red semantic accents."
+            echo "- STATIC editorial pages and admin-prefixed pages are excluded."
+            echo "- Print output is explicitly flattened back to clean non-glass surfaces."
+          } > qa-results/step-11.2h/summary.md
+
+      - name: Upload QA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-11.2h-sitewide-glass
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 30
