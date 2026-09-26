@@ -1,0 +1,69 @@
+name: Revert accidental Step 11.2C main upload
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/run-revert-step-11.2c-main.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: revert-accidental-step-11.2c-main
+  cancel-in-progress: true
+
+jobs:
+  revert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Remove accidental Step 11.2C uploads
+        shell: bash
+        run: |
+          git rm -f \
+            .github/workflows/step-11.2c-service-images.yml \
+            docs/clean-rebuild/step-11.2c-service-images.md \
+            scripts/apply-step-11.2c-service-images.py \
+            scripts/run-step-11.2c-service-images.mjs \
+            scripts/test-step-11.2c-service-images.mjs \
+            vt-alt-performance-air-cooler.webp \
+            vt-alt-performance-rog-gpu.webp \
+            vt-alt-upgrades-zotac-gpu.webp \
+            vt-service-performance-nzxt-build.webp \
+            vt-service-repair-hands-on-motherboard.webp \
+            vt-service-security-motherboard-cpu.webp \
+            vt-service-stream-support-showcase-build.webp \
+            vt-service-upgrades-components-flatlay.webp \
+            vt-service-windows-install.webp
+
+          git rm -f \
+            .github/workflows/revert-accidental-step-11.2c-main.yml \
+            scripts/run-revert-step-11.2c-main.mjs
+
+      - name: Verify production tree matches pre-accident baseline
+        shell: bash
+        run: |
+          if ! git diff --quiet 53c816da3780e0419cc41f7360d383f68e22a2fd -- .; then
+            echo "ERROR: proposed rollback does not exactly match the known-good production tree 53c816da3780e0419cc41f7360d383f68e22a2fd."
+            git diff --name-status 53c816da3780e0419cc41f7360d383f68e22a2fd -- .
+            exit 1
+          fi
+          echo "PASS: working tree exactly matches known-good production baseline 53c816da3780e0419cc41f7360d383f68e22a2fd."
+
+      - name: Commit rollback
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "revert: remove accidental Step 11.2C uploads from main"
+          git push origin HEAD:main
