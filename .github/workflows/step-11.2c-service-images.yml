@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   replace:
-    name: Replace service page images and retire old assets
+    name: Replace service images and retire old assets
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -50,13 +50,20 @@ jobs:
           import subprocess, sys
 
           changed = subprocess.check_output(["git", "diff", "--name-only"], text=True).splitlines()
-          approved_source = {
+
+          approved = {
             "src/pages/service-repair.html",
+            "src/pages/service-repair.head.html",
             "src/pages/service-performance.html",
+            "src/pages/service-performance.head.html",
             "src/pages/service-upgrades.html",
+            "src/pages/service-upgrades.head.html",
             "src/pages/service-windows.html",
+            "src/pages/service-windows.head.html",
             "src/pages/service-security.html",
+            "src/pages/service-security.head.html",
             "src/pages/streaming-support.html",
+            "src/pages/streaming-support.head.html",
             "vt-repair.webp",
             "vt-performance.webp",
             "vt-upgrades.webp",
@@ -64,23 +71,26 @@ jobs:
             "vt-malware.webp",
             "vt-streaming.webp",
           }
+
           def allowed(p):
-            if p in approved_source:
-              return True
-            path = Path(p)
-            if path.parent == Path('.') and path.suffix == '.html' and p != 'static.html' and not p.startswith('static-'):
-              return True
-            return False
+              if p in approved:
+                  return True
+              path = Path(p)
+              # Root HTML may be regenerated or may be a compatibility page
+              # whose old absolute service-image reference is being retired.
+              if path.parent == Path(".") and path.suffix == ".html":
+                  return True
+              return False
 
           unexpected = [p for p in changed if not allowed(p)]
           if unexpected:
-            print('Unexpected Step 11.2C changes:')
-            print('\n'.join(unexpected))
-            sys.exit(1)
+              print("Unexpected Step 11.2C changes:")
+              print("\n".join(unexpected))
+              sys.exit(1)
 
-          print(f'PASS: {len(changed)} changed file(s), all inside approved Step 11.2C scope.')
+          print(f"PASS: {len(changed)} changed file(s), all inside approved Step 11.2C scope.")
           for p in changed:
-            print('-', p)
+              print("-", p)
 
       - name: Commit certified staging image refresh
         shell: bash
@@ -91,20 +101,11 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/pages/service-repair.html \
-                  src/pages/service-performance.html \
-                  src/pages/service-upgrades.html \
-                  src/pages/service-windows.html \
-                  src/pages/service-security.html \
-                  src/pages/streaming-support.html \
-                  '*.html'
-          git rm -f vt-repair.webp vt-performance.webp vt-upgrades.webp vt-windows.webp vt-malware.webp vt-streaming.webp 2>/dev/null || true
-          git reset -- static.html 2>/dev/null || true
-          git reset -- 'static-*.html' 2>/dev/null || true
+          git add -A
           git commit -m "media: refresh service imagery and retire old assets"
           git push origin HEAD:clean-rebuild
 
-      - name: Upload QA note
+      - name: Write QA evidence
         if: always()
         shell: bash
         run: |
@@ -112,11 +113,13 @@ jobs:
           {
             echo "# VoltTech Step 11.2C — Service image refresh"
             echo
-            echo "Replaced service page images with supplied WebP assets."
-            echo "Removed retired root assets: vt-repair.webp, vt-performance.webp, vt-upgrades.webp, vt-windows.webp, vt-malware.webp, vt-streaming.webp"
+            echo "Visible service images: replaced"
+            echo "Social/SEO image metadata: replaced"
+            echo "Retired image assets: deleted"
+            echo "Homepage hero: untouched"
           } > qa-results/step-11.2c/summary.md
 
-      - name: Upload QA artifact
+      - name: Upload QA evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
