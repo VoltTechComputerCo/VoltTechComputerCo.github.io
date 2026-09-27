@@ -81,13 +81,8 @@ async function prepare() {
   git(['config', 'user.name', 'github-actions[bot]']);
   git(['config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com']);
 
-  // Start from the exact production head that was verified when the release
-  // package was built.
   git(['checkout', '-B', 'release-main-promotion', 'origin/main']);
 
-  // Establish a real merge relationship so production history retains both
-  // current main and clean-rebuild. Conflicts are expected because both
-  // branches have moved since their common base.
   const merge = git(['merge', '--no-ff', '--no-commit', cleanHead], { allowFail: true });
 
   if (!fs.existsSync(path.join(root, '.git', 'MERGE_HEAD'))) {
@@ -103,10 +98,8 @@ async function prepare() {
     .sort();
   state.detected_conflicts = conflicts;
 
-  // clean-rebuild is the certified release candidate. Normalize the *entire*
-  // merge result to its exact tree, including deletions. This avoids silently
-  // carrying stale production-only files forward while still producing a
-  // normal fast-forwardable merge commit with current main as parent #1.
+  // clean-rebuild is the certified release candidate. Normalize the entire
+  // merge result to its exact tree, including deletions.
   git(['read-tree', '--reset', '-u', cleanHead]);
 
   const unresolved = stdout(['diff', '--name-only', '--diff-filter=U'])
@@ -199,7 +192,6 @@ async function prepush() {
     fail('promotion is not certified', state);
   }
 
-  // Reconfirm production did not change while QA was running.
   const current = verifyMainHead(state.main_head, state);
 
   const head = stdout(['rev-parse', 'HEAD']);
@@ -297,6 +289,6 @@ else {
   process.exit(2);
 }
 
-// 2026-09-26 production promotion trigger v3.
-// Captures current main at runtime, locks it through QA, and aborts if it moves before push.
+// 2026-09-27 production promotion trigger v4.
+// Promotes the current certified clean-rebuild tree to main after the full release gate.
 // Upload this file LAST to clean-rebuild at scripts/run-step-10.3.mjs.
