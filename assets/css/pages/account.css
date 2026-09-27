@@ -50,3 +50,11 @@
 @media(max-width:62rem){.account-auth{grid-template-columns:1fr}.account-stat-grid{grid-template-columns:repeat(3,1fr)}.account-link-grid{grid-template-columns:1fr}.account-link-grid a{border-right:0;border-bottom:1px solid var(--border)}.account-link-grid a:last-child{border-bottom:0}}
 @media(max-width:44rem){.account-hero h1{font-size:clamp(3rem,15vw,4.8rem)}.account-welcome{align-items:flex-start;flex-direction:column}.account-welcome-actions{width:100%}.account-welcome-actions .button{flex:1}.account-panel{padding:1rem}.account-panel-head{align-items:flex-start;flex-direction:column}.account-stat-grid{grid-template-columns:repeat(2,1fr)}.account-form-grid,.account-security-grid{grid-template-columns:1fr}.account-grid-span{grid-column:auto}.account-form-actions{display:grid}.account-auth-card{padding:1rem}}
 @media(max-width:30rem){.account-stat-grid{grid-template-columns:1fr}.account-tab{padding-inline:.8rem}}
+
+/* STEP 11.2Q CREATOR ACCOUNT START */
+.account-creator-card{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:1rem;align-items:center;padding:1rem;border:1px solid rgba(194,140,255,.3);border-radius:var(--radius);background:linear-gradient(145deg,rgba(194,140,255,.07),rgba(3,16,18,.58)),var(--black)}
+.account-creator-card img{width:4rem;height:4rem;border-radius:50%;object-fit:cover;border:1px solid rgba(194,140,255,.5)}
+.account-creator-card h3{margin:.15rem 0}.account-creator-card p:not(.eyebrow){margin:0;color:var(--text-secondary);font-size:.82rem;line-height:1.5}
+.account-creator-actions{margin-top:1rem}
+@media(max-width:38rem){.account-creator-card{grid-template-columns:auto 1fr}.account-creator-card .button{grid-column:1/-1}}
+/* STEP 11.2Q CREATOR ACCOUNT END */

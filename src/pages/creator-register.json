@@ -1,0 +1,12 @@
+{
+  "output": "creator-register.html",
+  "title": "Join the South African Creator Hub | VoltTech",
+  "description": "Verify your Twitch channel and join VoltTech's South African Creator Hub. No VoltTech customer account required.",
+  "robots": "index, follow, max-image-preview:large",
+  "styles": [
+    "assets/css/pages/creator-register.css"
+  ],
+  "scripts": [
+    "assets/js/pages/creator-register.js"
+  ]
+}

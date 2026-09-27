@@ -136,6 +136,7 @@
         <nav class="account-tabs" aria-label="Account sections">
           <button class="account-tab active" type="button" data-account-tab="overview">Overview</button>
           <button class="account-tab" type="button" data-account-tab="profile">Profile</button>
+          <button class="account-tab" type="button" data-account-tab="creator">Creator</button>
           <button class="account-tab" type="button" data-account-tab="addresses">Addresses</button>
           <button class="account-tab" type="button" data-account-tab="security">Security</button>
           <a class="account-tab" href="activity.html">Activity</a>
@@ -171,6 +172,12 @@
             <label for="preferredContact">Preferred contact<select id="preferredContact"><option value="whatsapp">WhatsApp</option><option value="phone">Phone</option><option value="email">Email</option></select></label>
             <div class="account-form-actions account-grid-span"><button class="button" type="submit">Save profile</button></div>
           </form>
+        </section>
+
+        <section class="account-panel" data-account-panel="creator" hidden>
+          <div class="account-panel-head"><div><p class="eyebrow">CREATOR PROFILE</p><h2>Your Twitch channel.</h2><p class="muted">Connect Twitch to join the South African Creator Hub. Twitch verifies channel ownership; no manual VoltTech approval is required.</p></div></div>
+          <div class="account-creator-card" id="accountCreatorCard"><p class="muted">Checking Creator Hub connection…</p></div>
+          <div class="account-form-actions account-creator-actions"><a class="button" href="creator-register.html?link=account">Connect Twitch</a><a class="button button-secondary" href="creator-hub-south-africa.html">Open Creator Hub</a></div>
         </section>
 
         <section class="account-panel" data-account-panel="addresses" hidden>
