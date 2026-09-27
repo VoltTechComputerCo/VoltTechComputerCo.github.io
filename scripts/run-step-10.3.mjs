@@ -289,6 +289,7 @@ else {
   process.exit(2);
 }
 
+// 2026-09-27 production promotion trigger v5 - fresh dispatch marker 23:57 SAST.
 // 2026-09-27 production promotion trigger v4.
 // Promotes the current certified clean-rebuild tree to main after the full release gate.
 // Upload this file LAST to clean-rebuild at scripts/run-step-10.3.mjs.

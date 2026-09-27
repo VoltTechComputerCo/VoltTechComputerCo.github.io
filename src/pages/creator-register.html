@@ -1,0 +1,39 @@
+<main id="main-content" class="creator-register-page">
+  <section class="section creator-register-hero">
+    <div class="container creator-register-shell">
+      <nav class="vt-tool-switcher" aria-label="VoltTech tools"><a data-tool="signal" href="signal-scan.html"><span>PC TRIAGE</span><strong>Signal Scan</strong><b aria-hidden="true">↗</b></a><a data-tool="stream-scan" href="stream-scan.html"><span>STREAM TRIAGE</span><strong>Stream Scan</strong><b aria-hidden="true">↗</b></a><a data-tool="stream-support" href="streaming-setup-south-africa.html"><span>CREATOR TECH</span><strong>Stream Support</strong><b aria-hidden="true">↗</b></a><a class="active" data-tool="creator" href="creator-hub-south-africa.html"><span>DISCOVER</span><strong>Creator Hub</strong><b aria-hidden="true">↗</b></a></nav>
+      <p class="eyebrow">VOLTTECH / CREATOR REGISTRATION</p>
+      <h1>Add your Twitch channel.</h1>
+      <p class="lead">South African creator? Connect Twitch once and your channel can be added to the VoltTech Creator Hub automatically. You do not need a VoltTech customer account.</p>
+      <div class="creator-register-points">
+        <span><b>01</b>Twitch confirms you own the channel.</span>
+        <span><b>02</b>You confirm you are a South African creator.</span>
+        <span><b>03</b>Your channel joins the Creator Hub automatically.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section creator-register-body">
+    <div class="container creator-register-shell creator-register-grid">
+      <article class="creator-register-card">
+        <p class="eyebrow">CONNECT</p>
+        <h2>Twitch-verified registration.</h2>
+        <p>VoltTech uses Twitch sign-in only to verify the channel identity and load the public Twitch profile used in Creator Hub. Your Twitch password is never shared with VoltTech.</p>
+        <label class="creator-register-confirm" for="creatorSouthAfrica">
+          <input id="creatorSouthAfrica" type="checkbox">
+          <span>I confirm that I am a South African creator and that this Twitch channel belongs to me.</span>
+        </label>
+        <button class="button creator-twitch-button" id="connectTwitch" type="button">Connect Twitch</button>
+        <p class="micro creator-register-status" id="creatorRegisterStatus" role="status" aria-live="polite"></p>
+        <p class="micro creator-register-privacy">By connecting Twitch, you acknowledge the <a href="privacy.html">VoltTech Privacy Notice</a>. No Twitch access token is stored after registration.</p>
+      </article>
+
+      <aside class="creator-register-side">
+        <article><p class="eyebrow">NO VOLTTECH ACCOUNT?</p><h3>No problem.</h3><p>You can register only as a Creator. If you already have a VoltTech account and are signed in, the Twitch channel is linked to that account automatically.</p></article>
+        <article><p class="eyebrow">ALREADY LISTED?</p><h3>Connect anyway.</h3><p>Signing in with Twitch verifies channel ownership and refreshes your public Twitch profile details in VoltTech.</p></article>
+      </aside>
+
+      <article class="creator-register-result" id="creatorRegisterResult" hidden></article>
+    </div>
+  </section>
+</main>

@@ -154,6 +154,30 @@ async function removeAddress(id) {
   hubStatus('Delivery address deleted.', 'success');
 }
 
+async function loadCreatorProfile() {
+  try {
+    const { data, error } = await client.rpc('my_creator_profile');
+    if (error) return null;
+    return Array.isArray(data) ? (data[0] || null) : data;
+  } catch {
+    return null;
+  }
+}
+
+function renderCreatorProfile(row) {
+  const target = q('#accountCreatorCard');
+  if (!target) return;
+  if (!row?.streamer_login) {
+    target.innerHTML = '<p class="eyebrow">NOT CONNECTED</p><h3>No Twitch channel linked yet.</h3><p>Connect Twitch and confirm you are a South African creator. The verified channel is added to Creator Hub automatically.</p>';
+    return;
+  }
+  const source = row.registration_source === 'twitch_self' ? 'Twitch verified' : 'Creator directory';
+  target.innerHTML = `<img src="${esc(row.profile_image_url || 'assets/brand/volttech-logo.webp')}" alt="">
+    <div><p class="eyebrow">${esc(source)}</p><h3>${esc(row.display_name || row.streamer_login)}</h3>
+    <p>@${esc(row.streamer_login)}${row.description ? ` · ${esc(row.description)}` : ''}</p></div>
+    <a class="button button-secondary" href="https://www.twitch.tv/${encodeURIComponent(row.streamer_login)}" target="_blank" rel="noopener">Open Twitch ↗</a>`;
+}
+
 function renderOverview(overview) {
   const ids = { builds:'#countBuilds', quotes:'#countQuotes', invoices:'#countInvoices', orders:'#countOrders', jobs:'#countJobs' };
   Object.entries(ids).forEach(([key, selector]) => { q(selector).textContent = overview.counts[key] == null ? '—' : String(overview.counts[key]); });
@@ -214,16 +238,18 @@ async function openHub(user) {
   currentUser = user;
   show('#accountHub');
   try {
-    const [profile, addresses, overview, admin] = await Promise.all([
-      loadProfile(client, user), listAddresses(client), loadOverview(client, user.id), accountIsAdmin(client)
+    const [profile, addresses, overview, admin, creator] = await Promise.all([
+      loadProfile(client, user), listAddresses(client), loadOverview(client, user.id), accountIsAdmin(client), loadCreatorProfile()
     ]);
     fillProfile(profile, user);
     renderAddresses(addresses.error ? [] : (addresses.data || []));
     renderOverview(overview);
+    renderCreatorProfile(creator);
     resetAddressForm(profile);
     q('#adminShortcut').hidden = !admin;
     await loadAccountNotifications(client);
     if (new URLSearchParams(location.search).get('tour') === '1') openTour();
+    if (new URLSearchParams(location.search).get('creator') === '1') setTab('creator');
   } catch (error) {
     console.error(error);
     hubStatus('Some account information could not be loaded.', 'error');
@@ -303,6 +329,7 @@ function renderInspection() {
   ['#countQuotes','#countInvoices','#countBuilds','#countOrders','#countJobs'].forEach(selector => q(selector).textContent = '—');
   const action = q('#overviewAction'); action.dataset.state = 'clear'; action.innerHTML = '<small>Inspection mode</small><strong>No customer data loaded.</strong><span>This preview exists only to inspect the responsive account interface.</span>';
   q('#addressList').innerHTML = '<p class="muted">Saved addresses are intentionally not loaded in inspection mode.</p>';
+  renderCreatorProfile(null);
   qa('#accountHub form input,#accountHub form select,#accountHub form button').forEach(element => element.disabled = true);
 }
 
