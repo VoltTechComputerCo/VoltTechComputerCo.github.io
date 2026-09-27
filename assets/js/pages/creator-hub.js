@@ -24,22 +24,24 @@ function relativeLastLive(value) {
 }
 function statusMessage() {
   const state = q('#creatorFeedState');
+  const label = state?.querySelector('strong');
   const detail = q('#creatorFeedDetail');
+  if (!state || !label || !detail) return;
   if (!feed?.available) {
     state.dataset.state = 'unavailable';
-    state.textContent = 'CREATOR DIRECTORY TEMPORARILY UNAVAILABLE';
+    label.textContent = 'CREATOR DIRECTORY TEMPORARILY UNAVAILABLE';
     detail.textContent = 'The directory could not be loaded. Try again shortly or open Twitch directly.';
     return;
   }
   if (!feed.fresh) {
     state.dataset.state = 'stale';
-    state.textContent = 'LIVE STATUS CURRENTLY UNAVAILABLE';
+    label.textContent = 'LIVE STATUS CURRENTLY UNAVAILABLE';
     detail.textContent = `Directory data is available, but live status was last checked ${creatorFeedAgeLabel(feed)}. Stale rows are never shown as live.`;
     return;
   }
   const live = creators.filter(row => row.live).length;
   state.dataset.state = live ? 'live' : 'fresh';
-  state.textContent = live ? `${live} CREATOR${live === 1 ? '' : 'S'} LIVE NOW` : 'NO TRACKED CREATORS LIVE RIGHT NOW';
+  label.textContent = live ? `${live} CREATOR${live === 1 ? '' : 'S'} LIVE NOW` : 'NO TRACKED CREATORS LIVE RIGHT NOW';
   detail.textContent = `Live status checked ${creatorFeedAgeLabel(feed)}.`;
 }
 function setMeta() {
@@ -103,7 +105,12 @@ function renderDirectory() {
   target.innerHTML = filtered.slice(0, 30).map(row => `<a class="creator-directory-card${row.live && feed?.fresh ? ' is-live' : ''}" href="${twitchUrl(row.login)}" target="_blank" rel="noopener"><img src="${esc(safeImage(row.profileImageUrl))}" alt="" loading="lazy"><span><b>${esc(row.displayName)}</b><small>${row.live && feed?.fresh ? `LIVE · ${esc(row.gameName || 'Twitch')}` : esc(relativeLastLive(row.lastLiveAt))}</small></span></a>`).join('');
 }
 async function refresh() {
-  q('#creatorFeedState').textContent = 'CHECKING CREATOR DIRECTORY…';
+  const state = q('#creatorFeedState');
+  const label = state?.querySelector('strong');
+  const detail = q('#creatorFeedDetail');
+  if (state) state.dataset.state = 'loading';
+  if (label) label.textContent = 'CHECKING CREATOR DIRECTORY…';
+  if (detail) detail.textContent = 'Loading the latest available creator status.';
   feed = await loadCreatorDirectory();
   creators = feed.streamers || [];
   setMeta(); statusMessage(); renderLive(); renderDirectory();
