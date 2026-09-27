@@ -17,7 +17,7 @@ def render(source):
     if output.is_absolute() or '..' in output.parts or output.suffix != '.html':
         raise ValueError(f'Unsafe output path: {output}')
     prefix = '../' * (len(output.parts) - 1)
-    styles = [f'assets/css/{name}.css' for name in CSS] + config.get('styles', [])
+    styles = [f'assets/css/{name}.css' for name in CSS] + config.get('styles', []) + ['assets/css/glass-system.css']
     values = {
         'PAGE': html.escape(source.stem, quote=True),
         'TITLE': html.escape(config['title']),

@@ -428,3 +428,62 @@
     font-size:.43rem;
   }
 }
+
+/* STEP 11.2G HOMEPAGE IMAGE GLASS MAPPING START */
+/* Preserve the Step 11.2E headline scale. */
+.hero-copy h1 {
+  font-size: clamp(2.15rem, 3.45vw, 3.55rem);
+  line-height: .98;
+}
+
+/* Hero CTAs now inherit the lighter shared image-glass blur. */
+.hero-build-button,
+.hero-stream-button {
+  border-width: 1.5px;
+  background-clip: padding-box;
+  text-shadow: 0 0 8px rgba(255,255,255,.07);
+}
+
+.hero-build-button span {
+  color: #90fff4;
+  filter: drop-shadow(0 0 4px rgba(78,239,224,.34));
+}
+
+.hero-stream-button span {
+  color: #d9bbff;
+  filter: drop-shadow(0 0 4px rgba(194,140,255,.34));
+}
+
+/* Small labels that sit directly on imagery share the same glass language. */
+.hero-note.vt-image-glass {
+  padding: .3rem .45rem;
+}
+
+.stream-support-image span.vt-image-glass {
+  padding: .26rem .38rem;
+  background:
+    linear-gradient(180deg, rgba(216,187,255,.12), rgba(66,37,96,.18)),
+    rgba(12,8,18,.22);
+  border-color: rgba(194,140,255,.72);
+}
+
+/* On mobile these facts sit on the hero artwork, so give them restrained glass separation. */
+@media (max-width: 40rem) {
+  .hero-copy h1 {
+    font-size: clamp(2rem, 8.3vw, 2.9rem);
+  }
+
+  .hero-facts > span {
+    padding: .46rem .52rem;
+    border: 1px solid rgba(78,239,224,.26);
+    background:
+      linear-gradient(180deg, rgba(78,239,224,.055), rgba(3,32,33,.16)),
+      rgba(2,12,14,.20);
+    backdrop-filter: blur(5px) saturate(120%);
+    -webkit-backdrop-filter: blur(5px) saturate(120%);
+    box-shadow:
+      0 0 12px rgba(34,224,210,.07),
+      inset 0 1px 0 rgba(255,255,255,.045);
+  }
+}
+/* STEP 11.2G HOMEPAGE IMAGE GLASS MAPPING END */

@@ -1,0 +1,108 @@
+name: VoltTech Step 11.2L Procedural Tech Background
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-11.2l-procedural-tech-background.mjs"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volttech-step-11.2l-procedural-tech-background
+  cancel-in-progress: true
+
+jobs:
+  background:
+    name: Add lightweight procedural tech background
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: clean-rebuild
+
+      - name: Apply Step 11.2L
+        run: python3 scripts/apply-step-11.2l-procedural-tech-background.py
+
+      - name: Verify Step 11.2L contract
+        run: node scripts/test-step-11.2l-procedural-tech-background.mjs
+
+      - name: Run full clean regression
+        run: node scripts/run-full-qa.mjs
+
+      - name: Restore regression-mutated tracked files
+        shell: bash
+        run: |
+          git restore --source=HEAD --worktree --staged --             qa-results/step-9.1-summary.json             qa-results/step-9.1-site-scan.json             qa-results/step-9.1-site-scan.md             scripts/__pycache__/migrate-static-history.cpython-312.pyc
+          echo "PASS: restored regression-mutated tracked QA files"
+
+      - name: Guard Step 11.2L scope
+        shell: python
+        run: |
+          import subprocess
+          import sys
+
+          tracked = subprocess.check_output(
+              ["git", "diff", "--name-only"], text=True
+          ).splitlines()
+          untracked = subprocess.check_output(
+              ["git", "ls-files", "--others", "--exclude-standard"], text=True
+          ).splitlines()
+          changed = sorted(set(tracked + untracked))
+
+          approved = {"assets/css/glass-system.css"}
+          unexpected = [p for p in changed if p not in approved]
+
+          if unexpected:
+              print("Unexpected Step 11.2L changes:")
+              print("\n".join(unexpected))
+              sys.exit(1)
+
+          if changed != ["assets/css/glass-system.css"]:
+              print("Expected only assets/css/glass-system.css")
+              print("Found:", changed)
+              sys.exit(1)
+
+          print("PASS: exact Step 11.2L scope confirmed")
+
+      - name: Commit certified procedural background
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add assets/css/glass-system.css
+          git commit -m "design: add lightweight procedural tech background"
+          git push origin HEAD:clean-rebuild
+
+      - name: Upload QA note
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p qa-results/step-11.2l
+          {
+            echo "# VoltTech Step 11.2L — Procedural Tech Background"
+            echo
+            echo "- Pure CSS background; no image assets."
+            echo "- No animation."
+            echo "- No backdrop-filter."
+            echo "- No fixed full-screen layer."
+            echo "- Large engineering grid + fine sub-grid + sparse node matrix."
+            echo "- Dark graphite/teal palette designed to show behind faux-glass panels."
+          } > qa-results/step-11.2l/summary.md
+
+      - name: Upload QA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-11.2l-procedural-tech-background
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 30

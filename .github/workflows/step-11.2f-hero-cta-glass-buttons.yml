@@ -1,0 +1,115 @@
+name: VoltTech Step 11.2F Hero CTA Glass Buttons
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-11.2f-hero-cta-glass-buttons.mjs"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volttech-step-11.2f-hero-cta-glass-buttons
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    name: Unify homepage hero CTA button styling
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: clean-rebuild
+
+      - name: Apply Step 11.2F hero CTA glass styling
+        run: python3 scripts/apply-step-11.2f-hero-cta-glass-buttons.py
+
+      - name: Rebuild clean frontend
+        run: python3 scripts/build-clean-frontend.py
+
+      - name: Verify generated frontend consistency
+        run: python3 scripts/build-clean-frontend.py --check
+
+      - name: Verify Step 11.2F contract
+        run: node scripts/test-step-11.2f-hero-cta-glass-buttons.mjs
+
+      - name: Run full clean regression
+        run: node scripts/run-full-qa.mjs
+
+      - name: Restore regression-mutated tracked files
+        shell: bash
+        run: |
+          git restore --source=HEAD --worktree --staged --             qa-results/step-9.1-summary.json             scripts/__pycache__/migrate-static-history.cpython-312.pyc
+          echo "PASS: restored regression-mutated tracked files to HEAD"
+
+      - name: Guard Step 11.2F scope
+        shell: python
+        run: |
+          import subprocess, sys
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only"], text=True
+          ).splitlines()
+
+          approved = {
+              "src/pages/home.html",
+              "assets/css/pages/home.css",
+              "index.html",
+          }
+
+          unexpected = [p for p in changed if p not in approved]
+          if unexpected:
+              print("Unexpected Step 11.2F changes:")
+              print("\n".join(unexpected))
+              sys.exit(1)
+
+          if set(changed) != approved:
+              print("Expected exactly these Step 11.2F files:")
+              print("\n".join(sorted(approved)))
+              print("Found:")
+              print("\n".join(changed))
+              sys.exit(1)
+
+          print("PASS: exact Step 11.2F scope confirmed")
+          for path in changed:
+              print("-", path)
+
+      - name: Commit certified hero CTA glass styling
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add src/pages/home.html assets/css/pages/home.css index.html
+          git commit -m "design: unify hero CTAs with glass neon styling"
+          git push origin HEAD:clean-rebuild
+
+      - name: Upload QA note
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p qa-results/step-11.2f
+          {
+            echo "# VoltTech Step 11.2F — Hero CTA Glass Buttons"
+            echo
+            echo "Homepage hero CTA buttons:"
+            echo "- PLAN YOUR BUILD uses teal glass treatment"
+            echo "- STREAM SUPPORT uses purple glass treatment"
+            echo "- Shared translucent / glass styling with blur, tint and neon border glow"
+          } > qa-results/step-11.2f/summary.md
+
+      - name: Upload QA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-step-11.2f-hero-cta-glass-buttons
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 30
