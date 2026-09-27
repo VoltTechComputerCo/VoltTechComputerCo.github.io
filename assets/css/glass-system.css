@@ -562,102 +562,70 @@ body:not([data-page^="static"]):not([data-page^="admin"]) .vt-image-glass {
   }
 }
 
-/* STEP 11.2L PROCEDURAL TECH BACKGROUND START */
-/*
-  Lightweight VoltTech technical canvas.
-  Pure CSS: no images, animation, filters, fixed layers or backdrop blur.
-  The visual language is closer to a dark PCB / engineering blueprint.
-*/
-body:not([data-page^="static"]):not([data-page^="admin"]) {
-  --vt-tech-major: rgba(73, 222, 210, .095);
-  --vt-tech-minor: rgba(116, 181, 177, .038);
-  --vt-tech-node: rgba(117, 244, 232, .16);
-  --vt-tech-trace: rgba(70, 210, 198, .050);
+/* STEP 11.2M SCHEMATIC CIRCUIT BACKGROUND START */
+/* Pure CSS schematic field: no images, animation, filters, blur or fixed layers. */
+body:not([data-page^="static"]):not([data-page^="admin"]){
+  background:
+    repeating-linear-gradient(135deg,rgba(74,238,220,.020) 0 1px,transparent 1px 24px),
+    linear-gradient(180deg,#041113 0%,#020b0d 45%,#031012 100%)
+}
 
-  background-color: #020b0d;
+body:not([data-page^="static"]):not([data-page^="admin"]) main{
   background-image:
-    radial-gradient(circle at 1px 1px, var(--vt-tech-node) 1px, transparent 1.25px),
-    repeating-linear-gradient(
-      135deg,
-      transparent 0 138px,
-      var(--vt-tech-trace) 138px 139px,
-      transparent 139px 278px
-    ),
-    linear-gradient(var(--vt-tech-major) 1px, transparent 1px),
-    linear-gradient(90deg, var(--vt-tech-major) 1px, transparent 1px),
-    linear-gradient(var(--vt-tech-minor) 1px, transparent 1px),
-    linear-gradient(90deg, var(--vt-tech-minor) 1px, transparent 1px),
-    linear-gradient(180deg, #041012 0%, #020b0d 46%, #031012 100%);
-
+    radial-gradient(circle at 10% 10%,rgba(116,255,240,.50) 0 2px,transparent 2.7px),
+    radial-gradient(circle at 34% 10%,rgba(116,255,240,.34) 0 2px,transparent 2.7px),
+    radial-gradient(circle at 34% 22%,rgba(116,255,240,.28) 0 2px,transparent 2.7px),
+    radial-gradient(circle at 81% 31%,rgba(116,255,240,.38) 0 2px,transparent 2.7px),
+    radial-gradient(circle at 63% 55%,rgba(190,227,223,.28) 0 2px,transparent 2.7px),
+    radial-gradient(circle at 18% 72%,rgba(116,255,240,.34) 0 2px,transparent 2.7px),
+    radial-gradient(circle at 76% 84%,rgba(116,255,240,.30) 0 2px,transparent 2.7px),
+    radial-gradient(circle at 92% 92%,rgba(190,227,223,.24) 0 2px,transparent 2.7px),
+    linear-gradient(90deg,rgba(74,238,220,.22),rgba(74,238,220,.06)),
+    linear-gradient(180deg,rgba(74,238,220,.18),rgba(74,238,220,.05)),
+    linear-gradient(90deg,rgba(74,238,220,.16),rgba(74,238,220,.035)),
+    linear-gradient(90deg,rgba(146,207,201,.14),rgba(74,238,220,.035)),
+    linear-gradient(180deg,rgba(146,207,201,.14),rgba(74,238,220,.035)),
+    linear-gradient(90deg,rgba(74,238,220,.18),rgba(74,238,220,.04)),
+    linear-gradient(180deg,rgba(74,238,220,.15),rgba(74,238,220,.035)),
+    linear-gradient(90deg,rgba(146,207,201,.13),rgba(74,238,220,.025)),
+    repeating-linear-gradient(90deg,rgba(116,255,240,.14) 0 10px,transparent 10px 24px);
+  background-repeat:no-repeat;
   background-size:
-    72px 72px,
-    278px 278px,
-    72px 72px,
-    72px 72px,
-    18px 18px,
-    18px 18px,
-    auto;
-
+    100% 100%,100% 100%,100% 100%,100% 100%,100% 100%,100% 100%,100% 100%,100% 100%,
+    24% 1px,1px 12%,18% 1px,19% 1px,1px 14%,28% 1px,1px 11%,16% 1px,
+    22% 1px;
   background-position:
-    0 0,
-    0 0,
-    0 0,
-    0 0,
-    0 0,
-    0 0,
-    0 0;
+    0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,
+    10% 10%,34% 10%,34% 22%,62% 31%,81% 31%,18% 72%,46% 72%,76% 84%,
+    8% 92%
 }
 
-body:not([data-page^="static"]):not([data-page^="admin"]) :is(
-  main,
-  .section,
-  .home-section,
-  .tool-section,
-  .contact-section,
-  .creator-strip
-) {
-  background-color: transparent;
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(.section,.home-section,.tool-section,.contact-section,.creator-strip){
+  background-color:transparent
 }
 
-body:not([data-page^="static"]):not([data-page^="admin"]) :is(
-  .tool-section,
-  .creator-strip
-) {
-  background-image: linear-gradient(
-    180deg,
-    rgba(2, 10, 12, .46),
-    rgba(2, 10, 12, .58)
-  );
+body:not([data-page^="static"]):not([data-page^="admin"]) :is(.tool-section,.creator-strip){
+  background-image:linear-gradient(180deg,rgba(2,10,12,.34),rgba(2,10,12,.48))
 }
 
-body[data-page="streaming-support"],
-body[data-page="stream-scan"],
-body[data-page="creator-hub-south-africa"] {
-  --vt-tech-major: rgba(112, 205, 196, .085);
-  --vt-tech-node: rgba(176, 225, 220, .15);
-  --vt-tech-trace: rgba(127, 190, 185, .045);
+body:not([data-page^="static"]):not([data-page^="admin"]) .section{position:relative}
+body:not([data-page^="static"]):not([data-page^="admin"]) .section::after{
+  content:"";position:absolute;right:var(--gutter);top:0;width:4.5rem;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(116,255,240,.22));pointer-events:none
 }
 
-@media (max-width: 40rem) {
-  body:not([data-page^="static"]):not([data-page^="admin"]) {
-    --vt-tech-major: rgba(73, 222, 210, .082);
-    --vt-tech-minor: rgba(116, 181, 177, .030);
-    --vt-tech-node: rgba(117, 244, 232, .13);
-
+@media(max-width:40rem){
+  body:not([data-page^="static"]):not([data-page^="admin"]){
+    background:
+      repeating-linear-gradient(135deg,rgba(74,238,220,.017) 0 1px,transparent 1px 20px),
+      linear-gradient(180deg,#041113 0%,#020b0d 45%,#031012 100%)
+  }
+  body:not([data-page^="static"]):not([data-page^="admin"]) main{
     background-size:
-      60px 60px,
-      240px 240px,
-      60px 60px,
-      60px 60px,
-      15px 15px,
-      15px 15px,
-      auto;
+      100% 100%,100% 100%,100% 100%,100% 100%,100% 100%,100% 100%,100% 100%,100% 100%,
+      27% 1px,1px 10%,20% 1px,22% 1px,1px 12%,30% 1px,1px 9%,18% 1px,
+      26% 1px
   }
 }
-
-@media print {
-  body {
-    background: #fff !important;
-  }
-}
-/* STEP 11.2L PROCEDURAL TECH BACKGROUND END */
+@media print{body,body main{background:#fff!important}}
+/* STEP 11.2M SCHEMATIC CIRCUIT BACKGROUND END */
