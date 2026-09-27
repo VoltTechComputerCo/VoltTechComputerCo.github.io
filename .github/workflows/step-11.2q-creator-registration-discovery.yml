@@ -1,0 +1,75 @@
+name: VoltTech Step 11.2Q Creator Registration Discovery
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - clean-rebuild
+    paths:
+      - "scripts/run-step-11.2q-creator-registration-discovery.mjs"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: volttech-step-11.2q-creator-registration-discovery
+  cancel-in-progress: true
+
+jobs:
+  creator-system:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout clean-rebuild
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: clean-rebuild
+      - name: Apply Step 11.2Q
+        run: python3 scripts/apply-step-11.2q-creator-registration-discovery.py
+      - name: Rebuild clean frontend
+        run: python3 scripts/build-clean-frontend.py
+      - name: Verify generated frontend consistency
+        run: python3 scripts/build-clean-frontend.py --check
+      - name: Verify Step 11.2Q contract
+        run: node scripts/test-step-11.2q-creator-registration-discovery.mjs
+      - name: Run full clean regression
+        run: node scripts/run-full-qa.mjs
+      - name: Restore regression-mutated tracked files
+        shell: bash
+        run: |
+          git restore --source=HEAD --worktree --staged --             qa-results/step-9.1-summary.json             qa-results/step-9.1-site-scan.json             qa-results/step-9.1-site-scan.md             scripts/__pycache__/migrate-static-history.cpython-312.pyc
+      - name: Guard Step 11.2Q scope
+        shell: python
+        run: |
+          import subprocess,sys
+          changed=sorted(set(
+            subprocess.check_output(["git","diff","--name-only"],text=True).splitlines()+
+            subprocess.check_output(["git","ls-files","--others","--exclude-standard"],text=True).splitlines()
+          ))
+          allowed={
+            "src/pages/creator-register.html","src/pages/creator-register.head.html","src/pages/creator-register.json",
+            "assets/css/pages/creator-register.css","assets/js/pages/creator-register.js",
+            "src/pages/creator-hub-south-africa.html","src/pages/account.html","assets/js/pages/account.js",
+            "assets/css/pages/account.css","src/pages/privacy.html","creator-register.html",
+            "creator-hub-south-africa.html","account.html","privacy.html","sitemap.xml",
+            "Supabase/functions/creator-register/index.ts","Supabase/functions/discover-sa-streamers/index.ts",
+            "Supabase/migrations/20260927132000_creator_self_registration_and_discovery_v1.sql",
+            "Supabase/migrations/20260927132100_schedule_creator_discovery_v1.sql"
+          }
+          unexpected=[p for p in changed if p not in allowed]
+          if unexpected:
+            print("Unexpected Step 11.2Q changes:");print("\n".join(unexpected));sys.exit(1)
+          required={"creator-register.html","creator-hub-south-africa.html","account.html","privacy.html","sitemap.xml","assets/js/pages/creator-register.js","Supabase/functions/creator-register/index.ts","Supabase/functions/discover-sa-streamers/index.ts"}
+          missing=sorted(required-set(changed))
+          if missing:
+            print("Required Step 11.2Q changes missing:");print("\n".join(missing));sys.exit(1)
+          print(f"PASS: Step 11.2Q scope confirmed ({len(changed)} files).")
+      - name: Commit certified Step 11.2Q
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add             src/pages/creator-register.html             src/pages/creator-register.head.html             src/pages/creator-register.json             assets/css/pages/creator-register.css             assets/js/pages/creator-register.js             src/pages/creator-hub-south-africa.html             src/pages/account.html             assets/js/pages/account.js             assets/css/pages/account.css             src/pages/privacy.html             creator-register.html             creator-hub-south-africa.html             account.html             privacy.html             sitemap.xml             Supabase/functions/creator-register/index.ts             Supabase/functions/discover-sa-streamers/index.ts             Supabase/migrations/20260927132000_creator_self_registration_and_discovery_v1.sql             Supabase/migrations/20260927132100_schedule_creator_discovery_v1.sql
+          git commit -m "feat: add Twitch creator self-registration and discovery"
+          git push origin HEAD:clean-rebuild
