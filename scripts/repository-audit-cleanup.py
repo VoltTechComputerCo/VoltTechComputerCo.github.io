@@ -356,13 +356,14 @@ qa_text = qa_text.replace(
 )
 qa_text = qa_text.replace("  step: '9.1',", "  step: 'repository',")
 qa_text = qa_text.replace("  title: 'Automated Full Regression QA',", "  title: 'Automated full regression QA',")
-qa_text = qa_text.replace("console.log(\`\\n=== STEP 9.1 \${summary.status} ===\`);", "console.log(\`\\n=== FULL QA \${summary.status} ===\`);")
+qa_text = qa_text.replace("console.log(`\\n=== STEP 9.1 ${summary.status} ===`);", "console.log(`\\n=== FULL QA ${summary.status} ===`);")
 qa_text = qa_text.replace("  '# VoltTech Step 9.1 — Full QA summary',", "  '# VoltTech — Full QA summary',")
 qa_text = re.sub(
     r"\n// Step 9\.2 Account DOM correction regression rerun — 2026-09-25\.\n\n// Step 9\.2 intrinsic Account avatar correction rerun — 2026-09-25\.\n?",
     "\n",
     qa_text,
 )
+qa_text = qa_text.rstrip() + "\n"
 run_qa.write_text(qa_text, encoding="utf-8")
 updated.append("scripts/run-full-qa.mjs")
 
@@ -386,8 +387,8 @@ write_text(".gitignore", gitignore)
 # ---------------------------------------------------------------------------
 readme = """# VoltTech Computer Co. website
 
-Production: https://volttechcomputerco.co.za  
-Production branch: `main`  
+Production: https://volttechcomputerco.co.za
+Production branch: `main`
 Development / integration branch: `clean-rebuild`
 
 ## Source of truth
