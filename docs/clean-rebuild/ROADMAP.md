@@ -1,18 +1,15 @@
-# VoltTech master roadmap
+# Current development baseline
 
-## Phase 11 — Growth & Operations
+Repository audit baseline: 30 September 2026.
 
-### 11.1 Production discovery / measurement baseline
+`clean-rebuild` is the authoritative integration branch for ongoing site work. Production remains on `main` and is not changed by repository-cleanup work unless a separate production promotion is explicitly performed.
 
-- 11.1A `.co.za` Search Console Domain property: **complete**
-- 11.1B Production sitemap submission: **complete**
-  - Google downloaded `https://volttechcomputerco.co.za/sitemap.xml`
-  - 0 warnings / 0 errors
-- 11.1C Priority URL live inspection: **complete**
-  - homepage indexed
-  - Cloudflare `.html` -> extensionless redirect behaviour discovered
-- 11.1D Canonical URL normalization: **packaged / staging next**
-- 11.1E Corrected sitemap re-submit + priority indexing: queued
-- 11.1F GA4 connection / tracking verification: queued
+## Current priorities
 
-11.1D changes SEO URL signals only. Store, Builder and direct payments remain gated.
+1. Keep the source-generated frontend and committed outputs in sync.
+2. Preserve working Supabase, customer, admin, commerce and STATIC contracts.
+3. Use `node scripts/run-full-qa.mjs` as the regression gate before promotion.
+4. Treat commerce launch blockers in `RELEASE-BLOCKERS.md` as release requirements, not frontend styling tasks.
+5. Migrate the retained legacy admin family only as an atomic, tested workstream.
+
+Completed historical step-by-step migration packages were removed from the active branch during the repository audit. Git history and the pre-audit rollback branch remain the recovery record.

@@ -11,7 +11,6 @@ const tasks = [
   ['Clean frontend source/output contract', 'python3', ['scripts/check-clean-frontend.py']],
   ['Domain residue gate', 'python3', ['scripts/check-domain-residue.py']],
   ['Final SEO gate', 'python3', ['scripts/check-final-seo.py']],
-  ['STATIC history migration gate', 'python3', ['scripts/test-static-history-migration.py']],
   ['STATIC publishing validation', 'python3', ['scripts/validate-static.py']],
   ['Repo-wide public HTML/link scan', 'python3', ['scripts/check-full-site.py']],
 
@@ -39,7 +38,7 @@ const startedAt = new Date().toISOString();
 const results = [];
 let failed = 0;
 
-console.log(`VoltTech Step 9.1 full QA — ${tasks.length} gates`);
+console.log(`VoltTech full QA — ${tasks.length} gates`);
 console.log('Branch target: clean-rebuild\n');
 
 for (let i = 0; i < tasks.length; i += 1) {
@@ -75,8 +74,8 @@ for (let i = 0; i < tasks.length; i += 1) {
 
 const finishedAt = new Date().toISOString();
 const summary = {
-  step: '9.1',
-  title: 'Automated Full Regression QA',
+  step: 'repository',
+  title: 'Automated full regression QA',
   branch: 'clean-rebuild',
   started_at: startedAt,
   finished_at: finishedAt,
@@ -94,7 +93,7 @@ fs.writeFileSync(
 );
 
 const md = [
-  '# VoltTech Step 9.1 — Full QA summary',
+  '# VoltTech — Full QA summary',
   '',
   `Overall: **${summary.status}**`,
   '',
@@ -111,12 +110,8 @@ const md = [
 
 fs.writeFileSync(path.join(outDir, 'step-9.1-summary.md'), md, 'utf8');
 
-console.log(`\n=== STEP 9.1 ${summary.status} ===`);
+console.log(`\n=== FULL QA ${summary.status} ===`);
 console.log(`${summary.passed}/${summary.total} gates passed.`);
 console.log('Evidence written to qa-results/.');
 
 process.exit(failed === 0 ? 0 : 1);
-
-// Step 9.2 Account DOM correction regression rerun — 2026-09-25.
-
-// Step 9.2 intrinsic Account avatar correction rerun — 2026-09-25.

@@ -137,7 +137,7 @@ for js in (ROOT / 'assets/js').rglob('*.js'):
     subprocess.run(['node', '--input-type=module', '--check'], input=code, text=True, check=True)
 
 subprocess.run(['node', '--check', str(ROOT / 'sw.js')], check=True)
-for name in ('notifications.js', 'streamer-feed.js', 'analytics.js', 'volttech-experience.js'):
+for name in ('notifications.js', 'streamer-feed.js'):
     subprocess.run(['node', '--check', str(ROOT / name)], check=True)
 
 if errors:

@@ -1,7 +1,0 @@
-@import url('contact-icons-static.css?v=2');
-
-
-body[class*="vt-page-"] main .wrap>.panel::after{
-  content:none!important;
-  display:none!important;
-}

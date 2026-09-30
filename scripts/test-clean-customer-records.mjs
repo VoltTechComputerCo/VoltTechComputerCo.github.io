@@ -23,8 +23,7 @@ if(!service.includes("status in ('sent','viewed')") && !service.includes('effect
   // The server RPC owns the write transition; client must at least preserve effective expiry handling.
   throw new Error('quote state handling missing');
 }
-const manifest=JSON.parse(read('docs/clean-rebuild/step-5.2-manifest.json'));
-for(const d of ['scripts/__pycache__/check-clean-frontend.cpython-313.pyc','scripts/__pycache__/Placeholder.txt'])if(!manifest.delete.includes(d))throw new Error(`cleanup deletion missing: ${d}`);
-const corrected=JSON.parse(read('docs/clean-rebuild/step-5.1-manifest.json'));
-if(Object.keys(corrected.sha256).some(p=>p.includes('__pycache__')))throw new Error('corrected 5.1 manifest still contains pycache');
-console.log('PASS: clean customer records pages, auth boundary, quote contract and Step 5.1 cache cleanup');
+if(fs.existsSync(path.join(root,'scripts/__pycache__')))throw new Error('Python cache directory returned after repository cleanup');
+const ignore=read('.gitignore');
+if(!ignore.includes('__pycache__/')||!ignore.includes('*.py[cod]'))throw new Error('Python cache ignore contract missing');
+console.log('PASS: clean customer records pages, auth boundary, quote contract and repository cache cleanup');
