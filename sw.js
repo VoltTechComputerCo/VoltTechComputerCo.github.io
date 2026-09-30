@@ -12,9 +12,7 @@ const VT_VERSION_REWRITES=[
  ['site-notifications-loader.js?v=5.1.0','site-notifications-loader.js?v=6.0.0'],
  ['site-notifications-loader.js?v=5.2.0','site-notifications-loader.js?v=6.0.0'],
  ['site-notifications-loader.js?v=5.3.0','site-notifications-loader.js?v=6.0.0'],
- ['site-notifications-loader.js?v=5.4.0','site-notifications-loader.js?v=6.0.0'],
- ['analytics.js?v=5','analytics.js?v=6'],
- ['account-dashboard.js?v=3.1.0','account-dashboard.js?v=5.2.0']
+ ['site-notifications-loader.js?v=5.4.0','site-notifications-loader.js?v=6.0.0']
 ];
 
 self.addEventListener('install',event=>{self.skipWaiting();});
@@ -38,10 +36,15 @@ self.addEventListener('fetch',event=>{
   const type=response.headers.get('content-type')||'';
   if(!response.ok||!type.includes('text/html'))return response;
 
-  // Converted pages own their complete shell. Never inject legacy loaders into them.
-  // Unconverted routes retain their existing version and notification behaviour.
+  // Source-generated clean pages own their complete runtime and are never rewritten.
   let html=await response.clone().text();
   if(/<html\b[^>]*\bdata-vt-shell\s*=\s*["']clean["']/i.test(html))return response;
+
+  // Only legacy admin pages still require the compatibility notification/bootstrap layer.
+  // Public STATIC articles, Exposure Scan and compatibility redirects stay byte-for-byte.
+  const pageName=(url.pathname.split('/').pop()||'').toLowerCase();
+  if(!/^admin(?:-[a-z0-9-]+)?(?:\.html)?$/i.test(pageName))return response;
+
   for(const [from,to] of VT_VERSION_REWRITES){
     if(html.includes(from))html=html.split(from).join(to);
   }

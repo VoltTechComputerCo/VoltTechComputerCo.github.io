@@ -1,0 +1,7 @@
+# Generated local / CI evidence
+qa-results/
+*.log
+
+# Python cache
+__pycache__/
+*.py[cod]

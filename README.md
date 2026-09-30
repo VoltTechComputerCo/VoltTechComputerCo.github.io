@@ -1,27 +1,50 @@
-# VoltTech Computer Co. — Production baseline
+# VoltTech Computer Co. website
 
-Production release is live at `https://volttechcomputerco.co.za`.
+Production: https://volttechcomputerco.co.za
+Production branch: `main`
+Development / integration branch: `clean-rebuild`
 
-Current work: **Phase 11.1D — Canonical URL normalization**.
+## Source of truth
 
-Google Search Console confirmed that Cloudflare Pages redirects physical `.html`
-paths to extensionless public URLs. This staging batch aligns canonical metadata,
-sitemap, structured data and STATIC feed automation with the URLs Cloudflare
-actually serves.
+The clean frontend is source-generated.
 
-## Upload target
+- Shared HTML shell: `src/templates/`
+- Page content/config: `src/pages/`
+- Shared presentation: `assets/css/`
+- Shared/browser controllers: `assets/js/`
+- Generator: `scripts/build-clean-frontend.py`
 
-Upload this Step 11.1D package to **`clean-rebuild` only**.
+When changing a generated page, change its source and regenerate the output. Do not create a second hand-authored implementation of the same route.
 
-Do not upload it to `main`.
+The retained root-level admin pages are still a deliberate legacy boundary. Their root admin/auth CSS and JavaScript must remain until that admin family is migrated as one controlled change.
 
-Upload the workflow, normalizer, URL-contract test and documentation first.
+STATIC publishing is documented in `docs/clean-rebuild/STATIC-PUBLISHING.md`. Historical STATIC articles keep their dedicated `assets/css/static-legacy/` styles; new articles use the clean STATIC article system.
 
-Upload:
+## Required checks
 
-`scripts/run-step-11.1d.mjs`
+```bash
+python3 scripts/build-clean-frontend.py --check
+node scripts/run-full-qa.mjs
+```
 
-**LAST** to trigger the staging workflow.
+The full QA runner writes evidence under `qa-results/`; that directory is intentionally ignored by Git.
 
-The workflow may create one GitHub Actions bot commit on `clean-rebuild` containing
-the normalized SEO files. It does not promote anything to production.
+## Active GitHub workflows
+
+Only current recurring/source-of-truth workflows are retained:
+
+- `clean-frontend-sync.yml`
+- `device-role-qa.yml`
+- `full-qa.yml`
+- `static-discord-publisher.yml`
+- `static-feed-autopilot.yml`
+- `static-publishing-guard.yml`
+- `static-sitemap-autopilot.yml`
+
+## Repository cleanup — 30 September 2026
+
+A site-wide audit removed completed migration/release runners, old QA screenshots/manifests, compiled cache, an unused 5 MB logo ZIP and root runtime files superseded by the clean frontend.
+
+The service worker now leaves clean pages and public non-admin legacy pages untouched. Its compatibility injection remains only for legacy admin routes.
+
+Asset provenance is deliberately retained at `docs/clean-rebuild/step-1.2-assets.md`.

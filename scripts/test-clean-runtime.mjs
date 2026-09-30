@@ -26,17 +26,25 @@ async function navigate(html, overrides = {}) {
   handlers.fetch({ request: { mode: 'navigate', url: 'https://example.test/page.html', ...overrides }, respondWith: p => { promise = p; } });
   return await promise;
 }
-const clean = '<html lang="en-ZA" data-vt-shell="clean"><body>analytics.js?v=5</body></html>';
+const clean = '<html lang="en-ZA" data-vt-shell="clean"><body>notifications.css?v=5.0.0</body></html>';
 let response = await navigate(clean);
 assert.equal(await response.text(), clean, 'Clean page is byte-for-byte unchanged');
 assert.equal(response.headers.get('etag'), 'original');
-response = await navigate('<html><body>analytics.js?v=5</body></html>');
+
+const publicLegacy = '<html><body>notifications.css?v=5.0.0</body></html>';
+response = await navigate(publicLegacy, { url: 'https://example.test/static-test.html' });
+assert.equal(await response.text(), publicLegacy, 'Public non-admin HTML must not receive the legacy loader');
+assert.equal(response.headers.get('etag'), 'original');
+
+response = await navigate('<html><body>notifications.css?v=5.0.0</body></html>', { url: 'https://example.test/admin.html' });
 const legacy = await response.text();
-assert.ok(legacy.includes('analytics.js?v=6'), 'Legacy version update preserved');
-assert.ok(legacy.includes('https://example.test/site-notifications-loader.js?v=6.0.0'), 'Legacy notifications preserved');
+assert.ok(legacy.includes('notifications.css?v=5.2.0'), 'Admin legacy version update preserved');
+assert.ok(legacy.includes('https://example.test/site-notifications-loader.js?v=6.0.0'), 'Admin legacy notifications preserved');
 assert.equal(response.headers.get('etag'), null);
-response = await navigate('<html><body><script src="site-notifications-loader.js?v=6.0.0"></script></body></html>');
-assert.equal((await response.text()).match(/site-notifications-loader/g).length, 1, 'No duplicate loader');
+
+response = await navigate('<html><body><script src="site-notifications-loader.js?v=6.0.0"></script></body></html>', { url: 'https://example.test/admin-store.html' });
+assert.equal((await response.text()).match(/site-notifications-loader/g).length, 1, 'No duplicate admin loader');
+
 status = 404;
 assert.equal(await (await navigate('<html>Missing</html>')).text(), '<html>Missing</html>');
 status = 200;
@@ -45,7 +53,7 @@ assert.equal(await (await navigate('{"ok":true}')).text(), '{"ok":true}');
 contentType = 'text/html';
 assert.equal(await (await navigate(clean, { mode: 'cors' })).text(), clean);
 assert.equal(await (await navigate(clean, { url: 'https://other.test/page.html' })).text(), clean);
-console.log('PASS: service worker isolates clean HTML; legacy, error and non-HTML paths preserved');
+console.log('PASS: service worker leaves clean/public HTML untouched and limits legacy injection to admin pages');
 
 const media = { matches: true, addEventListener: (_, fn) => { media.change = fn; } };
 const doc = { activeElement: null, addEventListener: (_, fn) => { doc.keydown = fn; } };
