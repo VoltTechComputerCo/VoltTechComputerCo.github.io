@@ -114,6 +114,30 @@ remove_file("scripts/__pycache__")
 
 
 # ---------------------------------------------------------------------------
+# 1B) Modernise retained QA that previously depended on historical delivery manifests.
+# ---------------------------------------------------------------------------
+customer_records_test = ROOT / "scripts" / "test-clean-customer-records.mjs"
+customer_records_text = customer_records_test.read_text(encoding="utf-8")
+old_customer_records_tail = """const manifest=JSON.parse(read('docs/clean-rebuild/step-5.2-manifest.json'));
+for(const d of ['scripts/__pycache__/check-clean-frontend.cpython-313.pyc','scripts/__pycache__/Placeholder.txt'])if(!manifest.delete.includes(d))throw new Error(`cleanup deletion missing: ${d}`);
+const corrected=JSON.parse(read('docs/clean-rebuild/step-5.1-manifest.json'));
+if(Object.keys(corrected.sha256).some(p=>p.includes('__pycache__')))throw new Error('corrected 5.1 manifest still contains pycache');
+console.log('PASS: clean customer records pages, auth boundary, quote contract and Step 5.1 cache cleanup');"""
+new_customer_records_tail = """if(fs.existsSync(path.join(root,'scripts/__pycache__')))throw new Error('Python cache directory returned after repository cleanup');
+const ignore=read('.gitignore');
+if(!ignore.includes('__pycache__/')||!ignore.includes('*.py[cod]'))throw new Error('Python cache ignore contract missing');
+console.log('PASS: clean customer records pages, auth boundary, quote contract and repository cache cleanup');"""
+
+if old_customer_records_tail not in customer_records_text:
+    raise RuntimeError("Expected historical Customer Records manifest assertions not found")
+customer_records_test.write_text(
+    customer_records_text.replace(old_customer_records_tail, new_customer_records_tail, 1),
+    encoding="utf-8",
+)
+updated.append("scripts/test-clean-customer-records.mjs")
+
+
+# ---------------------------------------------------------------------------
 # 2) Historical clean-rebuild delivery evidence.
 #    Keep the image provenance record because it documents source/licensing context.
 # ---------------------------------------------------------------------------
@@ -332,6 +356,7 @@ qa_text = qa_text.replace(
 )
 qa_text = qa_text.replace("  step: '9.1',", "  step: 'repository',")
 qa_text = qa_text.replace("  title: 'Automated Full Regression QA',", "  title: 'Automated full regression QA',")
+qa_text = qa_text.replace("console.log(\`\\n=== STEP 9.1 \${summary.status} ===\`);", "console.log(\`\\n=== FULL QA \${summary.status} ===\`);")
 qa_text = qa_text.replace("  '# VoltTech Step 9.1 — Full QA summary',", "  '# VoltTech — Full QA summary',")
 qa_text = re.sub(
     r"\n// Step 9\.2 Account DOM correction regression rerun — 2026-09-25\.\n\n// Step 9\.2 intrinsic Account avatar correction rerun — 2026-09-25\.\n?",
