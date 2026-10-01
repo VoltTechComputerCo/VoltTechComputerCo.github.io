@@ -6,7 +6,15 @@
     <description>Breaking tech and gaming stories, PC hardware, performance, security and enthusiast culture from STATIC by VoltTech Computer Co.</description>
     <language>en</language>
     <atom:link href="https://volttechcomputerco.co.za/static-feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Wed, 16 Sep 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 10:01:44 +0200</lastBuildDate>
+    <item>
+      <title>Modern Warfare 4 Wants 90 FPS to Be the New Recommended</title>
+      <link>https://volttechcomputerco.co.za/static-modern-warfare-4-pc-specs-90fps-ray-tracing</link>
+      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-modern-warfare-4-pc-specs-90fps-ray-tracing</guid>
+      <pubDate>Thu, 01 Oct 2026 10:01:44 +0200</pubDate>
+      <description>Call of Duty Modern Warfare 4's official PC specs target 90 FPS on RTX 3060 Ti-class hardware, add ray tracing to every mode, and support DLSS 4.5, FSR Redstone and XeSS 3.</description>
+      <media:content url="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/pc-trailer-blog/MW4-PC-TECH-001.webp" medium="image" />
+    </item>
     <item>
       <title>Xbox Just Made Game Pass Very Hard to Ignore</title>
       <link>https://volttechcomputerco.co.za/static-xbox-game-pass-september-2026-stacked-lineup</link>
@@ -157,14 +165,6 @@
       <guid isPermaLink="true">https://volttechcomputerco.co.za/static-tim-sweeney-hardware-crisis</guid>
       <pubDate>Sat, 05 Sep 2026 09:00:00 +0200</pubDate>
       <description>Epic CEO Tim Sweeney has compared the component crisis with the 1983 videogame crash. Here’s where the analogy works — and where it doesn’t.</description>
-      <media:content url="https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png" medium="image" />
-    </item>
-    <item>
-      <title>The White House Made a Border-Wall Tetris Game. Tetris Is Not Amused.</title>
-      <link>https://volttechcomputerco.co.za/static-white-house-tetris</link>
-      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-white-house-tetris</guid>
-      <pubDate>Sat, 05 Sep 2026 09:00:00 +0200</pubDate>
-      <description>The White House launched a retro arcade with a Tetris-like border game. The Tetris Company has publicly distanced itself and raised copyright concerns.</description>
       <media:content url="https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png" medium="image" />
     </item>
   </channel>
