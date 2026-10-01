@@ -29,19 +29,112 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref_name }}
 
+      - name: Remember previous lead article
+        shell: bash
+        run: |
+          python - <<'PY'
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          p=Path("static-feed.xml")
+          key=""
+          if p.exists():
+              root=ET.fromstring(p.read_text(encoding="utf-8"))
+              item=root.find("./channel/item")
+              if item is not None:
+                  link=(item.findtext("link") or item.findtext("guid") or "").strip()
+                  key=urlparse(link).path.rstrip("/")
+          Path("/tmp/static-old-lead").write_text(key,encoding="utf-8")
+          PY
+
       - name: Build STATIC RSS from article metadata
         run: python scripts/build-static-feed.py
 
-      - name: Commit feed if changed
+      - name: Detect feed and lead changes
+        id: feed
         shell: bash
         run: |
           if git diff --quiet -- static-feed.xml; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "lead_changed=false" >> "$GITHUB_OUTPUT"
             echo "STATIC feed already current."
             exit 0
           fi
 
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          root=ET.fromstring(Path("static-feed.xml").read_text(encoding="utf-8"))
+          item=root.find("./channel/item")
+          link=(item.findtext("link") or item.findtext("guid") or "").strip() if item is not None else ""
+          new=urlparse(link).path.rstrip("/")
+          old=Path("/tmp/static-old-lead").read_text(encoding="utf-8").strip()
+          print(f"lead_changed={'true' if new and new != old else 'false'}")
+          PY
+
+      - name: Commit feed if changed
+        if: steps.feed.outputs.changed == 'true'
+        shell: bash
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add static-feed.xml
           git commit -m "chore: rebuild STATIC RSS feed"
           git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      - name: Publish new lead article to Discord
+        if: github.ref_name == 'main' && steps.feed.outputs.lead_changed == 'true'
+        env:
+          STATIC_DISCORD_WEBHOOK: ${{ secrets.STATIC_DISCORD_WEBHOOK }}
+        shell: python
+        run: |
+          import json,os,urllib.request,xml.etree.ElementTree as ET
+
+          root=ET.parse("static-feed.xml").getroot()
+          item=root.find("./channel/item")
+          if item is None:
+              raise SystemExit("STATIC feed contains no item")
+
+          def get(n):
+              x=item.find(n)
+              return (x.text or "").strip() if x is not None else ""
+
+          media=item.find("{http://search.yahoo.com/mrss/}content")
+          current={
+              "title":get("title"),
+              "url":get("link"),
+              "desc":get("description"),
+              "image":media.get("url","").strip() if media is not None else "",
+          }
+
+          hook=(os.environ.get("STATIC_DISCORD_WEBHOOK") or "").strip()
+          if not hook:
+              raise SystemExit("STATIC_DISCORD_WEBHOOK is not configured")
+
+          embed={
+              "title":current["title"][:256],
+              "url":current["url"],
+              "description":current["desc"][:4096],
+              "color":16757844,
+              "footer":{"text":"STATIC · Tech, gaming & nerd culture"},
+          }
+          if current["image"]:
+              embed["image"]={"url":current["image"]}
+
+          payload={
+              "username":"STATIC",
+              "content":"🟠 **NEW STATIC SIGNAL**",
+              "allowed_mentions":{"parse":[]},
+              "embeds":[embed],
+          }
+          req=urllib.request.Request(
+              hook+"?wait=true",
+              data=json.dumps(payload).encode(),
+              headers={"Content-Type":"application/json","User-Agent":"STATIC-Publisher/1.3"},
+              method="POST",
+          )
+          urllib.request.urlopen(req,timeout=30).read()
