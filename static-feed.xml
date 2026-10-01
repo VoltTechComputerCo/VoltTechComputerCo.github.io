@@ -6,7 +6,15 @@
     <description>Breaking tech and gaming stories, PC hardware, performance, security and enthusiast culture from STATIC by VoltTech Computer Co.</description>
     <language>en</language>
     <atom:link href="https://volttechcomputerco.co.za/static-feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Thu, 01 Oct 2026 10:19:34 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 10:42:36 +0200</lastBuildDate>
+    <item>
+      <title>Gears of War: E-Day Is Live Early — PC Gets the Full RTX Treatment</title>
+      <link>https://volttechcomputerco.co.za/static-gears-of-war-e-day-pc-early-access</link>
+      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-gears-of-war-e-day-pc-early-access</guid>
+      <pubDate>Thu, 01 Oct 2026 10:42:36 +0200</pubDate>
+      <description>Gears of War: E-Day early access begins October 1. We break down its Unreal Engine 5.8 PC tech, DLSS 4.5, ray tracing, hardware requirements and 4K targets.</description>
+      <media:content url="https://volttechcomputerco.co.za/assets/images/static/gears-eday-launch.svg" medium="image" />
+    </item>
     <item>
       <title>Modern Warfare 4 Wants 90 FPS to Be the New Recommended</title>
       <link>https://volttechcomputerco.co.za/static-modern-warfare-4-pc-specs-90fps-ray-tracing</link>
@@ -157,14 +165,6 @@
       <guid isPermaLink="true">https://volttechcomputerco.co.za/static-scalebound-kamiya</guid>
       <pubDate>Sat, 05 Sep 2026 09:00:00 +0200</pubDate>
       <description>Hideki Kamiya says he is completely serious about wanting to finish Scalebound one day. There is no revival announcement — but Okami makes the dream harder to dismiss.</description>
-      <media:content url="https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png" medium="image" />
-    </item>
-    <item>
-      <title>Tim Sweeney Says Gaming Is Facing Its Worst Hardware Crisis in Decades. Is He Right?</title>
-      <link>https://volttechcomputerco.co.za/static-tim-sweeney-hardware-crisis</link>
-      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-tim-sweeney-hardware-crisis</guid>
-      <pubDate>Sat, 05 Sep 2026 09:00:00 +0200</pubDate>
-      <description>Epic CEO Tim Sweeney has compared the component crisis with the 1983 videogame crash. Here’s where the analogy works — and where it doesn’t.</description>
       <media:content url="https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png" medium="image" />
     </item>
   </channel>
