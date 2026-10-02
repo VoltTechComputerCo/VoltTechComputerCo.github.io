@@ -6,7 +6,23 @@
     <description>Breaking tech and gaming stories, PC hardware, performance, security and enthusiast culture from STATIC by VoltTech Computer Co.</description>
     <language>en</language>
     <atom:link href="https://volttechcomputerco.co.za/static-feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Thu, 01 Oct 2026 10:42:36 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 09:05:00 +0200</lastBuildDate>
+    <item>
+      <title>Your Regular PS5 Just Got an AI Graphics Upgrade</title>
+      <link>https://volttechcomputerco.co.za/static-ps5-qssr-ai-upscaling</link>
+      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-ps5-qssr-ai-upscaling</guid>
+      <pubDate>Fri, 02 Oct 2026 09:05:00 +0200</pubDate>
+      <description>Sony is bringing AI-guided QSSR upscaling to the standard PS5, starting with Marvel's Wolverine and Ghost of Yōtei. Here's what changes, what doesn't, and why it matters.</description>
+      <media:content url="https://blog.playstation.com/tachyon/2026/10/5f2b04388e41b48507f4c8d57ce8f53bd059f03a.jpg?crop_strategy=smart&amp;resize=1088%2C612" medium="image" />
+    </item>
+    <item>
+      <title>Kitsune Conquered Comic Con Africa — Inside the VS Gaming Masters 2026 Aftermath</title>
+      <link>https://volttechcomputerco.co.za/static-comic-con-africa-2026-vs-gaming-masters-aftermath</link>
+      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-comic-con-africa-2026-vs-gaming-masters-aftermath</guid>
+      <pubDate>Thu, 01 Oct 2026 12:35:00 +0200</pubDate>
+      <description>Kitsune won the 2026 VS Gaming Masters at Comic Con Africa, HighBorn finished second, and SA Counter-Strike took over Hall 6. Results, context and the wider Comic Con aftermath.</description>
+      <media:content url="https://www.proavl-mea.com/img/Comicon-66.jpg" medium="image" />
+    </item>
     <item>
       <title>Gears of War: E-Day Is Live Early — PC Gets the Full RTX Treatment</title>
       <link>https://volttechcomputerco.co.za/static-gears-of-war-e-day-pc-early-access</link>
@@ -150,22 +166,6 @@
       <pubDate>Sun, 06 Sep 2026 00:00:00 +0200</pubDate>
       <description>Rockstar is officially supporting NoPixel V as GTA roleplay moves closer to its ecosystem. Here’s what it means — and what it does not confirm about GTA VI.</description>
       <media:content url="https://i.ytimg.com/vi/fVCD9oKjtZs/maxresdefault.jpg" medium="image" />
-    </item>
-    <item>
-      <title>Nvidia Is Buying Hugging Face for $12.93 Billion — And the Bigger Story Is Control</title>
-      <link>https://volttechcomputerco.co.za/static-nvidia-hugging-face</link>
-      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-nvidia-hugging-face</guid>
-      <pubDate>Sat, 05 Sep 2026 09:00:00 +0200</pubDate>
-      <description>Nvidia’s $12.93 billion Hugging Face deal puts the world’s biggest AI-chip company closer to the developer layer. The promise that matters most: Hugging Face stays open.</description>
-      <media:content url="https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png" medium="image" />
-    </item>
-    <item>
-      <title>Scalebound Still Won’t Die — and Hideki Kamiya Wants Xbox to Bring It Back</title>
-      <link>https://volttechcomputerco.co.za/static-scalebound-kamiya</link>
-      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-scalebound-kamiya</guid>
-      <pubDate>Sat, 05 Sep 2026 09:00:00 +0200</pubDate>
-      <description>Hideki Kamiya says he is completely serious about wanting to finish Scalebound one day. There is no revival announcement — but Okami makes the dream harder to dismiss.</description>
-      <media:content url="https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png" medium="image" />
     </item>
   </channel>
 </rss>
