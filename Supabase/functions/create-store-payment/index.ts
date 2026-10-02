@@ -1,0 +1,30 @@
+import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+const SITE_ORIGIN="https://volttechcomputerco.co.za";
+const ALLOWED_ORIGINS=new Set([SITE_ORIGIN,"https://www.volttechcomputerco.co.za","https://volttechcomputerco.github.io"]);
+const originAllowed=(origin:string|null)=>!origin||ALLOWED_ORIGINS.has(origin);
+const headers=(o:string|null)=>({"Access-Control-Allow-Origin":o&&ALLOWED_ORIGINS.has(o)?o:SITE_ORIGIN,"Access-Control-Allow-Headers":"content-type, apikey, authorization, x-client-info","Access-Control-Allow-Methods":"POST, OPTIONS","Content-Type":"application/json","Vary":"Origin"});
+const reply=(b:unknown,s=200,o:string|null=null)=>new Response(JSON.stringify(b),{status:s,headers:headers(o)});
+const clean=(v:unknown,m=200)=>typeof v==="string"?v.trim().slice(0,m):"";
+async function sha256Hex(v:string){const d=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(v));return [...new Uint8Array(d)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+function clientFingerprint(req:Request){
+  const forwarded=(req.headers.get("x-forwarded-for")||"").split(",")[0].trim();
+  const ip=forwarded||req.headers.get("x-real-ip")||req.headers.get("cf-connecting-ip")||"unknown";
+  const ua=(req.headers.get("user-agent")||"unknown").slice(0,220);
+  return ip+"|"+ua;
+}
+async function rateAllowed(admin:any,bucket:string,key:string,limit:number,windowSeconds:number){
+  const keyHash=await sha256Hex(key);
+  const {data,error}=await admin.rpc("consume_store_edge_rate_limit",{p_bucket:bucket,p_key_hash:keyHash,p_limit:limit,p_window_seconds:windowSeconds});
+  if(error) throw error;
+  return data===true;
+}
+
+Deno.serve(async(req:Request)=>{const origin=req.headers.get("origin");if(req.method==="OPTIONS")return new Response("ok",{headers:headers(origin)});if(req.method!=="POST")return reply({error:"Method not allowed"},405,origin);if(!originAllowed(origin))return reply({error:"Origin not allowed"},403,origin);
+try{const url=Deno.env.get("SUPABASE_URL"),key=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"),yoco=Deno.env.get("YOCO_LIVE_SECRET_KEY")||Deno.env.get("YOCO_TEST_SECRET_KEY");if(!url||!key||!yoco)return reply({error:"Payment provider is not configured"},503,origin);const body=await req.json().catch(()=>null),ref=clean(body?.ref,80),token=clean(body?.token,160);if(!ref||!token)return reply({error:"Missing order access details"},400,origin);const hash=await sha256Hex(token),admin=createClient(url,key);if(!(await rateAllowed(admin,"store_payment_token",ref+"|"+token,6,900)))return reply({error:"Too many payment attempts. Please wait before trying again."},429,origin);if(!(await rateAllowed(admin,"store_payment_fingerprint",clientFingerprint(req),12,900)))return reply({error:"Too many payment attempts. Please wait before trying again."},429,origin);const {data:r,error}=await admin.from("store_requests").select("id,request_number,checkout_stage,payment_status,final_total,final_subtotal,final_delivery_fee,guest_email").eq("request_number",ref).eq("public_token_hash",hash).maybeSingle();if(error)throw error;if(!r)return reply({error:"Order not found"},404,origin);if(r.payment_status==="paid")return reply({error:"Order is already paid"},409,origin);if(r.checkout_stage!=="awaiting_payment"||!Number(r.final_total)||Number(r.final_total)<=0)return reply({error:"This order is not ready for payment yet"},409,origin);
+const {data:existing}=await admin.from("store_payments").select("id,provider_checkout_id,status,metadata").eq("request_id",r.id).eq("provider","yoco").eq("status","pending").order("created_at",{ascending:false}).limit(1).maybeSingle();if(existing?.provider_checkout_id&&existing?.metadata?.redirect_url)return reply({checkout_id:existing.provider_checkout_id,redirect_url:existing.metadata.redirect_url,reused:true},200,origin);
+const amountCents=Math.round(Number(r.final_total)*100);if(!Number.isSafeInteger(amountCents)||amountCents<200)return reply({error:"Invalid payment amount"},400,origin);
+const {count:attemptCount,error:attemptCountError}=await admin.from("store_payments").select("id",{count:"exact",head:true}).eq("request_id",r.id).eq("provider","yoco");
+if(attemptCountError)throw attemptCountError;
+const attemptNo=(attemptCount||0)+1;
+const successUrl=`${SITE_ORIGIN}/order-status.html?ref=${encodeURIComponent(ref)}&token=${encodeURIComponent(token)}&payment=success`,cancelUrl=`${SITE_ORIGIN}/order-status.html?ref=${encodeURIComponent(ref)}&token=${encodeURIComponent(token)}&payment=cancelled`,failureUrl=`${SITE_ORIGIN}/order-status.html?ref=${encodeURIComponent(ref)}&token=${encodeURIComponent(token)}&payment=failed`;const resp=await fetch("https://payments.yoco.com/api/checkouts",{method:"POST",headers:{Authorization:`Bearer ${yoco}`,"Content-Type":"application/json","Idempotency-Key":`store-${r.id}-${amountCents}-${attemptNo}`},body:JSON.stringify({amount:amountCents,currency:"ZAR",successUrl,cancelUrl,failureUrl,metadata:{store_request_id:r.id,request_number:r.request_number,customer_email:r.guest_email||""}})});const text=await resp.text();let checkout:any=null;try{checkout=JSON.parse(text)}catch{}if(!resp.ok||!checkout?.id||!checkout?.redirectUrl){console.error("Yoco store checkout error",resp.status,text);return reply({error:"Could not create the payment checkout"},502,origin)}const {error:insErr}=await admin.from("store_payments").insert({request_id:r.id,provider:"yoco",provider_checkout_id:checkout.id,amount:r.final_total,currency:"ZAR",status:"pending",metadata:{redirect_url:checkout.redirectUrl,subtotal:r.final_subtotal,delivery_fee:r.final_delivery_fee}});if(insErr)throw insErr;await admin.from("store_requests").update({payment_status:"pending",automation_status:"awaiting_payment",updated_at:new Date().toISOString()}).eq("id",r.id);return reply({checkout_id:checkout.id,redirect_url:checkout.redirectUrl},200,origin)}catch(e){console.error("create-store-payment",e);return reply({error:"Could not start payment"},500,origin)}});
