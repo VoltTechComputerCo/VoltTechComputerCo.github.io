@@ -82,22 +82,7 @@ jobs:
             sudo apt-get update -qq
             sudo apt-get install -y -qq librsvg2-bin
             rsvg-convert -w 1200 "$(cat /tmp/static-svg-source)" -o "$(cat /tmp/static-png-output)"
-            python - <<'PY'
-            import xml.etree.ElementTree as ET
-            from pathlib import Path
-
-            feed=Path("static-feed.xml")
-            tree=ET.parse(feed);root=tree.getroot()
-            item=root.find("./channel/item")
-            media=item.find("{http://search.yahoo.com/mrss/}content")
-            old=(media.get("url") or "").strip()
-            out=Path("/tmp/static-png-output").read_text(encoding="utf-8").strip()
-            base="https://volttechcomputerco.co.za/"
-            media.set("url",base+out)
-            ET.indent(root,space="  ")
-            feed.write_text(ET.tostring(root,encoding="unicode",xml_declaration=True)+"\n",encoding="utf-8")
-            print(f"Discord image: {old} -> {base+out}")
-            PY
+            python -c 'import xml.etree.ElementTree as ET; from pathlib import Path; feed=Path("static-feed.xml"); tree=ET.parse(feed); root=tree.getroot(); item=root.find("./channel/item"); media=item.find("{http://search.yahoo.com/mrss/}content"); old=(media.get("url") or "").strip(); out=Path("/tmp/static-png-output").read_text(encoding="utf-8").strip(); base="https://volttechcomputerco.co.za/"; media.set("url",base+out); ET.indent(root,space="  "); feed.write_text(ET.tostring(root,encoding="unicode",xml_declaration=True)+"\n",encoding="utf-8"); print(f"Discord image: {old} -> {base+out}")'
           fi
 
       - name: Detect feed and lead changes
@@ -167,7 +152,6 @@ jobs:
           if not hook:
               raise SystemExit("STATIC_DISCORD_WEBHOOK is not configured")
 
-          # Give the site/CDN a short moment to expose a newly committed raster image.
           if current["image"]:
               for _ in range(6):
                   try:
