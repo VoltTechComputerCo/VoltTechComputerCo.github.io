@@ -1,8 +1,8 @@
 {
   "output": "builder/index.html",
   "title": "PC Builder | VoltTech Computer Co.",
-  "description": "Build and customise a compatible PC with VoltTech Computer Co. The Builder remains launch-gated while catalogue and quotation operations are being prepared.",
-  "robots": "noindex, nofollow",
+  "description": "Build and customise a compatible PC with VoltTech Computer Co. Choose from the live component catalogue, save your build and request a quote; final stock and pricing are confirmed before payment.",
+  "robots": "index, follow",
   "styles": [
     "assets/css/pages/builder.css",
     "assets/css/pages/builder-foundation.css"
