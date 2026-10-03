@@ -192,10 +192,10 @@ async function init(){
       const link=event.target.closest('.category-filter-menu a[data-quick-category]');
       if(!link) return;
       event.preventDefault();
-      const params={category:link.dataset.quickCategory};
+      const target=new URL(link.href,location.href);
+      const params={category:target.searchParams.get('category') || link.dataset.quickCategory};
       FILTER_KEYS.forEach(key=>{
-        const dataKey='quick'+key[0].toUpperCase()+key.slice(1);
-        if(link.dataset[dataKey]!==undefined) params[key]=link.dataset[dataKey];
+        if(target.searchParams.has(key)) params[key]=target.searchParams.get(key) || '';
       });
       state.filters={};
       applyQuickFilters(params);
