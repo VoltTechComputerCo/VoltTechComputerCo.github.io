@@ -121,3 +121,14 @@ button.filter-menu-option{font:inherit;cursor:pointer;}
 @media(max-width:28rem){
   .filter-menu-options,.smart-filter-grid{grid-template-columns:1fr;}
 }
+
+/* Brand identity inside Store filters */
+.filter-brand-lockup{display:inline-flex;align-items:center;gap:.55rem;min-width:0;}
+.filter-brand-logo{display:grid;place-items:center;flex:0 0 auto;width:1.65rem;height:1.65rem;padding:.27rem;border-radius:.36rem;background:rgba(255,255,255,.94);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08),0 0 10px color-mix(in srgb,var(--filter-accent) 18%,transparent);}
+.filter-brand-logo img{display:block;width:100%;height:100%;object-fit:contain;}
+.filter-brand-name{min-width:0;font-weight:700;line-height:1.15;}
+.filter-menu-option .filter-brand-name{font-size:.79rem;}
+.smart-filter-option .filter-brand-lockup{width:100%;}
+.smart-filter-option .filter-brand-logo{width:1.45rem;height:1.45rem;padding:.23rem;}
+.smart-filter-option small{margin-left:2rem;}
+.filter-menu-option.filter-menu-all .filter-brand-name{font-weight:800;}
