@@ -562,6 +562,233 @@ body:not([data-page^="static"]):not([data-page^="admin"]) .vt-image-glass {
   }
 }
 
+/* ---------- BUILDER / HIGH-VISIBILITY NEON INTERACTIONS ---------- */
+/* Loaded after builder.css on purpose: keep Builder controls readable against the dark glass UI. */
+body[data-page="builder"]{
+  --vt-builder-neon:#72fff0;
+  --vt-builder-neon-strong:#35ead7;
+  --vt-builder-neon-soft:rgba(53,234,215,.18);
+  --vt-builder-neon-glow:rgba(53,234,215,.34);
+}
+
+body[data-page="builder"] .builder-app :is(
+  .mode-card,
+  .choice-card,
+  .step,
+  .product,
+  .search-shell,
+  .toggle
+){
+  border-color:rgba(83,238,221,.42);
+  box-shadow:
+    0 0 0 1px rgba(83,238,221,.055),
+    0 0 12px rgba(53,234,215,.09),
+    inset 0 1px 0 rgba(255,255,255,.065);
+}
+
+body[data-page="builder"] .builder-app :is(
+  .mode-card,
+  .choice-card,
+  .step,
+  .product
+):hover,
+body[data-page="builder"] .builder-app :is(
+  .mode-card,
+  .choice-card,
+  .step,
+  .product
+):focus-visible{
+  border-color:rgba(114,255,240,.82);
+  box-shadow:
+    0 0 0 1px rgba(114,255,240,.17),
+    0 0 14px rgba(53,234,215,.24),
+    0 0 28px rgba(53,234,215,.13),
+    inset 0 1px 0 rgba(255,255,255,.095);
+}
+
+/* Guided-answer cards: visible even before selection; unmistakable once selected. */
+body[data-page="builder"] .builder-app .choice-card{
+  border-color:rgba(83,238,221,.50);
+  background:
+    linear-gradient(155deg,rgba(25,72,73,.34),rgba(2,15,17,.66)),
+    rgba(3,16,18,.52);
+  color:#d8efec;
+  box-shadow:
+    0 0 0 1px rgba(83,238,221,.07),
+    0 0 13px rgba(53,234,215,.11),
+    inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+body[data-page="builder"] .builder-app .choice-card strong{color:#f3fffd;}
+body[data-page="builder"] .builder-app .choice-card span{color:#96b9b4;}
+
+body[data-page="builder"] .builder-app .choice-card:is(.active,.is-selected,[aria-pressed="true"]){
+  border-color:var(--vt-builder-neon);
+  outline:1px solid rgba(114,255,240,.72);
+  outline-offset:-2px;
+  background:
+    radial-gradient(circle at 86% 12%,rgba(114,255,240,.24),transparent 38%),
+    linear-gradient(145deg,rgba(53,234,215,.28),rgba(5,31,33,.76)),
+    rgba(3,16,18,.64);
+  color:#fff;
+  box-shadow:
+    0 0 0 1px rgba(114,255,240,.34),
+    0 0 10px rgba(114,255,240,.48),
+    0 0 24px rgba(53,234,215,.34),
+    0 0 42px rgba(53,234,215,.18),
+    inset 3px 0 0 var(--vt-builder-neon),
+    inset 0 1px 0 rgba(255,255,255,.14);
+}
+
+body[data-page="builder"] .builder-app .choice-card:is(.active,.is-selected,[aria-pressed="true"]) span{
+  color:#d2f5f0;
+}
+
+body[data-page="builder"] .builder-app .choice-card:is(.active,.is-selected,[aria-pressed="true"])::before{
+  border-color:var(--vt-builder-neon);
+  background:rgba(53,234,215,.20);
+  color:#fff;
+  box-shadow:
+    0 0 8px rgba(114,255,240,.55),
+    0 0 18px rgba(53,234,215,.32);
+}
+
+/* Question numbers should read as active interface markers rather than dim decoration. */
+body[data-page="builder"] .builder-app .question-number{
+  border-color:rgba(114,255,240,.64);
+  color:var(--vt-builder-neon);
+  background:rgba(53,234,215,.055);
+  box-shadow:
+    0 0 10px rgba(53,234,215,.15),
+    inset 0 0 10px rgba(53,234,215,.04);
+}
+
+/* Route cards and Builder navigation. */
+body[data-page="builder"] .builder-app .mode-card{
+  border-color:rgba(83,238,221,.48);
+  background:
+    radial-gradient(circle at 100% 0,rgba(53,234,215,.15),transparent 45%),
+    linear-gradient(145deg,rgba(10,38,40,.90),rgba(3,17,19,.92));
+}
+body[data-page="builder"] .builder-app .mode-card.primary{
+  border-color:rgba(114,255,240,.88);
+  box-shadow:
+    0 0 0 1px rgba(114,255,240,.16),
+    0 0 22px rgba(53,234,215,.20),
+    inset 3px 0 0 var(--vt-builder-neon);
+}
+
+body[data-page="builder"] .builder-app .step{
+  border-color:rgba(83,238,221,.34);
+}
+body[data-page="builder"] .builder-app .step:is(.active,.complete){
+  border-color:rgba(114,255,240,.76);
+  background:
+    linear-gradient(145deg,rgba(53,234,215,.15),rgba(3,19,21,.70));
+  box-shadow:
+    0 0 0 1px rgba(114,255,240,.10),
+    0 0 16px rgba(53,234,215,.16),
+    inset 2px 0 0 var(--vt-builder-neon);
+}
+
+/* Part cards: selected hardware should pop out from the catalogue. */
+body[data-page="builder"] .builder-app .product{
+  border-color:rgba(83,238,221,.32);
+}
+body[data-page="builder"] .builder-app .product.selected{
+  border-color:var(--vt-builder-neon);
+  outline:1px solid rgba(114,255,240,.44);
+  outline-offset:-2px;
+  box-shadow:
+    0 0 0 1px rgba(114,255,240,.16),
+    0 0 18px rgba(53,234,215,.24),
+    0 0 34px rgba(53,234,215,.12),
+    inset 3px 0 0 var(--vt-builder-neon);
+}
+
+/* Buttons remain glass but get a brighter VoltTech edge and neon feedback. */
+body[data-page="builder"] .builder-app :is(
+  .btn,
+  .flow-btn,
+  .summary-action,
+  .select-btn,
+  .part-action,
+  .vt-account-btn,
+  .mobile-buildbar button
+){
+  border-color:rgba(83,238,221,.58);
+  background:
+    linear-gradient(180deg,rgba(53,234,215,.14),rgba(3,18,20,.40)),
+    rgba(3,16,18,.42);
+  color:#effffd;
+  box-shadow:
+    0 0 0 1px rgba(83,238,221,.07),
+    0 0 13px rgba(53,234,215,.12),
+    inset 0 1px 0 rgba(255,255,255,.075);
+}
+
+body[data-page="builder"] .builder-app :is(
+  .btn,
+  .flow-btn,
+  .summary-action,
+  .select-btn,
+  .part-action,
+  .vt-account-btn,
+  .mobile-buildbar button
+):hover,
+body[data-page="builder"] .builder-app :is(
+  .btn,
+  .flow-btn,
+  .summary-action,
+  .select-btn,
+  .part-action,
+  .vt-account-btn,
+  .mobile-buildbar button
+):focus-visible{
+  border-color:var(--vt-builder-neon);
+  color:#fff;
+  box-shadow:
+    0 0 0 1px rgba(114,255,240,.20),
+    0 0 12px rgba(114,255,240,.34),
+    0 0 25px rgba(53,234,215,.20),
+    inset 0 1px 0 rgba(255,255,255,.11);
+}
+
+body[data-page="builder"] .builder-app .flow-btn.primary-action,
+body[data-page="builder"] .builder-app .hero-primary{
+  border-color:var(--vt-builder-neon);
+  background:linear-gradient(110deg,#26e7d2,#72fff0);
+  color:#021311;
+  box-shadow:
+    0 0 12px rgba(114,255,240,.34),
+    0 0 28px rgba(53,234,215,.20),
+    inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+body[data-page="builder"] .builder-app :is(.search-shell,.toggle){
+  background:
+    linear-gradient(180deg,rgba(16,50,52,.38),rgba(2,14,16,.62)),
+    rgba(3,16,18,.52);
+}
+
+@media(max-width:44rem){
+  body[data-page="builder"] .builder-app .choice-card{
+    border-color:rgba(83,238,221,.56);
+    box-shadow:
+      0 0 0 1px rgba(83,238,221,.075),
+      0 0 11px rgba(53,234,215,.11),
+      inset 0 1px 0 rgba(255,255,255,.075);
+  }
+  body[data-page="builder"] .builder-app .choice-card:is(.active,.is-selected,[aria-pressed="true"]){
+    border-color:#8cfff4;
+    box-shadow:
+      0 0 0 1px rgba(140,255,244,.38),
+      0 0 12px rgba(114,255,240,.52),
+      0 0 28px rgba(53,234,215,.38),
+      inset 3px 0 0 #8cfff4;
+  }
+}
+
 /* STEP 11.2M SCHEMATIC CIRCUIT BACKGROUND START */
 /* Pure CSS schematic field: no images, animation, filters, blur or fixed layers. */
 body:not([data-page^="static"]):not([data-page^="admin"]){
