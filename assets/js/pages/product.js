@@ -6,9 +6,9 @@ async function init() {
   try {
     const access = await openCatalogue(); if (!access.open) { showGate(access); return; }
     const {VT,preview} = access, slug = new URLSearchParams(location.search).get('slug');
-    if (!slug) { title.textContent = 'Find your next component.'; document.querySelector('[data-gate-title]').textContent = 'Choose a component from the Store.'; document.querySelector('[data-gate-copy]').textContent = 'Open a product to see its specifications, compatibility and availability.'; return; }
+    if (!slug) { title.textContent = 'Find your next component.'; document.querySelector('[data-gate-title]').textContent = 'Choose a component from the Store.'; document.querySelector('[data-gate-copy]').textContent = 'Open a product to see its specifications, compatibility and availability.'; document.getElementById('store-gate').hidden = false; return; }
     const p = await withTimeout(VT.getProductBySlug(slug));
-    if (!publicProducts(p ? [p] : [],preview).length) { title.textContent='Component unavailable.'; document.querySelector('[data-gate-title]').textContent='This component is not currently listed.'; document.querySelector('[data-gate-copy]').textContent='Browse the Store or tell VoltTech what you are looking for.'; return; }
+    if (!publicProducts(p ? [p] : [],preview).length) { title.textContent='Component unavailable.'; document.querySelector('[data-gate-title]').textContent='This component is not currently listed.'; document.querySelector('[data-gate-copy]').textContent='Browse the Store or tell VoltTech what you are looking for.'; document.getElementById('store-gate').hidden = false; return; }
     let extras = {documents:[],relations:[]}, extrasFailed = false;
     try { extras = await withTimeout(VT.getProductExtras(p.id)); } catch { extrasFailed = true; }
     const state = commerceState(VT,p,preview), identity = VT.productIdentity(p), official = safeLink(p.media?.officialUrl);

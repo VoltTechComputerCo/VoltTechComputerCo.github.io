@@ -58,7 +58,6 @@ async function openBuilder(access) {
   }
 }
 
-showGate();
 try {
   const access = await builderAccess();
   if (access.open) await openBuilder(access);
