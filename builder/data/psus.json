@@ -581,8 +581,8 @@
       "type": "psu",
       "brand": "be quiet!",
       "manufacturer": "be quiet!",
-      "name": "be quiet! Dark Power 13 1300W",
-      "model": "Dark Power 13 1300W",
+      "name": "be quiet! Dark Power Pro 13 1300W",
+      "model": "Dark Power Pro 13 1300W",
       "identifiers": {
         "mpn": null,
         "ean": null,
@@ -614,7 +614,7 @@
       "metadata": {
         "dataSource": "temporary-test-data",
         "created": "2026-09-11",
-        "updated": "2026-09-11"
+        "updated": "2026-10-03"
       }
     },
     {
