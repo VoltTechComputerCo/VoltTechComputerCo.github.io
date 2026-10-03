@@ -6,7 +6,15 @@
     <description>Breaking tech and gaming stories, PC hardware, performance, security and enthusiast culture from STATIC by VoltTech Computer Co.</description>
     <language>en</language>
     <atom:link href="https://volttechcomputerco.co.za/static-feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Fri, 02 Oct 2026 09:05:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 09:50:00 +0200</lastBuildDate>
+    <item>
+      <title>The Witcher 3 Remastered Is Gorgeous — And PC Already Needed a Rescue Patch</title>
+      <link>https://volttechcomputerco.co.za/static-witcher-3-remastered-hotfix-pc</link>
+      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-witcher-3-remastered-hotfix-pc</guid>
+      <pubDate>Sat, 03 Oct 2026 09:50:00 +0200</pubDate>
+      <description>The Witcher 3 Remastered is a huge free upgrade, but PC players hit save, HairWorks and visual issues. Hotfix 5.00c is already cleaning up the mess.</description>
+      <media:content url="https://public.cdn.cdpr.app/common/news/d26db09389435602252a802257a67748_q90_1920x1080.png" medium="image" />
+    </item>
     <item>
       <title>Your Regular PS5 Just Got an AI Graphics Upgrade</title>
       <link>https://volttechcomputerco.co.za/static-ps5-qssr-ai-upscaling</link>
@@ -158,14 +166,6 @@
       <pubDate>Sun, 06 Sep 2026 09:00:00 +0200</pubDate>
       <description>Linus Tech Tips built its fastest off-the-shelf PC of 2026 around AMD's Ryzen 9 9950X3D2 and MSI's RTX 5090 Lightning Z. STATIC breaks down the hardware, the excess and what the build actually tells us about flagship PCs.</description>
       <media:content url="https://i.ytimg.com/vi/X8sgBpmdCT8/maxresdefault.jpg" medium="image" />
-    </item>
-    <item>
-      <title>NoPixel V Might Be Rockstar’s Most Important GTA Experiment Before GTA VI</title>
-      <link>https://volttechcomputerco.co.za/static-nopixel-v-rockstar-gta-rp</link>
-      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-nopixel-v-rockstar-gta-rp</guid>
-      <pubDate>Sun, 06 Sep 2026 00:00:00 +0200</pubDate>
-      <description>Rockstar is officially supporting NoPixel V as GTA roleplay moves closer to its ecosystem. Here’s what it means — and what it does not confirm about GTA VI.</description>
-      <media:content url="https://i.ytimg.com/vi/fVCD9oKjtZs/maxresdefault.jpg" medium="image" />
     </item>
   </channel>
 </rss>
