@@ -1,7 +1,7 @@
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js';
-import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=2.0.0';
+import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=2.1.0';
 import { connectCatalogueCart } from '../services/catalogue-cart.js';
-import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue, installCategoryFilterMenus } from '../components/store-filter-menu.js?v=1.0.0';
+import { FILTER_KEYS, accentFor, brandMark, facetDefinitions, facetOptions, formatFacetValue, installCategoryFilterMenus } from '../components/store-filter-menu.js?v=1.1.0';
 
 const query=new URLSearchParams(location.search);
 const categories=[...document.querySelectorAll('[data-category-link]')];
@@ -91,8 +91,10 @@ function renderSmartFilters(products){
       `<button class="smart-filter-option ${!selectedValue?'is-selected':''}" type="button" data-filter-key="${def.key}" data-filter-value="" style="--filter-accent:#59f5e5">All<small>${options.reduce((n,item)=>n+item.count,0)} products</small></button>`,
       ...options.map(option=>{
         const selected=String(option.value)===String(selectedValue);
-        const accent=accentFor(def.key==='gpuVendor'||def.key==='platform'||def.key==='brand'?option.value:'');
-        return `<button class="smart-filter-option ${selected?'is-selected':''}" type="button" data-filter-key="${def.key}" data-filter-value="${String(option.value).replace(/"/g,'&quot;')}" style="--filter-accent:${accent}">${formatFacetValue(def.key,option.value)}<small>${option.count} product${option.count===1?'':'s'}</small></button>`;
+        const branded=def.key==='gpuVendor'||def.key==='platform'||def.key==='brand';
+        const accent=accentFor(branded?option.value:'');
+        const label=branded ? brandMark(option.value,formatFacetValue(def.key,option.value)) : `<span class="filter-brand-name">${formatFacetValue(def.key,option.value)}</span>`;
+        return `<button class="smart-filter-option ${selected?'is-selected':''}" type="button" data-filter-key="${def.key}" data-filter-value="${String(option.value).replace(/"/g,'&quot;')}" style="--filter-accent:${accent}">${label}<small>${option.count} product${option.count===1?'':'s'}</small></button>`;
       })
     ].join('');
     return `<details class="smart-filter" ${selectedValue?'data-has-value="true"':''}><summary><span><b>${def.label}</b><small>${selectedLabel}</small></span></summary><div class="smart-filter-options">${buttons}</div></details>`;
