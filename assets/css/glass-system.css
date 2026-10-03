@@ -573,7 +573,6 @@ body[data-page="builder"]{
 
 body[data-page="builder"] .builder-app :is(
   .mode-card,
-  .choice-card,
   .step,
   .product,
   .search-shell,
@@ -588,13 +587,11 @@ body[data-page="builder"] .builder-app :is(
 
 body[data-page="builder"] .builder-app :is(
   .mode-card,
-  .choice-card,
   .step,
   .product
 ):hover,
 body[data-page="builder"] .builder-app :is(
   .mode-card,
-  .choice-card,
   .step,
   .product
 ):focus-visible{
@@ -608,36 +605,49 @@ body[data-page="builder"] .builder-app :is(
 
 /* Guided-answer cards: visible even before selection; unmistakable once selected. */
 body[data-page="builder"] .builder-app .choice-card{
-  border-color:rgba(83,238,221,.50);
+  border-color:rgba(83,238,221,.42);
   background:
-    linear-gradient(155deg,rgba(25,72,73,.34),rgba(2,15,17,.66)),
-    rgba(3,16,18,.52);
+    linear-gradient(155deg,rgba(25,72,73,.28),rgba(2,15,17,.68)),
+    rgba(3,16,18,.54);
   color:#d8efec;
-  box-shadow:
-    0 0 0 1px rgba(83,238,221,.07),
-    0 0 13px rgba(53,234,215,.11),
-    inset 0 1px 0 rgba(255,255,255,.07);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.065);
 }
 
 body[data-page="builder"] .builder-app .choice-card strong{color:#f3fffd;}
 body[data-page="builder"] .builder-app .choice-card span{color:#96b9b4;}
 
-body[data-page="builder"] .builder-app .choice-card:is(.active,.is-selected,[aria-pressed="true"]){
-  border-color:var(--vt-builder-neon);
-  outline:1px solid rgba(114,255,240,.72);
+body[data-page="builder"] .builder-app .choice-card:not(.active):not(.is-selected):not([aria-pressed="true"]):hover,
+body[data-page="builder"] .builder-app .choice-card:not(.active):not(.is-selected):not([aria-pressed="true"]):focus,
+body[data-page="builder"] .builder-app .choice-card:not(.active):not(.is-selected):not([aria-pressed="true"]):focus-visible{
+  border-color:rgba(114,255,240,.58);
+  outline:none;
+  transform:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.065);
+}
+body[data-page="builder"] .builder-app .choice-card:not(.active):not(.is-selected):not([aria-pressed="true"])::after{
+  opacity:0;
+}
+
+body[data-page="builder"] .builder-app .choice-card:is(.active,.is-selected,[aria-pressed="true"]),
+body[data-page="builder"] .builder-app .choice-card:is(.active,.is-selected,[aria-pressed="true"]):hover,
+body[data-page="builder"] .builder-app .choice-card:is(.active,.is-selected,[aria-pressed="true"]):focus,
+body[data-page="builder"] .builder-app .choice-card:is(.active,.is-selected,[aria-pressed="true"]):focus-visible{
+  transform:none;
+  border-color:#8cfff4;
+  outline:1px solid rgba(140,255,244,.86);
   outline-offset:-2px;
   background:
-    radial-gradient(circle at 86% 12%,rgba(114,255,240,.24),transparent 38%),
-    linear-gradient(145deg,rgba(53,234,215,.28),rgba(5,31,33,.76)),
-    rgba(3,16,18,.64);
+    radial-gradient(circle at 86% 12%,rgba(114,255,240,.28),transparent 38%),
+    linear-gradient(145deg,rgba(53,234,215,.31),rgba(5,31,33,.78)),
+    rgba(3,16,18,.66);
   color:#fff;
   box-shadow:
-    0 0 0 1px rgba(114,255,240,.34),
-    0 0 10px rgba(114,255,240,.48),
-    0 0 24px rgba(53,234,215,.34),
-    0 0 42px rgba(53,234,215,.18),
-    inset 3px 0 0 var(--vt-builder-neon),
-    inset 0 1px 0 rgba(255,255,255,.14);
+    0 0 0 1px rgba(140,255,244,.40),
+    0 0 12px rgba(114,255,240,.54),
+    0 0 28px rgba(53,234,215,.40),
+    0 0 48px rgba(53,234,215,.22),
+    inset 3px 0 0 #8cfff4,
+    inset 0 1px 0 rgba(255,255,255,.15);
 }
 
 body[data-page="builder"] .builder-app .choice-card:is(.active,.is-selected,[aria-pressed="true"]) span{
@@ -769,24 +779,6 @@ body[data-page="builder"] .builder-app :is(.search-shell,.toggle){
   background:
     linear-gradient(180deg,rgba(16,50,52,.38),rgba(2,14,16,.62)),
     rgba(3,16,18,.52);
-}
-
-@media(max-width:44rem){
-  body[data-page="builder"] .builder-app .choice-card{
-    border-color:rgba(83,238,221,.56);
-    box-shadow:
-      0 0 0 1px rgba(83,238,221,.075),
-      0 0 11px rgba(53,234,215,.11),
-      inset 0 1px 0 rgba(255,255,255,.075);
-  }
-  body[data-page="builder"] .builder-app .choice-card:is(.active,.is-selected,[aria-pressed="true"]){
-    border-color:#8cfff4;
-    box-shadow:
-      0 0 0 1px rgba(140,255,244,.38),
-      0 0 12px rgba(114,255,240,.52),
-      0 0 28px rgba(53,234,215,.38),
-      inset 3px 0 0 #8cfff4;
-  }
 }
 
 /* STEP 11.2M SCHEMATIC CIRCUIT BACKGROUND START */
