@@ -423,7 +423,7 @@
     },
     "vt-mem-corsair-vengeance-32-ddr5-6000": {
       "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-corsair-vengeance-32-ddr5-6000",
-      "sourcePage": "https://www.corsair.com/us/en/c/memory?filter-memory-series=vengeance-ddr5",
+      "sourcePage": "https://www.mindfactory.de/product_info.php/32GB-Corsair-Vengeance-schwarz-DDR5-6000-DIMM-CL36-Dual-Kit_1456999.html",
       "sourceType": "retailer-exact-product",
       "matchLevel": "exact-product",
       "directImage": "https://image1280.macovi.de/images/product_images/1280/1456999_0__9061621.jpg",
@@ -445,7 +445,7 @@
     },
     "vt-mem-kingston-fury-beast-32-ddr5-6000": {
       "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-kingston-fury-beast-32-ddr5-6000",
-      "sourcePage": null,
+      "sourcePage": "https://shop.kingston.com/products/beast-ddr5-desktop-memory",
       "sourceType": "manufacturer-cdn",
       "matchLevel": "product-family-hardware",
       "directImage": "https://cdn.shopify.com/s/files/1/0518/5073/9904/files/ktc-fury-memory-beast-ddr5-etail-kf-1-1350x550_48ac8cd5-4076-46ca-bf8f-6745ffccde6e.jpg?v=1680114651",
@@ -467,7 +467,7 @@
     },
     "vt-mem-corsair-dominator-32-ddr5-6400": {
       "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-corsair-dominator-32-ddr5-6400",
-      "sourcePage": "https://www.corsair.com/us/en/c/memory/dominator-titanium",
+      "sourcePage": "https://www.newegg.com/corsair-dominator-titanium-32gb-ddr5-6400-cas-latency-cl32-desktop-memory-black/p/N82E16820982090?Item=N82E16820982090",
       "sourceType": "retailer-exact-product",
       "matchLevel": "exact-product",
       "directImage": "https://c1.neweggimages.com/productimage/nb640/20-982-097-02.png",
@@ -489,7 +489,7 @@
     },
     "vt-mem-kingston-fury-beast-48-ddr5-6000": {
       "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-kingston-fury-beast-48-ddr5-6000",
-      "sourcePage": null,
+      "sourcePage": "https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr5-memory?kit=kit+of+2&speed=6000mt%2Fs",
       "sourceType": "retailer-product-family",
       "matchLevel": "product-family-hardware",
       "directImage": "https://alo.md/media/media/kingston-fury-beast-expo-ddr5-6000mhz.webp",
@@ -533,7 +533,7 @@
     },
     "vt-mem-corsair-vengeance-96-ddr5-6000": {
       "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-corsair-vengeance-96-ddr5-6000",
-      "sourcePage": "https://www.corsair.com/us/en/c/memory?filter-memory-series=vengeance-ddr5",
+      "sourcePage": "https://brain.com.ua/Modul_pamyati_dlya_kompyutera_DDR5_96GB_2x48GB_6000_MHz_Vengeance_Black_Corsair_CMK96GX5M2B6000C30-p1078253.html",
       "sourceType": "retailer-exact-product",
       "matchLevel": "exact-product",
       "directImage": "https://api.e-server.com.ua/storage/232450/rs/U0886797_big_1703135555___rs_1200_1200.jpg",
@@ -544,7 +544,7 @@
     },
     "vt-mem-gskill-trident-z5-128-ddr5-6000": {
       "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-gskill-trident-z5-128-ddr5-6000",
-      "sourcePage": "https://www.gskill.com/products/1/165/374/Trident-Z5-RGB-DDR5-Intel-XMP",
+      "sourcePage": "https://www.ldlc.com/en/product/PB00707526.html",
       "sourceType": "retailer-product-family",
       "matchLevel": "product-family-hardware",
       "directImage": "https://media.ldlc.com/r1600/ld/products/00/05/90/30/LD0005903015_1_0005908760_0005909666_0005909670.jpg",
