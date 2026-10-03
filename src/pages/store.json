@@ -5,13 +5,14 @@
   "robots": "index, follow",
   "styles": [
     "assets/css/notifications.css",
-    "assets/css/pages/commerce.css"
+    "assets/css/pages/commerce.css",
+    "assets/css/store-filters.css?v=1.0.0"
   ],
   "classic_scripts": [
     "supabase-config.js",
     "conversion-context.js"
   ],
   "scripts": [
-    "assets/js/pages/store.js"
+    "assets/js/pages/store.js?v=2.0.0"
   ]
 }
