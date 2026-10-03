@@ -294,6 +294,8 @@ export function installCategoryFilterMenus(root=document){
     ...root.querySelectorAll('.store-category[data-category-link]')
   ];
   cards.forEach(card=>{
+    if(card.dataset.filterMenuBound==='true') return;
+    card.dataset.filterMenuBound='true';
     const category=card.dataset.category || card.dataset.categoryLink;
     card.setAttribute('aria-haspopup','true');
     card.setAttribute('aria-expanded','false');

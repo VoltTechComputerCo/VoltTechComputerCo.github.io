@@ -7,10 +7,13 @@ async function updateAvailability() {
   const builder = document.querySelector('#builder-availability');
   if (store) store.textContent = settings?.catalogue_enabled ? 'Browse the catalogue. Product availability and pricing are shown in the Store.' : settings ? 'Store coming soon. Ask us about your next upgrade using the component cards above.' : 'Catalogue status unavailable. Ask us about your next upgrade using the component cards above.';
   if (builder) builder.textContent = settings?.builder_enabled ? 'Plan a configuration. Component supply, pricing and compatibility need confirmation.' : settings ? 'Interactive Builder coming soon. Talk to us about your goals and budget.' : 'Builder status unavailable. Talk to us about your goals and budget.';
-  if (settings?.catalogue_enabled) document.querySelectorAll('[data-category]').forEach(link => {
-    link.href = `store.html?category=${encodeURIComponent(link.dataset.category)}`;
-    delete link.dataset.vtConversion;
-  });
+  if (settings?.catalogue_enabled) {
+    document.querySelectorAll('[data-category]').forEach(link => {
+      link.href = `store.html?category=${encodeURIComponent(link.dataset.category)}`;
+      delete link.dataset.vtConversion;
+    });
+    installCategoryFilterMenus(document);
+  }
   if (settings?.builder_enabled) document.querySelectorAll('[data-builder-link]').forEach(link => {
     link.href = 'builder/index.html';
     link.textContent = 'START BUILDING →';
@@ -42,7 +45,6 @@ function start() {
   connectProductionServices();
   connectCart();
   connectAccount(window.VOLTTECH_SUPABASE);
-  installCategoryFilterMenus(document);
   updateAvailability();
   updateCreators();
 }

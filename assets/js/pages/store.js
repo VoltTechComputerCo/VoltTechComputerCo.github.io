@@ -166,6 +166,7 @@ async function init(){
 
     bindFilterUI(products,render);
     render();
+    if(location.hash==='#catalogue') requestAnimationFrame(()=>document.getElementById('catalogue')?.scrollIntoView({block:'start'}));
     connectCatalogueCart(VT,products,preview);
     VT.analytics('view_item_list',{item_list_name:'VoltTech PC Parts',items:products.slice(0,20).map(p=>({item_id:p.id,item_name:p.name}))});
   }catch(error){
