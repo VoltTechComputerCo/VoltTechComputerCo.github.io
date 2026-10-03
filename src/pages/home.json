@@ -6,7 +6,7 @@
   "styles": [
     "assets/css/notifications.css",
     "assets/css/pages/home.css",
-    "assets/css/store-filters.css?v=1.0.0"
+    "assets/css/store-filters.css?v=1.1.0"
   ],
   "classic_scripts": [
     "supabase-config.js",
@@ -14,6 +14,6 @@
     "conversion-context.js"
   ],
   "scripts": [
-    "assets/js/pages/home.js?v=2.0.0"
+    "assets/js/pages/home.js?v=2.1.0"
   ]
 }
