@@ -18,8 +18,9 @@ def render(source):
         raise ValueError(f'Unsafe output path: {output}')
     prefix = '../' * (len(output.parts) - 1)
     glass_style = 'assets/css/glass-system.css'
-    if config.get('glass_version'):
-        glass_style += f"?v={config['glass_version']}"
+    glass_version = config.get('glass_version', '20261003-site-neon1')
+    if glass_version:
+        glass_style += f"?v={glass_version}"
     styles = [f'assets/css/{name}.css' for name in CSS] + config.get('styles', []) + [glass_style]
     values = {
         'PAGE': html.escape(source.stem, quote=True),
