@@ -127,9 +127,8 @@ function mediaMarkup(product,variant="catalogue"){
   const direct=safeUrl(media.directImage||media.direct_image);
   const src=primary||direct;
   const fallback=direct&&direct!==src?direct:"";
-  const label=CATEGORY_LABELS[product?.type]||"PC Part";
   const eager=variant==="guided-hero";
-  return `<div class="product-media ${variant}${src?"":" no-media"}">${src?`<img src="${esc(src)}" data-fallback="${esc(fallback)}" alt="${esc(product.name)} product image" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fallback&&!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback;return;}this.hidden=true;this.parentElement.classList.add('media-error')">`:""}<div class="media-fallback"><b>${esc(label)}</b><small>Product image temporarily unavailable</small></div></div>`;
+  return `<div class="product-media ${variant}${src?"":" no-media"}">${src?`<img src="${esc(src)}" data-fallback="${esc(fallback)}" alt="${esc(product.name)} product image" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fallback&&!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback;return;}this.hidden=true;this.parentElement.classList.add('media-error')">`:""}<div class="media-fallback"><small>Product image temporarily unavailable</small></div></div>`;
 }
 function safeUrl(value){try{const u=new URL(value,location.href);return ["http:","https:"].includes(u.protocol)?u.href:""}catch{return""}}
 
