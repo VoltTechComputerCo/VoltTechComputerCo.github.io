@@ -69,10 +69,22 @@ function setupGuidedControls(){
   e.guidedForm.querySelectorAll("[data-choice-group]").forEach(group=>{
     const name=group.dataset.choiceGroup;
     const input=e.guidedForm.querySelector(`input[name="${name}"]`);
-    group.querySelectorAll(".choice-card").forEach(btn=>btn.addEventListener("click",()=>{
-      group.querySelectorAll(".choice-card").forEach(x=>x.classList.toggle("active",x===btn));
-      if(input)input.value=btn.dataset.value||"";
-    }));
+    const buttons=[...group.querySelectorAll(".choice-card")];
+    const selectChoice=selectedButton=>{
+      buttons.forEach(button=>{
+        const selected=button===selectedButton;
+        button.classList.toggle("active",selected);
+        button.classList.toggle("is-selected",selected);
+        button.setAttribute("aria-pressed",selected?"true":"false");
+      });
+      if(input)input.value=selectedButton.dataset.value||"";
+    };
+    buttons.forEach(button=>{
+      const selected=button.classList.contains("active");
+      button.classList.toggle("is-selected",selected);
+      button.setAttribute("aria-pressed",selected?"true":"false");
+      button.addEventListener("click",()=>selectChoice(button));
+    });
   });
   const slider=document.getElementById("budget-slider"),output=document.getElementById("budget-output");
   const sync=()=>{
