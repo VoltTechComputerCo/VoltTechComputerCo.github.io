@@ -5,36 +5,36 @@ export const FILTER_KEYS = [
 ];
 
 const BRAND_UI = {
-  'NVIDIA':{color:'#76B900',icon:'nvidia'},
-  'AMD':{color:'#ED1C24',icon:'amd'},
-  'Intel':{color:'#0071C5',icon:'intel'},
-  'ASUS':{color:'#F2F5F7',icon:'asus'},
-  'MSI':{color:'#FF0000',icon:'msi'},
-  'Gigabyte':{color:'#008CD6',icon:'gigabyte'},
-  'Sapphire':{color:'#E31B23',icon:'sapphire'},
-  'ASRock':{color:'#E7EDF3',icon:'asrock'},
-  'Corsair':{color:'#FFD400',icon:'corsair'},
-  'G.Skill':{color:'#E31B23',icon:'gskill'},
-  'Kingston':{color:'#D71920',icon:'kingstontechnology'},
-  'TeamGroup':{color:'#00AEEF',icon:'teamgroup'},
-  'Samsung':{color:'#1428A0',icon:'samsung'},
-  'Crucial':{color:'#0092D0',icon:'crucial'},
-  'Western Digital':{color:'#0067B1',icon:'westerndigital'},
-  'Seagate':{color:'#6EBE44',icon:'seagate'},
-  'Lexar':{color:'#D51F2B',icon:'lexar'},
-  'ARCTIC':{color:'#00AEEF',icon:'arctic'},
-  'be quiet!':{color:'#F28C28',icon:'bequiet'},
-  'Cooler Master':{color:'#705CF6',icon:'coolermaster'},
-  'DeepCool':{color:'#00B5E2',icon:'deepcool'},
-  'Noctua':{color:'#C8956C',icon:'noctua'},
-  'NZXT':{color:'#7B61FF',icon:'nzxt'},
-  'Thermalright':{color:'#F97316',icon:'thermalright'},
-  'Fractal Design':{color:'#E4E7EA',icon:'fractaldesign'},
-  'Lian Li':{color:'#3BAFEA',icon:'lianli'},
-  'Montech':{color:'#00C9A7',icon:'montech'},
-  'Phanteks':{color:'#8EA3B0',icon:'phanteks'},
-  'Seasonic':{color:'#F28C28',icon:'seasonic'},
-  'Super Flower':{color:'#FF4FA3',icon:'superflower'}
+  'NVIDIA':{color:'#76B900',domain:'nvidia.com',icon:'nvidia'},
+  'AMD':{color:'#ED1C24',domain:'amd.com',icon:'amd'},
+  'Intel':{color:'#0071C5',domain:'intel.com',icon:'intel'},
+  'ASUS':{color:'#F2F5F7',domain:'asus.com',icon:'asus'},
+  'MSI':{color:'#FF0000',domain:'msi.com',icon:'msi'},
+  'Gigabyte':{color:'#008CD6',domain:'gigabyte.com'},
+  'Sapphire':{color:'#E31B23',domain:'sapphiretech.com'},
+  'ASRock':{color:'#E7EDF3',domain:'asrock.com'},
+  'Corsair':{color:'#FFD400',domain:'corsair.com',icon:'corsair'},
+  'G.Skill':{color:'#E31B23',domain:'gskill.com'},
+  'Kingston':{color:'#D71920',domain:'kingston.com',icon:'kingstontechnology'},
+  'TeamGroup':{color:'#00AEEF',domain:'teamgroupinc.com'},
+  'Samsung':{color:'#1428A0',domain:'samsung.com',icon:'samsung'},
+  'Crucial':{color:'#0092D0',domain:'crucial.com'},
+  'Western Digital':{color:'#0067B1',domain:'westerndigital.com'},
+  'Seagate':{color:'#6EBE49',domain:'seagate.com',icon:'seagate'},
+  'Lexar':{color:'#D51F2B',domain:'lexar.com'},
+  'ARCTIC':{color:'#00AEEF',domain:'arctic.de'},
+  'be quiet!':{color:'#F28C28',domain:'bequiet.com'},
+  'Cooler Master':{color:'#705CF6',domain:'coolermaster.com',icon:'coolermaster'},
+  'DeepCool':{color:'#068584',domain:'deepcool.com',icon:'deepcool'},
+  'Noctua':{color:'#C8956C',domain:'noctua.at'},
+  'NZXT':{color:'#7B61FF',domain:'nzxt.com',icon:'nzxt'},
+  'Thermalright':{color:'#F97316',domain:'thermalright.com'},
+  'Fractal Design':{color:'#E4E7EA',domain:'fractal-design.com'},
+  'Lian Li':{color:'#3BAFEA',domain:'lian-li.com'},
+  'Montech':{color:'#00C9A7',domain:'montechpc.com'},
+  'Phanteks':{color:'#8EA3B0',domain:'phanteks.com'},
+  'Seasonic':{color:'#F28C28',domain:'seasonic.com'},
+  'Super Flower':{color:'#FF4FA3',domain:'super-flower.com.tw'}
 };
 
 const CATEGORY_LABELS = {
@@ -140,8 +140,9 @@ export function accentFor(value){
 export function brandMark(value,label=value){
   const ui=BRAND_UI[value];
   if(!ui) return `<span class="filter-brand-lockup"><span class="filter-brand-name">${label}</span></span>`;
-  const logo=`https://cdn.simpleicons.org/${encodeURIComponent(ui.icon)}`;
-  return `<span class="filter-brand-lockup"><span class="filter-brand-logo"><img src="${logo}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentElement.hidden=true"></span><span class="filter-brand-name">${label}</span></span>`;
+  const fallback=`https://www.google.com/s2/favicons?domain=${encodeURIComponent(ui.domain)}&sz=128`;
+  const logo=ui.icon ? `https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/${encodeURIComponent(ui.icon)}.svg` : fallback;
+  return `<span class="filter-brand-lockup"><span class="filter-brand-logo"><img src="${logo}" data-fallback="${fallback}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fallback&&this.src!==this.dataset.fallback){this.src=this.dataset.fallback;return;}this.parentElement.hidden=true"></span><span class="filter-brand-name">${label}</span></span>`;
 }
 
 export function gpuVendor(product){
