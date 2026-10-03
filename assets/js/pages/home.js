@@ -1,4 +1,5 @@
 import { readLaunchSettings, freshLiveCreators, connectCart, connectAccount, connectProductionServices } from '../services/home-integrations.js';
+import { installCategoryFilterMenus } from '../components/store-filter-menu.js?v=1.0.0';
 
 async function updateAvailability() {
   const settings = await readLaunchSettings(window.VOLTTECH_SUPABASE);
@@ -41,6 +42,7 @@ function start() {
   connectProductionServices();
   connectCart();
   connectAccount(window.VOLTTECH_SUPABASE);
+  installCategoryFilterMenus(document);
   updateAvailability();
   updateCreators();
 }
