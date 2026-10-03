@@ -16,7 +16,11 @@ function setChoiceValue(form,name,value){
   if(input)input.value=value;
   const group=q(`[data-choice-group="${name}"]`,form);
   qa('.choice-card',group||document).forEach(button=>{
-    if(group)button.classList.toggle('active',button.dataset.value===String(value));
+    if(!group)return;
+    const selected=button.dataset.value===String(value);
+    button.classList.toggle('active',selected);
+    button.classList.toggle('is-selected',selected);
+    button.setAttribute('aria-pressed',selected?'true':'false');
   });
 }
 
