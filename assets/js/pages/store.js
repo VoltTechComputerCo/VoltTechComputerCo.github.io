@@ -1,7 +1,7 @@
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js';
-import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=2.1.0';
+import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=2.2.0';
 import { connectCatalogueCart } from '../services/catalogue-cart.js';
-import { FILTER_KEYS, accentFor, brandMark, facetDefinitions, facetOptions, formatFacetValue, installCategoryFilterMenus } from '../components/store-filter-menu.js?v=1.1.0';
+import { FILTER_KEYS, accentFor, brandMark, facetDefinitions, facetOptions, formatFacetValue, installCategoryFilterMenus } from '../components/store-filter-menu.js?v=1.2.0';
 
 const query=new URLSearchParams(location.search);
 const categories=[...document.querySelectorAll('[data-category-link]')];
@@ -127,6 +127,19 @@ function bindFilterUI(products,render){
 selectCategory();
 installCategoryFilterMenus(document);
 
+function applyQuickFilters(params){
+  if(params.category) state.category=params.category;
+  const next={...state.filters};
+  FILTER_KEYS.forEach(key=>{
+    if(Object.prototype.hasOwnProperty.call(params,key)){
+      const value=params[key];
+      if(value) next[key]=value; else delete next[key];
+    }
+  });
+  state.filters=next;
+  selectCategory();
+}
+
 async function init(){
   try{
     const access=await openCatalogue();
@@ -164,6 +177,31 @@ async function init(){
     });
     document.querySelector('[data-category-link="all"]')?.addEventListener('click',event=>{
       event.preventDefault(); state.category='all'; state.filters={}; selectCategory(); render(); document.getElementById('catalogue').scrollIntoView({block:'start'});
+    });
+
+    document.addEventListener('volttech:quick-filter-stage',event=>{
+      const detail=event.detail||{};
+      if(detail.category && detail.key && detail.value){
+        applyQuickFilters({category:detail.category,[detail.key]:detail.value});
+        pruneFilters(products);
+        render();
+      }
+    });
+
+    document.addEventListener('click',event=>{
+      const link=event.target.closest('.category-filter-menu a[data-quick-category]');
+      if(!link) return;
+      event.preventDefault();
+      const params={category:link.dataset.quickCategory};
+      FILTER_KEYS.forEach(key=>{
+        const dataKey='quick'+key[0].toUpperCase()+key.slice(1);
+        if(link.dataset[dataKey]!==undefined) params[key]=link.dataset[dataKey];
+      });
+      state.filters={};
+      applyQuickFilters(params);
+      pruneFilters(products);
+      render();
+      document.getElementById('catalogue')?.scrollIntoView({block:'start'});
     });
 
     bindFilterUI(products,render);
