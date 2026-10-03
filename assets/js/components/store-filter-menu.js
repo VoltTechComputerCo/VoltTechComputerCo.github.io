@@ -4,37 +4,37 @@ export const FILTER_KEYS = [
   'supportedMotherboardSizes','coolerType','radiatorSizeMm','supportedSockets','sizeMm','fanCount','argb'
 ];
 
-const BRAND_ACCENTS = {
-  'NVIDIA':'#76ff45',
-  'AMD':'#ff4d38',
-  'Intel':'#35b9ff',
-  'ASUS':'#ff5573',
-  'MSI':'#ff3b4f',
-  'Gigabyte':'#39d5ff',
-  'Sapphire':'#ff6a6a',
-  'ASRock':'#b997ff',
-  'Corsair':'#ffe06a',
-  'G.Skill':'#ff667d',
-  'Kingston':'#ff4655',
-  'TeamGroup':'#8ee7ff',
-  'Samsung':'#5f83ff',
-  'Crucial':'#5fe3ff',
-  'Western Digital':'#4faeff',
-  'Seagate':'#7ce1c4',
-  'Lexar':'#8b7dff',
-  'ARCTIC':'#78dfff',
-  'be quiet!':'#d7dbe0',
-  'Cooler Master':'#a58cff',
-  'DeepCool':'#58ddff',
-  'Noctua':'#c8956c',
-  'NZXT':'#c18cff',
-  'Thermalright':'#ff9d63',
-  'Fractal Design':'#bcd8d3',
-  'Lian Li':'#7de8ff',
-  'Montech':'#6fffdc',
-  'Phanteks':'#8da5ff',
-  'Seasonic':'#65e6ff',
-  'Super Flower':'#ff91d2'
+const BRAND_UI = {
+  'NVIDIA':{color:'#76B900',domain:'nvidia.com',icon:'nvidia'},
+  'AMD':{color:'#ED1C24',domain:'amd.com',icon:'amd'},
+  'Intel':{color:'#0071C5',domain:'intel.com',icon:'intel'},
+  'ASUS':{color:'#F2F5F7',domain:'asus.com',icon:'asus'},
+  'MSI':{color:'#FF0000',domain:'msi.com',icon:'msi'},
+  'Gigabyte':{color:'#008CD6',domain:'gigabyte.com'},
+  'Sapphire':{color:'#E31B23',domain:'sapphiretech.com'},
+  'ASRock':{color:'#E7EDF3',domain:'asrock.com'},
+  'Corsair':{color:'#FFD400',domain:'corsair.com',icon:'corsair'},
+  'G.Skill':{color:'#E31B23',domain:'gskill.com'},
+  'Kingston':{color:'#D71920',domain:'kingston.com',icon:'kingstontechnology'},
+  'TeamGroup':{color:'#00AEEF',domain:'teamgroupinc.com'},
+  'Samsung':{color:'#1428A0',domain:'samsung.com',icon:'samsung'},
+  'Crucial':{color:'#0092D0',domain:'crucial.com'},
+  'Western Digital':{color:'#0067B1',domain:'westerndigital.com'},
+  'Seagate':{color:'#6EBE49',domain:'seagate.com',icon:'seagate'},
+  'Lexar':{color:'#D51F2B',domain:'lexar.com'},
+  'ARCTIC':{color:'#00AEEF',domain:'arctic.de'},
+  'be quiet!':{color:'#F28C28',domain:'bequiet.com'},
+  'Cooler Master':{color:'#705CF6',domain:'coolermaster.com',icon:'coolermaster'},
+  'DeepCool':{color:'#068584',domain:'deepcool.com',icon:'deepcool'},
+  'Noctua':{color:'#C8956C',domain:'noctua.at'},
+  'NZXT':{color:'#7B61FF',domain:'nzxt.com',icon:'nzxt'},
+  'Thermalright':{color:'#F97316',domain:'thermalright.com'},
+  'Fractal Design':{color:'#E4E7EA',domain:'fractal-design.com'},
+  'Lian Li':{color:'#3BAFEA',domain:'lian-li.com'},
+  'Montech':{color:'#00C9A7',domain:'montechpc.com'},
+  'Phanteks':{color:'#8EA3B0',domain:'phanteks.com'},
+  'Seasonic':{color:'#F28C28',domain:'seasonic.com'},
+  'Super Flower':{color:'#FF4FA3',domain:'super-flower.com.tw'}
 };
 
 const CATEGORY_LABELS = {
@@ -134,11 +134,21 @@ export const FACETS = {
 };
 
 export function accentFor(value){
-  return BRAND_ACCENTS[value] || '#59f5e5';
+  return BRAND_UI[value]?.color || '#59f5e5';
+}
+
+export function brandMark(value,label=value){
+  const ui=BRAND_UI[value];
+  if(!ui) return `<span class="filter-brand-lockup"><span class="filter-brand-name">${label}</span></span>`;
+  const fallback=`https://www.google.com/s2/favicons?domain=${encodeURIComponent(ui.domain)}&sz=128`;
+  const logo=ui.icon ? `https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/${encodeURIComponent(ui.icon)}.svg` : fallback;
+  return `<span class="filter-brand-lockup"><span class="filter-brand-logo"><img src="${logo}" data-fallback="${fallback}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fallback&&this.src!==this.dataset.fallback){this.src=this.dataset.fallback;return;}this.parentElement.hidden=true"></span><span class="filter-brand-name">${label}</span></span>`;
 }
 
 export function gpuVendor(product){
+  const brand=String(product?.brand||'').trim().toLowerCase();
   const haystack=`${product?.name||''} ${product?.model||''}`.toLowerCase();
+  if(brand==='intel' || /\bintel\s+arc\b|\barc\s*[ab]\d{3,4}\b/.test(haystack)) return 'Intel';
   if(/geforce|\brtx\b|\bgtx\b/.test(haystack)) return 'NVIDIA';
   if(/radeon|\brx\s*\d/.test(haystack)) return 'AMD';
   if(/\barc\b/.test(haystack)) return 'Intel';
@@ -229,8 +239,10 @@ function storeHref(category,filters={}){
 }
 
 function menuLink(category,label,filters={},className=''){
-  const accent=accentFor(filters.gpuVendor || filters.platform || filters.brand || '');
-  return `<a class="filter-menu-option ${className}" style="--filter-accent:${accent}" href="${storeHref(category,filters)}"><span>${label}</span><b aria-hidden="true">→</b></a>`;
+  const identity=filters.brand || filters.gpuVendor || filters.platform || '';
+  const accent=accentFor(identity);
+  const content=identity ? brandMark(identity,label) : `<span class="filter-brand-name">${label}</span>`;
+  return `<a class="filter-menu-option ${className}" style="--filter-accent:${accent}" href="${storeHref(category,filters)}">${content}<b aria-hidden="true">→</b></a>`;
 }
 
 function renderDirect(category,config){
@@ -240,10 +252,11 @@ function renderDirect(category,config){
 function renderStaged(category,config,panel,selected=''){
   const key=config.staged.key;
   const values=Object.keys(config.staged.values);
-  const stageButtons=values.map(value=>`<button class="filter-menu-option filter-stage-button ${selected===value?'is-selected':''}" type="button" data-stage-value="${value}" style="--filter-accent:${accentFor(value)}" aria-pressed="${selected===value?'true':'false'}"><span>${value}</span><b aria-hidden="true">↓</b></button>`).join('');
+  const stageButtons=values.map(value=>`<button class="filter-menu-option filter-stage-button ${selected===value?'is-selected':''}" type="button" data-stage-value="${value}" style="--filter-accent:${accentFor(value)}" aria-pressed="${selected===value?'true':'false'}">${brandMark(value)}<b aria-hidden="true">↓</b></button>`).join('');
   const partners=selected ? config.staged.values[selected] || [] : [];
   const label=key==='gpuVendor'?'Board partner':'Manufacturer';
-  const partnerMarkup=selected ? `<div class="filter-menu-substage"><div class="filter-menu-subhead"><span>${label}</span>${menuLink(category,`View all ${selected}`,{[key]:selected},'filter-menu-all')}</div><div class="filter-menu-options">${partners.map(brand=>menuLink(category,brand,{[key]:selected,brand})).join('')}</div></div>` : '<p class="filter-menu-help">Choose the platform first, then narrow it by manufacturer.</p>';
+  const categoryWord=category==='gpu'?'GPUs':'components';
+  const partnerMarkup=selected ? `<div class="filter-menu-substage"><div class="filter-menu-subhead"><span>${label}</span></div><div class="filter-menu-options">${menuLink(category,`All ${selected} ${categoryWord}`,{[key]:selected},'filter-menu-all')}${partners.map(brand=>menuLink(category,brand,{[key]:selected,brand})).join('')}</div></div>` : '<p class="filter-menu-help">Choose the platform first, then narrow it by manufacturer.</p>';
   panel.dataset.stage=selected;
   return `<div class="filter-menu-options filter-menu-stage">${stageButtons}</div><div data-stage-target>${partnerMarkup}</div>`;
 }
