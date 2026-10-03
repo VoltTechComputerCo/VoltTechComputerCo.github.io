@@ -199,6 +199,7 @@ Deno.serve(async (req: Request) => {
   const u = new URL(req.url);
   const id = (u.searchParams.get("id") || "").trim();
   const meta = u.searchParams.get("meta") === "1";
+  const discover = u.searchParams.get("discover") === "1";
   if (!/^[a-z0-9][a-z0-9._-]{2,120}$/i.test(id)) return json({error:"Invalid product id"},400);
 
   try {
@@ -213,11 +214,14 @@ Deno.serve(async (req: Request) => {
         ? media.primaryImage : null
     );
 
+    const curatedDirect = direct && !direct.includes("api.microlink.io") ? direct : null;
     let candidates: {url:string, score:number, source:string}[] = [];
-    if (direct && !direct.includes("api.microlink.io")) {
-      candidates.push({url:direct,score:1000,source:"verified-direct"});
+    if (curatedDirect) {
+      candidates.push({url:curatedDirect,score:1000,source:"verified-direct"});
     }
-    if (sourcePage) {
+    // Frontend delivery is deterministic: curated directImage always wins.
+    // Automated page discovery is diagnostic-only and must be explicitly requested.
+    if (!curatedDirect && discover && sourcePage) {
       for (const pageUrl of await candidatePages(sourcePage)) {
         try {
           const page = await fetch(pageUrl, {
@@ -237,14 +241,12 @@ Deno.serve(async (req: Request) => {
       candidates.sort((a,b)=>b.score-a.score);
     }
 
-    if (!candidates.length && direct) {
-      candidates = [{
-        url: direct,
-        score: 40,
-        source: direct.includes("api.microlink.io") ? "microlink-fallback" : "direct-fallback"
-      }];
-    }
-    if (!candidates.length) return json({error:"No product image found",id,sourcePage},404);
+    if (!candidates.length) return json({
+      error: "No curated product image available",
+      id,
+      sourcePage,
+      discover
+    },404);
 
     let lastError = "";
     for (const c of candidates.slice(0,12)) {
