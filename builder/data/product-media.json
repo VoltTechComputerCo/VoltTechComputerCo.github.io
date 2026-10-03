@@ -1,823 +1,1503 @@
 {
   "schemaVersion": "1.1.0",
-  "generatedAt": "2026-10-02",
-  "notice": "Linked product media for the live quote-first VoltTech catalogue and PC Builder. Images are sourced from manufacturer product pages or official CDN assets; family-level imagery is explicitly marked where variants share the same physical product design.",
+  "generatedAt": "2026-10-03",
+  "notice": "VoltTech verified product imagery map. Every Builder SKU uses a VoltTech image proxy as primary, backed by a direct exact-product, exact-box or explicitly documented product-family hardware image. Category artwork and generic brand logos are not valid product fallbacks.",
   "products": {
     "vt-cpu-amd-5500": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.amd.com%2Fen%2Fproducts%2Fprocessors%2Fdesktops%2Fryzen%2F5000-series%2Famd-ryzen-5-5500.html&embed=image.url",
-      "sourcePage": "https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-5-5500.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-amd-5500",
+      "sourcePage": "https://www.3bsystems.co.uk/amd-ryzen-5-5500-am4-processor-6-core-12-thread-retail-box/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://www.3bsystems.co.uk/pub/media/catalog/product/cache/1a234da2b1e5e2a8b93d8be2192e20bd/s/k/sk-20548-4.jpg",
+      "images": [
+        "https://www.3bsystems.co.uk/pub/media/catalog/product/cache/1a234da2b1e5e2a8b93d8be2192e20bd/s/k/sk-20548-4.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-amd-5600": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.amd.com%2Fen%2Fproducts%2Fprocessors%2Fdesktops%2Fryzen%2F5000-series%2Famd-ryzen-5-5600.html&embed=image.url",
-      "sourcePage": "https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-5-5600.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-amd-5600",
+      "sourcePage": "https://www.rueducommerce.fr/p/r24060016797.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://media.rueducommerce.fr/rd/products/90f/90f95cf0edefb3fe817c72f001aba00d8ff4cb88.jpeg",
+      "images": [
+        "https://media.rueducommerce.fr/rd/products/90f/90f95cf0edefb3fe817c72f001aba00d8ff4cb88.jpeg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-amd-5700x": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.amd.com%2Fen%2Fproducts%2Fprocessors%2Fdesktops%2Fryzen%2F5000-series%2Famd-ryzen-7-5700x.html&embed=image.url",
-      "sourcePage": "https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-7-5700x.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-amd-5700x",
+      "sourcePage": "https://www.playox.de/amd-ryzen-7-5700x-am4-3.4-ghz-23840640",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://cdn-media.playox.de/product-management/products/assets/23840640/product_image/23840640_3.jpeg",
+      "images": [
+        "https://cdn-media.playox.de/product-management/products/assets/23840640/product_image/23840640_3.jpeg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-amd-5700x3d": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.amd.com%2Fen%2Fproducts%2Fprocessors%2Fdesktops%2Fryzen%2F5000-series%2Famd-ryzen-7-5700x3d.html&embed=image.url",
-      "sourcePage": "https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-7-5700x3d.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-amd-5700x3d",
+      "sourcePage": "https://artline.ua/product/protsessor-amd-ryzen-7-5700x3d-box-100-100001503wof",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://artline.ua/storage/images/products/22454/gallery/243168/1400_gallery_1710434602146511_0.webp",
+      "images": [
+        "https://artline.ua/storage/images/products/22454/gallery/243168/1400_gallery_1710434602146511_0.webp"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-amd-7600": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.amd.com%2Fen%2Fproducts%2Fprocessors%2Fdesktops%2Fryzen%2F7000-series%2Famd-ryzen-5-7600.html&embed=image.url",
-      "sourcePage": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-5-7600.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-amd-7600",
+      "sourcePage": "https://www.materiel.net/produit/202212130166.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://media.materiel.net/r900/products/MN0006005615.jpg",
+      "images": [
+        "https://media.materiel.net/r900/products/MN0006005615.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-amd-7700": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.amd.com%2Fen%2Fproducts%2Fprocessors%2Fdesktops%2Fryzen%2F7000-series%2Famd-ryzen-7-7700.html&embed=image.url",
-      "sourcePage": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-7-7700.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-amd-7700",
+      "sourcePage": "https://www.avxperten.dk/cpu/amd-ryzen-7-7700-box-cpu-3-8-ghz-8-kerner-amd-am5-koeler.asp",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://www.avxperten.dk/images/product/74225/original/amd-ryzen-7-7700-box-cpu-38-ghz-8-kerner-amd-am5-med-koler-da-1749674884.jpg",
+      "images": [
+        "https://www.avxperten.dk/images/product/74225/original/amd-ryzen-7-7700-box-cpu-38-ghz-8-kerner-amd-am5-med-koler-da-1749674884.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-amd-7800x3d": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.amd.com%2Fen%2Fproducts%2Fprocessors%2Fdesktops%2Fryzen%2F7000-series%2Famd-ryzen-7-7800x3d.html&embed=image.url",
-      "sourcePage": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-7-7800x3d.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-amd-7800x3d",
+      "sourcePage": "https://www.avxperten.dk/amd-ryzen-7-7800x3d-processor-am5-cpu-42-ghz-8-kerner-96-mb.asp",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://www.avxperten.dk/images/product/227812/original/amd-ryzen-7-7800x3d-processor-am5-cpu-42-ghz-8-kerner-96-mb-da-1750007583.jpg",
+      "images": [
+        "https://www.avxperten.dk/images/product/227812/original/amd-ryzen-7-7800x3d-processor-am5-cpu-42-ghz-8-kerner-96-mb-da-1750007583.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-amd-9600x": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.amd.com%2Fen%2Fproducts%2Fprocessors%2Fdesktops%2Fryzen%2F9000-series%2Famd-ryzen-5-9600x.html&embed=image.url",
-      "sourcePage": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-5-9600x.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-amd-9600x",
+      "sourcePage": "https://www.vatanbilgisayar.com/amd-ryzen-5-9600x-soket-am5-3-9ghz-32mb-65w-4nm-islemci.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://cdn.vatanbilgisayar.com/Upload/PRODUCT/amd/thumb/146831-1_large.jpg",
+      "images": [
+        "https://cdn.vatanbilgisayar.com/Upload/PRODUCT/amd/thumb/146831-1_large.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-amd-9700x": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.amd.com%2Fen%2Fproducts%2Fprocessors%2Fdesktops%2Fryzen%2F9000-series%2Famd-ryzen-7-9700x.html&embed=image.url",
-      "sourcePage": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9700x.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-amd-9700x",
+      "sourcePage": "https://www.mexx.com.ar/productos-rubro/procesadores/47618-procesador-amd-ryzen-7-9700x-5.5-ghz-am5-sin-cooler-con-gpu.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://mexx-img-2019.s3.amazonaws.com/47618_2.jpeg",
+      "images": [
+        "https://mexx-img-2019.s3.amazonaws.com/47618_2.jpeg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-amd-9800x3d": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.amd.com%2Fen%2Fproducts%2Fprocessors%2Fdesktops%2Fryzen%2F9000-series%2Famd-ryzen-7-9800x3d.html&embed=image.url",
-      "sourcePage": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9800x3d.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-amd-9800x3d",
+      "sourcePage": "https://mbpc.gg/products/amd-ryzen-7-9800x3d-socket-am5-gaming-processor-cpu",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://mbpc.gg/cdn/shop/files/amd-ryzen-7-9800x3d-socket-am5-gaming-processor-cpu_2_21d952fc-8a23-490a-b6bb-07d401a57502.jpg?v=1771272294&width=1646",
+      "images": [
+        "https://mbpc.gg/cdn/shop/files/amd-ryzen-7-9800x3d-socket-am5-gaming-processor-cpu_2_21d952fc-8a23-490a-b6bb-07d401a57502.jpg?v=1771272294&width=1646"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-intel-14400f": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.intel.com%2Fcontent%2Fwww%2Fus%2Fen%2Fproducts%2Fsku%2F236777%2Fintel-core-i5-processor-14400f-20m-cache-up-to-4-70-ghz%2Fspecifications.html&embed=image.url",
-      "sourcePage": "https://www.intel.com/content/www/us/en/products/sku/236777/intel-core-i5-processor-14400f-20m-cache-up-to-4-70-ghz/specifications.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-intel-14400f",
+      "sourcePage": "https://elmir.ua/processors/processor_intel_core_i5-14400f_s-1700_4_7ghz_20mb_box_bx8071514400f.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://a.428.ua/img/4150344/3000/2000/protsessor_intel_core_i5-14400f_s-1700_4_7ghz_20mb_box_bx8071514400f~636~700.jpg",
+      "images": [
+        "https://a.428.ua/img/4150344/3000/2000/protsessor_intel_core_i5-14400f_s-1700_4_7ghz_20mb_box_bx8071514400f~636~700.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-intel-14600k": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.intel.com%2Fcontent%2Fwww%2Fus%2Fen%2Fproducts%2Fsku%2F236799%2Fintel-core-i5-processor-14600k-24m-cache-up-to-5-30-ghz%2Fspecifications.html&embed=image.url",
-      "sourcePage": "https://www.intel.com/content/www/us/en/products/sku/236799/intel-core-i5-processor-14600k-24m-cache-up-to-5-30-ghz/specifications.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-intel-14600k",
+      "sourcePage": "https://ttgshop.vn/products/cpu-intel-core-i5-14600k-up-to-5-3ghz-14-nhan-20-luong-24mb",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://file.hstatic.net/1000288298/file/intel_core_i5_14600k_1_8231c73a5dce49de8d3d9fc4af25f2f0_1024x1024.jpg",
+      "images": [
+        "https://file.hstatic.net/1000288298/file/intel_core_i5_14600k_1_8231c73a5dce49de8d3d9fc4af25f2f0_1024x1024.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-intel-14700k": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.intel.com%2Fcontent%2Fwww%2Fus%2Fen%2Fproducts%2Fsku%2F236783%2Fintel-core-i7-processor-14700k-33m-cache-up-to-5-60-ghz%2Fspecifications.html&embed=image.url",
-      "sourcePage": "https://www.intel.com/content/www/us/en/products/sku/236783/intel-core-i7-processor-14700k-33m-cache-up-to-5-60-ghz/specifications.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-intel-14700k",
+      "sourcePage": "https://shop.pegasus.hk/products/215331/Intel-Core-i7-14700K-20%E6%A0%B8%E5%BF%8328%E7%B7%9A%E7%A8%8B-Box-%E4%B8%8D%E5%90%AB%E6%95%A3%E7%86%B1%E5%99%A8",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://pegasus.hk/cdn-cgi/imagedelivery/gTpMHUmncPYPe7GoYL67Ag/479be5fe-cad6-434c-f336-b5c926a6eb00/public",
+      "images": [
+        "https://pegasus.hk/cdn-cgi/imagedelivery/gTpMHUmncPYPe7GoYL67Ag/479be5fe-cad6-434c-f336-b5c926a6eb00/public"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-intel-245k": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.intel.com%2Fcontent%2Fwww%2Fus%2Fen%2Fproducts%2Fsku%2F241067%2Fintel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz%2Fspecifications.html&embed=image.url",
-      "sourcePage": "https://www.intel.com/content/www/us/en/products/sku/241067/intel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz/specifications.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-intel-245k",
+      "sourcePage": "https://tlggaming.com/intel-core-ultra-5-245k",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://tlggaming.b-cdn.net/image/cache/catalog/products/Processors/Intel/Intel%20core%20ultra%20series%20all%20sku/intel%20core%20ultra%20245k%20tlg-600x600.jpg.webp",
+      "images": [
+        "https://tlggaming.b-cdn.net/image/cache/catalog/products/Processors/Intel/Intel%20core%20ultra%20series%20all%20sku/intel%20core%20ultra%20245k%20tlg-600x600.jpg.webp"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-intel-265k": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.intel.com%2Fcontent%2Fwww%2Fus%2Fen%2Fproducts%2Fsku%2F241063%2Fintel-core-ultra-7-processor-265k-30m-cache-up-to-5-50-ghz%2Fspecifications.html&embed=image.url",
-      "sourcePage": "https://www.intel.com/content/www/us/en/products/sku/241063/intel-core-ultra-7-processor-265k-30m-cache-up-to-5-50-ghz/specifications.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-intel-265k",
+      "sourcePage": "https://www.digitec.ch/en/s1/product/intel-core-ultra-7-265k-lga-1851-540-ghz-20-core-processors-49734793",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://static01.galaxus.com/productimages/2/6/7/1/4/5/9/4/2/0/0/7/3/8/3/5/9/9/8/019b929b-1054-797e-9f48-996686e5d3ae_720.jpeg",
+      "images": [
+        "https://static01.galaxus.com/productimages/2/6/7/1/4/5/9/4/2/0/0/7/3/8/3/5/9/9/8/019b929b-1054-797e-9f48-996686e5d3ae_720.jpeg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cpu-intel-285k": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.intel.com%2Fcontent%2Fwww%2Fus%2Fen%2Fproducts%2Fsku%2F241060%2Fintel-core-ultra-9-processor-285k-36m-cache-up-to-5-70-ghz%2Fspecifications.html&embed=image.url",
-      "sourcePage": "https://www.intel.com/content/www/us/en/products/sku/241060/intel-core-ultra-9-processor-285k-36m-cache-up-to-5-70-ghz/specifications.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cpu-intel-285k",
+      "sourcePage": "https://tecdale.com/products/intel-core-ultra-9-series-2-285k-desktop-processor-lga1851-socket-8-core-up-to-5-70-ghz-36-mb-intel-smart-cache-125-desktop-processor-bx80768285k",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-box",
+      "directImage": "https://tecdale.com/cdn/shop/files/Intel_Core_Ultra_9_285K_Desktop_Processor-K1_uemh6d_800x.png?v=1730213420",
+      "images": [
+        "https://tecdale.com/cdn/shop/files/Intel_Core_Ultra_9_285K_Desktop_Processor-K1_uemh6d_800x.png?v=1730213420"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-asus-prime-b550m-a-wifi-ii": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.asus.com%2Fmotherboards-components%2Fmotherboards%2Fprime%2Fprime-b550m-a-wifi-ii%2F&embed=image.url",
-      "sourcePage": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b550m-a-wifi-ii/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-asus-prime-b550m-a-wifi-ii",
+      "sourcePage": "https://box.co.uk/asus-amd-prime-b550m-a-wifi-ii-90mb19x0-m0eay0",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://media.box.co.uk/product/6/3/632c089d9dc7171337985402b72ad467.jpg?=1&height=1500",
+      "images": [
+        "https://media.box.co.uk/product/6/3/632c089d9dc7171337985402b72ad467.jpg?=1&height=1500"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-msi-b550m-pro-vdh-wifi": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.msi.com%2FMotherboard%2FB550M-PRO-VDH-WIFI&embed=image.url",
-      "sourcePage": "https://www.msi.com/Motherboard/B550M-PRO-VDH-WIFI",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-msi-b550m-pro-vdh-wifi",
+      "sourcePage": "https://www.dustin.be/nl/moederborden/msi/amd-b550-am4-4x-ddr4-hdmi-dp-vga-sata-iii-m-2-usb-3-2-1g-lan-micro-atx-244x244-mm-art-b550m-pro-vdh-wifi-num-180861607/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://cdn.centralpoint.be/objects/high_pic/a/a69/3174910_moederborden-msi-amd-b550-am4-4x-ddr4-hdmi-dp-vga-sata-iii-m2-usb-32-1g-lan-micro-atx-244x244-mm-b550m-pro-vdh-wifi.jpg",
+      "images": [
+        "https://cdn.centralpoint.be/objects/high_pic/a/a69/3174910_moederborden-msi-amd-b550-am4-4x-ddr4-hdmi-dp-vga-sata-iii-m2-usb-32-1g-lan-micro-atx-244x244-mm-b550m-pro-vdh-wifi.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-gigabyte-b550-aorus-elite-v2": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gigabyte.com%2FMotherboard%2FB550-AORUS-ELITE-V2-rev-10&embed=image.url",
-      "sourcePage": "https://www.gigabyte.com/Motherboard/B550-AORUS-ELITE-V2-rev-10",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-gigabyte-b550-aorus-elite-v2",
+      "sourcePage": "https://www.deadoralivetechnology.com/shop/gigabyte-b550-aorus-elite-v2-amd-am4-socket-motherboard-atx-4x-ddr4-slots-2x-m-2-sockets-1x-usb-c-port-fitted-i-o-shield-2-5gbe-lan-1x-displayport-1x-hdmi-port/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.deadoralivetechnology.com/wp-content/uploads/2025/04/mbgig-gab55ael2-hg.jpg",
+      "images": [
+        "https://www.deadoralivetechnology.com/wp-content/uploads/2025/04/mbgig-gab55ael2-hg.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-msi-b650m-gaming-plus-wifi": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.msi.com%2FMotherboard%2FB650M-GAMING-PLUS-WIFI&embed=image.url",
-      "sourcePage": "https://www.msi.com/Motherboard/B650M-GAMING-PLUS-WIFI",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-msi-b650m-gaming-plus-wifi",
+      "sourcePage": "https://www.ldlc.com/en/product/PB00657048.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://media.ldlc.com/r1600/ld/products/00/06/19/44/LD0006194407.jpg",
+      "images": [
+        "https://media.ldlc.com/r1600/ld/products/00/06/19/44/LD0006194407.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-gigabyte-b650-eagle-ax": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gigabyte.com%2FMotherboard%2FB650-EAGLE-AX-rev-12&embed=image.url",
-      "sourcePage": "https://www.gigabyte.com/Motherboard/B650-EAGLE-AX-rev-12",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-gigabyte-b650-eagle-ax",
+      "sourcePage": "https://compunilestore.com/shop/motherboard/gigabyte-b650-eagle-ax/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://i0.wp.com/compunilestore.com/wp-content/uploads/2024/08/1000-1.webp",
+      "images": [
+        "https://i0.wp.com/compunilestore.com/wp-content/uploads/2024/08/1000-1.webp"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-asus-tuf-b650-plus-wifi": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.asus.com%2Fmotherboards-components%2Fmotherboards%2Ftuf-gaming%2Ftuf-gaming-b650-plus-wifi%2F&embed=image.url",
-      "sourcePage": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b650-plus-wifi/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-asus-tuf-b650-plus-wifi",
+      "sourcePage": "https://www.venex.com.ar/amd/motherboard-asus-tuf-b650-plus-wifi-am5.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.venex.com.ar/products_images/1742212959_4.png",
+      "images": [
+        "https://www.venex.com.ar/products_images/1742212959_4.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-asrock-b650m-pro-rs-wifi": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.asrock.com%2Fmb%2FAMD%2FB650M%2520Pro%2520RS%2520WiFi%2Findex.asp&embed=image.url",
-      "sourcePage": "https://www.asrock.com/mb/AMD/B650M%20Pro%20RS%20WiFi/index.asp",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-asrock-b650m-pro-rs-wifi",
+      "sourcePage": "https://artline.ua/uk/product/materinskaya-plata-asrock-b650m-pro-rs-wifi",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://artline.ua/storage/images/products/17140/gallery/201563/600_gallery_1699275680321800_0.webp",
+      "images": [
+        "https://artline.ua/storage/images/products/17140/gallery/201563/600_gallery_1699275680321800_0.webp"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-msi-x670e-gaming-plus-wifi": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.msi.com%2FMotherboard%2FX670E-GAMING-PLUS-WIFI&embed=image.url",
-      "sourcePage": "https://www.msi.com/Motherboard/X670E-GAMING-PLUS-WIFI",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-msi-x670e-gaming-plus-wifi",
+      "sourcePage": "https://pcspecchart.com/pc_parts/motherboard/218/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://pcspecchart.com/media/gallery/motherboard/MSI%20X670E%20GAMING%20PLUS%20WIFI%20Gallery/caa506612b2a4616aeb58d6489b68722.jpg",
+      "images": [
+        "https://pcspecchart.com/media/gallery/motherboard/MSI%20X670E%20GAMING%20PLUS%20WIFI%20Gallery/caa506612b2a4616aeb58d6489b68722.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-asus-rog-strix-x870e-e": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Frog.asus.com%2Fmotherboards%2Frog-strix%2Frog-strix-x870e-e-gaming-wifi%2F&embed=image.url",
-      "sourcePage": "https://rog.asus.com/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-asus-rog-strix-x870e-e",
+      "sourcePage": "https://tauretcomputadores.com/product/board-asus-rog-strix-x870e-e-gaming-wifi-socket-am5",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://tauretcomputadores.com/images/products/Product_202510101228542000651321.PNG-12.webp",
+      "images": [
+        "https://tauretcomputadores.com/images/products/Product_202510101228542000651321.PNG-12.webp"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-gigabyte-x870-aorus-elite-wifi7": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gigabyte.com%2FMotherboard%2FX870-AORUS-ELITE-WIFI7&embed=image.url",
-      "sourcePage": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-gigabyte-x870-aorus-elite-wifi7",
+      "sourcePage": "https://www.pbtech.co.nz/product/MBDGBM37511/Gigabyte-X870-AORUS-ELITE-WIFI7-ATX-Motherboard-Fo",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.pbtech.co.nz/imgprod/M/B/MBDGBM37511__2.jpg?h=813284109",
+      "images": [
+        "https://www.pbtech.co.nz/imgprod/M/B/MBDGBM37511__2.jpg?h=813284109"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-msi-b760m-gaming-plus-wifi": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.msi.com%2FMotherboard%2FB760M-GAMING-PLUS-WIFI&embed=image.url",
-      "sourcePage": "https://www.msi.com/Motherboard/B760M-GAMING-PLUS-WIFI",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-msi-b760m-gaming-plus-wifi",
+      "sourcePage": "https://www.loctai.com/products/mainboard-msi-b760m-gaming-plus-wifi-chipset-b760",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://product.hstatic.net/200000522135/product/b760m_gaming_plus_wifi_4_018a760a31cb4f70a8ce32bbf1c10cb7_master.png",
+      "images": [
+        "https://product.hstatic.net/200000522135/product/b760m_gaming_plus_wifi_4_018a760a31cb4f70a8ce32bbf1c10cb7_master.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-asus-prime-b760-plus": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.asus.com%2Fmotherboards-components%2Fmotherboards%2Fprime%2Fprime-b760-plus%2F&embed=image.url",
-      "sourcePage": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b760-plus/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-asus-prime-b760-plus",
+      "sourcePage": "https://www.cclonline.com/90mb1ef0-m0eay0-asus-prime-b760-plus-atx-motherboard-for-intel-lga1700-cpus-425335/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://static.cclonline.com/images/avante/01_PRIME-B760-PLUS-with-box.jpg?width=2000",
+      "images": [
+        "https://static.cclonline.com/images/avante/01_PRIME-B760-PLUS-with-box.jpg?width=2000"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-gigabyte-z790-eagle-ax": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gigabyte.com%2FMotherboard%2FZ790-EAGLE-AX-rev-1x&embed=image.url",
-      "sourcePage": "https://www.gigabyte.com/Motherboard/Z790-EAGLE-AX-rev-1x",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-gigabyte-z790-eagle-ax",
+      "sourcePage": "https://www.ldlc.com/fiche/PB00656871.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://media.ldlc.com/r1600/ld/products/00/06/11/56/LD0006115694.jpg",
+      "images": [
+        "https://media.ldlc.com/r1600/ld/products/00/06/11/56/LD0006115694.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-msi-z790-gaming-plus-wifi": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.msi.com%2FMotherboard%2FZ790-GAMING-PLUS-WIFI&embed=image.url",
-      "sourcePage": "https://www.msi.com/Motherboard/Z790-GAMING-PLUS-WIFI",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-msi-z790-gaming-plus-wifi",
+      "sourcePage": "https://www.rueducommerce.fr/p/r24060018383.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://media.rueducommerce.fr/rd/products/21c/21ce8b6b38720d8b29663327ccd62936e8a57c5b.jpeg",
+      "images": [
+        "https://media.rueducommerce.fr/rd/products/21c/21ce8b6b38720d8b29663327ccd62936e8a57c5b.jpeg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-asrock-b860m-pro-rs-wifi": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.asrock.com%2FMB%2FIntel%2FB860M%2520Pro%2520RS%2520WiFi%2F&embed=image.url",
-      "sourcePage": "https://www.asrock.com/MB/Intel/B860M%20Pro%20RS%20WiFi/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-asrock-b860m-pro-rs-wifi",
+      "sourcePage": "https://www.ask-corp.jp/products/asrock/motherboard/intel-b860/b860m-pro-rs-wifi.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.ask-corp.jp/products/images_thumb/2025/b860m-pro-rs-wifi_thumb.jpg",
+      "images": [
+        "https://www.ask-corp.jp/products/images_thumb/2025/b860m-pro-rs-wifi_thumb.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-gigabyte-b860-eagle-wifi6e": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gigabyte.com%2FMotherboard%2FB860-EAGLE-WIFI6E&embed=image.url",
-      "sourcePage": "https://www.gigabyte.com/Motherboard/B860-EAGLE-WIFI6E",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-gigabyte-b860-eagle-wifi6e",
+      "sourcePage": "https://www.pbtech.com/pacific/product/MBDGBM62420/Gigabyte-B860-EAGLE-WIFI6E-ATX-Motherboard-For-Int",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.pbtech.com/pacific/imgprod/M/B/MBDGBM62420__2.jpg?h=3559491012",
+      "images": [
+        "https://www.pbtech.com/pacific/imgprod/M/B/MBDGBM62420__2.jpg?h=3559491012"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-msi-z890-gaming-plus-wifi": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.msi.com%2FMotherboard%2FZ890-GAMING-PLUS-WIFI&embed=image.url",
-      "sourcePage": "https://www.msi.com/Motherboard/Z890-GAMING-PLUS-WIFI",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-msi-z890-gaming-plus-wifi",
+      "sourcePage": "https://www.proshop.de/Mainboard/MSI-Z890-GAMING-PLUS-WIFI-Mainboard-Intel-Z890-Intel-LGA1851-socket-DDR5-RAM-ATX/3303427",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.proshop.de/Images/915x900/3303427_7bf23e788178.png",
+      "images": [
+        "https://www.proshop.de/Images/915x900/3303427_7bf23e788178.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mb-asus-tuf-z890-plus-wifi": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.asus.com%2Fmotherboards-components%2Fmotherboards%2Ftuf-gaming%2Ftuf-gaming-z890-plus-wifi%2F&embed=image.url",
-      "sourcePage": "https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-plus-wifi/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mb-asus-tuf-z890-plus-wifi",
+      "sourcePage": "https://www.topmarket.co.il/asus-tuf-gaming-z890-plus-wifi-motherboard-intel-z890-lga-1851-socket-v1-atx-he/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.topmarket.co.il/images/detailed/261/64cfbf3d0c05a794732b406d031d3334fbc3eb0c_7nz9-4u.png",
+      "images": [
+        "https://www.topmarket.co.il/images/detailed/261/64cfbf3d0c05a794732b406d031d3334fbc3eb0c_7nz9-4u.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-kingston-fury-beast-16-ddr4-3200": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.kingston.com%2Fen%2Fmemory%2Fgaming%2Fkingston-fury-beast-ddr4-memory&embed=image.url",
-      "sourcePage": "https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr4-memory",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-kingston-fury-beast-16-ddr4-3200",
+      "sourcePage": "https://vipasa.pe/memorias-ram/memoria-kingston-ddr4-16gb-3200mhz-cl16-dimm-fury-beast-kf432c16bb16",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://vipasa.pe/3634-superlarge_default/memoria-kingston-ddr4-16gb-3200mhz-cl16-dimm-fury-beast-kf432c16bb16.jpg",
+      "images": [
+        "https://vipasa.pe/3634-superlarge_default/memoria-kingston-ddr4-16gb-3200mhz-cl16-dimm-fury-beast-kf432c16bb16.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-corsair-vengeance-lpx-32-ddr4-3200": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fc%2Fmemory%3Ffilter-memory-series%3Dvengeance-lpx&embed=image.url",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-corsair-vengeance-lpx-32-ddr4-3200",
       "sourcePage": "https://www.corsair.com/us/en/c/memory?filter-memory-series=vengeance-lpx",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://down-th.img.susercontent.com/file/th-11134207-7r98z-lziqcy8810o9e1",
+      "images": [
+        "https://down-th.img.susercontent.com/file/th-11134207-7r98z-lziqcy8810o9e1"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-gskill-ripjaws-v-32-ddr4-3600": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gskill.com%2Fproducts%2F1%2F165%2F184%2FRipjaws-V&embed=image.url",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-gskill-ripjaws-v-32-ddr4-3600",
       "sourcePage": "https://www.gskill.com/products/1/165/184/Ripjaws-V",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "sourceType": "manufacturer-product-family",
+      "matchLevel": "product-family-hardware",
+      "directImage": "https://www.gskill.com/_upload/images/1806221116340.png",
+      "images": [
+        "https://www.gskill.com/_upload/images/1806221116340.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-kingston-fury-renegade-64-ddr4-3600": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.kingston.com%2Fen%2Fmemory%2Fgaming%2Fkingston-fury-renegade-ddr4-memory&embed=image.url",
-      "sourcePage": "https://www.kingston.com/en/memory/gaming/kingston-fury-renegade-ddr4-memory",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-kingston-fury-renegade-64-ddr4-3600",
+      "sourcePage": "https://www.dateks.lv/en/cenas/atmina-ram/1039545-kingston-64gb-ddr4-3600mhz-cl18-kit-of-2-fury-renegade",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.dateks.lv/images/pic/1200/1200/452/1573.jpg",
+      "images": [
+        "https://www.dateks.lv/images/pic/1200/1200/452/1573.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-corsair-vengeance-32-ddr5-6000": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fc%2Fmemory%3Ffilter-memory-series%3Dvengeance-ddr5&embed=image.url",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-corsair-vengeance-32-ddr5-6000",
       "sourcePage": "https://www.corsair.com/us/en/c/memory?filter-memory-series=vengeance-ddr5",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "product-family"
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://image1280.macovi.de/images/product_images/1280/1456999_0__9061621.jpg",
+      "images": [
+        "https://image1280.macovi.de/images/product_images/1280/1456999_0__9061621.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-gskill-flare-x5-32-ddr5-6000": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gskill.com%2Fproducts%2F1%2F165%2F396%2FFlare-X5-DDR5-AMD-EXPO&embed=image.url",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-gskill-flare-x5-32-ddr5-6000",
       "sourcePage": "https://www.gskill.com/products/1/165/396/Flare-X5-DDR5-AMD-EXPO",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "product-family"
+      "sourceType": "manufacturer-product-family",
+      "matchLevel": "product-family-hardware",
+      "directImage": "https://www.gskill.com/_upload/images/2208301447590.png",
+      "images": [
+        "https://www.gskill.com/_upload/images/2208301447590.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-kingston-fury-beast-32-ddr5-6000": {
-      "primaryImage": "https://cdn.shopify.com/s/files/1/0518/5073/9904/files/ktc-fury-memory-beast-ddr5-etail-kf-1-1350x550_48ac8cd5-4076-46ca-bf8f-6745ffccde6e.jpg?v=1680114651",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-kingston-fury-beast-32-ddr5-6000",
       "sourcePage": null,
-      "sourceType": "official-cdn-image",
-      "matchLevel": "product-family"
+      "sourceType": "manufacturer-cdn",
+      "matchLevel": "product-family-hardware",
+      "directImage": "https://cdn.shopify.com/s/files/1/0518/5073/9904/files/ktc-fury-memory-beast-ddr5-etail-kf-1-1350x550_48ac8cd5-4076-46ca-bf8f-6745ffccde6e.jpg?v=1680114651",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0518/5073/9904/files/ktc-fury-memory-beast-ddr5-etail-kf-1-1350x550_48ac8cd5-4076-46ca-bf8f-6745ffccde6e.jpg?v=1680114651"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-teamgroup-tforce-delta-32-ddr5-6000": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.teamgroupinc.com%2Fen%2Fproduct-detail%2Fmemory%2FT-FORCE%2Fdelta-rgb-ddr5-black%2Fdelta-rgb-ddr5-black-FF3D532G6000HC38ADC01%2F&embed=image.url",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-teamgroup-tforce-delta-32-ddr5-6000",
       "sourcePage": "https://www.teamgroupinc.com/en/product-detail/memory/T-FORCE/delta-rgb-ddr5-black/delta-rgb-ddr5-black-FF3D532G6000HC38ADC01/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "sourceType": "manufacturer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://images.teamgroupinc.com/products/memory/u-dimm/ddr5/delta-rgb/black/dual_01.jpg",
+      "images": [
+        "https://images.teamgroupinc.com/products/memory/u-dimm/ddr5/delta-rgb/black/dual_01.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-corsair-dominator-32-ddr5-6400": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fc%2Fmemory%2Fdominator-titanium&embed=image.url",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-corsair-dominator-32-ddr5-6400",
       "sourcePage": "https://www.corsair.com/us/en/c/memory/dominator-titanium",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://c1.neweggimages.com/productimage/nb640/20-982-097-02.png",
+      "images": [
+        "https://c1.neweggimages.com/productimage/nb640/20-982-097-02.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-gskill-trident-z5-32-ddr5-7200": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gskill.com%2Fproducts%2F1%2F165%2F374%2FTrident-Z5-RGB-DDR5-Intel-XMP&embed=image.url",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-gskill-trident-z5-32-ddr5-7200",
       "sourcePage": "https://www.gskill.com/products/1/165/374/Trident-Z5-RGB-DDR5-Intel-XMP",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "product-family"
+      "sourceType": "retailer-product-family",
+      "matchLevel": "product-family-hardware",
+      "directImage": "https://media.ldlc.com/r1600/ld/products/00/05/90/30/LD0005903015_1_0005908760_0005909666_0005909670.jpg",
+      "images": [
+        "https://media.ldlc.com/r1600/ld/products/00/05/90/30/LD0005903015_1_0005908760_0005909666_0005909670.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-kingston-fury-beast-48-ddr5-6000": {
-      "primaryImage": "https://cdn.shopify.com/s/files/1/0518/5073/9904/files/ktc-fury-memory-beast-ddr5-etail-kf-1-1350x550_48ac8cd5-4076-46ca-bf8f-6745ffccde6e.jpg?v=1680114651",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-kingston-fury-beast-48-ddr5-6000",
       "sourcePage": null,
-      "sourceType": "official-cdn-image",
-      "matchLevel": "product-family"
+      "sourceType": "retailer-product-family",
+      "matchLevel": "product-family-hardware",
+      "directImage": "https://alo.md/media/media/kingston-fury-beast-expo-ddr5-6000mhz.webp",
+      "images": [
+        "https://alo.md/media/media/kingston-fury-beast-expo-ddr5-6000mhz.webp"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-gskill-flare-x5-64-ddr5-6000": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gskill.com%2Fproducts%2F1%2F165%2F396%2FFlare-X5-DDR5-AMD-EXPO&embed=image.url",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-gskill-flare-x5-64-ddr5-6000",
       "sourcePage": "https://www.gskill.com/products/1/165/396/Flare-X5-DDR5-AMD-EXPO",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "product-family"
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://cdn.idealo.com/folder/Product/208519/5/208519537/s10_produktbild_max/g-skill-flare-x5-64gb-kit-ddr5-6000-cl30.jpg",
+      "images": [
+        "https://cdn.idealo.com/folder/Product/208519/5/208519537/s10_produktbild_max/g-skill-flare-x5-64gb-kit-ddr5-6000-cl30.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-corsair-vengeance-64-ddr5-6000": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fc%2Fmemory%3Ffilter-memory-series%3Dvengeance-ddr5&embed=image.url",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-corsair-vengeance-64-ddr5-6000",
       "sourcePage": "https://www.corsair.com/us/en/c/memory?filter-memory-series=vengeance-ddr5",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "product-family"
+      "sourceType": "retailer-product-family",
+      "matchLevel": "product-family-hardware",
+      "directImage": "https://media2.nbb-cdn.de/images/products/Corsair_Vengeance-DDR5_K2_Dynamic_d767.jpg",
+      "images": [
+        "https://media2.nbb-cdn.de/images/products/Corsair_Vengeance-DDR5_K2_Dynamic_d767.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-kingston-fury-renegade-64-ddr5-6400": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.kingston.com%2Fen%2Fmemory%2Fgaming%2Ffury-renegade-ddr5&embed=image.url",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-kingston-fury-renegade-64-ddr5-6400",
       "sourcePage": "https://www.kingston.com/en/memory/gaming/fury-renegade-ddr5",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.dateks.lv/images/pic/2400/2400/239/1599.jpg",
+      "images": [
+        "https://www.dateks.lv/images/pic/2400/2400/239/1599.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-corsair-vengeance-96-ddr5-6000": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fc%2Fmemory%3Ffilter-memory-series%3Dvengeance-ddr5&embed=image.url",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-corsair-vengeance-96-ddr5-6000",
       "sourcePage": "https://www.corsair.com/us/en/c/memory?filter-memory-series=vengeance-ddr5",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "product-family"
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://api.e-server.com.ua/storage/232450/rs/U0886797_big_1703135555___rs_1200_1200.jpg",
+      "images": [
+        "https://api.e-server.com.ua/storage/232450/rs/U0886797_big_1703135555___rs_1200_1200.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-mem-gskill-trident-z5-128-ddr5-6000": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gskill.com%2Fproducts%2F1%2F165%2F374%2FTrident-Z5-RGB-DDR5-Intel-XMP&embed=image.url",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-mem-gskill-trident-z5-128-ddr5-6000",
       "sourcePage": "https://www.gskill.com/products/1/165/374/Trident-Z5-RGB-DDR5-Intel-XMP",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "product-family"
+      "sourceType": "retailer-product-family",
+      "matchLevel": "product-family-hardware",
+      "directImage": "https://media.ldlc.com/r1600/ld/products/00/05/90/30/LD0005903015_1_0005908760_0005909666_0005909670.jpg",
+      "images": [
+        "https://media.ldlc.com/r1600/ld/products/00/05/90/30/LD0005903015_1_0005908760_0005909666_0005909670.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-asus-rx7600-dual": {
-      "primaryImage": "https://dlcdnwebimgs.asus.com/gain/b5a51e38-f9a3-41f6-817f-dfcb8495418c/w692",
-      "sourcePage": null,
-      "sourceType": "official-cdn-image",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-asus-rx7600-dual",
+      "sourcePage": "https://www.asus.com/us/motherboards-components/graphics-cards/dual/dual-rx7600-o8g/",
+      "sourceType": "manufacturer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://dlcdnwebimgs.asus.com/gain/b5a51e38-f9a3-41f6-817f-dfcb8495418c/w692",
+      "images": [
+        "https://dlcdnwebimgs.asus.com/gain/b5a51e38-f9a3-41f6-817f-dfcb8495418c/w692"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-gigabyte-rx7700xt-gaming-oc": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gigabyte.com%2FGraphics-Card%2FGV-R77XTGAMING-OC-12GD&embed=image.url",
-      "sourcePage": "https://www.gigabyte.com/Graphics-Card/GV-R77XTGAMING-OC-12GD",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-gigabyte-rx7700xt-gaming-oc",
+      "sourcePage": "https://modxcomputers.com/product/gigabyte-rx-7700-xt-gaming-oc-12gb/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://img.modxcomputers.com/modx/1753702077432-Gigabyte-RX-7700-XT-Gaming-OC-12GB.png",
+      "images": [
+        "https://img.modxcomputers.com/modx/1753702077432-Gigabyte-RX-7700-XT-Gaming-OC-12GB.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-sapphire-rx7800xt-pulse": {
-      "primaryImage": "https://media.cdn.sapphiretech.com.cn/-/media/sites/sapphire/pim/product-images/11330_02_7800xt_pulse_16gddr6_dual-fan/rx7800xt_pulse_full_box_card_amd_374x265.ashx?v=3f4a63c04f6b4fb7b844fe636be7ea42",
-      "sourcePage": null,
-      "sourceType": "official-cdn-image",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-sapphire-rx7800xt-pulse",
+      "sourcePage": "https://www.ebay.com/itm/127593528253",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://m.media-amazon.com/images/I/81VpOvD9wJL.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/81VpOvD9wJL.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-sapphire-rx9070-pulse": {
-      "primaryImage": "https://media.cdn.sapphiretech.com.cn/-/media/sites/sapphire/pim/product-images/11349_03_rx9070_pulse_16ggddr6/rx9070_pulse_photo_374x265.ashx?v=7735c1f14a854fe08e0b751d53fb94bd",
-      "sourcePage": null,
-      "sourceType": "official-cdn-image",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-sapphire-rx9070-pulse",
+      "sourcePage": "https://fullh4rd.com.ar/prod/30099/placa-de-video-radeon-rx-9070-16gb-sapphire-pulse",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://fullh4rd.com.ar/img/productos/3/placa-de-video-radeon-rx-9070-16gb-sapphire-pulse-0.jpg",
+      "images": [
+        "https://fullh4rd.com.ar/img/productos/3/placa-de-video-radeon-rx-9070-16gb-sapphire-pulse-0.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-sapphire-rx9070xt-pulse": {
-      "primaryImage": "https://media.cdn.sapphiretech.com.cn/-/media/sites/sapphire/pim/product-images/11348_03_rx9070xt_pulse_16ggddr6/rx9070xt_pulse_photo_374x265.ashx?v=4456c584cd8647bba6629370df2f2904",
-      "sourcePage": null,
-      "sourceType": "official-cdn-image",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-sapphire-rx9070xt-pulse",
+      "sourcePage": "https://www.cybertek.fr/carte-graphique/sapphire-pulse-radeon-rx-9070-xt-gaming-16gb-150015.aspx",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.cybertek.fr/images_produits/13e6ca4c-823d-429f-b06f-a852bc9bac12.jpg",
+      "images": [
+        "https://www.cybertek.fr/images_produits/13e6ca4c-823d-429f-b06f-a852bc9bac12.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-gigabyte-rtx4060-windforce": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gigabyte.com%2FGraphics-Card%2FGV-N4060WF2OC-8GD&embed=image.url",
-      "sourcePage": "https://www.gigabyte.com/Graphics-Card/GV-N4060WF2OC-8GD",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-gigabyte-rtx4060-windforce",
+      "sourcePage": "https://hacom.vn/card-man-hinh-gigabyte-rtx-4060-windforce-oc-8gd",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://hanoicomputercdn.com/media/product/73423_card_man_hinh_gigabyte_rtx_4060_windforce_oc_8gd__2_.jpg",
+      "images": [
+        "https://hanoicomputercdn.com/media/product/73423_card_man_hinh_gigabyte_rtx_4060_windforce_oc_8gd__2_.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-msi-rtx4060ti-ventus-2x": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.msi.com%2FGraphics-Card%2FGeForce-RTX-4060-Ti-VENTUS-2X-8G-OC&embed=image.url",
-      "sourcePage": "https://www.msi.com/Graphics-Card/GeForce-RTX-4060-Ti-VENTUS-2X-8G-OC",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-msi-rtx4060ti-ventus-2x",
+      "sourcePage": "https://www.itopya.com/msi-geforce-rtx-4060-ti-ventus-2x-black-8g-dlss-3-128-bit-ekran-karti_u28659",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://img-itopya.mncdn.com/cdn/1000/1-18fe2e.png",
+      "images": [
+        "https://img-itopya.mncdn.com/cdn/1000/1-18fe2e.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-gigabyte-rtx5060-windforce": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gigabyte.com%2FGraphics-Card%2FGV-N5060WF2OC-8GD&embed=image.url",
-      "sourcePage": "https://www.gigabyte.com/Graphics-Card/GV-N5060WF2OC-8GD",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-gigabyte-rtx5060-windforce",
+      "sourcePage": "https://www.atombilisim.com.tr/gigabyte-rtx5060-windforce-oc-8gb-gddr7-gv-n5060wf2oc-8gd",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.atombilisim.com.tr/gigabyte-rtx5060-windforce-oc-8gb-gddr7-gv-n5060wf2oc-8gd-ekran-karti-gigabyte-160687-23-B.jpg",
+      "images": [
+        "https://www.atombilisim.com.tr/gigabyte-rtx5060-windforce-oc-8gb-gddr7-gv-n5060wf2oc-8gd-ekran-karti-gigabyte-160687-23-B.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-gigabyte-rtx5060ti-16": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gigabyte.com%2FGraphics-Card%2FGV-N506TGAMING-OC-16GD&embed=image.url",
-      "sourcePage": "https://www.gigabyte.com/Graphics-Card/GV-N506TGAMING-OC-16GD",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-gigabyte-rtx5060ti-16",
+      "sourcePage": "https://www.nabava.net/graficke-kartice/gigabyte-geforce-rtx-5060-ti-gaming-oc-16g-cijena-gv-n506tgaming-oc-16gd-16gb-gddr7-738896891",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.nabava.net/slike/products/89/96/73889689/graficke-kartice-gigabyte-geforce-rtx-5060-ti-gaming-oc-16g-gv-n506tgaming-oc-16gd_16c02ccc.webp",
+      "images": [
+        "https://www.nabava.net/slike/products/89/96/73889689/graficke-kartice-gigabyte-geforce-rtx-5060-ti-gaming-oc-16g-gv-n506tgaming-oc-16gd_16c02ccc.webp"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-msi-rtx5070-ventus": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.msi.com%2FGraphics-Card%2FGeForce-RTX-5070-12G-VENTUS-3X&embed=image.url",
-      "sourcePage": "https://www.msi.com/Graphics-Card/GeForce-RTX-5070-12G-VENTUS-3X",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-msi-rtx5070-ventus",
+      "sourcePage": "https://elitehubs.com/collections/nvidia-rtx-5070-graphic-cards",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://elitehubs.com/cdn/shop/files/1024-2025-02-26T102836.664.png?v=1740546169",
+      "images": [
+        "https://elitehubs.com/cdn/shop/files/1024-2025-02-26T102836.664.png?v=1740546169"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-asus-rtx5070-prime": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.asus.com%2Fza%2Fmotherboards-components%2Fgraphics-cards%2Fprime%2Fprime-rtx5070-12g%2F&embed=image.url",
-      "sourcePage": "https://www.asus.com/za/motherboards-components/graphics-cards/prime/prime-rtx5070-12g/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-asus-rtx5070-prime",
+      "sourcePage": "https://www.mindfactory.de/product_info.php/12GB-Asus-GeForce-RTX-5070-Prime-Aktiv-PCIe-5-0-x16--Retail-_1616860.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://image1280.macovi.de/images/product_images/1280/1616860_0__78103.jpg",
+      "images": [
+        "https://image1280.macovi.de/images/product_images/1280/1616860_0__78103.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-gigabyte-rtx5070ti-gaming": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gigabyte.com%2FGraphics-Card%2FGV-N507TGAMING-OC-16GD&embed=image.url",
-      "sourcePage": "https://www.gigabyte.com/Graphics-Card/GV-N507TGAMING-OC-16GD",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-gigabyte-rtx5070ti-gaming",
+      "sourcePage": "https://www.arlt.com/Hardware/PC-Komponenten/GIGABYTE-GeForce-RTX-5070-Ti-Gaming-OC-16G-16GB-GDDR7-HDMI-3x-DP.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.arlt.com/out/pictures/master/product/1/1025426_2_001.jpg",
+      "images": [
+        "https://www.arlt.com/out/pictures/master/product/1/1025426_2_001.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-msi-rtx5080-ventus": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.msi.com%2FGraphics-Card%2FGeForce-RTX-5080-16G-VENTUS-3X&embed=image.url",
-      "sourcePage": "https://www.msi.com/Graphics-Card/GeForce-RTX-5080-16G-VENTUS-3X",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-msi-rtx5080-ventus",
+      "sourcePage": "https://www.bestbuy.com/product/msi-nvidia-geforce-geforce-rtx-5080-16g-ventus-3x-oc-plus-16gb-gddr7-pci-express-gen-5-graphics-card-black/J3P7TX6LYJ/sku/10918859",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/f57ef4ef-666f-4ac0-88bf-a015ff003847.jpg",
+      "images": [
+        "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/f57ef4ef-666f-4ac0-88bf-a015ff003847.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-asus-rtx5080-tuf": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.asus.com%2Fmotherboards-components%2Fgraphics-cards%2Ftuf-gaming%2Ftuf-rtx5080-16g-gaming%2F&embed=image.url",
-      "sourcePage": "https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx5080-16g-gaming/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-asus-rtx5080-tuf",
+      "sourcePage": "https://www.x-kom.pl/p/1311316-karta-graficzna-nvidia-asus-geforce-rtx-5080-tuf-gaming-16gb-gddr7-dlss4.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big%2C%2C2025/1/pr_2025_1_30_13_16_29_28_00.jpg",
+      "images": [
+        "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big%2C%2C2025/1/pr_2025_1_30_13_16_29_28_00.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-gigabyte-rtx5090-gaming": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.gigabyte.com%2Fza%2FGraphics-Card%2FGV-N5090GAMING-OC-32GD&embed=image.url",
-      "sourcePage": "https://www.gigabyte.com/za/Graphics-Card/GV-N5090GAMING-OC-32GD",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-gigabyte-rtx5090-gaming",
+      "sourcePage": "https://www.senetic.pt/product/GV-N5090GAMING_OC-32GD",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://gfx3.senetic.com/akeneo-catalog/5/0/0/6/5006f5cecf151ebb3610ea136dd2c60dde89e732_1761905_GV_N5090GAMING_OC_32GD_image1.jpg",
+      "images": [
+        "https://gfx3.senetic.com/akeneo-catalog/5/0/0/6/5006f5cecf151ebb3610ea136dd2c60dde89e732_1761905_GV_N5090GAMING_OC_32GD_image1.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-asus-rtx5090-tuf": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.asus.com%2Fza%2Fmotherboards-components%2Fgraphics-cards%2Ftuf-gaming%2Ftuf-rtx5090-32g-gaming%2F&embed=image.url",
-      "sourcePage": "https://www.asus.com/za/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx5090-32g-gaming/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-asus-rtx5090-tuf",
+      "sourcePage": "https://www.inpc.co.za/products/asus-tuf-geforce-rtx-5090-oc-32gb-gaming-graphics-card",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.inpc.co.za/cdn/shop/files/ASUSTUFGeForceRTX5090OC32GBGamingGraphicsCard.jpg?v=1759074795&width=1200",
+      "images": [
+        "https://www.inpc.co.za/cdn/shop/files/ASUSTUFGeForceRTX5090OC32GBGamingGraphicsCard.jpg?v=1759074795&width=1200"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-intel-arc-b580-limited": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.intel.com%2Fcontent%2Fwww%2Fus%2Fen%2Fproducts%2Fdocs%2Fdiscrete-gpus%2Farc%2Fdesktop%2Fb-series%2Foverview.html&embed=image.url",
-      "sourcePage": "https://www.intel.com/content/www/us/en/products/docs/discrete-gpus/arc/desktop/b-series/overview.html",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-intel-arc-b580-limited",
+      "sourcePage": "https://www.dateks.lv/en/cenas/videokartes/1171787-intel-arc-b580-12gb-gddr6-intel-limited-edition",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.dateks.lv/images/pic/2400/2400/332/1860.jpg",
+      "images": [
+        "https://www.dateks.lv/images/pic/2400/2400/332/1860.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-gpu-asrock-arc-b580-steel-legend": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.asrock.com%2FGraphics-Card%2FIntel%2FIntel%2520Arc%2520B580%2520Steel%2520Legend%252012GB%2520OC%2F&embed=image.url",
-      "sourcePage": "https://www.asrock.com/Graphics-Card/Intel/Intel%20Arc%20B580%20Steel%20Legend%2012GB%20OC/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-gpu-asrock-arc-b580-steel-legend",
+      "sourcePage": "https://www.ldlc.com/it-it/scheda/PB00657526.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://media.ldlc.com/r1600/ld/products/00/06/19/56/LD0006195628.jpg",
+      "images": [
+        "https://media.ldlc.com/r1600/ld/products/00/06/19/56/LD0006195628.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-kingston-nv2-500": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.kingston.com%2Fen%2Fssd%2Fnv2-nvme-pcie-ssd&embed=image.url",
-      "sourcePage": "https://www.kingston.com/en/ssd/nv2-nvme-pcie-ssd",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-kingston-nv2-500",
+      "sourcePage": "https://www.ricardo.ch/de/a/neu-kingston-ssd-nv2-m2-2280-nvme-500-gb-1291740130/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://img.ricardostatic.ch/images/071267f2-637c-4138-8a63-f3db748d9625/t_1000x750/neu-kingston-ssd-nv2-m2-2280-nvme-500-gb",
+      "images": [
+        "https://img.ricardostatic.ch/images/071267f2-637c-4138-8a63-f3db748d9625/t_1000x750/neu-kingston-ssd-nv2-m2-2280-nvme-500-gb"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-kingston-nv3-1tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.kingston.com%2Fen%2Fssd%2Fnv3-nvme-pcie-ssd&embed=image.url",
-      "sourcePage": "https://www.kingston.com/en/ssd/nv3-nvme-pcie-ssd",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-kingston-nv3-1tb",
+      "sourcePage": "https://artline.ua/uk/product/ssd-disk-kingston-nv3-1tb-m2-pcie-gen-4x4-nvme-snv3s1000g",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://artline.ua/storage/images/products/30687/gallery/302420/gallery_1726327573206654_0.webp",
+      "images": [
+        "https://artline.ua/storage/images/products/30687/gallery/302420/gallery_1726327573206654_0.webp"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-wd-blue-sn580-1tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.westerndigital.com%2Fproducts%2Finternal-drives%2Fwd-blue-sn580-nvme-ssd&embed=image.url",
-      "sourcePage": "https://www.westerndigital.com/products/internal-drives/wd-blue-sn580-nvme-ssd",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-wd-blue-sn580-1tb",
+      "sourcePage": "https://my-best.com/products/1585848",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://img.my-best.com/product_images/e7e0f78c7c70ce352c2df0ee53b6ada2.jpeg?fill=solid&fill-color=FFFFFF&fit=fill&h=900&ixlib=rails-4.3.1&lossless=0&q=70&s=5c52080f9a7c2f1bfe7931ea74849862&w=1200",
+      "images": [
+        "https://img.my-best.com/product_images/e7e0f78c7c70ce352c2df0ee53b6ada2.jpeg?fill=solid&fill-color=FFFFFF&fit=fill&h=900&ixlib=rails-4.3.1&lossless=0&q=70&s=5c52080f9a7c2f1bfe7931ea74849862&w=1200"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-wd-black-sn770-1tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.westerndigital.com%2Fproducts%2Finternal-drives%2Fwd-black-sn770-nvme-ssd&embed=image.url",
-      "sourcePage": "https://www.westerndigital.com/products/internal-drives/wd-black-sn770-nvme-ssd",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-wd-black-sn770-1tb",
+      "sourcePage": "https://www.ldlc.com/en/product/PB00482501.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://media.ldlc.com/r1600/ld/products/00/05/92/91/LD0005929195_1.jpg",
+      "images": [
+        "https://media.ldlc.com/r1600/ld/products/00/05/92/91/LD0005929195_1.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-wd-black-sn850x-1tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.westerndigital.com%2Fproducts%2Finternal-drives%2Fwd-black-sn850x-nvme-ssd&embed=image.url",
-      "sourcePage": "https://www.westerndigital.com/products/internal-drives/wd-black-sn850x-nvme-ssd",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "product-family"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-wd-black-sn850x-1tb",
+      "sourcePage": "https://shopee.sg/WD-Black-SN850X-SN770-SSD-SN7100-Western-Digital-SSD-1TB-2T-M.2-2280-PCIe4.0-NVMe-SSD-Western-Digital-SN770-M.2-2280-SSD-i.63407136.26862600910",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://down-sg.img.susercontent.com/file/sg-11134207-7rdvi-m0oommh2ffd0fc",
+      "images": [
+        "https://down-sg.img.susercontent.com/file/sg-11134207-7rdvi-m0oommh2ffd0fc"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-wd-black-sn850x-2tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.westerndigital.com%2Fproducts%2Finternal-drives%2Fwd-black-sn850x-nvme-ssd&embed=image.url",
-      "sourcePage": "https://www.westerndigital.com/products/internal-drives/wd-black-sn850x-nvme-ssd",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "product-family"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-wd-black-sn850x-2tb",
+      "sourcePage": "https://shopee.ph/WD-Black-SN850X-1TB-2TB-PCIe-Gen4-M.2-NVMe-i.300165584.23078144322",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://down-ph.img.susercontent.com/file/sg-11134201-7r98o-lkwhj86606r5d8",
+      "images": [
+        "https://down-ph.img.susercontent.com/file/sg-11134201-7r98o-lkwhj86606r5d8"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-samsung-990-evo-plus-1tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fsemiconductor.samsung.com%2Fconsumer-storage%2Finternal-ssd%2F990-evo-plus%2F&embed=image.url",
-      "sourcePage": "https://semiconductor.samsung.com/consumer-storage/internal-ssd/990-evo-plus/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-samsung-990-evo-plus-1tb",
+      "sourcePage": "https://artline.ua/product/ssd-disk-samsung-990-evo-plus-1tb-m2-nvme-tlc-pcie-50-mz-v9s1t0bw",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://artline.ua/storage/images/products/33775/gallery/344735/gallery_1737734352627375_0.webp",
+      "images": [
+        "https://artline.ua/storage/images/products/33775/gallery/344735/gallery_1737734352627375_0.webp"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-samsung-990-pro-2tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fsemiconductor.samsung.com%2Fconsumer-storage%2Finternal-ssd%2F990-pro%2F&embed=image.url",
-      "sourcePage": "https://semiconductor.samsung.com/consumer-storage/internal-ssd/990-pro/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-samsung-990-pro-2tb",
+      "sourcePage": "https://nhattincomputer.vn/o-cung-gan-trong-ssd-2tb-samsung-990-pro-pcie-m-2-2280-gen-4-0-x4-nvme-v-nand-model-mz-v9p2t0-den",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://bizweb.dktcdn.net/100/011/713/products/2tb-1.png?v=1735282102327",
+      "images": [
+        "https://bizweb.dktcdn.net/100/011/713/products/2tb-1.png?v=1735282102327"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-crucial-p3-plus-1tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.crucial.com%2Fssd%2Fp3-plus%2Fct1000p3pssd8&embed=image.url",
-      "sourcePage": "https://www.crucial.com/ssd/p3-plus/ct1000p3pssd8",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-crucial-p3-plus-1tb",
+      "sourcePage": "https://www.plazavea.com.pe/disco-ssd-solido-crucial-p3-plus-1tb-m2-2280-nvme-pcie-4-0-ct1000p3pssd8-101060825/p",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://plazavea.vteximg.com.br/arquivos/ids/29161410-418-418/imageUrl_4.jpg",
+      "images": [
+        "https://plazavea.vteximg.com.br/arquivos/ids/29161410-418-418/imageUrl_4.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-crucial-t500-2tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.crucial.com%2Fssd%2Ft500%2Fct2000t500ssd8&embed=image.url",
-      "sourcePage": "https://www.crucial.com/ssd/t500/ct2000t500ssd8",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-crucial-t500-2tb",
+      "sourcePage": "https://shopee.co.th/Crucial-T500-2TB-PCIe-Gen4-NVMe-M.2-2280-Internal-Gaming-SSD-%28R-7400MB-s%29-CT2000T500SSD8-i.471078256.25853903382",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://down-th.img.susercontent.com/file/th-11134201-7r98y-lpfaiba6lz0e13",
+      "images": [
+        "https://down-th.img.susercontent.com/file/th-11134201-7r98y-lpfaiba6lz0e13"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-lexar-nm790-2tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Famericas.lexar.com%2Fproduct%2Flexar-nm790-m-2-2280-pcie-gen-4x4-nvme-ssd%2F&embed=image.url",
-      "sourcePage": "https://americas.lexar.com/product/lexar-nm790-m-2-2280-pcie-gen-4x4-nvme-ssd/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-lexar-nm790-2tb",
+      "sourcePage": "https://www.makro.pro/th/p/M7902TB-223403581633854",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://images.mango-prod.siammakro.cloud/SOURCE/127b8f1ccc5541eb8ed3804db59165f6?eo-img.format=webp&eo-img.resize=w%2F1080",
+      "images": [
+        "https://images.mango-prod.siammakro.cloud/SOURCE/127b8f1ccc5541eb8ed3804db59165f6?eo-img.format=webp&eo-img.resize=w%2F1080"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-teamgroup-mp44-2tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.teamgroupinc.com%2Fen%2Fproduct-detail%2Fssd%2Fm2%2Fmp44%2Fmp44-TM8FPW002T0C101%2F&embed=image.url",
-      "sourcePage": "https://www.teamgroupinc.com/en/product-detail/ssd/m2/mp44/mp44-TM8FPW002T0C101/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-teamgroup-mp44-2tb",
+      "sourcePage": "https://business.walmart.com/ip/Team-Group-MP44-M-2-2280-2TB-PCIe-4-0-x4-NVMe-Laptop-Desktop-NUC-NAS-Internal-Solid-State-Drive-SSD-R-W-Speed-7-400-7-000MB-s-TM8FPW002T0C101/3494528096",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://i5.walmartimages.com/asr/cba7039a-c4ca-4278-9eb5-6d2d359d11d4.eb8a08086e9bbbd94d6d4fc38b85e791.jpeg?odnBg=FFFFFF&odnHeight=612&odnWidth=612",
+      "images": [
+        "https://i5.walmartimages.com/asr/cba7039a-c4ca-4278-9eb5-6d2d359d11d4.eb8a08086e9bbbd94d6d4fc38b85e791.jpeg?odnBg=FFFFFF&odnHeight=612&odnWidth=612"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-samsung-870-evo-1tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fsemiconductor.samsung.com%2Fconsumer-storage%2Finternal-ssd%2F870evo%2F&embed=image.url",
-      "sourcePage": "https://semiconductor.samsung.com/consumer-storage/internal-ssd/870evo/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-samsung-870-evo-1tb",
+      "sourcePage": "https://www.sofmap.com/product_detail.aspx?sku=21799332",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://image.sofmap.com/images/product/other/4560441096698_4.jpg",
+      "images": [
+        "https://image.sofmap.com/images/product/other/4560441096698_4.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-crucial-bx500-1tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.crucial.com%2Fssd%2Fbx500%2Fct1000bx500ssd1&embed=image.url",
-      "sourcePage": "https://www.crucial.com/ssd/bx500/ct1000bx500ssd1",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-crucial-bx500-1tb",
+      "sourcePage": "https://www.falabella.com/falabella-cl/product/17525871/Ssd-Crucial-Bx500-1Tb-Sata-2-5P/17525871",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://media.falabella.com/falabellaCL/17525871_2/w%3D1500%2Ch%3D1500%2Cfit%3Dcover",
+      "images": [
+        "https://media.falabella.com/falabellaCL/17525871_2/w%3D1500%2Ch%3D1500%2Cfit%3Dcover"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-seagate-barracuda-2tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.seagate.com%2Fproducts%2Fhard-drives%2Fbarracuda-hard-drive%2F&embed=image.url",
-      "sourcePage": "https://www.seagate.com/products/hard-drives/barracuda-hard-drive/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-seagate-barracuda-2tb",
+      "sourcePage": "https://shopee.com.my/Seagate-Cool-Fish-2TB-12cm-SATA-Mechanical-Hard-Disk-High-Speed-Brand-New-Desktop-ST2000DM008-005-i.1649965926.29993095313",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://down-my.img.susercontent.com/file/sg-11134201-824g2-mebrhchj083k64",
+      "images": [
+        "https://down-my.img.susercontent.com/file/sg-11134201-824g2-mebrhchj083k64"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-storage-wd-blue-4tb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.westerndigital.com%2Fproducts%2Finternal-drives%2Fwd-blue-desktop-sata-hdd&embed=image.url",
-      "sourcePage": "https://www.westerndigital.com/products/internal-drives/wd-blue-desktop-sata-hdd",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-storage-wd-blue-4tb",
+      "sourcePage": "https://www.idealo.de/preisvergleich/OffersOfProduct/4829455_-blue-desktop-sata-4tb-wd40ezrz-western-digital.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://cdn.idealo.com/folder/Product/4829/4/4829455/s1_produktbild_max_4/western-digital-blue-desktop-sata-4tb-wd40ezrz.jpg",
+      "images": [
+        "https://cdn.idealo.com/folder/Product/4829/4/4829455/s1_produktbild_max_4/western-digital-blue-desktop-sata-4tb-wd40ezrz.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-cooler-master-mwe-550-bronze": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.coolermaster.com%2Fen-global%2Fproducts%2Fmwe-550-bronze-v2%2F&embed=image.url",
-      "sourcePage": "https://www.coolermaster.com/en-global/products/mwe-550-bronze-v2/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-cooler-master-mwe-550-bronze",
+      "sourcePage": "https://www.sreecomputers.online/product/20822125/Cooler-master-Smps-550w",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://cdn.dotpe.in/longtail/store-items/6503245/1DsOwDVm.webp",
+      "images": [
+        "https://cdn.dotpe.in/longtail/store-items/6503245/1DsOwDVm.webp"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-corsair-cx650": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fp%2Fpsu%2Fcp-9020278-na%2Fcx-series-cx650-650-watt-80-plus-bronze-atx-power-supply-cp-9020278-na&embed=image.url",
-      "sourcePage": "https://www.corsair.com/us/en/p/psu/cp-9020278-na/cx-series-cx650-650-watt-80-plus-bronze-atx-power-supply-cp-9020278-na",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-corsair-cx650",
+      "sourcePage": "https://www.f14lab.com/2018/07/review-corsair-cx650-650w.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://2.bp.blogspot.com/-a7YuYixKjTk/W1qdzg17lBI/AAAAAAAADOY/Lqd9AvatkzsjkIHSCxdMuIVqdeffTVeMgCEwYBhgL/s1600/37860308_2289729487718719_6745339291913682944_o.jpg",
+      "images": [
+        "https://2.bp.blogspot.com/-a7YuYixKjTk/W1qdzg17lBI/AAAAAAAADOY/Lqd9AvatkzsjkIHSCxdMuIVqdeffTVeMgCEwYBhgL/s1600/37860308_2289729487718719_6745339291913682944_o.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-corsair-rm650e": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fp%2Fpsu%2Fcp-9020302-na%2Frme-series-rm650e-fully-modular-low-noise-atx-power-supply-cp-9020302-na&embed=image.url",
-      "sourcePage": "https://www.corsair.com/us/en/p/psu/cp-9020302-na/rme-series-rm650e-fully-modular-low-noise-atx-power-supply-cp-9020302-na",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-corsair-rm650e",
+      "sourcePage": "https://ddtech.mx/producto/fuente-de-poder-corsair-rm650e-650w-80-gold-cybenetics-a-atx-3-1-full-modular-series-50-ready?id=18668",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://ddtech.mx/assets/uploads/e5a3e693379f17321d97bebecfb50896.png",
+      "images": [
+        "https://ddtech.mx/assets/uploads/e5a3e693379f17321d97bebecfb50896.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-superflower-leadex-iii-750": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.super-flower.com.tw%2Fen%2Fproducts%2Fleadex-iii-gold-750w&embed=image.url",
-      "sourcePage": "https://www.super-flower.com.tw/en/products/leadex-iii-gold-750w",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-superflower-leadex-iii-750",
+      "sourcePage": "https://shop.tsukumo.co.jp/goods/4571388280064/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://cdn.tsukumo.co.jp/image/item/4571388280064_1.jpg",
+      "images": [
+        "https://cdn.tsukumo.co.jp/image/item/4571388280064_1.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-corsair-rm750e": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fp%2Fpsu%2Fcp-9020248-na%2Frme-series-rm750e-fully-modular-low-noise-atx-power-supply-cp-9020248-na&embed=image.url",
-      "sourcePage": "https://www.corsair.com/us/en/p/psu/cp-9020248-na/rme-series-rm750e-fully-modular-low-noise-atx-power-supply-cp-9020248-na",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-corsair-rm750e",
+      "sourcePage": "https://mbpc.gg/products/corsair-rm750e-fully-modular-power-supply-psu-80-gold-for-gaming-pc",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://mbpc.gg/cdn/shop/files/corsair-rm-750e-power-supply-fully-modular-gold-psu-gaming-pc.jpg?v=1744774737",
+      "images": [
+        "https://mbpc.gg/cdn/shop/files/corsair-rm-750e-power-supply-fully-modular-gold-psu-gaming-pc.jpg?v=1744774737"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-msi-mag-a750gl": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.msi.com%2FPower-Supply%2FMAG-A750GL-PCIE5&embed=image.url",
-      "sourcePage": "https://www.msi.com/Power-Supply/MAG-A750GL-PCIE5",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-msi-mag-a750gl",
+      "sourcePage": "https://www.ebay.co.uk/itm/276814769861",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://i.ebayimg.com/images/g/YNMAAOSwdSJnhFwZ/s-l400.jpg",
+      "images": [
+        "https://i.ebayimg.com/images/g/YNMAAOSwdSJnhFwZ/s-l400.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-msi-mag-a850gl": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.msi.com%2FPower-Supply%2FMAG-A850GL-PCIE5&embed=image.url",
-      "sourcePage": "https://www.msi.com/Power-Supply/MAG-A850GL-PCIE5",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-msi-mag-a850gl",
+      "sourcePage": "https://blitzstock.com/products/msi-mag-a850gl-pcie-5-80-plus-gold-850w-fully-modular-12vhpwr-cable-atx-3-0-power-supply",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://blitzstock.com/cdn/shop/files/8522910138518_0_e869ea2a.jpg?v=1775780251",
+      "images": [
+        "https://blitzstock.com/cdn/shop/files/8522910138518_0_e869ea2a.jpg?v=1775780251"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-corsair-rm850e": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fp%2Fpsu%2Fcp-9020263-na%2Frme-series-rm850e-fully-modular-low-noise-atx-power-supply-cp-9020263-na&embed=image.url",
-      "sourcePage": "https://www.corsair.com/us/en/p/psu/cp-9020263-na/rme-series-rm850e-fully-modular-low-noise-atx-power-supply-cp-9020263-na",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-corsair-rm850e",
+      "sourcePage": "https://www.mercular.com/power-supply-80-gold-850w-corsair-series-rm850e-cp-9020296-na?sku=3000000166612",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://img.advice.co.th/images_nas/pic_product4/A0166612/A0166612OK_ORI_5.jpg",
+      "images": [
+        "https://img.advice.co.th/images_nas/pic_product4/A0166612/A0166612OK_ORI_5.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-seasonic-focus-gx-850": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fseasonic.com%2Ffocus-gx%2F&embed=image.url",
-      "sourcePage": "https://seasonic.com/focus-gx/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-seasonic-focus-gx-850",
+      "sourcePage": "https://www.overclockers.co.uk/seasonic-focus-gx-850-850w-80-gold-modular-power-supply-ca-06t-ss.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://img.overclockers.co.uk/images/CA-06T-SS/d8e85a6a4618289ab4bae3d0742f8b9a.jpg",
+      "images": [
+        "https://img.overclockers.co.uk/images/CA-06T-SS/d8e85a6a4618289ab4bae3d0742f8b9a.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-bequiet-pure-power-12m-850": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.bequiet.com%2Fen%2Fpowersupply%2F4067&embed=image.url",
-      "sourcePage": "https://www.bequiet.com/en/powersupply/4067",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-bequiet-pure-power-12m-850",
+      "sourcePage": "https://www.ldlc.com/en/product/PB00540385.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://media.ldlc.com/r1600/ld/products/00/06/00/94/LD0006009447.jpg",
+      "images": [
+        "https://media.ldlc.com/r1600/ld/products/00/06/00/94/LD0006009447.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-corsair-rm1000e": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fp%2Fpsu%2Fcp-9020264-na%2Frme-series-rm1000e-fully-modular-low-noise-atx-power-supply-cp-9020264-na&embed=image.url",
-      "sourcePage": "https://www.corsair.com/us/en/p/psu/cp-9020264-na/rme-series-rm1000e-fully-modular-low-noise-atx-power-supply-cp-9020264-na",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-corsair-rm1000e",
+      "sourcePage": "https://www.jib.co.th/web/product/readProduct/75945/CORSAIR-RM1000E---1000W-CYBENETICS-GOLD-BLACK-ATX--CP-9020297-NA-)",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.jib.co.th/img_master/product/original/2025042816410675945_7.jpg",
+      "images": [
+        "https://www.jib.co.th/img_master/product/original/2025042816410675945_7.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-msi-mpg-a1000g-pcie5": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.msi.com%2FPower-Supply%2FMPG-A1000G-PCIE5&embed=image.url",
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-msi-mpg-a1000g-pcie5",
       "sourcePage": "https://www.msi.com/Power-Supply/MPG-A1000G-PCIE5",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://media.livestreamrigs.com/msi_mpg_a1000g_pcie_5_c3d1fda635.webp",
+      "images": [
+        "https://media.livestreamrigs.com/msi_mpg_a1000g_pcie_5_c3d1fda635.webp"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-seasonic-vertex-gx-1000": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fseasonic.com%2Fvertex-gx%2F&embed=image.url",
-      "sourcePage": "https://seasonic.com/vertex-gx/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-seasonic-vertex-gx-1000",
+      "sourcePage": "https://news.xfastest.com/review/review-08/123031/seasonic-vertex-gx-1000/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://p.xfastest.com/~sinchen/Seasonic-VERTEX-GX-1000/Seasonic-VERTEX-GX-1000-1.jpg",
+      "images": [
+        "https://p.xfastest.com/~sinchen/Seasonic-VERTEX-GX-1000/Seasonic-VERTEX-GX-1000-1.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-corsair-hx1200i": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fp%2Fpsu%2Fcp-9020259-na%2Fhxi-series-hx1200i-high-performance-atx-power-supply-cp-9020259-na&embed=image.url",
-      "sourcePage": "https://www.corsair.com/us/en/p/psu/cp-9020259-na/hxi-series-hx1200i-high-performance-atx-power-supply-cp-9020259-na",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-corsair-hx1200i",
+      "sourcePage": "https://www.sv-comp.com/en/power-supply-corsair-hx1200i-80-plus-platinum-efficiency-certification-atx-3-1-and-pcie-5-zero-rpm-mode-japanese-capacitors-black.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.sv-comp.com/image/cache/catalog/CORSAIR/CP-9020307-UK/1-900x900.jpg",
+      "images": [
+        "https://www.sv-comp.com/image/cache/catalog/CORSAIR/CP-9020307-UK/1-900x900.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-bequiet-dark-power-13-1300": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.bequiet.com%2Fen%2Fpowersupply%2F4046&embed=image.url",
-      "sourcePage": "https://www.bequiet.com/en/powersupply/4046",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-bequiet-dark-power-13-1300",
+      "sourcePage": "https://zdroje.heureka.cz/be-quiet-dark-power-pro-13-1300w-bn331/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://img-cdn.heureka.group/v1/1df683e8-e802-52ca-89cf-dd6f925ebbe8.jpg",
+      "images": [
+        "https://img-cdn.heureka.group/v1/1df683e8-e802-52ca-89cf-dd6f925ebbe8.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-psu-seasonic-prime-tx-1600": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fseasonic.com%2Fprime-tx%2F&embed=image.url",
-      "sourcePage": "https://seasonic.com/prime-tx/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-psu-seasonic-prime-tx-1600",
+      "sourcePage": "https://www.cclonline.com/atx3-prime-tx-1600-seasonic-prime-tx-atx-3-0-1600w-modular-power-supply-80-plus-titanium-445438/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://static.cclonline.com/images/avante/ATX3-PRIME-TX-1600.png?width=2000",
+      "images": [
+        "https://static.cclonline.com/images/avante/ATX3-PRIME-TX-1600.png?width=2000"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-montech-air-100-argb": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.montechpc.com%2Fen%2Fproducts_detail.php%3Fnid%3D225&embed=image.url",
-      "sourcePage": "https://www.montechpc.com/en/products_detail.php?nid=225",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-montech-air-100-argb",
+      "sourcePage": "https://shopee.ph/Montech-Air-100-ARGB-CPU-Case-With-Ultra-Minimalist-Design-i.173777316.13713351626",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://down-ph.img.susercontent.com/file/ph-11134207-7qul4-li2po9kxrwueb7",
+      "images": [
+        "https://down-ph.img.susercontent.com/file/ph-11134207-7qul4-li2po9kxrwueb7"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-cooler-master-q300l-v2": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.coolermaster.com%2Fen-global%2Fproducts%2Fmasterbox-q300l-v2%2F&embed=image.url",
-      "sourcePage": "https://www.coolermaster.com/en-global/products/masterbox-q300l-v2/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-cooler-master-q300l-v2",
+      "sourcePage": "https://24h.pchome.com.tw/prod/DRAE1Y-A900GNE17",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://img.pchome.com.tw/cs/items/DRAE1YA900GNE17/l000003_1694504110.jpg?width=640",
+      "images": [
+        "https://img.pchome.com.tw/cs/items/DRAE1YA900GNE17/l000003_1694504110.jpg?width=640"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-deepcool-ch370": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.deepcool.com%2Fproducts%2FCases%2Ffulltowercases%2FCH370-Micro-ATX-Case%2F2022%2F15949.shtml&embed=image.url",
-      "sourcePage": "https://www.deepcool.com/products/Cases/fulltowercases/CH370-Micro-ATX-Case/2022/15949.shtml",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-deepcool-ch370",
+      "sourcePage": "https://www.globaldata.pt/caixa-micro-atx-deepcool-ch370-preto-r-ch370-bknam1-g-1",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://img.globaldata.pt/products/R-CH370-BKNAM1-G-1.jpg",
+      "images": [
+        "https://img.globaldata.pt/products/R-CH370-BKNAM1-G-1.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-corsair-4000d-airflow": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fp%2Fpc-cases%2Fcc-9011200-ww%2F4000d-airflow-tempered-glass-mid-tower-atx-case-black-cc-9011200-ww&embed=image.url",
-      "sourcePage": "https://www.corsair.com/us/en/p/pc-cases/cc-9011200-ww/4000d-airflow-tempered-glass-mid-tower-atx-case-black-cc-9011200-ww",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-corsair-4000d-airflow",
+      "sourcePage": "https://www.ceneo.pl/96965862",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://image.ceneostatic.pl/data/article_picture/cc/64/1e0c-b131-4e0e-9b2c-3e2c4cfc4851_large.png",
+      "images": [
+        "https://image.ceneostatic.pl/data/article_picture/cc/64/1e0c-b131-4e0e-9b2c-3e2c4cfc4851_large.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-nzxt-h5-flow": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fnzxt.com%2Fen-intl%2Fproducts%2Fh5-flow&embed=image.url",
-      "sourcePage": "https://nzxt.com/en-intl/products/h5-flow",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-nzxt-h5-flow",
+      "sourcePage": "https://www.verkkokauppa.com/fi/product/842362/NZXT-H5-Flow-ATX-kotelo-ikkunalla-musta",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://cdn.verk.net/images/37/2_842362-995x848.jpg",
+      "images": [
+        "https://cdn.verk.net/images/37/2_842362-995x848.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-fractal-pop-air": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.fractal-design.com%2Fproducts%2Fcases%2Fpop%2Fpop-air%2Frgb-orange-core%2F&embed=image.url",
-      "sourcePage": "https://www.fractal-design.com/products/cases/pop/pop-air/rgb-orange-core/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-fractal-pop-air",
+      "sourcePage": "https://www.fractal-design.com/ja/products/cases/pop/pop-air/black-solid/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.fractal-design.com/app/uploads/2022/06/Pop_ATX_Air_Black_Sheetmetal_7-Left-Front-Above.jpg",
+      "images": [
+        "https://www.fractal-design.com/app/uploads/2022/06/Pop_ATX_Air_Black_Sheetmetal_7-Left-Front-Above.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-lian-li-lancool-216": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Flian-li.com%2Fproduct%2Flancool-216%2F&embed=image.url",
-      "sourcePage": "https://lian-li.com/product/lancool-216/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-lian-li-lancool-216",
+      "sourcePage": "https://tms.co.il/lancool-pc-lan216rx",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://tms.co.il/image/catalog/products/PC-LAN216RX/zBg8nGPdQq.jpg",
+      "images": [
+        "https://tms.co.il/image/catalog/products/PC-LAN216RX/zBg8nGPdQq.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-phanteks-xt-pro-ultra": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fphanteks.com%2Fproduct%2Fxt-pro-ultra-black%2F&embed=image.url",
-      "sourcePage": "https://phanteks.com/product/xt-pro-ultra-black/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-phanteks-xt-pro-ultra",
+      "sourcePage": "https://www.trendyol.com/phanteks/xt-pro-ultra-black-ph-xt523p1-dbk01-atx-tempered-glass-4x140mm-drgb-pwm-fan-siyah-kasa-p-901764481",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://cdn.dsmcdn.com/ty1641/prod/QC/20250223/22/3223c82a-a9f3-3c52-926b-28b2a0807075/1_org_zoom.jpg",
+      "images": [
+        "https://cdn.dsmcdn.com/ty1641/prod/QC/20250223/22/3223c82a-a9f3-3c52-926b-28b2a0807075/1_org_zoom.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-montech-air-903-max": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.montechpc.com%2Fen%2Fproducts_detail.php%3Fnid%3D355&embed=image.url",
-      "sourcePage": "https://www.montechpc.com/en/products_detail.php?nid=355",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-montech-air-903-max",
+      "sourcePage": "https://xeon.vn/p/case-montech-air-903-max-white",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://api.legacy.dewcms.com/uploads/public/derived/p_xl/case-montech-air-903-max-black--new-1.png",
+      "images": [
+        "https://api.legacy.dewcms.com/uploads/public/derived/p_xl/case-montech-air-903-max-black--new-1.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-corsair-5000d-airflow": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fp%2Fpc-cases%2Fcc-9011210-ww%2F5000d-airflow-tempered-glass-mid-tower-atx-pc-case-black-cc-9011210-ww&embed=image.url",
-      "sourcePage": "https://www.corsair.com/us/en/p/pc-cases/cc-9011210-ww/5000d-airflow-tempered-glass-mid-tower-atx-pc-case-black-cc-9011210-ww",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-corsair-5000d-airflow",
+      "sourcePage": "https://pcgamercasa.ma/pc-gamer/2654-pc-rtx-4060-ti-Pc-Gamer-Casa-Maroc.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://pcgamercasa.ma/10038-large_default/corsair-5000d-airflow-noir-Pc-Gamer-Casa-Maroc.jpg",
+      "images": [
+        "https://pcgamercasa.ma/10038-large_default/corsair-5000d-airflow-noir-Pc-Gamer-Casa-Maroc.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-fractal-north": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.fractal-design.com%2Fproducts%2Fcases%2Fnorth%2Fnorth%2Fcharcoal-black-tg-dark%2F&embed=image.url",
-      "sourcePage": "https://www.fractal-design.com/products/cases/north/north/charcoal-black-tg-dark/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-fractal-north",
+      "sourcePage": "https://laptop.bg/desktop_cases-fractal_design-fractal_design_north_tempered_glass_charcoal_black",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.laptop.bg/system/images/398855/original/fractal_design_north_tempered_glass_charcoal_black.jpg",
+      "images": [
+        "https://www.laptop.bg/system/images/398855/original/fractal_design_north_tempered_glass_charcoal_black.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-nzxt-h7-flow": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fnzxt.com%2Fen-intl%2Fproducts%2Fh7-flow&embed=image.url",
-      "sourcePage": "https://nzxt.com/en-intl/products/h7-flow",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-nzxt-h7-flow",
+      "sourcePage": "https://www.inet.se/produkt/6905238/nzxt-h7-flow-svart",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://cdn.inet.se/gfx/ext/226/nzxth7/H7-Flow-All-Black.jpg",
+      "images": [
+        "https://cdn.inet.se/gfx/ext/226/nzxth7/H7-Flow-All-Black.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-lian-li-o11-dynamic-evo": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Flian-li.com%2Fproduct%2Fo11-dynamic-evo%2F&embed=image.url",
-      "sourcePage": "https://lian-li.com/product/o11-dynamic-evo/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-lian-li-o11-dynamic-evo",
+      "sourcePage": "https://www.westontech.net.au/lian-li-case-pc-o11dex-dynamic-evo-black-case-der8auer-tempered-glass-window-no-psu/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://cdn11.bigcommerce.com/s-0a5dd/images/stencil/1280x1280/products/1918/4328/PC-O11DEX__51887.1644555574.jpg?c=2",
+      "images": [
+        "https://cdn11.bigcommerce.com/s-0a5dd/images/stencil/1280x1280/products/1918/4328/PC-O11DEX__51887.1644555574.jpg?c=2"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-case-fractal-meshify-2-xl": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.fractal-design.com%2Fproducts%2Fcases%2Fmeshify-series%2Fmeshify-2-xl%2Fmeshify-2-xl-black-light-tg%2F&embed=image.url",
-      "sourcePage": "https://www.fractal-design.com/products/cases/meshify-series/meshify-2-xl/meshify-2-xl-black-light-tg/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-case-fractal-meshify-2-xl",
+      "sourcePage": "https://www.officedepot.com/a/products/7987956/Fractal-Design-Meshify-2-XL-Computer/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://media.officedepot.com/images/f_auto%2Cq_auto%2Ce_sharpen%2Ch_450/products/7987956/7987956_o67_et_7547355/7987956",
+      "images": [
+        "https://media.officedepot.com/images/f_auto%2Cq_auto%2Ce_sharpen%2Ch_450/products/7987956/7987956_o67_et_7547355/7987956"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-deepcool-ak400": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.deepcool.com%2Fproducts%2FCooling%2Fcpuaircoolers%2FAK400-Performance-CPU-Cooler-1851-1700-AM5%2F2024%2F15222.shtml&embed=image.url",
-      "sourcePage": "https://www.deepcool.com/products/Cooling/cpuaircoolers/AK400-Performance-CPU-Cooler-1851-1700-AM5/2024/15222.shtml",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-deepcool-ak400",
+      "sourcePage": "https://www.oficinadosbits.com.br/produto/cooler-deepcool-ak400-amd-intel-preto-r-ak400-bknnmn-g-1/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://cdn.shoppub.io/cdn-cgi/image/w%3D1000%2Ch%3D1000%2Cq%3D80%2Cf%3Dauto/oficinadosbits/media/uploads/produtos/foto/xxxupcvp/file.png",
+      "images": [
+        "https://cdn.shoppub.io/cdn-cgi/image/w%3D1000%2Ch%3D1000%2Cq%3D80%2Cf%3Dauto/oficinadosbits/media/uploads/produtos/foto/xxxupcvp/file.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-cooler-master-hyper-212-halo": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.coolermaster.com%2Fen-global%2Fproducts%2Fhyper-212-halo-black%2F&embed=image.url",
-      "sourcePage": "https://www.coolermaster.com/en-global/products/hyper-212-halo-black/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-cooler-master-hyper-212-halo",
+      "sourcePage": "https://www.bestcell.com.ec/producto/cooler-de-aire-cooler-master-hyper-212-halo-rgb-negro-lga1700",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.bestcell.com.ec/imgadmin/storage/imagenes_articulos/1329/6329.jpg.webp",
+      "images": [
+        "https://www.bestcell.com.ec/imgadmin/storage/imagenes_articulos/1329/6329.jpg.webp"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-thermalright-peerless-assassin-120": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.thermalright.com%2Fproduct%2Fpeerless-assassin-120-se%2F&embed=image.url",
-      "sourcePage": "https://www.thermalright.com/product/peerless-assassin-120-se/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-thermalright-peerless-assassin-120",
+      "sourcePage": "https://www.skroutz.mt/s/60350063/thermalright-peerless-assassin-120-se-dual-tower-fan-cpu-cooling-for-am4-am5-1200-115x-1700-socket.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://d.scdn.gr/images/sku_images/111201/111201194/20250512131156_e5e7fac9.jpeg",
+      "images": [
+        "https://d.scdn.gr/images/sku_images/111201/111201194/20250512131156_e5e7fac9.jpeg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-deepcool-ak620": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.deepcool.com%2Fproducts%2FCooling%2Fcpuaircoolers%2FAK620-High-Performance-CPU-Cooler%2F2021%2F13067.shtml&embed=image.url",
-      "sourcePage": "https://www.deepcool.com/products/Cooling/cpuaircoolers/AK620-High-Performance-CPU-Cooler/2021/13067.shtml",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-deepcool-ak620",
+      "sourcePage": "https://citycenter.jo/deepcool-ak620-high-performance-dual-fan-6-copper-heat-pipes-tower-cpu-cooler",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://image.citycenter.jo/cache/catalog/12022/AK6201-1200x1200.jpg",
+      "images": [
+        "https://image.citycenter.jo/cache/catalog/12022/AK6201-1200x1200.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-bequiet-dark-rock-5": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.bequiet.com%2Fen%2Fcpucooler%2F4466&embed=image.url",
-      "sourcePage": "https://www.bequiet.com/en/cpucooler/4466",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-bequiet-dark-rock-5",
+      "sourcePage": "https://www.ldlc.com/it-it/scheda/PB00623910.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://media.ldlc.com/r1600/ld/products/00/06/14/71/LD0006147161.jpg",
+      "images": [
+        "https://media.ldlc.com/r1600/ld/products/00/06/14/71/LD0006147161.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-noctua-nh-d15-g2": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fnoctua.at%2Fen%2Fnh-d15-g2&embed=image.url",
-      "sourcePage": "https://noctua.at/en/nh-d15-g2",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-noctua-nh-d15-g2",
+      "sourcePage": "https://www.cclonline.com/nh-d15-g2-noctua-nh-d15-g2-dual-tower-cpu-cooler-455640/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://static.cclonline.com/images/212%20%282%29.png?width=2000",
+      "images": [
+        "https://static.cclonline.com/images/212%20%282%29.png?width=2000"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-arctic-liquid-freezer-iii-240": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.arctic.de%2Fen%2FLiquid-Freezer-III-240%2FACFRE00134A&embed=image.url",
-      "sourcePage": "https://www.arctic.de/en/Liquid-Freezer-III-240/ACFRE00134A",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-arctic-liquid-freezer-iii-240",
+      "sourcePage": "https://e-server.com.ua/uk/sistema-ridinnogo-oxolodzennia-arctic-liquid-freezer-iii-240-black-acfre00134a",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://api.e-server.com.ua/storage/284322/rs/U0921449_big_1713288437___rs_1200_1200.jpg",
+      "images": [
+        "https://api.e-server.com.ua/storage/284322/rs/U0921449_big_1713288437___rs_1200_1200.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-corsair-nautilus-240-rs": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fp%2Fcpu-coolers%2Fcw-9060088-ww%2Fnautilus-240-rs-liquid-cpu-cooler-cw-9060088-ww&embed=image.url",
-      "sourcePage": "https://www.corsair.com/us/en/p/cpu-coolers/cw-9060088-ww/nautilus-240-rs-liquid-cpu-cooler-cw-9060088-ww",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-corsair-nautilus-240-rs",
+      "sourcePage": "https://www.carrefour.com.br/resfriador-de-cpu-liquido-corsair-nautilus-240-rs-240-mm-aio-preto-mp950962177/p",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://carrefourbr.vtexassets.com/arquivos/ids/185847837/image-0.jpg?v=638760620043300000",
+      "images": [
+        "https://carrefourbr.vtexassets.com/arquivos/ids/185847837/image-0.jpg?v=638760620043300000"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-nzxt-kraken-240": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fnzxt.com%2Fen-intl%2Fproducts%2Fkraken-240&embed=image.url",
-      "sourcePage": "https://nzxt.com/en-intl/products/kraken-240",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-nzxt-kraken-240",
+      "sourcePage": "https://www.pbtech.co.nz/product/WTRNZX1100/NZXT-Kraken-240-240mm-AiO-Water-Cooling-with-154-i",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.pbtech.co.nz/imgprod/W/T/WTRNZX1100.jpg?h=3481983383",
+      "images": [
+        "https://www.pbtech.co.nz/imgprod/W/T/WTRNZX1100.jpg?h=3481983383"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-arctic-liquid-freezer-iii-280": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.arctic.de%2Fen%2FLiquid-Freezer-III-280%2FACFRE00135A&embed=image.url",
-      "sourcePage": "https://www.arctic.de/en/Liquid-Freezer-III-280/ACFRE00135A",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-arctic-liquid-freezer-iii-280",
+      "sourcePage": "https://computerlounge.co.nz/products/arctic-liquid-freezer-iii-280-aio-cpu-cooler-black",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://computerlounge.co.nz/cdn/shop/files/f973bf3e817be39c8548efb6f1bbd38b2100ca06_61178_1.jpg?v=1740616673&width=1200",
+      "images": [
+        "https://computerlounge.co.nz/cdn/shop/files/f973bf3e817be39c8548efb6f1bbd38b2100ca06_61178_1.jpg?v=1740616673&width=1200"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-arctic-liquid-freezer-iii-360": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.arctic.de%2Fen%2FLiquid-Freezer-III-360%2FACFRE00136A&embed=image.url",
-      "sourcePage": "https://www.arctic.de/en/Liquid-Freezer-III-360/ACFRE00136A",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-arctic-liquid-freezer-iii-360",
+      "sourcePage": "https://gplaybg.ro/arctic-liquid-freezer-iii-360-1",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://gplaybg.ro/UserFiles/Product/gallery_1/liquid-freezer-iii-360-black-g01.png",
+      "images": [
+        "https://gplaybg.ro/UserFiles/Product/gallery_1/liquid-freezer-iii-360-black-g01.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-corsair-nautilus-360-rs": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fp%2Fcpu-coolers%2Fcw-9060093-ww%2Fnautilus-360-rs-liquid-cpu-cooler-cw-9060093-ww&embed=image.url",
-      "sourcePage": "https://www.corsair.com/us/en/p/cpu-coolers/cw-9060093-ww/nautilus-360-rs-liquid-cpu-cooler-cw-9060093-ww",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-corsair-nautilus-360-rs",
+      "sourcePage": "https://www.visaovip.com/prod/water-cooler/water-cooler-para-procesador-corsair-nautilus-360-rs-360mm-negro-cw-9060089-ww/52615/",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://cdn.visaovip.com/img/prod/water-cooler-para-processador-corsair-nautilus-360-rs-360mm-preto-cw-9060089-ww/52615/711984.jpg",
+      "images": [
+        "https://cdn.visaovip.com/img/prod/water-cooler-para-processador-corsair-nautilus-360-rs-360mm-preto-cw-9060089-ww/52615/711984.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-nzxt-kraken-360": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fnzxt.com%2Fen-intl%2Fproducts%2Fkraken-360&embed=image.url",
-      "sourcePage": "https://nzxt.com/en-intl/products/kraken-360",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-nzxt-kraken-360",
+      "sourcePage": "https://www.notebooksbilliger.de/nzxt%2Bkraken%2B360%2Bblack%2Baio%2Bwasserkhlung%2B802268",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://media2.nbb-cdn.de/images/products/Cooling_Kraken_Black_FP_fans_360_front-1_png_5a3e.jpg",
+      "images": [
+        "https://media2.nbb-cdn.de/images/products/Cooling_Kraken_Black_FP_fans_360_front-1_png_5a3e.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-cooler-arctic-liquid-freezer-iii-420": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.arctic.de%2Fen%2FLiquid-Freezer-III-420%2FACFRE00137A&embed=image.url",
-      "sourcePage": "https://www.arctic.de/en/Liquid-Freezer-III-420/ACFRE00137A",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-cooler-arctic-liquid-freezer-iii-420",
+      "sourcePage": "https://gplay.bg/arctic-liquid-freezer-iii-420",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://gplay.bg/UserFiles/Product/gallery_1/liquid-freezer-iii-420-black-g01.png?block=&cache=&h=1000&w=1000",
+      "images": [
+        "https://gplay.bg/UserFiles/Product/gallery_1/liquid-freezer-iii-420-black-g01.png?block=&cache=&h=1000&w=1000"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-fan-arctic-p12-pwm-pst-single": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.arctic.de%2Fen%2FP12-PWM-PST%2FACFAN00120A&embed=image.url",
-      "sourcePage": "https://www.arctic.de/en/P12-PWM-PST/ACFAN00120A",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-fan-arctic-p12-pwm-pst-single",
+      "sourcePage": "https://www.pccold.com.br/produto/cooler-fan-arctic-p12-pwm-pst-120mm-preto-acfan00120a",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://cdn.awsli.com.br/1272/1272989/produto/146796285/p12_pwm_pst_black_05-ma681mf33u.png",
+      "images": [
+        "https://cdn.awsli.com.br/1272/1272989/produto/146796285/p12_pwm_pst_black_05-ma681mf33u.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-fan-arctic-p12-pwm-pst-5pack": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.arctic.de%2Fen%2FP12-PWM-PST%2FACFAN00137A&embed=image.url",
-      "sourcePage": "https://www.arctic.de/en/P12-PWM-PST/ACFAN00137A",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-fan-arctic-p12-pwm-pst-5pack",
+      "sourcePage": "https://www.ebay.com/itm/317144099462",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://i.ebayimg.com/images/g/OB0AAeSwrtJokE0m/s-l1200.jpg",
+      "images": [
+        "https://i.ebayimg.com/images/g/OB0AAeSwrtJokE0m/s-l1200.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-fan-cooler-master-sickleflow-120-argb-3pack": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.coolermaster.com%2Fen-global%2Fproducts%2Fsickleflow-120-argb-3in1%2F&embed=image.url",
-      "sourcePage": "https://www.coolermaster.com/en-global/products/sickleflow-120-argb-3in1/",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-fan-cooler-master-sickleflow-120-argb-3pack",
+      "sourcePage": "https://www.terabyteshop.com.br/produto/16554/kit-fan-com-3-unidades-cooler-master-masterfan-mf120-halo-rgb-120mm-1800rpm-mfx-b2dn-183pa-r1-open-box",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://img.terabyteshop.com.br/produto/g/kit-fan-com-3-unidades-cooler-master-masterfan-mf120-halo-rgb-120mm-1800rpm-mfx-b2dn-183pa-r1_104757.png",
+      "images": [
+        "https://img.terabyteshop.com.br/produto/g/kit-fan-com-3-unidades-cooler-master-masterfan-mf120-halo-rgb-120mm-1800rpm-mfx-b2dn-183pa-r1_104757.png"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-fan-corsair-af120-elite-single": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.corsair.com%2Fus%2Fen%2Fp%2Fcase-fans%2Fco-9050140-ww%2Faf120-elite-high-performance-120mm-pwm-fluid-dynamic-bearing-fan-black-co-9050140-ww&embed=image.url",
-      "sourcePage": "https://www.corsair.com/us/en/p/case-fans/co-9050140-ww/af120-elite-high-performance-120mm-pwm-fluid-dynamic-bearing-fan-black-co-9050140-ww",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-fan-corsair-af120-elite-single",
+      "sourcePage": "https://www.mycomputeraruba.co/index.php?product_id=12602&route=product%2Fproduct",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.mycomputeraruba.co/image/catalog/840006650799.5.jpg",
+      "images": [
+        "https://www.mycomputeraruba.co/image/catalog/840006650799.5.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-fan-noctua-nf-a12x25-pwm-single": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fnoctua.at%2Fen%2Fnf-a12x25-pwm&embed=image.url",
-      "sourcePage": "https://noctua.at/en/nf-a12x25-pwm",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-fan-noctua-nf-a12x25-pwm-single",
+      "sourcePage": "https://www.overclockers.co.uk/noctua-nf-a12x25-pwm-fan-120mm-fg-06r-nc.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://img.overclockers.co.uk/images/FG-06R-NC/fb9c3acfa0e0d556683f64c8c4423125.jpg",
+      "images": [
+        "https://img.overclockers.co.uk/images/FG-06R-NC/fb9c3acfa0e0d556683f64c8c4423125.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-fan-arctic-p14-pwm-pst-single": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.arctic.de%2Fen%2FP14-PWM-PST%2FACFAN00125A&embed=image.url",
-      "sourcePage": "https://www.arctic.de/en/P14-PWM-PST/ACFAN00125A",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-fan-arctic-p14-pwm-pst-single",
+      "sourcePage": "https://shopee.co.id/Fan-ARCTIC-P14-PWM-PST-Black-Black-Single-Pack-140mm-14cm-i.363519336.21252666913",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://down-id.img.susercontent.com/file/sg-11134201-22100-h69gudnlddiv51",
+      "images": [
+        "https://down-id.img.susercontent.com/file/sg-11134201-22100-h69gudnlddiv51"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-fan-arctic-p14-pwm-pst-5pack": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.arctic.de%2Fen%2FP14-PWM-PST%2FACFAN00138A&embed=image.url",
-      "sourcePage": "https://www.arctic.de/en/P14-PWM-PST/ACFAN00138A",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-fan-arctic-p14-pwm-pst-5pack",
+      "sourcePage": "https://www.scan.co.uk/products/140mm-arctic-p14-pwm-pst-5-blade-static-pressure-fan-1700rpm-728cfm-fluid-dynamic-bearing-black-pack",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://www.scan.co.uk/images/products/xlarge/3011327-xl-a.jpg",
+      "images": [
+        "https://www.scan.co.uk/images/products/xlarge/3011327-xl-a.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     },
     "vt-fan-bequiet-pure-wings-3-140-pwm": {
-      "primaryImage": "https://api.microlink.io/?url=https%3A%2F%2Fwww.bequiet.com%2Fen%2Fcasefans%2F4484&embed=image.url",
-      "sourcePage": "https://www.bequiet.com/en/casefans/4484",
-      "sourceType": "manufacturer-page",
-      "matchLevel": "exact-product-page"
+      "primaryImage": "https://qdqhfnvwqvgesfdmocir.supabase.co/functions/v1/resolve-product-image?id=vt-fan-bequiet-pure-wings-3-140-pwm",
+      "sourcePage": "https://www.ldlc.com/fiche/PB00579952.html",
+      "sourceType": "retailer-exact-product",
+      "matchLevel": "exact-product",
+      "directImage": "https://media.ldlc.com/r1600/ld/products/00/06/07/94/LD0006079466.jpg",
+      "images": [
+        "https://media.ldlc.com/r1600/ld/products/00/06/07/94/LD0006079466.jpg"
+      ],
+      "verifiedAt": "2026-10-03"
     }
   }
 }

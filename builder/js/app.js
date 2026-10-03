@@ -5,7 +5,7 @@ import {
 } from "./build-engine.js?v=0.7.7";
 import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=0.7.8.1";
 import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=1.5";
-import {loadCatalogue} from "./data-loader.js?v=2.2.0";
+import {loadCatalogue} from "./data-loader.js?v=2.3.0";
 
 const e={
   steps:document.getElementById("steps"), search:document.getElementById("search"), compatibleOnly:document.getElementById("compatible-only"),
@@ -122,9 +122,14 @@ async function onGuidedSubmit(event){
 }
 
 function mediaMarkup(product,variant="catalogue"){
-  const src=safeUrl(product?.media?.primaryImage),label=CATEGORY_LABELS[product?.type]||"PC Part";
+  const media=product?.media||{};
+  const primary=safeUrl(media.primaryImage||media.primary_image);
+  const direct=safeUrl(media.directImage||media.direct_image);
+  const src=primary||direct;
+  const fallback=direct&&direct!==src?direct:"";
+  const label=CATEGORY_LABELS[product?.type]||"PC Part";
   const eager=variant==="guided-hero";
-  return `<div class="product-media ${variant}${src?"":" no-media"}">${src?`<img src="${esc(src)}" alt="${esc(product.name)} product image" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true;this.parentElement.classList.add('media-error')">`:""}<div class="media-fallback"><b>${esc(label)}</b><small>Product image unavailable</small></div></div>`;
+  return `<div class="product-media ${variant}${src?"":" no-media"}">${src?`<img src="${esc(src)}" data-fallback="${esc(fallback)}" alt="${esc(product.name)} product image" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fallback&&!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback;return;}this.hidden=true;this.parentElement.classList.add('media-error')">`:""}<div class="media-fallback"><b>${esc(label)}</b><small>Product image temporarily unavailable</small></div></div>`;
 }
 function safeUrl(value){try{const u=new URL(value,location.href);return ["http:","https:"].includes(u.protocol)?u.href:""}catch{return""}}
 

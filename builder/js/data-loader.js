@@ -34,6 +34,7 @@ export async function loadCatalogue() {
       media: {
         ...(product.media || {}),
         primaryImage: product.media?.primaryImage || mediaEntry.primaryImage || null,
+        directImage: product.media?.directImage || product.media?.direct_image || mediaEntry.directImage || null,
         images: product.media?.images?.length ? product.media.images : (mediaEntry.images || []),
         sourcePage: product.media?.sourcePage || mediaEntry.sourcePage || null,
         sourceType: product.media?.sourceType || mediaEntry.sourceType || null,
@@ -164,7 +165,7 @@ async function loadStoreProductOverlay(builderProducts) {
 
 function mergeStoreMedia(local = {}, store = {}) {
   const images = Array.from(new Set([...(store?.images || []), ...(local?.images || [])].filter(Boolean)));
-  return { ...local, ...store, primaryImage: store?.primaryImage || store?.primary_image || local?.primaryImage || null, images };
+  return { ...local, ...store, primaryImage: store?.primaryImage || store?.primary_image || local?.primaryImage || null, directImage: store?.directImage || store?.direct_image || local?.directImage || null, images };
 }
 
 function identityKeys(product) {
