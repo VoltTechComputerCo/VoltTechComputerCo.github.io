@@ -297,6 +297,9 @@ function openMenu(card,category){
       event.preventDefault();
       const value=button.dataset.stageValue;
       body.innerHTML=renderStaged(category,config,panel,value);
+      document.dispatchEvent(new CustomEvent('volttech:quick-filter-stage',{
+        detail:{ category, key:config.staged.key, value }
+      }));
     });
   }
 }
