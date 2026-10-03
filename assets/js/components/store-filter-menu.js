@@ -140,9 +140,10 @@ export function accentFor(value){
 export function brandMark(value,label=value){
   const ui=BRAND_UI[value];
   if(!ui) return `<span class="filter-brand-lockup"><span class="filter-brand-name">${label}</span></span>`;
-  const fallback=`https://www.google.com/s2/favicons?domain=${encodeURIComponent(ui.domain)}&sz=128`;
-  const logo=ui.icon ? `https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/${encodeURIComponent(ui.icon)}.svg` : fallback;
-  return `<span class="filter-brand-lockup"><span class="filter-brand-logo"><img src="${logo}" data-fallback="${fallback}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fallback&&this.src!==this.dataset.fallback){this.src=this.dataset.fallback;return;}this.parentElement.hidden=true"></span><span class="filter-brand-name">${label}</span></span>`;
+  const fallback=`https://logo.clearbit.com/${encodeURIComponent(ui.domain)}?size=256`;
+  const lastFallback=`https://www.google.com/s2/favicons?domain=${encodeURIComponent(ui.domain)}&sz=128`;
+  const logo=ui.icon ? `https://cdn.simpleicons.org/${encodeURIComponent(ui.icon)}/${ui.color.replace('#','')}` : fallback;
+  return `<span class="filter-brand-lockup"><span class="filter-brand-logo"><img src="${logo}" data-fallback="${fallback}" data-last-fallback="${lastFallback}" alt="${label} logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fallback&&this.src!==this.dataset.fallback){this.src=this.dataset.fallback;return;}if(this.dataset.lastFallback&&this.src!==this.dataset.lastFallback){this.src=this.dataset.lastFallback;return;}this.parentElement.hidden=true"></span><span class="filter-brand-name">${label}</span></span>`;
 }
 
 export function gpuVendor(product){
@@ -242,7 +243,8 @@ function menuLink(category,label,filters={},className=''){
   const identity=filters.brand || filters.gpuVendor || filters.platform || '';
   const accent=accentFor(identity);
   const content=identity ? brandMark(identity,label) : `<span class="filter-brand-name">${label}</span>`;
-  return `<a class="filter-menu-option ${className}" style="--filter-accent:${accent}" href="${storeHref(category,filters)}">${content}<b aria-hidden="true">→</b></a>`;
+  const attrs=Object.entries(filters).map(([key,value])=>` data-quick-${key}="${String(value).replace(/"/g,'&quot;')}"`).join('');
+  return `<a class="filter-menu-option ${className}" style="--filter-accent:${accent}" href="${storeHref(category,filters)}" data-quick-category="${category}"${attrs}>${content}<b aria-hidden="true">→</b></a>`;
 }
 
 function renderDirect(category,config){
