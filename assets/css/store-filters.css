@@ -132,3 +132,37 @@ button.filter-menu-option{font:inherit;cursor:pointer;}
 .smart-filter-option .filter-brand-logo{width:1.45rem;height:1.45rem;padding:.23rem;}
 .smart-filter-option small{margin-left:2rem;}
 .filter-menu-option.filter-menu-all .filter-brand-name{font-weight:800;}
+
+/* Brand tiles v2: logo-led graphic design */
+.filter-menu-options{align-items:stretch;}
+.filter-menu-option{
+  position:relative;min-width:10.8rem;min-height:4.6rem;padding:.78rem .9rem;
+  overflow:hidden;isolation:isolate;border-width:1px;
+  background:radial-gradient(circle at 82% 12%,color-mix(in srgb,var(--filter-accent) 22%,transparent),transparent 43%),
+    linear-gradient(145deg,color-mix(in srgb,var(--filter-accent) 13%,transparent),rgba(2,14,16,.74));
+}
+.filter-menu-option::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.68;
+  background:linear-gradient(90deg,color-mix(in srgb,var(--filter-accent) 8%,transparent),transparent 50%);
+}
+.filter-brand-lockup{display:grid;grid-template-columns:minmax(4.8rem,7rem) 1fr;align-items:center;gap:.72rem;width:100%;min-width:0;}
+.filter-brand-logo{display:grid;place-items:center;width:100%;height:2.5rem;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;}
+.filter-brand-logo img{display:block;max-width:100%;width:auto;height:auto;max-height:2.35rem;object-fit:contain;object-position:left center;filter:drop-shadow(0 0 7px color-mix(in srgb,var(--filter-accent) 26%,transparent));}
+.filter-brand-name{font-size:.78rem;font-weight:800;letter-spacing:.045em;text-transform:uppercase;color:#f7fffe;text-shadow:0 0 12px color-mix(in srgb,var(--filter-accent) 14%,transparent);}
+.filter-menu-option b{font-size:1rem;}
+.filter-menu-option.is-selected{border-color:var(--filter-accent);box-shadow:0 0 0 1px color-mix(in srgb,var(--filter-accent) 32%,transparent),0 0 14px color-mix(in srgb,var(--filter-accent) 48%,transparent),0 0 30px color-mix(in srgb,var(--filter-accent) 26%,transparent),inset 3px 0 0 var(--filter-accent),inset 0 1px 0 rgba(255,255,255,.13);}
+.filter-stage-button{min-width:11.6rem;}
+.filter-stage-button .filter-brand-logo{height:2.7rem;}
+.filter-stage-button .filter-brand-logo img{max-height:2.55rem;}
+.smart-filter-option{min-height:3.8rem;display:grid;grid-template-columns:1fr;align-content:center;gap:.22rem;padding:.58rem .65rem;}
+.smart-filter-option .filter-brand-lockup{grid-template-columns:minmax(3.7rem,5.2rem) 1fr;gap:.55rem;}
+.smart-filter-option .filter-brand-logo{width:100%;height:1.9rem;padding:0;border-radius:0;background:transparent;box-shadow:none;}
+.smart-filter-option .filter-brand-logo img{max-height:1.75rem;object-position:left center;}
+.smart-filter-option .filter-brand-name{font-size:.7rem;}
+.smart-filter-option small{margin-left:0;padding-left:0;color:var(--text-muted);}
+@media(max-width:44rem){
+  .filter-menu-option{min-width:0;min-height:4.4rem;}
+  .filter-brand-lockup{grid-template-columns:minmax(4.2rem,6rem) 1fr;}
+  .filter-brand-logo{height:2.25rem;}
+  .filter-brand-logo img{max-height:2.1rem;}
+}
