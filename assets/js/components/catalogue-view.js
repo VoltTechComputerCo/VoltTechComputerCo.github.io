@@ -1,17 +1,27 @@
-const visuals = { cpu:'assets/categories/cpu.webp', gpu:'assets/categories/gpu.webp', motherboard:'https://dlcdnwebimgs.asus.com/gain/89be36ca-e0db-49ca-94c4-5cc8d0ad14d9/w800/fwebp', memory:'assets/categories/memory.webp', storage:'assets/categories/storage.webp', psu:'https://dlcdnwebimgs.asus.com/gain/4EF39334-507E-417A-9224-FDA0A8326809/w1000/h732', case:'assets/categories/case.webp', cooler:'assets/categories/cooler.webp', fan:'vt-stock-cooling-rgb.webp' };
 export const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function safeLink(value) { if (!value || typeof value !== 'string') return ''; try { const u = new URL(value, location.href); return ['http:', 'https:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } }
 export const productUrl = (p, preview) => `product.html?slug=${encodeURIComponent(p.slug)}${preview ? '&preview=1' : ''}`;
+function imageSources(p) {
+  if (p.metadata?.media_review_required) return { src:'', fallback:'' };
+  const primary = safeLink(p.media?.primaryImage || p.media?.primary_image);
+  const direct = safeLink(p.media?.directImage || p.media?.direct_image);
+  const src = primary || direct;
+  return { src, fallback: direct && direct !== src ? direct : '' };
+}
 export function imageMarkup(p, large = false) {
-  const src = !p.metadata?.media_review_required && safeLink(p.media?.primaryImage || p.media?.primary_image);
-  const fallback = visuals[p.type];
-  return `<figure class="catalogue-media ${large ? 'catalogue-media-large' : ''}">${src || fallback ? `<img src="${esc(src || fallback)}" data-fallback="${esc(fallback || '')}" width="480" height="480" alt="${esc(src ? p.name : p.type + ' category visual')}" loading="${large ? 'eager' : 'lazy'}" decoding="async">` : '<span>Product image unavailable</span>'}<figcaption ${src ? 'hidden' : ''}>${fallback ? 'Category visual · not the specific product' : 'Product image unavailable'}</figcaption></figure>`;
+  const { src, fallback } = imageSources(p);
+  return `<figure class="catalogue-media ${large ? 'catalogue-media-large' : ''}">${src ? `<img src="${esc(src)}" data-fallback="${esc(fallback)}" width="480" height="480" alt="${esc(p.name)} product image" loading="${large ? 'eager' : 'lazy'}" decoding="async" referrerpolicy="no-referrer">` : '<span>Product image temporarily unavailable</span>'}<figcaption ${src ? 'hidden' : ''}>Product image temporarily unavailable</figcaption></figure>`;
 }
 export function bindImages(root) {
   root.querySelectorAll('.catalogue-media img').forEach(img => img.addEventListener('error', () => {
-    const caption = img.closest('figure').querySelector('figcaption'); caption.hidden = false;
-    if (img.dataset.fallback && !img.dataset.failed) { img.dataset.failed = '1'; img.src = img.dataset.fallback; img.alt = 'Category visual'; caption.textContent = 'Category visual · not the specific product'; }
-    else { img.hidden = true; caption.textContent = 'Product image unavailable'; }
+    const caption = img.closest('figure')?.querySelector('figcaption');
+    if (img.dataset.fallback && !img.dataset.failed) {
+      img.dataset.failed = '1';
+      img.src = img.dataset.fallback;
+      return;
+    }
+    img.hidden = true;
+    if (caption) { caption.hidden = false; caption.textContent = 'Product image temporarily unavailable'; }
   }));
 }
 export function commerceState(VT, p, preview = false) {
