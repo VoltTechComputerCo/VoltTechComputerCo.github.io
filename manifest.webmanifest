@@ -1,13 +1,13 @@
 {
   "name": "VoltTech Computer Co.",
   "short_name": "VoltTech",
-  "description": "PC repair, diagnostics and technology services from VoltTech Computer Co.",
+  "description": "PC hardware, custom builds, repairs, diagnostics and Stream Support from VoltTech Computer Co. in South Africa.",
   "id": "/",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#05080a",
-  "theme_color": "#05080a",
+  "background_color": "#031012",
+  "theme_color": "#031012",
   "icons": [
     {
       "src": "icons/app-icon-192.png",
