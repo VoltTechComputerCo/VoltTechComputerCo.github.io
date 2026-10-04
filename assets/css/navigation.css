@@ -108,3 +108,82 @@
 }
 /* STEP 11.2M COLOUR IMAGE MENU END */
 
+
+
+/* FLOATING MOBILE SYSTEM MAP */
+.mobile-nav-backdrop{
+  display:none;
+}
+@media(max-width:56rem){
+  body.mobile-menu-open{overflow:hidden}
+  .mobile-nav-backdrop:not([hidden]){
+    position:fixed;
+    inset:0;
+    z-index:980;
+    display:block;
+    width:100%;
+    height:100%;
+    padding:0;
+    border:0;
+    background:rgba(0,8,10,.74);
+    backdrop-filter:blur(7px) saturate(115%);
+    -webkit-backdrop-filter:blur(7px) saturate(115%);
+  }
+  .site-header{position:relative;z-index:1000}
+  .primary-nav{
+    position:fixed;
+    z-index:1001;
+    top:clamp(5.2rem,11vh,6.4rem);
+    left:50%;
+    width:min(calc(100vw - 1.25rem),44rem);
+    max-height:calc(100dvh - clamp(6rem,14vh,8rem));
+    margin:0;
+    padding:.8rem;
+    overflow:auto;
+    overscroll-behavior:contain;
+    transform:translateX(-50%);
+    border:1px solid rgba(83,238,221,.46);
+    background:
+      radial-gradient(circle at 50% 0%,rgba(53,234,215,.09),transparent 36%),
+      linear-gradient(165deg,rgba(7,24,26,.96),rgba(1,8,10,.985));
+    box-shadow:
+      0 0 0 1px rgba(53,234,215,.07),
+      0 20px 70px rgba(0,0,0,.64),
+      0 0 32px rgba(53,234,215,.12),
+      inset 0 1px 0 rgba(255,255,255,.06);
+    border-radius:calc(var(--radius)*1.6);
+  }
+  .primary-nav.is-floating-open{animation:vt-menu-float-in 160ms ease-out both}
+  .primary-nav .mobile-nav-intro{
+    position:sticky;
+    top:-.8rem;
+    z-index:2;
+    margin:-.8rem -.8rem .65rem;
+    padding:.9rem 1rem .8rem;
+    border-bottom:1px solid rgba(83,238,221,.18);
+    background:rgba(2,13,15,.94);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+  }
+  .header-inner{flex-wrap:nowrap}
+  .primary-nav{order:initial}
+}
+@keyframes vt-menu-float-in{
+  from{opacity:0;transform:translate(-50%,-8px) scale(.985)}
+  to{opacity:1;transform:translate(-50%,0) scale(1)}
+}
+@media(max-width:40rem){
+  .primary-nav{
+    top:4.9rem;
+    width:calc(100vw - .9rem);
+    max-height:calc(100dvh - 5.5rem);
+    padding:.62rem;
+    border-radius:1rem;
+  }
+  .primary-nav .mobile-nav-intro{
+    top:-.62rem;
+    margin:-.62rem -.62rem .55rem;
+    padding:.78rem .82rem .7rem;
+    text-align:center;
+  }
+}

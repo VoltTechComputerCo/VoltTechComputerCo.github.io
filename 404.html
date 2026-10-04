@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page Not Found | VoltTech Computer Co.</title>
-  <meta name="description" content="The VoltTech page you requested could not be found. Return home, find PC support or run Signal Scan.">
+  <meta name="description" content="The VoltTech page you requested could not be found. Choose a route back to the Store, PC Builder, support or your account.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#031012">
   <link rel="icon" href="icons/favicon.ico">
@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="assets/css/forms.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="assets/css/print.css">
+  <link rel="stylesheet" href="assets/css/pages/home.css">
   <link rel="stylesheet" href="assets/css/pages/error.css">
   <link rel="stylesheet" href="assets/css/glass-system.css?v=20261003-site-neon1">
 
@@ -67,24 +68,63 @@
   <ul class="search-results" id="site-search-results"></ul>
 </dialog>
 <main id="main-content" class="error-page">
-  <section class="error-hero" aria-labelledby="error-title">
-    <div class="container error-shell">
-      <p class="eyebrow">VOLTTECH / SIGNAL LOST</p>
-      <p class="error-code" aria-hidden="true">404</p>
-      <h1 id="error-title">That page dropped off the map.</h1>
-      <p class="error-lead">The link may be outdated, the page may have moved, or the address may be wrong. Your next move is still easy.</p>
-      <div class="actions error-actions">
-        <a class="button" href="index.html">BACK TO VOLTTECH <span aria-hidden="true">→</span></a>
-        <a class="button button-secondary" href="signal-scan.html">RUN SIGNAL SCAN <span aria-hidden="true">↗</span></a>
+  <section class="error-home-hero" aria-labelledby="error-title">
+    <img class="error-hero-art" src="assets/brand/home-hero.webp" alt="" width="2172" height="724" fetchpriority="high">
+    <div class="container error-hero-inner">
+      <div class="error-copy">
+        <p class="eyebrow error-kicker">VOLTTECH / ROUTE NOT FOUND <span aria-hidden="true">/////</span></p>
+        <p class="error-code" aria-hidden="true">404</p>
+        <h1 id="error-title">SIGNAL LOST.<br><span>LET’S GET YOU BACK ONLINE.</span></h1>
+        <p class="error-lead">That address doesn’t point to an active VoltTech page. Pick a route below and jump straight back into the ecosystem.</p>
+        <div class="actions error-primary-actions">
+          <a class="button vt-image-glass vt-image-glass--teal" href="index.html">BACK TO HOMEPAGE <span aria-hidden="true">→</span></a>
+          <a class="button vt-image-glass vt-image-glass--purple" href="store.html">OPEN THE STORE <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
-      <div class="error-links" aria-label="Useful destinations">
-        <a class="card error-link" href="pc-repair-pretoria.html"><strong>PC repair</strong><span>Pretoria diagnostics, repairs and practical next steps.</span></a>
-        <a class="card error-link" href="static.html"><strong>STATIC</strong><span>PC hardware, gaming, security and tech culture.</span></a>
-        <a class="card error-link" href="account.html"><strong>Your account</strong><span>Quotes, documents, builds and customer details.</span></a>
+
+      <div class="error-status-strip" aria-label="404 status">
+        <span><b>404</b> ROUTE MISSING</span>
+        <span><b>VT</b> CORE ONLINE</span>
+        <span><b>06</b> ROUTES READY</span>
       </div>
+      <span class="error-hero-note micro vt-image-glass vt-image-glass--neutral">VOLTTECH / RECOVERY ROUTER</span>
+    </div>
+  </section>
+
+  <section class="error-route-section" aria-labelledby="error-route-title">
+    <div class="container">
+      <div class="section-heading error-route-heading">
+        <div>
+          <p class="eyebrow">CHOOSE YOUR NEXT MOVE</p>
+          <h2 id="error-route-title">Where were you trying to go?</h2>
+        </div>
+        <p class="error-route-hint">Every route below stays inside VoltTech.</p>
+      </div>
+
+      <nav class="error-route-grid" aria-label="VoltTech recovery routes">
+        <a class="error-route error-route-store" href="store.html">
+          <small>HARDWARE</small><strong>Store</strong><span>Browse PC components and peripherals.</span><b aria-hidden="true">↗</b>
+        </a>
+        <a class="error-route error-route-builder" href="builder/index.html">
+          <small>BUILD</small><strong>PC Builder</strong><span>Plan a compatible system around your goals.</span><b aria-hidden="true">↗</b>
+        </a>
+        <a class="error-route error-route-repair" href="pc-repair-pretoria.html">
+          <small>SUPPORT</small><strong>PC Repair</strong><span>Diagnostics, repairs and practical next steps.</span><b aria-hidden="true">↗</b>
+        </a>
+        <a class="error-route error-route-scan" href="signal-scan.html">
+          <small>DIAGNOSTICS</small><strong>Signal Scan</strong><span>Describe the symptom and narrow the likely cause.</span><b aria-hidden="true">↗</b>
+        </a>
+        <a class="error-route error-route-stream" href="streaming-setup-south-africa.html">
+          <small>CREATOR TECH</small><strong>Stream Support</strong><span>OBS, audio, encoding and performance support.</span><b aria-hidden="true">↗</b>
+        </a>
+        <a class="error-route error-route-account" href="account.html">
+          <small>MY VOLTTECH</small><strong>Your Account</strong><span>Quotes, invoices, builds and customer records.</span><b aria-hidden="true">↗</b>
+        </a>
+      </nav>
     </div>
   </section>
 </main>
+
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
