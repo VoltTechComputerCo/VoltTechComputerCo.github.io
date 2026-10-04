@@ -72,10 +72,10 @@ Deno.serve(async (req: Request) => {
 
   for (const row of rows ?? []) {
     try {
-      let profile: any = null;
+      let customerName: string | null = null;
       if (row.recipient_user_id) {
-        const { data } = await admin.from("profiles").select("full_name").eq("id", row.recipient_user_id).maybeSingle();
-        profile = data;
+        const { data } = await admin.rpc("vt_email_customer_name", { p_user_id: row.recipient_user_id });
+        customerName = data || null;
       }
 
       let headline = row.subject || "VoltTech update";
@@ -88,10 +88,10 @@ Deno.serve(async (req: Request) => {
 
       if (row.message_kind === "account_welcome") {
         subject = "Welcome to VoltTech Computer Co.";
-        headline = `Welcome to VoltTech, ${firstName(profile?.full_name)}.`;
+        headline = `Welcome to VoltTech, ${firstName(customerName)}.`;
         body = "Your account is ready. Your builds, quotes, invoices, documents and notifications now live in one place.";
       } else if (["quote_ready","quote_document"].includes(row.message_kind)) {
-        const { data: quote } = await admin.from("quotes").select("quote_number,title").eq("id", row.source_id).maybeSingle();
+        const { data: quote } = await admin.rpc("vt_email_quote_context", { p_quote_id: row.source_id });
         const number = quote?.quote_number || "";
         subject = number ? `Your VoltTech quote ${number} is ready` : "Your VoltTech quote is ready";
         headline = "Your quote is ready.";
@@ -101,7 +101,7 @@ Deno.serve(async (req: Request) => {
         eyebrow = "VOLTTECH / QUOTATION";
         from = "VoltTech Quotes <quotes@volttechcomputerco.co.za>";
       } else if (["invoice_issued","invoice_document"].includes(row.message_kind)) {
-        const { data: invoice } = await admin.from("invoices").select("invoice_number").eq("id", row.source_id).maybeSingle();
+        const { data: invoice } = await admin.rpc("vt_email_invoice_context", { p_invoice_id: row.source_id });
         const number = invoice?.invoice_number || "";
         subject = number ? `Your VoltTech invoice ${number}` : "Your VoltTech invoice is ready";
         headline = "Your invoice is ready.";
@@ -111,7 +111,7 @@ Deno.serve(async (req: Request) => {
         eyebrow = "VOLTTECH / INVOICE";
         from = "VoltTech Billing <billing@volttechcomputerco.co.za>";
       } else if (row.message_kind === "payment_received") {
-        const { data: invoice } = await admin.from("invoices").select("invoice_number").eq("id", row.source_id).maybeSingle();
+        const { data: invoice } = await admin.rpc("vt_email_invoice_context", { p_invoice_id: row.source_id });
         subject = "Payment received — VoltTech";
         headline = "Payment received.";
         body = `Thanks — your payment${invoice?.invoice_number ? " for " + esc(invoice.invoice_number) : ""} has been recorded. Your receipt is ready in My VoltTech.`;
