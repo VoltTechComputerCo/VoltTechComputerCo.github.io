@@ -755,7 +755,8 @@
   object-position:center;
   transform:scale(.94);
   transition:transform 180ms ease,filter 180ms ease;
-  filter:saturate(1.04) contrast(1.03);
+  mix-blend-mode:multiply;
+  filter:brightness(1.9) saturate(1.12) contrast(1.03);
 }
 .component-card::before{
   content:"";
@@ -764,21 +765,21 @@
   left:0;
   right:0;
   bottom:0;
-  height:64%;
+  height:38%;
   z-index:1;
   pointer-events:none;
   background:linear-gradient(
     to top,
-    rgba(1,8,10,.99) 0%,
-    rgba(2,10,12,.94) 24%,
-    rgba(2,12,14,.72) 48%,
-    rgba(2,12,14,.34) 72%,
+    rgba(1,8,10,.98) 0%,
+    rgba(2,10,12,.86) 28%,
+    rgba(2,12,14,.48) 60%,
+    rgba(2,12,14,.16) 82%,
     rgba(2,12,14,0) 100%
   );
-  backdrop-filter:blur(8px) saturate(128%);
-  -webkit-backdrop-filter:blur(8px) saturate(128%);
-  -webkit-mask-image:linear-gradient(to top,#000 0%,#000 54%,rgba(0,0,0,.72) 76%,transparent 100%);
-  mask-image:linear-gradient(to top,#000 0%,#000 54%,rgba(0,0,0,.72) 76%,transparent 100%);
+  backdrop-filter:blur(4px) saturate(118%);
+  -webkit-backdrop-filter:blur(4px) saturate(118%);
+  -webkit-mask-image:linear-gradient(to top,#000 0%,#000 42%,rgba(0,0,0,.62) 72%,transparent 100%);
+  mask-image:linear-gradient(to top,#000 0%,#000 42%,rgba(0,0,0,.62) 72%,transparent 100%);
 }
 .component-card::after{
   content:"";
@@ -846,7 +847,7 @@
 .component-card:hover img,
 .component-card:focus-visible img{
   transform:scale(.98);
-  filter:saturate(1.08) contrast(1.05) drop-shadow(0 0 10px rgba(var(--component-accent),.08));
+  filter:brightness(1.95) saturate(1.16) contrast(1.05) drop-shadow(0 0 10px rgba(var(--component-accent),.10));
 }
 @media(max-width:40rem){
   .component-card{
@@ -863,19 +864,19 @@
   .component-card::before{
     top:auto;
     bottom:0;
-    height:66%;
+    height:36%;
     background:linear-gradient(
       to top,
-      rgba(1,8,10,.995) 0%,
-      rgba(2,10,12,.96) 26%,
-      rgba(2,12,14,.76) 50%,
-      rgba(2,12,14,.36) 74%,
+      rgba(1,8,10,.985) 0%,
+      rgba(2,10,12,.87) 28%,
+      rgba(2,12,14,.50) 60%,
+      rgba(2,12,14,.16) 82%,
       rgba(2,12,14,0) 100%
     );
-    backdrop-filter:blur(8px) saturate(128%);
-    -webkit-backdrop-filter:blur(8px) saturate(128%);
-    -webkit-mask-image:linear-gradient(to top,#000 0%,#000 54%,rgba(0,0,0,.72) 78%,transparent 100%);
-    mask-image:linear-gradient(to top,#000 0%,#000 54%,rgba(0,0,0,.72) 78%,transparent 100%);
+    backdrop-filter:blur(4px) saturate(118%);
+    -webkit-backdrop-filter:blur(4px) saturate(118%);
+    -webkit-mask-image:linear-gradient(to top,#000 0%,#000 42%,rgba(0,0,0,.62) 72%,transparent 100%);
+    mask-image:linear-gradient(to top,#000 0%,#000 42%,rgba(0,0,0,.62) 72%,transparent 100%);
   }
   .component-card h3{
     left:.72rem;
