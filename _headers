@@ -1,0 +1,6 @@
+# VoltTech static response hardening.
+# Keep this intentionally conservative: CSP will be added only after every third-party origin is inventoried.
+/*
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Permitted-Cross-Domain-Policies: none
