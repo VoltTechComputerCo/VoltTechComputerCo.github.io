@@ -15,25 +15,105 @@ function firstName(fullName: unknown) {
   const value = String(fullName ?? "").trim();
   return value ? value.split(/\s+/)[0] : "there";
 }
-function layout(eyebrow: string, headline: string, body: string, cta: string, href: string, accent="#36e6d3") {
+const LOGO = SITE + "/brand/VoltTech_Full_Logo_Transparent.png";
+
+function brandify(value: unknown) {
+  const safe = esc(value);
+  return safe.replace(/VoltTech/gi,
+    '<span style="color:#f2f8f7;">Volt</span><span style="color:#35ead7;text-shadow:0 0 14px rgba(53,234,215,.45);">Tech</span>'
+  );
+}
+
+function layout(eyebrow: string, headline: string, body: string, cta: string, href: string, accent="#35ead7") {
+  const safeHref = esc(href);
+  const safeAccent = esc(accent);
+  const brandedHeadline = brandify(headline);
   const html = `<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"></head>
-<body style="margin:0;background-color:#031012;font-family:Arial,Helvetica,sans-serif;color:#f4fffd;">
-<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" bgcolor="#031012"><tr><td align="center" style="padding-top:32px;padding-right:16px;padding-bottom:32px;padding-left:16px;">
-<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="max-width:600px;background-color:#07181a;border:1px solid ${accent};">
-<tr><td bgcolor="#07181a" style="padding-top:28px;padding-right:28px;padding-bottom:18px;padding-left:28px;">
-<p style="margin-top:0;margin-right:0;margin-bottom:8px;margin-left:0;font-size:12px;line-height:18px;color:${accent};font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:1.2px;">${esc(eyebrow)}</p>
-<h1 style="margin-top:0;margin-right:0;margin-bottom:14px;margin-left:0;font-size:28px;line-height:34px;color:#ffffff;font-family:Arial,Helvetica,sans-serif;">${esc(headline)}</h1>
-<p style="margin-top:0;margin-right:0;margin-bottom:22px;margin-left:0;font-size:16px;line-height:25px;color:#b9d8d4;font-family:Arial,Helvetica,sans-serif;">${body}</p>
-<table cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td bgcolor="${accent}" style="padding-top:12px;padding-right:18px;padding-bottom:12px;padding-left:18px;">
-<a href="${esc(href)}" style="font-size:15px;line-height:20px;color:#031012;font-family:Arial,Helvetica,sans-serif;font-weight:700;text-decoration:none;">${esc(cta)}</a>
-</td></tr></table>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<body style="margin:0;background-color:#02090a;font-family:Arial,Helvetica,sans-serif;color:#f2f8f7;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" bgcolor="#02090a">
+<tr><td align="center" style="padding:30px 14px 36px 14px;">
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="max-width:640px;background-color:#031012;border:1px solid rgba(53,234,215,.38);box-shadow:0 0 26px rgba(53,234,215,.10);">
+
+  <tr>
+    <td style="padding:26px 28px 22px 28px;background-color:#020d0f;border-bottom:1px solid rgba(53,234,215,.18);">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+        <tr>
+          <td align="left" valign="middle">
+            <img src="${LOGO}" width="215" alt="VoltTech Computer Co." style="display:block;width:215px;max-width:100%;height:auto;border:0;outline:none;text-decoration:none;">
+          </td>
+          <td align="right" valign="middle" style="font-family:Arial,Helvetica,sans-serif;">
+            <span style="display:inline-block;padding:7px 10px;border:1px solid rgba(53,234,215,.42);background-color:#07171a;color:#72fff0;font-size:10px;line-height:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;box-shadow:0 0 14px rgba(53,234,215,.10);">SIGNAL ONLINE</span>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height:3px;line-height:3px;font-size:1px;background-color:#35ead7;box-shadow:0 0 16px rgba(53,234,215,.85);">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td style="padding:30px 30px 10px 30px;background:linear-gradient(180deg,#07171a 0%,#041315 100%);">
+      <p style="margin:0 0 12px 0;color:#72fff0;font-size:11px;line-height:16px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;font-family:Arial,Helvetica,sans-serif;">// ${esc(eyebrow)}</p>
+      <h1 style="margin:0 0 16px 0;font-size:32px;line-height:38px;font-weight:800;letter-spacing:-.7px;color:#f2f8f7;font-family:Arial,Helvetica,sans-serif;">${brandedHeadline}</h1>
+      <div style="width:70px;height:2px;background-color:#35ead7;box-shadow:0 0 12px rgba(53,234,215,.65);margin:0 0 20px 0;"></div>
+      <p style="margin:0;color:#a9beba;font-size:16px;line-height:26px;font-family:Arial,Helvetica,sans-serif;">${body}</p>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="padding:24px 30px 30px 30px;background-color:#041315;">
+      <table cellpadding="0" cellspacing="0" border="0" role="presentation">
+        <tr>
+          <td bgcolor="#35ead7" style="border:1px solid #72fff0;background:linear-gradient(135deg,#1cafa1 0%,#35ead7 50%,#72fff0 100%);box-shadow:0 0 12px rgba(53,234,215,.42),0 0 26px rgba(53,234,215,.20);">
+            <a href="${safeHref}" style="display:inline-block;padding:14px 22px;color:#02090a;font-size:14px;line-height:18px;font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:.4px;text-decoration:none;text-transform:uppercase;">${esc(cta)} &nbsp;→</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="padding:18px 30px;background-color:#061518;border-top:1px solid rgba(53,234,215,.16);">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+        <tr>
+          <td style="color:#78918d;font-size:11px;line-height:17px;font-family:Arial,Helvetica,sans-serif;letter-spacing:.3px;">
+            <span style="color:#f2f8f7;font-weight:700;">Performance</span>
+            <span style="color:#35ead7;"> / </span>
+            <span style="color:#f2f8f7;font-weight:700;">Precision</span>
+            <span style="color:#35ead7;"> / </span>
+            <span style="color:#f2f8f7;font-weight:700;">Possibility</span>
+          </td>
+          <td align="right" style="color:#526d68;font-size:10px;line-height:16px;font-family:Arial,Helvetica,sans-serif;">PRETORIA · SOUTH AFRICA</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="padding:14px 30px 22px 30px;background-color:#031012;">
+      <p style="margin:0;color:#526d68;font-size:10px;line-height:16px;font-family:Arial,Helvetica,sans-serif;">
+        <span style="color:#f2f8f7;font-weight:700;">Volt</span><span style="color:#35ead7;font-weight:700;">Tech</span> Computer Co. · Secure customer communication
+      </p>
+    </td>
+  </tr>
+
+</table>
+
 </td></tr>
-<tr><td style="padding-top:18px;padding-right:28px;padding-bottom:26px;padding-left:28px;border-top:1px solid #173a3d;">
-<p style="margin-top:0;margin-right:0;margin-bottom:6px;margin-left:0;font-size:12px;line-height:18px;color:#7fa7a2;font-family:Arial,Helvetica,sans-serif;">Performance / Precision / Possibility</p>
-<p style="margin-top:0;margin-right:0;margin-bottom:0;margin-left:0;font-size:12px;line-height:18px;color:#648b86;font-family:Arial,Helvetica,sans-serif;">VoltTech Computer Co. · Pretoria, South Africa</p>
-</td></tr></table></td></tr></table></body></html>`;
-  const text = `${headline}\n\n${body.replace(/<[^>]+>/g, "")}\n\n${cta}: ${href}\n\nVoltTech Computer Co.`;
+</table>
+</body>
+</html>`;
+
+  const text = `${headline}\n\n${body.replace(/<[^>]+>/g, "")}\n\n${cta}: ${href}\n\nVoltTech Computer Co.\nPerformance / Precision / Possibility`;
   return { html, text };
 }
 
