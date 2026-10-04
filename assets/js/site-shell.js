@@ -26,7 +26,8 @@ function ensureCtaBrandIcon(element, asset, alt) {
 
 function enhanceBrandedCtas(root = document) {
   CTA_BRANDS.forEach(({ selector, asset, alt }) => {
-    root.querySelectorAll(selector).forEach((element) => ensureCtaBrandIcon(element, asset, alt));
+    if (root instanceof Element && root.matches(selector)) ensureCtaBrandIcon(root, asset, alt);
+    root.querySelectorAll?.(selector).forEach((element) => ensureCtaBrandIcon(element, asset, alt));
   });
 }
 
@@ -36,11 +37,14 @@ enhanceSearch();
 enhanceBrandedCtas();
 
 const ctaObserver = new MutationObserver((records) => {
-  for (const record of records) {
-    if (record.type === 'attributes' || record.addedNodes.length) {
-      enhanceBrandedCtas();
-      break;
+  records.forEach((record) => {
+    if (record.type === 'attributes') {
+      enhanceBrandedCtas(record.target);
+      return;
     }
-  }
+    record.addedNodes.forEach((node) => {
+      if (node instanceof Element) enhanceBrandedCtas(node);
+    });
+  });
 });
 ctaObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] });
