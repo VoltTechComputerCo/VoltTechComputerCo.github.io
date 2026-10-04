@@ -1,7 +1,7 @@
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js';
 import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=2.2.0';
 import { connectCatalogueCart } from '../services/catalogue-cart.js';
-import { FILTER_KEYS, accentFor, brandMark, facetDefinitions, facetOptions, formatFacetValue, installCategoryFilterMenus } from '../components/store-filter-menu.js?v=1.2.0';
+import { FILTER_KEYS, accentFor, brandMark, facetDefinitions, facetOptions, filterEsc, formatFacetValue, installCategoryFilterMenus } from '../components/store-filter-menu.js?v=1.2.0';
 
 const query=new URLSearchParams(location.search);
 const categories=[...document.querySelectorAll('[data-category-link]')];
@@ -71,10 +71,10 @@ function renderActiveChips(){
   const entries=Object.entries(state.filters).filter(([,value])=>value);
   chipHost.hidden=!entries.length && !state.search;
   const chips=[];
-  if(state.search) chips.push(`<button class="active-filter-chip" type="button" data-clear-search style="--filter-accent:#59f5e5"><span>Search: ${state.search.replace(/[&<>"']/g,'')}</span><b>×</b></button>`);
+  if(state.search) chips.push(`<button class="active-filter-chip" type="button" data-clear-search style="--filter-accent:#59f5e5"><span>Search: ${filterEsc(state.search)}</span><b>×</b></button>`);
   entries.forEach(([key,value])=>{
     const accent=accentFor(key==='gpuVendor'||key==='platform'||key==='brand'?value:'');
-    chips.push(`<button class="active-filter-chip" type="button" data-clear-filter="${key}" style="--filter-accent:${accent}"><span>${defs.get(key)||key}: ${formatFacetValue(key,value)}</span><b>×</b></button>`);
+    chips.push(`<button class="active-filter-chip" type="button" data-clear-filter="${filterEsc(key)}" style="--filter-accent:${accent}"><span>${filterEsc(defs.get(key)||key)}: ${filterEsc(formatFacetValue(key,value))}</span><b>×</b></button>`);
   });
   chipHost.innerHTML=chips.join('');
 }
@@ -86,15 +86,15 @@ function renderSmartFilters(products){
     const options=facetOptions(products,state.category,def.key,state.filters);
     const selectedValue=state.filters[def.key] || '';
     if(!options.length && !selectedValue) return '';
-    const selectedLabel=selectedValue ? formatFacetValue(def.key,selectedValue) : 'All';
+    const selectedLabel=selectedValue ? filterEsc(formatFacetValue(def.key,selectedValue)) : 'All';
     const buttons=[
       `<button class="smart-filter-option ${!selectedValue?'is-selected':''}" type="button" data-filter-key="${def.key}" data-filter-value="" style="--filter-accent:#59f5e5">All<small>${options.reduce((n,item)=>n+item.count,0)} products</small></button>`,
       ...options.map(option=>{
         const selected=String(option.value)===String(selectedValue);
         const branded=def.key==='gpuVendor'||def.key==='platform'||def.key==='brand';
         const accent=accentFor(branded?option.value:'');
-        const label=branded ? brandMark(option.value,formatFacetValue(def.key,option.value)) : `<span class="filter-brand-name">${formatFacetValue(def.key,option.value)}</span>`;
-        return `<button class="smart-filter-option ${selected?'is-selected':''}" type="button" data-filter-key="${def.key}" data-filter-value="${String(option.value).replace(/"/g,'&quot;')}" style="--filter-accent:${accent}">${label}<small>${option.count} product${option.count===1?'':'s'}</small></button>`;
+        const label=branded ? brandMark(option.value,formatFacetValue(def.key,option.value)) : `<span class="filter-brand-name">${filterEsc(formatFacetValue(def.key,option.value))}</span>`;
+        return `<button class="smart-filter-option ${selected?'is-selected':''}" type="button" data-filter-key="${filterEsc(def.key)}" data-filter-value="${filterEsc(option.value)}" style="--filter-accent:${accent}">${label}<small>${option.count} product${option.count===1?'':'s'}</small></button>`;
       })
     ].join('');
     return `<details class="smart-filter" ${selectedValue?'data-has-value="true"':''}><summary><span><b>${def.label}</b><small>${selectedLabel}</small></span></summary><div class="smart-filter-options">${buttons}</div></details>`;
