@@ -45,11 +45,8 @@ function layout(eyebrow: string, headline: string, body: string, cta: string, hr
     <td style="padding:26px 28px 22px 28px;background-color:#020d0f;border-bottom:1px solid rgba(53,234,215,.18);">
       <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
         <tr>
-          <td align="left" valign="middle">
-            <img src="${LOGO}" width="215" alt="VoltTech Computer Co." style="display:block;width:215px;max-width:100%;height:auto;border:0;outline:none;text-decoration:none;">
-          </td>
-          <td align="right" valign="middle" style="font-family:Arial,Helvetica,sans-serif;">
-            <span style="display:inline-block;padding:7px 10px;border:1px solid rgba(53,234,215,.42);background-color:#07171a;color:#72fff0;font-size:10px;line-height:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;box-shadow:0 0 14px rgba(53,234,215,.10);">SIGNAL ONLINE</span>
+          <td align="center" valign="middle">
+            <img src="${LOGO}" width="250" alt="VoltTech Computer Co." style="display:block;width:250px;max-width:86%;height:auto;margin:0 auto;border:0;outline:none;text-decoration:none;">
           </td>
         </tr>
       </table>
@@ -86,11 +83,7 @@ function layout(eyebrow: string, headline: string, body: string, cta: string, hr
       <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
         <tr>
           <td style="color:#78918d;font-size:11px;line-height:17px;font-family:Arial,Helvetica,sans-serif;letter-spacing:.3px;">
-            <span style="color:#f2f8f7;font-weight:700;">Performance</span>
-            <span style="color:#35ead7;"> / </span>
-            <span style="color:#f2f8f7;font-weight:700;">Precision</span>
-            <span style="color:#35ead7;"> / </span>
-            <span style="color:#f2f8f7;font-weight:700;">Possibility</span>
+            <span style="color:#f2f8f7;font-weight:800;letter-spacing:.5px;">South Africa builds differently.</span>
           </td>
           <td align="right" style="color:#526d68;font-size:10px;line-height:16px;font-family:Arial,Helvetica,sans-serif;">PRETORIA · SOUTH AFRICA</td>
         </tr>
@@ -113,7 +106,7 @@ function layout(eyebrow: string, headline: string, body: string, cta: string, hr
 </body>
 </html>`;
 
-  const text = `${headline}\n\n${body.replace(/<[^>]+>/g, "")}\n\n${cta}: ${href}\n\nVoltTech Computer Co.\nPerformance / Precision / Possibility`;
+  const text = `${headline}\n\n${body.replace(/<[^>]+>/g, "")}\n\n${cta}: ${href}\n\nVoltTech Computer Co.\nSouth Africa builds differently.`;
   return { html, text };
 }
 
