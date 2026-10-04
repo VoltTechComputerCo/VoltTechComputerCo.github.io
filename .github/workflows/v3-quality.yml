@@ -25,7 +25,9 @@ jobs:
           python-version: "3.12"
 
       - name: Verify generated frontend is current
-        run: python scripts/build-clean-frontend.py --check
+        run: |
+          python scripts/build-clean-frontend.py
+          git diff --exit-code -- '*.html'
 
       - name: Run core site integrity checks
         run: python scripts/site-integrity.py
