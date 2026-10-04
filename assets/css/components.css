@@ -137,7 +137,8 @@ a.text-link[href^="mailto:"]::before,
 [data-service-email]::before,
 [data-stream-contact="email"]::before,
 [data-scan-route="email"]::before { background-image:url("../../gmail-logo.svg"); }
-a[href*="wa.me/"]::before,
+a.button[href*="wa.me/"]::before,
+a.text-link[href*="wa.me/"]::before,
 [data-service-whatsapp]::before,
 [data-stream-contact="whatsapp"]::before,
 [data-scan-route="whatsapp"]::before { background-image:url("../../whatsapp-logo.svg"); }
