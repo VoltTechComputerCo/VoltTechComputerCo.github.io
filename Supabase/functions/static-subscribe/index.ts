@@ -52,8 +52,16 @@ function confirmationHtml(link: string) {
       </td></tr></table>
     </td></tr>
     <tr><td style="padding:18px 30px 24px;background-color:#041012;border-top:1px solid rgba(255,180,84,.16);">
-      <p style="margin:0 0 5px;color:#f2f8f7;font-size:11px;line-height:17px;font-weight:800;letter-spacing:.4px;">STATIC by VoltTech Computer Co.</p>
-      <p style="margin:0;color:#6f8581;font-size:10px;line-height:16px;">Tech · gaming · hardware · South Africa builds differently.</p>
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation"><tr>
+        <td style="color:#f2f8f7;font-size:11px;line-height:17px;font-weight:800;letter-spacing:.4px;">STATIC by VoltTech Computer Co.</td>
+        <td align="right"><table cellpadding="0" cellspacing="0" border="0" role="presentation"><tr>
+<td style="padding-left:6px;"><a href="https://www.instagram.com/volttechcomputerco/" style="display:block;padding:6px;background-color:#d62976;border:1px solid rgba(255,255,255,.16);"><img src="https://volttechcomputerco.co.za/instagram-logo.svg" width="18" height="18" alt="Instagram" style="display:block;width:18px;height:18px;border:0;"></a></td>
+<td style="padding-left:6px;"><a href="https://www.tiktok.com/@volttechcomputerco" style="display:block;padding:6px;background-color:#111111;border:1px solid rgba(255,255,255,.16);"><img src="https://volttechcomputerco.co.za/tiktok-logo.svg" width="18" height="18" alt="TikTok" style="display:block;width:18px;height:18px;border:0;"></a></td>
+<td style="padding-left:6px;"><a href="https://www.facebook.com/share/1MEoYu4i8N/" style="display:block;padding:6px;background-color:#1877f2;border:1px solid rgba(255,255,255,.16);"><img src="https://volttechcomputerco.co.za/facebook-logo.svg" width="18" height="18" alt="Facebook" style="display:block;width:18px;height:18px;border:0;"></a></td>
+<td style="padding-left:6px;"><a href="https://wa.me/27618435775" style="display:block;padding:6px;background-color:#25d366;border:1px solid rgba(255,255,255,.16);"><img src="https://volttechcomputerco.co.za/whatsapp-logo.svg" width="18" height="18" alt="WhatsApp" style="display:block;width:18px;height:18px;border:0;"></a></td>
+</tr></table></td>
+      </tr></table>
+      <p style="margin:9px 0 0;color:#6f8581;font-size:10px;line-height:16px;">Tech · gaming · hardware · South Africa builds differently.</p>
     </td></tr>
   </table>
 </td></tr>
