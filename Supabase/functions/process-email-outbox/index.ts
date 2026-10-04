@@ -85,7 +85,12 @@ function layout(eyebrow: string, headline: string, body: string, cta: string, hr
           <td style="color:#78918d;font-size:11px;line-height:17px;font-family:Arial,Helvetica,sans-serif;letter-spacing:.3px;">
             <span style="color:#f2f8f7;font-weight:800;letter-spacing:.5px;">South Africa builds differently.</span>
           </td>
-          <td align="right" style="color:#526d68;font-size:10px;line-height:16px;font-family:Arial,Helvetica,sans-serif;">PRETORIA · SOUTH AFRICA</td>
+          <td align="right"><table cellpadding="0" cellspacing="0" border="0" role="presentation"><tr>
+<td style="padding-left:6px;"><a href="https://www.instagram.com/volttechcomputerco/" style="display:block;padding:6px;background-color:#d62976;border:1px solid rgba(255,255,255,.16);"><img src="https://volttechcomputerco.co.za/instagram-logo.svg" width="18" height="18" alt="Instagram" style="display:block;width:18px;height:18px;border:0;"></a></td>
+<td style="padding-left:6px;"><a href="https://www.tiktok.com/@volttechcomputerco" style="display:block;padding:6px;background-color:#111111;border:1px solid rgba(255,255,255,.16);"><img src="https://volttechcomputerco.co.za/tiktok-logo.svg" width="18" height="18" alt="TikTok" style="display:block;width:18px;height:18px;border:0;"></a></td>
+<td style="padding-left:6px;"><a href="https://www.facebook.com/share/1MEoYu4i8N/" style="display:block;padding:6px;background-color:#1877f2;border:1px solid rgba(255,255,255,.16);"><img src="https://volttechcomputerco.co.za/facebook-logo.svg" width="18" height="18" alt="Facebook" style="display:block;width:18px;height:18px;border:0;"></a></td>
+<td style="padding-left:6px;"><a href="https://wa.me/27618435775" style="display:block;padding:6px;background-color:#25d366;border:1px solid rgba(255,255,255,.16);"><img src="https://volttechcomputerco.co.za/whatsapp-logo.svg" width="18" height="18" alt="WhatsApp" style="display:block;width:18px;height:18px;border:0;"></a></td>
+</tr></table></td>
         </tr>
       </table>
     </td>
