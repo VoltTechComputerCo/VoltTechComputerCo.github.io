@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - clean-rebuild
-      - brand-consistency-cta-email-static-20261004
     paths:
       - "src/pages/**"
       - "src/templates/**"
@@ -24,7 +23,7 @@ concurrency:
 
 jobs:
   sync:
-    if: github.ref == 'refs/heads/clean-rebuild' || github.ref == 'refs/heads/brand-consistency-cta-email-static-20261004'
+    if: github.ref == 'refs/heads/clean-rebuild'
     runs-on: ubuntu-latest
     steps:
       - name: Check out clean rebuild
@@ -39,7 +38,6 @@ jobs:
         run: python scripts/sync-domain-compat.py
 
       - name: Check clean frontend accessibility and structure
-        continue-on-error: ${{ github.ref == 'refs/heads/brand-consistency-cta-email-static-20261004' }}
         run: python scripts/check-clean-frontend.py
 
       - name: Check canonical-domain residue
