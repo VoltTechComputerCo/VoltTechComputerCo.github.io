@@ -26,18 +26,48 @@ async function sha256(value: string) {
   return hex(new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value))));
 }
 function confirmationHtml(link: string) {
-  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"></head>
-<body style="margin:0;background-color:#100b07;font-family:Arial,Helvetica,sans-serif;color:#fff8f0;">
-<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" bgcolor="#100b07"><tr><td align="center" style="padding-top:32px;padding-right:16px;padding-bottom:32px;padding-left:16px;">
-<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="max-width:600px;background-color:#17100b;border:1px solid #ff7a32;">
-<tr><td style="padding-top:28px;padding-right:28px;padding-bottom:28px;padding-left:28px;">
-<p style="margin-top:0;margin-right:0;margin-bottom:8px;margin-left:0;font-size:12px;line-height:18px;color:#ff7a32;font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:1.2px;">STATIC / SUBSCRIBE</p>
-<h1 style="margin-top:0;margin-right:0;margin-bottom:14px;margin-left:0;font-size:28px;line-height:34px;color:#ffffff;font-family:Arial,Helvetica,sans-serif;">Confirm your signal.</h1>
-<p style="margin-top:0;margin-right:0;margin-bottom:22px;margin-left:0;font-size:16px;line-height:25px;color:#d8c5b6;font-family:Arial,Helvetica,sans-serif;">Confirm your email to receive new STATIC articles. No store promotions and no unrelated marketing.</p>
-<table cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td bgcolor="#ff7a32" style="padding-top:12px;padding-right:18px;padding-bottom:12px;padding-left:18px;">
-<a href="${link}" style="font-size:15px;line-height:20px;color:#160b05;font-family:Arial,Helvetica,sans-serif;font-weight:700;text-decoration:none;">Confirm subscription</a>
-</td></tr></table>
-</td></tr></table></td></tr></table></body></html>`;
+  const logo="https://volttechcomputerco.co.za/STATIC-logo-master.png";
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<body style="margin:0;background-color:#02090a;font-family:Arial,Helvetica,sans-serif;color:#f2f8f7;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" bgcolor="#02090a">
+<tr><td align="center" style="padding:30px 14px 36px 14px;">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="max-width:640px;background-color:#061214;border:1px solid rgba(255,180,84,.42);box-shadow:0 0 28px rgba(255,180,84,.10);">
+    <tr><td align="center" style="padding:28px 28px 24px 28px;background-color:#030d0f;">
+      <img src="${logo}" width="190" alt="STATIC" style="display:block;width:190px;max-width:72%;height:auto;margin:0 auto;border:0;outline:none;">
+    </td></tr>
+    <tr><td style="height:3px;line-height:3px;font-size:1px;background-color:#ffb454;box-shadow:0 0 16px rgba(255,180,84,.75);">&nbsp;</td></tr>
+    <tr><td style="padding:30px;background:linear-gradient(180deg,#0a1719 0%,#061214 100%);">
+      <p style="margin:0 0 10px;color:#ffb454;font-size:11px;line-height:16px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;">// STATIC / SUBSCRIBE</p>
+      <h1 style="margin:0 0 14px;color:#ffffff;font-size:32px;line-height:38px;font-weight:800;letter-spacing:-.7px;">Confirm your signal.</h1>
+      <div style="width:68px;height:2px;background-color:#33d6c5;box-shadow:0 0 12px rgba(51,214,197,.55);margin:0 0 20px;"></div>
+      <p style="margin:0 0 24px;color:#b9c8c5;font-size:16px;line-height:26px;">Confirm your email to receive new STATIC articles when they drop. No store promotions. No unrelated marketing. Just the next signal.</p>
+      <table cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td bgcolor="#ffb454" style="border:1px solid #ffd59a;background:linear-gradient(135deg,#d67d2c 0%,#ffb454 52%,#ffd59a 100%);box-shadow:0 0 14px rgba(255,180,84,.38),0 0 28px rgba(255,180,84,.16);">
+        <a href="${link}" style="display:inline-block;padding:14px 22px;color:#130b04;font-size:14px;line-height:18px;font-weight:900;letter-spacing:.4px;text-decoration:none;text-transform:uppercase;">Confirm subscription &nbsp;→</a>
+      </td></tr></table>
+    </td></tr>
+    <tr><td style="padding:18px 30px 24px;background-color:#041012;border-top:1px solid rgba(255,180,84,.16);">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation"><tr>
+        <td style="color:#f2f8f7;font-size:11px;line-height:17px;font-weight:800;letter-spacing:.4px;">STATIC by VoltTech Computer Co.</td>
+        <td align="right"><table cellpadding="0" cellspacing="0" border="0" role="presentation"><tr>
+<td style="padding-left:6px;"><a href="https://www.instagram.com/volttechcomputerco/" style="display:block;padding:6px;background-color:#d62976;border:1px solid rgba(255,255,255,.16);"><img src="https://volttechcomputerco.co.za/instagram-logo.svg" width="18" height="18" alt="Instagram" style="display:block;width:18px;height:18px;border:0;"></a></td>
+<td style="padding-left:6px;"><a href="https://www.tiktok.com/@volttechcomputerco" style="display:block;padding:6px;background-color:#111111;border:1px solid rgba(255,255,255,.16);"><img src="https://volttechcomputerco.co.za/tiktok-logo.svg" width="18" height="18" alt="TikTok" style="display:block;width:18px;height:18px;border:0;"></a></td>
+<td style="padding-left:6px;"><a href="https://www.facebook.com/share/1MEoYu4i8N/" style="display:block;padding:6px;background-color:#1877f2;border:1px solid rgba(255,255,255,.16);"><img src="https://volttechcomputerco.co.za/facebook-logo.svg" width="18" height="18" alt="Facebook" style="display:block;width:18px;height:18px;border:0;"></a></td>
+<td style="padding-left:6px;"><a href="https://wa.me/27618435775" style="display:block;padding:6px;background-color:#25d366;border:1px solid rgba(255,255,255,.16);"><img src="https://volttechcomputerco.co.za/whatsapp-logo.svg" width="18" height="18" alt="WhatsApp" style="display:block;width:18px;height:18px;border:0;"></a></td>
+</tr></table></td>
+      </tr></table>
+      <p style="margin:9px 0 0;color:#6f8581;font-size:10px;line-height:16px;">Tech · gaming · hardware · South Africa builds differently.</p>
+    </td></tr>
+  </table>
+</td></tr>
+</table>
+</body>
+</html>`;
 }
 
 Deno.serve(async (req: Request) => {
