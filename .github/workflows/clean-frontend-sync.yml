@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - clean-rebuild
+      - brand-consistency-cta-email-static-20261004
     paths:
       - "src/pages/**"
       - "src/templates/**"
@@ -23,7 +24,7 @@ concurrency:
 
 jobs:
   sync:
-    if: github.ref == 'refs/heads/clean-rebuild'
+    if: github.ref == 'refs/heads/clean-rebuild' || github.ref == 'refs/heads/brand-consistency-cta-email-static-20261004'
     runs-on: ubuntu-latest
     steps:
       - name: Check out clean rebuild
