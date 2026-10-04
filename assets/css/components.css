@@ -106,3 +106,48 @@ a.vt-image-glass:focus-visible {
   }
 }
 /* STEP 11.2G IMAGE OVERLAY GLASS SYSTEM END */
+
+
+/* VOLTTECH BRANDED CTA ICON SYSTEM */
+.button[data-email-auth]::before,
+#googleSignIn::before,
+a[href*="wa.me/"]::before,
+[data-service-whatsapp]::before,
+[data-stream-contact="whatsapp"]::before,
+[data-scan-route="whatsapp"]::before,
+a[href^="mailto:"]::before,
+[data-service-email]::before,
+[data-stream-contact="email"]::before,
+[data-scan-route="email"]::before {
+  content:"";
+  flex:0 0 1.15rem;
+  width:1.15rem;
+  height:1.15rem;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  filter:drop-shadow(0 0 8px rgba(255,255,255,.08));
+}
+#googleSignIn::before { background-image:url("../../google-logo.svg"); }
+.button[data-email-auth]::before,
+a[href^="mailto:"]::before,
+[data-service-email]::before,
+[data-stream-contact="email"]::before,
+[data-scan-route="email"]::before { background-image:url("../../gmail-logo.svg"); }
+a[href*="wa.me/"]::before,
+[data-service-whatsapp]::before,
+[data-stream-contact="whatsapp"]::before,
+[data-scan-route="whatsapp"]::before { background-image:url("../../whatsapp-logo.svg"); }
+
+#googleSignIn,
+.button[data-email-auth],
+a[href^="mailto:"].button,
+[data-service-email].button,
+[data-stream-contact="email"].button,
+[data-scan-route="email"].button,
+a[href*="wa.me/"].button,
+[data-service-whatsapp].button,
+[data-stream-contact="whatsapp"].button,
+[data-scan-route="whatsapp"].button {
+  gap:.65rem;
+}
