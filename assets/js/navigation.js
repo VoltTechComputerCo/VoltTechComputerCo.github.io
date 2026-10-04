@@ -10,8 +10,38 @@ export function enhanceNavigation(root = document) {
   backdrop.type = 'button';
   backdrop.className = 'mobile-nav-backdrop';
   backdrop.setAttribute('aria-label', 'Close VoltTech menu');
+  backdrop.tabIndex = -1;
   backdrop.hidden = true;
   document.body.append(backdrop);
+
+  const inertTargets = [
+    root.querySelector('main'),
+    root.querySelector('.site-footer'),
+    root.querySelector('.preview-strip'),
+    root.querySelector('.header-tools'),
+    root.querySelector('.brand'),
+    root.querySelector('.brand-promise')
+  ].filter(Boolean);
+
+  function setMenuIsolation(active) {
+    inertTargets.forEach((element) => { element.inert = active; });
+  }
+
+  function normalisePath(pathname) {
+    const clean = pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '').replace(/\/+$/, '');
+    return clean || '/';
+  }
+
+  function markCurrentPage() {
+    const current = normalisePath(location.pathname);
+    nav.querySelectorAll('a[href]').forEach((link) => {
+      link.removeAttribute('aria-current');
+      if (link.matches('[data-cart-link]')) return;
+      const target = new URL(link.href, location.href);
+      if (target.origin !== location.origin || target.hash) return;
+      if (normalisePath(target.pathname) === current) link.setAttribute('aria-current', 'page');
+    });
+  }
 
   function render() {
     const isMobile = mobile.matches;
@@ -22,6 +52,7 @@ export function enhanceNavigation(root = document) {
     nav.classList.toggle('is-floating-open', isMobile && open);
     backdrop.hidden = !(isMobile && open);
     document.body.classList.toggle('mobile-menu-open', isMobile && open);
+    setMenuIsolation(isMobile && open);
   }
 
   function close({ focusToggle = false } = {}) {
@@ -57,5 +88,6 @@ export function enhanceNavigation(root = document) {
     if (!mobile.matches && active === toggle) nav.querySelector('a')?.focus();
   });
 
+  markCurrentPage();
   render();
 }
