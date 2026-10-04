@@ -775,10 +775,6 @@
     rgba(2,12,14,.16) 82%,
     rgba(2,12,14,0) 100%
   );
-  backdrop-filter:blur(4px) saturate(118%);
-  -webkit-backdrop-filter:blur(4px) saturate(118%);
-  -webkit-mask-image:linear-gradient(to top,#000 0%,#000 42%,rgba(0,0,0,.62) 72%,transparent 100%);
-  mask-image:linear-gradient(to top,#000 0%,#000 42%,rgba(0,0,0,.62) 72%,transparent 100%);
 }
 .component-card::after{
   content:"";
@@ -872,10 +868,6 @@
       rgba(2,12,14,.16) 82%,
       rgba(2,12,14,0) 100%
     );
-    backdrop-filter:blur(4px) saturate(118%);
-    -webkit-backdrop-filter:blur(4px) saturate(118%);
-    -webkit-mask-image:linear-gradient(to top,#000 0%,#000 42%,rgba(0,0,0,.62) 72%,transparent 100%);
-    mask-image:linear-gradient(to top,#000 0%,#000 42%,rgba(0,0,0,.62) 72%,transparent 100%);
   }
   .component-card h3{
     left:.72rem;
