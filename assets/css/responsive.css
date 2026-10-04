@@ -76,3 +76,30 @@
   .footer-bottom p{font-size:.55rem}
   .footer-bottom p:last-child{display:none}
 }
+
+
+/* FINAL FLOATING MENU CASCADE GUARD */
+@media(max-width:56rem){
+  body .header-inner{flex-wrap:nowrap}
+  body .primary-nav{
+    position:fixed;
+    z-index:1001;
+    top:clamp(5.2rem,11vh,6.4rem);
+    left:50%;
+    order:initial;
+    width:min(calc(100vw - 1.25rem),44rem);
+    max-height:calc(100dvh - clamp(6rem,14vh,8rem));
+    margin:0;
+    transform:translateX(-50%);
+    border-top:1px solid rgba(83,238,221,.46);
+    padding:.8rem;
+  }
+}
+@media(max-width:40rem){
+  body .primary-nav{
+    top:4.9rem;
+    width:calc(100vw - .9rem);
+    max-height:calc(100dvh - 5.5rem);
+    padding:.62rem;
+  }
+}
