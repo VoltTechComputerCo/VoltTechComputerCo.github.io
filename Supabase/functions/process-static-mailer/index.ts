@@ -17,6 +17,51 @@ function field(item:string,tag:string){
   const match=item.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`,"i"));
   return match?decodeXml(match[1].trim()):"";
 }
+function decodeHtml(value:string){
+  return value
+    .replaceAll("&amp;","&").replaceAll("&lt;","<").replaceAll("&gt;",">")
+    .replaceAll("&quot;",'"').replaceAll("&#39;","'").replaceAll("&#x27;","'")
+    .replaceAll("&nbsp;"," ");
+}
+function cleanText(value:string){
+  return decodeHtml(String(value||"").replace(/<[^>]+>/g," ")).replace(/\s+/g," ").trim();
+}
+function metaValue(html:string,key:string){
+  for(const match of html.matchAll(/<meta\b[^>]*>/gi)){
+    const tag=match[0];
+    const attrs:any={};
+    for(const a of tag.matchAll(/([:\w-]+)\s*=\s*["']([^"']*)["']/g)) attrs[a[1].toLowerCase()]=a[2];
+    if((attrs.property||attrs.name||"").toLowerCase()===key.toLowerCase()) return decodeHtml(attrs.content||"");
+  }
+  return "";
+}
+function classParagraph(html:string,className:string){
+  const re=new RegExp(`<p[^>]*class=["'][^"']*\\b${className}\\b[^"']*["'][^>]*>([\\s\\S]*?)<\\/p>`,"i");
+  return cleanText(html.match(re)?.[1]||"");
+}
+function firstArticleParagraphs(html:string,limit=2){
+  const article=html.match(/<article[^>]*>([\s\S]*?)<\/article>/i)?.[1]||"";
+  return [...article.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)]
+    .map(m=>cleanText(m[1]))
+    .filter(Boolean)
+    .slice(0,limit);
+}
+async function enrichArticle(url:string,fallback:string){
+  try{
+    const response=await fetch(url,{headers:{"User-Agent":"STATIC-Mailer/2.0","Cache-Control":"no-cache"}});
+    if(!response.ok) throw new Error("Article HTTP "+response.status);
+    const html=await response.text();
+    const deck=classParagraph(html,"static-article-dek")||metaValue(html,"og:description")||fallback;
+    const paragraphs=firstArticleParagraphs(html,2);
+    const summary=paragraphs.length?paragraphs.join("\n\n"):fallback;
+    const hero=metaValue(html,"og:image")||metaValue(html,"twitter:image")||
+      decodeHtml(html.match(/<figure[^>]*class=["'][^"']*static-article-hero[^"']*["'][^>]*>[\s\S]*?<img[^>]*src=["']([^"']+)["']/i)?.[1]||"");
+    const kicker=classParagraph(html,"static-article-kicker");
+    return {deck,summary,hero,kicker};
+  }catch{
+    return {deck:fallback,summary:fallback,hero:"",kicker:""};
+  }
+}
 function hex(bytes:Uint8Array){return [...bytes].map(b=>b.toString(16).padStart(2,"0")).join("");}
 async function sha256(value:string){
   return hex(new Uint8Array(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value))));
@@ -25,24 +70,58 @@ async function hmacHex(secret:string,message:string){
   const key=await crypto.subtle.importKey("raw",new TextEncoder().encode(secret),{name:"HMAC",hash:"SHA-256"},false,["sign"]);
   return hex(new Uint8Array(await crypto.subtle.sign("HMAC",key,new TextEncoder().encode(message))));
 }
-function emailHtml(title:string,description:string,url:string,unsubscribeUrl:string){
+function emailHtml(title:string,deck:string,summary:string,hero:string,kicker:string,url:string,unsubscribeUrl:string){
+  const logo=SITE+"/STATIC-logo-master.png";
+  const whatsapp=SITE+"/whatsapp-logo.svg";
+  const summaryParts=String(summary||"").split(/\n\n+/).filter(Boolean).slice(0,2);
+  const summaryHtml=summaryParts.map(p=>`<p style="margin:0 0 14px;color:#b9c8c5;font-size:15px;line-height:24px;">${esc(p)}</p>`).join("");
+  const heroHtml=hero?`<tr><td style="padding:0 24px 0 24px;background-color:#030d0f;"><img src="${esc(hero)}" alt="" width="592" style="display:block;width:100%;max-width:592px;height:auto;border:1px solid rgba(255,180,84,.32);box-shadow:0 0 22px rgba(255,180,84,.10);"></td></tr>`:"";
   return `<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"></head>
-<body style="margin:0;background-color:#100b07;font-family:Arial,Helvetica,sans-serif;color:#fff8f0;">
-<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" bgcolor="#100b07"><tr><td align="center" style="padding-top:32px;padding-right:16px;padding-bottom:32px;padding-left:16px;">
-<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="max-width:600px;background-color:#17100b;border:1px solid #ff7a32;">
-<tr><td bgcolor="#17100b" style="padding-top:28px;padding-right:28px;padding-bottom:18px;padding-left:28px;">
-<p style="margin-top:0;margin-right:0;margin-bottom:8px;margin-left:0;font-size:12px;line-height:18px;color:#ff7a32;font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:1.2px;">STATIC / NEW SIGNAL</p>
-<h1 style="margin-top:0;margin-right:0;margin-bottom:12px;margin-left:0;font-size:28px;line-height:34px;color:#ffffff;font-family:Arial,Helvetica,sans-serif;">${esc(title)}</h1>
-<p style="margin-top:0;margin-right:0;margin-bottom:22px;margin-left:0;font-size:16px;line-height:25px;color:#d8c5b6;font-family:Arial,Helvetica,sans-serif;">${esc(description)}</p>
-<table cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td bgcolor="#ff7a32" style="padding-top:12px;padding-right:18px;padding-bottom:12px;padding-left:18px;">
-<a href="${esc(url)}" style="font-size:15px;line-height:20px;color:#160b05;font-family:Arial,Helvetica,sans-serif;font-weight:700;text-decoration:none;">Read the full signal</a>
-</td></tr></table>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"></head>
+<body style="margin:0;background-color:#02090a;font-family:Arial,Helvetica,sans-serif;color:#f2f8f7;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" bgcolor="#02090a">
+<tr><td align="center" style="padding:30px 12px 36px;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="max-width:640px;background-color:#061214;border:1px solid rgba(255,180,84,.42);box-shadow:0 0 28px rgba(255,180,84,.10);">
+  <tr><td align="center" style="padding:27px 28px 23px;background-color:#030d0f;">
+    <img src="${logo}" width="190" alt="STATIC" style="display:block;width:190px;max-width:72%;height:auto;margin:0 auto;border:0;">
+  </td></tr>
+  <tr><td style="height:3px;line-height:3px;font-size:1px;background-color:#ffb454;box-shadow:0 0 16px rgba(255,180,84,.72);">&nbsp;</td></tr>
+  ${heroHtml}
+  <tr><td style="padding:28px 30px 12px;background:linear-gradient(180deg,#0a1719 0%,#061214 100%);">
+    <p style="margin:0 0 9px;color:#ffb454;font-size:10px;line-height:16px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;">// ${esc(kicker||"STATIC / NEW SIGNAL")}</p>
+    <h1 style="margin:0 0 14px;color:#ffffff;font-size:30px;line-height:36px;font-weight:900;letter-spacing:-.7px;">${esc(title)}</h1>
+    <div style="width:74px;height:2px;background-color:#33d6c5;box-shadow:0 0 12px rgba(51,214,197,.55);margin:0 0 18px;"></div>
+    <p style="margin:0;color:#f0d6b7;font-size:17px;line-height:27px;font-weight:600;">${esc(deck)}</p>
+  </td></tr>
+  <tr><td style="padding:18px 30px 8px;background-color:#061214;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="background-color:#08191b;border:1px solid rgba(51,214,197,.20);box-shadow:inset 0 1px 0 rgba(255,255,255,.03);">
+      <tr><td style="padding:20px 20px 8px;">
+        <p style="margin:0 0 12px;color:#33d6c5;font-size:10px;line-height:16px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;">WHY THIS SIGNAL MATTERS</p>
+        ${summaryHtml}
+      </td></tr>
+    </table>
+  </td></tr>
+  <tr><td style="padding:22px 30px 30px;background-color:#061214;">
+    <table cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td bgcolor="#ffb454" style="border:1px solid #ffd59a;background:linear-gradient(135deg,#d67d2c 0%,#ffb454 52%,#ffd59a 100%);box-shadow:0 0 14px rgba(255,180,84,.38),0 0 28px rgba(255,180,84,.16);">
+      <a href="${esc(url)}" style="display:inline-block;padding:14px 22px;color:#130b04;font-size:14px;line-height:18px;font-weight:900;letter-spacing:.4px;text-decoration:none;text-transform:uppercase;">Read the full signal &nbsp;→</a>
+    </td></tr></table>
+  </td></tr>
+  <tr><td style="padding:18px 30px;background-color:#041012;border-top:1px solid rgba(255,180,84,.16);">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+      <tr>
+        <td style="color:#f2f8f7;font-size:11px;line-height:17px;font-weight:800;">STATIC by VoltTech Computer Co.</td>
+        <td align="right"><a href="https://wa.me/27618435775" style="display:inline-block;text-decoration:none;"><img src="${whatsapp}" width="22" height="22" alt="WhatsApp" style="display:block;width:22px;height:22px;border:0;"></a></td>
+      </tr>
+    </table>
+    <p style="margin:9px 0 0;color:#6f8581;font-size:10px;line-height:16px;">Tech · gaming · hardware · South Africa builds differently.</p>
+    <p style="margin:8px 0 0;color:#6f8581;font-size:10px;line-height:16px;">You received this because you confirmed the STATIC article list. <a href="${esc(unsubscribeUrl)}" style="color:#ffb454;text-decoration:underline;">Unsubscribe</a></p>
+  </td></tr>
+</table>
 </td></tr>
-<tr><td style="padding-top:18px;padding-right:28px;padding-bottom:26px;padding-left:28px;border-top:1px solid #3b2416;">
-<p style="margin-top:0;margin-right:0;margin-bottom:8px;margin-left:0;font-size:12px;line-height:18px;color:#b48e70;font-family:Arial,Helvetica,sans-serif;">STATIC · Tech, gaming &amp; nerd culture by VoltTech</p>
-<p style="margin-top:0;margin-right:0;margin-bottom:0;margin-left:0;font-size:12px;line-height:18px;color:#8c6c55;font-family:Arial,Helvetica,sans-serif;">You received this because you confirmed the STATIC article list. <a href="${esc(unsubscribeUrl)}" style="color:#ff9a60;text-decoration:underline;">Unsubscribe</a></p>
-</td></tr></table></td></tr></table></body></html>`;
+</table>
+</body>
+</html>`;
 }
 
 Deno.serve(async(req:Request)=>{
@@ -70,9 +149,10 @@ Deno.serve(async(req:Request)=>{
     const guid=field(item,"guid")||url;
     const description=field(item,"description");
     if(!title||!url||!guid) throw new Error("STATIC feed lead article is incomplete");
+    const enriched=await enrichArticle(url,description);
 
     const {error:insertError}=await admin.from("static_newsletter_runs").insert({
-      guid,title,url,description,status:"processing"
+      guid,title,url,description:enriched.deck||description,status:"processing"
     });
     if(insertError){
       if(insertError.code==="23505") return Response.json({ok:true,skipped:true,reason:"already_processed",guid});
@@ -121,8 +201,8 @@ Deno.serve(async(req:Request)=>{
               from:"STATIC <static@volttechcomputerco.co.za>",
               to:[subscriber.email],
               subject:`STATIC: ${title}`,
-              html:emailHtml(title,description,url,unsubscribeUrl),
-              text:`STATIC / NEW SIGNAL\n\n${title}\n\n${description}\n\nRead: ${url}\n\nUnsubscribe: ${unsubscribeUrl}`,
+              html:emailHtml(title,enriched.deck||description,enriched.summary||description,enriched.hero||"",enriched.kicker||"",url,unsubscribeUrl),
+              text:`STATIC / NEW SIGNAL\n\n${title}\n\n${enriched.deck||description}\n\n${enriched.summary||description}\n\nRead: ${url}\n\nUnsubscribe: ${unsubscribeUrl}`,
               headers:{
                 "List-Unsubscribe":`<${unsubscribeUrl}>`,
                 "List-Unsubscribe-Post":"List-Unsubscribe=One-Click"
