@@ -755,8 +755,7 @@
   object-position:center;
   transform:scale(.94);
   transition:transform 180ms ease,filter 180ms ease;
-  mix-blend-mode:multiply;
-  filter:brightness(1.9) saturate(1.12) contrast(1.03);
+  filter:url("#vt-remove-white") saturate(1.06) contrast(1.03);
 }
 .component-card::before{
   content:"";
@@ -847,7 +846,7 @@
 .component-card:hover img,
 .component-card:focus-visible img{
   transform:scale(.98);
-  filter:brightness(1.95) saturate(1.16) contrast(1.05) drop-shadow(0 0 10px rgba(var(--component-accent),.10));
+  filter:url("#vt-remove-white") saturate(1.10) contrast(1.05) drop-shadow(0 0 10px rgba(var(--component-accent),.10));
 }
 @media(max-width:40rem){
   .component-card{
