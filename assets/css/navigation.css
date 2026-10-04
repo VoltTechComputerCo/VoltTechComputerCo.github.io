@@ -1,4 +1,4 @@
-.site-header { background: var(--black); border-bottom: 1px solid var(--border); }
+.site-header { position:sticky; top:0; z-index:1000; background: var(--black); border-bottom: 1px solid var(--border); }
 .header-inner { display: flex; align-items: center; gap: var(--space-4); min-height: 80px; }
 .brand { display: flex; align-items: center; flex-shrink: 0; min-height: 44px; }
 .brand img { width: 112px; height: 66px; object-fit: contain; }
@@ -129,7 +129,7 @@
     backdrop-filter:blur(7px) saturate(115%);
     -webkit-backdrop-filter:blur(7px) saturate(115%);
   }
-  .site-header{position:relative;z-index:1000}
+  .site-header{position:sticky;top:0;z-index:1000}
   .primary-nav{
     position:fixed;
     z-index:1001;
@@ -187,3 +187,6 @@
     text-align:center;
   }
 }
+
+/* Sticky-header anchor comfort. */
+:where(main [id]){scroll-margin-top:6.25rem}
