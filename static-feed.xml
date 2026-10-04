@@ -6,7 +6,15 @@
     <description>Breaking tech and gaming stories, PC hardware, performance, security and enthusiast culture from STATIC by VoltTech Computer Co.</description>
     <language>en</language>
     <atom:link href="https://volttechcomputerco.co.za/static-feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Sat, 03 Oct 2026 09:50:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 09:52:00 +0200</lastBuildDate>
+    <item>
+      <title>AMD Just Bought Into the Future of 3D AI</title>
+      <link>https://volttechcomputerco.co.za/static-amd-world-labs-spatial-ai-acquisition</link>
+      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-amd-world-labs-spatial-ai-acquisition</guid>
+      <pubDate>Sun, 04 Oct 2026 09:52:00 +0200</pubDate>
+      <description>AMD is acquiring Fei-Fei Li's World Labs for about $8.2 billion. STATIC explains spatial intelligence, 3D world models and why AMD wants the research inside its hardware roadmap.</description>
+      <media:content url="https://www.worldlabs.ai/_next/image?q=75&amp;url=%2Fimages%2Fblog%2Fglobe_chip.png&amp;w=2048" medium="image" />
+    </item>
     <item>
       <title>The Witcher 3 Remastered Is Gorgeous — And PC Already Needed a Rescue Patch</title>
       <link>https://volttechcomputerco.co.za/static-witcher-3-remastered-hotfix-pc</link>
@@ -158,14 +166,6 @@
       <pubDate>Mon, 07 Sep 2026 09:00:00 +0200</pubDate>
       <description>From November, Game Pass Ultimate includes 15 cloud hours a month, Premium 10 and Essential 5. Xbox says only 4% of subscribers will be affected — but the business-model shift matters far beyond that number.</description>
       <media:content url="https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/XBOX-Cloud-Playtime-Hours-c381b1adcea2de6c3def-1600x900.jpg" medium="image" />
-    </item>
-    <item>
-      <title>LTT Built the “Best PC” of 2026. The Specs Are Completely Absurd</title>
-      <link>https://volttechcomputerco.co.za/static-ltt-best-pc-2026</link>
-      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-ltt-best-pc-2026</guid>
-      <pubDate>Sun, 06 Sep 2026 09:00:00 +0200</pubDate>
-      <description>Linus Tech Tips built its fastest off-the-shelf PC of 2026 around AMD's Ryzen 9 9950X3D2 and MSI's RTX 5090 Lightning Z. STATIC breaks down the hardware, the excess and what the build actually tells us about flagship PCs.</description>
-      <media:content url="https://i.ytimg.com/vi/X8sgBpmdCT8/maxresdefault.jpg" medium="image" />
     </item>
   </channel>
 </rss>
