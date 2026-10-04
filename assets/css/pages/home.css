@@ -487,3 +487,101 @@
   }
 }
 /* STEP 11.2G HOMEPAGE IMAGE GLASS MAPPING END */
+
+
+/* MOBILE-FIRST ALIGNMENT PASS */
+@media(max-width:40rem){
+  .home-hero .hero-copy,
+  .home-section .section-heading,
+  .tool-section .section-heading,
+  .tool-copy,
+  .scan-panel,
+  .stream-support-panel,
+  .discovery-column,
+  .creator-inner,
+  .contact-inner,
+  .contact-actions{
+    text-align:center;
+  }
+  .home-hero .hero-copy{margin-inline:auto}
+  .home-hero .hero-kicker,
+  .home-hero .hero-strap,
+  .home-hero .hero-description{margin-inline:auto}
+  .home-hero .hero-copy .actions{
+    justify-items:center;
+  }
+  .home-hero .hero-copy .button{
+    width:min(100%,19rem);
+    justify-self:center;
+  }
+  .home-hero .hero-facts{
+    text-align:center;
+  }
+  .home-hero .hero-facts > span{justify-content:center}
+
+  .home-section .section-heading,
+  .tool-section .section-heading,
+  .discovery-column .section-heading{
+    align-items:center;
+  }
+  .home-section .section-heading h2,
+  .tool-section .section-heading h2,
+  .discovery-column .section-heading h2{
+    padding:0 0 .35rem;
+    border-left:0;
+    border-bottom:2px solid var(--teal);
+  }
+  .section-subtitle,
+  .availability{margin-inline:auto!important;text-align:center}
+  .component-card{text-align:center}
+  .component-card img{margin-inline:auto}
+  .component-card p{margin:0 auto}
+  .component-card .card-arrow{right:.7rem}
+
+  .builder-panel{
+    grid-template-columns:1fr;
+    text-align:center;
+    padding-inline:0;
+  }
+  .builder-panel .tool-copy{align-items:center}
+  .builder-panel .tool-copy>.button,
+  .scan-panel>.button{
+    width:min(100%,19rem);
+    margin-inline:auto;
+    justify-content:center;
+  }
+  .builder-art{
+    width:min(100%,22rem);
+    height:220px;
+    margin-inline:auto;
+  }
+  .build-steps{grid-column:1}
+  .scan-panel>p,
+  .stream-support-intro,
+  .tool-copy>p:not(.eyebrow){margin-inline:auto}
+  .scan-steps{margin-inline:auto}
+  .stream-support-tags{justify-content:center}
+  .stream-support-link{justify-content:center}
+
+  .service-card{
+    flex-direction:column;
+    justify-content:center;
+    text-align:center;
+    min-height:108px;
+  }
+  .service-icon{margin-inline:auto}
+  .setup-card .card-body,
+  .upgrade-card{text-align:center}
+  .upgrade-card .text-link{justify-content:center}
+  .article-list a{text-align:left}
+
+  .creator-inner{justify-items:center}
+  .creator-inner>.button{justify-self:center}
+  .creator-live-list{justify-content:center}
+  .trust-row>div{flex-direction:column;align-items:center;text-align:center}
+  .trust-row .text-link{justify-content:center}
+  .contact-inner{align-items:center}
+  .contact-actions{align-items:center;width:100%}
+  .contact-actions .button{width:min(100%,19rem);justify-content:center}
+  .contact-actions .text-link{justify-content:center}
+}
