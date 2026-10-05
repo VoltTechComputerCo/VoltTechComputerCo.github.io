@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0e0e">
+<title>VoltTech V5 Builder Prototype</title>
+<meta name="description" content="VoltTech V5 PC Builder prototype.">
+<link rel="stylesheet" href="assets/v5.css">
+</head>
+<body class="builder-page">
+<div class="topline"><div class="wrap"><span>VoltTech Computer Co.</span><span>Pretoria / South Africa</span><span>V5 prototype</span></div></div>
+<header class="header">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="VoltTech home">
+      <img src="../brand/VoltTech_Emblem_Transparent.png" alt="">
+      <span class="brand-copy"><strong>VOLTTECH</strong><span>COMPUTER CO.</span></span>
+    </a>
+    <nav class="nav" id="site-nav" aria-label="Primary">
+      <div class="nav-head"><span>VOLTTECH / MENU</span><strong>Choose a direction.</strong></div>
+      <ul>
+        <li><a href="index.html"><b>Home</b><span>Start here</span></a></li>
+        <li><a href="store.html"><b>Store</b><span>Hardware</span></a></li>
+        <li><a href="builder.html"><b>Builder</b><span>Configure</span></a></li>
+        <li><a href="index.html#services"><b>Services</b><span>Repair + tune</span></a></li>
+      </ul>
+      <div class="menu-meta"><a href="../static.html">STATIC ↗</a><a href="../account.html">Account ↗</a></div>
+    </nav>
+    <div class="desktop-actions"><a href="store.html">Browse parts</a><a href="index.html">Home</a></div>
+    <button class="menu" type="button" data-menu aria-controls="site-nav" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<main>
+<section class="builder-hero">
+  <p class="kicker">V5 PC BUILDER / INTERACTION PROTOTYPE</p>
+  <h1>BUILD FOR<br><span>THE TARGET.</span></h1>
+  <p>The V5 builder starts with your use case and budget before it ever asks you to think about component names. This page is deliberately disconnected from the real compatibility engine for now.</p>
+  <div class="actions"><a class="btn teal" href="#builder">Try the flow ↓</a><a class="btn alt" href="store.html">Browse hardware →</a></div>
+</section>
+
+<section class="builder-shell" id="builder" data-builder>
+  <div class="builder-progress" aria-label="Builder progress"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+
+  <section class="step active" data-step="0">
+    <div class="step-head"><small>01 / USE CASE</small><h2>What is this machine for?</h2></div>
+    <div class="choice-grid">
+      <button class="choice" type="button" data-key="goal" data-value="Gaming"><small>PLAY</small><strong>Gaming</strong><p>High FPS, smooth frame times and the right GPU balance.</p></button>
+      <button class="choice" type="button" data-key="goal" data-value="Gaming + streaming"><small>PLAY + CREATE</small><strong>Gaming + stream</strong><p>Game performance with headroom for OBS and creator tools.</p></button>
+      <button class="choice" type="button" data-key="goal" data-value="Creator"><small>CREATE</small><strong>Creator</strong><p>Editing, rendering, design and heavier multitasking.</p></button>
+      <button class="choice" type="button" data-key="goal" data-value="All-rounder"><small>DO EVERYTHING</small><strong>All-rounder</strong><p>A balanced system for gaming, work and daily use.</p></button>
+    </div>
+  </section>
+
+  <section class="step" data-step="1">
+    <div class="step-head"><small>02 / PRIORITY</small><h2>What should the build favour?</h2></div>
+    <div class="choice-grid">
+      <button class="choice" type="button" data-key="focus" data-value="Maximum FPS"><small>01</small><strong>Maximum FPS</strong><p>Push game performance first.</p></button>
+      <button class="choice" type="button" data-key="focus" data-value="Visual quality"><small>02</small><strong>Visual quality</strong><p>More room for higher settings and resolution.</p></button>
+      <button class="choice" type="button" data-key="focus" data-value="Balanced"><small>03</small><strong>Balanced</strong><p>Strong all-round performance.</p></button>
+      <button class="choice" type="button" data-key="focus" data-value="Quiet / efficient"><small>04</small><strong>Quiet + efficient</strong><p>Lower noise and sensible thermals.</p></button>
+    </div>
+  </section>
+
+  <section class="step" data-step="2">
+    <div class="step-head"><small>03 / BUDGET</small><h2>Where should we build around?</h2></div>
+    <div class="budget-box">
+      <div class="budget-value"><span>Prototype target</span><strong id="budget-out">R20 000</strong></div>
+      <input id="budget" type="range" min="8000" max="60000" step="1000" value="20000" aria-label="Prototype budget">
+      <div class="budget-labels"><span>R8K</span><span>R20K</span><span>R35K</span><span>R60K</span></div>
+    </div>
+  </section>
+
+  <section class="step" data-step="3">
+    <div class="step-head"><small>04 / LOOK</small><h2>What kind of build should it feel like?</h2></div>
+    <div class="choice-grid">
+      <button class="choice" type="button" data-key="style" data-value="Stealth"><small>01</small><strong>Stealth</strong><p>Dark, subtle, minimal lighting.</p></button>
+      <button class="choice" type="button" data-key="style" data-value="Clean RGB"><small>02</small><strong>Clean RGB</strong><p>Controlled lighting, no rainbow chaos.</p></button>
+      <button class="choice" type="button" data-key="style" data-value="Showcase"><small>03</small><strong>Showcase</strong><p>Glass, lighting and visual impact.</p></button>
+      <button class="choice" type="button" data-key="style" data-value="No preference"><small>04</small><strong>No preference</strong><p>Spend the money where performance matters.</p></button>
+    </div>
+  </section>
+
+  <section class="step" data-step="4">
+    <div class="step-head"><small>05 / STARTING POINT</small><h2>This is where the real Builder would take over.</h2></div>
+    <div class="build-summary">
+      <div class="summary-row"><div><small>Use case</small><strong data-summary="goal">Not chosen</strong></div><b>01</b></div>
+      <div class="summary-row"><div><small>Priority</small><strong data-summary="focus">Not chosen</strong></div><b>02</b></div>
+      <div class="summary-row"><div><small>Budget</small><strong data-summary="budget">R20 000</strong></div><b>03</b></div>
+      <div class="summary-row"><div><small>Style</small><strong data-summary="style">Not chosen</strong></div><b>04</b></div>
+    </div>
+    <p class="prototype-note"><strong>Prototype boundary:</strong> this V5 page stops here on purpose. After visual approval, this summary becomes the input to VoltTech’s real Builder data, compatibility checks, component selection, quotes and saved-build flow.</p>
+  </section>
+
+  <div class="builder-nav">
+    <button type="button" data-prev hidden>← Back</button>
+    <button class="next" type="button" data-next>Continue →</button>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer-ticker">VOLTTECH V5 BUILDER · USE CASE FIRST · BUDGET AWARE · PROTOTYPE ONLY ·</div>
+  <div class="footer-inner">
+    <h2 class="footer-title">BUILD<br><span>WITH INTENT.</span></h2>
+    <div class="footer-links">
+      <div><span>V5 PROTOTYPE</span><a href="index.html">Home</a><a href="store.html">Store</a><a href="builder.html">Builder</a></div>
+      <div><span>SUPPORT</span><a href="../pc-repair-pretoria.html">Repair</a><a href="../signal-scan.html">Signal Scan</a></div>
+      <div><span>CREATOR</span><a href="../streaming-setup-south-africa.html">Stream Support</a><a href="../creator-hub-south-africa.html">Creator Hub</a></div>
+      <div><span>VOLTTECH</span><a href="../static.html">STATIC</a><a href="../account.html">Account</a></div>
+    </div>
+    <div class="footer-base"><span>VISUAL PROTOTYPE ONLY</span><span>REAL BUILDER NOT CONNECTED</span><span>V5 CLEAN REBUILD</span></div>
+  </div>
+</footer>
+<script src="assets/v5.js" defer></script>
+</body>
+</html>
