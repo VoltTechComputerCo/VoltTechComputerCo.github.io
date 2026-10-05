@@ -6,6 +6,12 @@ on:
     branches:
       - v3-design-polish
     paths:
+      - "assets/css/**"
+      - "assets/js/**"
+      - "src/**"
+      - "builder/**"
+      - "*.html"
+      - "exposure-scan*"
       - "scripts/capture-v3-screenshots.mjs"
       - ".github/workflows/v3-visual-qa.yml"
 
