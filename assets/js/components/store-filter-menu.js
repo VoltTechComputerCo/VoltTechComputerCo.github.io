@@ -142,11 +142,9 @@ export function accentFor(value){
 export function brandMark(value,label=value){
   const ui=BRAND_UI[value];
   const safeLabel=filterEsc(label);
-  if(!ui) return `<span class="filter-brand-lockup"><span class="filter-brand-name">${safeLabel}</span></span>`;
-  const fallback=`https://logo.clearbit.com/${encodeURIComponent(ui.domain)}?size=256`;
-  const lastFallback=`https://www.google.com/s2/favicons?domain=${encodeURIComponent(ui.domain)}&sz=128`;
-  const logo=ui.icon ? `https://cdn.simpleicons.org/${encodeURIComponent(ui.icon)}/${ui.color.replace('#','')}` : fallback;
-  return `<span class="filter-brand-lockup"><span class="filter-brand-logo"><img src="${logo}" data-fallback="${fallback}" data-last-fallback="${lastFallback}" alt="${safeLabel} logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fallback&&this.src!==this.dataset.fallback){this.src=this.dataset.fallback;return;}if(this.dataset.lastFallback&&this.src!==this.dataset.lastFallback){this.src=this.dataset.lastFallback;return;}this.parentElement.hidden=true"></span><span class="filter-brand-name">${safeLabel}</span></span>`;
+  if(!ui?.icon) return `<span class="filter-brand-lockup filter-brand-lockup--text"><span class="filter-brand-name">${safeLabel}</span></span>`;
+  const logo=`https://cdn.simpleicons.org/${encodeURIComponent(ui.icon)}/${ui.color.replace('#','')}`;
+  return `<span class="filter-brand-lockup"><span class="filter-brand-logo"><img src="${logo}" alt="${safeLabel} logo" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentElement.hidden=true"></span><span class="filter-brand-name">${safeLabel}</span></span>`;
 }
 
 export function gpuVendor(product){
