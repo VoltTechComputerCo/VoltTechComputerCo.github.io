@@ -21,7 +21,7 @@ for(const stem of services){
 }
 const checker=fs.readFileSync(new URL('../scripts/check-clean-frontend.py',import.meta.url),'utf8');
 if(!checker.includes("'https', 'mailto', 'tel'"))fail('tel scheme is not accepted');
-if(!checker.includes("integration_aware_pages = {'home.js', 'creator-hub.js', 'service.js'}"))fail('integration-aware controller allowlist missing');
+if(!checker.includes("integration_aware_pages = {'home.js', 'creator-hub.js', 'service.js', 'static.js', 'exposure-scan.js'}"))fail('integration-aware controller allowlist missing');
 if(!checker.includes("document_outputs = {"))fail('document output preservation missing');
 if(!checker.includes('blocking classic script'))fail('blocking classic script check missing');
 if(!checker.includes('remote Google font dependency'))fail('remote font performance check missing');
