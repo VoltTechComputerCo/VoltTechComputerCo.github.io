@@ -1,0 +1,60 @@
+name: V5 Prototype Visual QA
+
+on:
+  push:
+    branches:
+      - v5-clean-rebuild
+    paths:
+      - "v5/**"
+      - "scripts/capture-v5.mjs"
+      - ".github/workflows/v5-visual.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: v5-prototype-visual
+  cancel-in-progress: true
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Chromium
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Serve prototype
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/v5-http.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4173/v5/index.html >/dev/null && exit 0; sleep 1; done
+          cat /tmp/v5-http.log
+          exit 1
+      - name: Capture V5
+        run: node scripts/capture-v5.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: volttech-v5-prototype
+          path: qa-screenshots/v5/
+          retention-days: 30
+      - name: Publish V5 review screenshots
+        run: |
+          cp -R qa-screenshots/v5 /tmp/v5shots
+          git checkout --orphan v5-visual-review-tmp
+          git rm -rf .
+          mkdir -p qa-screenshots/v5
+          cp -R /tmp/v5shots/. qa-screenshots/v5/
+          git add qa-screenshots/v5
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "V5 prototype visual evidence"
+          git branch -M v5-visual-review
+          git push --force origin v5-visual-review
