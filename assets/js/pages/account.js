@@ -1,7 +1,7 @@
 import {
   isAccountInspection, getAccountClient, safeReturnPath, accountCallbackUrl,
   continueAfterAuth, loadAccountNotifications, accountIsAdmin
-} from '../services/account-session.js';
+} from '../services/account-session.js?v=20261005-oauthfix2';
 import {
   loadProfile, saveProfile, listAddresses, saveAddress, deleteAddress, loadOverview
 } from '../services/account-data.js';
