@@ -1,0 +1,210 @@
+/* VoltTech V3 Design Polish
+   Shared premium interaction and responsive layer for generated customer-facing pages.
+   Page-family styles remain authoritative; this file only adds deliberate cross-site polish. */
+
+:root{
+  --vt-header-offset:6.15rem;
+  --vt-surface-glow:0 18px 54px rgba(0,0,0,.24);
+  --vt-teal-glow:0 0 26px rgba(53,234,215,.12);
+  --vt-line-soft:rgba(53,234,215,.11);
+}
+html{
+  scrollbar-color:var(--teal-deep) var(--black);
+}
+body{
+  min-width:20rem;
+  overflow-x:clip;
+  background:
+    radial-gradient(circle at 50% -18rem,rgba(53,234,215,.045),transparent 32rem),
+    var(--bg);
+}
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:180ms}
+
+.site-header{
+  background:linear-gradient(180deg,rgba(2,9,10,.97),rgba(2,9,10,.90));
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  box-shadow:0 1px 0 rgba(53,234,215,.08);
+  transition:box-shadow var(--transition),background var(--transition);
+}
+.site-header[data-scrolled="true"]{
+  background:rgba(2,9,10,.94);
+  box-shadow:0 12px 36px rgba(0,0,0,.32),0 1px 0 rgba(53,234,215,.14);
+}
+.header-inner{transition:min-height var(--transition)}
+.primary-nav>a,.primary-nav a,.header-account,.icon-button,.menu-toggle{
+  transition:color var(--transition),background var(--transition),border-color var(--transition),transform var(--transition),box-shadow var(--transition);
+}
+
+.section,.home-section,.tool-section,.contact-section{
+  position:relative;
+}
+.section::before,.home-section::before{
+  content:"";
+  position:absolute;
+  inset:0 auto auto 50%;
+  width:min(100% - 2rem,var(--container));
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,var(--vt-line-soft),transparent);
+  pointer-events:none;
+}
+.section:first-child::before,.home-section:first-child::before{display:none}
+
+.card,.feature-panel,.account-panel,.records-card,.transaction-panel,.legal-card,.privacy-card,.creator-panel,.scan-status-card,.scan-workspace{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+}
+.card,.feature-panel,.button,.text-link,.legal-link-card,.account-stat,.account-link-grid a,.creator-directory-card,.service-card,.service-step,.streaming-package,.scan-option{
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition),
+    color var(--transition);
+}
+.button{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16);
+}
+.button::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  background:linear-gradient(110deg,transparent 28%,rgba(255,255,255,.12) 50%,transparent 72%);
+  transform:translateX(-130%);
+  transition:transform 320ms ease;
+}
+.text-link span[aria-hidden="true"],.button span[aria-hidden="true"]{transition:transform var(--transition)}
+.dialog{
+  box-shadow:0 28px 100px rgba(0,0,0,.68),0 0 32px rgba(53,234,215,.08),inset 0 1px 0 rgba(255,255,255,.05);
+  backdrop-filter:blur(20px) saturate(135%);
+  -webkit-backdrop-filter:blur(20px) saturate(135%);
+}
+.dialog::backdrop{
+  background:rgba(0,7,9,.80);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+}
+.field input,.field select,.field textarea,
+.account-form input,.account-form select{
+  transition:border-color var(--transition),box-shadow var(--transition),background var(--transition);
+}
+.field input:focus,.field select:focus,.field textarea:focus,
+.account-form input:focus,.account-form select:focus{
+  border-color:var(--teal);
+  background:#031113;
+  box-shadow:0 0 0 3px rgba(53,234,215,.08),0 0 22px rgba(53,234,215,.07);
+  outline:none;
+}
+input[type="search"]::-webkit-search-cancel-button{filter:invert(1);opacity:.65}
+
+/* Sticky sub-navigation and work surfaces respect the global header. */
+[data-page="builder"] .sticky{top:calc(var(--vt-header-offset) + .85rem)}
+.scan-status-card{top:calc(var(--vt-header-offset) + .85rem)}
+.account-tabs,.records-tabs,.legal-nav,.creator-tool-nav{
+  position:sticky;
+  top:var(--vt-header-offset);
+  z-index:30;
+  backdrop-filter:blur(15px) saturate(130%);
+  -webkit-backdrop-filter:blur(15px) saturate(130%);
+  box-shadow:0 10px 24px rgba(0,0,0,.16);
+}
+.account-tabs,.records-tabs{scroll-snap-type:x proximity}
+.account-tab,.records-tab{scroll-snap-align:start}
+.service-network{
+  position:sticky;
+  top:var(--vt-header-offset);
+  z-index:28;
+  background:rgba(2,9,10,.93);
+  backdrop-filter:blur(14px) saturate(130%);
+  -webkit-backdrop-filter:blur(14px) saturate(130%);
+  box-shadow:0 10px 24px rgba(0,0,0,.14);
+}
+
+/* Commerce: preserve browsing context while making controls feel deliberate. */
+.catalogue-toolbar,.smart-filter-shell{scroll-margin-top:calc(var(--vt-header-offset) + 1rem)}
+.catalogue-card,.store-category,.advice-card,.component-data{
+  box-shadow:0 12px 34px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.025);
+}
+.catalogue-media img,.store-category img,.component-showcase img{transition:transform 240ms ease,filter 240ms ease}
+.catalogue-results-head{
+  position:relative;
+  z-index:5;
+}
+.component-page{scroll-margin-top:var(--vt-header-offset)}
+
+/* Services and diagnostics: stronger hierarchy without changing content. */
+.service-section{scroll-margin-top:calc(var(--vt-header-offset) + 1rem)}
+.service-detail,.service-price,.service-trust,.service-area,.service-final,.service-demo{
+  box-shadow:var(--vt-surface-glow),inset 0 1px 0 rgba(255,255,255,.025);
+}
+.service-symptom-rail{scroll-padding-inline:.25rem}
+.scan-workspace{box-shadow:var(--vt-surface-glow),var(--vt-teal-glow)}
+.scan-option:active{transform:translateY(1px)}
+
+/* Customer hub and records. */
+.account-panel,.account-auth-card,.account-welcome,.records-card,.records-section{
+  box-shadow:0 14px 40px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.025);
+}
+.account-stat strong{font-variant-numeric:tabular-nums}
+.account-address-card,.account-security-card{transition:border-color var(--transition),background var(--transition),transform var(--transition)}
+.transaction-sidebar>.transaction-panel:first-child{
+  position:sticky;
+  top:calc(var(--vt-header-offset) + .85rem);
+}
+.order-timeline li{scroll-margin-top:calc(var(--vt-header-offset) + 1rem)}
+
+/* Creator family. */
+.creator-player,.creator-directory-card,.creator-community article,.streaming-package{
+  box-shadow:0 14px 40px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.025);
+}
+.creator-player-video{overflow:hidden}
+.creator-player-video iframe{background:#000}
+
+/* Long-form legal/customer information stays readable on wide displays. */
+.legal-card p,.legal-card li,.privacy-card p,.privacy-card li{max-width:78ch}
+.legal-card h2,.privacy-card h2{text-wrap:balance}
+
+/* Fine pointer affordances only; touch devices stay stable. */
+@media(hover:hover) and (pointer:fine){
+  .button:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(0,0,0,.18),0 0 18px rgba(53,234,215,.10),inset 0 1px 0 rgba(255,255,255,.18)}
+  .button:not(:disabled):hover::before{transform:translateX(130%)}
+  .button:hover span[aria-hidden="true"],.text-link:hover span[aria-hidden="true"]{transform:translateX(.18rem)}
+  .card[href]:hover,.legal-link-card:hover,.account-stat:hover,.account-link-grid a:hover,.creator-directory-card:hover,.service-card:hover,.service-step:hover,.streaming-package:hover{
+    transform:translateY(-2px);
+    box-shadow:0 16px 42px rgba(0,0,0,.22),0 0 20px rgba(53,234,215,.07),inset 0 1px 0 rgba(255,255,255,.035);
+  }
+  .catalogue-card:hover .catalogue-media img,.store-category:hover img{transform:scale(1.025);filter:saturate(1.06) contrast(1.02)}
+  .account-address-card:hover,.account-security-card:hover{border-color:var(--border-strong);background:var(--panel-raised);transform:translateY(-1px)}
+}
+
+/* Tablet/mobile: keep premium density without sacrificing tap comfort. */
+@media(max-width:56rem){
+  :root{--vt-header-offset:5.35rem}
+  .account-tabs,.records-tabs,.legal-nav,.service-network,.creator-tool-nav{top:var(--vt-header-offset)}
+  .transaction-sidebar>.transaction-panel:first-child{position:static}
+}
+@media(max-width:40rem){
+  :root{--vt-header-offset:4.8rem}
+  body{background:var(--bg)}
+  .container{padding-inline:max(.9rem,env(safe-area-inset-left)) max(.9rem,env(safe-area-inset-right))}
+  .button{min-height:46px}
+  .section-heading{margin-bottom:1.1rem}
+  .account-tabs,.records-tabs,.legal-nav,.service-network,.creator-tool-nav{
+    margin-inline:-.25rem;
+    border-inline-color:transparent;
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+  }
+  .service-network{top:var(--vt-header-offset)}
+  .scan-status-card{top:auto}
+  [data-page="builder"] .sticky{top:calc(var(--vt-header-offset) + .5rem)}
+  .dialog{width:calc(100% - 1rem);max-height:calc(100dvh - 1rem);padding:1.1rem}
+}
+@media(prefers-reduced-motion:reduce){
+  @view-transition{navigation:none}
+  .button::before{display:none}
+}
