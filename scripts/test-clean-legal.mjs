@@ -7,7 +7,7 @@ for(const p of pages){
   if((s.match(/<main\b/g)||[]).length!==1)fail(`${p}: expected one main`);
   if((s.match(/class="site-header"/g)||[]).length!==1)fail(`${p}: clean site header missing`);
   if((s.match(/class="site-footer"/g)||[]).length!==1)fail(`${p}: clean site footer missing`);
-  if(!s.includes('assets/css/pages/legal.css'))fail(`${p}: clean legal CSS missing`);
+  if(!s.includes('assets/css/v4/pages.css'))fail(`${p}: V4 legal CSS missing`);
   if(!s.includes('assets/js/pages/legal.js'))fail(`${p}: clean legal JS missing`);
   if(s.includes('fonts.googleapis.com'))fail(`${p}: Google Fonts remain`);
   if(s.includes('href="legal.css"'))fail(`${p}: legacy legal.css remains`);
