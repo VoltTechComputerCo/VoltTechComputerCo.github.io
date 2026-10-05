@@ -1,4 +1,24 @@
-/* VoltTech Exposure Scan — Phase 2 Batch 14 */
-.label-purple{color:var(--purple)}
-.label-warn{color:var(--warn)}
-.location-clear{margin-top:10px}
+/* V4 Exposure Scan refinements */
+.label-purple{color:#8656b8}.label-warn{color:#b76620}.location-clear{margin-top:10px}
+body{background:#080b0b!important;color:#f4f6f4!important}
+nav{height:64px!important;border-bottom:1px solid #2d3835!important;background:rgba(8,11,11,.97)!important}
+nav .wrap{height:64px!important;width:min(88rem,100%)!important}
+.wrap{width:min(88rem,100%)!important;padding-inline:1rem!important}
+.hero{min-height:auto!important;padding:4rem 0 3rem!important;border-bottom:1px solid #2d3835!important}
+.hero h1{max-width:60rem!important;font-size:clamp(3.6rem,16vw,6rem)!important;line-height:.84!important;letter-spacing:-.06em!important}
+.hero h1 span{color:#10d9c4!important}
+.lead{max-width:46rem!important}
+.hero-note{border-radius:0!important;border-left:4px solid #10d9c4!important;background:#111716!important}
+section{padding:4rem 0!important;border-bottom:1px solid #24302d!important}
+section h2{font-size:clamp(2.5rem,11vw,4rem)!important;line-height:.92!important;letter-spacing:-.05em!important}
+.scan-shell,.result-section,.fingerprint,.reveal,.location-card,.cta-card{border-radius:0!important;box-shadow:none!important}
+.scan-shell{border:1px solid #34413e!important;background:#0d1211!important}
+.scan-top{border-bottom:1px solid #34413e!important;background:#111716!important}
+.scan-body{display:grid!important;gap:1.5rem!important;padding:1.2rem!important}
+.scan-copy{text-align:left!important}.scan-copy h3{font-size:2rem!important}
+.scan-button,.action-button{border-radius:0!important}
+.stat-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:1px!important;background:#34413e!important;border:1px solid #34413e!important}
+.stat{border:0!important;border-radius:0!important;background:#101514!important}
+.result-head{background:#111716!important}
+.reveal{background:#10d9c4!important;color:#07110f!important}.reveal p,.reveal-item span{color:#0c5a52!important}.reveal-item{background:rgba(255,255,255,.34)!important}
+@media(min-width:50rem){.wrap{padding-inline:2rem!important}.hero{padding:6rem 0 4rem!important}.hero h1{font-size:clamp(5rem,8vw,8rem)!important}.scan-body{grid-template-columns:15rem 1fr!important;gap:3rem!important;padding:3rem!important}.stat-grid{grid-template-columns:repeat(4,1fr)!important}}
