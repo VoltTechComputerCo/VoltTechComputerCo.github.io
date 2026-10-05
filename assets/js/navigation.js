@@ -1,17 +1,44 @@
-// Progressive disclosure with a true floating mobile system map.
+// VoltTech V3 navigation shell.
 export function enhanceNavigation(root = document) {
   const toggle = root.querySelector('[data-menu-toggle]');
   const nav = root.querySelector('#primary-navigation');
+  const header = root.querySelector('[data-vt-header]');
   if (!toggle || !nav) return;
 
   const mobile = window.matchMedia('(max-width: 56rem)');
   let open = false;
+  let raf = 0;
+
   const backdrop = document.createElement('button');
   backdrop.type = 'button';
   backdrop.className = 'mobile-nav-backdrop';
-  backdrop.setAttribute('aria-label', 'Close VoltTech menu');
+  backdrop.setAttribute('aria-label', 'Close navigation');
   backdrop.hidden = true;
   document.body.append(backdrop);
+
+  const normalise = pathname => {
+    const clean = pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '').replace(/\/+$/, '');
+    return clean || '/';
+  };
+
+  function markCurrentRoutes() {
+    const current = normalise(location.pathname);
+    root.querySelectorAll('.primary-nav a[href], .vt-mobile-dock a[href]').forEach(link => {
+      link.removeAttribute('aria-current');
+      const target = new URL(link.href, location.href);
+      if (target.origin !== location.origin || target.hash) return;
+      if (normalise(target.pathname) === current) link.setAttribute('aria-current', 'page');
+    });
+  }
+
+  function updateHeader() {
+    raf = 0;
+    if (header) header.dataset.scrolled = String(window.scrollY > 12);
+  }
+
+  function onScroll() {
+    if (!raf) raf = requestAnimationFrame(updateHeader);
+  }
 
   function render() {
     const isMobile = mobile.matches;
@@ -19,9 +46,9 @@ export function enhanceNavigation(root = document) {
     toggle.setAttribute('aria-expanded', String(isMobile && open));
     toggle.textContent = open ? 'Close' : 'Menu';
     nav.hidden = isMobile && !open;
-    nav.classList.toggle('is-floating-open', isMobile && open);
     backdrop.hidden = !(isMobile && open);
     document.body.classList.toggle('mobile-menu-open', isMobile && open);
+    nav.classList.toggle('is-open', isMobile && open);
   }
 
   function close({ focusToggle = false } = {}) {
@@ -40,9 +67,7 @@ export function enhanceNavigation(root = document) {
   backdrop.addEventListener('click', () => close({ focusToggle: true }));
 
   root.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && mobile.matches && open) {
-      close({ focusToggle: true });
-    }
+    if (event.key === 'Escape' && mobile.matches && open) close({ focusToggle: true });
   });
 
   nav.addEventListener('click', event => {
@@ -50,12 +75,12 @@ export function enhanceNavigation(root = document) {
   });
 
   mobile.addEventListener('change', () => {
-    const active = root.activeElement;
     open = false;
     render();
-    if (mobile.matches && nav.contains(active)) toggle.focus();
-    if (!mobile.matches && active === toggle) nav.querySelector('a')?.focus();
   });
 
+  window.addEventListener('scroll', onScroll, { passive: true });
+  markCurrentRoutes();
+  updateHeader();
   render();
 }
