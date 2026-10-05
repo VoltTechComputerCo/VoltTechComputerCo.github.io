@@ -67,7 +67,7 @@ nav.querySelectorAll = () => [link];
 link.removeAttribute = k => { delete link.attributes[k]; };
 link.href = 'https://example.test/page.html';
 doc.querySelector = selector => selector === '[data-menu-toggle]' ? toggle : nav;
-vm.runInNewContext(source('assets/js/navigation.js').replace('export function', 'function') + '\nenhanceNavigation(document);', { document: doc, location:{ pathname:'/page.html', href:'https://example.test/page.html', origin:'https://example.test' }, URL, window: { matchMedia: () => media, location:{ pathname:'/page.html', href:'https://example.test/page.html', origin:'https://example.test' } } });
+vm.runInNewContext(source('assets/js/navigation.js').replace('export function', 'function') + '\nenhanceNavigation(document);', { document: doc, location:{ pathname:'/page.html', href:'https://example.test/page.html', origin:'https://example.test' }, URL, requestAnimationFrame: fn => { fn(); return 1; }, window: { matchMedia: () => media, location:{ pathname:'/page.html', href:'https://example.test/page.html', origin:'https://example.test' } } });
 assert.equal(nav.hidden, true);
 assert.equal(toggle.hidden, false);
 toggle.listeners.click();
