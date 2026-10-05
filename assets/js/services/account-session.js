@@ -80,7 +80,7 @@ export async function getAccountClient() {
 }
 
 export function accountCallbackUrl(returnPath = safeReturnPath()) {
-  return `${location.origin}/account.html${returnPath ? `?returnTo=${encodeURIComponent(returnPath)}` : ''}`;
+  return `${canonicalAccountOrigin}/account.html${returnPath ? `?returnTo=${encodeURIComponent(returnPath)}` : ''}`;
 }
 
 export function continueAfterAuth(returnPath = safeReturnPath()) {
