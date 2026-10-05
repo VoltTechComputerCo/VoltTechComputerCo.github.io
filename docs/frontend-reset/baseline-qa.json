@@ -1,0 +1,199 @@
+{
+  "step": "repository",
+  "title": "Automated full regression QA",
+  "branch": "frontend-reset-20261005",
+  "started_at": "2026-10-05T15:38:06.510Z",
+  "finished_at": "2026-10-05T15:38:07.979Z",
+  "total": 23,
+  "passed": 18,
+  "failed": 5,
+  "status": "FAIL",
+  "results": [
+    {
+      "name": "Clean frontend source/output contract",
+      "command": "python3 scripts/check-clean-frontend.py",
+      "status": "FAIL",
+      "exit_code": 1,
+      "duration_ms": 66,
+      "signal": null
+    },
+    {
+      "name": "Domain residue gate",
+      "command": "python3 scripts/check-domain-residue.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 27,
+      "signal": null
+    },
+    {
+      "name": "Final SEO gate",
+      "command": "python3 scripts/check-final-seo.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 28,
+      "signal": null
+    },
+    {
+      "name": "STATIC publishing validation",
+      "command": "python3 scripts/validate-static.py",
+      "status": "FAIL",
+      "exit_code": 1,
+      "duration_ms": 53,
+      "signal": null
+    },
+    {
+      "name": "Repo-wide public HTML/link scan",
+      "command": "python3 scripts/check-full-site.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 294,
+      "signal": null
+    },
+    {
+      "name": "Runtime + launch flags + mobile shell",
+      "command": "node scripts/test-clean-runtime.mjs",
+      "status": "FAIL",
+      "exit_code": 1,
+      "duration_ms": 63,
+      "signal": null
+    },
+    {
+      "name": "Accessibility + performance contracts",
+      "command": "node scripts/test-clean-a11y-performance.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 53,
+      "signal": null
+    },
+    {
+      "name": "Account/auth boundary",
+      "command": "node scripts/test-clean-account.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 54,
+      "signal": null
+    },
+    {
+      "name": "Builder contracts",
+      "command": "node scripts/test-clean-builder.mjs",
+      "status": "FAIL",
+      "exit_code": 1,
+      "duration_ms": 52,
+      "signal": null
+    },
+    {
+      "name": "Commerce catalogue contracts",
+      "command": "node scripts/test-clean-commerce.mjs",
+      "status": "FAIL",
+      "exit_code": 1,
+      "duration_ms": 70,
+      "signal": null
+    },
+    {
+      "name": "Transactions/payment gate",
+      "command": "node scripts/test-clean-transactions.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 57,
+      "signal": null
+    },
+    {
+      "name": "Creator Hub contracts",
+      "command": "node scripts/test-clean-creator-hub.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 59,
+      "signal": null
+    },
+    {
+      "name": "Customer operations",
+      "command": "node scripts/test-clean-customer-ops.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 55,
+      "signal": null
+    },
+    {
+      "name": "Customer records",
+      "command": "node scripts/test-clean-customer-records.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 54,
+      "signal": null
+    },
+    {
+      "name": "Customer document support",
+      "command": "node scripts/test-clean-document-support.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 49,
+      "signal": null
+    },
+    {
+      "name": "Printable documents",
+      "command": "node scripts/test-clean-documents.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 53,
+      "signal": null
+    },
+    {
+      "name": "Canonical/domain source contracts",
+      "command": "node scripts/test-clean-domain.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 54,
+      "signal": null
+    },
+    {
+      "name": "Legal/support family",
+      "command": "node scripts/test-clean-legal.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 60,
+      "signal": null
+    },
+    {
+      "name": "Service funnel round trip",
+      "command": "node scripts/test-clean-service-funnel.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 54,
+      "signal": null
+    },
+    {
+      "name": "Service family contracts",
+      "command": "node scripts/test-clean-services.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 55,
+      "signal": null
+    },
+    {
+      "name": "Signal Scan contracts",
+      "command": "node scripts/test-clean-signal-scan.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 50,
+      "signal": null
+    },
+    {
+      "name": "STATIC hub/feed/workflows",
+      "command": "node scripts/test-clean-static.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 49,
+      "signal": null
+    },
+    {
+      "name": "Streaming/Stream Scan contracts",
+      "command": "node scripts/test-clean-streaming.mjs",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_ms": 56,
+      "signal": null
+    }
+  ],
+  "baseline_commit": "cf5999d06b4934b7a83ab104cb20b06377ea74e7",
+  "note": "Unmodified main source; 18/23 baseline gates pass. No browser/live customer-flow tests run."
+}
