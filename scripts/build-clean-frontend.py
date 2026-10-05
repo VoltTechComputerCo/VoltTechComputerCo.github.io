@@ -9,7 +9,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 CSS = ('tokens', 'base', 'forms')
-PRINTISH = {'invoice','proforma','quote','receipt','repair','service-record','order-document','build-document','delivery'}
+PRINTISH = {'invoice','proforma','quote','receipt','repair','service-record','order-document','build-document','delivery','personal-data'}
 
 
 def render(source):
