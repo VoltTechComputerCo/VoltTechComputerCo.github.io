@@ -1,5 +1,31 @@
 import { isProduction, sdkUrl } from './site-config.js';
 
+const canonicalAccountOrigin = 'https://volttechcomputerco.co.za';
+const legacyPreviewHost = 'volttechcomputerco.github.io';
+
+function forwardLegacyAuthCallback() {
+  if (location.hostname !== legacyPreviewHost) return false;
+  const params = new URLSearchParams(location.search);
+  const hash = location.hash || '';
+  const isAuthCallback =
+    params.has('code') ||
+    params.has('error') ||
+    params.has('error_code') ||
+    hash.includes('access_token=') ||
+    hash.includes('refresh_token=') ||
+    hash.includes('error=');
+
+  if (!isAuthCallback) return false;
+
+  const target = new URL('/account.html', canonicalAccountOrigin);
+  for (const [key, value] of params.entries()) target.searchParams.append(key, value);
+  target.hash = hash;
+  location.replace(target.href);
+  return true;
+}
+
+const forwardingLegacyAuthCallback = forwardLegacyAuthCallback();
+
 let clientPromise = null;
 
 export function isAccountInspection() {
@@ -36,6 +62,7 @@ function loadClassicScript(src) {
 }
 
 export async function getAccountClient() {
+  if (forwardingLegacyAuthCallback) throw new Error('Returning to the secure VoltTech account…');
   if (clientPromise) return clientPromise;
   clientPromise = (async () => {
     if (!isProduction()) throw new Error('Account sign-in is unavailable on this preview host.');
