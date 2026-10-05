@@ -73,8 +73,9 @@ try{
         await page.goto(BASE+spec.url,{waitUntil:'domcontentloaded',timeout:30000});
         await settle(page);
         if(spec.key==='store'){
-          await page.locator('#catalogue:not([hidden])').waitFor({state:'visible',timeout:8000}).catch(()=>{});
-          await page.waitForTimeout(500);
+          const resolved=page.locator('#catalogue:not([hidden]), #store-gate:not([hidden])').first();
+          await resolved.waitFor({state:'visible',timeout:13000});
+          await page.waitForTimeout(250);
         }
         const overflow=await page.evaluate(()=>Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)-window.innerWidth);
         if(overflow>2) throw new Error('Horizontal overflow '+overflow+'px');
@@ -100,7 +101,15 @@ try{
           if(await toggle.isVisible()){
             await toggle.click();
             await page.waitForTimeout(150);
-            await capture(page,profileName+'--home--menu','#primary-navigation',1500);
+            const menu=page.locator('#primary-navigation');
+            const box=await menu.boundingBox();
+            if(!box || box.height < profile.viewport.height * .7){
+              throw new Error('Mobile menu does not fill the viewport: '+(box?.height||0)+'px');
+            }
+            const menuFile=path.join(OUT,profileName+'--home--menu.jpg');
+            await page.screenshot({path:menuFile,type:'jpeg',quality:84,fullPage:false});
+            await validateFile(menuFile,5000);
+            manifest.captures.push(profileName+'--home--menu.jpg');
             await page.keyboard.press('Escape');
           }else throw new Error('Mobile menu toggle is not visible');
         }
