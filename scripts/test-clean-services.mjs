@@ -17,7 +17,7 @@ const pages=[
 for(const [page,key,price] of pages){
   const html=read(page);
   assert.ok(html.includes('data-vt-shell="clean"'),`${page} uses clean shell`);
-  assert.ok(html.includes('assets/css/pages/services.css'),`${page} uses clean service CSS`);
+  assert.ok(html.includes('assets/css/v4/pages.css'),`${page} uses V4 service CSS`);
   assert.ok(html.includes('assets/js/pages/service.js'),`${page} uses shared service controller`);
   assert.ok(html.includes(`data-service-key="${key}"`),`${page} exposes correct service key`);
   assert.ok(html.includes(`signal-scan.html?source=${key}`),`${page} points to correct Signal Scan route`);
