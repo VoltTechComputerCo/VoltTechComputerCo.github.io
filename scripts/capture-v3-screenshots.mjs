@@ -53,6 +53,7 @@ const manifest = {generated_at:new Date().toISOString(),base:BASE,profiles:{},is
 
 async function settle(page){
   await page.waitForLoadState('domcontentloaded');
+  await page.evaluate(async()=>{ if(document.fonts?.ready) await document.fonts.ready; }).catch(()=>{});
   await page.waitForTimeout(1600);
 }
 
