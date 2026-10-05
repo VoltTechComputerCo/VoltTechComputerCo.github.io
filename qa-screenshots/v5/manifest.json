@@ -1,0 +1,20 @@
+{
+  "revision": "v5-clean-rebuild",
+  "captures": [
+    "mobile360--home--full.jpg",
+    "mobile360--home--menu.jpg",
+    "mobile360--store--full.jpg",
+    "mobile360--builder--full.jpg",
+    "mobile360--builder--summary.jpg",
+    "mobile390--home--full.jpg",
+    "mobile390--home--menu.jpg",
+    "mobile390--store--full.jpg",
+    "mobile390--builder--full.jpg",
+    "mobile390--builder--summary.jpg",
+    "desktop--home--full.jpg",
+    "desktop--store--full.jpg",
+    "desktop--builder--full.jpg",
+    "desktop--builder--summary.jpg"
+  ],
+  "issues": []
+}
