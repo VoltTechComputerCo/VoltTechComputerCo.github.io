@@ -1,0 +1,67 @@
+[
+  {
+    "route": "index.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "design-system.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "index.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "design-system.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "index.html",
+    "width": 768,
+    "status": "PASS"
+  },
+  {
+    "route": "design-system.html",
+    "width": 768,
+    "status": "PASS"
+  },
+  {
+    "route": "index.html",
+    "width": 1024,
+    "status": "PASS"
+  },
+  {
+    "route": "design-system.html",
+    "width": 1024,
+    "status": "PASS"
+  },
+  {
+    "route": "index.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "design-system.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "index.html",
+    "width": 1920,
+    "status": "PASS"
+  },
+  {
+    "route": "design-system.html",
+    "width": 1920,
+    "status": "PASS"
+  },
+  {
+    "route": "index.html",
+    "state": "offline",
+    "status": "PASS"
+  }
+]

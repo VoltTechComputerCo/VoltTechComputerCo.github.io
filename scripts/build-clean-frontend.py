@@ -48,7 +48,11 @@ def main():
     parser.add_argument('--check', action='store_true', help='Fail if committed HTML differs from source')
     args = parser.parse_args()
     stale = []
+    # Migrated routes are exclusively owned by the new build entrypoint.
+    reset_outputs = {json.loads(p.read_text())['output'] for p in (ROOT / 'frontend/pages').glob('*.json') if not p.name.endswith('.schema.json')}
     for source in sorted((ROOT / 'src/pages').glob('*.json')):
+        if json.loads(source.read_text())['output'] in reset_outputs:
+            continue
         target, content = render(source)
         if args.check:
             if not target.exists() or target.read_text() != content:

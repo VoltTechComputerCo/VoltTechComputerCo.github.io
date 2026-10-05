@@ -6,7 +6,8 @@ Baseline main commit: cf5999d06b4934b7a83ab104cb20b06377ea74e7.
 
 ## Status
 
-Phase 1 repository/backend audit is recorded here. Phases 2–12 are not implemented.
+Phase 1 repository/backend audit is recorded here. This is the audit snapshot.
+Current implementation and route migration status are in PROGRESS.md.
 No customer HTML, frontend runtime, production data, schema, credentials, launch flags,
 payment configuration or publishing workflows were changed by this audit.
 This branch starts directly from main; no V3/V4/V5 branch was merged or used.

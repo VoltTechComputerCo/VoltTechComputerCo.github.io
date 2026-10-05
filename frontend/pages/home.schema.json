@@ -1,0 +1,48 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://volttechcomputerco.co.za/#organisation",
+      "name": "VoltTech Computer Co.",
+      "url": "https://volttechcomputerco.co.za/",
+      "logo": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png",
+      "email": "volttechcomputerco@gmail.com",
+      "telephone": "+27618435775",
+      "areaServed": {
+        "@type": "Country",
+        "name": "South Africa"
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "Gaming PCs, Components and Upgrade Support",
+      "provider": {
+        "@id": "https://volttechcomputerco.co.za/#organisation"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Pretoria"
+        },
+        {
+          "@type": "Country",
+          "name": "South Africa"
+        }
+      ],
+      "serviceType": "Custom gaming PC planning, components, peripherals, upgrades, repairs and performance support"
+    },
+    {
+      "@type": "Service",
+      "name": "Stream Support",
+      "provider": {
+        "@id": "https://volttechcomputerco.co.za/#organisation"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "South Africa"
+      },
+      "serviceType": "OBS, Streamlabs, encoder, bitrate, audio, capture card and streaming performance support"
+    }
+  ]
+}
