@@ -26,9 +26,16 @@
   <meta property="og:title" content="Customer Account | VoltTech Computer Co.">
   <meta property="og:description" content="Secure access to your VoltTech quotes, invoices, saved PC builds and account details.">
   <meta property="og:url" content="https://volttechcomputerco.co.za/account">
+  <script>
+  // OAuth callback bridge: Supabase's legacy Site URL still points at the old GitHub Pages host.
+  // If Google sends the callback there, immediately hand the full callback URL back to the live .co.za account page.
+  if (location.hostname === 'volttechcomputerco.github.io') {
+    location.replace('https://volttechcomputerco.co.za/account.html' + location.search + location.hash);
+  }
+  </script>
   <script type="module" src="assets/js/site-shell.js"></script>
   <script defer src="supabase-config.js"></script>
-  <script type="module" src="assets/js/pages/account.js"></script>
+  <script type="module" src="assets/js/pages/account.js?v=20261005-oauthfix2"></script>
 </head>
 <body data-page="account">
 <a class="skip-link" href="#main-content">Skip to content</a>
