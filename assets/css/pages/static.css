@@ -76,3 +76,31 @@
 .static-hp{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
 @media(max-width:64rem){.static-mailer-card{grid-template-columns:1fr}}
 @media(max-width:42rem){.static-mailer-row{grid-template-columns:1fr}.static-mailer-row button{width:100%}}
+
+/* V3 STATIC POLISH */
+.static-page{overflow-x:clip}
+.static-topbar{
+  position:sticky;top:0;z-index:40;
+  background:rgba(3,16,18,.91);
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  box-shadow:0 10px 28px rgba(0,0,0,.20),inset 0 -1px 0 rgba(255,180,84,.10);
+}
+.static-lead,.static-card,.static-mailer-card{
+  box-shadow:0 18px 52px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.03);
+}
+.static-lead-media img{transition:transform 360ms ease,filter 360ms ease}
+.static-card h3{text-wrap:balance}
+.static-mailer-row input,.static-mailer-row button{transition:border-color var(--transition),box-shadow var(--transition),transform var(--transition)}
+@media(hover:hover) and (pointer:fine){
+  .static-lead:hover .static-lead-media img{transform:scale(1.012);filter:saturate(1.04) contrast(1.01)}
+  .static-mailer-row button:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(0,0,0,.20),0 0 22px rgba(255,180,84,.20)}
+}
+@media(max-width:42rem){
+  .static-mailer-card{grid-template-columns:1fr}
+  .static-mailer-row{grid-template-columns:1fr}
+  .static-mailer-row button{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .static-lead-media img,.static-mailer-row input,.static-mailer-row button{transition:none}
+}
