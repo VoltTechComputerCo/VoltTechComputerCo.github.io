@@ -16,7 +16,7 @@ const profiles={
 const pages=[
   {key:'home',url:'/index.html',sections:[['hero','.v4-home-hero'],['routes','.v4-route-section'],['hardware','.v4-hardware-stage'],['builder','.v4-builder-feature'],['services','.v4-services'],['scan','.v4-scan-band'],['culture','.v4-culture'],['contact','.v4-contact']]},
   {key:'store',url:'/store.html',sections:[['hero','.v4-store-hero'],['categories','.v4-store-categories'],['workspace','.v4-store-workspace'],['help','.v4-store-help']]},
-  {key:'builder',url:'/builder/index.html?inspect=1',sections:[['hero','.hero'],['trust','.builder-trust'],['modes','.mode-shell'],['workspace','.builder-layout']]},
+  {key:'builder',url:'/builder/index.html?inspect=1',sections:[['hero','.hero'],['trust','.builder-trust'],['modes','.mode-shell']]},
   {key:'repair',url:'/pc-repair-pretoria.html',sections:[['hero','.service-hero'],['symptoms','.service-symptom-rail']]},
   {key:'upgrades',url:'/pc-upgrades-pretoria.html'},
   {key:'performance',url:'/pc-performance-optimisation.html'},
@@ -38,11 +38,11 @@ const pages=[
 const manifest={revision:'v4-clean-slate-redesign',generated_at:new Date().toISOString(),captures:[],issues:[]};
 const safe=s=>s.replace(/[^a-z0-9._-]+/gi,'-');
 
-async function validateFile(file){
+async function validateFile(file,minBytes=5000){
   const stat=fs.statSync(file);
-  if(stat.size<5000) throw new Error('Screenshot too small or empty: '+file+' ('+stat.size+' bytes)');
+  if(stat.size<minBytes) throw new Error('Screenshot too small or empty: '+file+' ('+stat.size+' bytes)');
 }
-async function capture(page,name,selector=null){
+async function capture(page,name,selector=null,minBytes=5000){
   const file=path.join(OUT,name+'.jpg');
   if(selector){
     const loc=page.locator(selector).first();
@@ -51,7 +51,7 @@ async function capture(page,name,selector=null){
   }else{
     await page.screenshot({path:file,type:'jpeg',quality:82,fullPage:true});
   }
-  await validateFile(file);
+  await validateFile(file,minBytes);
   manifest.captures.push(name+'.jpg');
 }
 async function settle(page){
@@ -83,12 +83,24 @@ try{
         if(!['store','builder'].includes(spec.key)) await capture(page,profileName+'--'+spec.key+'--full');
         for(const [section,selector] of spec.sections||[]) await capture(page,profileName+'--'+spec.key+'--'+safe(section),selector);
 
+        if(spec.key==='builder'){
+          const advanced=page.locator('#hero-advanced');
+          if(await advanced.isVisible().catch(()=>false)){
+            await advanced.click();
+            await page.locator('#builder-layout:not([hidden])').waitFor({state:'visible',timeout:5000}).catch(()=>{});
+            await page.waitForTimeout(250);
+            await capture(page,profileName+'--builder--workspace','.builder-layout');
+          }else{
+            throw new Error('Builder Advanced mode control is not visible');
+          }
+        }
+
         if(profileName!=='desktop' && spec.key==='home'){
           const toggle=page.locator('[data-menu-toggle]');
           if(await toggle.isVisible()){
             await toggle.click();
             await page.waitForTimeout(150);
-            await capture(page,profileName+'--home--menu','#primary-navigation');
+            await capture(page,profileName+'--home--menu','#primary-navigation',1500);
             await page.keyboard.press('Escape');
           }else throw new Error('Mobile menu toggle is not visible');
         }
