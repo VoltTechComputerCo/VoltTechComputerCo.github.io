@@ -1,0 +1,73 @@
+name: V3 Visual QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - v3-design-polish
+    paths:
+      - "scripts/capture-v3-screenshots.mjs"
+      - ".github/workflows/v3-visual-qa.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: v3-visual-qa
+  cancel-in-progress: true
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out V3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install browser tooling
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Start local V3 site
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/vt-http.log 2>&1 &
+          echo $! > /tmp/vt-http.pid
+          for i in {1..20}; do
+            curl -fsS http://127.0.0.1:4173/index.html >/dev/null && exit 0
+            sleep 1
+          done
+          cat /tmp/vt-http.log
+          exit 1
+
+      - name: Capture desktop and mobile review
+        run: node scripts/capture-v3-screenshots.mjs
+
+      - name: Upload visual evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: volttech-v3-visual-review
+          path: qa-screenshots/v3/
+          retention-days: 30
+
+      - name: Publish visual review branch
+        run: |
+          rm -rf /tmp/vt-v3-screenshots
+          cp -R qa-screenshots/v3 /tmp/vt-v3-screenshots
+          git checkout --orphan v3-visual-review-tmp
+          git rm -rf .
+          mkdir -p qa-screenshots/v3
+          cp -R /tmp/vt-v3-screenshots/. qa-screenshots/v3/
+          git add qa-screenshots/v3
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "V3 visual review evidence"
+          git branch -M v3-visual-review
+          git push --force origin v3-visual-review
