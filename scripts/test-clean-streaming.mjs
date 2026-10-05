@@ -40,8 +40,8 @@ for(const [name,html] of [['support',support],['scan',scan]]){
 }
 for(const price of ['R299','R449','R649'])assert(support.includes(price),'support missing '+price);
 assert(scan.includes('assets/js/pages/stream-scan.js'),'Stream Scan page controller missing');
-assert(scan.includes('assets/css/pages/signal-scan.css'),'shared scan system missing');
-assert(scan.includes('assets/css/pages/stream-scan.css'),'stream scan theme missing');
+assert(scan.includes('assets/css/v4/pages.css'),'V4 shared scan system missing');
+assert(scan.includes('assets/css/v4/pages.css'),'V4 stream scan theme missing');
 assert(support.includes('creator-hub-south-africa.html'),'Creator Hub handoff missing');
 assert(support.includes('stream-scan.html'),'Stream Scan handoff missing');
 assert(scan.includes('streaming-setup-south-africa.html'),'support handoff missing');
