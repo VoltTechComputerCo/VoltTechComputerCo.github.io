@@ -16,3 +16,59 @@
 .static-specs{margin:2rem 0}.static-specs h2{margin:0 0 1rem}.static-spec-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}.static-spec-card{padding:1rem;border:1px solid var(--border);background:var(--panel)}.static-spec-card h3{margin:0 0 .7rem;color:var(--static-teal);font:700 .78rem/1.35 var(--font-mono);letter-spacing:.04em}.static-spec-card ul{margin:0;padding-left:1rem}.static-spec-card li{margin:.35rem 0;color:var(--text-secondary);font-size:.9rem}.static-spec-card.is-featured{border-color:var(--static-teal)}.static-spec-card.is-rt{border-color:var(--static-orange)}.static-spec-card.is-rt h3{color:var(--static-orange)}.static-spec-note{color:var(--text-muted);font:400 .72rem/1.5 var(--font-mono)}
 .static-sources{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border)}.static-sources a{word-break:break-word;color:var(--static-teal)}
 @media(max-width:40rem){.static-article-main{padding-top:2rem}.static-facts,.static-spec-grid{grid-template-columns:1fr}.static-article-nav-inner{align-items:flex-start;padding-block:.8rem}.static-article-back{text-align:right}.static-spec-card li{font-size:.96rem}}
+
+/* V3 FULL STATIC ARTICLE REDESIGN */
+.static-article-page{
+  --paper:#f2f0e9;--ink:#111312;--rule:#c8c5bd;--signal:#ff5b33;
+  background:var(--paper)!important;color:var(--ink)!important;
+  font-family:var(--font-ui,"Space Grotesk",system-ui,sans-serif)!important;
+}
+.static-article-page .static-article-nav{
+  position:sticky;top:0;z-index:50;
+  min-height:64px;padding:0!important;
+  border-bottom:1px solid #242424!important;border-radius:0!important;
+  background:#0d0f0e!important;color:#fff!important;
+  box-shadow:none!important;
+}
+.static-article-page .static-article-nav a{color:#f6f4ee!important}
+.static-article-page .static-article-main{width:min(82rem,calc(100% - 2rem))!important;margin:auto!important}
+.static-article-page .static-article-hero{
+  display:grid!important;grid-template-columns:minmax(0,1.1fr) minmax(18rem,.9fr)!important;
+  gap:2rem!important;align-items:end!important;
+  padding:5rem 0 3rem!important;border-bottom:2px solid var(--ink)!important;
+}
+.static-article-page .static-article-hero h1{
+  margin:.5rem 0 1rem!important;
+  color:var(--ink)!important;font-size:clamp(3.6rem,7vw,7.6rem)!important;line-height:.88!important;letter-spacing:-.065em!important;
+}
+.static-article-page .static-article-hero p{color:#575650!important}
+.static-article-page .static-article-hero img{width:100%!important;border-radius:0!important;box-shadow:none!important;filter:saturate(.88) contrast(1.02)}
+.static-article-page article{
+  max-width:54rem!important;margin:0 auto!important;padding:4rem 0 6rem!important;
+  color:#262724!important;
+}
+.static-article-page article>p,.static-article-page article li{
+  color:#343531!important;font:1.08rem/1.86 Georgia,serif!important;
+}
+.static-article-page article h2{
+  margin:3.6rem 0 1.1rem!important;padding-top:1.1rem!important;
+  border-top:1px solid var(--rule)!important;color:var(--ink)!important;
+  font-size:clamp(2rem,4vw,3.4rem)!important;line-height:.95!important;letter-spacing:-.045em!important;
+}
+.static-article-page article h3{color:var(--ink)!important}
+.static-article-page article a{color:#a72f13!important;text-decoration-thickness:.08em!important;text-underline-offset:.18em!important}
+.static-article-page .static-label,.static-article-page .static-kicker{color:var(--signal)!important}
+.static-article-page .static-signal,.static-article-page .static-fact,.static-article-page .static-spec-card{
+  border:1px solid var(--ink)!important;border-radius:0!important;background:#ece9e1!important;color:var(--ink)!important;box-shadow:none!important;
+}
+.static-article-page blockquote{
+  margin:2.5rem 0!important;padding:1.5rem 0 1.5rem 1.5rem!important;
+  border-left:5px solid var(--signal)!important;color:var(--ink)!important;font:700 1.35rem/1.4 var(--font-ui)!important;
+}
+.static-article-page footer{border-top:1px solid var(--rule)!important;background:#0d0f0e!important;color:#aaa!important}
+@media(max-width:48rem){
+  .static-article-page .static-article-hero{grid-template-columns:1fr!important;padding-top:3rem!important}
+  .static-article-page .static-article-hero h1{font-size:clamp(3rem,14vw,5rem)!important}
+  .static-article-page article{padding:2.5rem .15rem 4rem!important}
+  .static-article-page article>p,.static-article-page article li{font-size:1rem!important;line-height:1.78!important}
+}
