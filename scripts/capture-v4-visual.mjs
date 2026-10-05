@@ -1,3 +1,4 @@
+// V4 generated-head validation trigger
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
