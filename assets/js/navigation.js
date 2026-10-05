@@ -1,35 +1,38 @@
-// Progressive disclosure with a true floating mobile system map.
 export function enhanceNavigation(root = document) {
   const toggle = root.querySelector('[data-menu-toggle]');
   const nav = root.querySelector('#primary-navigation');
   if (!toggle || !nav) return;
 
-  const mobile = window.matchMedia('(max-width: 56rem)');
+  const mobile = window.matchMedia('(max-width: 55.99rem)');
   let open = false;
-  const backdrop = document.createElement('button');
-  backdrop.type = 'button';
-  backdrop.className = 'mobile-nav-backdrop';
-  backdrop.setAttribute('aria-label', 'Close VoltTech menu');
-  backdrop.hidden = true;
-  document.body.append(backdrop);
 
-  function render() {
+  const markCurrent = () => {
+    const clean = value => value.replace(/\/index\.html$/, '/').replace(/\.html$/, '').replace(/\/+$/, '') || '/';
+    const current = clean(location.pathname);
+    nav.querySelectorAll('a[href]').forEach(link => {
+      link.removeAttribute('aria-current');
+      const target = new URL(link.href, location.href);
+      if (target.origin === location.origin && !target.hash && clean(target.pathname) === current) {
+        link.setAttribute('aria-current', 'page');
+      }
+    });
+  };
+
+  const render = () => {
     const isMobile = mobile.matches;
     toggle.hidden = !isMobile;
     toggle.setAttribute('aria-expanded', String(isMobile && open));
     toggle.textContent = open ? 'Close' : 'Menu';
     nav.hidden = isMobile && !open;
-    nav.classList.toggle('is-floating-open', isMobile && open);
-    backdrop.hidden = !(isMobile && open);
-    document.body.classList.toggle('mobile-menu-open', isMobile && open);
-  }
+    document.body?.classList?.toggle('mobile-menu-open', isMobile && open);
+  };
 
-  function close({ focusToggle = false } = {}) {
+  const close = ({ focusToggle = false } = {}) => {
     if (!open) return;
     open = false;
     render();
     if (focusToggle && mobile.matches) toggle.focus();
-  }
+  };
 
   toggle.addEventListener('click', () => {
     open = !open;
@@ -37,16 +40,12 @@ export function enhanceNavigation(root = document) {
     if (open) requestAnimationFrame(() => nav.querySelector('a')?.focus({ preventScroll: true }));
   });
 
-  backdrop.addEventListener('click', () => close({ focusToggle: true }));
-
   root.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && mobile.matches && open) {
-      close({ focusToggle: true });
-    }
+    if (event.key === 'Escape' && open && mobile.matches) close({ focusToggle: true });
   });
 
   nav.addEventListener('click', event => {
-    if (event.target.closest('a') && mobile.matches) close();
+    if (mobile.matches && event.target.closest('a')) close();
   });
 
   mobile.addEventListener('change', () => {
@@ -57,5 +56,6 @@ export function enhanceNavigation(root = document) {
     if (!mobile.matches && active === toggle) nav.querySelector('a')?.focus();
   });
 
+  markCurrent();
   render();
 }

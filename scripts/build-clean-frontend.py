@@ -8,7 +8,8 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-CSS = ('tokens', 'base', 'layout', 'navigation', 'components', 'forms', 'responsive', 'print')
+CSS = ('tokens', 'base', 'forms')
+PRINTISH = {'invoice','proforma','quote','receipt','repair','service-record','order-document','build-document','delivery','personal-data'}
 
 
 def render(source):
@@ -17,11 +18,11 @@ def render(source):
     if output.is_absolute() or '..' in output.parts or output.suffix != '.html':
         raise ValueError(f'Unsafe output path: {output}')
     prefix = '../' * (len(output.parts) - 1)
-    glass_style = 'assets/css/glass-system.css'
-    glass_version = config.get('glass_version', '20261003-site-neon1')
-    if glass_version:
-        glass_style += f"?v={glass_version}"
-    styles = [f'assets/css/{name}.css' for name in CSS] + config.get('styles', []) + [glass_style]
+    styles = [f'assets/css/{name}.css' for name in CSS]
+    styles += ['assets/css/notifications.css', 'assets/css/v4/core.css?v=20261005-5', 'assets/css/v4/pages.css?v=20261005-4']
+    if source.stem in PRINTISH:
+        styles += config.get('styles', [])
+    styles += ['assets/css/print.css']
     values = {
         'PAGE': html.escape(source.stem, quote=True),
         'TITLE': html.escape(config['title']),

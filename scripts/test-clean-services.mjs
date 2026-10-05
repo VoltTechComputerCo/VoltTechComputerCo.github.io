@@ -17,15 +17,15 @@ const pages=[
 for(const [page,key,price] of pages){
   const html=read(page);
   assert.ok(html.includes('data-vt-shell="clean"'),`${page} uses clean shell`);
-  assert.ok(html.includes('assets/css/pages/services.css'),`${page} uses clean service CSS`);
+  assert.ok(html.includes('assets/css/v4/pages.css'),`${page} uses V4 service CSS`);
   assert.ok(html.includes('assets/js/pages/service.js'),`${page} uses shared service controller`);
   assert.ok(html.includes(`data-service-key="${key}"`),`${page} exposes correct service key`);
   assert.ok(html.includes(`signal-scan.html?source=${key}`),`${page} points to correct Signal Scan route`);
   assert.ok(html.includes(price),`${page} preserves its service pricing guide`);
   assert.equal((html.match(/<h1\b/g)||[]).length,1,`${page} has one h1`);
   assert.equal((html.match(/<main\b/g)||[]).length,1,`${page} has one main`);
-  assert.equal((html.match(/<header class="site-header"/g)||[]).length,1,`${page} has one clean header`);
-  assert.equal((html.match(/<footer class="site-footer"/g)||[]).length,1,`${page} has one clean footer`);
+  assert.equal((html.match(/<header class="[^"]*site-header[^"]*"/g)||[]).length,1,`${page} has one clean header`);
+  assert.equal((html.match(/<footer class="[^"]*site-footer[^"]*"/g)||[]).length,1,`${page} has one clean footer`);
   for(const retired of ['fonts.googleapis.com','analytics.js','service-pages.css','service-network.css','service-malware.css','visual-system.css','visual-block-fix.css','phase9-business-finish.css','mobile-nav.css','volttech-experience.js','conversion-context.js','symptom-handoff.js']){
     assert.ok(!html.includes(retired),`${page} no longer depends on ${retired}`);
   }

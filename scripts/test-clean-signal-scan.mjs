@@ -9,7 +9,7 @@ const model = await import(`${pathToFileURL(path.join(root, 'assets/js/services/
 
 const page = read('signal-scan.html');
 assert.ok(page.includes('data-vt-shell="clean"'), 'Signal Scan uses the clean shell');
-assert.ok(page.includes('assets/css/pages/signal-scan.css'), 'Signal Scan uses clean page CSS');
+assert.ok(page.includes('assets/css/v4/pages.css'), 'Signal Scan uses V4 page CSS');
 assert.ok(page.includes('assets/js/pages/signal-scan.js'), 'Signal Scan uses the clean controller');
 for (const retired of ['href="signal-scan.css', 'scan-system.css', 'visual-system.css', 'visual-block-fix.css', 'analytics.js?v=', 'fonts.googleapis.com']) {
   assert.ok(!page.includes(retired), `Signal Scan no longer depends on ${retired}`);

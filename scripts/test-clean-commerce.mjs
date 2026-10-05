@@ -6,6 +6,7 @@ const source = name => fs.readFileSync(new URL('../' + name, import.meta.url),'u
 const unwrap = (text, url) => text.replace(/^import .*?;\n/gm,'').replaceAll('export ','').replaceAll('import.meta.url',JSON.stringify(url));
 const context = { URL, Intl, setTimeout, clearTimeout, location:{href:'https://raw.githack.com/test/store.html',origin:'https://raw.githack.com',search:''} };
 vm.createContext(context);
+vm.runInContext(unwrap(source('assets/js/components/store-filter-menu.js'),'https://example.test/assets/js/components/store-filter-menu.js'), context);
 vm.runInContext(unwrap(source('assets/js/components/catalogue-view.js'),'https://example.test/assets/js/components/catalogue-view.js')+'\nthis.view={safeLink,publicProducts:undefined,commerceState,filterProducts,productCard};', context);
 vm.runInContext(unwrap(source('assets/js/services/catalogue.js'),'https://example.test/assets/js/services/catalogue.js')+'\nthis.publicProducts=publicProducts;',context);
 const { view, publicProducts } = context;

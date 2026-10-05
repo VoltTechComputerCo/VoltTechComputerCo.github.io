@@ -126,7 +126,7 @@ for css in (ROOT / 'assets/css').rglob('*.css'):
     for ref in re.findall(r'url\([\'"]?([^\)\'"]+)', css.read_text()):
         check_reference(css, ref)
 
-integration_aware_pages = {'home.js', 'creator-hub.js', 'service.js'}
+integration_aware_pages = {'home.js', 'creator-hub.js', 'service.js', 'static.js', 'exposure-scan.js'}
 for js in (ROOT / 'assets/js').rglob('*.js'):
     code = js.read_text()
     for ref in re.findall(r'from\s+[\'"]([^\'"]+)', code):

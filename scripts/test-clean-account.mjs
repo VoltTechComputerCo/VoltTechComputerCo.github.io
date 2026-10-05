@@ -19,7 +19,7 @@ assert.equal((page.match(/<header\b/g)||[]).length, 1);
 assert.equal((page.match(/<footer\b/g)||[]).length, 1);
 assert.doesNotMatch(page, /fonts\.googleapis|account-v3\.css|account-phase4\.css|portal-shell\.js|account-dashboard\.js|account-v4-nav\.js|account-filters\.js|admin-shortcut\.js/);
 assert.doesNotMatch(page, /\sstyle=|\son[a-z]+=/i);
-assert.match(page, /assets\/css\/pages\/account\.css/);
+assert.match(page, /assets\/css\/v4\/pages\.css/);
 assert.match(page, /assets\/js\/pages\/account\.js/);
 
 const requiredIds = [
