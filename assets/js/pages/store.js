@@ -158,11 +158,23 @@ async function init(){
     sort.value=state.sort;
     pruneFilters(products);
 
+    if (!preview && !products.length) {
+      document.getElementById('store-state').textContent='SUPPLIER CATALOGUE SYNCING';
+      document.getElementById('store-hero-copy').textContent='VoltTech only publishes products backed by verified supplier data. Supplier products will appear here as they are imported and validated.';
+      if (search) search.disabled=true;
+      if (sort) sort.disabled=true;
+      if (filterHost) filterHost.innerHTML='<p class="micro">Filters will activate when supplier-backed products are available.</p>';
+    }
+
     function render(){
       pruneFilters(products);
       const items=filterProducts(products,state);
       count.textContent=`${items.length} component${items.length===1?'':'s'}`;
-      grid.innerHTML=items.length ? items.map(p=>productCard(VT,p,preview)).join('') : '<div class="empty-state"><h3>No components match those filters.</h3><p>Remove a filter, try another category or ask VoltTech about the part you need.</p></div>';
+      grid.innerHTML=items.length
+        ? items.map(p=>productCard(VT,p,preview)).join('')
+        : (!preview && !products.length
+          ? '<div class="empty-state"><h3>Supplier catalogue syncing.</h3><p>No supplier-backed products are published yet. VoltTech will only list products once supplier stock and product data have been imported and validated.</p></div>'
+          : '<div class="empty-state"><h3>No components match those filters.</h3><p>Remove a filter, try another category or ask VoltTech about the part you need.</p></div>');
       bindImages(grid);
       grid.querySelectorAll('[data-add]').forEach(button=>button.addEventListener('click',()=>addItem(VT,products.find(p=>p.id===button.dataset.add),preview)));
       renderSmartFilters(products);
