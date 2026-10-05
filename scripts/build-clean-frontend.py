@@ -19,7 +19,7 @@ def render(source):
         raise ValueError(f'Unsafe output path: {output}')
     prefix = '../' * (len(output.parts) - 1)
     styles = [f'assets/css/{name}.css' for name in CSS]
-    styles += ['assets/css/notifications.css', 'assets/css/v4/core.css?v=20261005-1', 'assets/css/v4/pages.css?v=20261005-1']
+    styles += ['assets/css/notifications.css', 'assets/css/v4/core.css?v=20261005-2', 'assets/css/v4/pages.css?v=20261005-2']
     if source.stem in PRINTISH:
         styles += config.get('styles', [])
     styles += ['assets/css/print.css']
