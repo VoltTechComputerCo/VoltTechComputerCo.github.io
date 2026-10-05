@@ -57,7 +57,7 @@ try{
           if(!(await menu.isVisible())) throw new Error('Mobile menu button not visible');
           await menu.click();
           await page.waitForTimeout(120);
-          const nav=page.locator('.v5-nav.open');
+          const nav=page.locator('#site-nav:not([hidden])');
           if(!(await nav.isVisible())) throw new Error('Opened mobile menu not visible');
           const links=await nav.locator('a').count();
           if(links<3) throw new Error('Opened mobile menu missing links');
