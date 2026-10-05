@@ -316,7 +316,11 @@ input[type="checkbox"],input[type="radio"]{width:auto;min-height:auto}
     position:static;
     display:block!important;
     inset:auto;
+    width:auto;
+    height:auto;
+    min-height:0;
     overflow:visible;
+    overscroll-behavior:auto;
     padding:0;
     background:transparent;
     color:var(--v4-ink);
