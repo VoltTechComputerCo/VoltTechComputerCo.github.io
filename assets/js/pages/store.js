@@ -1,7 +1,7 @@
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js';
-import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=2.2.0';
+import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=2.3.0';
 import { connectCatalogueCart } from '../services/catalogue-cart.js';
-import { FILTER_KEYS, accentFor, brandMark, facetDefinitions, facetOptions, filterEsc, formatFacetValue, installCategoryFilterMenus } from '../components/store-filter-menu.js?v=1.3.0';
+import { FILTER_KEYS, accentFor, brandMark, facetDefinitions, facetOptions, filterEsc, formatFacetValue, installCategoryFilterMenus } from '../components/store-filter-menu.js?v=1.4.0';
 
 const query=new URLSearchParams(location.search);
 const categories=[...document.querySelectorAll('[data-category-link]')];
