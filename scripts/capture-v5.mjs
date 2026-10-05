@@ -8,7 +8,8 @@ const out=path.resolve('qa-screenshots/v5');
 fs.mkdirSync(out,{recursive:true});
 
 const profiles={
-  mobile:{viewport:{width:390,height:844},isMobile:true,hasTouch:true},
+  mobile360:{viewport:{width:360,height:800},isMobile:true,hasTouch:true},
+  mobile390:{viewport:{width:390,height:844},isMobile:true,hasTouch:true},
   desktop:{viewport:{width:1440,height:1000},isMobile:false,hasTouch:false}
 };
 
@@ -49,15 +50,15 @@ try{
         if(overflow>2) throw new Error(`${spec.key}: horizontal overflow ${overflow}px`);
         await capture(page,`${profileName}--${spec.key}--full`);
 
-        if(profileName==='mobile'&&spec.key==='home'){
+        if(profileName.startsWith('mobile')&&spec.key==='home'){
           await page.locator('[data-menu]').click();
           await page.locator('#site-nav:not([hidden])').waitFor({state:'visible'});
           const navBox=await page.locator('#site-nav').boundingBox();
           if(!navBox||navBox.height<500) throw new Error('mobile menu did not fill screen');
-          const file=path.join(out,'mobile--home--menu.jpg');
+          const file=path.join(out,`${profileName}--home--menu.jpg`);
           await page.locator('#site-nav').screenshot({path:file,type:'jpeg',quality:84});
           if(fs.statSync(file).size<2500) throw new Error('mobile menu capture too small');
-          manifest.captures.push('mobile--home--menu.jpg');
+          manifest.captures.push(`${profileName}--home--menu.jpg`);
         }
 
         if(spec.key==='builder'){
