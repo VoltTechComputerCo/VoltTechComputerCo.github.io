@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="assets/css/pages/services.css">
   <link rel="stylesheet" href="assets/css/pages/streaming-support.css">
   <link rel="stylesheet" href="assets/css/glass-system.css?v=20261003-site-neon1">
+  <link rel="stylesheet" href="assets/css/v3-redesign.css?v=20261005-r1">
 <link rel="canonical" href="https://volttechcomputerco.co.za/streaming-setup-south-africa">
 <meta property="og:title" content="OBS & Stream Support South Africa | VoltTech">
 <meta property="og:description" content="Specialist OBS, Streamlabs, encoder, audio, capture-card and creator-PC support across South Africa.">
@@ -37,43 +38,63 @@
 </head>
 <body data-page="streaming-support">
 <a class="skip-link" href="#main-content">Skip to content</a>
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="index.html" aria-label="VoltTech Computer Co. home">
+<div class="vt-topline" aria-hidden="true">
+  <div class="container vt-topline-inner">
+    <span>VOLTTECH COMPUTER CO.</span>
+    <span>PRETORIA / SOUTH AFRICA</span>
+    <span class="vt-topline-signal">SYSTEMS · HARDWARE · SUPPORT</span>
+  </div>
+</div>
+<header class="site-header" data-vt-header>
+  <div class="container vt-nav">
+    <a class="brand vt-brand" href="index.html" aria-label="VoltTech Computer Co. home">
       <img src="assets/brand/volttech-logo.webp" alt="VoltTech Computer Co." width="360" height="210">
     </a>
-    <span class="brand-promise micro">SOUTH AFRICA<br>BUILDS DIFFERENTLY.</span>
+
     <nav class="primary-nav" id="primary-navigation" aria-label="Main navigation">
       <div class="mobile-nav-intro">
-        <span class="micro">VOLTTECH / SYSTEM MAP</span>
-        <strong>Choose your route.</strong>
+        <span>VOLTTECH / NAVIGATION</span>
+        <strong>Where do you want to go?</strong>
       </div>
       <ul>
-        <li class="nav-tile nav-store"><a href="store.html"><span class="nav-copy"><small>HARDWARE</small><b>Store</b><em>Components &amp; gear</em></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
-        <li class="nav-tile nav-builder"><a href="builder/index.html"><span class="nav-copy"><small>BUILD</small><b>PC Builder</b><em>Plan your system</em></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
-        <li class="nav-tile nav-services"><a href="index.html#services"><span class="nav-copy"><small>SUPPORT</small><b>Services</b><em>Repair &amp; upgrades</em></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
-        <li class="nav-tile nav-stream"><a href="streaming-setup-south-africa.html"><span class="nav-copy"><small>STREAM</small><b>Stream Support</b><em>OBS, audio &amp; performance</em></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
-        <li class="nav-tile nav-scan"><a href="signal-scan.html"><span class="nav-copy"><small>DIAGNOSTICS</small><b>Signal Scan</b><em>Find your next step</em></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
-        <li class="nav-tile nav-creator mobile-nav-creator"><a href="creator-hub-south-africa.html"><span class="nav-copy"><small>CREATORS</small><b>Creator Hub</b><em>South African streams</em></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
-        <li class="nav-tile nav-static"><a href="static.html"><span class="nav-copy"><small>EDITORIAL</small><b>STATIC</b><em>Tech, gaming &amp; hardware</em></span><span class="nav-arrow" aria-hidden="true">↗</span></a></li>
-        <li class="nav-tile nav-cart mobile-nav-cart"><a href="store.html?cart=1" data-cart-link aria-label="Open cart"><span class="nav-copy"><small>CHECKOUT</small><b>Cart</b><em>Your selected hardware</em></span><span class="nav-cart-count" data-cart-count hidden></span><span class="nav-arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="store.html"><small>01</small><span>Store</span></a></li>
+        <li><a href="builder/index.html"><small>02</small><span>PC Builder</span></a></li>
+        <li><a href="index.html#services"><small>03</small><span>Services</span></a></li>
+        <li><a href="streaming-setup-south-africa.html"><small>04</small><span>Stream Support</span></a></li>
+        <li><a href="signal-scan.html"><small>05</small><span>Signal Scan</span></a></li>
+        <li><a href="static.html"><small>06</small><span>STATIC</span></a></li>
       </ul>
+      <div class="vt-nav-mobile-actions">
+        <a href="account.html">Account</a>
+        <a href="store.html?cart=1" data-cart-link>Cart <span data-cart-count hidden></span></a>
+      </div>
     </nav>
-    <div class="header-tools">
-      <button class="icon-button" type="button" data-dialog-open="site-search" aria-label="Search VoltTech" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
-      <a class="header-account" href="account.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M5 21v-3a7 7 0 0 1 14 0v3Z"/></svg><span data-account-label>Account</span></a>
-      <span data-notifications-host></span>
-      <a class="icon-button header-cart" href="store.html?cart=1" data-cart-link aria-label="Open cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="cart-count" data-cart-count hidden></span></a>
+
+    <div class="vt-nav-actions">
+      <button class="vt-nav-icon" type="button" data-dialog-open="site-search" aria-label="Search VoltTech">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
+      </button>
+      <a class="vt-nav-account" href="account.html"><span data-account-label>Account</span></a>
+      <a class="vt-nav-cart" href="store.html?cart=1" data-cart-link>Cart <span data-cart-count hidden></span></a>
+      <button class="vt-menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation">Menu</button>
     </div>
-    <button class="button button-secondary menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation" hidden>Menu</button>
   </div>
 </header>
+
+<nav class="vt-mobile-dock" aria-label="Quick navigation">
+  <a href="index.html"><span>⌂</span><b>Home</b></a>
+  <a href="store.html"><span>▦</span><b>Store</b></a>
+  <a class="vt-mobile-dock-main" href="builder/index.html"><span>＋</span><b>Build</b></a>
+  <a href="signal-scan.html"><span>⌁</span><b>Scan</b></a>
+  <a href="account.html"><span>○</span><b>Account</b></a>
+</nav>
+
 <dialog class="dialog search-dialog" id="site-search" aria-labelledby="site-search-title">
   <button class="button button-secondary dialog-close" type="button" data-dialog-close aria-label="Close search">×</button>
-  <p class="eyebrow">VOLTTECH / EXPLORE</p>
-  <h2 id="site-search-title">Find your next move.</h2>
-  <label for="site-search-input">Search services, tools and guides</label>
-  <input id="site-search-input" type="search" placeholder="Try upgrades, repair or streaming" autocomplete="off" autofocus>
+  <p class="eyebrow">VOLTTECH / COMMAND SEARCH</p>
+  <h2 id="site-search-title">Find hardware, support or your next move.</h2>
+  <label for="site-search-input">Search VoltTech</label>
+  <input id="site-search-input" type="search" placeholder="GPU, repair, streaming, builder…" autocomplete="off" autofocus>
   <p class="micro" id="site-search-status" role="status"></p>
   <ul class="search-results" id="site-search-results"></ul>
 </dialog>
@@ -157,36 +178,21 @@
   </section>
 </main>
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="assets/brand/volttech-logo.webp" alt="VoltTech Computer Co." width="360" height="210" loading="lazy">
-        <p class="eyebrow">South Africa builds differently.</p>
-        <p class="muted">PC hardware, custom builds, Stream Support and practical help for your next move.</p>
+  <div class="container vt-footer">
+    <div class="vt-footer-head">
+      <div>
+        <p class="eyebrow">VOLTTECH COMPUTER CO.</p>
+        <h2>BUILD IT.<br>FIX IT.<br><span>RUN IT HARD.</span></h2>
       </div>
-      <div><h2 class="footer-title">Explore</h2><ul class="footer-links">
-        <li><a href="store.html">Store</a></li>
-        <li><a href="builder/index.html">PC Builder</a></li>
-        <li><a href="static.html">STATIC</a></li>
-        <li><a href="creator-hub-south-africa.html">Creator Hub</a></li>
-      </ul></div>
-      <div><h2 class="footer-title">Get support</h2><ul class="footer-links">
-        <li><a href="pc-repair-pretoria.html">PC repair</a></li>
-        <li><a href="streaming-setup-south-africa.html">Stream Support</a></li>
-        <li><a href="stream-scan.html">Stream Scan</a></li>
-        <li><a href="signal-scan.html">Signal Scan</a></li>
-        <li><a href="account.html">Your account</a></li>
-      </ul></div>
-      <div><h2 class="footer-title">Information</h2><ul class="footer-links">
-        <li><a href="terms.html">Terms</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="legal.html">Legal centre</a></li>
-      </ul></div>
+      <p>PC hardware, custom systems, performance work and creator support—built around the machine you actually want to use.</p>
     </div>
-    <div class="footer-bottom">
-      <p class="micro">© VoltTech Computer Co. All rights reserved.</p>
-      <p class="micro">SOUTH AFRICA BUILDS DIFFERENTLY.</p>
+    <div class="vt-footer-grid">
+      <div><span>SHOP / BUILD</span><a href="store.html">PC Components</a><a href="builder/index.html">PC Builder</a><a href="builds.html">Saved Builds</a></div>
+      <div><span>SUPPORT</span><a href="pc-repair-pretoria.html">PC Repair</a><a href="pc-upgrades-pretoria.html">Upgrades</a><a href="signal-scan.html">Signal Scan</a></div>
+      <div><span>CREATOR</span><a href="streaming-setup-south-africa.html">Stream Support</a><a href="stream-scan.html">Stream Scan</a><a href="creator-hub-south-africa.html">Creator Hub</a></div>
+      <div><span>VOLTTECH</span><a href="static.html">STATIC</a><a href="account.html">Account</a><a href="legal.html">Legal</a></div>
     </div>
+    <div class="vt-footer-bottom"><span>© VOLTTECH COMPUTER CO.</span><span>PRETORIA · SOUTH AFRICA</span><span>SOUTH AFRICA BUILDS DIFFERENTLY.</span></div>
   </div>
 </footer>
 </body>
