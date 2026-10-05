@@ -49,7 +49,7 @@ const pages = [
 ];
 
 const safe = value => value.replace(/[^a-z0-9._-]+/gi,'-').replace(/^-|-$/g,'');
-const manifest = {generated_at:new Date().toISOString(),base:BASE,profiles:{},issues:[]};
+const manifest = {capture_revision:'v3-final-polish',generated_at:new Date().toISOString(),base:BASE,profiles:{},issues:[]};
 
 async function settle(page){
   await page.waitForLoadState('domcontentloaded');
