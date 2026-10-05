@@ -24,8 +24,8 @@ for(const [page,key,price] of pages){
   assert.ok(html.includes(price),`${page} preserves its service pricing guide`);
   assert.equal((html.match(/<h1\b/g)||[]).length,1,`${page} has one h1`);
   assert.equal((html.match(/<main\b/g)||[]).length,1,`${page} has one main`);
-  assert.equal((html.match(/<header class="site-header"/g)||[]).length,1,`${page} has one clean header`);
-  assert.equal((html.match(/<footer class="site-footer"/g)||[]).length,1,`${page} has one clean footer`);
+  assert.equal((html.match(/<header class="[^"]*\\bsite-header\\b[^"]*"/g)||[]).length,1,`${page} has one clean header`);
+  assert.equal((html.match(/<footer class="[^"]*\\bsite-footer\\b[^"]*"/g)||[]).length,1,`${page} has one clean footer`);
   for(const retired of ['fonts.googleapis.com','analytics.js','service-pages.css','service-network.css','service-malware.css','visual-system.css','visual-block-fix.css','phase9-business-finish.css','mobile-nav.css','volttech-experience.js','conversion-context.js','symptom-handoff.js']){
     assert.ok(!html.includes(retired),`${page} no longer depends on ${retired}`);
   }
