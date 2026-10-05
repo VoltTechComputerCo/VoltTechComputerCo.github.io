@@ -8,7 +8,7 @@ const bad=['customer-shell.css','portal-phase4.css','portal-shell.js','activity.
 for(const name of pages){
   const html=read(`${name}.html`);
   if(!html.includes('data-vt-shell="clean"'))throw new Error(`${name}: missing clean shell`);
-  if(!html.includes('assets/css/pages/customer-records.css'))throw new Error(`${name}: missing records css`);
+  if(!html.includes('assets/css/v4/pages.css'))throw new Error(`${name}: missing V4 records css`);
   if(!html.includes('assets/js/pages/customer-records.js'))throw new Error(`${name}: missing records controller`);
   if(!html.includes('supabase-config.js'))throw new Error(`${name}: missing configured client bootstrap`);
   for(const legacy of bad)if(html.includes(legacy))throw new Error(`${name}: legacy dependency ${legacy}`);
