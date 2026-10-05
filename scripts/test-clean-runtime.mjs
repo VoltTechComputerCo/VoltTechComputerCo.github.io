@@ -58,13 +58,26 @@ console.log('PASS: service worker leaves clean/public HTML untouched and limits 
 const media = { matches: true, addEventListener: (_, fn) => { media.change = fn; } };
 const doc = { activeElement: null, addEventListener: (_, fn) => { doc.keydown = fn; } };
 function element() {
-  return { hidden: false, attributes: {}, listeners: {}, setAttribute(k, v) { this.attributes[k] = v; }, addEventListener(k, fn) { this.listeners[k] = fn; }, focus() { doc.activeElement = this; } };
+  return {
+    hidden: false, attributes: {}, listeners: {}, dataset: {}, inert: false, href: 'https://example.test/page.html',
+    classList: { toggle() {} },
+    setAttribute(k, v) { this.attributes[k] = v; }, removeAttribute(k) { delete this.attributes[k]; },
+    addEventListener(k, fn) { this.listeners[k] = fn; }, focus() { doc.activeElement = this; },
+    matches() { return false; }, querySelectorAll() { return []; }
+  };
 }
-const toggle = element(), nav = element(), link = element();
+const toggle = element(), nav = element(), link = element(), backdrop = element();
 nav.contains = el => el === link;
 nav.querySelector = () => link;
-doc.querySelector = selector => selector === '[data-menu-toggle]' ? toggle : nav;
-vm.runInNewContext(source('assets/js/navigation.js').replace('export function', 'function') + '\nenhanceNavigation(document);', { document: doc, window: { matchMedia: () => media } });
+nav.querySelectorAll = () => [];
+doc.body = { append() {}, classList: { toggle() {} } };
+doc.createElement = () => backdrop;
+doc.querySelector = selector => selector === '[data-menu-toggle]' ? toggle : selector === '#primary-navigation' ? nav : null;
+vm.runInNewContext(source('assets/js/navigation.js').replace('export function', 'function') + '\nenhanceNavigation(document);', {
+  document: doc, location: { pathname:'/page.html', href:'https://example.test/page.html', origin:'https://example.test' }, URL,
+  requestAnimationFrame: fn => { fn(); return 1; },
+  window: { matchMedia: () => media, scrollY: 0, addEventListener() {} }
+});
 assert.equal(nav.hidden, true);
 assert.equal(toggle.hidden, false);
 toggle.listeners.click();
