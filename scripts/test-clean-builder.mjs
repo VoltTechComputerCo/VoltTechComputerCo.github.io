@@ -9,7 +9,7 @@ const read = p => fs.readFileSync(path.join(root, p), 'utf8');
 const page = read('builder/index.html');
 assert.ok(page.includes('data-vt-shell="clean"'), 'Builder uses the clean shell marker');
 assert.ok(page.includes('../assets/js/pages/builder.js'), 'Builder uses the clean page controller');
-assert.ok(page.includes('../assets/css/pages/builder.css'), 'Builder presentation is owned by clean page CSS');
+assert.ok(page.includes('../assets/css/v4/pages.css'), 'Builder presentation is owned by V4 page CSS');
 for (const retired of ['../builder/styles.css', 'builder-access.js', 'builder-gate.css', 'phase6-unification.css', 'fonts.googleapis.com', 'site-notifications-loader.js']) {
   assert.ok(!page.includes(retired), `Generated Builder must not depend on ${retired}`);
 }
