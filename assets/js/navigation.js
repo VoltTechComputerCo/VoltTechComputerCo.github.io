@@ -5,7 +5,19 @@ export function enhanceNavigation(root = document) {
   if (!toggle || !nav) return;
 
   const mobile = window.matchMedia('(max-width: 56rem)');
+  const header = root.querySelector('.site-header');
   let open = false;
+  let scrollFrame = 0;
+
+  function updateHeaderState() {
+    scrollFrame = 0;
+    if (header) header.dataset.scrolled = String(window.scrollY > 18);
+  }
+
+  function onScroll() {
+    if (scrollFrame) return;
+    scrollFrame = requestAnimationFrame(updateHeaderState);
+  }
   const backdrop = document.createElement('button');
   backdrop.type = 'button';
   backdrop.className = 'mobile-nav-backdrop';
@@ -89,5 +101,7 @@ export function enhanceNavigation(root = document) {
   });
 
   markCurrentPage();
+  updateHeaderState();
+  window.addEventListener('scroll', onScroll, { passive: true });
   render();
 }
