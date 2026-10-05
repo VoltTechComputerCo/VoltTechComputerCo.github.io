@@ -1,0 +1,66 @@
+name: V4 Visual QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - v4-clean-slate-redesign
+    paths:
+      - "assets/css/v4/**"
+      - "assets/css/pages/static*.css"
+      - "src/**"
+      - "builder/**"
+      - "*.html"
+      - "exposure-scan*"
+      - "scripts/capture-v4-visual.mjs"
+      - ".github/workflows/v4-visual.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: v4-visual
+  cancel-in-progress: true
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Chromium
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Serve V4
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/v4-http.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4173/index.html >/dev/null && exit 0; sleep 1; done
+          cat /tmp/v4-http.log
+          exit 1
+      - name: Capture and validate V4
+        run: node scripts/capture-v4-visual.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: volttech-v4-visual
+          path: qa-screenshots/v4/
+          retention-days: 30
+      - name: Publish review branch
+        run: |
+          rm -rf /tmp/v4shots
+          cp -R qa-screenshots/v4 /tmp/v4shots
+          git checkout --orphan v4-visual-review-tmp
+          git rm -rf .
+          mkdir -p qa-screenshots/v4
+          cp -R /tmp/v4shots/. qa-screenshots/v4/
+          git add qa-screenshots/v4
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "V4 visual review evidence"
+          git branch -M v4-visual-review
+          git push --force origin v4-visual-review
