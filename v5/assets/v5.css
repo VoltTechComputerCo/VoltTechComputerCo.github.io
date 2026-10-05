@@ -46,7 +46,7 @@ button{cursor:pointer}
 .brand-copy{display:grid;line-height:.86}
 .brand-copy strong{font-size:16px;letter-spacing:-.05em}
 .brand-copy span{margin-top:4px;font:800 8px/1 Jet,monospace;letter-spacing:.15em}
-.nav{position:fixed;inset:66px 0 0;z-index:90;overflow:auto;padding:22px var(--pad) 40px;background:var(--black);color:#fff}
+.nav{position:fixed;top:66px;left:0;right:0;bottom:auto;z-index:90;width:100vw;height:calc(100dvh - 66px);min-height:calc(100vh - 66px);overflow-y:auto;overflow-x:hidden;padding:22px var(--pad) max(40px,env(safe-area-inset-bottom));background:var(--black);color:#fff}
 .nav[hidden]{display:none!important}
 .nav-head{padding:8px 0 24px;border-bottom:1px solid #2b302f}
 .nav-head span{color:var(--teal);font:800 10px Jet,monospace;letter-spacing:.12em}
