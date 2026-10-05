@@ -5,8 +5,15 @@ on:
   push:
     branches:
       - clean-rebuild
+      - v3-design-polish
     paths:
-      - scripts/run-full-qa.mjs
+      - "assets/**"
+      - "builder/**"
+      - "commerce/**"
+      - "src/**"
+      - "scripts/**"
+      - "*.html"
+      - ".github/workflows/full-qa.yml"
 
 permissions:
   contents: read
@@ -22,7 +29,7 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - name: Checkout clean-rebuild
+      - name: Checkout frontend branch
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -39,7 +46,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: volttech-step-9.1-qa
+          name: volttech-full-qa-${{ github.ref_name }}
           path: qa-results/
           if-no-files-found: warn
           retention-days: 14
