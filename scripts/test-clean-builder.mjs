@@ -13,7 +13,7 @@ assert.ok(page.includes('../assets/css/pages/builder.css'), 'Builder presentatio
 for (const retired of ['../builder/styles.css', 'builder-access.js', 'builder-gate.css', 'phase6-unification.css', 'fonts.googleapis.com', 'site-notifications-loader.js']) {
   assert.ok(!page.includes(retired), `Generated Builder must not depend on ${retired}`);
 }
-assert.ok(page.includes('content="noindex, nofollow"'), 'Builder remains noindex/nofollow');
+assert.ok(page.includes('content="index, follow"'), 'Public Builder remains indexable');
 
 const access = read('assets/js/services/builder-access.js');
 assert.ok(access.includes("!productionOrigins.has(origin) && new URLSearchParams(search).get('inspect') === '1'"), 'Inspection cannot bypass production origins');
