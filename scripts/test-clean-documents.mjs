@@ -4,8 +4,8 @@ const fail=m=>{throw new Error(m)};
 for(const file of routes){
  const s=fs.readFileSync(new URL(`../${file}`,import.meta.url),'utf8');
  if((s.match(/<main\b/g)||[]).length!==1)fail(`${file}: one main required`);
- if((s.match(/class="[^"]*\\bsite-header\\b[^"]*"/g)||[]).length!==1)fail(`${file}: clean header missing`);
- if((s.match(/class="[^"]*\\bsite-footer\\b[^"]*"/g)||[]).length!==1)fail(`${file}: clean footer missing`);
+ if((s.match(/class="[^"]*site-header[^"]*"/g)||[]).length!==1)fail(`${file}: clean header missing`);
+ if((s.match(/class="[^"]*site-footer[^"]*"/g)||[]).length!==1)fail(`${file}: clean footer missing`);
  if(!s.includes('assets/css/pages/document.css'))fail(`${file}: clean document CSS missing`);
  if(!s.includes('assets/js/pages/customer-document.js'))fail(`${file}: clean controller missing`);
  if(!s.includes('name="robots" content="noindex, nofollow"'))fail(`${file}: robots changed`);
