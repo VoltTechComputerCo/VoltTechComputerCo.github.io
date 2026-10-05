@@ -16,3 +16,24 @@
 .static-specs{margin:2rem 0}.static-specs h2{margin:0 0 1rem}.static-spec-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}.static-spec-card{padding:1rem;border:1px solid var(--border);background:var(--panel)}.static-spec-card h3{margin:0 0 .7rem;color:var(--static-teal);font:700 .78rem/1.35 var(--font-mono);letter-spacing:.04em}.static-spec-card ul{margin:0;padding-left:1rem}.static-spec-card li{margin:.35rem 0;color:var(--text-secondary);font-size:.9rem}.static-spec-card.is-featured{border-color:var(--static-teal)}.static-spec-card.is-rt{border-color:var(--static-orange)}.static-spec-card.is-rt h3{color:var(--static-orange)}.static-spec-note{color:var(--text-muted);font:400 .72rem/1.5 var(--font-mono)}
 .static-sources{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border)}.static-sources a{word-break:break-word;color:var(--static-teal)}
 @media(max-width:40rem){.static-article-main{padding-top:2rem}.static-facts,.static-spec-grid{grid-template-columns:1fr}.static-article-nav-inner{align-items:flex-start;padding-block:.8rem}.static-article-back{text-align:right}.static-spec-card li{font-size:.96rem}}
+
+/* V3 STATIC ARTICLE POLISH */
+.static-article-page::selection{background:var(--static-orange);color:#140b05}
+.static-article-nav{box-shadow:0 10px 28px rgba(0,0,0,.18),inset 0 -1px 0 rgba(255,180,84,.08)}
+.static-article-main h1,.static-article-main h2{text-wrap:balance}
+.static-article-main article>p{text-wrap:pretty}
+.static-article-hero img,.static-article-main figure img{
+  box-shadow:0 18px 52px rgba(0,0,0,.22);
+  transition:filter 260ms ease,transform 260ms ease;
+}
+.static-signal,.static-fact,.static-spec-card{
+  box-shadow:0 12px 34px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.025);
+}
+.static-article-main a{text-underline-offset:.22em;text-decoration-thickness:.08em}
+@media(hover:hover) and (pointer:fine){
+  .static-article-hero img:hover,.static-article-main figure img:hover{filter:saturate(1.04) contrast(1.015)}
+}
+@media(max-width:40rem){
+  .static-article-main{padding-inline:max(.95rem,env(safe-area-inset-left)) max(.95rem,env(safe-area-inset-right))}
+  .static-article-main article>p{font-size:1rem;line-height:1.76}
+}
