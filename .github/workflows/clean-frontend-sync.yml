@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - clean-rebuild
+      - v4-clean-slate-redesign
     paths:
       - "src/pages/**"
       - "src/templates/**"
@@ -23,10 +24,10 @@ concurrency:
 
 jobs:
   sync:
-    if: github.ref == 'refs/heads/clean-rebuild'
+    if: github.ref == 'refs/heads/clean-rebuild' || github.ref == 'refs/heads/v4-clean-slate-redesign'
     runs-on: ubuntu-latest
     steps:
-      - name: Check out clean rebuild
+      - name: Check out frontend branch
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
