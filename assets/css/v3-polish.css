@@ -9,6 +9,7 @@
   --vt-line-soft:rgba(53,234,215,.11);
 }
 html{
+  scroll-behavior:smooth;
   scrollbar-color:var(--teal-deep) var(--black);
 }
 body{
@@ -211,4 +212,177 @@ input[type="search"]::-webkit-search-cancel-button{filter:invert(1);opacity:.65}
 @media(prefers-reduced-motion:reduce){
   @view-transition{navigation:none}
   .button::before{display:none}
+}
+
+/* Homepage family */
+.home-hero{
+  box-shadow:inset 0 -1px 0 rgba(53,234,215,.12),0 22px 70px rgba(0,0,0,.24);
+}
+.hero-copy{filter:drop-shadow(0 12px 30px rgba(0,0,0,.20))}
+.hero-facts>span{
+  min-height:3rem;
+  padding:.5rem .65rem;
+  border:1px solid rgba(53,234,215,.11);
+  background:rgba(2,9,10,.34);
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
+}
+.builder-panel,.scan-panel,.stream-support-panel{
+  background:
+    radial-gradient(circle at 90% 0,rgba(53,234,215,.035),transparent 35%),
+    var(--black);
+}
+.builder-art,.stream-support-image img,.setup-card img,.article-list img{
+  transition:transform 260ms ease,filter 260ms ease,border-color var(--transition);
+}
+.setup-card,.upgrade-card,.service-card{
+  box-shadow:0 10px 30px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.025);
+}
+@media(hover:hover) and (pointer:fine){
+  .builder-panel:hover,.scan-panel:hover,.stream-support-panel:hover{
+    background:
+      radial-gradient(circle at 90% 0,rgba(53,234,215,.07),transparent 38%),
+      #020b0c;
+  }
+  .builder-panel:hover .builder-art,.stream-support-panel:hover .stream-support-image img,.setup-card:hover img{
+    transform:scale(1.018);
+    filter:saturate(1.05) contrast(1.02);
+  }
+}
+
+/* Store and product family */
+@media(min-width:52.01rem){
+  .catalogue-toolbar{
+    position:sticky;
+    top:calc(var(--vt-header-offset) + .75rem);
+    z-index:24;
+    margin:-.5rem -.6rem .8rem;
+    padding:.6rem;
+    border:1px solid rgba(53,234,215,.16);
+    background:rgba(3,16,18,.88);
+    backdrop-filter:blur(16px) saturate(135%);
+    -webkit-backdrop-filter:blur(16px) saturate(135%);
+    box-shadow:0 14px 32px rgba(0,0,0,.18);
+  }
+}
+.store-principles{box-shadow:0 12px 36px rgba(0,0,0,.16)}
+.smart-filter-shell{box-shadow:0 16px 44px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.025)}
+.catalogue-price strong{font-variant-numeric:tabular-nums}
+.component-data{background:linear-gradient(155deg,rgba(53,234,215,.025),transparent 38%),var(--panel)}
+
+/* Builder family */
+[data-page="builder"] .builder-page-shell{
+  background:
+    radial-gradient(circle at 75% 4%,rgba(53,234,215,.055),transparent 28rem),
+    var(--bg);
+}
+[data-page="builder"] .mode-card,
+[data-page="builder"] .choice-card,
+[data-page="builder"] .product,
+[data-page="builder"] .panel{
+  box-shadow:0 12px 36px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.025);
+}
+[data-page="builder"] .steps-panel,
+[data-page="builder"] .summary{
+  max-height:calc(100dvh - var(--vt-header-offset) - 1.7rem);
+  overflow:auto;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(53,234,215,.32) transparent;
+}
+@media(max-width:56rem){
+  [data-page="builder"] .steps-panel,
+  [data-page="builder"] .summary{
+    max-height:none;
+    overflow:visible;
+  }
+}
+
+/* Service family */
+.service-network a{transition:background var(--transition),color var(--transition),box-shadow var(--transition)}
+.service-symptom,.service-card,.service-step{
+  box-shadow:0 10px 28px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.02);
+}
+.service-hero-media img{transition:transform 420ms ease,filter 420ms ease}
+@media(hover:hover) and (pointer:fine){
+  .service-hero:hover .service-hero-media img{transform:scale(1.018);filter:saturate(1.04)}
+  .service-symptom:hover{transform:translateY(-1px)}
+}
+@media(max-width:40rem){
+  .service-actions{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .service-actions .button{width:100%;min-width:0}
+  .service-final .service-actions{grid-template-columns:1fr}
+}
+
+/* Diagnostics */
+.scan-meter i{transition:background 220ms ease,box-shadow 220ms ease}
+.scan-priority{position:relative;overflow:hidden}
+.scan-priority::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:2px;
+  background:linear-gradient(90deg,var(--teal),transparent);
+  opacity:.55;
+}
+.scan-status-card,.scan-workspace{border-color:rgba(53,234,215,.24)}
+
+/* Creator family */
+.creator-hero,.creator-register-hero{position:relative}
+.creator-panel,.creator-register-card,.creator-register-side article{
+  box-shadow:0 18px 50px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.03);
+}
+.creator-directory-card img,.creator-profile img,.creator-register-result img{
+  box-shadow:0 0 0 1px rgba(255,255,255,.04),0 8px 22px rgba(0,0,0,.28);
+}
+.creator-live-choice{transition:transform var(--transition),border-color var(--transition),background var(--transition)}
+@media(hover:hover) and (pointer:fine){
+  .creator-live-choice:hover{transform:translateX(2px)}
+}
+
+/* Account, records and privacy */
+.account-welcome,.records-hero,.privacy-hero{position:relative}
+.account-stat,.record-card,.privacy-card,.privacy-danger{
+  background:
+    linear-gradient(155deg,rgba(53,234,215,.018),transparent 45%),
+    var(--panel);
+}
+.account-stat:hover strong{color:var(--teal-bright)}
+.record-status-pill{background:rgba(2,9,10,.44)}
+.records-toolbar{
+  position:relative;
+  z-index:4;
+}
+.privacy-danger{box-shadow:0 18px 48px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.02)}
+
+/* Checkout and order tracking */
+.transaction-progress{box-shadow:0 14px 40px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.025)}
+.transaction-progress .is-current{
+  background:linear-gradient(180deg,rgba(53,234,215,.075),var(--panel-raised));
+  box-shadow:inset 0 -2px 0 var(--teal);
+}
+.transaction-panel{box-shadow:0 16px 46px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.025)}
+.order-timeline li>span{transition:border-color var(--transition),background var(--transition),box-shadow var(--transition)}
+.order-timeline li.is-complete>span{box-shadow:0 0 16px rgba(53,234,215,.13)}
+
+/* Legal / informational surfaces */
+.legal-hero{position:relative}
+.legal-card,.legal-link-card{
+  background:
+    linear-gradient(150deg,rgba(53,234,215,.018),transparent 40%),
+    var(--panel);
+}
+.legal-nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
+
+/* Small-screen rhythm */
+@media(max-width:40rem){
+  .hero-facts{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    max-width:100%;
+    gap:.45rem;
+  }
+  .hero-facts>span{min-width:0}
+  .catalogue-toolbar{gap:.6rem}
+  .account-stat,.record-card,.transaction-panel,.legal-card,.privacy-card{box-shadow:none}
 }
