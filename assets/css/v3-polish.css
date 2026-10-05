@@ -386,3 +386,43 @@ input[type="search"]::-webkit-search-cancel-button{filter:invert(1);opacity:.65}
   .catalogue-toolbar{gap:.6rem}
   .account-stat,.record-card,.transaction-panel,.legal-card,.privacy-card{box-shadow:none}
 }
+
+/* Truthful product-image failure state: premium, never fabricated. */
+.catalogue-media figcaption:not([hidden]){
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-content:center;
+  gap:.45rem;
+  padding:1rem;
+  border:0;
+  background:
+    radial-gradient(circle at 50% 38%,rgba(53,234,215,.10),transparent 34%),
+    linear-gradient(145deg,rgba(7,28,30,.94),rgba(2,10,12,.98));
+  color:var(--text-muted);
+  text-align:center;
+  font:600 .66rem/1.45 var(--font-mono);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.catalogue-media figcaption:not([hidden])::before{
+  content:"VOLTTECH / IMAGE PENDING";
+  color:var(--teal);
+  font-size:.58rem;
+  letter-spacing:.11em;
+}
+.catalogue-media figcaption:not([hidden])::after{
+  content:"◇";
+  order:-1;
+  color:rgba(53,234,215,.72);
+  font-size:2.2rem;
+  line-height:1;
+  text-shadow:0 0 18px rgba(53,234,215,.22);
+}
+.filter-brand-lockup--text{grid-template-columns:1fr}
+.filter-brand-lockup--text .filter-brand-name{padding:.1rem 0}
+@media(max-width:40rem){
+  .catalogue-media figcaption:not([hidden]){font-size:.56rem;padding:.6rem}
+  .catalogue-media figcaption:not([hidden])::before{font-size:.49rem}
+  .catalogue-media figcaption:not([hidden])::after{font-size:1.55rem}
+}
