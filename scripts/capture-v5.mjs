@@ -2,6 +2,7 @@ import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
 
+// retry after mobile navigation fix
 const base='http://127.0.0.1:4173/v5';
 const out=path.resolve('qa-screenshots/v5');
 fs.mkdirSync(out,{recursive:true});
