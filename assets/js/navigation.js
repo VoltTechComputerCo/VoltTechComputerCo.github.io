@@ -75,8 +75,11 @@ export function enhanceNavigation(root = document) {
   });
 
   mobile.addEventListener('change', () => {
+    const active = root.activeElement;
     open = false;
     render();
+    if (mobile.matches && nav.contains(active)) toggle.focus();
+    if (!mobile.matches && active === toggle) nav.querySelector('a')?.focus();
   });
 
   window.addEventListener('scroll', onScroll, { passive: true });
