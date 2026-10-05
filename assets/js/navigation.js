@@ -24,7 +24,7 @@ export function enhanceNavigation(root = document) {
     toggle.setAttribute('aria-expanded', String(isMobile && open));
     toggle.textContent = open ? 'Close' : 'Menu';
     nav.hidden = isMobile && !open;
-    document.body.classList.toggle('mobile-menu-open', isMobile && open);
+    document.body?.classList?.toggle('mobile-menu-open', isMobile && open);
   };
 
   const close = ({ focusToggle = false } = {}) => {
