@@ -1,3 +1,4 @@
+import './experience.js';
 import { startAnalytics } from './adapters/analytics.js';
 startAnalytics();
 import { catalogueState } from './adapters/public-catalogue.js';

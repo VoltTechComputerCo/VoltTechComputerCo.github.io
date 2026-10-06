@@ -2,6 +2,14 @@
 
 Branch: `frontend-reset-20261005`, directly from main.
 
+## Creative direction revision — 7 October 2026 (South Africa)
+
+The first homepage was rejected as too close to the main site. The new preview replaces its composition and navigation with an experiential direction: oversized hardware opening, floating global control bar, full-screen navigation worlds, homepage chapter dock, scroll-pinned Build/Boost/Broadcast scenes, interactive component selector, support console, immersive creator scene and STATIC portal. White/graphite/teal remain.
+
+Native scrolling drives frame-batched image transforms and chapter states. Touch/keyboard buttons also select scenes and components. Reduced-motion and short-height phones retain a regular-flow/manual experience. No video assets exist in the repository; this revision uses real repository imagery with CSS/JavaScript motion, not video footage.
+
+Validated: 13 existing UI scenarios plus six new motion-device scenarios, including scroll-driven state changes, manual scene selection, category link updates, keyboard selection, navigation and reduced motion. `browser-motion.json` records the new results.
+
 ## Implemented in this stage
 
 - New `frontend/` source root, global tokens/base/components/layouts and isolated build entrypoint.

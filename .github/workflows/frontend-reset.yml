@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [frontend-reset-20261005]
-    paths: ['frontend/**', 'scripts/build-frontend-reset.py', 'scripts/test-frontend-reset*', 'index.html', 'design-system.html', '.github/workflows/frontend-reset.yml']
+    paths: ['frontend/**', 'scripts/build-frontend-reset.py', 'scripts/test-frontend-reset*', 'scripts/test-frontend-motion*', 'index.html', 'design-system.html', '.github/workflows/frontend-reset.yml']
 permissions:
   contents: read
 jobs:
@@ -17,8 +17,11 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/frontend-reset-http.log 2>&1 &
       - run: node scripts/test-frontend-reset-browser.mjs
+      - run: node scripts/test-frontend-motion-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: frontend-reset-browser-evidence
-          path: qa-results/frontend-reset/
+          path: |
+            qa-results/frontend-reset/
+            qa-results/frontend-motion/

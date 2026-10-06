@@ -1,0 +1,43 @@
+[
+  {
+    "width": 360,
+    "motion": "PASS",
+    "scrollScenes": 3,
+    "componentSelection": "PASS",
+    "navigation": "PASS"
+  },
+  {
+    "width": 390,
+    "motion": "PASS",
+    "scrollScenes": 3,
+    "componentSelection": "PASS",
+    "navigation": "PASS"
+  },
+  {
+    "width": 768,
+    "motion": "PASS",
+    "scrollScenes": 3,
+    "componentSelection": "PASS",
+    "navigation": "PASS"
+  },
+  {
+    "width": 1440,
+    "motion": "PASS",
+    "scrollScenes": 3,
+    "componentSelection": "PASS",
+    "navigation": "PASS"
+  },
+  {
+    "width": 1920,
+    "motion": "PASS",
+    "scrollScenes": 3,
+    "componentSelection": "PASS",
+    "navigation": "PASS"
+  },
+  {
+    "width": 360,
+    "height": 640,
+    "reducedMotion": "PASS",
+    "manualScenes": "PASS"
+  }
+]
