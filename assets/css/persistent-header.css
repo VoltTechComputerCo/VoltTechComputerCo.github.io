@@ -1,0 +1,20 @@
+/* Keep navigation available while the page scrolls, without covering initial content. */
+@media screen {
+  html { scroll-padding-top: 110px; }
+  body > .site-header,
+  body > .static-topbar,
+  body > .store-nav,
+  body > nav,
+  body > header:not(.hero):not(.admin-hero),
+  body > main > .top {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000;
+  }
+  body > main > .top { background: var(--b, #031012); padding-top: 12px; }
+  .document-toolbar { top: 80px; }
+  @media (max-width: 760px) {
+    html { scroll-padding-top: 100px; }
+    .document-toolbar { top: 72px; }
+  }
+}

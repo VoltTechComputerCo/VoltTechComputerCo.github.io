@@ -21,7 +21,7 @@ def render(source):
     glass_version = config.get('glass_version', '20261003-site-neon1')
     if glass_version:
         glass_style += f"?v={glass_version}"
-    styles = [f'assets/css/{name}.css' for name in CSS] + config.get('styles', []) + [glass_style]
+    styles = [f'assets/css/{name}.css' for name in CSS] + config.get('styles', []) + [glass_style, 'assets/css/persistent-header.css?v=20261007']
     values = {
         'PAGE': html.escape(source.stem, quote=True),
         'TITLE': html.escape(config['title']),
