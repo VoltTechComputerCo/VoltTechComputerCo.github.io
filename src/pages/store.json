@@ -13,6 +13,6 @@
     "conversion-context.js"
   ],
   "scripts": [
-    "assets/js/pages/store.js?v=2.2.0"
+    "assets/js/pages/store.js?v=20261007-filter-selection"
   ]
 }

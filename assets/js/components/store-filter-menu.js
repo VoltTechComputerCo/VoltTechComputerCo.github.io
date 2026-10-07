@@ -297,6 +297,7 @@ function openMenu(card,category){
       const button=event.target.closest('[data-stage-value]');
       if(!button) return;
       event.preventDefault();
+      event.stopPropagation();
       const value=button.dataset.stageValue;
       body.innerHTML=renderStaged(category,config,panel,value);
       document.dispatchEvent(new CustomEvent('volttech:quick-filter-stage',{

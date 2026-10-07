@@ -1,4 +1,4 @@
-import { matchesFacetFilters } from './store-filter-menu.js?v=1.2.0';
+import { matchesFacetFilters } from './store-filter-menu.js?v=20261007-filter-selection';
 export const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function safeLink(value) { if (!value || typeof value !== 'string') return ''; try { const u = new URL(value, location.href); return ['http:', 'https:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } }
 export const productUrl = (p, preview) => `product.html?slug=${encodeURIComponent(p.slug)}${preview ? '&preview=1' : ''}`;

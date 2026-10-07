@@ -1,7 +1,7 @@
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js';
 import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=2.2.0';
 import { connectCatalogueCart } from '../services/catalogue-cart.js';
-import { FILTER_KEYS, accentFor, brandMark, facetDefinitions, facetOptions, formatFacetValue, installCategoryFilterMenus } from '../components/store-filter-menu.js?v=1.2.0';
+import { FILTER_KEYS, accentFor, brandMark, facetDefinitions, facetOptions, formatFacetValue, installCategoryFilterMenus } from '../components/store-filter-menu.js?v=20261007-filter-selection';
 
 const query=new URLSearchParams(location.search);
 const categories=[...document.querySelectorAll('[data-category-link]')];
@@ -52,17 +52,7 @@ function pruneFilters(products){
   const definitions=facetDefinitions(state.category);
   const allowed=new Set(definitions.map(item=>item.key));
   Object.keys(state.filters).forEach(key=>{ if(!allowed.has(key)) delete state.filters[key]; });
-  let changed=true;
-  let guard=0;
-  while(changed && guard<definitions.length+2){
-    changed=false; guard++;
-    definitions.forEach(def=>{
-      const selectedValue=state.filters[def.key];
-      if(!selectedValue) return;
-      const available=facetOptions(products,state.category,def.key,state.filters).some(option=>String(option.value)===String(selectedValue));
-      if(!available){ delete state.filters[def.key]; changed=true; }
-    });
-  }
+
 }
 
 function renderActiveChips(){
@@ -85,6 +75,7 @@ function renderSmartFilters(products){
   const blocks=definitions.map(def=>{
     const options=facetOptions(products,state.category,def.key,state.filters);
     const selectedValue=state.filters[def.key] || '';
+    if(selectedValue && !options.some(option=>String(option.value)===String(selectedValue))) options.push({value:selectedValue,count:0});
     if(!options.length && !selectedValue) return '';
     const selectedLabel=selectedValue ? formatFacetValue(def.key,selectedValue) : 'All';
     const buttons=[
@@ -128,8 +119,10 @@ selectCategory();
 installCategoryFilterMenus(document);
 
 function applyQuickFilters(params){
+  const changedCategory=params.category && params.category!==state.category;
   if(params.category) state.category=params.category;
-  const next={...state.filters};
+  const next=changedCategory ? {} : {...state.filters};
+  if(params.gpuVendor || params.platform) delete next.brand;
   FILTER_KEYS.forEach(key=>{
     if(Object.prototype.hasOwnProperty.call(params,key)){
       const value=params[key];
