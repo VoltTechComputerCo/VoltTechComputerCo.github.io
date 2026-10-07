@@ -10,3 +10,5 @@ for (const trigger of triggers) {
 }
 function cartCount(){let count=0;try{const rows=JSON.parse(localStorage.getItem('vt_store_quote_cart_v1') || '[]');if(Array.isArray(rows))count=rows.reduce((n,r)=>n+(typeof r?.productId==='string'&&Number.isInteger(r.quantity)&&r.quantity>0&&r.quantity<=25?r.quantity:0),0);}catch{}for(const link of document.querySelectorAll('[data-cart-link]')){link.setAttribute('aria-label',count?`Open cart, ${count} items`:'Open cart');const badge=link.querySelector('[data-cart-count]');badge.textContent=count>99?'99+':String(count);badge.hidden=!count;}}
 cartCount();window.addEventListener('vt-store-cart-change',cartCount);window.addEventListener('storage',e=>{if(!e.key||e.key==='vt_store_quote_cart_v1')cartCount();});
+
+if(['https://volttechcomputerco.co.za','https://www.volttechcomputerco.co.za'].includes(location.origin)){try{if(localStorage.getItem('sb-qdqhfnvwqvgesfdmocir-auth-token'))import('./adapters/session.js').then(async m=>m.loadAccountNotifications(await m.getAccountClient())).catch(()=>{});}catch{}}

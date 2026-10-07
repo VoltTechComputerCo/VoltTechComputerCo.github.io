@@ -1,0 +1,155 @@
+[
+  {
+    "type": "p",
+    "text": "AMD quietly launched the Ryzen 5 5500F and Ryzen 5 7500 on September 10. Both are six-core, 12-thread, 65W desktop processors, but they are aimed at completely different builders."
+  },
+  {
+    "type": "table",
+    "rows": [
+      [
+        "",
+        "5500F",
+        "7500"
+      ],
+      [
+        "Architecture",
+        "Zen 3",
+        "Zen 4"
+      ],
+      [
+        "Socket",
+        "AM4",
+        "AM5"
+      ],
+      [
+        "Cores / Threads",
+        "6 / 12",
+        "6 / 12"
+      ],
+      [
+        "Base / Boost",
+        "3.0 / 4.4 GHz",
+        "3.7 / 5.0 GHz"
+      ],
+      [
+        "L3",
+        "16 MB",
+        "32 MB"
+      ],
+      [
+        "Memory",
+        "DDR4",
+        "DDR5"
+      ],
+      [
+        "PCIe",
+        "4.0",
+        "5.0"
+      ],
+      [
+        "iGPU",
+        "No",
+        "2-CU Radeon"
+      ]
+    ]
+  },
+  {
+    "type": "h2",
+    "text": "The $99 5500F is the one to watch"
+  },
+  {
+    "type": "p",
+    "text": "AMD lists the 5500F as Zen 3 \u201cVermeer\u201d: six cores, 12 threads, 3.0GHz base, 4.4GHz boost, 16MB L3 and a 65W TDP. It needs a discrete GPU. Crucially, AMD specifies PCIe 4.0, while the older Ryzen 5 5500 is limited to PCIe 3.0."
+  },
+  {
+    "type": "p",
+    "text": "Major hardware outlets report a $99 US launch price. That makes it potentially compelling for an existing AM4 owner who can reuse a motherboard and DDR4 instead of rebuilding the entire platform."
+  },
+  {
+    "type": "image",
+    "src": "https://media.topachat.com/media/s550/66cc39f52241454a620cdf05.jpg",
+    "alt": "AMD Ryzen AM4 processor"
+  },
+  {
+    "type": "h2",
+    "text": "Do not assume it beats the Ryzen 5 5600"
+  },
+  {
+    "type": "p",
+    "text": "The naming is messy. The new 5500F has only 16MB of L3 cache \u2014 half the Ryzen 5 5600\u2019s 32MB. Until independent retail benchmarks arrive, the 5600 should remain the safer performance reference. The 5500F\u2019s argument is price and PCIe 4.0, not a guaranteed performance win."
+  },
+  {
+    "type": "h2",
+    "text": "The Ryzen 5 7500 is a 7500F with useful backup graphics"
+  },
+  {
+    "type": "p",
+    "text": "The AM5 chip is Zen 4 with six cores, 12 threads, 3.7GHz base and 5.0GHz boost, 32MB L3, DDR5 and PCIe 5.0. It also enables AMD\u2019s tiny two-core Radeon iGPU at up to 2.2GHz."
+  },
+  {
+    "type": "p",
+    "text": "That integrated GPU is for display output, troubleshooting and basic desktop use \u2014 not serious gaming. But it is genuinely useful when building or diagnosing a PC."
+  },
+  {
+    "type": "image",
+    "src": "https://www.tekmarshop.com/Images/Product/ryzen-5-7500f-3-7ghz-turbo-5-0ghz-6-core-12-threads-38mb-cache-am5-islemci-tray-am5-47073.jpg?v=270920231842",
+    "alt": "AMD Ryzen AM5 processor"
+  },
+  {
+    "type": "h2",
+    "text": "The platform price matters more than the CPU price"
+  },
+  {
+    "type": "p",
+    "text": "An AM4 upgrader can potentially keep an existing board and DDR4. An AM5 build needs an AM5 motherboard and DDR5, so a cheap CPU does not automatically mean a cheap PC."
+  },
+  {
+    "type": "p",
+    "text": "The reported $189 US pricing for the 7500 also needs context: discounted Ryzen 7600, 7600X or newer Zen 5 chips can sometimes sit uncomfortably close. Always compare street prices, not model hierarchy."
+  },
+  {
+    "type": "image",
+    "src": "https://assets.umart.com.au/newsite/images/202511/source_img/AMD-CPU-AMD-Ryzen-5-7500F-6-Core-AM5-5-0GHz-with-Wraith-Stealth-Cooler-CPU-Processor-100-100000597box-1.jpg",
+    "alt": "AMD Ryzen 7000 series retail box"
+  },
+  {
+    "type": "h2",
+    "text": "What this means for South African builders"
+  },
+  {
+    "type": "p",
+    "text": "US MSRP is not a South African shelf price. Distributor stock, import costs and local promotions can completely reorder the value equation. If the 5500F lands cheaply, it could be a particularly useful upgrade for the huge installed base of AM4 gaming PCs. If its local price creeps too close to a 5600, buy the faster chip instead."
+  },
+  {
+    "type": "p",
+    "text": "For a completely new build, AM5 remains the better long-term platform \u2014 but only if the motherboard and DDR5 premium fits the budget."
+  },
+  {
+    "type": "h2",
+    "text": "AM4 turning ten is the real headline"
+  },
+  {
+    "type": "p",
+    "text": "The 5500F is not cutting-edge silicon. That is precisely why it matters. AMD is acknowledging that millions of builders do not need a new socket, new RAM and a premium motherboard to make an older gaming PC meaningfully better."
+  },
+  {
+    "type": "h2",
+    "text": "Sources"
+  },
+  {
+    "type": "p",
+    "text": "AMD \u2014 Ryzen 5 5500F specifications"
+  },
+  {
+    "type": "p",
+    "text": "AMD \u2014 Ryzen 5 7500 specifications"
+  },
+  {
+    "type": "p",
+    "text": "Tom\u2019s Hardware \u2014 launch pricing"
+  },
+  {
+    "type": "p",
+    "text": "TechSpot \u2014 platform analysis"
+  }
+]

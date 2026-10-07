@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [frontend-reset-20261005]
-    paths: ['frontend/**', 'scripts/build-frontend-reset.py', 'scripts/test-frontend-reset*', 'scripts/test-frontend-motion*', 'index.html', 'design-system.html', '.github/workflows/frontend-reset.yml']
+    paths: ['frontend/**', 'scripts/build-frontend-reset.py', 'scripts/test-frontend-reset*', 'scripts/test-frontend-motion*', 'scripts/test-all-routes.mjs', 'scripts/test-route-interactions.mjs', 'index.html', 'design-system.html', '.github/workflows/frontend-reset.yml']
 permissions:
   contents: read
 jobs:
@@ -13,11 +13,14 @@ jobs:
       - uses: actions/checkout@v4
       - run: python3 scripts/build-frontend-reset.py --check
       - run: node scripts/test-frontend-reset.mjs
+      - run: node scripts/test-commerce-contracts.mjs
       - run: npm install --no-save --no-package-lock playwright@1.56.1
       - run: npx playwright install --with-deps chromium
       - run: python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/frontend-reset-http.log 2>&1 &
       - run: node scripts/test-frontend-reset-browser.mjs
       - run: node scripts/test-frontend-motion-browser.mjs
+      - run: node scripts/test-all-routes.mjs
+      - run: node scripts/test-route-interactions.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -25,3 +28,4 @@ jobs:
           path: |
             qa-results/frontend-reset/
             qa-results/frontend-motion/
+            qa-results/all-routes/

@@ -1,0 +1,12 @@
+{
+  "output": "returns-warranty.html",
+  "title": "Returns & Warranty | VoltTech",
+  "description": "VoltTech policies and customer information.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/returns-warranty.html",
+  "config": true,
+  "family": "legal",
+  "scripts": [
+    "frontend/controllers/common.js"
+  ]
+}

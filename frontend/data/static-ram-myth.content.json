@@ -1,0 +1,67 @@
+[
+  {
+    "type": "p",
+    "text": "Somewhere along the way, \"more RAM\" became the internet's default answer to almost any PC performance question, regardless of what was actually wrong. Game running rough? More RAM. PC feels sluggish? More RAM. Word taking a second longer to open than it did last Tuesday? You already know. It's the duct tape of PC advice \u2014 sounds reasonable, rarely the actual fix."
+  },
+  {
+    "type": "p",
+    "text": "So let's actually get specific about what RAM does, because the myth persists precisely because RAM does matter \u2014 just not in the way, or at the point, most people assume."
+  },
+  {
+    "type": "h2",
+    "text": "What RAM is actually for, in one paragraph"
+  },
+  {
+    "type": "p",
+    "text": "RAM is short-term, high-speed workspace \u2014 everything your CPU is actively using right now lives there, because it's dramatically faster to access than storage. Run out, and Windows has to start swapping data out to a page file on your drive, which is slow by comparison and is where the real slowdown comes from. The key word is run out . RAM isn't a performance dial that goes up as you add more of it \u2014 it's closer to a bucket. Once it's not overflowing, adding capacity does almost nothing."
+  },
+  {
+    "type": "h2",
+    "text": "The actual numbers, tested and re-tested by basically everyone in the space"
+  },
+  {
+    "type": "p",
+    "text": "This is thoroughly benchmarked territory \u2014 outlets that specialise in exactly this kind of frame-by-frame testing have run it dozens of times across dozens of games \u2014 and the pattern holds consistently:"
+  },
+  {
+    "type": "ul",
+    "items": [
+      "8GB is genuinely the bottleneck now for modern titles, and will show real, measurable stutter and frame-time spikes in a lot of current releases. This isn't myth territory \u2014 this one's real.",
+      "16GB is the sweet spot for the overwhelming majority of gaming setups in 2026, and shows essentially no meaningful uplift moving to 32GB in the actual games people are playing, frame-for-frame.",
+      "32GB starts paying off specifically for heavy multitasking \u2014 streaming while gaming, a browser with an unreasonable number of tabs open in the background, video editing alongside other work \u2014 not for the game itself running better in isolation.",
+      "64GB+ is a professional workstation number , not a gaming number, full stop, unless you're doing genuinely RAM-hungry creative or technical work on the side."
+    ]
+  },
+  {
+    "type": "p",
+    "text": "If you're on 16GB and debating whether 32GB will fix a stutter you're seeing in a specific game, it almost certainly won't \u2014 because the stutter isn't a capacity problem in the first place. Worth checking Task Manager during the stutter before spending a cent; if memory usage isn't actually maxing out, more of it fixes nothing."
+  },
+  {
+    "type": "h2",
+    "text": "Okay, but what about speed and timings \u2014 does that matter more?"
+  },
+  {
+    "type": "p",
+    "text": "More than capacity does, once you're past the point of running out, but still with real diminishing returns. Faster RAM (higher MHz, tighter timings) genuinely helps more on some CPU architectures than others \u2014 some platforms are noticeably more memory-speed-sensitive than others by design \u2014 and the gains are usually a handful of frames per second, not a transformative jump. It's the kind of upgrade that shows up clearly on a graph and barely registers in how the game actually feels to play."
+  },
+  {
+    "type": "p",
+    "text": "The one place speed does matter more than people expect: dual-channel vs single-channel matters a lot, and gets overlooked constantly. Running two sticks instead of one, matched and in the correct motherboard slots, can be a bigger real-world difference than a meaningful speed bump on a single stick \u2014 because you're not just adding capacity, you're doubling the memory bus width the CPU can pull from at once."
+  },
+  {
+    "type": "h2",
+    "text": "So what should you actually do"
+  },
+  {
+    "type": "p",
+    "text": "Check what you're actually running out of before buying anything. Task Manager, Performance tab, watch it during whatever's giving you trouble. If memory is pinned near 100% consistently, more RAM will genuinely help. If it's sitting comfortably under that ceiling, the stutter, the slowdown, whatever's bothering you \u2014 it's coming from somewhere else, and more RAM is an expensive way to find that out the hard way."
+  },
+  {
+    "type": "h3",
+    "text": "Not sure what's actually bottlenecking your PC?"
+  },
+  {
+    "type": "p",
+    "text": "Run VoltTech's free Signal Scan diagnostic to see exactly what's holding your system back \u2014 RAM, storage, thermals, or something else entirely \u2014 before spending money guessing."
+  }
+]

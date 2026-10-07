@@ -1,0 +1,15 @@
+{
+  "output": "checkout.html",
+  "title": "Checkout | VoltTech",
+  "description": "Review your genuine component selection and submit an order request securely.",
+  "robots": "noindex, nofollow",
+  "canonical": "https://volttechcomputerco.co.za/checkout.html",
+  "config": true,
+  "family": "commerce",
+  "scripts": [
+    "frontend/controllers/commerce.js"
+  ],
+  "data": {
+    "kind": "checkout"
+  }
+}

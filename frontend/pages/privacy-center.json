@@ -1,0 +1,15 @@
+{
+  "output": "privacy-center.html",
+  "title": "Privacy centre | VoltTech",
+  "description": "Your secure VoltTech customer workspace.",
+  "robots": "noindex, nofollow",
+  "canonical": "https://volttechcomputerco.co.za/privacy-center.html",
+  "config": true,
+  "family": "customer",
+  "scripts": [
+    "frontend/controllers/customer.js"
+  ],
+  "data": {
+    "kind": "privacy-center"
+  }
+}

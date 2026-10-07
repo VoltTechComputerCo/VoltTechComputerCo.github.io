@@ -1,0 +1,146 @@
+[
+  {
+    "type": "p",
+    "text": "Call of Duty\u2019s PC requirements are usually interesting because the series has to serve two audiences at once: competitive players chasing latency and frame rate, and blockbuster players expecting a technically lavish campaign. Modern Warfare 4 is leaning hard into both."
+  },
+  {
+    "type": "p",
+    "text": "Activision\u2019s September 29 PC briefing says the recommended configuration targets 90 FPS in multiplayer at High settings . The listed GPUs are an AMD Radeon RX 6600 XT, Nvidia GeForce RTX 3060 Ti or Intel Arc B580, paired with 16 GB of RAM and a Ryzen 5 3600 or Core i7-8700K."
+  },
+  {
+    "type": "h2",
+    "text": "Modern Warfare 4 \u00b7 PC targets"
+  },
+  {
+    "type": "h3",
+    "text": "MINIMUM"
+  },
+  {
+    "type": "ul",
+    "items": [
+      "Ryzen 5 1400 / Core i5-6600",
+      "8 GB RAM",
+      "RX 470 / GTX 970\u20131060 / Arc A580",
+      "3 GB VRAM",
+      "115 GB SSD"
+    ]
+  },
+  {
+    "type": "h3",
+    "text": "RECOMMENDED \u00b7 90 FPS"
+  },
+  {
+    "type": "ul",
+    "items": [
+      "Ryzen 5 3600 / Core i7-8700K",
+      "16 GB RAM",
+      "RX 6600 XT / RTX 3060 Ti / Arc B580",
+      "8 GB VRAM",
+      "115 GB SSD"
+    ]
+  },
+  {
+    "type": "h3",
+    "text": "4K UPSCALED \u00b7 RAY TRACING"
+  },
+  {
+    "type": "ul",
+    "items": [
+      "Ryzen 7 3700X / Core i7-10700K",
+      "32 GB RAM",
+      "RX 9070 XT / RTX 5070 Ti",
+      "16 GB VRAM",
+      "115 GB SSD"
+    ]
+  },
+  {
+    "type": "p",
+    "text": "Official launch specifications \u00b7 TPM 2.0 + Secure Boot required."
+  },
+  {
+    "type": "h2",
+    "text": "90 FPS as \u201crecommended\u201d is the real headline"
+  },
+  {
+    "type": "p",
+    "text": "PC requirement tables traditionally describe recommended hardware around a 60 FPS experience. MW4 explicitly setting its recommended multiplayer bar at 90 FPS says something about where mainstream competitive PC gaming has moved. High-refresh displays are no longer treated as exotic hardware."
+  },
+  {
+    "type": "p",
+    "text": "The minimum remains unusually broad: Ryzen 5 1400 or Core i5-6600, 8 GB RAM, and an RX 470, GTX 970/1060 or Arc A580. Every tier requires an SSD, with Activision listing 115 GB at launch."
+  },
+  {
+    "type": "h2",
+    "text": "Ray tracing is no longer campaign-only decoration"
+  },
+  {
+    "type": "p",
+    "text": "Activision says ray tracing is supported in Campaign, Multiplayer and DMZ . Its high-quality 4K-upscaled RT tier steps up sharply to an RX 9070 XT or RTX 5070 Ti with 16 GB VRAM, 32 GB RAM, and a Ryzen 7 3700X or Core i7-10700K."
+  },
+  {
+    "type": "image",
+    "src": "https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/pc-trailer-blog/MW4-PC-TECH-003.webp",
+    "alt": "Official Modern Warfare 4 PC screenshot showing an operator in a gas mask"
+  },
+  {
+    "type": "p",
+    "text": "That distinction is useful: the RTX 3060 Ti-class recommendation is not the \u201ceverything maxed with RT\u201d spec. Players should not read 90 FPS and the ray-tracing bullet point as one combined promise."
+  },
+  {
+    "type": "h2",
+    "text": "AMD, Nvidia and Intel all get a seat"
+  },
+  {
+    "type": "p",
+    "text": "Modern Warfare 4 ships with AMD FSR Redstone, Nvidia DLSS 4.5 and Intel XeSS 3 , plus Filmic SMAA T2X. That breadth matters in a huge cross-vendor multiplayer game because upscaling is increasingly part of the expected rendering pipeline rather than an optional rescue switch for weak GPUs."
+  },
+  {
+    "type": "image",
+    "src": "assets/images/static/mw4-upscalers.svg",
+    "alt": "Modern Warfare 4 supports AMD FSR Redstone, Nvidia DLSS 4.5 and Intel XeSS 3"
+  },
+  {
+    "type": "h2",
+    "text": "The competitive features may matter more than the pretty ones"
+  },
+  {
+    "type": "p",
+    "text": "Beenox is adding sub-frame mouse polling, a built-in benchmark reporting average FPS, CPU/GPU behaviour, ping and input latency, and a PC-exclusive Enhanced FOV system designed to expand peripheral vision without changing the centre FOV. Muzzle effects are dynamically masked around the point of aim to preserve target visibility."
+  },
+  {
+    "type": "p",
+    "text": "The game also drops the older random weapon-bloom behaviour: Activision says bullets now originate according to barrel position in both ADS and hip-fire states. That is a gameplay change disguised inside a PC technology article."
+  },
+  {
+    "type": "h2",
+    "text": "And Call of Duty is finally attacking shader friction"
+  },
+  {
+    "type": "p",
+    "text": "\u201cAdvanced Shader Delivery\u201d replaces the familiar shader-preloading workflow by distributing precompiled shaders ahead of play on supported PC platforms. Activision says using it requires the Xbox PC app even if the game itself is on another supported PC storefront. Updates during normal boots are also designed not to trigger the traditional restart loop."
+  },
+  {
+    "type": "p",
+    "text": "There is a security cost to the broad hardware support: TPM 2.0 and Secure Boot are mandatory , Intel Arc requires Resizable BAR, and only Intel/AMD processors with AVX support are listed at launch."
+  },
+  {
+    "type": "p",
+    "text": "STATIC\u2019s take: the most important number here is not 4K or ray tracing. It is 90. Calling 90 FPS the recommended multiplayer experience acknowledges how people actually buy gaming monitors in 2026. If Beenox can hit that target consistently on an RTX 3060 Ti or RX 6600 XT without ugly reconstruction compromises, MW4 could be a much better PC release than its feature list alone suggests."
+  },
+  {
+    "type": "h2",
+    "text": "What is confirmed"
+  },
+  {
+    "type": "p",
+    "text": "Everything above \u2014 specifications, 90 FPS target, ray tracing across the three major modes, upscaler support, benchmark, Enhanced FOV, Advanced Shader Delivery, TPM/Secure Boot requirements and October 23 launch \u2014 comes directly from Activision\u2019s official PC briefing. Performance on real retail hardware remains unverified until independent benchmarks arrive."
+  },
+  {
+    "type": "p",
+    "text": "Primary source: Call of Duty Staff, \u201cCall of Duty: Modern Warfare 4 PC Trailer, Tech Updates, and More,\u201d September 29, 2026. Launch date and game-mode context cross-checked against the official Modern Warfare 4 site."
+  },
+  {
+    "type": "p",
+    "text": "\u2190 Back to STATIC \u00b7 More PC graphics coverage \u2192"
+  }
+]

@@ -1,0 +1,104 @@
+[
+  {
+    "type": "p",
+    "text": "AMD is spending approximately $8.2 billion to acquire World Labs, the spatial-intelligence company led by AI pioneer Dr. Fei-Fei Li. On paper, that is another giant AI deal in an industry full of them. Look closer and it says something more interesting about where AMD thinks computing is going next."
+  },
+  {
+    "type": "p",
+    "text": "World Labs is not primarily building another chatbot. Its models are designed to understand and generate space : persistent, navigable 3D environments that can be created from text, images, video and 3D layouts. Its first product, Marble, turns those inputs into explorable worlds."
+  },
+  {
+    "type": "h2",
+    "text": "AMD isn't just buying an AI company. It's buying a view of the workload."
+  },
+  {
+    "type": "p",
+    "text": "The usual chip-company problem is brutally simple: you have to design hardware years before the software that will eventually stress it becomes mainstream. World Labs gives AMD a research organisation working directly on a class of workloads that could become enormously compute-intensive \u2014 generative 3D, simulation, robotics and physical AI."
+  },
+  {
+    "type": "p",
+    "text": "AMD says World Labs' model expertise will give it deeper insight into how AI workloads are evolving and help shape future hardware, software and systems. That is the strategic centre of this deal. The company is trying to shorten the distance between the people inventing the workload and the engineers designing the compute underneath it."
+  },
+  {
+    "type": "image",
+    "src": "https://www.amd.com/content/dam/amd/en/images/blogs/designs/4513252-world-labs-venture-blog.jpg",
+    "alt": "AMD Ventures and World Labs partnership artwork"
+  },
+  {
+    "type": "h2",
+    "text": "What exactly is \u201cspatial intelligence\u201d?"
+  },
+  {
+    "type": "p",
+    "text": "A language model can be very good at predicting and reasoning over words without truly understanding whether a chair fits through a doorway, what happens when an object falls, or how a room connects to the corridor behind it. Spatial intelligence is aimed at that missing layer: models that reason about objects, places, motion, geometry and interaction across space and time."
+  },
+  {
+    "type": "p",
+    "text": "World Labs describes its frontier models as systems that can perceive, generate, reason and interact with virtual and physical worlds. Marble is the easiest way to understand the idea today. Instead of asking an AI for a flat image of a room, the goal is to create a coherent environment you can actually move through, edit and use."
+  },
+  {
+    "type": "p",
+    "text": "That matters well beyond AI demos. A sufficiently capable world model could become part of game and film production, architecture, simulation, robotics training, digital twins and interactive entertainment. AMD itself highlighted interactive 3D creation, physical AI and real-world simulation when it invested in World Labs earlier this year."
+  },
+  {
+    "type": "image",
+    "src": "https://www.worldlabs.ai/_next/image?q=75&url=%2Fimages%2Ffooter_illustration.png&w=3840",
+    "alt": "World Labs illustration of a mountain landscape contained within a spherical world"
+  },
+  {
+    "type": "h2",
+    "text": "The relationship was already deeper than a cheque"
+  },
+  {
+    "type": "p",
+    "text": "This did not come out of nowhere. AMD Ventures had already invested in World Labs, and the companies say they began a deeper technical partnership last year around model training and inference optimisation on AMD GPUs. World Labs says that collaboration convinced the teams there was value in bringing hardware, software, foundation models and applications closer together."
+  },
+  {
+    "type": "p",
+    "text": "After the transaction closes, Fei-Fei Li is expected to join AMD as executive vice president and chief scientist, reporting directly to CEO Dr. Lisa Su. World Labs co-founders Justin Johnson and Ben Mildenhall are expected to continue leading the team with Li inside AMD."
+  },
+  {
+    "type": "h2",
+    "text": "Why this should matter to gamers and graphics nerds"
+  },
+  {
+    "type": "p",
+    "text": "No, AMD has not announced a new Radeon feature that generates entire game levels, and it would be irresponsible to pretend this acquisition guarantees one. The confirmed announcement is focused on AI infrastructure, model research, robotics, simulation and physical AI."
+  },
+  {
+    "type": "p",
+    "text": "But the overlap with real-time graphics is difficult to ignore. World Labs works on 3D world generation and reconstruction; its community is already connecting Marble environments to Three.js, physics systems, avatars and interactive multiplayer experiments. Those are adjacent to the same broad problems game engines solve: geometry, scene representation, interaction, simulation and rendering."
+  },
+  {
+    "type": "p",
+    "text": "The important distinction is between what exists now and what the combination could enable later . AMD can learn from World Labs' workloads while designing future accelerators and software. World Labs can optimise against AMD's compute stack. Whether any of that eventually reaches Radeon gaming features is speculation \u2014 interesting speculation, but still speculation."
+  },
+  {
+    "type": "h2",
+    "text": "And $8.2 billion is a serious bet"
+  },
+  {
+    "type": "p",
+    "text": "AMD's SEC filing confirms the approximate $8.2 billion purchase price will be paid in AMD common stock, subject to customary adjustments. The final number of shares will depend on AMD's volume-weighted average share price over a defined period before closing."
+  },
+  {
+    "type": "p",
+    "text": "World Labs was founded in 2024 and raised another $1 billion in February 2026 from investors that included AMD, Nvidia, Intel, Adobe, Autodesk and others. Less than a year later, AMD is proposing to bring the company in-house."
+  },
+  {
+    "type": "p",
+    "text": "That is the clearest signal here. AMD is not treating spatial intelligence as a side experiment. It is spending billions to put the researchers building those models directly into the company designing the compute they run on."
+  },
+  {
+    "type": "h2",
+    "text": "Sources and further reading"
+  },
+  {
+    "type": "p",
+    "text": "AMD Newsroom \u2014 acquisition announcement World Labs \u2014 joining AMD AMD SEC filing \u2014 transaction details AMD Ventures \u2014 Investing in World Labs World Labs \u2014 spatial intelligence and Marble"
+  },
+  {
+    "type": "p",
+    "text": "Read next: AMD Just Made Budget PC Building Interesting Again \u2192 \u00b7 Back to STATIC \u2192"
+  }
+]

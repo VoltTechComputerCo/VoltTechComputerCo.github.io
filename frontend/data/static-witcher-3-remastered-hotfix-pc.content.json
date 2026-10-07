@@ -1,0 +1,128 @@
+[
+  {
+    "type": "p",
+    "text": "Geralt is back on the Path, except this time his hair can be ray traced. Because apparently 2026 demanded that even monster-slaying ponytails participate in the rendering arms race."
+  },
+  {
+    "type": "p",
+    "text": "The Witcher 3: Wild Hunt \u2014 Remastered landed on 29 September as a free upgrade across PC, PlayStation 5, Xbox Series X|S and Nintendo Switch 2. On PC it is a proper technical overhaul: path tracing, DLSS 4.5 with Ray Reconstruction, FSR 4 with Frame Generation and Anti-Lag 2, XeSS 2, ray-traced HairWorks, improved materials, lighting, terrain and a pile of gameplay changes."
+  },
+  {
+    "type": "p",
+    "text": "Then launch week happened."
+  },
+  {
+    "type": "h2",
+    "text": "The remaster is much bigger than a texture pack"
+  },
+  {
+    "type": "p",
+    "text": "Calling this a remaster almost undersells it. CDPR rebuilt chunks of the rendering stack around native DirectX 12 multithreading, improved shading, new image-based lighting, reworked bloom, ray-traced local shadows and upgraded terrain and material rendering. The studio also folded assets from the excellent HD Reworked Project into the official release."
+  },
+  {
+    "type": "p",
+    "text": "PC gets the full buffet. NVIDIA users can push path tracing with DLSS 4.5 and Ray Reconstruction. AMD gets FSR 4, Frame Generation and Anti-Lag 2 on Radeon RX 7000-series cards and newer. Intel gets XeSS 2 with Frame Generation and Low Latency."
+  },
+  {
+    "type": "image",
+    "src": "https://img.youtube.com/vi_webp/SsEHHkicjNk/maxresdefault.webp",
+    "alt": "The Witcher 3 Remastered NVIDIA PC graphics showcase"
+  },
+  {
+    "type": "h2",
+    "text": "STATIC tested it: Ryzen 7 7800X3D + RTX 5070 at 1440p"
+  },
+  {
+    "type": "p",
+    "text": "We did not want to judge this one from patch notes and screenshots alone. STATIC ran the remaster at 1440p on a Ryzen 7 7800X3D and GeForce RTX 5070 system. In the lighter configuration we were seeing roughly 120\u2013140 FPS during our play testing. These are observed gameplay ranges rather than controlled benchmark averages, but they give a useful picture of how much performance headroom this hardware can have before the eye-candy gets pushed into unreasonable territory."
+  },
+  {
+    "type": "p",
+    "text": "And unreasonable territory is exactly where we went next."
+  },
+  {
+    "type": "h2",
+    "text": "Then we added newer DLSS files with DLSS Swapper"
+  },
+  {
+    "type": "p",
+    "text": "Using DLSS Swapper , we experimented with newer DLSS 5 files and pushed the visual configuration toward image quality and the most cinematic path-traced presentation we could get. This is an unofficial enthusiast modification , not a CD PROJEKT RED-supported configuration, and our results should be read as a hands-on experiment rather than an official performance target."
+  },
+  {
+    "type": "p",
+    "text": "With the heavier visual load, our observed frame rate settled at roughly 60\u201380 FPS at 1440p . The drop is important context: we were deliberately spending the earlier performance headroom on visual quality. It should not be interpreted as DLSS 5 itself simply halving performance."
+  },
+  {
+    "type": "p",
+    "text": "The payoff can be extraordinary. Dense forests, wet stone, candlelit interiors, armour, skin, reflections and the rebuilt path-traced lighting can combine into something that feels almost unimaginably cinematic. There were moments in our testing where calling the image \u201crealistic\u201d did not feel like much of an exaggeration. For a game whose original release dates back to 2015, that is a remarkable place to end up."
+  },
+  {
+    "type": "h2",
+    "text": "Hotfix 5.00c fixes the kind of bug you really don't want in an RPG"
+  },
+  {
+    "type": "p",
+    "text": "The headline fix is brutally simple: some PC players could not save or load if their Documents folder path contained special characters. In a 100-hour RPG, \u201ccan't save\u201d is about as bad as a launch bug gets."
+  },
+  {
+    "type": "p",
+    "text": "The hotfix also fixes voice audio becoming much quieter after moving through pause-menu tabs, restores GOG achievements that were not appearing correctly, and fixes an issue that prevented the classic 1.32 version from launching."
+  },
+  {
+    "type": "p",
+    "text": "Then there's HairWorks. CDPR says it reverted a change that caused significant performance and visual issues for some players with HairWorks enabled. HairWorks was one of the original 2015 game's great \u201chow badly can I hurt my GPU?\u201d buttons. Eleven years later, the hair remains undefeated."
+  },
+  {
+    "type": "h2",
+    "text": "Path tracing is getting cleaned up too"
+  },
+  {
+    "type": "p",
+    "text": "Hotfix 5.00c includes visual adjustments around Velen covering bloom, vegetation lighting, saturation and path-traced lighting. CDPR hasn't framed those as some dramatic rendering rewrite; they're launch-week tuning passes. But on a remaster selling itself partly on its lighting overhaul, they're exactly the kind of fixes worth watching."
+  },
+  {
+    "type": "image",
+    "src": "https://public.cdn.cdpr.app/common/news/bbb3386d3b2ebba3ffa8200e4375ebc3_q90_900x900.png",
+    "alt": "Official updated PC system requirements for The Witcher 3 Wild Hunt Remastered"
+  },
+  {
+    "type": "p",
+    "text": "Console players got their own patch, 5.00b, on 1 October. CDPR says that update fixed DLSS availability in the Xbox Play Anywhere PC version, adjusted lighting \u2014 including interiors that were too dark \u2014 and improved parity with the PC release on PS5 and Xbox Series X|S."
+  },
+  {
+    "type": "h2",
+    "text": "And underneath the graphics, CDPR changed the actual game"
+  },
+  {
+    "type": "p",
+    "text": "This is the bit that makes Remastered more interesting than another \u201clook, shinier puddles\u201d update. Skills have been reorganised into a proper tree and rebalanced. Combat behaviour for a range of monsters has been polished. Geralt gets improved movement and animation, new finishers, better climbing and vaulting, while Roach gets revised movement and collision behaviour."
+  },
+  {
+    "type": "p",
+    "text": "Photo Mode has been massively expanded, meditation now uses a timelapse, nearby loot can be grouped into one window, and cross-platform mod support arrives through mod.io. There's even an accessibility preset designed to reduce cognitive load."
+  },
+  {
+    "type": "h2",
+    "text": "So should you jump in right now?"
+  },
+  {
+    "type": "p",
+    "text": "If you already own The Witcher 3 , the value proposition is easy: Remastered is a free upgrade in the same platform ecosystem, and CDPR now includes Hearts of Stone and Blood and Wine for owners as part of the package."
+  },
+  {
+    "type": "p",
+    "text": "On PC, the first few days are a reminder that huge renderer overhauls tend to shake loose weird edge cases. Hotfix 5.00c deals with several of the nastier ones, and CDPR says it is still investigating reported issues."
+  },
+  {
+    "type": "h2",
+    "text": "Sources and further reading"
+  },
+  {
+    "type": "p",
+    "text": "CD PROJEKT RED \u2014 Hotfix 5.00c CD PROJEKT RED \u2014 Remastered patch notes CD PROJEKT RED Press Center \u2014 launch details NVIDIA \u2014 Remastered graphics technology"
+  },
+  {
+    "type": "p",
+    "text": "Read next: Your Regular PS5 Just Got an AI Graphics Upgrade \u2192 \u00b7 Back to STATIC \u2192"
+  }
+]

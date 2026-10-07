@@ -1,0 +1,15 @@
+{
+  "output": "personal-data.html",
+  "title": "Personal data | VoltTech",
+  "description": "Your secure VoltTech customer workspace.",
+  "robots": "noindex, nofollow",
+  "canonical": "https://volttechcomputerco.co.za/personal-data.html",
+  "config": true,
+  "family": "customer",
+  "scripts": [
+    "frontend/controllers/customer.js"
+  ],
+  "data": {
+    "kind": "personal-data"
+  }
+}

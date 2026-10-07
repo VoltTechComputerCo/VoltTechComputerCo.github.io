@@ -1,0 +1,66 @@
+[
+  {
+    "type": "p",
+    "text": "Every build guide on the internet leads with a parts list. This one won't, because the parts list is the easy part \u2014 the thing that actually determines whether your build feels great or feels like a waste of money is how you split the budget between components before you buy anything."
+  },
+  {
+    "type": "p",
+    "text": "Component marketing is built around numbers that are easy to compare and mostly disconnected from how a PC actually feels to use: core counts, clock speeds, VRAM totals, boost figures under ideal lab conditions. None of that tells you what matters, which is how the machine performs in the specific things you actually do with it."
+  },
+  {
+    "type": "h2",
+    "text": "Start with what you're actually doing, not a \"gaming PC\" template"
+  },
+  {
+    "type": "p",
+    "text": "\"Gaming PC\" isn't one thing. A build for competitive shooters at high frame rates looks different from a build for single-player, visually heavy titles, which looks different again from a build that also needs to handle video editing or 3D work. Decide what you're actually optimising for before you look at a single part."
+  },
+  {
+    "type": "h2",
+    "text": "Where the money should actually go"
+  },
+  {
+    "type": "p",
+    "text": "GPU first, for gaming. For almost any gaming-focused build, the graphics card should get the largest single share of the budget \u2014 it's the component doing the actual rendering work, and it's the one that determines what settings and resolution are realistic. A common mistake is overspending on the CPU and underspending on the GPU, which leaves a system that benchmarks well on paper and disappoints in actual games."
+  },
+  {
+    "type": "p",
+    "text": "Don't starve the CPU either. The flip side matters too \u2014 pairing a flagship GPU with a budget CPU creates a bottleneck where the graphics card sits underused because the processor can't feed it fast enough, especially at high frame rates in CPU-heavy games. Balance beats extremes in either direction."
+  },
+  {
+    "type": "p",
+    "text": "Never cheap out on the power supply. This is the one component where saving money is a genuine risk rather than just a performance trade-off. A poor-quality PSU can damage other components if it fails, and it's the hardest thing to \"tell\" is bad until it's too late. Buy from a reputable brand at the correct wattage for your build, with headroom for upgrades later."
+  },
+  {
+    "type": "p",
+    "text": "RAM: enough is enough. Beyond a certain point, more RAM stops improving gaming performance at all \u2014 it just sits unused. Getting the right amount, at a reasonable speed, matters far more than chasing the highest capacity or fastest-rated kit on the shelf."
+  },
+  {
+    "type": "p",
+    "text": "Storage generation matters less than people think. The jump from a hard drive to any SSD is transformative. The jump from one generation of NVMe SSD to the next, in most real-world everyday use including gaming, is barely noticeable outside of specific workloads like large file transfers or professional video work."
+  },
+  {
+    "type": "h2",
+    "text": "The \"future-proofing\" trap"
+  },
+  {
+    "type": "p",
+    "text": "It's tempting to overspend now to avoid upgrading later, but hardware value doesn't work that way \u2014 a slightly better GPU today is rarely worth the same money as simply upgrading in two to three years when prices and performance-per-rand have both moved. Building a balanced system now, with a case and PSU that can support an upgrade later, is usually the smarter long-term spend than maxing out every component on day one."
+  },
+  {
+    "type": "h2",
+    "text": "When it's worth building yourself vs having it done"
+  },
+  {
+    "type": "p",
+    "text": "Building your own is a genuinely good way to learn how a PC works, and for a lot of people that's half the point. But it's also easy to get the budget split wrong on a first build, buy incompatible parts, or run into a stability issue that's hard to diagnose without experience \u2014 a loose RAM stick, a CPU cooler that's not seated correctly, a PSU that's technically enough wattage but poorly rated for it. None of that is difficult to avoid with the right guidance."
+  },
+  {
+    "type": "h3",
+    "text": "Troubleshooting an existing PC instead?"
+  },
+  {
+    "type": "p",
+    "text": "If the problem is performance, crashes, thermals or an upgrade decision on a PC you already own, VoltTech's free Signal Scan can help narrow the likely service path before you spend money on parts. VoltTech support is South Africa-focused."
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "output": "repair-authorisation.html",
+  "title": "Repair Authorisation | VoltTech",
+  "description": "VoltTech policies and customer information.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/repair-authorisation.html",
+  "config": true,
+  "family": "legal",
+  "scripts": [
+    "frontend/controllers/common.js"
+  ]
+}

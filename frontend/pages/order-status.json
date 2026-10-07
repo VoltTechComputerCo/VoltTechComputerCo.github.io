@@ -1,0 +1,15 @@
+{
+  "output": "order-status.html",
+  "title": "Track your order | VoltTech",
+  "description": "Check an order request using its secure reference and access token.",
+  "robots": "noindex, nofollow",
+  "canonical": "https://volttechcomputerco.co.za/order-status.html",
+  "config": true,
+  "family": "commerce",
+  "scripts": [
+    "frontend/controllers/commerce.js"
+  ],
+  "data": {
+    "kind": "status"
+  }
+}

@@ -1,0 +1,60 @@
+[
+  {
+    "type": "p",
+    "text": "Physical PlayStation 3 games just became much easier to use on a modern computer. The RPCS3 team says its open-source emulator can now boot games directly from a compatible Blu-ray disc drive , removing the old requirement to create a full game dump before playing."
+  },
+  {
+    "type": "p",
+    "text": "It sounds like a small quality-of-life change. For collectors, preservation and anyone testing an old physical library, it is much bigger."
+  },
+  {
+    "type": "h2",
+    "text": "From \u201cdump it first\u201d to disc-in, game-on"
+  },
+  {
+    "type": "p",
+    "text": "The new workflow lets RPCS3 access a legally owned PS3 disc from supported optical hardware. There are caveats: not every Blu-ray drive can read PS3 media, and users still need the appropriate disc decryption key. This is not a bypass for Sony's content protection."
+  },
+  {
+    "type": "image",
+    "src": "https://www.elotrolado.net/w/images/6/66/RPCS3_INTERFACE.png",
+    "alt": "RPCS3 game library interface"
+  },
+  {
+    "type": "h2",
+    "text": "Why direct playback matters"
+  },
+  {
+    "type": "p",
+    "text": "A PS3 Blu-ray can consume tens of gigabytes when dumped. Multiply that by a shelf of games and local storage disappears quickly. Direct playback means a collector can test or play compatible discs without permanently duplicating the whole library onto an SSD."
+  },
+  {
+    "type": "p",
+    "text": "The preservation angle matters even more. Physical media is independent of an account server or storefront. RPCS3's own announcement emphasizes playing games released as far back as 20 years ago without depending on servers."
+  },
+  {
+    "type": "h2",
+    "text": "A feature users were already asking for"
+  },
+  {
+    "type": "p",
+    "text": "A March 2026 RPCS3 GitHub request described almost exactly this experience: mount a PS3 disc and play without first producing a traditional dump. By August, users were already reporting disc-drive-specific behaviour. The project is now publicly presenting direct playback as a usable workflow across its supported desktop platforms."
+  },
+  {
+    "type": "image",
+    "src": "https://pbs.twimg.com/media/F3tGdCKXoAAUbRJ.jpg",
+    "alt": "God of War III running through RPCS3"
+  },
+  {
+    "type": "h2",
+    "text": "There are still limits"
+  },
+  {
+    "type": "p",
+    "text": "This does not make every USB Blu-ray drive compatible. Check RPCS3's current documentation before buying hardware specifically for the feature. Digital PS3 games and DLC remain a different workflow."
+  },
+  {
+    "type": "p",
+    "text": "RPCS3 is an emulator, not a source of copyrighted games or keys. The straightforward use case is your own physical software and the data needed to use it. Within that boundary, direct-disc playback is exactly the kind of unglamorous feature that makes preservation software substantially better."
+  }
+]

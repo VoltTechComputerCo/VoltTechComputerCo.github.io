@@ -1,0 +1,16 @@
+{
+  "output": "pc-repair-pretoria.html",
+  "title": "PC repair in Pretoria | VoltTech",
+  "description": "Boot failures, crashes and strange noises deserve a diagnosis before a parts list.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/pc-repair-pretoria.html",
+  "config": true,
+  "family": "services",
+  "scripts": [
+    "frontend/controllers/services.js"
+  ],
+  "data": {
+    "key": "repair",
+    "label": "PC repair"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "output": "static-comic-con-africa-2026-vs-gaming-masters-aftermath.html",
+  "title": "Kitsune Conquered Comic Con Africa \u2014 Inside the VS Gaming Masters 2026 Aftermath | VoltTech",
+  "description": "Kitsune won the 2026 VS Gaming Masters at Comic Con Africa, HighBorn finished second, and SA Counter-Strike took over Hall 6. Results, context and the wider Comic Con aftermath.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/static-comic-con-africa-2026-vs-gaming-masters-aftermath.html",
+  "config": true,
+  "family": "editorial",
+  "scripts": [
+    "frontend/controllers/editorial.js"
+  ],
+  "data": {
+    "kind": "article",
+    "published": "2026-10-01T12:35:00+02:00",
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Kitsune Conquered Comic Con Africa \u2014 Inside the VS Gaming Masters 2026 Aftermath",
+        "datePublished": "2026-10-01T12:35:00+02:00",
+        "mainEntityOfPage": "https://volttechcomputerco.co.za/static-comic-con-africa-2026-vs-gaming-masters-aftermath",
+        "image": "https://www.proavl-mea.com/img/Comicon-66.jpg",
+        "publisher": {
+          "@type": "Organization",
+          "name": "STATIC by VoltTech Computer Co."
+        }
+      }
+    ]
+  },
+  "og_image": "https://www.proavl-mea.com/img/Comicon-66.jpg",
+  "og_type": "article"
+}

@@ -1,0 +1,15 @@
+{
+  "output": "creator-register.html",
+  "title": "Creator registration | VoltTech",
+  "description": "Connect Twitch to join the South African Creator Hub.",
+  "robots": "noindex, follow",
+  "canonical": "https://volttechcomputerco.co.za/creator-register.html",
+  "config": true,
+  "family": "creators",
+  "scripts": [
+    "frontend/controllers/creators.js"
+  ],
+  "data": {
+    "kind": "register"
+  }
+}

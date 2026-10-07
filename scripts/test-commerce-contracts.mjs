@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';import * as C from '../frontend/adapters/commerce.js';
+globalThis.location={origin:'https://volttechcomputerco.co.za',href:'https://volttechcomputerco.co.za/checkout.html'};
+const genuine={id:'genuine',status:'active',visibility:'public',sale_mode:'direct',is_demo:false,stock_qty:3};
+assert.equal(C.publicProducts([{...genuine,is_demo:true},genuine,{...genuine,is_demo:null},{...genuine,status:'draft'},{...genuine,visibility:'private'},{...genuine,sale_mode:'hidden'}]).length,1);
+assert.ok(C.eligibleCart([{productId:'genuine',quantity:3}],[genuine]));assert.ok(!C.eligibleCart([{productId:'genuine',quantity:4}],[genuine]));assert.ok(!C.canAdd({...genuine,stock_status:'out-of-stock'}));
+for(const cart of [[{productId:'x',quantity:0}],[{productId:'x',quantity:26}],[{productId:'x',quantity:1.2}],[{productId:'x',quantity:1},{productId:'x',quantity:1}]])assert.equal(C.checkoutCart(cart),null);
+const token='a'.repeat(64),params=new URLSearchParams({ref:'VT-ORDER',token});assert.ok(C.validOrderAccess(params));assert.equal(C.validOrderAccess(new URLSearchParams({ref:'VT-ORDER',token:'bad'})),null);
+assert.ok(C.statusDestination({status_url:`/order-status.html?${params}`}));for(const status_url of [`https://evil.example/order-status.html?${params}`,`/account.html?${params}`,`/order-status.html?ref=VT-ORDER&token=bad`])assert.equal(C.statusDestination({status_url}), '');
+assert.ok(C.paymentDestination('https://c.yoco.com/test'));for(const target of ['http://c.yoco.com/test','https://c.yoco.com.evil.example/test','https://user@c.yoco.com/test','javascript:alert(1)'])assert.equal(C.paymentDestination(target),'');
+const rates={configured:true,ready:true,environment:'production',rates:[{currency:'ZAR',amount:90},{currency:'ZAR',amount:60}]};assert.equal(C.shippingRate(rates).amount,60);assert.equal(C.shippingRate({...rates,environment:'sandbox'}),null);assert.equal(C.shippingRate({...rates,rates:[{currency:'USD',amount:1}]}),null);
+const payable={can_pay:true,checkout_stage:'awaiting_payment',payment_status:'unpaid',total:500};assert.ok(C.canPay(payable,{direct_payment_enabled:true}));assert.ok(!C.canPay(payable,{direct_payment_enabled:false}));assert.ok(!C.canPay({...payable,payment_status:'paid'},{direct_payment_enabled:true}));
+console.log('PASS: strict genuine catalogue, stock/quantity, guest access, shipping environment, provider redirect and payment gates');

@@ -1,0 +1,35 @@
+{
+  "output": "signal-scan.html",
+  "title": "Signal Scan | VoltTech",
+  "description": "A guided symptom check. No hardware scanning, no guessing a diagnosis.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/signal-scan.html",
+  "config": true,
+  "family": "diagnostics",
+  "scripts": [
+    "frontend/controllers/diagnostics.js"
+  ],
+  "data": {
+    "kind": "signal",
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "VoltTech Signal Scan",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web",
+        "url": "https://volttechcomputerco.co.za/signal-scan",
+        "description": "Answer-based diagnostic triage for common PC faults with practical VoltTech service estimates.",
+        "provider": {
+          "@id": "https://volttechcomputerco.co.za/#organisation"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "South Africa"
+        },
+        "image": "https://volttechcomputerco.co.za/vt-signal.webp",
+        "isAccessibleForFree": true
+      }
+    ]
+  }
+}

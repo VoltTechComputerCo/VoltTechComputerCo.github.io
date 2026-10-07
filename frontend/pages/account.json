@@ -1,0 +1,15 @@
+{
+  "output": "account.html",
+  "title": "Your account | VoltTech",
+  "description": "Your secure VoltTech customer workspace.",
+  "robots": "noindex, nofollow",
+  "canonical": "https://volttechcomputerco.co.za/account.html",
+  "config": true,
+  "family": "customer",
+  "scripts": [
+    "frontend/controllers/customer.js"
+  ],
+  "data": {
+    "kind": "account"
+  }
+}

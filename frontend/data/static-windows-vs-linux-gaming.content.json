@@ -1,0 +1,54 @@
+[
+  {
+    "type": "p",
+    "text": "Every \"Linux gaming is finally ready\" post has been written roughly annually since 2015, and every single one of them has been a little bit right and a little bit lying to you. This isn't going to be another one. Linux gaming genuinely is in a different place than it used to be \u2014 but \"different\" and \"you should switch today\" aren't the same sentence, and most of the discourse treats them like they are."
+  },
+  {
+    "type": "h2",
+    "text": "What actually changed, and it's not small"
+  },
+  {
+    "type": "p",
+    "text": "Proton \u2014 Valve's compatibility layer that lets Windows games run on Linux, built into Steam \u2014 is the whole story here, and it's a genuinely remarkable piece of engineering. It's translated years of \"Linux can't run that\" into \"Linux probably runs that, check ProtonDB first\" for a huge slice of the library. The Steam Deck existing as a mass-market Linux gaming device, and being good, did more for Linux gaming's credibility in three years than the previous two decades of advocacy managed."
+  },
+  {
+    "type": "p",
+    "text": "For a large chunk of single-player games with no aggressive anti-cheat, Linux compatibility genuinely is close to solved. Not theoretically \u2014 practically, day-to-day, boringly fine."
+  },
+  {
+    "type": "h2",
+    "text": "Where it still, honestly, isn't there"
+  },
+  {
+    "type": "p",
+    "text": "Kernel-level anti-cheat is the real wall , not driver support or missing features. A meaningful chunk of the biggest competitive multiplayer games on the market either don't support Linux at all or actively detect and block it, because their anti-cheat runs at a level Linux can't (or won't, depending who you ask) provide equivalent access to. If your gaming life is built around a couple of specific always-online competitive titles, this isn't a \"check ProtonDB\" problem \u2014 it's frequently just a hard no, and no amount of tinkering fixes it."
+  },
+  {
+    "type": "p",
+    "text": "Day-one compatibility is still a gamble , even for games that eventually work fine. New releases often need a patch, a specific Proton version, or a community fix before they run well \u2014 sometimes days, sometimes longer. If you're the type who needs to play a big release the exact night it drops with zero friction, that's still a real tax."
+  },
+  {
+    "type": "p",
+    "text": "Peripheral and software support outside gaming itself is the unglamorous part nobody puts in the highlight reel. RGB control software, some driver-level GPU overclocking tools, certain streaming and recording setups \u2014 the gaming part might work great while the stuff around the gaming part needs more patience than Windows demands."
+  },
+  {
+    "type": "h2",
+    "text": "So who should actually make the switch"
+  },
+  {
+    "type": "p",
+    "text": "Honestly? People whose libraries lean single-player and mid-size multiplayer without kernel anti-cheat, who don't mind occasionally googling a fix, and who get something out of the tinkering itself rather than treating it as pure friction. That's a real and growing group \u2014 it's just not everyone, and pretending otherwise is how you end up back on Windows within a month, annoyed, having wasted a weekend."
+  },
+  {
+    "type": "p",
+    "text": "People who should probably wait, or dual-boot rather than fully commit: anyone whose main games live in competitive anti-cheat territory, or anyone who genuinely doesn't want to spend any time troubleshooting, ever, ideally. Neither of those is a character flaw. They're just accurately describing what Linux gaming currently asks of you, even now, even with how far it's come."
+  },
+  {
+    "type": "h2",
+    "text": "The actually honest conclusion"
+  },
+  {
+    "type": "p",
+    "text": "Linux gaming didn't \"win.\" It graduated from \"hobbyist curiosity\" to \"legitimate option for a specific, sizeable slice of gamers,\" which is a much bigger deal than it sounds and a much smaller deal than the most enthusiastic corners of the internet will tell you. Windows remains the path of least resistance for gaming broadly. Linux is no longer the punishing detour it used to be for the people it actually suits. Both of those things are true simultaneously, and anyone selling you a cleaner story than that is selling something."
+  }
+]

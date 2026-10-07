@@ -1,0 +1,1202 @@
+[
+  {
+    "route": "404.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "account.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "activity.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "build-document.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "builder/index.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "builds.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "checkout.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "creator-hub-south-africa.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "creator-register.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "delivery-collection.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "design-system.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "documents.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "exposure-scan.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "index.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "invoice.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "legal.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "order-document.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "order-status.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "paia.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "pc-performance-optimisation.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "pc-repair-pretoria.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "pc-upgrades-pretoria.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "personal-data.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "privacy-center.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "privacy-policy.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "privacy.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "product.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "proforma.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "quote-terms.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "quote.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "quotes.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "receipt.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "repair-authorisation.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "returns-warranty.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "service-record.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "signal-scan.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-amd-ryzen-5-5500f-7500-budget-cpus.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-amd-world-labs-spatial-ai-acquisition.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-apple-iphone-duo-first-foldable.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-building-a-pc-2026.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-comic-con-africa-2026-vs-gaming-masters-aftermath.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-dlss-5-nba-2k27-neural-rendering.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-driver-crashes.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-gears-of-war-e-day-pc-early-access.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-gpu-price-history.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-lan-culture.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-lego-playstation-1911-piece.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-ltt-best-pc-2026.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-malware-disguises.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-metroid-ravenous-switch-2.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-modern-warfare-4-pc-specs-90fps-ray-tracing.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-nopixel-v-rockstar-gta-rp.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-nvidia-hugging-face.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-pc-throttling.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-physint-xbox-publishing.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-ps5-qssr-ai-upscaling.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-ram-myth.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-rpcs3-direct-disc-playback.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-sa-varsity-esports-pretoria-2026.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-scalebound-kamiya.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-silent-pc-build.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-south-african-counter-strike-vs-gaming-masters-2026.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-ssd-vs-hdd-2026.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-starcraft-open-world-shooter-2030.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-tim-sweeney-hardware-crisis.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-valheim-1-0-deep-north-launch.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-white-house-tetris.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-windows-vs-linux-gaming.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-witcher-3-remastered-hotfix-pc.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-xbox-cloud-gaming-hour-limits.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-xbox-game-pass-september-2026-stacked-lineup.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static-zelda-40th-anniversary-direct-today.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "static.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "store.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "stream-scan.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "streaming-setup-south-africa-dynamic.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "streaming-setup-south-africa.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "terms.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "virus-malware-removal-pretoria.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "windows-installation-pretoria.html",
+    "width": 360,
+    "status": "PASS"
+  },
+  {
+    "route": "404.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "account.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "activity.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "build-document.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "builder/index.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "builds.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "checkout.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "creator-hub-south-africa.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "creator-register.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "delivery-collection.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "design-system.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "documents.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "exposure-scan.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "index.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "invoice.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "legal.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "order-document.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "order-status.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "paia.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "pc-performance-optimisation.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "pc-repair-pretoria.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "pc-upgrades-pretoria.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "personal-data.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "privacy-center.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "privacy-policy.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "privacy.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "product.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "proforma.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "quote-terms.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "quote.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "quotes.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "receipt.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "repair-authorisation.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "returns-warranty.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "service-record.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "signal-scan.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-amd-ryzen-5-5500f-7500-budget-cpus.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-amd-world-labs-spatial-ai-acquisition.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-apple-iphone-duo-first-foldable.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-building-a-pc-2026.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-comic-con-africa-2026-vs-gaming-masters-aftermath.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-dlss-5-nba-2k27-neural-rendering.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-driver-crashes.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-gears-of-war-e-day-pc-early-access.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-gpu-price-history.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-lan-culture.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-lego-playstation-1911-piece.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-ltt-best-pc-2026.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-malware-disguises.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-metroid-ravenous-switch-2.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-modern-warfare-4-pc-specs-90fps-ray-tracing.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-nopixel-v-rockstar-gta-rp.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-nvidia-hugging-face.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-pc-throttling.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-physint-xbox-publishing.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-ps5-qssr-ai-upscaling.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-ram-myth.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-rpcs3-direct-disc-playback.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-sa-varsity-esports-pretoria-2026.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-scalebound-kamiya.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-silent-pc-build.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-south-african-counter-strike-vs-gaming-masters-2026.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-ssd-vs-hdd-2026.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-starcraft-open-world-shooter-2030.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-tim-sweeney-hardware-crisis.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-valheim-1-0-deep-north-launch.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-white-house-tetris.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-windows-vs-linux-gaming.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-witcher-3-remastered-hotfix-pc.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-xbox-cloud-gaming-hour-limits.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-xbox-game-pass-september-2026-stacked-lineup.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static-zelda-40th-anniversary-direct-today.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "static.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "store.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "stream-scan.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "streaming-setup-south-africa-dynamic.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "streaming-setup-south-africa.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "terms.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "virus-malware-removal-pretoria.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "windows-installation-pretoria.html",
+    "width": 390,
+    "status": "PASS"
+  },
+  {
+    "route": "404.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "account.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "activity.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "build-document.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "builder/index.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "builds.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "checkout.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "creator-hub-south-africa.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "creator-register.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "delivery-collection.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "design-system.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "documents.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "exposure-scan.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "index.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "invoice.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "legal.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "order-document.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "order-status.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "paia.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "pc-performance-optimisation.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "pc-repair-pretoria.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "pc-upgrades-pretoria.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "personal-data.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "privacy-center.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "privacy-policy.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "privacy.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "product.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "proforma.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "quote-terms.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "quote.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "quotes.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "receipt.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "repair-authorisation.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "returns-warranty.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "service-record.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "signal-scan.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-amd-ryzen-5-5500f-7500-budget-cpus.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-amd-world-labs-spatial-ai-acquisition.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-apple-iphone-duo-first-foldable.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-building-a-pc-2026.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-comic-con-africa-2026-vs-gaming-masters-aftermath.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-dlss-5-nba-2k27-neural-rendering.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-driver-crashes.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-gears-of-war-e-day-pc-early-access.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-gpu-price-history.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-lan-culture.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-lego-playstation-1911-piece.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-ltt-best-pc-2026.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-malware-disguises.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-metroid-ravenous-switch-2.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-modern-warfare-4-pc-specs-90fps-ray-tracing.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-nopixel-v-rockstar-gta-rp.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-nvidia-hugging-face.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-pc-throttling.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-physint-xbox-publishing.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-ps5-qssr-ai-upscaling.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-ram-myth.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-rpcs3-direct-disc-playback.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-sa-varsity-esports-pretoria-2026.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-scalebound-kamiya.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-silent-pc-build.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-south-african-counter-strike-vs-gaming-masters-2026.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-ssd-vs-hdd-2026.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-starcraft-open-world-shooter-2030.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-tim-sweeney-hardware-crisis.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-valheim-1-0-deep-north-launch.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-white-house-tetris.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-windows-vs-linux-gaming.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-witcher-3-remastered-hotfix-pc.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-xbox-cloud-gaming-hour-limits.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-xbox-game-pass-september-2026-stacked-lineup.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static-zelda-40th-anniversary-direct-today.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "static.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "store.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "stream-scan.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "streaming-setup-south-africa-dynamic.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "streaming-setup-south-africa.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "terms.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "virus-malware-removal-pretoria.html",
+    "width": 1440,
+    "status": "PASS"
+  },
+  {
+    "route": "windows-installation-pretoria.html",
+    "width": 1440,
+    "status": "PASS"
+  }
+]

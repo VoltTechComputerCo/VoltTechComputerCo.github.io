@@ -1,0 +1,78 @@
+[
+  {
+    "type": "p",
+    "text": "You're twenty minutes into a session, frame rate's dropping, fans are screaming, and your instinct is to blame the GPU. Nine times out of ten, that's not what's actually happening. Your hardware isn't underpowered \u2014 it's overheating, and the system is deliberately slowing itself down to survive."
+  },
+  {
+    "type": "p",
+    "text": "That's thermal throttling: a safety mechanism built into every modern CPU and GPU. When a chip hits its temperature ceiling, it automatically drops its clock speed to bring temperatures back down. It's not a bug \u2014 it's the chip protecting itself. The problem is that most people never find out it's happening, because the PC doesn't crash or show an error. It just quietly gets slower, and stays that way until it cools down."
+  },
+  {
+    "type": "h2",
+    "text": "How to tell if it's actually happening to you"
+  },
+  {
+    "type": "p",
+    "text": "The pattern is distinctive once you know what to look for: performance is fine for the first several minutes of a demanding game or render, then drops noticeably and stays down \u2014 rather than being consistently mediocre from the start. That \"fine, then falls off a cliff\" shape is the giveaway."
+  },
+  {
+    "type": "p",
+    "text": "You can confirm it properly with a monitoring tool running in the background while you game or render. AIDA64 and HWiNFO are the standard picks \u2014 both will show you live CPU and GPU temperatures, and most will flag a \"throttling\" or \"power limit\" event directly. If temperatures are pushing past 85\u201390\u00b0C on a GPU or 95\u00b0C+ on a CPU right as your frame rate drops, that's your answer."
+  },
+  {
+    "type": "h2",
+    "text": "The usual causes, roughly in order of likelihood"
+  },
+  {
+    "type": "p",
+    "text": "Dust buildup. This is the single most common cause, full stop \u2014 especially in South African conditions where dusty environments and infrequent case cleaning are the norm rather than the exception. Dust clogs heatsink fins and fan blades, and airflow that should be moving heat out of the case just stalls. A PC that's 2\u20133 years old and has never been opened up almost always has this problem to some degree."
+  },
+  {
+    "type": "p",
+    "text": "Dried-out thermal paste. The paste between your CPU and its cooler degrades over time \u2014 usually somewhere between 2 and 5 years, depending on quality and how hard the system runs. Once it dries, it stops transferring heat efficiently, even if everything else is spotless."
+  },
+  {
+    "type": "p",
+    "text": "Undersized or poorly mounted cooling. A cooler that was adequate for a stock CPU won't keep up if you've since overclocked, or if the CPU was ever swapped for a hotter model without upgrading the cooler to match. Poor mounting pressure from a first-time PC build can cause the same problem even with good hardware."
+  },
+  {
+    "type": "p",
+    "text": "Bad case airflow, not just bad cooling. Even a great CPU cooler and GPU can throttle if the case itself is starving for fresh air \u2014 too few intake fans, dust filters clogged, or cables blocking airflow paths. Heat has to actually leave the case, not just move around inside it."
+  },
+  {
+    "type": "p",
+    "text": "Laptops are a special case. Thin chassis simply don't have room for the cooling a desktop does, so laptops throttle far more readily \u2014 often by design, to stay within a much tighter thermal and power budget. Elevating a laptop slightly for airflow underneath and keeping the intake vents clear helps more than people expect."
+  },
+  {
+    "type": "h2",
+    "text": "What you can check yourself"
+  },
+  {
+    "type": "ul",
+    "items": [
+      "Open the case and look. If you can see a visible layer of dust on the heatsink fins or fans, that's very likely contributing.",
+      "Listen to the fans. Fans ramping to full speed and staying there under load is the system fighting a heat problem \u2014 not a sign anything is broken.",
+      "Check ambient temperature and airflow around the case itself. A PC tucked into a closed desk cubby with no ventilation will run hotter than the exact same PC sitting in open air, regardless of internal cooling."
+    ]
+  },
+  {
+    "type": "h2",
+    "text": "When it's worth calling someone in"
+  },
+  {
+    "type": "p",
+    "text": "A basic dust-out with compressed air is safe to do yourself. Repasting the CPU, reseating a cooler properly, or diagnosing whether the problem is actually a failing fan, a dying pump on a liquid cooler, or a VRM (power delivery) heat issue rather than the CPU or GPU itself \u2014 that's where it's worth having it looked at properly, particularly if you're not confident opening up a laptop."
+  },
+  {
+    "type": "h3",
+    "text": "Think your PC might be throttling?"
+  },
+  {
+    "type": "p",
+    "text": "VoltTech's Performance Optimisation service includes a proper thermal check, repaste, and airflow review \u2014 benchmarked before and after so you can actually see the difference. Or run the free Signal Scan diagnostic first if you're not sure what's wrong."
+  },
+  {
+    "type": "p",
+    "text": "If it's more than just heat \u2014 random crashes, blue screens, or something that doesn't resolve after a clean-out \u2014 that usually points to a different underlying issue rather than pure thermal throttling. Worth a full diagnostic rather than continuing to guess."
+  }
+]

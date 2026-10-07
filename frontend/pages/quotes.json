@@ -1,0 +1,15 @@
+{
+  "output": "quotes.html",
+  "title": "Quotes | VoltTech",
+  "description": "Your secure VoltTech customer workspace.",
+  "robots": "noindex, nofollow",
+  "canonical": "https://volttechcomputerco.co.za/quotes.html",
+  "config": true,
+  "family": "customer",
+  "scripts": [
+    "frontend/controllers/customer.js"
+  ],
+  "data": {
+    "kind": "quotes"
+  }
+}

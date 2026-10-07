@@ -1,0 +1,48 @@
+{
+  "output": "static-scalebound-kamiya.html",
+  "title": "Scalebound Still Won\u2019t Die \u2014 and Hideki Kamiya Wants Xbox to Bring It Back | VoltTech",
+  "description": "Hideki Kamiya says he is completely serious about wanting to finish Scalebound one day. There is no revival announcement \u2014 but Okami makes the dream harder to dismiss.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/static-scalebound-kamiya.html",
+  "config": true,
+  "family": "editorial",
+  "scripts": [
+    "frontend/controllers/editorial.js"
+  ],
+  "data": {
+    "kind": "article",
+    "published": "2026-09-05T09:00:00+02:00",
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Scalebound Still Won\u2019t Die \u2014 and Hideki Kamiya Wants Xbox to Bring It Back",
+        "description": "Hideki Kamiya says he is completely serious about wanting to finish Scalebound one day. There is no revival announcement \u2014 but Okami makes the dream harder to dismiss.",
+        "datePublished": "2026-09-05T09:00:00+02:00",
+        "dateModified": "2026-09-05T09:00:00+02:00",
+        "mainEntityOfPage": "https://volttechcomputerco.co.za/static-scalebound-kamiya",
+        "image": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png",
+        "author": {
+          "@type": "Organization",
+          "name": "STATIC by VoltTech Computer Co."
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "VoltTech Computer Co.",
+          "url": "https://volttechcomputerco.co.za/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png"
+          }
+        },
+        "isPartOf": {
+          "@type": "Blog",
+          "name": "STATIC",
+          "url": "https://volttechcomputerco.co.za/static"
+        }
+      }
+    ]
+  },
+  "og_image": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png",
+  "og_type": "article"
+}

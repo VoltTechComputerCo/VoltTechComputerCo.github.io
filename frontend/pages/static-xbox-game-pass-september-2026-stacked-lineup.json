@@ -1,0 +1,48 @@
+{
+  "output": "static-xbox-game-pass-september-2026-stacked-lineup.html",
+  "title": "Xbox Just Made Game Pass Very Hard to Ignore | VoltTech",
+  "description": "Xbox's September 2026 Game Pass wave adds Dune: Awakening, Minecraft Dungeons II and Gears of War: E-Day. STATIC breaks down the dates, tiers and value for South African gamers.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/static-xbox-game-pass-september-2026-stacked-lineup.html",
+  "config": true,
+  "family": "editorial",
+  "scripts": [
+    "frontend/controllers/editorial.js"
+  ],
+  "data": {
+    "kind": "article",
+    "published": "2026-09-16T09:00:00+02:00",
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Xbox Just Made Game Pass Very Hard to Ignore",
+        "description": "Xbox's September 2026 Game Pass wave adds Dune: Awakening, Minecraft Dungeons II and Gears of War: E-Day. STATIC breaks down the dates, tiers and value for South African gamers.",
+        "datePublished": "2026-09-16T09:00:00+02:00",
+        "dateModified": "2026-09-16T09:00:00+02:00",
+        "mainEntityOfPage": "https://volttechcomputerco.co.za/static-xbox-game-pass-september-2026-stacked-lineup",
+        "image": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/06/CA_TheWorm-d8162eac2608de43d89b.jpg",
+        "author": {
+          "@type": "Organization",
+          "name": "STATIC by VoltTech Computer Co."
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "VoltTech Computer Co.",
+          "url": "https://volttechcomputerco.co.za/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png"
+          }
+        },
+        "isPartOf": {
+          "@type": "Blog",
+          "name": "STATIC",
+          "url": "https://volttechcomputerco.co.za/static"
+        }
+      }
+    ]
+  },
+  "og_image": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/06/CA_TheWorm-d8162eac2608de43d89b.jpg",
+  "og_type": "article"
+}

@@ -1,0 +1,59 @@
+{
+  "output": "stream-scan.html",
+  "title": "Stream Scan | VoltTech",
+  "description": "Work through streaming symptoms and share a useful summary with VoltTech.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/stream-scan.html",
+  "config": true,
+  "family": "diagnostics",
+  "scripts": [
+    "frontend/controllers/diagnostics.js"
+  ],
+  "data": {
+    "kind": "stream",
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "VoltTech Stream Scan",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web",
+        "url": "https://volttechcomputerco.co.za/stream-scan",
+        "description": "Answer-based streaming diagnostic helper for OBS, Streamlabs, encoder, rendering, network, video quality and audio problems.",
+        "provider": {
+          "@id": "https://volttechcomputerco.co.za/#organisation"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "South Africa"
+        },
+        "image": "https://volttechcomputerco.co.za/vt-px-streaming-setup.webp",
+        "isAccessibleForFree": true
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "VoltTech Computer Co.",
+            "item": "https://volttechcomputerco.co.za/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Creator Hub",
+            "item": "https://volttechcomputerco.co.za/creator-hub-south-africa"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Stream Scan",
+            "item": "https://volttechcomputerco.co.za/stream-scan"
+          }
+        ]
+      }
+    ]
+  }
+}

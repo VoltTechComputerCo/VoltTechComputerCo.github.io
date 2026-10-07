@@ -1,0 +1,80 @@
+[
+  {
+    "type": "p",
+    "text": "Screen goes black for two seconds. Comes back. A little \"display driver stopped responding and has recovered\" toast pops up like nothing happened. You immediately start mentally drafting the eBay listing for your GPU. Don't. That notification is Windows' TDR system doing exactly what it's supposed to \u2014 and nine times out of ten, the problem living rent-free on your PC is software, not silicon."
+  },
+  {
+    "type": "p",
+    "text": "This is one of those things that sounds alarming because of how it presents \u2014 sudden, visual, often mid-game right when you least want it \u2014 and that panic response sends a lot of perfectly healthy graphics cards off for RMA they don't need. Let's actually sort out what's happening."
+  },
+  {
+    "type": "h2",
+    "text": "What a TDR crash actually is"
+  },
+  {
+    "type": "p",
+    "text": "TDR stands for Timeout Detection and Recovery, and it's a feature that's been baked into Windows since Vista. If your GPU driver doesn't respond to the OS within a set window \u2014 usually around two seconds \u2014 Windows assumes the driver has hung, resets it, and tries to recover the display without a full system crash. That's the black-screen-then-recovery pattern. It's a safety net catching the driver, not the hardware failing under it."
+  },
+  {
+    "type": "p",
+    "text": "The confusion is understandable, because the symptom looks exactly like what you'd expect from dying hardware: sudden, visual, and scary. But a genuinely failing GPU tends to show a different pattern \u2014 artifacting that gets progressively worse, crashes under light load as well as heavy, or the card not being detected at all. If your PC recovers cleanly and keeps running fine afterward, that's a driver conversation, not a warranty conversation."
+  },
+  {
+    "type": "h2",
+    "text": "The actual causes, ranked by how often we see them"
+  },
+  {
+    "type": "p",
+    "text": "A messy driver install. This is the big one. Driver updates that install over old ones without a clean uninstall leave behind conflicting files, orphaned registry entries, and leftover services from three driver versions ago all fighting for the same job. DDU (Display Driver Uninstaller) exists specifically because \"just install the new one over the old one\" causes more instability than it fixes."
+  },
+  {
+    "type": "p",
+    "text": "An unstable overclock \u2014 yours or the factory's. If you've pushed a manual overclock even slightly too far, TDR crashes are often the very first symptom, well before anything else goes wrong. Less obviously: some factory-overclocked cards ship right at the edge of stability out of the box, and a driver update alone can be enough to tip them over. Worth backing the clocks down a notch before blaming anything else."
+  },
+  {
+    "type": "p",
+    "text": "Power delivery, not power supply capacity. This one trips people up because it sounds like a wattage problem and usually isn't. A PSU that's rated high enough on paper can still deliver dirty or unstable power under sudden load spikes \u2014 the split-second demand of a GPU boosting clocks mid-frame \u2014 if it's an older or lower-quality unit. The card asks for power faster than the PSU can cleanly supply it, and the driver crashes trying to recover."
+  },
+  {
+    "type": "p",
+    "text": "VRAM or system RAM instability. Marginal memory \u2014 GPU VRAM or system RAM running slightly out of spec, or a kit that was never properly stable at its advertised speed \u2014 shows up as exactly this kind of intermittent crash, because it's data-dependent rather than constant. It'll pass a quick check and then fail three hours into a session, which makes it maddening to pin down without actually stress-testing for it."
+  },
+  {
+    "type": "p",
+    "text": "Background software stepping on the driver. Overlay software \u2014 game launchers, recording tools, RGB control apps, even some antivirus suites \u2014 hooks directly into the graphics pipeline to do its thing. Any one of them behaving badly can be enough to stall the driver past that two-second window. If your crashes started right when you installed a new overlay tool, that's not a coincidence worth ignoring."
+  },
+  {
+    "type": "h2",
+    "text": "How to actually narrow it down instead of guessing"
+  },
+  {
+    "type": "ol",
+    "items": [
+      "Clean-wipe the driver with DDU, in Safe Mode, then reinstall fresh. This alone resolves a genuinely large share of TDR issues. Not \"install over the top\" \u2014 a full removal first.",
+      "Check Windows Event Viewer. Under Windows Logs \u2192 System, look for the driver crash event around the time it happened. It'll usually name the specific driver module, which at minimum tells you whether it's actually a display driver problem at all.",
+      "Roll back the clocks. Reset GPU clocks to stock (yes, even \"factory\" boost profiles) and see if the crashes stop. If they do, you've found your culprit without touching a single other component.",
+      "Run a proper stress test, not just a benchmark. Benchmarks are short and clean by design \u2014 they're bad at surfacing marginal instability. Something like OCCT or a few hours of a demanding game is a better test of whether the problem is intermittent-but-real.",
+      "Close overlays one at a time and see what changes. Tedious, but it's the fastest way to rule software conflicts in or out for good."
+    ]
+  },
+  {
+    "type": "h2",
+    "text": "When it actually is the hardware"
+  },
+  {
+    "type": "p",
+    "text": "Fair enough \u2014 sometimes it is. Visible artifacting (odd colours, textures breaking apart, geometry glitching) that persists after a clean driver reinstall and stock clocks is a real hardware signal, especially if it happens even on the desktop or in a basic 2D application. So is the card failing to be detected at POST, or crashes that happen instantly under any load at all rather than intermittently. That's the point where a proper diagnostic \u2014 checking VRM temperatures, testing on a different PSU, swapping the card into another system entirely \u2014 actually earns its keep, rather than another driver reinstall doing nothing for the fourth time."
+  },
+  {
+    "type": "h3",
+    "text": "Not sure if it's the driver or the card?"
+  },
+  {
+    "type": "p",
+    "text": "VoltTech's PC Repair service includes a proper diagnostic pass \u2014 driver conflicts, power delivery, and hardware stress-testing \u2014 so you're not guessing, and definitely not RMA'ing a healthy GPU."
+  },
+  {
+    "type": "p",
+    "text": "Worth saying plainly: this isn't a \"your GPU is definitely fine, stop worrying\" article. It's a \"check the cheap, fast, free things first\" article. Most of the time that's where it ends."
+  }
+]

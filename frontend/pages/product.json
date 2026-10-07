@@ -1,0 +1,15 @@
+{
+  "output": "product.html",
+  "title": "Component details | VoltTech",
+  "description": "Explore component specifications, confirmed availability and build integration.",
+  "robots": "noindex, follow",
+  "canonical": "https://volttechcomputerco.co.za/product.html",
+  "config": true,
+  "family": "commerce",
+  "scripts": [
+    "frontend/controllers/commerce.js"
+  ],
+  "data": {
+    "kind": "product"
+  }
+}

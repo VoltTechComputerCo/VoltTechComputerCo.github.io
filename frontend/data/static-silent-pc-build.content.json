@@ -1,0 +1,64 @@
+[
+  {
+    "type": "p",
+    "text": "There's a particular kind of pride that comes with a PC that draws serious power under load and still sounds like it's doing nothing at all. Not \"quiet for a gaming PC.\" Actually quiet \u2014 the kind where someone walks into the room mid-render and asks if it's even turned on. It's entirely achievable. It's just a slightly different set of priorities than the ones most build guides optimise for."
+  },
+  {
+    "type": "h2",
+    "text": "The uncomfortable truth: airflow and silence want opposite things, sort of"
+  },
+  {
+    "type": "p",
+    "text": "More airflow generally means better cooling, and more airflow generally means more fan noise \u2014 that's the tension every silent build is actually negotiating, not avoiding. The trick isn't picking one side. It's moving heat efficiently enough that you don't need aggressive airflow to manage it, which shifts the problem from \"how do I cool this\" to \"how do I generate less heat, more efficiently, in the first place.\""
+  },
+  {
+    "type": "h2",
+    "text": "Where the actual noise comes from, ranked"
+  },
+  {
+    "type": "p",
+    "text": "Fans, obviously \u2014 but specifically, fan speed curves, not fan count. A counterintuitive truth: two or three larger, slower-spinning fans are almost always quieter than one small fan spinning fast to move the same air, because noise scales aggressively with RPM, not linearly. This is the single highest-leverage lever in a silent build, and it's free \u2014 it's a BIOS or software setting, not a purchase."
+  },
+  {
+    "type": "p",
+    "text": "The GPU cooler, more than people expect. Under real gaming load, a graphics card is very often the loudest single component in the entire case, because it's usually generating the most heat and running the most aggressive fan curve by default out of the box. Manually setting a custom, more gradual fan curve \u2014 accepting slightly higher temperatures in exchange for a lot less noise \u2014 is a legitimate trade-off, not a compromise, for most everyday gaming."
+  },
+  {
+    "type": "p",
+    "text": "Coil whine, the one that isn't actually fixable with airflow at all. That thin, high-pitched electrical noise some GPUs and PSUs produce under load is a manufacturing and component-quality issue, not a cooling or airflow one \u2014 no amount of fan tuning touches it. Worth knowing about specifically so you're not chasing a fan solution to a problem fans were never going to solve."
+  },
+  {
+    "type": "p",
+    "text": "Case panels and resonance. A case with thin metal panels or no sound dampening will audibly amplify vibration from fans and drives alike \u2014 the case itself becomes a speaker for noise you'd otherwise barely notice. This is the most overlooked lever in the entire silent-build conversation."
+  },
+  {
+    "type": "h2",
+    "text": "The practical build priorities, roughly in order"
+  },
+  {
+    "type": "ol",
+    "items": [
+      "Pick a case built for it, not just a case with a lot of fan mounts. Sound-dampened side panels, a front panel that isn't just an open mesh grille blasting fan noise directly outward, and enough internal volume that components aren't crammed close enough to restrict airflow and force fans to work harder than they should.",
+      "Oversize the cooling slightly, then slow it down. A cooler rated well beyond what your CPU actually needs can run its fans much slower for the same thermal result \u2014 capacity you don't strictly need at full tilt is exactly what buys you quiet at everyday load.",
+      "Custom fan curves everywhere, not just defaults. Case fans, CPU cooler, and GPU all have manufacturer defaults tuned conservatively for cooling first and noise a distant second. Manually setting more gradual curves \u2014 slower ramp, higher acceptable temperature ceiling before ramping \u2014 is free performance-per-decibel sitting unused in every single build.",
+      "Fewer, better fans over many, mediocre ones. Two or three well-chosen, larger fans consistently outperform five or six cheap small ones on the actual metric that matters here \u2014 noise per unit of airflow moved, not total fan count.",
+      "Don't ignore the PSU. A quality unit with a genuinely silent or semi-passive mode below a certain load threshold means the power supply simply isn't contributing to the noise floor at all for a lot of everyday, non-gaming use."
+    ]
+  },
+  {
+    "type": "h2",
+    "text": "What this actually costs you, honestly"
+  },
+  {
+    "type": "p",
+    "text": "Some thermal headroom, mostly. A tuned-for-silence system will typically run a handful of degrees warmer under sustained heavy load than the exact same hardware tuned purely for maximum cooling \u2014 and for the overwhelming majority of everyday gaming and use, that trade is invisible in actual performance while being very audible in comfort. It only becomes a real concern under genuinely extreme, sustained workloads, where you'd want to briefly override the quiet profile anyway."
+  },
+  {
+    "type": "h3",
+    "text": "Trying to quiet down the PC you already own?"
+  },
+  {
+    "type": "p",
+    "text": "Noise can come from cooling, fan curves, thermals or hardware faults. VoltTech's free Signal Scan can help narrow the likely service path before you replace parts. VoltTech support is South Africa-focused."
+  }
+]

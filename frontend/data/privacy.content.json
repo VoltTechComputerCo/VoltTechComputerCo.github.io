@@ -1,0 +1,78 @@
+[
+  {
+    "type": "p",
+    "text": "VOLTTECH / POPIA"
+  },
+  {
+    "type": "p",
+    "text": "How VoltTech handles personal information used for enquiries, accounts, PC builds, quotations, service work, documents, orders and payments."
+  },
+  {
+    "type": "h2",
+    "text": "Information we may process"
+  },
+  {
+    "type": "p",
+    "text": "This may include name, email, phone number, suburb, delivery or billing details, company name, account identifiers, saved PC builds, quotation and acceptance history, invoices, payment or order status, service history, messages and technical information reasonably needed to provide support. For Creator Hub registration, this may also include a Twitch user ID, Twitch login, display name, public profile image, public channel description, creator-directory status and the fact that Twitch ownership verification was completed."
+  },
+  {
+    "type": "h2",
+    "text": "Why we use it"
+  },
+  {
+    "type": "p",
+    "text": "VoltTech uses personal information to authenticate accounts, respond to enquiries, prepare and manage quotations, provide services, administer orders and payments, create customer documents, arrange delivery or collection, maintain the South African Creator Hub, verify Twitch channel ownership, prevent impersonation or misuse, meet legal obligations and support customers."
+  },
+  {
+    "type": "h2",
+    "text": "Service providers"
+  },
+  {
+    "type": "p",
+    "text": "VoltTech currently uses GitHub Pages for website hosting and Supabase for authentication, database and server-side function services. Google is used when a customer selects Google sign-in. Twitch is used when a creator chooses to verify ownership of a Twitch channel for Creator Hub registration; VoltTech validates the temporary Twitch access token and does not store that token after registration. Transactional email may be delivered using Resend when enabled, and providers such as Yoco or logistics partners may process transaction or fulfilment information when those production features are enabled."
+  },
+  {
+    "type": "h2",
+    "text": "Access, correction and deletion"
+  },
+  {
+    "type": "p",
+    "text": "Logged-in customers can use the Privacy & Data Centre to export supported account information, update supported profile details and manage the protected account-deletion workflow. These self-service tools supplement formal rights of access, correction, objection or deletion where applicable."
+  },
+  {
+    "type": "p",
+    "text": "Open Privacy & Data Centre \u2192"
+  },
+  {
+    "type": "h2",
+    "text": "Information that may need to be retained"
+  },
+  {
+    "type": "p",
+    "text": "Account deletion does not mean every business record can always be destroyed immediately. VoltTech may retain limited invoices, transaction records, warranty or service records, fraud-prevention evidence or dispute records where retention is required or authorised by law."
+  },
+  {
+    "type": "h2",
+    "text": "Security and retention"
+  },
+  {
+    "type": "p",
+    "text": "VoltTech uses access controls and database row-level security where supported. Information should not be kept longer than reasonably necessary except where legal, accounting, warranty, contractual, dispute or security obligations justify retention."
+  },
+  {
+    "type": "h2",
+    "text": "Your rights and contact"
+  },
+  {
+    "type": "p",
+    "text": "Subject to applicable law, you may request access, correction or deletion, object to certain processing, or raise a privacy complaint. Privacy requests can be sent to volttechcomputerco@gmail.com . Formal POPIA forms and complaint channels are available from the South African Information Regulator."
+  },
+  {
+    "type": "p",
+    "text": "Official resource: Information Regulator South Africa ."
+  },
+  {
+    "type": "p",
+    "text": "These pages provide customer-facing information about VoltTech's current processes and policies. Applicable South African law prevails where a statutory right or obligation cannot lawfully be excluded or changed by policy wording."
+  }
+]

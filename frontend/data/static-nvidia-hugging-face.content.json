@@ -1,0 +1,66 @@
+[
+  {
+    "type": "p",
+    "text": "Nvidia has agreed to acquire Hugging Face for $12.93 billion. That number is huge. The user base is even more interesting: more than 18 million developers, millions of models and applications, and one of the most important meeting points in open AI development."
+  },
+  {
+    "type": "p",
+    "text": "Nvidia says Hugging Face will remain open, support competing hardware and continue letting developers choose their models, frameworks, clouds and compute platforms. The SEC filing backs the broad structure of the deal: about $11.9 billion for shareholders plus up to roughly $1 billion in equity-based retention for employees, with closing expected in the first half of 2027 if regulators approve it."
+  },
+  {
+    "type": "h2",
+    "text": "This is not really about buying a website"
+  },
+  {
+    "type": "p",
+    "text": "Hugging Face is infrastructure in the social sense. It is where researchers and developers publish models, datasets, demos and tools; where companies discover what the open ecosystem is doing; and where an enormous amount of AI experimentation becomes visible."
+  },
+  {
+    "type": "p",
+    "text": "Nvidia already owns the dominant hardware and software stack for much of modern AI compute. Buying a platform this central to developers means it is moving one layer closer to where choices get made."
+  },
+  {
+    "type": "h2",
+    "text": "The \u201copen\u201d promise is the whole story"
+  },
+  {
+    "type": "p",
+    "text": "Jensen Huang explicitly says Nvidia compute will not be required to build or deploy through Hugging Face. That commitment matters because the platform\u2019s value depends on being useful to people running AMD, Intel, custom accelerators, cloud services and whatever comes next."
+  },
+  {
+    "type": "h2",
+    "text": "Why Nvidia would still want it"
+  },
+  {
+    "type": "p",
+    "text": "Because openness can still be strategically valuable. A platform can shape defaults, developer habits, tooling and ecosystem direction without becoming a locked garden."
+  },
+  {
+    "type": "p",
+    "text": "Reuters Breakingviews framed the purchase as a kind of strategic insurance: keep Nvidia deeply embedded in the ecosystem even if AI models and distribution become more open and fragmented."
+  },
+  {
+    "type": "h2",
+    "text": "The antitrust question writes itself"
+  },
+  {
+    "type": "p",
+    "text": "The deal still needs regulatory approval. Nvidia is already one of the most powerful companies in AI infrastructure, so adding one of the largest open-model communities to that position is going to attract scrutiny."
+  },
+  {
+    "type": "p",
+    "text": "The cleanest test will be boring but important: after the acquisition, is Hugging Face genuinely as pleasant to use on non-Nvidia hardware as it was before? Developers will notice very quickly if the answer starts drifting toward \u201ctechnically yes, but\u2026\u201d"
+  },
+  {
+    "type": "h2",
+    "text": "Sources & further reading"
+  },
+  {
+    "type": "ul",
+    "items": [
+      "Nvidia \u2014 acquisition announcement",
+      "US SEC \u2014 Nvidia 8-K filing",
+      "Reuters Breakingviews \u2014 strategic analysis"
+    ]
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "output": "static-sa-varsity-esports-pretoria-2026.html",
+  "title": "SA Esports Is Leveling Up \u2014 Nearly 500 Students Are Fighting for Pretoria | VoltTech",
+  "description": "Nearly 500 South African university gamers entered the Varsity Esports Split 2 playoff stage. The finals hit UP-Tuks in Pretoria on 2\u20133 October 2026.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/static-sa-varsity-esports-pretoria-2026.html",
+  "config": true,
+  "family": "editorial",
+  "scripts": [
+    "frontend/controllers/editorial.js"
+  ],
+  "data": {
+    "kind": "article",
+    "published": "2026-09-15T09:00:00+02:00",
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "SA Esports Is Leveling Up \u2014 Nearly 500 Students Are Fighting for Pretoria",
+        "description": "Nearly 500 South African university gamers entered the Varsity Esports Split 2 playoff stage. The finals hit UP-Tuks in Pretoria on 2\u20133 October 2026.",
+        "datePublished": "2026-09-15T09:00:00+02:00",
+        "dateModified": "2026-09-15T09:00:00+02:00",
+        "mainEntityOfPage": "https://volttechcomputerco.co.za/static-sa-varsity-esports-pretoria-2026",
+        "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e",
+        "author": {
+          "@type": "Organization",
+          "name": "STATIC by VoltTech Computer Co."
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "VoltTech Computer Co.",
+          "url": "https://volttechcomputerco.co.za/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png"
+          }
+        },
+        "isPartOf": {
+          "@type": "Blog",
+          "name": "STATIC",
+          "url": "https://volttechcomputerco.co.za/static"
+        }
+      }
+    ]
+  },
+  "og_image": "https://images.unsplash.com/photo-1542751371-adc38448a05e",
+  "og_type": "article"
+}

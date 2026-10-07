@@ -1,0 +1,16 @@
+{
+  "output": "pc-performance-optimisation.html",
+  "title": "Performance optimisation in Pretoria | VoltTech",
+  "description": "Work through bottlenecks, heat and configuration before replacing good hardware.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/pc-performance-optimisation.html",
+  "config": true,
+  "family": "services",
+  "scripts": [
+    "frontend/controllers/services.js"
+  ],
+  "data": {
+    "key": "performance",
+    "label": "Performance optimisation"
+  }
+}

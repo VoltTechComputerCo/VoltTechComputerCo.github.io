@@ -1,0 +1,12 @@
+{
+  "output": "legal.html",
+  "title": "Legal & customer information | VoltTech",
+  "description": "VoltTech customer terms, privacy information, returns, delivery, repair authorisation and access-to-information information.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/legal.html",
+  "config": true,
+  "family": "legal",
+  "scripts": [
+    "frontend/controllers/common.js"
+  ]
+}

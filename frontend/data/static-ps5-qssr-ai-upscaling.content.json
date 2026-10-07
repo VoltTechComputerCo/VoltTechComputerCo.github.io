@@ -1,0 +1,92 @@
+[
+  {
+    "type": "p",
+    "text": "The normal PS5 just learned a new trick. Sony has announced Quick Spectral Super Resolution , or QSSR, an AI-guided upscaling system built specifically for the standard PlayStation 5. The first two games are already here: Marvel's Wolverine and Ghost of Y\u014dtei are being patched with QSSR as an extra graphics option."
+  },
+  {
+    "type": "p",
+    "text": "And yes, the naming department has absolutely chosen violence. PS5 Pro has PSSR. PS5 has QSSR. Somewhere, an engineer is smiling while the rest of us build a glossary."
+  },
+  {
+    "type": "h2",
+    "text": "This isn't PSSR sneaking onto the base console"
+  },
+  {
+    "type": "p",
+    "text": "That distinction matters. Sony's Daniel Craig, principal engineer in Graphics R&D, says QSSR was born from Project Amethyst , Sony's graphics collaboration with AMD. The goal was to take some of the AI-image-reconstruction thinking behind PSSR and make it practical on a machine that was never built with the PS5 Pro's dedicated machine-learning hardware."
+  },
+  {
+    "type": "p",
+    "text": "The result is a more streamlined neural network plus an implementation tuned around the standard PS5. Sony is promising better fine detail and, importantly, better temporal stability \u2014 basically fewer distracting little wobbles, flickers and crawling edges while the image is actually moving."
+  },
+  {
+    "type": "image",
+    "src": "https://i.ytimg.com/vi/RcFYsDKbAIk/maxresdefault.jpg",
+    "alt": "Side-by-side Marvel's Wolverine fidelity mode comparison showing QSSR"
+  },
+  {
+    "type": "h2",
+    "text": "Wolverine is probably the perfect stress test"
+  },
+  {
+    "type": "p",
+    "text": "Insomniac says QSSR improves pixel-level clarity and stability in the busy streets of Madripoor and Shinjuku. That's exactly where an upscaler earns its keep: signs, cables, roof tiles, windows, fences and thin geometry are the sort of details that can turn into a shimmering mess once a camera starts moving."
+  },
+  {
+    "type": "p",
+    "text": "This is also why judging an upscaler from one paused screenshot is a bit like judging Counter-Strike aim from the scoreboard. You can learn something, sure, but you're missing the important bit. Reconstruction quality is often about what happens between frames."
+  },
+  {
+    "type": "p",
+    "text": "Sony isn't claiming the standard PS5 has suddenly become a PS5 Pro. It hasn't. The Pro still has more GPU headroom and PSSR remains Sony's premium reconstruction path. QSSR is interesting because it attacks image quality from the software side without asking millions of existing PS5 owners to buy another console."
+  },
+  {
+    "type": "h2",
+    "text": "Ghost of Y\u014dtei gets it too"
+  },
+  {
+    "type": "p",
+    "text": "Sucker Punch says QSSR is particularly good at resolving fine character and environmental detail in Ghost of Y\u014dtei , while improving stability in motion. A game full of grass, foliage, fabric, distant scenery and tiny high-contrast details is basically an upscaler's final exam, so this is another sensible showcase."
+  },
+  {
+    "type": "image",
+    "src": "https://i.ytimg.com/vi/E929-XwrS_Q/maxresdefault.jpg",
+    "alt": "Side-by-side Ghost of Y\u014dtei ray tracing mode comparison showing QSSR at four times zoom"
+  },
+  {
+    "type": "p",
+    "text": "There is a catch worth keeping in mind: AI reconstruction isn't free performance. It still costs GPU time. The clever bit is whether the game can render a cheaper source image, spend some of the saved budget reconstructing it, and end up with a final image that looks better than the old route. That's the same basic bargain behind the modern upscaling arms race on PC."
+  },
+  {
+    "type": "h2",
+    "text": "The bigger story is what happens next"
+  },
+  {
+    "type": "p",
+    "text": "The first two games are nice demos. The genuinely important part is that Sony says QSSR will be made broadly available to PlayStation developers."
+  },
+  {
+    "type": "p",
+    "text": "If adoption is straightforward, the base PS5 could get a surprisingly useful visual second wind. Developers have spent this generation juggling 30 fps fidelity modes, 60 fps performance modes, dynamic resolution, ray tracing and increasingly aggressive reconstruction. A better reconstruction option doesn't create more raw GPU power, but it can make the pixels you already have work harder."
+  },
+  {
+    "type": "p",
+    "text": "PC players have watched this exact battle accelerate through DLSS, FSR and XeSS. Consoles are now deep in it too. The funny part is that the humble 2020 PS5 \u2014 a machine that definitely wasn't sold as an \"AI gaming console\" \u2014 is now getting an AI-guided graphics upgrade six years into its life."
+  },
+  {
+    "type": "p",
+    "text": "Not bad for the old fridge-router."
+  },
+  {
+    "type": "h2",
+    "text": "Sources and further reading"
+  },
+  {
+    "type": "p",
+    "text": "PlayStation Blog \u2014 AI upscaling is coming to PS5 PlayStation Blog \u2014 Marvel's Wolverine"
+  },
+  {
+    "type": "p",
+    "text": "Read next: DLSS 5 Is Here \u2014 And Rendering Is Changing \u2192 \u00b7 Back to STATIC \u2192"
+  }
+]

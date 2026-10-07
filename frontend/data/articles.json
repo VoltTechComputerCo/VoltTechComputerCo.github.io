@@ -1,0 +1,254 @@
+[
+  {
+    "title": "AMD Just Made Budget PC Building Interesting Again",
+    "href": "static-amd-ryzen-5-5500f-7500-budget-cpus.html",
+    "description": "AMD quietly launched the Ryzen 5 5500F for AM4 and Ryzen 5 7500 for AM5. Specs, platform costs and which budget CPU makes sense.",
+    "date": "2026-09-14T09:00:00+02:00",
+    "image": "https://altex.com/cdn/shop/files/amd-100-100000593wof-ryzen-5-7600x-am5-6-core-desktop-processor-776628.jpg?v=1733274874&width=2048"
+  },
+  {
+    "title": "AMD Just Bought Into the Future of 3D AI",
+    "href": "static-amd-world-labs-spatial-ai-acquisition.html",
+    "description": "AMD is acquiring Fei-Fei Li's World Labs for about $8.2 billion. STATIC explains spatial intelligence, 3D world models and why AMD wants the research inside its hardware roadmap.",
+    "date": "",
+    "image": "https://www.worldlabs.ai/_next/image?q=75&url=%2Fimages%2Fblog%2Fglobe_chip.png&w=2048"
+  },
+  {
+    "title": "Apple\u2019s First Foldable iPhone Is Finally Real \u2014 Meet iPhone Duo",
+    "href": "static-apple-iphone-duo-first-foldable.html",
+    "description": "Apple has unveiled iPhone Duo, its first foldable iPhone. Confirmed display specs, A20 Pro hardware, iOS 27 changes, cameras, price and October 23 release date.",
+    "date": "2026-09-10T09:00:00+02:00",
+    "image": "https://www.apple.com/newsroom/images/2026/09/apple-unveils-iphone-duo/article/Apple-iPhone-Duo-colors-260909_big.jpg.large.jpg"
+  },
+  {
+    "title": "Building a PC in 2026: What Actually Matters",
+    "href": "static-building-a-pc-2026.html",
+    "description": "Spec sheets are marketing. Here's how to actually allocate a PC build budget in 2026, and which numbers you can safely ignore.",
+    "date": "2026-08-26T00:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/logo-full.png"
+  },
+  {
+    "title": "Kitsune Conquered Comic Con Africa \u2014 Inside the VS Gaming Masters 2026 Aftermath",
+    "href": "static-comic-con-africa-2026-vs-gaming-masters-aftermath.html",
+    "description": "Kitsune won the 2026 VS Gaming Masters at Comic Con Africa, HighBorn finished second, and SA Counter-Strike took over Hall 6. Results, context and the wider Comic Con aftermath.",
+    "date": "2026-10-01T12:35:00+02:00",
+    "image": "https://www.proavl-mea.com/img/Comicon-66.jpg"
+  },
+  {
+    "title": "DLSS 5 Is Here \u2014 And It Is Starting to Change What \u2018Rendering\u2019 Means",
+    "href": "static-dlss-5-nba-2k27-neural-rendering.html",
+    "description": "NBA 2K27 is the first shipping game with Nvidia's DLSS 5 3D-Guided Neural Rendering. Instead of only reconstructing pixels, the model can alter lighting and material appearance under developer control.",
+    "date": "2026-09-07T09:00:00+02:00",
+    "image": "https://www.nvidia.com/content/dam/en-zz/nvidiaweb/geforce/news/dlss-5-3d-guided-neural-rendering/nba-2k27-nvidia-dlss-5-comparison-001-on.jpg"
+  },
+  {
+    "title": "Your GPU Isn't Dying \u2014 Your Drivers Are Lying to You",
+    "href": "static-driver-crashes.html",
+    "description": "Random black screens, TDR crashes, artifacting that comes and goes \u2014 before you RMA your GPU, here's why drivers are almost always the actual culprit.",
+    "date": "2026-08-27T00:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/logo-full.png"
+  },
+  {
+    "title": "Gears of War: E-Day Is Live Early \u2014 PC Gets the Full RTX Treatment",
+    "href": "static-gears-of-war-e-day-pc-early-access.html",
+    "description": "Gears of War: E-Day early access begins October 1. We break down its Unreal Engine 5.8 PC tech, DLSS 4.5, ray tracing, hardware requirements and 4K targets.",
+    "date": "2026-10-01T10:42:36+02:00",
+    "image": "https://volttechcomputerco.co.za/assets/images/static/gears-eday-launch.svg"
+  },
+  {
+    "title": "A Brief, Enraging History of Gamers Getting Screwed by GPU Prices",
+    "href": "static-gpu-price-history.html",
+    "description": "Crypto booms, a pandemic, AI, and whatever's coming next \u2014 a tour through every reason graphics cards have been unreasonably expensive since 2017, and why the pattern keeps repeating.",
+    "date": "2026-08-27T00:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/logo-full.png"
+  },
+  {
+    "title": "The Quiet Return of LAN Culture",
+    "href": "static-lan-culture.html",
+    "description": "Why a generation raised on cloud gaming and Discord is dragging towers to a mate's house again \u2014 and what it says about how we actually want to play.",
+    "date": "2026-08-26T00:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/logo-full.png"
+  },
+  {
+    "title": "The LEGO PlayStation Is 1,911 Pieces of Weaponised Nostalgia",
+    "href": "static-lego-playstation-1911-piece.html",
+    "description": "Sony and LEGO have turned the original PlayStation into a near-1:1-scale 1,911-piece display set, complete with a wired controller, working buttons and tiny Ape Escape and Gran Turismo dioramas.",
+    "date": "2026-09-07T09:00:00+02:00",
+    "image": "https://blog.playstation.com/uploads/2026/09/0a31c1fe4b3c9833dd02bb034112a5d9f0312720.jpg"
+  },
+  {
+    "title": "Linus Tech Tips Built the \u201cBest PC\u201d of 2026. The Specs Are Completely Absurd.",
+    "href": "static-ltt-best-pc-2026.html",
+    "description": "Linus Tech Tips built its fastest off-the-shelf PC of 2026 around AMD's Ryzen 9 9950X3D2 and MSI's RTX 5090 Lightning Z. STATIC breaks down the hardware, the excess and what the build actually tells us about flagship PCs.",
+    "date": "2026-09-06T09:00:00+02:00",
+    "image": "https://i.ytimg.com/vi/X8sgBpmdCT8/maxresdefault.jpg"
+  },
+  {
+    "title": "Malware Doesn't Look Like Malware Anymore",
+    "href": "static-malware-disguises.html",
+    "description": "No more skull-and-crossbones pop-ups. Modern malware looks like a cracked game launcher, a helpful browser extension, or a Discord bot. Here's what's actually out there in 2026.",
+    "date": "2026-08-27T00:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/logo-full.png"
+  },
+  {
+    "title": "Metroid Ravenous Makes Samus the Predator \u2014 And It\u2019s Switch 2-Only",
+    "href": "static-metroid-ravenous-switch-2.html",
+    "description": "Metroid Ravenous is Nintendo\u2019s next 2D Metroid for Switch 2, launching January 28, 2027. Here\u2019s what is confirmed about Samus, the new devour mechanic and why it matters.",
+    "date": "2026-09-11T09:00:00+02:00",
+    "image": "https://cdn.mos.cms.futurecdn.net/cMp8gVnEv7T6Htvvi5iWpA.jpg"
+  },
+  {
+    "title": "Modern Warfare 4 Wants 90 FPS to Be the New Recommended",
+    "href": "static-modern-warfare-4-pc-specs-90fps-ray-tracing.html",
+    "description": "Call of Duty Modern Warfare 4's official PC specs target 90 FPS on RTX 3060 Ti-class hardware, add ray tracing to every mode, and support DLSS 4.5, FSR Redstone and XeSS 3.",
+    "date": "2026-10-01T10:01:44+02:00",
+    "image": "https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/pc-trailer-blog/MW4-PC-TECH-001.webp"
+  },
+  {
+    "title": "NoPixel V Might Be Rockstar\u2019s Most Important GTA Experiment Before GTA VI",
+    "href": "static-nopixel-v-rockstar-gta-rp.html",
+    "description": "Rockstar is officially supporting NoPixel V as GTA roleplay moves closer to its ecosystem. Here\u2019s what it means \u2014 and what it does not confirm about GTA VI.",
+    "date": "2026-09-06T00:00:00+02:00",
+    "image": "https://i.ytimg.com/vi/fVCD9oKjtZs/maxresdefault.jpg"
+  },
+  {
+    "title": "Nvidia Is Buying Hugging Face for $12.93 Billion \u2014 And the Bigger Story Is Control",
+    "href": "static-nvidia-hugging-face.html",
+    "description": "Nvidia\u2019s $12.93 billion Hugging Face deal puts the world\u2019s biggest AI-chip company closer to the developer layer. The promise that matters most: Hugging Face stays open.",
+    "date": "2026-09-05T09:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png"
+  },
+  {
+    "title": "Why Your PC Throttles Under Load \u2014 And How to Actually Fix It",
+    "href": "static-pc-throttling.html",
+    "description": "Thermal throttling isn't a weak GPU problem \u2014 it's usually dust, dried thermal paste, or bad airflow. Here's how to actually diagnose and fix it.",
+    "date": "2026-08-26T00:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/logo-full.png"
+  },
+  {
+    "title": "Kojima\u2019s PHYSINT Just Switched Sides \u2014 Xbox Will Publish It",
+    "href": "static-physint-xbox-publishing.html",
+    "description": "Xbox will publish Hideo Kojima\u2019s PHYSINT, expanding its Kojima Productions partnership beyond OD and into film and television.",
+    "date": "2026-09-10T09:00:00+02:00",
+    "image": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/KJPXBOX-a19bab905ef4e406d93c-1600x900.jpg"
+  },
+  {
+    "title": "Your Regular PS5 Just Got an AI Graphics Upgrade \u2014 QSSR Explained",
+    "href": "static-ps5-qssr-ai-upscaling.html",
+    "description": "Sony is bringing AI-guided QSSR upscaling to the standard PS5, starting with Marvel's Wolverine and Ghost of Y\u014dtei. Here's what changes, what doesn't, and why it matters.",
+    "date": "2026-10-02T09:05:00+02:00",
+    "image": "https://blog.playstation.com/tachyon/2026/10/5f2b04388e41b48507f4c8d57ce8f53bd059f03a.jpg?crop_strategy=smart&resize=1088%2C612"
+  },
+  {
+    "title": "The Great RAM Myth: Why More Isn't Always Better",
+    "href": "static-ram-myth.html",
+    "description": "32GB won't make your PC faster if 16GB was never the bottleneck. Here's what RAM capacity and speed actually do \u2014 and don't do \u2014 for gaming performance.",
+    "date": "2026-08-27T00:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/logo-full.png"
+  },
+  {
+    "title": "RPCS3 Can Now Play PS3 Games Straight From the Disc",
+    "href": "static-rpcs3-direct-disc-playback.html",
+    "description": "RPCS3 can now launch PS3 games directly from compatible Blu-ray drives, a major usability win for physical-game preservation.",
+    "date": "2026-09-07T09:00:00+02:00",
+    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sony-PlayStation-3-4001B-wController-noBG.png"
+  },
+  {
+    "title": "SA Esports Is Leveling Up \u2014 Nearly 500 Students Are Fighting for Pretoria",
+    "href": "static-sa-varsity-esports-pretoria-2026.html",
+    "description": "Nearly 500 South African university gamers entered the Varsity Esports Split 2 playoff stage. The finals hit UP-Tuks in Pretoria on 2\u20133 October 2026.",
+    "date": "2026-09-15T09:00:00+02:00",
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e"
+  },
+  {
+    "title": "Scalebound Still Won\u2019t Die \u2014 and Hideki Kamiya Wants Xbox to Bring It Back",
+    "href": "static-scalebound-kamiya.html",
+    "description": "Hideki Kamiya says he is completely serious about wanting to finish Scalebound one day. There is no revival announcement \u2014 but Okami makes the dream harder to dismiss.",
+    "date": "2026-09-05T09:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png"
+  },
+  {
+    "title": "Building a Silent PC: The Nerdy Art of Not Hearing Your Computer",
+    "href": "static-silent-pc-build.html",
+    "description": "Powerful and silent aren't opposites \u2014 they're a design problem. Here's how to actually build or tune a PC that disappears into the background, without sacrificing performance.",
+    "date": "2026-08-27T00:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/logo-full.png"
+  },
+  {
+    "title": "South African CS2\u2019s Biggest LAN Is Coming \u2014 And It Matters More Than the Prize Money",
+    "href": "static-south-african-counter-strike-vs-gaming-masters-2026.html",
+    "description": "South Africa's Top 8 CS2 Masters teams head to Comic Con Africa 2026 for a R340,000 VS Gaming Masters tournament. Why this LAN matters to local Counter-Strike.",
+    "date": "2026-09-12T09:00:00+02:00",
+    "image": "https://www.proavl-mea.com/img/Comicon-66.jpg"
+  },
+  {
+    "title": "SSD vs HDD in 2026: Why We're Still Somehow Having This Argument",
+    "href": "static-ssd-vs-hdd-2026.html",
+    "description": "This fight should be over. It isn't, because storage is more nuanced than 'SSD good, HDD bad.' Here's the actual 2026 breakdown \u2014 SATA, NVMe, and when a spinning disk still makes sense.",
+    "date": "2026-08-27T00:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/logo-full.png"
+  },
+  {
+    "title": "StarCraft Is Back \u2014 But Blizzard Just Left RTS Behind",
+    "href": "static-starcraft-open-world-shooter-2030.html",
+    "description": "Blizzard has officially brought StarCraft back, but not as StarCraft III. The 2030 game is a story-driven open-world shooter led by former Far Cry producer Dan Hay.",
+    "date": "2026-09-13T09:00:00+02:00",
+    "image": "https://cdn.mos.cms.futurecdn.net/DkxbyRG2ehqpGLMZ2EVvGA.png"
+  },
+  {
+    "title": "Tim Sweeney Says Gaming Is Facing Its Worst Hardware Crisis in Decades. Is He Right?",
+    "href": "static-tim-sweeney-hardware-crisis.html",
+    "description": "Epic CEO Tim Sweeney has compared the component crisis with the 1983 videogame crash. Here\u2019s where the analogy works \u2014 and where it doesn\u2019t.",
+    "date": "2026-09-05T09:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png"
+  },
+  {
+    "title": "Valheim 1.0 Launches Today \u2014 Deep North Ends a Five-Year Early Access Saga",
+    "href": "static-valheim-1-0-deep-north-launch.html",
+    "description": "Valheim 1.0 arrives September 9 with the Deep North, achievements, PS5 and Switch 2 support, full crossplay and a new $29.99 price.",
+    "date": "2026-09-09T09:00:00+02:00",
+    "image": "https://a.storyblok.com/f/157036/2560x1440/ed87ecf070/news-1.jpg"
+  },
+  {
+    "title": "The White House Made a Border-Wall Tetris Game. Tetris Is Not Amused.",
+    "href": "static-white-house-tetris.html",
+    "description": "The White House launched a retro arcade with a Tetris-like border game. The Tetris Company has publicly distanced itself and raised copyright concerns.",
+    "date": "2026-09-05T09:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png"
+  },
+  {
+    "title": "Windows vs Linux for Gaming: An Honest Take",
+    "href": "static-windows-vs-linux-gaming.html",
+    "description": "Proton made Linux gaming actually viable. It didn't make the Windows question go away. An honest, no-agenda look at where things actually stand in 2026.",
+    "date": "2026-08-27T00:00:00+02:00",
+    "image": "https://volttechcomputerco.co.za/logo-full.png"
+  },
+  {
+    "title": "The Witcher 3 Remastered Is Gorgeous \u2014 And PC Already Needed a Rescue Patch",
+    "href": "static-witcher-3-remastered-hotfix-pc.html",
+    "description": "The Witcher 3 Remastered is a huge free upgrade. STATIC tested it at 1440p on a Ryzen 7 7800X3D and RTX 5070, then pushed the visuals further with DLSS Swapper.",
+    "date": "2026-10-03T09:50:00+02:00",
+    "image": "https://public.cdn.cdpr.app/common/news/d26db09389435602252a802257a67748_q90_1920x1080.png"
+  },
+  {
+    "title": "Xbox Is Putting a Monthly Clock on Game Pass Cloud Gaming",
+    "href": "static-xbox-cloud-gaming-hour-limits.html",
+    "description": "From November, Game Pass Ultimate includes 15 cloud hours a month, Premium 10 and Essential 5. Xbox says only 4% of subscribers will be affected \u2014 but the business-model shift matters far beyond that number.",
+    "date": "2026-09-07T09:00:00+02:00",
+    "image": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/XBOX-Cloud-Playtime-Hours-c381b1adcea2de6c3def-1600x900.jpg"
+  },
+  {
+    "title": "Xbox Just Made Game Pass Very Hard to Ignore",
+    "href": "static-xbox-game-pass-september-2026-stacked-lineup.html",
+    "description": "Xbox's September 2026 Game Pass wave adds Dune: Awakening, Minecraft Dungeons II and Gears of War: E-Day. STATIC breaks down the dates, tiers and value for South African gamers.",
+    "date": "2026-09-16T09:00:00+02:00",
+    "image": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/06/CA_TheWorm-d8162eac2608de43d89b.jpg"
+  },
+  {
+    "title": "Zelda Turns 40 Today \u2014 Nintendo Has 30 Minutes to Define Its Next Era",
+    "href": "static-zelda-40th-anniversary-direct-today.html",
+    "description": "Nintendo marks The Legend of Zelda's 40th anniversary with a dedicated 30-minute Direct today. Here is what is confirmed, what is not, and why the timing matters.",
+    "date": "2026-09-08T09:00:00+02:00",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000063714/ca80e4d9f7ddc2971daea8d9b9144c42dbdf2245c3546f41b94a740067bd42a0"
+  }
+]

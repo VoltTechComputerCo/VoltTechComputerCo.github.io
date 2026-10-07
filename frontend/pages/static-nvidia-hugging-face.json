@@ -1,0 +1,48 @@
+{
+  "output": "static-nvidia-hugging-face.html",
+  "title": "Nvidia Is Buying Hugging Face for $12.93 Billion \u2014 And the Bigger Story Is Control | VoltTech",
+  "description": "Nvidia\u2019s $12.93 billion Hugging Face deal puts the world\u2019s biggest AI-chip company closer to the developer layer. The promise that matters most: Hugging Face stays open.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/static-nvidia-hugging-face.html",
+  "config": true,
+  "family": "editorial",
+  "scripts": [
+    "frontend/controllers/editorial.js"
+  ],
+  "data": {
+    "kind": "article",
+    "published": "2026-09-05T09:00:00+02:00",
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Nvidia Is Buying Hugging Face for $12.93 Billion \u2014 And the Bigger Story Is Control",
+        "description": "Nvidia\u2019s $12.93 billion Hugging Face deal puts the world\u2019s biggest AI-chip company closer to the developer layer. The promise that matters most: Hugging Face stays open.",
+        "datePublished": "2026-09-05T09:00:00+02:00",
+        "dateModified": "2026-09-05T09:00:00+02:00",
+        "mainEntityOfPage": "https://volttechcomputerco.co.za/static-nvidia-hugging-face",
+        "image": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png",
+        "author": {
+          "@type": "Organization",
+          "name": "STATIC by VoltTech Computer Co."
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "VoltTech Computer Co.",
+          "url": "https://volttechcomputerco.co.za/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png"
+          }
+        },
+        "isPartOf": {
+          "@type": "Blog",
+          "name": "STATIC",
+          "url": "https://volttechcomputerco.co.za/static"
+        }
+      }
+    ]
+  },
+  "og_image": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png",
+  "og_type": "article"
+}

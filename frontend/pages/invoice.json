@@ -1,0 +1,15 @@
+{
+  "output": "invoice.html",
+  "title": "Invoice | VoltTech",
+  "description": "Your authorised VoltTech record, with its original amounts, status and details.",
+  "robots": "noindex, nofollow",
+  "canonical": "https://volttechcomputerco.co.za/invoice.html",
+  "config": true,
+  "family": "documents",
+  "scripts": [
+    "frontend/controllers/documents.js"
+  ],
+  "data": {
+    "kind": "invoice"
+  }
+}

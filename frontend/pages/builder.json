@@ -1,0 +1,12 @@
+{
+  "output": "builder/index.html",
+  "title": "PC Builder | VoltTech",
+  "description": "Plan components, inspect compatibility, save your build and request a confirmed quote.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/builder/index.html",
+  "config": true,
+  "family": "builder",
+  "scripts": [
+    "frontend/controllers/builder.js"
+  ]
+}

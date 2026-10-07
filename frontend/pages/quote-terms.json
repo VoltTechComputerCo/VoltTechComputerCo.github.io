@@ -1,0 +1,12 @@
+{
+  "output": "quote-terms.html",
+  "title": "Quote Terms | VoltTech",
+  "description": "VoltTech quotation validity, customer approval, payment and document terms.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/quote-terms.html",
+  "config": true,
+  "family": "legal",
+  "scripts": [
+    "frontend/controllers/common.js"
+  ]
+}

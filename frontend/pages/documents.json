@@ -1,0 +1,15 @@
+{
+  "output": "documents.html",
+  "title": "Documents | VoltTech",
+  "description": "Your secure VoltTech customer workspace.",
+  "robots": "noindex, nofollow",
+  "canonical": "https://volttechcomputerco.co.za/documents.html",
+  "config": true,
+  "family": "customer",
+  "scripts": [
+    "frontend/controllers/customer.js"
+  ],
+  "data": {
+    "kind": "documents"
+  }
+}

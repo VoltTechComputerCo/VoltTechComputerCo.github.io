@@ -1,0 +1,15 @@
+{
+  "output": "privacy-policy.html",
+  "title": "Continue to VoltTech | VoltTech",
+  "description": "Continue to the current VoltTech page.",
+  "robots": "noindex, follow",
+  "canonical": "https://volttechcomputerco.co.za/privacy.html",
+  "config": true,
+  "family": "utility",
+  "scripts": [
+    "frontend/controllers/common.js"
+  ],
+  "data": {
+    "redirect": "privacy.html"
+  }
+}

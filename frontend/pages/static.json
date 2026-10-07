@@ -1,0 +1,17 @@
+{
+  "output": "static.html",
+  "title": "STATIC \u2014 Hardware, Games & Culture | VoltTech",
+  "description": "The editorial publication by VoltTech. Hardware, games, culture and practical PC stories.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/static.html",
+  "config": true,
+  "family": "editorial",
+  "scripts": [
+    "frontend/controllers/editorial.js"
+  ],
+  "data": {
+    "kind": "hub"
+  },
+  "og_image": "https://volttechcomputerco.co.za/vt-own-internals.webp",
+  "og_type": "website"
+}

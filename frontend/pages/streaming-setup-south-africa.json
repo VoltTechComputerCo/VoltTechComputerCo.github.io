@@ -1,0 +1,16 @@
+{
+  "output": "streaming-setup-south-africa.html",
+  "title": "Streaming support in Pretoria | VoltTech",
+  "description": "Capture, audio, encoder and OBS troubleshooting for a streaming setup that works together.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/streaming-setup-south-africa.html",
+  "config": true,
+  "family": "services",
+  "scripts": [
+    "frontend/controllers/services.js"
+  ],
+  "data": {
+    "key": "streaming",
+    "label": "Streaming support"
+  }
+}

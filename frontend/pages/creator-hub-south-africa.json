@@ -1,0 +1,30 @@
+{
+  "output": "creator-hub-south-africa.html",
+  "title": "Creator Hub South Africa | VoltTech",
+  "description": "Discover South African creators and get streaming support.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/creator-hub-south-africa.html",
+  "config": true,
+  "family": "creators",
+  "scripts": [
+    "frontend/controllers/creators.js"
+  ],
+  "data": {
+    "kind": "directory",
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "South African Creator Hub",
+        "url": "https://volttechcomputerco.co.za/creator-hub-south-africa",
+        "description": "A discovery page for South African Twitch creators with direct routes to VoltTech Stream Support and Stream Scan for OBS, Streamlabs and creator-tech help.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "VoltTech Computer Co.",
+          "url": "https://volttechcomputerco.co.za/"
+        },
+        "image": "https://volttechcomputerco.co.za/vt-drive-creator-desk.webp"
+      }
+    ]
+  }
+}

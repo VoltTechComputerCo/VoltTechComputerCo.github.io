@@ -1,0 +1,16 @@
+{
+  "output": "pc-upgrades-pretoria.html",
+  "title": "PC upgrades in Pretoria | VoltTech",
+  "description": "Build on what you already have. Find the parts that make sense for your next move.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/pc-upgrades-pretoria.html",
+  "config": true,
+  "family": "services",
+  "scripts": [
+    "frontend/controllers/services.js"
+  ],
+  "data": {
+    "key": "upgrades",
+    "label": "PC upgrades"
+  }
+}

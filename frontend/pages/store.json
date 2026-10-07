@@ -1,0 +1,15 @@
+{
+  "output": "store.html",
+  "title": "Hardware playground | VoltTech",
+  "description": "Explore genuine listed components, compare specifications and plan your next PC upgrade.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/store.html",
+  "config": true,
+  "family": "commerce",
+  "scripts": [
+    "frontend/controllers/commerce.js"
+  ],
+  "data": {
+    "kind": "store"
+  }
+}

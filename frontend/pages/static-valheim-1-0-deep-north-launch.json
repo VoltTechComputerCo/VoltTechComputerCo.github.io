@@ -1,0 +1,48 @@
+{
+  "output": "static-valheim-1-0-deep-north-launch.html",
+  "title": "Valheim 1.0 Launches Today \u2014 Deep North Ends a Five-Year Early Access Saga | VoltTech",
+  "description": "Valheim 1.0 arrives September 9 with the Deep North, achievements, PS5 and Switch 2 support, full crossplay and a new $29.99 price.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/static-valheim-1-0-deep-north-launch.html",
+  "config": true,
+  "family": "editorial",
+  "scripts": [
+    "frontend/controllers/editorial.js"
+  ],
+  "data": {
+    "kind": "article",
+    "published": "2026-09-09T09:00:00+02:00",
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Valheim 1.0 Launches Today \u2014 Deep North Ends a Five-Year Early Access Saga",
+        "description": "Valheim 1.0 arrives September 9 with the Deep North, achievements, PS5 and Switch 2 support, full crossplay and a new $29.99 price.",
+        "datePublished": "2026-09-09T09:00:00+02:00",
+        "dateModified": "2026-09-09T09:00:00+02:00",
+        "mainEntityOfPage": "https://volttechcomputerco.co.za/static-valheim-1-0-deep-north-launch",
+        "image": "https://a.storyblok.com/f/157036/2560x1440/ed87ecf070/news-1.jpg",
+        "author": {
+          "@type": "Organization",
+          "name": "STATIC by VoltTech Computer Co."
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "VoltTech Computer Co.",
+          "url": "https://volttechcomputerco.co.za/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://volttechcomputerco.co.za/brand/VoltTech_Full_Logo_Transparent.png"
+          }
+        },
+        "isPartOf": {
+          "@type": "Blog",
+          "name": "STATIC",
+          "url": "https://volttechcomputerco.co.za/static"
+        }
+      }
+    ]
+  },
+  "og_image": "https://a.storyblok.com/f/157036/2560x1440/ed87ecf070/news-1.jpg",
+  "og_type": "article"
+}

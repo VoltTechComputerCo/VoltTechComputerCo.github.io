@@ -1,53 +1,24 @@
-# Frontend reset progress
+# Full customer frontend reset
 
-Branch: `frontend-reset-20261005`, directly from main.
+Branch: `frontend-reset-20261005`. Production is not merged or deployed.
 
-## Creative direction revision — 7 October 2026 (South Africa)
+All 80 public and customer routes now have fresh source templates under `frontend/pages`, route data, a shared experiential shell and newly written controllers. No customer route loads the previous UI renderers or styles. Existing content, metadata, real media, pure compatibility/diagnostic models and backend data contracts are preserved. The seven admin tools remain separate utilitarian back-office workflows, as scoped in the initial audit; the Google verification endpoint is unchanged.
 
-The first homepage was rejected as too close to the main site. The new preview replaces its composition and navigation with an experiential direction: oversized hardware opening, floating global control bar, full-screen navigation worlds, homepage chapter dock, scroll-pinned Build/Boost/Broadcast scenes, interactive component selector, support console, immersive creator scene and STATIC portal. White/graphite/teal remain.
+The approved home experience retains pinned Build/Boost/Broadcast chapters, keyboard/touch component selection, floating capsule navigation and a full-screen Explore menu. Services add selectable symptoms and contextual contact handoffs. Diagnostics have fresh sequential consoles with branching, back/restart and share/export. The Builder has guided/manual planning, local components, compatibility/power review, snapshot restore, account save and quote-request contracts. Mock supplier offers are excluded.
 
-Native scrolling drives frame-batched image transforms and chapter states. Touch/keyboard buttons also select scenes and components. Reduced-motion and short-height phones retain a regular-flow/manual experience. No video assets exist in the repository; this revision uses real repository imagery with CSS/JavaScript motion, not video footage.
+Store includes real-product eligibility, search/categories/brand/spec facets, comparison, detail galleries/documents/related items and persistent cart controls. Checkout preserves shipping, submission uncertainty handling and cart fingerprints. Guest status validates access credentials and payment gates/provider redirects. Demo products never appear as purchasable stock.
 
-Validated: 13 existing UI scenarios plus six new motion-device scenarios, including scroll-driven state changes, manual scene selection, category link updates, keyboard selection, navigation and reduced motion. `browser-motion.json` records the new results.
+Customer workspace covers account/auth/recovery, profile/address/security forms, saved builds, quotes, issued documents, activity and privacy/deletion/data export. Record views support printing/export, guarded quote decisions and server-authorised invoice checkout. Preview origins do not access customer records or submit commerce transactions. Notifications use owner-scoped queries and realtime updates with accessible mobile navigation placement.
 
-## Implemented in this stage
-
-- New `frontend/` source root, global tokens/base/components/layouts and isolated build entrypoint.
-- Fresh header/footer, grouped mobile modal navigation, search sheet and cart-count contract.
-- New homepage composed around build, upgrade, repair and streaming intent.
-- Internal component reference with buttons, forms, statuses, error/empty/loading states, keyboard tabs, table, disclosure and modal examples.
-- Read-only catalogue adapter: strict non-demo/public/active/not-hidden query, launch gate, honest empty/closed/error states.
-- Production-only analytics using the existing measurement ID and WhatsApp event contract.
-- Preserved organisation/service structured data, canonical domain and customer route destinations.
-- Explicit generated-route ownership: the old generator skips outputs claimed by the new frontend.
-- Branch-specific CI for generated output, adapter/route tests and browser interaction/viewport checks.
-
-## Route migration checklist
-
-| Family | Status |
-|---|---|
-| Homepage | New frontend implemented |
-| Design-system reference | New frontend implemented |
-| Shared shell | Implemented on migrated routes; remaining routes migrate with their controllers |
-| Store, product, cart, checkout, guest order status | Pending Phase 5 |
-| PC Builder | Pending Phase 6 |
-| Services | Pending Phase 7 |
-| Diagnostics / Creator tools | Pending Phase 8 |
-| Account / quotes / builds / documents / privacy | Pending Phase 9 |
-| Legal / utility | Pending Phase 10 |
-| STATIC | Pending Phase 11 |
-| Full-site responsive/accessibility release gate | Pending Phase 12 |
-
-Commerce filters/product presentation and account/checkout components extend the same global system as those route families are implemented. No legacy customer renderer is loaded by the migrated pages. Remaining routes retain their baseline until their full functional replacement is ready. This branch is a staged preview, not a complete release candidate.
+Creator Hub preserves freshness-qualified live status, directory search/filter and Twitch registration/state verification/token cleanup. STATIC has a separate editorial system, 36 rebuilt article layouts with preserved content/source links, a searchable hub and the existing newsletter endpoints. Legal pages and utility aliases are recreated with fresh semantic layouts.
 
 ## Validation
 
-- Source/output generation matches.
-- Catalogue adapter tests cover empty, available, closed, unavailable, malformed response and strict eligibility query.
-- Migrated-page dependency, internal route, duplicate-ID and landmark checks pass.
-- All 13 browser scenarios passed; evidence is in `browser-phase-2-4.json`. Screenshots at 360px and 1440px were visually reviewed.
-- Browser tests exercise 360, 390, 768, 1024, 1440 and 1920px; dialogs, focus trap/restoration, scroll lock, search payload, persisted cart badge, keyboard tabs, forms and offline catalogue messaging.
-- Browser tests stub the public REST responses; these are UI/contract tests, not live customer, authorisation or payment certification.
-- Homepage images reuse existing repository media as permitted assets. They do not represent purchasable catalogue listings or supplier relationships.
+- Generator output matches fresh sources; every internal dependency resolves.
+- All 240 route/device checks passed: 80 routes at 360, 390 and 1440 pixels; one main, one h1, no horizontal page overflow or uncaught JS errors.
+- Interaction tests passed both diagnostic journeys, back/restart, Builder catalogue selection/category/removal, authenticated customer empty states and STATIC's 36 stories/search.
+- Commerce contract tests passed strict eligibility, stock/quantity limits, guest tokens, shipping environment, redirect allowlists and payment gates.
+- Existing home/shell and motion suites cover additional device sizes, focus/dialog behavior, reduced motion and offline states.
+- Browser tests use mocked data/auth and external image failures. These results do not certify live authentication, RLS, order submission, delivery pricing or payments. Production verification remains required before release.
 
-No production merge, database/schema mutation, payment/provider reconfiguration or STATIC publishing change is part of this stage. Authenticated notification presentation and remaining account/commerce integration belong to the pending route migrations.
+No database/schema changes, provider changes, production merge, STATIC publication changes or fake Store stock are included.

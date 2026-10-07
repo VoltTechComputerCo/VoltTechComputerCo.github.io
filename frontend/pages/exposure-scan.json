@@ -1,0 +1,12 @@
+{
+  "output": "exposure-scan.html",
+  "title": "Exposure Scan | VoltTech",
+  "description": "Inspect information your browser can expose, locally and with explicit permission for location.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/exposure-scan.html",
+  "config": true,
+  "family": "exposure",
+  "scripts": [
+    "frontend/controllers/exposure.js"
+  ]
+}

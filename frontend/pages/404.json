@@ -1,0 +1,12 @@
+{
+  "output": "404.html",
+  "title": "Page not found | VoltTech",
+  "description": "Find your way back to VoltTech.",
+  "robots": "noindex, follow",
+  "canonical": "https://volttechcomputerco.co.za/404.html",
+  "config": true,
+  "family": "utility",
+  "scripts": [
+    "frontend/controllers/common.js"
+  ]
+}

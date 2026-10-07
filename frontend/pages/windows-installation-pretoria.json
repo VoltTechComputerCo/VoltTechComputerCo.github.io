@@ -1,0 +1,16 @@
+{
+  "output": "windows-installation-pretoria.html",
+  "title": "Windows installation in Pretoria | VoltTech",
+  "description": "Windows setup and recovery with your files, licences and drivers considered from the start.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/windows-installation-pretoria.html",
+  "config": true,
+  "family": "services",
+  "scripts": [
+    "frontend/controllers/services.js"
+  ],
+  "data": {
+    "key": "windows",
+    "label": "Windows installation"
+  }
+}

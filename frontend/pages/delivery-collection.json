@@ -1,0 +1,12 @@
+{
+  "output": "delivery-collection.html",
+  "title": "Delivery & Collection | VoltTech",
+  "description": "VoltTech policies and customer information.",
+  "robots": "index, follow",
+  "canonical": "https://volttechcomputerco.co.za/delivery-collection.html",
+  "config": true,
+  "family": "legal",
+  "scripts": [
+    "frontend/controllers/common.js"
+  ]
+}
