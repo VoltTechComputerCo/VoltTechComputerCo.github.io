@@ -82,4 +82,4 @@ for(const panel of document.querySelectorAll('#app > .panel'))panel.hidden=true;
 document.addEventListener('volttech:quote-created',async e=>{if(quoteSource){const link=await c.rpc('admin_link_quote_source',{p_quote_id:e.detail.id,p_source_type:quoteSource.kind,p_source_id:quoteSource.record.id,p_metadata:{}});if(link.error){q('#opsStatus').textContent='Quote created; linking failed: '+link.error.message;return;}quoteSource=null;}selected='quote:'+e.detail.id;tab='Quotes';q('#quoteForm').parentElement.hidden=true;await load();});
 load();
 
-setInterval(()=>{if(!document.hidden&&!busy&&!q('#opsActionForm')&&q('#quoteForm').parentElement.hidden)load();},30000);
+// Refresh explicitly or after a saved action; background renders discard editor state.
