@@ -54,7 +54,7 @@ function render(){
   invoice.hidden=!order.workflow?.final_invoice;
   if(order.workflow?.final_invoice){const inv=order.workflow.final_invoice;invoice.replaceChildren();const title=document.createElement('h2');title.textContent='VoltTech final invoice '+inv.invoice_number;invoice.append(title);for(const line of inv.items||[]){const p=document.createElement('p');p.textContent=line.description+' · Qty '+line.quantity+' · '+money(line.line_total);invoice.append(p);}const total=document.createElement('p');total.textContent='Total '+money(inv.total)+' · Payment received ✅';invoice.append(total);const print=document.createElement('button');print.className='btn';print.textContent='Print / Save invoice PDF';print.onclick=()=>window.print();invoice.append(print);}
   const pay=document.getElementById('pay-order');pay.hidden=!canPay(order,settings);pay.disabled=false;pay.onclick=startPayment;
-  document.getElementById('payment-availability').textContent=order.payment_status==='paid'?'Payment is recorded as received.':canPay(order,settings)?'You will continue to Yoco to complete payment.':'Payment is not available here at the moment. Contact VoltTech if you need help.';
+  document.getElementById('payment-availability').textContent=order.payment_status==='paid'?'Payment is recorded as received.':canPay(order,settings)?'Continue to the secure payment portal to complete payment.':'Payment is not available here at the moment. Contact VoltTech if you need help.';
   const tracking=document.getElementById('order-tracking');tracking.hidden=!order.tracking_number&&!trackingLink(order.tracking_url);
   document.getElementById('tracking-courier').textContent=order.courier_name||'Delivery tracking';
   document.getElementById('tracking-number').textContent=order.tracking_number||'Tracking number not supplied';
@@ -67,12 +67,12 @@ async function startPayment(){
   try{
     const [latest,flags]=await Promise.all([withTimeout(VT.getOrderStatus(access.ref,access.token)),readLaunchSettings(window.VOLTTECH_SUPABASE)]);
     if(latest?.request_number!==access.ref||!canPay(latest,flags))throw new Error('Payment availability changed. Refresh the order to see its latest status.');
-    order=latest;settings=flags;button.textContent='OPENING YOCO…';
+    order=latest;settings=flags;button.textContent='OPENING PAYMENT PORTAL…';
     const result=await withTimeout(VT.createStorePayment(access.ref,access.token),20000);
     const destination=paymentDestination(result?.redirect_url);if(!destination)throw new Error('The payment link could not be verified. Contact VoltTech before paying.');
     location.assign(destination);
   }catch(e){showError(e.message||'Payment could not start. Refresh the order before trying again.');button.hidden=true;error.focus();}
-  finally{paying=false;button.textContent='CONTINUE TO YOCO →';schedule();}
+  finally{paying=false;button.textContent='OPEN PAYMENT PORTAL →';schedule();}
 }
 document.addEventListener('visibilitychange',()=>{if(document.hidden)clearTimeout(timer);else schedule();});
 window.addEventListener('pagehide',()=>{suspended=true;clearTimeout(timer);});
