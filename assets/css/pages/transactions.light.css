@@ -1,0 +1,2 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) #order-invoice{background:#fafafa}

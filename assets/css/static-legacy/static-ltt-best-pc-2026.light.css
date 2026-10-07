@@ -1,0 +1,9 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]){--bg:#f8fafb;--panel:#f8fbfb;--line:#b0cdcf;--orange:#8e540b;--text:#264038;--muted:#404f4b;--teal:#1a7f75}
+html:not([data-theme="dark"]) nav{background:rgba(248,250,251,0.9490196078431372)}
+html:not([data-theme="dark"]) .dek{color:#2d3936}
+html:not([data-theme="dark"]) figure img{background:#f9fafb}
+html:not([data-theme="dark"]) article p{color:#2d3936}
+html:not([data-theme="dark"]) .barlabel{color:#2c3a36}
+html:not([data-theme="dark"]) .bartrack{background:#f9fbfb}
+html:not([data-theme="dark"]) .bar{background:linear-gradient(90deg,var(--orange),#f4f1eb)}

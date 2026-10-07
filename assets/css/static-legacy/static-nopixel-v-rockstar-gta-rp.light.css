@@ -1,0 +1,6 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]){--bg:#f8fafb;--panel:#f8fbfb;--line:#b0cdcf;--orange:#8e540b;--text:#264038;--muted:#3e514e}
+html:not([data-theme="dark"]) body{background:radial-gradient(ellipse 80% 40% at 50% -10%,#fbfaf8 0%,transparent 60%),var(--bg)}
+html:not([data-theme="dark"]) nav{background:rgba(248,250,251,0.92)}
+html:not([data-theme="dark"]) .dot{box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .article-media img{background:#f8fafb}

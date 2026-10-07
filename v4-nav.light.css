@@ -1,0 +1,12 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .account-more-panel{background:#f8fbfb}
+html:not([data-theme="dark"]) .v4-page-nav a{border:1px solid var(--line,#b0cfcf);color:var(--teal,#108975)}
+html:not([data-theme="dark"]) .v4-page-nav a.active{background:var(--teal,#ebf4f3);border-color:var(--teal,#35b6a1)}
+html:not([data-theme="dark"]) .v4-summary{border:1px solid var(--line,#b0cfcf);background:#f8fbfb}
+html:not([data-theme="dark"]) .v4-summary small{color:var(--muted,#404f4c)}
+html:not([data-theme="dark"]) .v4-event{border:1px solid var(--line,#b0cfcf);background:#f8fbfb}
+html:not([data-theme="dark"]) .v4-event-type{color:var(--teal,#108975)}
+html:not([data-theme="dark"]) .v4-event-meta{color:var(--muted,#404f4c)}
+html:not([data-theme="dark"]) .v4-status{border:1px solid #b2ccc8;color:#2d3937}
+html:not([data-theme="dark"]) .v4-customer-card{border:1px solid var(--line,#b0cfcf);background:#f8fbfb}
+html:not([data-theme="dark"]) .v4-customer-card p{color:var(--muted,#404f4c)}

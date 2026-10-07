@@ -1,0 +1,5 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .qa-contract{border:1px solid rgba(53,182,161,0.25);background:rgba(235,244,243,0.025)}
+html:not([data-theme="dark"]) .qa-contract-grid>div{background:#f8fbfb}
+html:not([data-theme="dark"]) .qa-contract-grid b{color:#2d3936}
+html:not([data-theme="dark"]) .qa-contract-grid span{color:#404e4b}

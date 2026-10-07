@@ -1,0 +1,6 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) body{background:#f8fafb;color:#264038}
+html:not([data-theme="dark"]) a{color:#1a7f75}
+html:not([data-theme="dark"]) .dek,html:not([data-theme="dark"]) figcaption{color:#404f4b}
+html:not([data-theme="dark"]) .signal{border-left:3px solid #35b6a8;background:#f8fbfb}
+html:not([data-theme="dark"]) .fact{background:#f8fbfb;border:1px solid #b0cdcf}

@@ -1,0 +1,3 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]){--b:#f8fafb;--p:#f8fbfb;--l:#b0cdcf;--o:#8e540b;--t:#264038;--m:#404f4b;--lead:#1a7f75}
+html:not([data-theme="dark"]) nav{background:rgba(248,250,251,0.94)}

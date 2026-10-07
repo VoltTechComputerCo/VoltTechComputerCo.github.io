@@ -1,0 +1,8 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .vt-image-fallback::after{border:1px solid rgba(182,133,53,0.3);background:rgba(248,251,251,0.85);color:#8e630b}
+html:not([data-theme="dark"]) .qa-health-state{color:#404f4c}
+html:not([data-theme="dark"]) .qa-health-state.healthy{color:#0b8e48;border-color:rgba(53,182,111,0.28)}
+html:not([data-theme="dark"]) .qa-health-state.broken{color:#8e0b12;border-color:rgba(182,53,61,0.35)}
+html:not([data-theme="dark"]) .qa-health-state.testing{color:#2d3937}
+html:not([data-theme="dark"]) .qa-stat.danger{border-color:rgba(182,53,61,0.28)}
+html:not([data-theme="dark"]) .qa-stat.danger b{color:#8e0b12}

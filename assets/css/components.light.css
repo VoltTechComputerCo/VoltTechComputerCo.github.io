@@ -1,0 +1,8 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .dialog::backdrop{background:rgba(248,251,251,0.85)}
+html:not([data-theme="dark"]) .vt-image-glass{--vt-glass-border:rgba(191,191,191,0.25);--vt-glass-bg-top:rgba(250,250,250,0.06);--vt-glass-bg-bottom:rgba(248,251,251,0.22);--vt-glass-glow:rgba(51,51,51,0.08);--vt-glass-glow-strong:rgba(51,51,51,0.14);background:linear-gradient(180deg, var(--vt-glass-bg-top), var(--vt-glass-bg-bottom)),
+    rgba(248,251,251,0.18);box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .vt-image-glass--teal{--vt-glass-border:rgba(53,182,170,0.82);--vt-glass-bg-top:rgba(235,244,243,0.12);--vt-glass-bg-bottom:rgba(248,251,251,0.2);--vt-glass-glow:rgba(19,134,126,0.18);--vt-glass-glow-strong:rgba(19,134,126,0.34);--vt-glass-text:#0b8e7f}
+html:not([data-theme="dark"]) .vt-image-glass--purple{--vt-glass-border:rgba(113,53,182,0.84);--vt-glass-bg-top:rgba(239,235,244,0.12);--vt-glass-bg-bottom:rgba(250,248,251,0.18);--vt-glass-glow:rgba(73,11,142,0.2);--vt-glass-glow-strong:rgba(73,11,142,0.36);--vt-glass-text:#3c0b8e}
+html:not([data-theme="dark"]) .vt-image-glass--neutral{--vt-glass-border:rgba(67,168,168,0.25);--vt-glass-bg-top:rgba(235,244,244,0.065);--vt-glass-bg-bottom:rgba(248,251,251,0.24);--vt-glass-glow:rgba(23,130,125,0.09);--vt-glass-glow-strong:rgba(23,130,125,0.15)}
+html:not([data-theme="dark"]) .button.vt-image-glass:hover,html:not([data-theme="dark"]) .button.vt-image-glass:focus-visible,html:not([data-theme="dark"]) a.vt-image-glass:hover,html:not([data-theme="dark"]) a.vt-image-glass:focus-visible{color:#333333;box-shadow:0 4px 18px rgba(18,56,51,.055)}

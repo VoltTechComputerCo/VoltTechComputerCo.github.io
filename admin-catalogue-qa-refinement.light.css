@@ -1,0 +1,10 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .qa-section-label{color:#404f4c}
+html:not([data-theme="dark"]) .qa-supplier-gaps{border:1px dashed rgba(185,198,196,0.25)}
+html:not([data-theme="dark"]) .qa-supplier-gaps summary{color:#3f4f4d}
+html:not([data-theme="dark"]) .qa-supplier-gaps p{color:#404f4c}
+html:not([data-theme="dark"]) .qa-supplier-chip{border:1px solid rgba(185,198,196,0.25);color:#414e4c}
+html:not([data-theme="dark"]) .qa-supplier-chip.ready{color:#0b8e48;border-color:rgba(53,182,111,0.25)}
+html:not([data-theme="dark"]) .qa-proxy-warning{border:1px solid rgba(182,125,53,0.25);background:rgba(244,240,235,0.04)}
+html:not([data-theme="dark"]) .qa-proxy-warning b{color:#8e630b}
+html:not([data-theme="dark"]) .qa-proxy-warning span{color:#574b38}

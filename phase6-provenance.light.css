@@ -1,0 +1,5 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .vt-build-origin{border:1px solid rgba(53,182,161,0.25);background:rgba(235,244,243,0.025)}
+html:not([data-theme="dark"]) .vt-build-origin span{color:var(--teal,#108975)}
+html:not([data-theme="dark"]) .vt-build-origin b{color:#404f4c}
+html:not([data-theme="dark"]) .vt-work-origin{border:1px solid rgba(53,182,161,0.25);color:#2f6a61}

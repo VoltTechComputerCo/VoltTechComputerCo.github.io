@@ -1,0 +1,3 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+@media screen{html:not([data-theme="dark"]) body > main > .top{background:var(--b, #f8fbfb)}
+}

@@ -1,0 +1,6 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .records-page{background:radial-gradient(circle at 14% 0,rgba(235,244,243,0.07),transparent 30%),var(--bg)}
+html:not([data-theme="dark"]) .record-card{background:linear-gradient(155deg,rgba(235,244,243,0.025),rgba(248,251,251,0.45)),var(--panel)}
+html:not([data-theme="dark"]) .button-danger{border-color:rgba(182,53,53,0.45)}
+html:not([data-theme="dark"]) .button-danger:hover{background:rgba(244,235,235,0.07)}
+html:not([data-theme="dark"]) .records-dialog[data-tone="danger"]{border-color:rgba(182,53,53,0.45)}

@@ -1,0 +1,3 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .vt-notify-scrim{background:rgba(248,251,251,0.65)}
+html:not([data-theme="dark"]) .vt-notify-panel{box-shadow:0 4px 18px rgba(18,56,51,.055)}

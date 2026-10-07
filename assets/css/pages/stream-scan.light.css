@@ -1,0 +1,7 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .stream-scan-page{background:radial-gradient(circle at 78% 0,rgba(239,235,244,0.09),transparent 32%),var(--bg)}
+html:not([data-theme="dark"]) .stream-scan-page .scan-heading .accent,html:not([data-theme="dark"]) .stream-scan-page .scan-scope-head span,html:not([data-theme="dark"]) .stream-scan-page .scan-price,html:not([data-theme="dark"]) .stream-scan-page .scan-badge{color:#490b8e}
+html:not([data-theme="dark"]) .stream-scan-page .scan-option:after{color:#490b8e}
+html:not([data-theme="dark"]) .stream-scan-page .scan-meter i.on{background:#efebf4;box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .stream-scan-page .scan-truth li{border-left-color:rgba(113,53,182,0.42)}
+html:not([data-theme="dark"]) .stream-context,html:not([data-theme="dark"]) .stream-security{border-left:3px solid rgba(113,53,182,0.65);background:rgba(239,235,244,0.04)}

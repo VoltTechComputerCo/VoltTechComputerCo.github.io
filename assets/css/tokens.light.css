@@ -1,0 +1,2 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]){color-scheme:light;--bg:#f8fbfb;--bg-secondary:#f8fbfb;--panel:#f8fbfb;--panel-raised:#f8fbfb;--black:#f8fbfb;--teal:#0e8b7e;--teal-bright:#0b8e80;--teal-deep:#158479;--text:#36635c;--text-secondary:#2c3a37;--text-muted:#404f4c;--metadata:#3d514e;--border:rgba(53,182,168,0.25);--border-strong:rgba(53,182,168,0.45);--highlight:#8e5e0b;--warning:#8e540b;--error:#8e0b0b;--success:#148552}

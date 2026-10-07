@@ -1,0 +1,15 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]){color-scheme:light;--ink:#267362;--muted:#2b3b37;--line:#52998d;--accent:#128774}
+html:not([data-theme="dark"]) body{background:#f8fbfb}
+html:not([data-theme="dark"]) button,html:not([data-theme="dark"]) a.btn{background:#f8fbfb}
+html:not([data-theme="dark"]) input,html:not([data-theme="dark"]) select,html:not([data-theme="dark"]) textarea{background:#f8fbfa;border:1px solid #b3ccc4}
+html:not([data-theme="dark"]) .ops-tabs button[aria-selected=true]{background:#f8fbfa}
+html:not([data-theme="dark"]) .ops-card,html:not([data-theme="dark"]) .ops-panel{background:#f8fbfa}
+html:not([data-theme="dark"]) .ops-card.selected{box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .ops-next{background:linear-gradient(110deg,#f8fbfa,#f8fbfa)}
+html:not([data-theme="dark"]) .ops-step{background:#f8fbfa}
+html:not([data-theme="dark"]) .ops-notice{background:#fbfaf8;color:#8e670b}
+html:not([data-theme="dark"]) .ops-embed{background:#f8fbfa}
+html:not([data-theme="dark"]) .ops-error{color:#8e290b}
+html:not([data-theme="dark"]) .ops-preview{background:#f9fbfa}
+html:not([data-theme="dark"]) .ops-preview small{color:#3d524b}

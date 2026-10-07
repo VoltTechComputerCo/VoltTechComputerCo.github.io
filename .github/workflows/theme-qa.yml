@@ -1,0 +1,28 @@
+name: Theme appearance QA
+on:
+  push:
+    branches: [main]
+    paths: ['assets/css/**', 'assets/js/theme.js', '**/*.html', 'scripts/test-theme*', '.github/workflows/theme-qa.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  appearance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/test-theme.mjs
+      - run: npm install --no-save --package-lock=false playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Check mobile and desktop themes
+        run: |
+          python3 -m http.server 4173 > /tmp/theme-http.log 2>&1 &
+          node scripts/test-theme-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: theme-screenshots
+          path: qa-results/theme

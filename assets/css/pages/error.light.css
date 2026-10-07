@@ -1,0 +1,16 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .error-home-hero{border-bottom:1px solid rgba(53,182,168,0.28);background:#f8fbfb}
+html:not([data-theme="dark"]) .error-home-hero::after{background:linear-gradient(90deg,rgba(248,251,251,0.88) 0%,rgba(248,251,251,0.68) 44%,rgba(248,251,251,0.24) 100%),linear-gradient(180deg,rgba(248,251,251,0.08),rgba(248,251,251,0.72))}
+html:not([data-theme="dark"]) .error-code{color:rgba(11,142,128,0.96);text-shadow:none}
+html:not([data-theme="dark"]) .error-copy h1 span{text-shadow:none}
+html:not([data-theme="dark"]) .error-status-strip{border:1px solid rgba(53,182,168,0.28);background:linear-gradient(155deg,rgba(248,251,251,0.3),rgba(248,251,251,0.7)),rgba(248,251,251,0.52);box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .error-status-strip span{border-right:1px solid rgba(53,182,168,0.25)}
+html:not([data-theme="dark"]) .error-route-section{background:linear-gradient(180deg,rgba(248,251,251,0.32),rgba(248,251,251,0.08))}
+html:not([data-theme="dark"]) .error-route{background:radial-gradient(circle at 90% 10%,rgba(var(--route-rgb),.14),transparent 40%),linear-gradient(145deg,rgba(var(--route-rgb),.09),rgba(248,251,251,0.64)),rgba(248,251,251,0.48);box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .error-route::after{box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .error-route strong{color:#0b8e76}
+html:not([data-theme="dark"]) .error-route b{text-shadow:none}
+html:not([data-theme="dark"]) .error-route:hover,html:not([data-theme="dark"]) .error-route:focus-visible{background:radial-gradient(circle at 90% 10%,rgba(var(--route-rgb),.23),transparent 42%),linear-gradient(145deg,rgba(var(--route-rgb),.15),rgba(248,251,251,0.7));box-shadow:0 4px 18px rgba(18,56,51,.055)}
+@media(max-width:40rem){html:not([data-theme="dark"]) .error-home-hero::after{background:linear-gradient(180deg,rgba(248,251,251,0.67),rgba(248,251,251,0.88))}
+html:not([data-theme="dark"]) .error-status-strip span{border-bottom:1px solid rgba(53,182,168,0.25)}
+}

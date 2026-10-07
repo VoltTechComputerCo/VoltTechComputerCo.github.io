@@ -1,0 +1,6 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .privacy-preview{border-color:rgba(53,182,161,0.28)}
+html:not([data-theme="dark"]) .privacy-pending{border-color:rgba(182,125,53,0.42);background:rgba(244,240,235,0.045)}
+html:not([data-theme="dark"]) .privacy-danger{border-color:rgba(182,53,53,0.34);background:linear-gradient(145deg,rgba(244,235,235,0.035),var(--panel))}
+html:not([data-theme="dark"]) .privacy-danger .eyebrow,html:not([data-theme="dark"]) .privacy-danger h2{color:#8e0b0b}
+html:not([data-theme="dark"]) .privacy-retention{border-left:2px solid rgba(182,125,53,0.6);background:rgba(244,240,235,0.035)}

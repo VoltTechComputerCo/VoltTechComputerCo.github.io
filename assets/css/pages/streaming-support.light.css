@@ -1,0 +1,2 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .streaming-support-page{--service-accent:#490b8e;background:radial-gradient(circle at 82% 0,rgba(239,235,244,0.08),transparent 30%),var(--bg)}

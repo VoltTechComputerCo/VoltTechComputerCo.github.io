@@ -1,0 +1,62 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .home-hero::after{background:linear-gradient(90deg, rgba(248,251,251,0.48), transparent 70%)}
+html:not([data-theme="dark"]) .component-card{background:radial-gradient(circle at 50% 16%, rgba(var(--component-accent), .08), transparent 44%),
+    rgba(248,251,251,0.76);box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .component-card::before{background:linear-gradient(
+      180deg,
+      rgba(248,251,251,0) 0%,
+      rgba(248,251,251,0.36) 18%,
+      rgba(248,251,251,0.78) 50%,
+      rgba(248,251,251,0.96) 100%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(var(--component-accent), .02),
+      rgba(var(--component-accent), .12)
+    )}
+html:not([data-theme="dark"]) .component-card::after{box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .component-card:hover,html:not([data-theme="dark"]) .component-card:focus-visible{background:radial-gradient(circle at 50% 16%, rgba(var(--component-accent), .14), transparent 48%),
+    rgba(248,251,251,0.82);box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .component-card h3{color:#0b8e7d;text-shadow:none}
+html:not([data-theme="dark"]) .component-card p{text-shadow:none}
+html:not([data-theme="dark"]) .component-card .card-arrow{text-shadow:none}
+html:not([data-theme="dark"]) .stream-support-panel:hover,html:not([data-theme="dark"]) .stream-support-panel:focus-visible{background:rgba(239,235,244,0.035)}
+html:not([data-theme="dark"]) .stream-support-panel .eyebrow{color:#490b8e}
+html:not([data-theme="dark"]) .stream-support-image{border:1px solid rgba(113,53,182,0.72)}
+html:not([data-theme="dark"]) .stream-support-image span{border:1px solid rgba(112,53,182,0.7);background:rgba(249,249,251,0.82);color:#3f0b8e}
+html:not([data-theme="dark"]) .stream-support-tags span{border:1px solid rgba(113,53,182,0.28);color:#450b8e}
+html:not([data-theme="dark"]) .stream-support-link{color:#3f0b8e}
+html:not([data-theme="dark"]) .stream-support-link b{color:#490b8e}
+@media(max-width:56rem){html:not([data-theme="dark"]) .stream-support-panel{border-top:1px solid rgba(113,53,182,0.6)}
+}
+html:not([data-theme="dark"]) .hero-build-button,html:not([data-theme="dark"]) .hero-stream-button{text-shadow:none}
+html:not([data-theme="dark"]) .hero-build-button span{color:#0b8e81}
+html:not([data-theme="dark"]) .hero-stream-button span{color:#450b8e}
+html:not([data-theme="dark"]) .stream-support-image span.vt-image-glass{background:linear-gradient(180deg, rgba(239,235,244,0.12), rgba(250,248,251,0.18)),
+    rgba(250,248,251,0.22);border-color:rgba(113,53,182,0.72)}
+@media (max-width: 40rem){html:not([data-theme="dark"]) .hero-facts > span{border:1px solid rgba(53,182,170,0.26);background:linear-gradient(180deg, rgba(235,244,243,0.055), rgba(248,251,251,0.16)),
+      rgba(248,251,251,0.2);box-shadow:0 4px 18px rgba(18,56,51,.055)}
+}
+html:not([data-theme="dark"]) .component-card{background:rgba(248,251,251,0.84);box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .component-card::before{background:linear-gradient(
+    to top,
+    rgba(248,251,251,0.98) 0%,
+    rgba(248,251,251,0.86) 28%,
+    rgba(248,251,251,0.48) 60%,
+    rgba(248,251,251,0.16) 82%,
+    rgba(248,251,251,0) 100%
+  )}
+html:not([data-theme="dark"]) .component-card::after{box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .component-card h3{color:#0b8e7d;text-shadow:none}
+html:not([data-theme="dark"]) .component-card p{text-shadow:none}
+html:not([data-theme="dark"]) .component-card .card-arrow{text-shadow:none}
+html:not([data-theme="dark"]) .component-card:hover,html:not([data-theme="dark"]) .component-card:focus-visible{box-shadow:0 4px 18px rgba(18,56,51,.055)}
+@media(max-width:40rem){html:not([data-theme="dark"]) .component-card::before{background:linear-gradient(
+      to top,
+      rgba(248,251,251,0.985) 0%,
+      rgba(248,251,251,0.87) 28%,
+      rgba(248,251,251,0.5) 60%,
+      rgba(248,251,251,0.16) 82%,
+      rgba(248,251,251,0) 100%
+    )}
+}

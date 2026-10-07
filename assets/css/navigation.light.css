@@ -1,0 +1,17 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+@media(max-width:56rem){html:not([data-theme="dark"]) .primary-nav{border:1px solid rgba(173,210,207,0.25);background:linear-gradient(180deg,rgba(248,251,251,0.97),rgba(248,251,251,0.98));box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .primary-nav .nav-tile>a{background:linear-gradient(90deg,rgba(248,251,251,0.97) 0%,rgba(248,251,251,0.9) 34%,rgba(var(--nav-rgb),.16) 68%,rgba(248,251,251,0.1) 100%),
+      var(--nav-image);box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .primary-nav .nav-tile>a::after{box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .primary-nav .nav-copy small{text-shadow:none}
+html:not([data-theme="dark"]) .primary-nav .nav-copy b{color:#26403b}
+html:not([data-theme="dark"]) .primary-nav .nav-copy em{color:#2d3937}
+html:not([data-theme="dark"]) .primary-nav .nav-arrow{text-shadow:none}
+html:not([data-theme="dark"]) .primary-nav .nav-tile>a:hover,html:not([data-theme="dark"]) .primary-nav .nav-tile>a:focus-visible,html:not([data-theme="dark"]) .primary-nav .nav-tile>a[aria-current="page"]{color:#333333;box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .nav-cart-count{background:rgba(248,251,251,0.9)}
+}
+@media(max-width:56rem){html:not([data-theme="dark"]) .mobile-nav-backdrop:not([hidden]){background:rgba(248,251,251,0.74)}
+html:not([data-theme="dark"]) .primary-nav{border:1px solid rgba(53,182,168,0.46);background:radial-gradient(circle at 50% 0%,rgba(235,244,243,0.09),transparent 36%),
+      linear-gradient(165deg,rgba(248,251,251,0.96),rgba(248,251,251,0.985));box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .primary-nav .mobile-nav-intro{border-bottom:1px solid rgba(53,182,168,0.25);background:rgba(248,251,251,0.94)}
+}

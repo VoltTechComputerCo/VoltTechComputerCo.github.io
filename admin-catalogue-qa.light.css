@@ -1,0 +1,16 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .qa-stat{background:#f8fbfb}
+html:not([data-theme="dark"]) .qa-stat.warn{border-color:rgba(182,125,53,0.25)}
+html:not([data-theme="dark"]) .qa-image{background:#f8fbfb}
+html:not([data-theme="dark"]) .qa-image-missing{color:#404f4c}
+html:not([data-theme="dark"]) .qa-demo,html:not([data-theme="dark"]) .qa-score{background:rgba(248,251,251,0.86)}
+html:not([data-theme="dark"]) .qa-demo{color:#8e630b;border:1px solid rgba(182,133,53,0.35)}
+html:not([data-theme="dark"]) .qa-score.low{color:#8e0b12;border-color:rgba(182,53,61,0.4)}
+html:not([data-theme="dark"]) .qa-score.mid{color:#8e630b;border-color:rgba(182,133,53,0.35)}
+html:not([data-theme="dark"]) .qa-score.high{color:#0b8e48;border-color:rgba(53,182,111,0.35)}
+html:not([data-theme="dark"]) .qa-review-state.pending{color:#8e630b;border:1px solid rgba(182,133,53,0.35)}
+html:not([data-theme="dark"]) .qa-review-state.reviewed{color:#0b8e48;border:1px solid rgba(53,182,111,0.35)}
+html:not([data-theme="dark"]) .qa-issue{border:1px solid rgba(182,125,53,0.25);background:rgba(244,240,235,0.035);color:#403626}
+html:not([data-theme="dark"]) .qa-issue.ok{color:#0b8e48;border-color:rgba(53,182,111,0.25);background:rgba(235,244,239,0.035)}
+html:not([data-theme="dark"]) .qa-meta b{color:#283e39}
+html:not([data-theme="dark"]) .qa-editor{background:#f8fbfb}

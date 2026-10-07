@@ -1,0 +1,7 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .signal-scan-page{background:radial-gradient(circle at 15% 0,rgba(235,244,243,0.08),transparent 33%),var(--bg)}
+html:not([data-theme="dark"]) .scan-status-card,html:not([data-theme="dark"]) .scan-workspace{background:linear-gradient(155deg,rgba(235,244,243,0.035),rgba(248,251,251,0.58)),var(--panel)}
+html:not([data-theme="dark"]) .scan-scope:before{background-image:linear-gradient(rgba(235,244,243,0.045) 1px,transparent 1px),linear-gradient(90deg,rgba(235,244,243,0.045) 1px,transparent 1px)}
+html:not([data-theme="dark"]) .scan-priority{background:rgba(248,251,251,0.52)}
+html:not([data-theme="dark"]) .scan-meter i.on{box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .scan-note{background:rgba(235,244,243,0.035)}

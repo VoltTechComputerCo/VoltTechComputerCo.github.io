@@ -1,0 +1,7 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .creator-register-points span{border:1px solid rgba(113,53,182,0.28);background:linear-gradient(145deg,rgba(239,235,244,0.08),rgba(248,251,251,0.55))}
+html:not([data-theme="dark"]) .creator-register-points b{color:#490b8e}
+html:not([data-theme="dark"]) .creator-register-card,html:not([data-theme="dark"]) .creator-register-side article,html:not([data-theme="dark"]) .creator-register-result{background:linear-gradient(145deg,rgba(239,235,244,0.06),rgba(248,251,251,0.64)),var(--panel);box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .creator-register-confirm{border:1px solid rgba(113,53,182,0.3);background:rgba(239,235,244,0.045)}
+html:not([data-theme="dark"]) .creator-twitch-button{border-color:rgba(113,53,182,0.9)!important;background:linear-gradient(180deg,rgba(239,235,244,0.25),rgba(250,248,251,0.26))!important;box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .creator-register-result img{border:1px solid rgba(113,53,182,0.5)}

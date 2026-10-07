@@ -1,0 +1,6 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]){--bg:#f8fafb;--panel:#f8fbfb;--line:#b0cdcf;--orange:#8e540b;--lead:#1a7f75;--text:#264038;--muted:#404f4c}
+html:not([data-theme="dark"]) body{background:radial-gradient(ellipse 80% 35% at 50% -10%,#fbfaf8 0%,transparent 60%),var(--bg)}
+html:not([data-theme="dark"]) nav{background:rgba(248,250,251,0.94)}
+html:not([data-theme="dark"]) .meta{color:#3f4f4c}
+html:not([data-theme="dark"]) figcaption{color:#404f4c}

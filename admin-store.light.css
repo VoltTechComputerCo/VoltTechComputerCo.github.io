@@ -1,0 +1,5 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .launch-card{border-color:rgba(53,182,161,0.28)}
+html:not([data-theme="dark"]) .launch-option{background:#f8fbfb}
+html:not([data-theme="dark"]) .launch-option small{color:#404f4c}
+html:not([data-theme="dark"]) .package-summary{color:#3f4f4d}

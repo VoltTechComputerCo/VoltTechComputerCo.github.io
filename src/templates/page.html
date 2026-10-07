@@ -1,18 +1,21 @@
 <!doctype html>
 <html lang="en-ZA" data-vt-shell="clean">
 <head>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('volttech-appearance')==='dark'?'dark':'light';}catch(e){document.documentElement.dataset.theme='light';}</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{TITLE}}</title>
   <meta name="description" content="{{DESCRIPTION}}">
   <meta name="robots" content="{{ROBOTS}}">
-  <meta name="theme-color" content="#031012">
+  <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="{{ROOT}}icons/favicon.ico">
   <link rel="preload" href="{{ROOT}}assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 {{STYLES}}
 {{HEAD}}
   <script type="module" src="{{ROOT}}assets/js/site-shell.js"></script>
 {{SCRIPTS}}
+<link rel="stylesheet" href="{{ROOT}}assets/css/site-theme.css?v=20261007-white">
+<script defer src="{{ROOT}}assets/js/theme.js?v=20261007-white"></script>
 </head>
 <body data-page="{{PAGE}}">
 {{HEADER}}

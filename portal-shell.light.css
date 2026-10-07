@@ -1,0 +1,12 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .portal-customer-nav a,html:not([data-theme="dark"]) .portal-admin-nav a,html:not([data-theme="dark"]) .portal-admin-nav button{color:var(--teal,#108975)}
+html:not([data-theme="dark"]) .portal-customer-nav a.active,html:not([data-theme="dark"]) .portal-admin-nav a.active,html:not([data-theme="dark"]) .portal-admin-nav button.active{background:var(--teal,#ebf4f3);border-color:var(--teal,#35b6a1)}
+html:not([data-theme="dark"]) .portal-admin-back{color:var(--muted,#404f4c)!important}
+html:not([data-theme="dark"]) .portal-admin-more{border:1px solid var(--line,#b0cfcf);background:#f8fbfb;box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .portal-admin-actions a,html:not([data-theme="dark"]) .portal-admin-actions button{border:1px solid var(--line,#b0cfcf);background:#f8fbfb;color:var(--teal,#108975)}
+html:not([data-theme="dark"]) .portal-admin-actions .primary{background:var(--teal,#ebf4f3);border-color:var(--teal,#35b6a1)}
+html:not([data-theme="dark"]) .vt-status-success{color:#0b8e48!important;border-color:rgba(53,182,111,0.48)!important}
+html:not([data-theme="dark"]) .vt-status-warning{color:#8e630b!important;border-color:rgba(182,133,53,0.46)!important}
+html:not([data-theme="dark"]) .vt-status-danger{color:#8e0b12!important;border-color:rgba(182,53,61,0.52)!important}
+html:not([data-theme="dark"]) .vt-status-active{color:#0f8a77!important;border-color:rgba(53,182,161,0.4)!important}
+html:not([data-theme="dark"]) .vt-status-neutral{color:#2e3836!important;border-color:rgba(185,198,195,0.25)!important}

@@ -1,0 +1,11 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]){--bg:#f8fafb;--panel:#f8fbfb;--line:#b0cfcf;--teal:#108975;--text:#356456;--muted:#404f4c;--warn:#8e540b;--danger:#8e0b0b}
+html:not([data-theme="dark"]) body{background:radial-gradient(ellipse 80% 38% at 50% -8%,#f8fbfb,transparent 60%),var(--bg)}
+html:not([data-theme="dark"]) nav{background:rgba(248,250,251,0.94)}
+html:not([data-theme="dark"]) .card{background:rgba(248,251,251,0.96)}
+html:not([data-theme="dark"]) .pill{border:1px solid #b2ccc8;color:#2a3c38}
+html:not([data-theme="dark"]) .btn.teal{border-color:rgba(53,182,161,0.45)}
+html:not([data-theme="dark"]) .btn.danger{border-color:#a14a50;color:#8e0b0b}
+html:not([data-theme="dark"]) .notice{border:1px solid rgba(53,182,161,0.25);color:#2c3a37}
+html:not([data-theme="dark"]) .modal{background:rgba(250,250,250,0.7333333333333333)}
+html:not([data-theme="dark"]) .dialog{background:#f8fbfb;box-shadow:0 4px 18px rgba(18,56,51,.055)}

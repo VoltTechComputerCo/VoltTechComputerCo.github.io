@@ -1,0 +1,3 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+@media(max-width:56rem){html:not([data-theme="dark"]) body .primary-nav{border-top:1px solid rgba(53,182,168,0.46)}
+}

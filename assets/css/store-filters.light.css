@@ -1,0 +1,23 @@
+/* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
+html:not([data-theme="dark"]) .category-filter-menu{border:1px solid rgba(53,182,169,0.62);background:radial-gradient(circle at 90% 0,rgba(235,244,243,0.12),transparent 42%),
+    linear-gradient(155deg,rgba(248,251,251,0.7),rgba(248,251,251,0.82));box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .filter-menu-option{--filter-accent:#0b8e80;background:linear-gradient(155deg,color-mix(in srgb,var(--filter-accent) 10%,transparent),rgba(248,251,251,0.62));color:#0b8e7d;box-shadow:0 4px 18px rgba(18,56,51,.055)}
+@media(hover:hover) and (pointer:fine){html:not([data-theme="dark"]) .filter-menu-option:hover{box-shadow:0 4px 18px rgba(18,56,51,.055)}
+}
+html:not([data-theme="dark"]) .filter-menu-option:focus-visible,html:not([data-theme="dark"]) .filter-menu-option.is-selected{background:linear-gradient(145deg,color-mix(in srgb,var(--filter-accent) 20%,transparent),rgba(248,251,251,0.7));box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .filter-menu-all{--filter-accent:#0b8e80}
+html:not([data-theme="dark"]) .filter-menu-substage{border-top:1px solid rgba(53,182,169,0.25)}
+html:not([data-theme="dark"]) .smart-filter-shell{border:1px solid rgba(53,182,169,0.34);background:linear-gradient(155deg,rgba(248,251,251,0.5),rgba(248,251,251,0.66));box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .smart-filter{border:1px solid rgba(53,182,169,0.34);background:rgba(248,251,251,0.48)}
+html:not([data-theme="dark"]) .smart-filter[open]{border-color:rgba(53,182,169,0.7);box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .smart-filter-options{border-top:1px solid rgba(53,182,169,0.25)}
+html:not([data-theme="dark"]) .smart-filter-option{--filter-accent:#0b8e80;background:rgba(248,251,251,0.52);box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .smart-filter-option.is-selected{color:#333333;background:linear-gradient(145deg,color-mix(in srgb,var(--filter-accent) 22%,transparent),rgba(248,251,251,0.68));box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .active-filter-chip{--filter-accent:#0b8e80;background:color-mix(in srgb,var(--filter-accent) 10%,rgba(248,251,251,0.58));color:#0b8e7b;box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .filter-brand-logo{background:rgba(250,250,250,0.94);box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .filter-menu-option{background:radial-gradient(circle at 82% 12%,color-mix(in srgb,var(--filter-accent) 22%,transparent),transparent 43%),
+    linear-gradient(145deg,color-mix(in srgb,var(--filter-accent) 13%,transparent),rgba(248,251,251,0.74))}
+html:not([data-theme="dark"]) .filter-brand-logo{box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .filter-brand-name{color:#0b8e7d;text-shadow:none}
+html:not([data-theme="dark"]) .filter-menu-option.is-selected{box-shadow:0 4px 18px rgba(18,56,51,.055)}
+html:not([data-theme="dark"]) .smart-filter-option .filter-brand-logo{box-shadow:0 4px 18px rgba(18,56,51,.055)}
