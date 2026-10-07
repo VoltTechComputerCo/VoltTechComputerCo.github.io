@@ -1,7 +1,7 @@
 import { getCommerceCore, withTimeout, validOrderAccess, readLaunchSettings, canPay, paymentDestination, canTransactHere } from '../services/transactions.js';
 import { connectCart } from '../services/home-integrations.js';
 import { esc } from '../components/catalogue-view.js';
-import { money, stageInfo, timeline, orderItems, trackingLink } from '../components/order-view.js';
+import { money, stageInfo, timeline, orderItems, trackingLink } from '../components/order-view.js?v=20261007-supplier-flow1';
 const params=new URLSearchParams(location.search), access=validOrderAccess(params);
 const state=document.getElementById('order-state'), detail=document.getElementById('order-detail'), refresh=document.getElementById('refresh-order'), error=document.getElementById('order-error');
 let VT, order, settings, busy=false, paying=false, timer, failures=0, suspended=false;
