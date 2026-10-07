@@ -8,14 +8,14 @@ export function stageInfo(order) {
   if (order.delivery_status==='delivered') return {title:'Delivered',copy:'The order record shows delivery completed.',tone:'success'};
   if (order.delivery_status==='in_transit') return {title:'On the way',copy:'The courier status shows your parcel in transit.',tone:'success'};
   if (order.delivery_status==='booked') return {title:'Courier booked',copy:'A courier booking has been recorded. Check tracking for collection and delivery updates.',tone:'success'};
-  if (order.payment_status==='paid') return {title:'Payment received',copy:'Payment is confirmed. Your order is awaiting its next fulfilment update.',tone:'success'};
-  if (order.checkout_stage==='awaiting_payment') return {title:'Ready for the next step',copy:'Review the confirmed order amount below. Payment availability is checked separately.',tone:'normal'};
-  if (order.checkout_stage==='pending_stock_confirmation' || order.checkout_stage==='submitted') return {title:'Order received',copy:'VoltTech is checking availability, final pricing and delivery before payment.',tone:'normal'};
+  if (order.payment_status==='paid') return {title:'Payment received',copy:'Payment is confirmed and your reserved stock is moving to courier fulfilment.',tone:'success'};
+  if (order.checkout_stage==='awaiting_payment') return {title:'Stock reserved — ready for payment',copy:'Sellable stock, the final order amount and delivery have been confirmed. Payment availability is checked separately.',tone:'normal'};
+  if (order.checkout_stage==='pending_stock_confirmation' || order.checkout_stage==='submitted') return {title:'Order received',copy:'VoltTech is reserving supplier stock and confirming final pricing and courier delivery before payment.',tone:'normal'};
   return {title:'Order update',copy:'Your latest recorded order details are below. Contact VoltTech if you need clarification.',tone:'normal'};
 }
 export function timeline(order) {
   const paymentRecorded=['paid','refunded','partially_refunded'].includes(order.payment_status);
-  const stages=[['Order received',!!order.submitted_at],['Details confirmed',!!order.confirmed_at],['Payment received',paymentRecorded],['Courier booked',['booked','in_transit','delivered'].includes(order.delivery_status)],['Delivered',order.delivery_status==='delivered']];
+  const stages=[['Order received',!!order.submitted_at],['Stock reserved',!!order.confirmed_at],['Payment received',paymentRecorded],['Courier booked',['booked','in_transit','delivered'].includes(order.delivery_status)],['Delivered',order.delivery_status==='delivered']];
   return stages.map(([label,done],i) => `<li class="${done?'is-complete':''}"><span aria-hidden="true">${done?'✓':String(i+1).padStart(2,'0')}</span><div><strong>${label}</strong><small>${done?'Recorded':'Awaiting update'}</small></div></li>`).join('');
 }
 export function orderItems(items) {
