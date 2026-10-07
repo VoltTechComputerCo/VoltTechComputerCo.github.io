@@ -113,7 +113,7 @@ function existingUpdate(existing:any,item:any,feedDate:string){
     media:mediaCurated || !item.image ? existing.media : {
       primaryImage:item.image,directImage:item.image,images:[item.image],sourceType:"supplier-csv",imageStrategy:"supplier-feed"
     },
-    metadata:{...meta,feed_date:feedDate,supplier_category:item.category,supplier:"esquire",import_version:"esquire-csv-v1",stock_connected:true},
+    metadata:{...meta,feed_date:feedDate,supplier_category:item.category,supplier:"esquire",import_version:"esquire-csv-v1",stock_connected:true,pricing_state:"quote-first",auto_markup_disabled:true},
     updated_at:new Date().toISOString()
   };
 }
@@ -183,7 +183,7 @@ Deno.serve(async(req:Request)=>{
         retail_price:null,currency:"ZAR",stock_status:item.stockStatus,stock_qty:item.qty,price_checked_at:feedDate+"T00:00:00Z",
         short_description:item.shortDescription,highlights:[],identifiers:{supplier:"esquire",supplierSku:item.sku,sku:item.sku},
         specs:{},compatibility:{},media:item.image?{primaryImage:item.image,directImage:item.image,images:[item.image],sourceType:"supplier-csv",imageStrategy:"supplier-feed"}:{},
-        seo:{description:item.shortDescription},metadata:{source:"esquire-csv",supplier:"esquire",supplier_category:item.category,feed_date:feedDate,public_store_eligible:true,media_review_required:false,supplier_data_required:false,import_version:"esquire-csv-v1",stock_connected:true},
+        seo:{description:item.shortDescription},metadata:{source:"esquire-csv",supplier:"esquire",supplier_category:item.category,feed_date:feedDate,public_store_eligible:true,media_review_required:false,supplier_data_required:false,import_version:"esquire-csv-v1",stock_connected:true,pricing_state:"quote-first",auto_markup_disabled:true},
         featured:false,is_new:true,sort_priority:0,category_slug:type,condition:"new",is_demo:false
       });
       offers.push({product_id:id,supplier_id:"esquire",supplier_name:"Esquire Technologies",supplier_sku:item.sku,cost_price:item.cost,currency:"ZAR",stock_qty:item.qty,stock_status:item.stockStatus,last_checked:feedDate+"T00:00:00Z",source_url:null,metadata:{feed_date:feedDate,supplier_category:item.category,image:item.image,import_version:"esquire-csv-v1"}});
