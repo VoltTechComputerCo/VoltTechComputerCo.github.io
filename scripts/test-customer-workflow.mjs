@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {customerNext,workflowCard} from '../assets/js/components/customer-workflow.js';
+const base={id:'1',kind:'store',reference:'VT-QA',title:'Test order',stage:'submitted',payment_status:'unpaid',href:'/order-status.html?id=1',total:100};
+assert.match(customerNext(base),/Checking/);
+assert.match(customerNext({...base,stage:'awaiting_approval',approval:'pending'}),/Review and accept/);
+assert.match(customerNext({...base,stage:'awaiting_approval',approval:'accepted'}),/payment release/);
+assert.match(customerNext({...base,stage:'awaiting_payment'}),/payment portal/);
+assert.match(customerNext({...base,payment_status:'paid'}),/Preparing/);
+assert.match(customerNext({...base,courier:true}),/Track/);
+assert.match(customerNext({...base,delivered:true}),/Complete/);
+assert.ok(!workflowCard({...base,title:'<script>alert(1)</script>'}).includes('<script>'));
+console.log('PASS: customer next actions through approval, payment, tracking and completion; escaped customer labels');

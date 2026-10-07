@@ -3,7 +3,15 @@
   "title": "Customer Account | VoltTech Computer Co.",
   "description": "Secure access to your VoltTech quotes, invoices, saved PC builds and account details.",
   "robots": "noindex, nofollow",
-  "styles": ["assets/css/notifications.css", "assets/css/pages/account.css"],
-  "classic_scripts": ["supabase-config.js"],
-  "scripts": ["assets/js/pages/account.js"]
+  "styles": [
+    "assets/css/notifications.css",
+    "assets/css/pages/account.css",
+    "assets/css/components/customer-workflow.css?v=20261007"
+  ],
+  "classic_scripts": [
+    "supabase-config.js"
+  ],
+  "scripts": [
+    "assets/js/pages/account.js?v=20261007-customer-workflow"
+  ]
 }

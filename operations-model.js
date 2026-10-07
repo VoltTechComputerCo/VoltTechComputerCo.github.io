@@ -17,6 +17,7 @@ export function nextAction(j){
  if(!o.supplier_order_at)return {label:'Customer paid. Confirm supplier order',action:'supplier_order',stage:5,tone:'action'};
  if(!o.courier_booked_at)return {label:'Book Bob Go manually and record shipment',action:'courier',stage:6,tone:'action'};
  if(!o.waybill_sent_at)return {label:'Email the waybill to the supplier',action:'waybill_sent',stage:6,tone:'action'};
+ if(!o.waybill_approved_at)return {label:'Confirm supplier approval of the waybill',action:'waybill_approved',stage:6,tone:'action'};
  if(!o.preparing_at)return {label:'Confirm supplier is preparing the parcel',action:'preparing',stage:7,tone:'action'};
  if(!o.collected_at)return {label:'Awaiting collection — record courier handover',action:'collected',stage:7,tone:'waiting'};
  if(!o.in_transit_at)return {label:'Record parcel in transit',action:'in_transit',stage:7,tone:'action'};

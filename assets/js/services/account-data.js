@@ -63,12 +63,13 @@ async function countRows(client, table) {
 }
 
 export async function loadOverview(client, userId) {
-  const [builds, quotes, invoices, orders, jobs, quoteRows, invoiceRows, deletion] = await Promise.all([
+  const [builds, quotes, invoices, orders, jobs, quoteRows, invoiceRows, deletion, workflow] = await Promise.all([
     countRows(client, 'saved_builds'), countRows(client, 'quotes'), countRows(client, 'invoices'),
     countRows(client, 'orders'), countRows(client, 'service_jobs'),
     client.from('quotes').select('id,quote_number,title,status,total,created_at').in('status', ['sent', 'viewed']).order('created_at', { ascending: false }).limit(3),
     client.from('invoices').select('id,invoice_number,status,total,due_at,issued_at').order('issued_at', { ascending: false }).limit(10),
-    client.from('account_deletion_requests').select('status,recovery_until,requested_at').eq('user_id', userId).maybeSingle()
+    client.from('account_deletion_requests').select('status,recovery_until,requested_at').eq('user_id', userId).maybeSingle(),
+    client.rpc('customer_workflow_jobs')
   ]);
 
   const nonPayable = new Set(['paid', 'void', 'cancelled', 'canceled', 'cancelled_by_admin']);
@@ -87,8 +88,11 @@ export async function loadOverview(client, userId) {
   else if (unpaid.length) action = { tone: 'attention', kicker: 'Payment required', title: `Invoice ${unpaid[0].invoice_number} is awaiting payment`, body: 'Open the invoice to review the amount and payment status.', href: `invoice.html?id=${encodeURIComponent(unpaid[0].id)}`, label: 'Open invoice' };
   else if (waiting.length) action = { tone: 'attention', kicker: 'Decision required', title: `${waiting[0].quote_number} is waiting for your decision`, body: waiting[0].title || 'VoltTech quotation', href: `quote.html?id=${encodeURIComponent(waiting[0].id)}`, label: 'Review quote' };
 
+  const active=(workflow.data||[]).filter(job=>!job.delivered);
+  const next=active.find(job=>job.kind==='store'&&(job.stage==='awaiting_payment'||job.stage==='awaiting_approval'))||active.find(job=>job.kind==='store');
+  if(next){const decision=next.stage==='awaiting_approval'&&next.approval==='pending',payment=next.stage==='awaiting_payment'&&next.payment_status!=='paid';action={tone:decision||payment?'attention':'clear',kicker:decision?'Quote ready':payment?'Payment required':'Order update',title:next.reference,body:next.latest_update||(decision?'Your quote is ready for review.':payment?'Open your order workspace to complete payment.':'Your order is progressing. View its latest status.'),href:next.href,label:'Open order workspace'};}
   return {
-    counts: { builds, quotes, invoices, orders, jobs },
+    counts: { builds, quotes, invoices, orders:orders==null?null:orders+(workflow.data||[]).filter(job=>job.kind==='store').length, jobs },
     action,
     deletion: !deletion.error && deletion.data?.status === 'requested' ? deletion.data : null
   };

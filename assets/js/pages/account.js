@@ -1,10 +1,11 @@
+import { renderCustomerWorkflow } from '../components/customer-workflow.js?v=20261007-customer-workflow';
 import {
   isAccountInspection, getAccountClient, safeReturnPath, accountCallbackUrl,
   continueAfterAuth, loadAccountNotifications, accountIsAdmin
 } from '../services/account-session.js?v=20261005-oauthfix2';
 import {
   loadProfile, saveProfile, listAddresses, saveAddress, deleteAddress, loadOverview
-} from '../services/account-data.js';
+} from '../services/account-data.js?v=20261007-customer-workflow';
 
 const q = selector => document.querySelector(selector);
 const qa = selector => [...document.querySelectorAll(selector)];
@@ -244,6 +245,9 @@ async function openHub(user) {
     fillProfile(profile, user);
     renderAddresses(addresses.error ? [] : (addresses.data || []));
     renderOverview(overview);
+    let workspace=q('#orders');if(!workspace){workspace=document.createElement('section');workspace.id='orders';workspace.className='customer-workflow';q('#overviewAction').before(workspace);}
+    await renderCustomerWorkflow(client,workspace);
+    if(location.hash==='#orders')workspace.scrollIntoView({block:'start'});
     renderCreatorProfile(creator);
     resetAddressForm(profile);
     q('#adminShortcut').hidden = !admin;

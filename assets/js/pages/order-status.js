@@ -1,8 +1,10 @@
 import { getCommerceCore, withTimeout, validOrderAccess, readLaunchSettings, canPay, paymentDestination, canTransactHere } from '../services/transactions.js';
+import { getAccountClient } from '../services/account-session.js';
 import { connectCart } from '../services/home-integrations.js';
 import { esc } from '../components/catalogue-view.js';
-import { money, stageInfo, timeline, orderItems, trackingLink } from '../components/order-view.js?v=20261007-ops';
-const params=new URLSearchParams(location.search), access=validOrderAccess(params);
+import { money, stageInfo, timeline, orderItems, trackingLink } from '../components/order-view.js?v=20261007-customer-workflow';
+const params=new URLSearchParams(location.search), initialAccess=validOrderAccess(params);
+let access=initialAccess;
 const state=document.getElementById('order-state'), detail=document.getElementById('order-detail'), refresh=document.getElementById('refresh-order'), error=document.getElementById('order-error');
 let VT, order, settings, busy=false, paying=false, timer, failures=0, suspended=false;
 function showState(title,copy){state.querySelector('h2').textContent=title;state.querySelector('p').textContent=copy;state.hidden=false;detail.hidden=true;}
@@ -10,6 +12,9 @@ function showError(message){error.textContent=message;error.hidden=false;}
 function schedule(){clearTimeout(timer);if(!suspended&&!document.hidden&&!paying&&access&&VT)timer=setTimeout(load,failures?60000:30000);}
 async function init(){
   connectCart();
+  if(!access&&params.get('id')){
+    try{const client=await getAccountClient();const {data:{session}}=await client.auth.getSession();if(!session){location.replace('account.html?returnTo='+encodeURIComponent(location.pathname+location.search));return;}const result=await client.rpc('customer_order_link',{p_id:params.get('id')});if(result.error||!result.data)throw new Error('Order unavailable');access=validOrderAccess(new URL(result.data,location.origin).searchParams);}catch{showState('This order could not be opened.','Sign in with the customer account that placed this request.');return;}
+  }
   if(!access){showState('Open your private order link.','Use the complete link supplied after checkout. A reference number alone cannot open an order.');return;}
   if(!canTransactHere()){showState('Order tracking is unavailable on this page.','Open your original order link, or contact VoltTech with your order reference.');return;}
   try{VT=await getCommerceCore();refresh.hidden=false;refresh.addEventListener('click',()=>load());await load();}
@@ -30,6 +35,10 @@ async function load(){
 }
 function render(){
   const stage=stageInfo(order);
+  let next=document.getElementById('customer-next-action');if(!next){next=document.createElement('section');next.id='customer-next-action';next.className='transaction-panel';detail.prepend(next);}
+  const action=canPay(order,settings)?'⚡ Open the payment portal to complete your approved order.':order.checkout_stage==='awaiting_approval'&&order.workflow?.approval==='pending'?'⚡ Review your quotation and accept or decline below.':order.workflow?.delivered_at?'✅ Your order is complete. Your invoice and history are below.':order.workflow?.waybill_approved_at?'⏳ Follow your courier tracking below.':'⏳ '+stage.copy;
+  next.innerHTML='<p class="eyebrow">NEXT ACTION</p><h2>'+esc(action)+'</h2><a class="text-link" href="account.html#orders">My orders &amp; quotes →</a>';
+  let history=document.getElementById('customer-update-history');if(!history){history=document.createElement('section');history.id='customer-update-history';history.className='transaction-panel';detail.append(history);}history.innerHTML='<h2>Latest updates</h2>'+(order.updates||[]).map(u=>'<p>'+esc(u.message)+'<br><small>'+esc(new Date(u.created_at).toLocaleString('en-ZA'))+'</small></p>').join('');
   document.getElementById('order-stage-title').textContent=stage.title;
   document.getElementById('order-stage-copy').textContent=stage.copy;
   document.getElementById('order-reference').textContent=order.request_number;

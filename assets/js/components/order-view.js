@@ -17,7 +17,7 @@ export function stageInfo(order) {
 }
 export function timeline(order) {
   const paymentRecorded=['paid','refunded','partially_refunded'].includes(order.payment_status);
-  const stages=[['Order received',!!order.submitted_at],['Stock reserved',!!order.confirmed_at],['Quote confirmed',!!order.workflow?.pricing_confirmed_at],['Quote accepted',order.workflow?.approval==='accepted'],['Payment received',paymentRecorded],['Preparing order',!!order.workflow?.supplier_order_at],['Courier booked',['booked','in_transit','delivered'].includes(order.delivery_status)],['In transit',!!order.workflow?.collected_at||['in_transit','delivered'].includes(order.delivery_status)],['Delivered',order.delivery_status==='delivered']];
+  const stages=[['Order received',!!order.submitted_at],['Stock confirmed',!!order.workflow?.stock_confirmed_at],['Quote confirmed',!!order.workflow?.pricing_confirmed_at],['Quote accepted',order.workflow?.approval==='accepted'],['Payment received',paymentRecorded],['Preparing order',!!order.workflow?.supplier_order_at],['Courier booked',!!order.workflow?.courier_booked_at],['Waybill confirmed',!!order.workflow?.waybill_approved_at],['In transit',!!order.workflow?.collected_at||['in_transit','delivered'].includes(order.delivery_status)],['Delivered',order.delivery_status==='delivered']];
   return stages.map(([label,done],i) => `<li class="${done?'is-complete':''}"><span aria-hidden="true">${done?'✓':String(i+1).padStart(2,'0')}</span><div><strong>${label}</strong><small>${done?'Recorded':'Awaiting update'}</small></div></li>`).join('');
 }
 export function orderItems(items) {

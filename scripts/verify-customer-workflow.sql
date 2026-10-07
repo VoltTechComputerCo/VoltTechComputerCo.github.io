@@ -6,6 +6,8 @@ begin
  select r.id into rid from public.store_requests r where exists(select 1 from public.store_request_items where request_id=r.id) order by submitted_at desc limit 1;
  if rid is null then raise exception 'No testable request'; end if;
  key:='store:'||rid;
+ delete from public.operations_jobs where entity_key=key;
+ update public.store_requests set payment_status='unpaid',checkout_stage='pending_stock_confirmation' where id=rid;
  select jsonb_agg(jsonb_build_object('item_id',id,'reserved_quantity',quantity,'state','feed_available','supplier','Esquire','sku','QA','reference','QA','cost',10)),jsonb_agg(jsonb_build_object('item_id',id,'unit_price',100)) into reservations,pricing from public.store_request_items where request_id=rid;
  begin perform public.admin_operations_action(key,'reserve',jsonb_build_object('reservations',reservations));raise exception 'TEST FAIL: feed availability accepted';exception when others then if sqlerrm='TEST FAIL: feed availability accepted' then raise; end if;end;
  select jsonb_agg(jsonb_build_object('item_id',id,'reserved_quantity',quantity,'state','reserved','supplier','Esquire','sku','QA','reference','QA-SO','cost',10)) into reservations from public.store_request_items where request_id=rid;
@@ -24,12 +26,15 @@ begin
  perform public.admin_operations_action(key,'courier','{"tracking":"QA","waybill":"QA","cost":10}');
  begin perform public.admin_operations_action(key,'collected','{}');raise exception 'TEST FAIL: collection before waybill';exception when others then if sqlerrm='TEST FAIL: collection before waybill' then raise; end if;end;
  perform public.admin_operations_action(key,'waybill_sent','{}');
+ begin perform public.admin_operations_action(key,'collected','{}');raise exception 'TEST FAIL: collection before approval';exception when others then if sqlerrm='TEST FAIL: collection before approval' then raise; end if;end;
  perform public.admin_operations_action(key,'waybill_approved','{}');
  perform public.admin_operations_action(key,'preparing','{}');
  perform public.admin_operations_action(key,'collected','{}');
  perform public.admin_operations_action(key,'in_transit','{}');
  perform public.admin_operations_action(key,'delivered','{}');
  perform public.admin_operations_action(key,'close','{}');
+ if (select count(*) from public.email_outbox where source_type='customer_workflow' and source_id=key)<12 then raise exception 'Missing step emails'; end if;
+ if exists(select 1 from public.email_outbox where source_type='customer_workflow' and source_id=key and (payload->>'message' ilike '%brenton%' or payload->>'message' ilike '%QA-SO%')) then raise exception 'Private data exposed';end if;
 end $$;
 select set_config('request.jwt.claim.sub',gen_random_uuid()::text,true);
 set local role authenticated;

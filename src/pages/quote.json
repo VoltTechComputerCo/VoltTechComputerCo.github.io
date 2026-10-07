@@ -11,6 +11,6 @@
     "supabase-config.js"
   ],
   "scripts": [
-    "assets/js/pages/customer-document.js?v=20261007-ops"
+    "assets/js/pages/customer-document.js?v=20261007-customer-workflow"
   ]
 }

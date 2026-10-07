@@ -37,12 +37,13 @@ export async function requireCustomer() {
 }
 
 export async function loadActivity(client) {
-  const [builds, quotes, invoiceResult, orders, jobs] = await Promise.all([
+  const [builds, quotes, invoiceResult, orders, jobs, workflow] = await Promise.all([
     client.from('saved_builds').select('id,name,status,estimated_total,quote_id,updated_at,build_data').order('updated_at',{ascending:false}),
     client.from('quotes').select('id,quote_number,title,status,total,created_at,valid_until,source_type,source_id').order('created_at',{ascending:false}),
     client.from('invoices').select('id,invoice_number,status,total,issued_at,due_at,paid_at,quote_id,source_type,source_id').order('issued_at',{ascending:false}),
     client.from('orders').select('id,order_number,status,total,payment_status,placed_at,created_at').order('created_at',{ascending:false}),
-    client.from('service_jobs').select('id,job_number,status,title,device_name,opened_at,completed_at').order('opened_at',{ascending:false})
+    client.from('service_jobs').select('id,job_number,status,title,device_name,opened_at,completed_at').order('opened_at',{ascending:false}),
+    client.rpc('customer_workflow_jobs')
   ]);
   const invoices = invoiceResult.error ? [] : (invoiceResult.data || []);
   const invoiceByQuote = new Map(invoices.filter(row=>row.quote_id).map(row=>[row.quote_id,row]));
@@ -53,6 +54,7 @@ export async function loadActivity(client) {
   for (const row of invoices) { const paid=String(row.status||'').toLowerCase()==='paid'; events.push(make('invoice',row,paid?'Paid invoice':'Invoice',row.invoice_number,row.status,row.total,row.issued_at,paid?`receipt.html?id=${encodeURIComponent(row.id)}`:`invoice.html?id=${encodeURIComponent(row.id)}`,paid?'View receipt':'Open invoice',[],originLabel(row),sourceBuildLink(row))); }
   for (const row of orders.data || []) events.push(make('order',row,'Order',row.order_number||`Order ${String(row.id).slice(0,8)}`,row.status,row.total,row.placed_at||row.created_at,`order-document.html?id=${encodeURIComponent(row.id)}`,'Open order',[row.payment_status],'Store'));
   for (const row of jobs.data || []) events.push(make('service',row,row.title||'Service job',row.job_number||`Job ${String(row.id).slice(0,8)}`,row.status,null,row.opened_at,`service-record.html?id=${encodeURIComponent(row.id)}`,'Open service record',[row.device_name],'Service'));
+  for(const row of workflow.data||[])if(row.kind==='store')events.push(make('order',row,row.title,row.reference,row.stage,row.total,row.updated_at,row.href,'Open order workspace',[],'Store'));
   return events.sort((a,b)=>new Date(b.when||0)-new Date(a.when||0));
 }
 
