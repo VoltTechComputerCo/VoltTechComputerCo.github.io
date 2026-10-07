@@ -5,7 +5,7 @@ const {chromium}=createRequire(import.meta.url)('playwright');
 const pages=[['index.html','.site-header'],['store.html','.site-header'],['product.html','.site-header'],['account.html','.site-header'],['quote.html','.site-header'],['admin.html','main>.top'],['admin-store.html','.store-nav'],['builder/index.html','.site-header'],['static.html','.static-topbar'],['static-building-a-pc-2026.html','body>nav']];
 fs.mkdirSync('qa-results/theme',{recursive:true});
 for(const width of [320,390,1440]){
- const browser=await chromium.launch({headless:true});
+ const browser=await chromium.launch({headless:true,...(process.env.VT_CHROMIUM_PATH?{executablePath:process.env.VT_CHROMIUM_PATH}: {})});
  const page=await browser.newPage({viewport:{width,height:900}});
  await page.route('https://**/*',r=>r.abort());
  // Isolate appearance from account, payment and notification side effects.

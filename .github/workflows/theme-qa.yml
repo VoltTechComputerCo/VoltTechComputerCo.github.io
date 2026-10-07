@@ -16,8 +16,11 @@ jobs:
           node-version: '22'
       - run: node scripts/test-theme.mjs
       - run: npm install --no-save --package-lock=false playwright
-      - run: npx playwright install --with-deps chromium
+      - name: Use runner Chrome
+        run: test -x /usr/bin/google-chrome
       - name: Check mobile and desktop themes
+        env:
+          VT_CHROMIUM_PATH: /usr/bin/google-chrome
         run: |
           python3 -m http.server 4173 > /tmp/theme-http.log 2>&1 &
           node scripts/test-theme-browser.mjs
