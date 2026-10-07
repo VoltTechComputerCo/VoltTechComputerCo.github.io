@@ -1,6 +1,6 @@
 import { checkoutAccess, checkoutCart, cartFingerprint, eligibleCart, readLaunchSettings, withTimeout, statusDestination, shippingRate, canTransactHere } from '../services/transactions.js';
 import { esc, imageMarkup, bindImages } from '../components/catalogue-view.js';
-import { money } from '../components/order-view.js';
+import { money } from '../components/order-view.js?v=20261007-supplier-flow1';
 const form=document.getElementById('checkout-form'), fieldset=document.getElementById('checkout-fields'), state=document.getElementById('checkout-state'), error=document.getElementById('checkout-error'), button=document.getElementById('place-order');
 let VT, cart=[], fingerprint='', selectedRate=null, rateVersion=0, rateTimer, sending=false, received=false, cartStale=false;
 const input=name=>form.elements.namedItem(name);
@@ -15,7 +15,7 @@ async function refreshRate(){
   document.getElementById('delivery-detail').textContent='Checking delivery availability…';
   try {const result=await withTimeout(VT.getBobGoRates(cart,a,customer()));if(version!==rateVersion||cartStale)return;selectedRate=shippingRate(result);
     document.getElementById('delivery-amount').textContent=selectedRate?money(selectedRate.amount):'To be confirmed';
-    document.getElementById('delivery-detail').textContent=selectedRate?`Delivery estimate${selectedRate.eta?' · '+selectedRate.eta:''}. Final service and charge confirmed before payment.`:'Delivery options and the final charge will be confirmed with your order.';
+    document.getElementById('delivery-detail').textContent=selectedRate?`Delivery estimate${selectedRate.eta?' · '+selectedRate.eta:''}. Final courier service and charge are confirmed after stock is reserved and before payment.`:'Delivery options and the final charge will be confirmed after supplier stock is reserved.';
   }catch{if(version!==rateVersion)return;document.getElementById('delivery-detail').textContent='A delivery estimate could not be loaded. VoltTech will confirm delivery with your order.';}
 }
 function markCartChanged(){
