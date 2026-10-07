@@ -11,6 +11,6 @@
     "supabase-config.js"
   ],
   "scripts": [
-    "assets/js/pages/order-status.js"
+    "assets/js/pages/order-status.js?v=20261007-ops"
   ]
 }

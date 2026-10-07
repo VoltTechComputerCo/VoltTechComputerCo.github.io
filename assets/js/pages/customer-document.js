@@ -79,6 +79,9 @@ async function loadProduction(){
   if(kind==='build')renderBuild(result.data);
   if(kind==='service')renderService(result.data);
   if(kind==='personal-data')renderPersonal(result.data);
+  const quoteId=kind==='quote'?result.data.record?.id:kind==='invoice'?result.data.record?.quote_id:null;
+  if(quoteId){const progress=await client.rpc('customer_operations_progress',{p_quote_id:quoteId});if(!progress.error&&progress.data){const p=progress.data;surface.insertAdjacentHTML('beforeend','<section class="document-sheet"><h2>Your order progress</h2>'+[['Stock confirmed',p.stock_confirmed],['Quote confirmed',p.quote_confirmed],['Preparing order',p.preparing],['Courier booked',p.courier_booked],['In transit',p.in_transit],['Delivered',p.delivered]].map(([label,done])=>'<p>'+(done?'✅':'⏳')+' '+label+'</p>').join('')+(p.tracking_number?'<p>Tracking: '+esc(p.tracking_number)+'</p>':'')+'</section>');}}
+
 }
 function setAccessibleDocumentTitle(){
   const label={quote:'Quotation',invoice:'Invoice',proforma:'Proforma',receipt:'Payment receipt',order:'Order record',build:'PC build specification',service:'Service record','personal-data':'Personal data report'}[kind]||'Customer document';

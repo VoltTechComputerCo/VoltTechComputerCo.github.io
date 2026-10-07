@@ -141,9 +141,9 @@ q("#quoteForm").onsubmit=async e=>{
  const items=[...document.querySelectorAll(".item")].map(d=>({description:d.querySelector(".desc").value.trim(),quantity:+d.querySelector(".qty").value||1,unit_price:+d.querySelector(".price").value||0,item_type:d.querySelector(".itype").value,supplier:d.querySelector(".supplierName").value.trim(),supplier_cost:d.querySelector(".cost").value||"",stock_status:d.querySelector(".stock").value.trim(),price_checked_at:new Date().toISOString()}));
  creatingQuote=true;q("#quoteForm").setAttribute("aria-busy","true");if(submit){submit.disabled=true;submit.textContent="Creating…"}setStatus("Creating quote…");
  try{
-   const{error}=await c.rpc("admin_create_quote",{p_user_id:q("#customer").value,p_quote_type:q("#type").value,p_title:q("#title").value.trim(),p_valid_until:q("#valid").value,p_customer_note:q("#customerNote").value.trim(),p_internal_note:q("#internalNote").value.trim(),p_delivery_fee:+q("#delivery").value||0,p_discount_total:+q("#discount").value||0,p_items:items});
+   const{data:createdId,error}=await c.rpc("admin_create_quote",{p_user_id:q("#customer").value,p_quote_type:q("#type").value,p_title:q("#title").value.trim(),p_valid_until:q("#valid").value,p_customer_note:q("#customerNote").value.trim(),p_internal_note:q("#internalNote").value.trim(),p_delivery_fee:+q("#delivery").value||0,p_discount_total:+q("#discount").value||0,p_items:items});
    if(error){setStatus(error.message);return}
-   setStatus("Draft quote created.");resetQuoteForm();await recent()
+   setStatus("Draft quote created.");document.dispatchEvent(new CustomEvent("volttech:quote-created",{detail:{id:createdId}}));resetQuoteForm();await recent()
  }finally{
    creatingQuote=false;q("#quoteForm").removeAttribute("aria-busy");if(submit){submit.disabled=false;submit.textContent="Create draft quote"}
  }

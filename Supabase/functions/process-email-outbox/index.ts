@@ -199,6 +199,19 @@ Deno.serve(async (req: Request) => {
         from = "VoltTech Billing <billing@volttechcomputerco.co.za>";
       }
 
+      if (["store_request_admin","store_request_customer"].includes(row.message_kind)) {
+        from = "VoltTech Computer Co. <info@volttechcomputerco.co.za>";
+        eyebrow = "VOLTTECH / PARTS REQUEST";
+        headline = row.message_kind === "store_request_admin" ? "New parts request." : "Your parts request is received.";
+        cta = row.message_kind === "store_request_admin" ? "Review Request" : row.payload?.action_url ? "Open My VoltTech" : "Contact VoltTech";
+        href = row.message_kind === "store_request_admin" ? SITE + "/admin.html" : row.payload?.action_url ? SITE + "/account.html" : "mailto:quotes@volttechcomputerco.co.za";
+      }
+      if (["operations_customer","operations_admin"].includes(row.message_kind)) {
+        from="VoltTech Operations <info@volttechcomputerco.co.za>";
+        eyebrow="VOLTTECH / OPERATIONS";cta=row.message_kind==="operations_admin"?"Open Operations":"View Your Order";
+        const path=String(row.payload?.action_url||"/account.html");
+        href=path.startsWith("/")&&!path.startsWith("//")?SITE+path:SITE+"/account.html";
+      }
       const content = layout(eyebrow, headline, body, cta, href);
       const response = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -209,6 +222,7 @@ Deno.serve(async (req: Request) => {
         },
         body: JSON.stringify({
           from,
+          reply_to: ["store_request_admin","store_request_customer"].includes(row.message_kind) ? "quotes@volttechcomputerco.co.za" : "info@volttechcomputerco.co.za",
           to: [row.recipient_email],
           subject,
           html: content.html,

@@ -62,7 +62,7 @@ export async function loadBuilds(client) {
 export async function deleteBuild(client,id){return client.from('saved_builds').delete().eq('id',id).in('status',['saved','archived']);}
 
 export async function loadQuotes(client) {
-  return client.from('quotes').select('id,quote_number,quote_type,title,status,subtotal,total,delivery_fee,discount_total,valid_until,customer_note,created_at,terms_version,source_type,source_id,source_metadata,quote_items(position,description,quantity,line_total,product_id)').order('created_at',{ascending:false});
+  return client.from('quotes').select('id,quote_number,quote_type,title,status,subtotal,total,delivery_fee,discount_total,valid_until,customer_note,created_at,terms_version,source_type,source_id,quote_items(position,description,quantity,line_total,product_id)').order('created_at',{ascending:false});
 }
 export async function customerQuoteAction(client,id,action){
   const { error }=await client.rpc('customer_quote_action',{p_quote_id:id,p_action:action});

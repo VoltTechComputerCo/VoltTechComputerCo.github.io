@@ -31,8 +31,8 @@
     nav.className="portal-admin-nav portal-admin-nav-v61";
     nav.innerHTML=`<a class="portal-admin-back" href="account.html">← Account</a>
       <a class="${active==="queue"?"active":""}" href="admin.html">Work</a>
-      <a class="${active==="customers"?"active":""}" href="admin-customers.html">Customers</a>
-      <a class="${active==="parts"?"active":""}" href="admin-store.html">Parts Desk</a>
+      <a class="${active==="customers"?"active":""}" href="admin.html?section=Customers">Customers</a>
+      <a class="${active==="parts"?"active":""}" href="admin.html?section=Catalogue">Catalogue</a>
       <button class="portal-admin-more-btn ${active==="more"?"active":""}" type="button" aria-expanded="false">More</button>
       <div class="portal-admin-more" hidden>
         <a href="admin-records.html">Records search</a>

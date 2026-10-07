@@ -47,7 +47,7 @@ export async function collectPersonalData(client, user) {
     safe('profile', client.from('profiles').select('*').eq('id', user.id).maybeSingle()),
     safe('addresses', client.from('customer_addresses').select('*').eq('user_id', user.id)),
     safe('saved_builds', client.from('saved_builds').select('*').eq('user_id', user.id)),
-    safe('quotes', client.from('quotes').select('*,quote_items(*)').eq('user_id', user.id)),
+    safe('quotes', client.from('quotes').select('id,quote_number,title,status,subtotal,total,delivery_fee,discount_total,customer_note,created_at,valid_until,quote_items(description,quantity,unit_price,line_total)').eq('user_id', user.id)),
     safe('quote_acceptances', client.from('quote_acceptances').select('*').eq('user_id', user.id)),
     safe('quote_events', client.from('quote_events').select('*').eq('user_id', user.id)),
     safe('invoices', client.from('invoices').select('*,invoice_items(*)').eq('user_id', user.id)),
