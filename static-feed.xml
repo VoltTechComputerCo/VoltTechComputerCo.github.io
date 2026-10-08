@@ -6,7 +6,15 @@
     <description>Breaking tech and gaming stories, PC hardware, performance, security and enthusiast culture from STATIC by VoltTech Computer Co.</description>
     <language>en</language>
     <atom:link href="https://volttechcomputerco.co.za/static-feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Wed, 07 Oct 2026 09:53:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 10:00:00 +0200</lastBuildDate>
+    <item>
+      <title>NVIDIA Just Entered the Windows CPU War</title>
+      <link>https://volttechcomputerco.co.za/static-nvidia-rtx-spark-surface-laptop-ultra-price-gaming.html</link>
+      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-nvidia-rtx-spark-surface-laptop-ultra-price-gaming.html</guid>
+      <pubDate>Thu, 08 Oct 2026 10:00:00 +0200</pubDate>
+      <description>Microsoft's Surface Laptop Ultra brings NVIDIA Grace, Blackwell graphics and up to 128GB unified memory to Windows on Arm. Pricing, gaming implications and the catch.</description>
+      <media:content url="https://news.microsoft.com/wp-content/uploads/prod/sites/652/2026/10/Surface-Laptop-Ultra-opened.jpg" medium="image" />
+    </item>
     <item>
       <title>Wireless VR Just Ditched the Codec — In the Pixels That Matter</title>
       <link>https://volttechcomputerco.co.za/static-pimax-crystal-pro-native-foveated-streaming</link>
@@ -158,14 +166,6 @@
       <pubDate>Mon, 07 Sep 2026 09:00:00 +0200</pubDate>
       <description>Sony and LEGO have turned the original PlayStation into a near-1:1-scale 1,911-piece display set, complete with a wired controller, working buttons and tiny Ape Escape and Gran Turismo dioramas.</description>
       <media:content url="https://blog.playstation.com/uploads/2026/09/0a31c1fe4b3c9833dd02bb034112a5d9f0312720.jpg" medium="image" />
-    </item>
-    <item>
-      <title>RPCS3 Can Now Play PS3 Games Straight From the Disc</title>
-      <link>https://volttechcomputerco.co.za/static-rpcs3-direct-disc-playback</link>
-      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-rpcs3-direct-disc-playback</guid>
-      <pubDate>Mon, 07 Sep 2026 09:00:00 +0200</pubDate>
-      <description>RPCS3 can now launch PS3 games directly from compatible Blu-ray drives, a major usability win for physical-game preservation.</description>
-      <media:content url="https://commons.wikimedia.org/wiki/Special:Redirect/file/Sony-PlayStation-3-4001B-wController-noBG.png" medium="image" />
     </item>
   </channel>
 </rss>
