@@ -2,7 +2,7 @@ name: Theme appearance QA
 on:
   push:
     branches: [main]
-    paths: ['assets/css/**', 'assets/js/theme.js', '**/*.html', 'scripts/test-theme*', '.github/workflows/theme-qa.yml']
+    paths: ['assets/css/**', 'assets/js/theme.js', '**/*.html', 'scripts/test-theme*', 'scripts/test-store-selection-browser.mjs', 'assets/js/pages/store.js', 'assets/js/pages/home.js', 'assets/js/components/catalogue-view.js', 'assets/js/services/catalogue-pagination.js', '.github/workflows/theme-qa.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -15,6 +15,7 @@ jobs:
         with:
           node-version: '22'
       - run: node scripts/test-theme.mjs
+      - run: node scripts/test-catalogue-pagination.mjs
       - run: npm install --no-save --package-lock=false playwright
       - name: Use runner Chrome
         run: test -x /usr/bin/google-chrome
@@ -24,6 +25,7 @@ jobs:
         run: |
           python3 -m http.server 4173 > /tmp/theme-http.log 2>&1 &
           node scripts/test-theme-browser.mjs
+          node scripts/test-store-selection-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -9,9 +9,9 @@ function imageSources(p) {
   const src = primary || direct;
   return { src, fallback: direct && direct !== src ? direct : '' };
 }
-export function imageMarkup(p, large = false) {
+export function imageMarkup(p, large = false, eager = false) {
   const { src, fallback } = imageSources(p);
-  return `<figure class="catalogue-media ${large ? 'catalogue-media-large' : ''}">${src ? `<img src="${esc(src)}" data-fallback="${esc(fallback)}" width="480" height="480" alt="${esc(p.name)} product image" loading="${large ? 'eager' : 'lazy'}" decoding="async" referrerpolicy="no-referrer">` : '<span>Product image temporarily unavailable</span>'}<figcaption ${src ? 'hidden' : ''}>Product image temporarily unavailable</figcaption></figure>`;
+  return `<figure class="catalogue-media ${large ? 'catalogue-media-large' : ''}">${src ? `<img src="${esc(src)}" data-fallback="${esc(fallback)}" width="480" height="480" alt="${esc(p.name)} product image" loading="${large || eager ? 'eager' : 'lazy'}" fetchpriority="${large ? 'high' : 'auto'}" decoding="async" referrerpolicy="no-referrer">` : '<span>Product image temporarily unavailable</span>'}<figcaption hidden>Product image temporarily unavailable</figcaption></figure>`;
 }
 export function bindImages(root) {
   root.querySelectorAll('.catalogue-media img').forEach(img => img.addEventListener('error', () => {
@@ -30,9 +30,9 @@ export function commerceState(VT, p, preview = false) {
   const priced = !demo && ['ZAR','USD','EUR','GBP'].includes(p.currency || 'ZAR') && p.retail_price !== null && p.retail_price !== '' && Number.isFinite(Number(p.retail_price)) && Number(p.retail_price) >= 0;
   return { canAdd: !preview && !demo && VT.canAdd(p), price: demo ? 'Not for sale' : priced ? new Intl.NumberFormat('en-ZA', { style:'currency', currency:p.currency || 'ZAR', minimumFractionDigits:2 }).format(Number(p.retail_price)) : 'Request pricing', stock: demo ? 'Demo fixture · no supplier stock' : (p.stock_qty == null && !['out_of_stock','in_stock','supplier_stock','backorder'].includes(p.stock_status) ? 'Availability to be confirmed' : VT.stockLabel(p)), label: preview ? 'Preview only' : demo ? 'Demo only' : 'Add to cart' };
 }
-export function productCard(VT, p, preview) {
+export function productCard(VT, p, preview, eager = false) {
   const state = commerceState(VT, p, preview), href = productUrl(p, preview);
-  return `<article class="card catalogue-card"><a class="catalogue-image-link" href="${href}" aria-label="View ${esc(p.name)}">${imageMarkup(p)}</a><div class="catalogue-card-body"><p class="eyebrow">${esc(p.brand)} / ${esc(VT.categoryLabel(p.type))}</p><h3><a href="${href}">${esc(p.name)}</a></h3><p class="catalogue-description">${esc(p.short_description || 'View component details and discuss your requirements.')}</p><ul class="spec-tags">${(Array.isArray(p.highlights) ? p.highlights : []).slice(0,3).map(v => `<li>${esc(v)}</li>`).join('')}</ul><div class="catalogue-price"><strong>${esc(state.price)}</strong><span>${esc(state.stock)}</span></div><div class="actions"><button class="button" type="button" data-add="${esc(p.id)}" ${state.canAdd ? '' : 'disabled'}>${state.canAdd ? 'Add to cart' : state.label === 'Add to cart' ? 'Unavailable' : state.label}</button><a class="button button-secondary" href="${href}" aria-label="Details for ${esc(p.name)}">Details →</a></div></div></article>`;
+  return `<article class="card catalogue-card"><a class="catalogue-image-link" href="${href}" aria-label="View ${esc(p.name)}">${imageMarkup(p,false,eager)}</a><div class="catalogue-card-body"><p class="eyebrow">${esc(p.brand)} / ${esc(VT.categoryLabel(p.type))}</p><h3><a href="${href}">${esc(p.name)}</a></h3><p class="catalogue-description">${esc(p.short_description || 'View component details and discuss your requirements.')}</p><ul class="spec-tags">${(Array.isArray(p.highlights) ? p.highlights : []).slice(0,3).map(v => `<li>${esc(v)}</li>`).join('')}</ul><div class="catalogue-price"><strong>${esc(state.price)}</strong><span>${esc(state.stock)}</span></div><div class="actions"><button class="button" type="button" data-add="${esc(p.id)}" ${state.canAdd ? '' : 'disabled'}>${state.canAdd ? 'Add to cart' : state.label === 'Add to cart' ? 'Unavailable' : state.label}</button><a class="button button-secondary" href="${href}" aria-label="Details for ${esc(p.name)}">Details →</a></div></div></article>`;
 }
 export function filterProducts(products, state) {
   const filters = state.filters || (state.brand ? { brand:state.brand } : {});

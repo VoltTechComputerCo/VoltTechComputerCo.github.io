@@ -46,3 +46,18 @@ html[data-theme="dark"] .theme-toggle {background:#0a1d21;color:#f2f8f7;border-c
 html:not([data-theme="dark"]) .button:not(.button-secondary):not(:disabled){background:#007d72!important;color:#fff!important;border-color:#007d72!important;}
 html:not([data-theme="dark"]) :is(button,.button):disabled{background:#edf2f0!important;color:#647b75!important;border-color:#d5e3df!important;box-shadow:none!important;}
 html:not([data-theme="dark"]) .filter-brand-name{color:#172e2c;}
+/* Persistent mobile cart and direct category filtering. */
+.header-cart{display:inline-flex!important;}
+.catalogue-brand-filter{grid-column:1/-1;min-width:0;}
+.catalogue-brand-filter h3{font-size:.9rem;margin:0 0 .6rem;}
+.catalogue-brand-buttons{display:flex;flex-wrap:wrap;gap:.6rem;}
+.catalogue-brand-buttons .smart-filter-option{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;min-width:100px;min-height:68px;padding:.75rem 1rem;border-radius:8px;}
+.catalogue-page-controls{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;margin:1rem 0;padding:1rem;background:var(--panel-raised,#f4f8f7);border:1px solid var(--border,#d5e3df);border-radius:8px;scroll-margin-top:110px;}
+.catalogue-page-controls label{display:flex;align-items:center;gap:.6rem;white-space:nowrap;font-size:.85rem;}
+.catalogue-page-controls select{width:auto;min-width:70px;}
+.catalogue-page-controls p{margin:0;font-size:.85rem;}
+.catalogue-page-controls nav{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem;}
+.catalogue-page-controls button{min-height:44px;padding:.6rem;border:1px solid var(--border-strong,#78aaa2);border-radius:6px;background:var(--panel,#fff);color:var(--text,#172e2c);}
+@media(max-width:640px){.header-tools [data-dialog-open="site-search"]{display:none!important;}.header-inner .brand img{width:64px!important;}}
+@media(max-width:400px){.header-inner .brand img{width:48px!important;height:44px!important;}.header-tools [data-dialog-open="site-search"]{display:none!important;}.header-inner{gap:0!important;}.header-tools{gap:0!important;}.header-inner .menu-toggle{min-width:44px!important;padding:.35rem!important;font-size:11px!important;}}
+@media(max-width:600px){.catalogue-page-controls nav{width:100%;justify-content:space-between;}.catalogue-page-controls{padding:.65rem;}.catalogue-brand-buttons .smart-filter-option{flex:1 0 90px;}}

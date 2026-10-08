@@ -1,5 +1,4 @@
 import { readLaunchSettings, freshLiveCreators, connectCart, connectAccount, connectProductionServices } from '../services/home-integrations.js';
-import { installCategoryFilterMenus } from '../components/store-filter-menu.js?v=1.2.0';
 
 async function updateAvailability() {
   const settings = await readLaunchSettings(window.VOLTTECH_SUPABASE);
@@ -9,10 +8,10 @@ async function updateAvailability() {
   if (builder) builder.textContent = settings?.builder_enabled ? 'Plan a configuration. Component supply, pricing and compatibility need confirmation.' : settings ? 'Interactive Builder coming soon. Talk to us about your goals and budget.' : 'Builder status unavailable. Talk to us about your goals and budget.';
   if (settings?.catalogue_enabled) {
     document.querySelectorAll('[data-category]').forEach(link => {
-      link.href = `store.html?category=${encodeURIComponent(link.dataset.category)}`;
+      link.href = `store.html?category=${encodeURIComponent(link.dataset.category)}#catalogue`;
       delete link.dataset.vtConversion;
     });
-    installCategoryFilterMenus(document);
+
   }
   if (settings?.builder_enabled) document.querySelectorAll('[data-builder-link]').forEach(link => {
     link.href = 'builder/index.html';

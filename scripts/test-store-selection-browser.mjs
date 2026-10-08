@@ -1,35 +1,41 @@
 import {createRequire} from 'node:module';
 import assert from 'node:assert/strict';
 const {chromium}=createRequire(import.meta.url)('playwright');
-const products=[{id:'gpu',type:'gpu',name:'MSI GeForce RTX 3060 Ti',brand:'MSI'},{id:'ram',type:'memory',name:'Kingston DDR4',brand:'Kingston',specs:{memoryType:'DDR4'}}];
+const products=Array.from({length:63},(_,i)=>({id:'gpu'+i,type:'gpu',name:'MSI GeForce RTX 3060 Ti '+i,brand:'MSI',media:{primaryImage:'/test-image-'+i+'.png'}}));
 const service=`export const openCatalogue=async()=>({open:true,preview:false,VT:{loadStore:async()=>({settings:{catalogue_enabled:true},products:${JSON.stringify(products)}}),canAdd:()=>false,stockLabel:()=>'',categoryLabel:t=>t,analytics:()=>{}}});export const showGate=()=>{};export const publicProducts=p=>p;export const withTimeout=p=>p;export const addItem=()=>{};`;
-for(const width of [390,1440]){
- const browser=await chromium.launch({headless:true,executablePath:process.env.VT_CHROMIUM_PATH,args:['--no-sandbox','--single-process','--no-zygote','--disable-gpu']});
- const page=await browser.newPage({viewport:{width,height:1000}});
+for(const width of [320,390,1440]){
+ const browser=await chromium.launch({headless:true,...(process.env.VT_CHROMIUM_PATH?{executablePath:process.env.VT_CHROMIUM_PATH}: {})});
+ const page=await browser.newPage({viewport:{width,height:900}});
  await page.route('https://**/*',r=>r.abort());
+ await page.route('**/test-image-*',r=>r.fulfill({contentType:'image/svg+xml',body:'<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480"/>'}));
  await page.route('**/assets/js/services/catalogue.js',r=>r.fulfill({contentType:'application/javascript',body:service}));
  await page.route('**/assets/js/services/catalogue-cart.js',r=>r.fulfill({contentType:'application/javascript',body:'export const connectCatalogueCart=()=>{};'}));
- await page.goto('http://127.0.0.1:4173/store.html');
- await page.locator('[data-category-link=gpu]').click();
- for(const maker of ['NVIDIA','AMD','Intel','NVIDIA']){
-  if(!await page.locator(`[data-stage-value="${maker}"]`).count()) await page.locator('[data-category-link=gpu]').click();
-  await page.locator(`[data-stage-value="${maker}"]`).click();
-  assert.equal(new URL(page.url()).searchParams.get('gpuVendor'),maker);
-  assert.match(await page.locator('#active-filter-chips').innerText(),new RegExp(maker));
-  assert.equal(await page.locator('#result-count').innerText(),maker==='NVIDIA'?'1 component':'0 components');
- }
- await page.locator('#catalogue-smart-filters details').filter({has:page.locator('[data-filter-key=brand]')}).locator('summary').click();
- await page.locator('[data-filter-key=brand][data-filter-value=MSI]').click();
- if(!await page.locator('[data-stage-value=AMD]').count()) await page.locator('[data-category-link=gpu]').click();
- await page.locator('[data-stage-value=AMD]').click();
- assert.equal(new URL(page.url()).searchParams.has('brand'),false);
+ await page.goto('http://127.0.0.1:4173/store.html?category=gpu#catalogue');
+ await page.locator('#product-grid .catalogue-card').first().waitFor();
+ assert.equal(await page.locator('#product-grid .catalogue-card').count(),10);
+ assert.ok(await page.locator('.header-cart').isVisible());
+ assert.equal(await page.locator('.category-filter-menu').count(),0);
+ assert.ok(await page.locator('[data-filter-key=gpuVendor][data-filter-value=NVIDIA]').isVisible());
+ await page.locator('[data-page-size]').first().selectOption('25');
+ assert.equal(await page.locator('#product-grid .catalogue-card').count(),25);
+ await page.locator('[data-page="2"]').first().click();
+ assert.equal(new URL(page.url()).searchParams.get('page'),'2');
+ assert.equal(await page.locator('#product-grid .catalogue-card').count(),25);
+ await page.locator('[data-filter-key=gpuVendor][data-filter-value=AMD]').click();
+ assert.equal(await page.locator('#product-grid .catalogue-card').count(),0);
+ assert.equal(new URL(page.url()).searchParams.get('gpuVendor'),'AMD');
+ assert.equal(new URL(page.url()).searchParams.has('page'),false);
+ await page.locator('[data-filter-key=gpuVendor][data-filter-value=NVIDIA]').click();
+ await page.locator('[data-page-size]').first().selectOption('50');
+ assert.equal(await page.locator('#product-grid .catalogue-card').count(),50);
+ await page.locator('[data-page-size]').first().selectOption('100');
+ assert.equal(await page.locator('#product-grid .catalogue-card').count(),63);
+ await page.reload();await page.locator('#product-grid .catalogue-card').first().waitFor();
+ assert.equal(await page.locator('[data-page-size]').first().inputValue(),'100');
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  await page.locator('[data-category-link=memory]').click();
- await page.locator('.category-filter-menu a[data-quick-brand=Corsair]').click();
- assert.equal(new URL(page.url()).searchParams.get('brand'),'Corsair');
- assert.equal(await page.locator('#result-count').innerText(),'0 components');
- await page.reload();
- await page.locator('#active-filter-chips').waitFor({state:'visible'});
- assert.equal(new URL(page.url()).searchParams.get('brand'),'Corsair');
- console.log('PASS: GPU maker, stale partner, unavailable brand and reload persistence at '+width);
+ await page.waitForURL(url=>url.searchParams.get('category')==='memory');
+ assert.equal(await page.locator('.category-filter-menu').count(),0);
+ console.log('PASS: visible cart, direct categories, GPU buttons, page sizes, page reset and persistence at '+width);
  await browser.close();
 }
