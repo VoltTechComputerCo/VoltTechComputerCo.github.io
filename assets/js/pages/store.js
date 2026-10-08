@@ -77,6 +77,7 @@ function renderActiveChips(){
 
 function renderSmartFilters(products){
   if(!filterHost) return;
+  const openKeys=new Set([...filterHost.querySelectorAll('details[open]')].map(d=>d.querySelector('[data-filter-key]')?.dataset.filterKey));
   const definitions=facetDefinitions(state.category);
   const blocks=definitions.map(def=>{
     const options=facetOptions(products,state.category,def.key,state.filters);
@@ -95,7 +96,7 @@ function renderSmartFilters(products){
         return `<button class="smart-filter-option ${selected?'is-selected':''}" type="button" data-filter-key="${def.key}" data-filter-value="${String(option.value).replace(/"/g,'&quot;')}" style="--filter-accent:${accent}">${label}<small>${option.count} product${option.count===1?'':'s'}</small></button>`;
       })
     ].join('');
-    return `<details class="smart-filter" ${selectedValue?'data-has-value="true"':''}><summary><span><b>${def.label}</b><small>${selectedLabel}</small></span></summary><div class="smart-filter-options">${buttons}</div></details>`;
+    return `<details class="smart-filter" ${openKeys.has(def.key)?'open':''} ${selectedValue?'data-has-value="true"':''}><summary><span><b>${def.label}</b><small>${selectedLabel}</small></span></summary><div class="smart-filter-options">${buttons}</div></details>`;
   }).join('');
   filterHost.innerHTML=blocks || '<p class="micro">Choose a category to unlock more filters.</p>';
   renderActiveChips();
