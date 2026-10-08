@@ -8,14 +8,23 @@ const tabs=['Inbox / Needs action','Orders','Quotes','Suppliers','Delivery','Pay
 let data={},customers=[],offers=[],jobs=[],selected=new URLSearchParams(location.search).get('job'),tab=new URLSearchParams(location.search).get('section')||'Inbox / Needs action',busy=false;
 const input=(id,label,value='',type='text')=>`<label>${esc(label)}<input id="${esc(id)}" type="${type}" value="${esc(value)}" ${type==='number'?'min="0" step="0.01"':''}></label>`;
 function active(){return jobs.find(j=>j.key===selected)}
-let quoteSource=null;
+let quoteSource=null,knownOrders=null,checkingOrders=false;
+async function checkIncomingOrders(){
+ if(!knownOrders||checkingOrders||document.hidden)return;
+ checkingOrders=true;
+ try{const {data:incoming,error}=await c.from('store_requests').select('id').order('submitted_at',{ascending:false}).limit(1000);if(error)throw error;
+ const added=(incoming||[]).filter(r=>!knownOrders.has(r.id));
+ const alert=q('#opsIncoming');alert.hidden=!added.length;if(added.length)alert.querySelector('span').textContent=`⚡ ${added.length} new order${added.length===1?'':'s'} received.`;
+ }catch(e){console.warn('Incoming order check unavailable:',e.message);}finally{checkingOrders=false;}
+}
+
 async function load(){
  q('#opsStatus').textContent='Loading verified operations…';q('#opsRefresh').disabled=true;
  try{const user=await c.auth.getUser();if(!user.data.user)return;
  const adm=await c.rpc('is_volttech_admin');if(adm.error||adm.data!==true)throw new Error('Admin access required');
  const [dr,cr,sr]=await Promise.all([c.rpc('admin_operations_data'),c.rpc('admin_customers'),c.from('store_supplier_offers').select('*').order('supplier_name').limit(1000)]);
  for(const r of [dr,cr,sr])if(r.error)throw r.error;
- data=dr.data;customers=cr.data||[];offers=sr.data||[];jobs=normalize(data,customers);render();q('#opsStatus').textContent=`${jobs.length} jobs · last refreshed ${stamp(new Date())}`;
+ knownOrders=new Set((dr.data.stores||[]).map(r=>r.id));q('#opsIncoming').hidden=true;data=dr.data;customers=cr.data||[];offers=sr.data||[];jobs=normalize(data,customers);render();q('#opsStatus').textContent=`${jobs.length} jobs · last refreshed ${stamp(new Date())}`;
  }catch(e){q('#opsStatus').textContent='⚠ '+e.message;q('#opsStatus').className='ops-error';}finally{q('#opsRefresh').disabled=false;}
 }
 function matches(j){const n=nextAction(j),closed=!!j.ops.archived_at;
@@ -77,9 +86,14 @@ function actionForm(j,action){const el=q('#opsActionPanel'),o=j.ops,r=j.record;
 function field(name,label,value='',type='text'){return `<label>${esc(label)}<input data-field="${name}" type="${type}" value="${esc(value)}" ${type==='number'?'min="0" step="0.01"':''}></label>`}
 async function perform(j,action,payload){if(busy)return;busy=true;q('#opsActionForm button[type=submit]')?.setAttribute('disabled','');try{let result;if(action==='build_quote')result=await c.rpc('admin_quote_saved_build',{p_build_id:j.record.id});else result=await c.rpc('admin_operations_action',{p_key:j.key,p_action:action,p_data:payload});if(result.error)throw result.error;await load();if(result.data?.new_key){selected=result.data.new_key;tab='Quotes';render();}if(result.data?.private_link){q('#opsActionPanel').innerHTML=`<div class="ops-notice">Customer update queued. <a href="${esc(result.data.private_link)}" target="_blank" rel="noreferrer">Open private customer link ↗</a></div>`;}q('#opsStatus').textContent='✅ '+action.replaceAll('_',' ')+' recorded';}catch(e){const el=q('#opsActionError')||q('#opsStatus');el.textContent='⚠ '+e.message;}finally{busy=false;q('#opsActionForm button[type=submit]')?.removeAttribute('disabled');}}
 function openQuote(uid,source){quoteSource=source||null;q('#opsTool').hidden=true;q('#opsLayout').hidden=false;const panel=q('#quoteForm').parentElement;panel.hidden=false;if(uid){const cust=customers.find(x=>x.id===uid);q('#customer').value=uid;q('#selectedCustomer').textContent=cust?.full_name||cust?.billing_email||uid;}panel.scrollIntoView({behavior:'smooth'});}
+const incomingNotice=document.createElement('div');incomingNotice.id='opsIncoming';incomingNotice.className='ops-notice';incomingNotice.hidden=true;incomingNotice.setAttribute('role','status');incomingNotice.innerHTML='<span></span> <button type="button">Review new orders</button>';q('#opsStatus').before(incomingNotice);
+incomingNotice.querySelector('button').onclick=()=>{tab='Orders';load();};
 q('#opsRefresh').onclick=load;q('#opsSearch').oninput=render;q('#opsNew').onclick=()=>openQuote();
 for(const panel of document.querySelectorAll('#app > .panel'))panel.hidden=true;
 document.addEventListener('volttech:quote-created',async e=>{if(quoteSource){const link=await c.rpc('admin_link_quote_source',{p_quote_id:e.detail.id,p_source_type:quoteSource.kind,p_source_id:quoteSource.record.id,p_metadata:{}});if(link.error){q('#opsStatus').textContent='Quote created; linking failed: '+link.error.message;return;}quoteSource=null;}selected='quote:'+e.detail.id;tab='Quotes';q('#quoteForm').parentElement.hidden=true;await load();});
 load();
 
-// Refresh explicitly or after a saved action; background renders discard editor state.
+// Poll only IDs to announce new work; never rerender the editor in the background.
+const incomingTimer=setInterval(checkIncomingOrders,30000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkIncomingOrders();});
+window.addEventListener('beforeunload',()=>clearInterval(incomingTimer));
