@@ -126,7 +126,8 @@ function bindFilterUI(products,render){
 }
 
 selectCategory();
-
+document.addEventListener('pointerdown',e=>document.querySelectorAll('.smart-filter[open],.shop-category-menu[open]').forEach(d=>{if(!d.contains(e.target))d.open=false;}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.smart-filter[open],.shop-category-menu[open]').forEach(d=>{d.open=false;d.querySelector('summary')?.focus();});});
 
 async function init(){
   try{
