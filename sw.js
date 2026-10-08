@@ -1,9 +1,10 @@
 const VT_NOTIFICATION_LOADER='site-notifications-loader.js?v=6.0.0';
 const VT_VERSION_REWRITES=[
+ ['notifications.js?v=5.2.0','notifications.js?v=5.2.1-read'],
  ['notifications.css?v=5.0.0','notifications.css?v=5.2.0'],
  ['notifications.css?v=5.1.0','notifications.css?v=5.2.0'],
- ['notifications.js?v=5.0.0','notifications.js?v=5.2.0'],
- ['notifications.js?v=5.1.0','notifications.js?v=5.2.0'],
+ ['notifications.js?v=5.0.0','notifications.js?v=5.2.1-read'],
+ ['notifications.js?v=5.1.0','notifications.js?v=5.2.1-read'],
  ['portal-shell.css?v=5.0.0','portal-shell.css?v=5.2.0'],
  ['portal-shell.css?v=5.1.0','portal-shell.css?v=5.2.0'],
  ['portal-shell.js?v=5.0.0','portal-shell.js?v=5.2.0'],

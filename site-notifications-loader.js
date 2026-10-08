@@ -155,7 +155,7 @@
         await addScript('supabase-config.js',()=>!!window.VOLTTECH_SUPABASE);
       }
       if(!window.__voltTechNotificationsV5){
-        await addScript('notifications.js?v=5.2.0',()=>!!window.__voltTechNotificationsV5);
+        await addScript('notifications.js?v=5.2.1-read',()=>!!window.__voltTechNotificationsV5);
       }
       if(!window.__voltTechOnboardingV1){
         await addScript('onboarding.js?v=1.0.0',()=>!!window.__voltTechOnboardingV1);

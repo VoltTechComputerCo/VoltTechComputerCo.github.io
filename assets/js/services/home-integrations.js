@@ -78,7 +78,7 @@ export async function connectAccount(config) {
     const { data } = await client.auth.getSession();
     update(data.session);
     client.auth.onAuthStateChange((_event, session) => update(session));
-    await loadScript('notifications.js');
+    await loadScript('notifications.js?v=5.2.1-read');
   } catch { /* Account link remains usable if the optional enhancement fails. */ }
 }
 
