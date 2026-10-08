@@ -95,7 +95,6 @@ function renderSmartFilters(products){
         return `<button class="smart-filter-option ${selected?'is-selected':''}" type="button" data-filter-key="${def.key}" data-filter-value="${String(option.value).replace(/"/g,'&quot;')}" style="--filter-accent:${accent}">${label}<small>${option.count} product${option.count===1?'':'s'}</small></button>`;
       })
     ].join('');
-    if(['gpuVendor','platform','brand'].includes(def.key)) return `<section class="catalogue-brand-filter"><h3>${def.label}</h3><div class="catalogue-brand-buttons">${buttons}</div></section>`;
     return `<details class="smart-filter" ${selectedValue?'data-has-value="true"':''}><summary><span><b>${def.label}</b><small>${selectedLabel}</small></span></summary><div class="smart-filter-options">${buttons}</div></details>`;
   }).join('');
   filterHost.innerHTML=blocks || '<p class="micro">Choose a category to unlock more filters.</p>';
@@ -106,13 +105,14 @@ function bindFilterUI(products,render){
   filterHost?.addEventListener('click',event=>{
     const button=event.target.closest('[data-filter-key]');
     if(!button) return;
+    const openKey=button.dataset.filterKey;
     const key=button.dataset.filterKey;
     const value=button.dataset.filterValue || '';
     if(key==='gpuVendor'||key==='platform') delete state.filters.brand;
     if(value) state.filters[key]=value; else delete state.filters[key];
     pruneFilters(products);
     render();
-    button.closest('details')?.removeAttribute('open');
+    filterHost.querySelectorAll('details').forEach(d=>{if(d.querySelector(`[data-filter-key="${openKey}"]`))d.open=true;});
   });
   chipHost?.addEventListener('click',event=>{
     const button=event.target.closest('button');
@@ -135,12 +135,21 @@ async function init(){
     const data=await withTimeout(VT.loadStore());
     if(data.settings?.catalogue_enabled!==true && !preview){ showGate({reason:'closed'}); return; }
     const products=publicProducts(data.products,preview);
+    const featured=products.filter(p=>p.featured);
+    const picks=(featured.length ? featured : filterProducts(products,{category:'all',filters:{},sort:'featured'})).slice(0,4);
+    const featuredGrid=document.getElementById('featured-grid');
+    document.getElementById('shop-featured').hidden=!picks.length || !!query.get('category') || !!query.get('q');
+    document.getElementById('featured-heading').textContent=featured.length ? 'Featured products' : 'Explore the catalogue';
+    featuredGrid.innerHTML=picks.map(p=>productCard(VT,p,preview)).join('');
+    bindImages(featuredGrid);
+    featuredGrid.addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(b)addItem(VT,products.find(p=>p.id===b.dataset.add),preview);});
+
 
     document.getElementById('store-gate').hidden=true;
     document.getElementById('catalogue').hidden=false;
     document.getElementById('store-state').textContent=preview?'ADMIN PREVIEW / STORE REMAINS LOCKED':'COMPONENT CATALOGUE';
     document.getElementById('catalogue-preview').hidden=!preview;
-    document.getElementById('store-hero-copy').textContent='Explore component details, filter by the specs that matter and discuss the right parts for your setup.';
+    document.getElementById('store-hero-copy').textContent='Shop gaming hardware, compare the specs that matter and build a PC around your next move.';
     search.value=state.search;
     sort.value=state.sort;
     pruneFilters(products);
@@ -182,6 +191,8 @@ async function init(){
     });
 
     categories.filter(a=>a.dataset.categoryLink!=='all').forEach(a=>{a.href=`store.html?category=${encodeURIComponent(a.dataset.categoryLink)}#catalogue`;});
+    document.querySelectorAll('.shop-category-menu a').forEach(a=>a.addEventListener('click',()=>a.closest('details').open=false));
+    filterHost?.addEventListener('toggle',e=>{if(e.target.open)filterHost.querySelectorAll('details').forEach(d=>{if(d!==e.target)d.open=false;});},true);
     bindFilterUI(products,render);
     render();
     if(location.hash==='#catalogue') requestAnimationFrame(()=>document.getElementById('catalogue')?.scrollIntoView({block:'start'}));

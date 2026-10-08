@@ -15,6 +15,7 @@ for(const width of [320,390,1440]){
  assert.equal(await page.locator('#product-grid .catalogue-card').count(),10);
  assert.ok(await page.locator('.header-cart').isVisible());
  assert.equal(await page.locator('.category-filter-menu').count(),0);
+ await page.locator('details.smart-filter').filter({has:page.locator('[data-filter-key=gpuVendor]')}).locator('summary').click();
  assert.ok(await page.locator('[data-filter-key=gpuVendor][data-filter-value=NVIDIA]').isVisible());
  await page.locator('[data-page-size]').first().selectOption('25');
  assert.equal(await page.locator('#product-grid .catalogue-card').count(),25);
@@ -33,6 +34,7 @@ for(const width of [320,390,1440]){
  await page.reload();await page.locator('#product-grid .catalogue-card').first().waitFor();
  assert.equal(await page.locator('[data-page-size]').first().inputValue(),'100');
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ await page.locator('.shop-category-menu summary').click();
  await page.locator('[data-category-link=memory]').click();
  await page.waitForURL(url=>url.searchParams.get('category')==='memory');
  assert.equal(await page.locator('.category-filter-menu').count(),0);
