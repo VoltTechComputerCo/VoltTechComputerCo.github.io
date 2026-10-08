@@ -309,9 +309,9 @@
 
   function render(){
     if(!button||!panel)return;
-    const actionRows=rows.filter(r=>r.priority==="high"||r.priority==="urgent");
+    const actionRows=rows.filter(r=>!r.read_at&&(r.priority==="high"||r.priority==="urgent"));
     const newUpdates=rows.filter(r=>r.priority!=="high"&&r.priority!=="urgent"&&!r.read_at);
-    const history=rows.filter(r=>r.priority!=="high"&&r.priority!=="urgent"&&r.read_at);
+    const history=rows.filter(r=>r.read_at);
     const attention=[...actionRows,...newUpdates];
     const attentionCount=attention.length;
     const count=q("#vtNotifyCount");
@@ -321,7 +321,7 @@
     if(actionRows.some(r=>r.priority==="urgent"))button.classList.add("has-urgent");
     else if(actionRows.some(r=>r.priority==="high"))button.classList.add("has-high");
     button.classList.add(adminContext?"role-admin":customerContext?"role-customer":isAdmin?"role-hybrid":"role-customer");
-    const mark=q("#vtNotifyMarkAll");if(mark)mark.textContent=actionRows.length?"Mark updates read":"Mark all read";
+    const mark=q("#vtNotifyMarkAll");if(mark)mark.textContent="Mark all as read";
     const list=q("#vtNotifyList");if(!list)return;
     const card=(r,isHistory=false)=>{
       const isAction=r.priority==="high"||r.priority==="urgent";
