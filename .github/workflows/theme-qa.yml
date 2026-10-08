@@ -26,6 +26,7 @@ jobs:
           python3 -m http.server 4173 > /tmp/theme-http.log 2>&1 &
           node scripts/test-theme-browser.mjs
           node scripts/test-store-selection-browser.mjs
+          node scripts/test-theme-polish.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
