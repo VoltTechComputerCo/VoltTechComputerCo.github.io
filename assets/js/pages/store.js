@@ -6,6 +6,7 @@ import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261013-s
 import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261013-store';
 
 const query=new URLSearchParams(location.search);
+const landingHash=location.hash;
 const categories=[...document.querySelectorAll('[data-category-link]')];
 const selected=categories.find(a=>a.dataset.categoryLink===query.get('category'));
 const filters={};
@@ -51,7 +52,7 @@ function updateUrl(){
   Object.entries(state.filters).forEach(([key,value])=>{ if(value) url.searchParams.set(key,value); });
   if(state.page>1) url.searchParams.set('page',state.page);
   url.searchParams.set('pageSize',state.pageSize);
-  url.hash='catalogue';
+  if(state.category!=='all'||state.search||landingHash==='#catalogue') url.hash='catalogue';
   history.replaceState(null,'',url);
 }
 
@@ -200,7 +201,7 @@ async function init(){
     filterHost?.addEventListener('toggle',e=>{if(e.target.open)filterHost.querySelectorAll('details').forEach(d=>{if(d!==e.target)d.open=false;});},true);
     bindFilterUI(products,render);
     render();
-    if(location.hash==='#catalogue') requestAnimationFrame(()=>document.getElementById('catalogue')?.scrollIntoView({block:'start'}));
+    if(landingHash==='#catalogue'||query.get('category')||query.get('q')) requestAnimationFrame(()=>document.getElementById('catalogue')?.scrollIntoView({block:'start'}));
     connectCatalogueCart(VT,products,preview);
     VT.analytics('view_item_list',{item_list_name:'VoltTech PC Parts',items:products.slice(0,20).map(p=>({item_id:p.id,item_name:p.name}))});
   }catch(error){
