@@ -1,3 +1,4 @@
+import { updateDepartmentImages } from '../services/store-departments.js?v=20261013-departments';
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261013-store';
 import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261013-store';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js';
@@ -137,7 +138,9 @@ async function init(){
     const data=await withTimeout(VT.loadStore(),30000);
     if(data.settings?.catalogue_enabled!==true && !preview){ showGate({reason:'closed'}); return; }
     const products=publicProducts(data.products,preview);
-    const featured=products.filter(p=>p.featured);
+    updateDepartmentImages(products);
+    document.getElementById('departments').hidden=!!query.get('category')||!!query.get('q');
+    const featured=products.filter(p=>p.featured && Number(p.stock_qty)>0);
     const picks=(featured.length ? featured : filterProducts(products,{category:'all',filters:{},sort:'featured'})).slice(0,4);
     const featuredGrid=document.getElementById('featured-grid');
     document.getElementById('shop-featured').hidden=!picks.length || !!query.get('category') || !!query.get('q');

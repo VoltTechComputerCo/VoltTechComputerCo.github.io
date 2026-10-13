@@ -1,0 +1,82 @@
+{
+  "adapters": {
+    "name": "UGREEN USB-C 14-in-1 Triple Display 10Gbps 100W Docking Station",
+    "image": "assets/categories/store-adapters.webp"
+  },
+  "audio": {
+    "name": "PCBuilder CAST ULTRA USB Gaming Microphone - Black",
+    "image": "assets/categories/store-audio.webp"
+  },
+  "cables": {
+    "name": "Xiaomi 6A High-speed USB4 Braided USB-C to USB-C Cable - 1m",
+    "image": "assets/categories/store-cables.webp"
+  },
+  "case": {
+    "name": "ASUS ROG HYPERION GR701 E-ATX Gaming Chassis - Black",
+    "image": "assets/categories/store-case.webp"
+  },
+  "controllers": {
+    "name": "PXN VD6 Direct Drive Bundle 6nm FFB, W AS Steering Wheel, PD HM 2 Pedals (PD HM Brake&Throttle), and Z9 table clamp",
+    "image": "assets/categories/store-controllers.webp"
+  },
+  "cooler": {
+    "name": "ASUS ROG STRIX SLC IV 360MM LCD ARGB AIO Liquid CPU Cooler",
+    "image": "assets/categories/store-cooler.webp"
+  },
+  "cpu": {
+    "name": "AMD RYZEN 9 9950X3D2 16-Core 4.3GHz AM5 CPU",
+    "image": "assets/categories/store-cpu.webp"
+  },
+  "desk-accessories": {
+    "name": "Corsair MM Anti-Fray Gaming Mousepad Extended 3XL Black",
+    "image": "assets/categories/store-desk-accessories.webp"
+  },
+  "fan": {
+    "name": "Corsair QX120 120mm iCUE LINK ARGB Case Fan Triple Pack Black",
+    "image": "assets/categories/store-fan.webp"
+  },
+  "gpu": {
+    "name": "ASUS Radeon RX9070XT TUF GAMING 16GB OC Graphics Card",
+    "image": "assets/categories/store-gpu.webp"
+  },
+  "headsets": {
+    "name": "Corsair HS80 MAX RGB Wireless Gaming Headset Steel Gray",
+    "image": "assets/categories/store-headsets.webp"
+  },
+  "keyboards": {
+    "name": "keychron Q6 HE ANSI Full Size 104 Key OSA Full Assembled  Magnetic Switch RGB Hot-Swap Gateron Double-Rail Magnetic Nebula Switch Wireless / Wired / 2.4GHz QMK Wireless Custom Keyboard - White",
+    "image": "assets/categories/store-keyboards.webp"
+  },
+  "memory": {
+    "name": "Geil Gemini RGB 64GB KIT(2X32GB) 6000MHz DDR5 Desktop Gaming Memory - White",
+    "image": "assets/categories/store-memory.webp"
+  },
+  "mice": {
+    "name": "Corsair SABRE V2 PRO Magnesium Alloy Wireless Gaming Mouse 33 000 DPI Black",
+    "image": "assets/categories/store-mice.webp"
+  },
+  "monitors": {
+    "name": "Asus ROG Strix 27\" QD-OLED HDR 500 True Black 500Hz Gaming Monitor",
+    "image": "assets/categories/store-monitors.webp"
+  },
+  "motherboard": {
+    "name": "ASUS ROG CROSSHAIR X870E EXTREME AM5 ATX Gaming Motherboard",
+    "image": "assets/categories/store-motherboard.webp"
+  },
+  "psu": {
+    "name": "ASUS ROG THOR 1200W ATX3.1 & PCIE5.1 80 Plus Platinum Fully Modular",
+    "image": "assets/categories/store-psu.webp"
+  },
+  "storage": {
+    "name": "Hiksemi Future Core 4TB Gen5 M.2 NVMe NAND SSD",
+    "image": "assets/categories/store-storage.webp"
+  },
+  "thermal-paste": {
+    "name": "Corsair XTM60 High Performance Thermal Paste 3G",
+    "image": "assets/categories/store-thermal-paste.webp"
+  },
+  "webcams": {
+    "name": "UGREEN USB Full HD Webcam 2k",
+    "image": "assets/categories/store-webcams.webp"
+  }
+}
