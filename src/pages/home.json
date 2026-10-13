@@ -7,7 +7,7 @@
     "assets/css/notifications.css",
     "assets/css/pages/home.css",
     "assets/css/store-filters.css?v=1.2.0",
-    "assets/css/pages/departments.css?v=20261013-departments"
+    "assets/css/pages/departments.css?v=20261013-laptops"
   ],
   "classic_scripts": [
     "supabase-config.js",
