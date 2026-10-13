@@ -106,7 +106,7 @@ Deno.serve(async(req:Request)=>{
   const admin=createClient(url,serviceKey);let scheduled=false;
   const cronToken=req.headers.get("x-supplier-cron-token");
   if(cronToken){const {data:expected}=await admin.rpc("vt_supplier_secret",{p_name:"supplier_sync_cron_token"});if(!expected||cronToken!==expected)return reply({error:"Not authorised"},401,origin);scheduled=true;}
-  if(!scheduled){const auth=req.headers.get("authorization")||"";const userClient=createClient(url,anonKey,{global:{headers:{Authorization:auth}}});const {data:{user}}=await userClient.auth.getUser();if(!user)return reply({error:"Sign in required"},401,origin);const {data:adminRow}=await admin.from("admin_users").select("role").eq("user_id",user.id).maybeSingle();if(!adminRow)return reply({error:"Admin access required"},403,origin);}
+  if(!scheduled){const auth=req.headers.get("authorization")||"";const userClient=createClient(url,anonKey,{global:{headers:{Authorization:auth}}});const {data:{user}}=await userClient.auth.getUser();if(!user)return reply({error:"Sign in required"},401,origin);const {data:isAdmin,error:adminError}=await userClient.rpc("is_volttech_admin");if(adminError||isAdmin!==true)return reply({error:"Admin access required"},403,origin);}
   const body=await req.json().catch(()=>({})),supplierId=String(body?.supplier||"").toLowerCase(),mode=String(body?.mode||"full");
   if(!["full","update"].includes(mode))return reply({error:"Invalid sync mode"},400,origin);
   requestedSupplier=supplierId;
