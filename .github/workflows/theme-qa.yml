@@ -2,7 +2,7 @@ name: Theme appearance QA
 on:
   push:
     branches: [main]
-    paths: ['assets/css/**', 'assets/js/theme.js', '**/*.html', 'scripts/test-theme*', 'scripts/test-operations*', 'scripts/test-expanded-store-browser.mjs', 'scripts/test-store-selection-browser.mjs', 'assets/js/pages/store.js', 'assets/js/pages/home.js', 'assets/js/components/catalogue-view.js', 'assets/js/components/product-gallery.js', 'assets/js/pages/product.js', 'scripts/test-product-gallery-browser.mjs', 'assets/js/services/catalogue-pagination.js', '.github/workflows/theme-qa.yml']
+    paths: ['assets/css/**', 'assets/js/theme.js', '**/*.html', 'scripts/test-theme*', 'scripts/test-operations*', 'scripts/test-expanded-store-browser.mjs', 'scripts/test-store-selection-browser.mjs', 'assets/js/pages/store.js', 'assets/js/pages/home.js', 'assets/js/components/catalogue-view.js', 'assets/js/components/product-gallery.js', 'assets/js/components/product-summary.js', 'assets/js/pages/product.js', 'scripts/test-product-gallery-browser.mjs', 'assets/js/services/catalogue-pagination.js', '.github/workflows/theme-qa.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -14,6 +14,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - run: node scripts/test-product-summary.mjs
       - run: node scripts/test-catalogue-load.mjs
       - run: node scripts/test-departments.mjs
       - run: node scripts/test-theme.mjs

@@ -6,13 +6,14 @@
   "styles": [
     "assets/css/notifications.css",
     "assets/css/pages/commerce.css",
-    "assets/css/pages/product-gallery.css?v=20261013-gallery"
+    "assets/css/pages/product-gallery.css?v=20261013-gallery",
+    "assets/css/pages/product-compact.css?v=20261013-compact"
   ],
   "classic_scripts": [
     "supabase-config.js",
     "conversion-context.js"
   ],
   "scripts": [
-    "assets/js/pages/product.js?v=20261013-gallery"
+    "assets/js/pages/product.js?v=20261013-compact"
   ]
 }
