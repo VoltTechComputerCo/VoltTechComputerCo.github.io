@@ -5,7 +5,7 @@ rows=json.load(open(args.rows));chosen=[];office=[]
 for r in rows:
  if not isinstance(r['sku'],str) or not r['sku'].strip() or not isinstance(r['category'],str):continue
  c=r['category'].lower();n=r['name'].lower();typ=cat=None
- if any(w in c for w in ['server','enterprise','apple','notebook memory']) or re.search('surveillance|skyhawk|ironwolf',n):continue
+ if any(w in c for w in ['server','enterprise','apple','notebook memory']) or re.search('surveillance|skyhawk|ironwolf|healthcare',n):continue
  if 'graphics cards' in c:
   if not re.search(r'\b(?:rtx\s*[3-9]\d{3}|rx\s*[6-9]\d{3}|arc\s*[ab]\d{3})',n) or re.search('quadro|rtx pro',n):continue
   typ=cat='gpu'
