@@ -8,8 +8,8 @@ for(const width of [320,390,1440]){
  const page=await browser.newPage({viewport:{width,height:900}});
  await page.route('https://**/*',r=>r.abort());
  await page.route('**/test-image-*',r=>r.fulfill({contentType:'image/svg+xml',body:'<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480"/>'}));
- await page.route('**/assets/js/services/catalogue.js',r=>r.fulfill({contentType:'application/javascript',body:service}));
- await page.route('**/assets/js/services/catalogue-cart.js',r=>r.fulfill({contentType:'application/javascript',body:'export const connectCatalogueCart=()=>{};'}));
+ await page.route('**/assets/js/services/catalogue.js*',r=>r.fulfill({contentType:'application/javascript',body:service}));
+ await page.route('**/assets/js/services/catalogue-cart.js*',r=>r.fulfill({contentType:'application/javascript',body:'export const connectCatalogueCart=()=>{};'}));
  await page.goto('http://127.0.0.1:4173/store.html?category=gpu#catalogue');
  await page.locator('#product-grid .catalogue-card').first().waitFor();
  assert.equal(await page.locator('#product-grid .catalogue-card').count(),10);

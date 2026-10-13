@@ -1,8 +1,8 @@
-import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js';
-import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261008-pagination';
+import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261013-store';
+import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261013-store';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js';
-import { connectCatalogueCart } from '../services/catalogue-cart.js';
-import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261007-filter-selection';
+import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261013-store';
+import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261013-store';
 
 const query=new URLSearchParams(location.search);
 const categories=[...document.querySelectorAll('[data-category-link]')];
@@ -17,7 +17,7 @@ const state={
   pageSize:pageSize(query.get('pageSize')||savedSize),
   filters,
   search:query.get('q') || '',
-  sort:['featured','name','brand'].includes(query.get('sort')) ? query.get('sort') : 'featured'
+  sort:['featured','name','brand','price-low','price-high'].includes(query.get('sort')) ? query.get('sort') : 'featured'
 };
 
 const search=document.getElementById('catalogue-search');
@@ -36,7 +36,7 @@ function selectCategory(){
     if(a.dataset.categoryLink===state.category) a.setAttribute('aria-current','page');
     else a.removeAttribute('aria-current');
   });
-  document.getElementById('category-name').textContent=state.category==='all' ? 'Every part. One purpose.' : categoryLabel();
+  document.getElementById('category-name').textContent=state.category==='all' ? 'Shop all products' : categoryLabel();
   const contact=document.getElementById('category-enquiry');
   contact.href=`https://wa.me/27618435775?text=${encodeURIComponent('Hi VoltTech, I would like help choosing '+(state.category==='all'?'PC components':categoryLabel().toLowerCase())+' for my setup.')}`;
 }
@@ -134,7 +134,7 @@ async function init(){
     const access=await openCatalogue();
     if(!access.open){ showGate(access); return; }
     const { VT, preview }=access;
-    const data=await withTimeout(VT.loadStore());
+    const data=await withTimeout(VT.loadStore(),30000);
     if(data.settings?.catalogue_enabled!==true && !preview){ showGate({reason:'closed'}); return; }
     const products=publicProducts(data.products,preview);
     const featured=products.filter(p=>p.featured);

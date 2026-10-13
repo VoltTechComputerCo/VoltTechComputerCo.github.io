@@ -1,5 +1,5 @@
 export const FILTER_KEYS = [
-  'brand','gpuVendor','platform','socket','architecture','cores','vramGB','chipset','formFactor',
+  'useCase','productKind','availability','priceBand','refreshRateHz','screenSize','resolution','panelType','connection','lengthM','brand','gpuVendor','platform','socket','architecture','cores','vramGB','chipset','formFactor',
   'memoryType','capacityGB','speedMTs','interface','pcieGeneration','wattage','efficiency','modular',
   'supportedMotherboardSizes','coolerType','radiatorSizeMm','supportedSockets','sizeMm','fanCount','argb'
 ];
@@ -167,6 +167,8 @@ export function facetValue(product,key){
   if(key==='brand') return product?.brand || '';
   if(key==='gpuVendor') return gpuVendor(product);
   if(key==='platform') return platformFor(product);
+  if(key==='availability')return product?.stock_qty==null?'Confirm availability':Number(product.stock_qty)>0?'Supplier stock':'Out of stock';
+  if(key==='priceBand'){if(product?.retail_price==null)return 'Request pricing';const p=Number(product.retail_price);return p<500?'Under R500':p<2000?'R500–R1,999':p<5000?'R2,000–R4,999':p<10000?'R5,000–R9,999':'R10,000+';}
   return product?.specs?.[key];
 }
 
@@ -187,7 +189,15 @@ export function matchesFacetFilters(product,filters={},skipKey=''){
 }
 
 export function facetDefinitions(category){
-  return FACETS[category] || FACETS.all;
+  const specific={
+   monitors:['refreshRateHz','screenSize','resolution','panelType'],
+   keyboards:['connection'],mice:['connection'],headsets:['connection'],audio:['productKind','connection'],
+   webcams:['resolution','connection'],controllers:['productKind','connection'],cables:['productKind','interface','lengthM'],
+   adapters:['productKind','interface'], 'thermal-paste':['productKind'],'desk-accessories':['productKind']
+  };
+  const labels={refreshRateHz:'Refresh rate (Hz)',screenSize:'Screen size (inches)',resolution:'Resolution',panelType:'Panel',connection:'Connection',lengthM:'Length (m)',productKind:'Product type',interface:'Connector'};
+  const defs=specific[category]?['brand',...specific[category]].map(key=>({key,label:labels[key]||'Brand'})):(FACETS[category]||FACETS.all);
+  return [...defs,{key:'useCase',label:'Gaming / office'},{key:'availability',label:'Availability'},{key:'priceBand',label:'Price range'}];
 }
 
 function categoryMatch(product,category){

@@ -1,4 +1,4 @@
-import { matchesFacetFilters } from './store-filter-menu.js?v=20261007-filter-selection';
+import { matchesFacetFilters } from './store-filter-menu.js?v=20261013-store';
 export const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function safeLink(value) { if (!value || typeof value !== 'string') return ''; try { const u = new URL(value, location.href); return ['http:', 'https:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } }
 export const productUrl = (p, preview) => `product.html?slug=${encodeURIComponent(p.slug)}${preview ? '&preview=1' : ''}`;
@@ -39,8 +39,8 @@ export function filterProducts(products, state) {
   return products
     .filter(p => (state.category === 'all' || p.category_slug === state.category || p.type === state.category))
     .filter(p => matchesFacetFilters(p, filters))
-    .filter(p => !state.search || [p.name,p.brand,p.model,p.short_description,JSON.stringify(p.specs || {}),JSON.stringify(p.compatibility || {}),...(p.highlights || [])].join(' ').toLowerCase().includes(state.search.toLowerCase()))
-    .sort((a,b) => state.sort === 'name' ? a.name.localeCompare(b.name) : state.sort === 'brand' ? (a.brand || '').localeCompare(b.brand || '') || a.name.localeCompare(b.name) : Number(b.featured)-Number(a.featured) || Number(b.sort_priority || 0)-Number(a.sort_priority || 0) || a.name.localeCompare(b.name));
+    .filter(p => !state.search || [p.name,p.brand,p.model,p.identifiers?.sku,p.identifiers?.mpn,p.short_description,JSON.stringify(p.specs || {}),JSON.stringify(p.compatibility || {}),...(p.highlights || [])].join(' ').toLowerCase().includes(state.search.toLowerCase()))
+    .sort((a,b) => state.sort === 'name' ? a.name.localeCompare(b.name) : state.sort === 'price-low' ? (a.retail_price==null?Infinity:Number(a.retail_price))-(b.retail_price==null?Infinity:Number(b.retail_price)) : state.sort === 'price-high' ? (b.retail_price==null?-Infinity:Number(b.retail_price))-(a.retail_price==null?-Infinity:Number(a.retail_price)) : state.sort === 'brand' ? (a.brand || '').localeCompare(b.brand || '') || a.name.localeCompare(b.name) : Number(b.featured)-Number(a.featured) || Number(b.sort_priority || 0)-Number(a.sort_priority || 0) || a.name.localeCompare(b.name));
 }
 export function dataRows(VT, rows) {
   return `<dl class="component-specs">${rows.map(([key,value]) => `<div><dt>${esc(VT.formatSpecKey(key))}</dt><dd>${esc(VT.formatSpecValue(value))}</dd></div>`).join('')}</dl>`;

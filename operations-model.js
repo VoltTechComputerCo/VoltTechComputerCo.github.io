@@ -6,6 +6,7 @@ export function nextAction(j){
  if(['cancelled','declined','expired'].includes(r.status)||o.approval==='declined')return {label:'Resolve or revise the quotation',action:'revise',tone:'problem',stage:2};
  if(j.kind==='build')return {label:'Review saved build and create quotation',action:'build_quote',stage:1,tone:'action'};
  if(j.kind==='service'||j.kind==='order')return {label:'Create or link the customer quotation',action:'new_quote',stage:1,tone:'action'};
+ if(j.kind==='store'&&!j.paid&&!o.quote_sent_at)return {label:'Confirm stock, pricing and delivery · send quote',action:'prepare_quote',stage:1,tone:'action'};
  if(!o.stock_confirmed_at)return {label:'Confirm reservations for every product',action:'reserve',stage:1,tone:'action'};
  if(!o.pricing_confirmed_at)return {label:'Confirm final selling prices and delivery',action:'price',stage:2,tone:'action'};
  const accepted=j.kind==='store'?o.approval==='accepted':r.status==='accepted';

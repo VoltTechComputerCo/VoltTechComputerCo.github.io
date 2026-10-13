@@ -1,8 +1,8 @@
 import { getCommerceCore, withTimeout, validOrderAccess, readLaunchSettings, canPay, paymentDestination, canTransactHere } from '../services/transactions.js';
 import { getAccountClient } from '../services/account-session.js';
 import { connectCart } from '../services/home-integrations.js';
-import { esc } from '../components/catalogue-view.js';
-import { money, stageInfo, timeline, orderItems, trackingLink } from '../components/order-view.js?v=20261007-customer-workflow';
+import { esc } from '../components/catalogue-view.js?v=20261013-store';
+import { money, stageInfo, timeline, orderItems, trackingLink } from '../components/order-view.js?v=20261013-short-flow';
 const params=new URLSearchParams(location.search), initialAccess=validOrderAccess(params);
 let access=initialAccess;
 const state=document.getElementById('order-state'), detail=document.getElementById('order-detail'), refresh=document.getElementById('refresh-order'), error=document.getElementById('order-error');
@@ -54,11 +54,12 @@ function render(){
   let approval=document.getElementById('order-approval');if(!approval){approval=document.createElement('div');approval.id='order-approval';document.getElementById('order-total').parentElement.after(approval);}
   approval.replaceChildren();
   if(order.checkout_stage==='awaiting_approval'&&order.workflow?.approval==='pending'){
-    const note=document.createElement('p');note.textContent='Review the confirmed items, selling prices, delivery and final total before accepting this quote. Payment remains blocked until VoltTech releases it.';approval.append(note);
-    for(const [action,label] of [['accepted','Accept confirmed quote'],['declined','Decline quote']]){const b=document.createElement('button');b.className='btn';b.textContent=label;b.onclick=async()=>{b.disabled=true;try{const client=supabase.createClient(VOLTTECH_SUPABASE.url,VOLTTECH_SUPABASE.publishableKey);const result=await client.functions.invoke('store-checkout-status',{body:{...access,action}});if(result.error||result.data?.ok!==true)throw new Error('Could not record your response. Refresh and try again.');await load();}catch(e){showError(e.message);}finally{b.disabled=false;}};approval.append(b);}
+    const note=document.createElement('p');note.textContent='Review the confirmed items, selling prices, delivery and final total before accepting this quote. Accept the confirmed total to continue directly to secure payment.';approval.append(note);
+    for(const [action,label] of [['accepted','Accept & pay'],['declined','Decline quote']]){const b=document.createElement('button');b.className='btn';b.textContent=label;b.onclick=async()=>{b.disabled=true;try{const client=supabase.createClient(VOLTTECH_SUPABASE.url,VOLTTECH_SUPABASE.publishableKey);const result=await client.functions.invoke('store-checkout-status',{body:{...access,action}});if(result.error||result.data?.ok!==true)throw new Error('Could not record your response. Refresh and try again.');await load();if(action==='accepted'&&canPay(order,settings))await startPayment();}catch(e){showError(e.message);}finally{b.disabled=false;}};approval.append(b);}
   }
   let adjustments=document.getElementById('order-adjustments');if(!adjustments){adjustments=document.createElement('p');adjustments.id='order-adjustments';document.getElementById('order-total').parentElement.after(adjustments);}
   adjustments.textContent='Labour '+money(order.workflow?.quote_details?.labour??0)+' · Discount '+money(order.workflow?.quote_details?.discount??0)+' · No separate VAT charge.';
+  if(order.workflow?.quote_details?.valid_until)adjustments.textContent+=' · Quote valid until '+new Date(order.workflow.quote_details.valid_until).toLocaleString('en-ZA',{timeZone:'Africa/Johannesburg'});
   let invoice=document.getElementById('order-invoice');if(!invoice){invoice=document.createElement('article');invoice.id='order-invoice';detail.append(invoice);}
   invoice.hidden=!order.workflow?.final_invoice;
   if(order.workflow?.final_invoice){const inv=order.workflow.final_invoice;invoice.replaceChildren();const title=document.createElement('h2');title.textContent='VoltTech final invoice '+inv.invoice_number;invoice.append(title);for(const line of inv.items||[]){const p=document.createElement('p');p.textContent=line.description+' · Qty '+line.quantity+' · '+money(line.line_total);invoice.append(p);}const total=document.createElement('p');total.textContent='Total '+money(inv.total)+' · Payment received ✅';invoice.append(total);const print=document.createElement('button');print.className='btn';print.textContent='Print / Save invoice PDF';print.onclick=()=>window.print();invoice.append(print);}

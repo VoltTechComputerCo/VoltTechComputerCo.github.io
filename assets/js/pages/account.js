@@ -1,4 +1,4 @@
-import { renderCustomerWorkflow } from '../components/customer-workflow.js?v=20261007-customer-workflow';
+import { renderCustomerWorkflow } from '../components/customer-workflow.js?v=20261013-short-flow';
 import {
   isAccountInspection, getAccountClient, safeReturnPath, accountCallbackUrl,
   continueAfterAuth, loadAccountNotifications, accountIsAdmin

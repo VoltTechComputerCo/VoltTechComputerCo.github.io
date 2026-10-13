@@ -23,7 +23,7 @@ export async function getCommerceCore() {
     if (!config?.url || !config?.publishableKey) throw new Error('Catalogue connection unavailable.');
     const production = isProduction();
     window.volttechAuth ||= window.supabase.createClient(config.url, config.publishableKey, { auth: { persistSession: production, autoRefreshToken: production, detectSessionInUrl: production } });
-    await script('commerce/js/store-core.js');
+    await script('commerce/js/store-core.js?v=20261013-expanded');
     await script('commerce/js/catalogue-architecture.js');
     return window.VoltTechStore;
   })();
