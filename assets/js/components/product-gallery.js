@@ -12,10 +12,10 @@ export function productGallery(product){
 export function bindProductGallery(root){
  const gallery=root.querySelector('.product-gallery');if(!gallery)return;
  const viewport=gallery.querySelector('.gallery-viewport'),slides=[...viewport.querySelectorAll('.gallery-slide')],thumbs=[...gallery.querySelectorAll('.gallery-thumb')],dialog=gallery.querySelector('dialog'),large=gallery.querySelector('.gallery-large-image');
- let current=0,frame;
+ let current=0,frame,target=null;
  function update(index,scroll=false){
   current=Math.max(0,Math.min(slides.length-1,index));
-  if(scroll)viewport.scrollTo({left:current*viewport.clientWidth,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+  if(scroll){target=current;viewport.scrollTo({left:current*viewport.clientWidth,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
   gallery.querySelector('[data-gallery-count]').textContent=(current+1)+' / '+slides.length;
   gallery.querySelector('[data-gallery-large-count]').textContent='Photo '+(current+1)+' of '+slides.length;
   gallery.querySelectorAll('[data-gallery-prev]').forEach(b=>b.disabled=current===0);
@@ -28,7 +28,8 @@ export function bindProductGallery(root){
  gallery.querySelectorAll('[data-gallery-prev]').forEach(b=>b.onclick=()=>update(current-1,true));
  gallery.querySelectorAll('[data-gallery-next]').forEach(b=>b.onclick=()=>update(current+1,true));
  thumbs.forEach(b=>b.onclick=()=>update(Number(b.dataset.galleryIndex),true));
- viewport.addEventListener('scroll',()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>update(Math.round(viewport.scrollLeft/viewport.clientWidth)));},{passive:true});
+ viewport.addEventListener('scroll',()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{if(target!==null){if(Math.abs(viewport.scrollLeft-target*viewport.clientWidth)>2)return;target=null;}update(Math.round(viewport.scrollLeft/viewport.clientWidth));});},{passive:true});
+ for(const event of ['pointerdown','touchstart','wheel'])viewport.addEventListener(event,()=>{target=null;},{passive:true});
  viewport.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();update(current+(e.key==='ArrowRight'?1:-1),true);}});
  gallery.querySelectorAll('[data-gallery-zoom]').forEach((b,i)=>b.onclick=()=>{current=i;dialog.showModal();update(i);});
  gallery.querySelector('[data-gallery-close]').onclick=()=>dialog.close();
