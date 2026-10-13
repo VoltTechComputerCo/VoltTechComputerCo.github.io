@@ -1,11 +1,11 @@
-import { refreshHomeDepartments } from '../services/store-departments.js?v=20261013-fast';
+import { refreshHomeDepartments } from '../services/store-departments.js?v=20261013-laptops';
 import { readLaunchSettings, freshLiveCreators, connectCart, connectAccount, connectProductionServices } from '../services/home-integrations.js';
 
 async function updateAvailability() {
   const settings = await readLaunchSettings(window.VOLTTECH_SUPABASE);
   const store = document.querySelector('#store-availability');
   const builder = document.querySelector('#builder-availability');
-  if (store) store.textContent = settings?.catalogue_enabled ? 'Shop all 20 categories, compare prices and check the latest supplier availability.' : settings ? 'Store coming soon. Ask us about your next upgrade using the component cards above.' : 'Catalogue status unavailable. Ask us about your next upgrade using the component cards above.';
+  if (store) store.textContent = settings?.catalogue_enabled ? 'Shop all 21 categories, compare prices and check the latest supplier availability.' : settings ? 'Store coming soon. Ask us about your next upgrade using the component cards above.' : 'Catalogue status unavailable. Ask us about your next upgrade using the component cards above.';
   if (builder) builder.textContent = settings?.builder_enabled ? 'Plan a configuration. Component supply, pricing and compatibility need confirmation.' : settings ? 'Interactive Builder coming soon. Talk to us about your goals and budget.' : 'Builder status unavailable. Talk to us about your goals and budget.';
   if (settings?.catalogue_enabled) {
     document.querySelectorAll('[data-category]').forEach(link => {
