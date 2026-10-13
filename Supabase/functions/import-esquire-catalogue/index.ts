@@ -106,7 +106,7 @@ function existingUpdate(existing:any,item:any,feedDate:string){
     media:mediaCurated || !item.image ? existing.media : {
       primaryImage:item.image,directImage:item.image,images:[item.image],sourceType:"supplier-csv",imageStrategy:"supplier-feed"
     },
-    metadata:{...meta,feed_date:feedDate,supplier_category:item.category,supplier:"esquire",import_version:"esquire-csv-v1",stock_connected:true,pricing_state:"quote-first",auto_markup_disabled:true},
+    metadata:{...meta,feed_date:feedDate,supplier_category:item.category,supplier:"esquire",import_version:"esquire-csv-v1",stock_connected:true,pricing_state:"quote-first",auto_markup_disabled:false,markup_percent:20},
     updated_at:new Date().toISOString()
   };
 }
@@ -178,7 +178,7 @@ Deno.serve(async(req:Request)=>{
         retail_price:null,currency:"ZAR",stock_status:item.stockStatus,stock_qty:item.qty,price_checked_at:feedDate+"T00:00:00Z",
         short_description:item.shortDescription,highlights:[],identifiers:{supplier:"esquire",supplierSku:item.sku,sku:item.sku},
         specs:{},compatibility:{},media:item.image?{primaryImage:item.image,directImage:item.image,images:[item.image],sourceType:"supplier-csv",imageStrategy:"supplier-feed"}:{},
-        seo:{description:item.shortDescription},metadata:{source:"esquire-csv",supplier:"esquire",supplier_category:item.category,feed_date:feedDate,public_store_eligible:true,media_review_required:false,supplier_data_required:false,import_version:"esquire-csv-v1",stock_connected:true,pricing_state:"quote-first",auto_markup_disabled:true},
+        seo:{description:item.shortDescription},metadata:{source:"esquire-csv",supplier:"esquire",supplier_category:item.category,feed_date:feedDate,public_store_eligible:true,media_review_required:false,supplier_data_required:false,import_version:"esquire-csv-v1",stock_connected:true,pricing_state:"quote-first",auto_markup_disabled:false,markup_percent:20},
         featured:false,is_new:true,sort_priority:0,category_slug:type,condition:"new",is_demo:false
       });
       offers.push({product_id:id,supplier_id:"esquire",supplier_name:"Esquire Technologies",supplier_sku:item.sku,cost_price:item.cost,currency:"ZAR",stock_qty:item.qty,stock_status:item.stockStatus,last_checked:feedDate+"T00:00:00Z",source_url:null,metadata:{feed_date:feedDate,supplier_category:item.category,image:item.image,import_version:"esquire-csv-v1"}});
@@ -196,6 +196,8 @@ Deno.serve(async(req:Request)=>{
       const {error}=await admin.from("store_supplier_offers").upsert(offers.slice(i,i+100),{onConflict:"product_id,supplier_id,supplier_sku"});
       if(error) throw error;
     }
+    const productIds=[...new Set(offers.map(o=>o.product_id))];
+    for(let i=0;i<productIds.length;i+=500){const {error}=await admin.rpc("vt_update_preferred_offer_products",{p_ids:productIds.slice(i,i+500)});if(error)throw error;}
     await admin.from("store_settings").update({catalogue_synced_at:new Date().toISOString(),catalogue_generated_at:feedDate}).eq("id","store");
     return reply({ok:true,feedRows:parsed.length,validRows:items.length,updated:updates.length,added:inserts.length,offers:offers.length,ignoredNewRows:ignored,feedDate},200,origin);
   }catch(error){

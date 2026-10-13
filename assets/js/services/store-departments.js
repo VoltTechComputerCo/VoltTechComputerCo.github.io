@@ -4,8 +4,9 @@ export function departmentPicks(products){
  for(const p of products){
   const category=p.category_slug||p.type,image=p.media?.primaryImage||p.media?.directImage;
   if(p.is_demo||p.visibility!=='public'||p.status!=='active'||p.sale_mode==='hidden'||!(Number(p.stock_qty)>0)||!/^https:\/\//.test(image||''))continue;
+  const keys=[category];if(category==='laptops')keys.push(p.specs?.laptopPurpose==='Gaming'?'gaming-laptops':'work-laptops');
   const score=(preferences[category]?.test(p.name)?1e9:0)+Number(p.retail_price||0);
-  if(!result.has(category)||score>result.get(category).score)result.set(category,{product:p,image,score});
+  for(const key of keys)if(!result.has(key)||score>result.get(key).score)result.set(key,{product:p,image,score});
  }
  return result;
 }
@@ -24,7 +25,7 @@ export async function refreshHomeDepartments(config){
   const products=[];
   for(let offset=0;;offset+=500){
    const url=new URL(config.url+'/rest/v1/store_products');
-   Object.entries({select:'name,type,category_slug,primary_image:media->>primaryImage,stock_qty,retail_price,status,visibility,sale_mode,is_demo',status:'eq.active',visibility:'eq.public',sale_mode:'neq.hidden',stock_qty:'gt.0',order:'id',limit:'500',offset:String(offset)}).forEach(([k,v])=>url.searchParams.set(k,v));
+   Object.entries({select:'specs,name,type,category_slug,primary_image:media->>primaryImage,stock_qty,retail_price,status,visibility,sale_mode,is_demo',status:'eq.active',visibility:'eq.public',sale_mode:'neq.hidden',stock_qty:'gt.0',order:'id',limit:'500',offset:String(offset)}).forEach(([k,v])=>url.searchParams.set(k,v));
    const r=await fetch(url,{headers:{apikey:config.publishableKey},signal:controller.signal});if(!r.ok)return;const rows=await r.json();products.push(...rows.map(p=>({...p,media:{primaryImage:p.primary_image}})));if(rows.length<500)break;
   }
   updateDepartmentImages(products);

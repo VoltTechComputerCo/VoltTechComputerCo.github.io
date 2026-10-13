@@ -1,5 +1,5 @@
 export const FILTER_KEYS = [
-  'useCase','productKind','availability','priceBand','refreshRateHz','screenSize','resolution','panelType','connection','lengthM','brand','gpuVendor','platform','socket','architecture','cores','vramGB','chipset','formFactor',
+  'laptopPurpose','laptopProcessor','laptopGraphics','ramGB','storageCapacity','operatingSystem','useCase','productKind','availability','priceBand','refreshRateHz','screenSize','resolution','panelType','connection','lengthM','brand','gpuVendor','platform','socket','architecture','cores','vramGB','chipset','formFactor',
   'memoryType','capacityGB','speedMTs','interface','pcieGeneration','wattage','efficiency','modular',
   'supportedMotherboardSizes','coolerType','radiatorSizeMm','supportedSockets','sizeMm','fanCount','argb'
 ];
@@ -190,12 +190,13 @@ export function matchesFacetFilters(product,filters={},skipKey=''){
 
 export function facetDefinitions(category){
   const specific={
+   laptops:['laptopPurpose','laptopProcessor','laptopGraphics','ramGB','storageCapacity','screenSize','operatingSystem'],
    monitors:['refreshRateHz','screenSize','resolution','panelType'],
    keyboards:['connection'],mice:['connection'],headsets:['connection'],audio:['productKind','connection'],
    webcams:['resolution','connection'],controllers:['productKind','connection'],cables:['productKind','interface','lengthM'],
    adapters:['productKind','interface'], 'thermal-paste':['productKind'],'desk-accessories':['productKind']
   };
-  const labels={refreshRateHz:'Refresh rate (Hz)',screenSize:'Screen size (inches)',resolution:'Resolution',panelType:'Panel',connection:'Connection',lengthM:'Length (m)',productKind:'Product type',interface:'Connector'};
+  const labels={laptopPurpose:'Laptop type',laptopProcessor:'Processor',laptopGraphics:'Graphics',ramGB:'RAM (GB)',storageCapacity:'Storage',operatingSystem:'Operating system',refreshRateHz:'Refresh rate (Hz)',screenSize:'Screen size (inches)',resolution:'Resolution',panelType:'Panel',connection:'Connection',lengthM:'Length (m)',productKind:'Product type',interface:'Connector'};
   const defs=specific[category]?['brand',...specific[category]].map(key=>({key,label:labels[key]||'Brand'})):(FACETS[category]||FACETS.all);
   return [...defs,{key:'useCase',label:'Gaming / office'},{key:'availability',label:'Availability'},{key:'priceBand',label:'Price range'}];
 }

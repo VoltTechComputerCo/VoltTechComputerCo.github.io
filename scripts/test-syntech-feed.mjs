@@ -10,3 +10,6 @@ assert.equal(context.num(false),null);assert.equal(context.activePromo({promo_pr
 assert.equal(context.normaliseSyntech({products:[{sku:'APPLIANCE',price:100}]},existing).length,0);
 assert.equal(gamingProductAllowed('gpu','RTX 2060'),false);assert.equal(gamingProductAllowed('gpu','RTX 5070'),true);assert.equal(gamingProductAllowed('accessory','Microphone boom arm'),true);assert.equal(gamingProductAllowed('peripheral','Office keyboard'),true);assert.equal(gamingProductAllowed('storage','Surveillance SSD'),false);
 console.log('PASS: TS parsing, update feeds preserve product identity, correct VAT, false promo values and curated scope');
+
+assert.equal(context.laptopProduct('Acer Nitro V 15 Gaming Laptop','Laptops'),true);
+for(const name of ['Laptop cable lock','Port Designs Notebook Case','OWC SSD for Macbook','Notebook 3 Leaf Clover Red','Laptop DDR5 Notebook Memory'])assert.equal(context.laptopProduct(name,'Laptops'),false,name);
