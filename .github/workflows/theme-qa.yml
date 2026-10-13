@@ -29,6 +29,7 @@ jobs:
           node scripts/test-theme-browser.mjs
           node scripts/test-store-selection-browser.mjs
           node scripts/test-theme-polish.mjs
+          node scripts/test-product-gallery-browser.mjs
           node scripts/test-expanded-store-browser.mjs
           node scripts/test-operations-browser.mjs
           node scripts/test-operations-customer-browser.mjs

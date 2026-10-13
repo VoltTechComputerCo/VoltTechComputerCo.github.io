@@ -1,0 +1,31 @@
+import {createRequire} from 'node:module';import assert from 'node:assert/strict';
+const {chromium}=createRequire(import.meta.url)('playwright');
+const product={id:'qa-gallery',slug:'qa-gallery',type:'gpu',name:'Test graphics card',brand:'Test',status:'active',visibility:'public',sale_mode:'quote',is_demo:false,retail_price:3000,stock_qty:5,stock_status:'in-stock',media:{primaryImage:'http://127.0.0.1:4173/fixtures/photo1.svg',images:['http://127.0.0.1:4173/fixtures/photo1.svg','http://127.0.0.1:4173/fixtures/photo2.svg','http://127.0.0.1:4173/fixtures/photo3.svg']},specs:{vramGB:12}};
+const mock=`const p=${JSON.stringify(product)};const VT={getProductBySlug:async()=>p,getProductExtras:()=>new Promise(()=>{}),productIdentity:()=>({brand:p.brand}),categoryLabel:()=> 'Graphics cards',canAdd:()=>true,stockLabel:()=> 'In stock · 5 available',formatSpecKey:k=>k,formatSpecValue:v=>String(v??''),analytics:()=>{},readCart:()=>[],getProductsByIds:async()=>[],addToCart:()=>{}};export const openCatalogue=async()=>({open:true,preview:false,VT});export const publicProducts=p=>p;export const withTimeout=p=>p;export const showGate=()=>{};export const addItem=()=>{};export const notify=()=>{};`;
+for(const width of [320,390,1440]){
+ const browser=await chromium.launch({headless:true,executablePath:process.env.VT_CHROMIUM_PATH});
+ const page=await browser.newPage({viewport:{width,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.route('https://**/*',r=>r.abort());
+ await page.route('**/assets/js/services/catalogue.js*',r=>r.fulfill({contentType:'application/javascript',body:mock}));
+ await page.route('**/fixtures/photo*.svg',r=>r.fulfill({contentType:'image/svg+xml',body:'<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640"><rect x="100" y="100" width="440" height="440" fill="teal"/></svg>'}));
+ await page.goto('http://127.0.0.1:4173/product.html?slug=qa-gallery');
+ await page.locator('.gallery-viewport').waitFor();
+ assert.equal(await page.locator('.gallery-slide').count(),3,'duplicate primary image removed');
+ assert.equal(await page.locator('.gallery-thumb').count(),3);
+ assert.match(await page.locator('#product-detail').innerText(),/Add to cart/,'extras cannot delay the main product');
+ await page.locator('[data-gallery-next]').first().click();
+ await page.waitForFunction(()=>document.querySelector('[data-gallery-count]').textContent==='2 / 3');
+ await page.locator('[data-gallery-index="2"]').click();
+ await page.waitForFunction(()=>document.querySelector('[data-gallery-count]').textContent==='3 / 3');
+ await page.locator('.gallery-viewport').focus();await page.keyboard.press('ArrowLeft');
+ await page.waitForFunction(()=>document.querySelector('[data-gallery-count]').textContent==='2 / 3');
+ await page.locator('[data-gallery-zoom]').nth(1).click();
+ assert.equal(await page.locator('.gallery-lightbox').evaluate(d=>d.open),true);
+ assert.match(await page.locator('[data-gallery-large-count]').innerText(),/Photo 2 of 3/);
+ await page.keyboard.press('Escape');
+ assert.equal(await page.locator('.gallery-lightbox').evaluate(d=>d.open),false);
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ assert.deepEqual(errors,[]);
+ console.log('PASS: product renders before extras; gallery arrows, thumbnail selection, keyboard, enlarged view and responsive layout at '+width);
+ await browser.close();
+}
