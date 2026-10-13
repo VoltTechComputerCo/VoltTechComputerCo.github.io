@@ -2,7 +2,7 @@
 
 Source: Syntech_Pricelist_9_October_2026.xlsx, dated 9 October, supplied through the connected Drive. Private source costs and account-key feed URLs are never committed to the public repository.
 
-Selected 1,628 rows, with three surveillance SSDs kept private by the store policy. 1,625 Syntech listings plus 122 Esquire listings are public. Around 16% of the Syntech range is tagged Office; shared accessories remain useful to both audiences. Kept modern desktop components, peripherals, cables, adapters, cooling supplies and creator audio. Excluded appliances, server items and GPUs older than the established generation floor. No dedicated professional audio interface was identified; USB audio adapters are labelled as adapters.
+Selected 1,628 rows, with three surveillance SSDs and one healthcare monitor kept private. 1,624 Syntech listings plus 122 Esquire listings are public. Around 16% of the Syntech range is tagged Office; shared accessories remain useful to both audiences. Kept modern desktop components, peripherals, cables, adapters, cooling supplies and creator audio. Excluded appliances, server items and GPUs older than the established generation floor. No dedicated professional audio interface was identified; USB audio adapters are labelled as adapters.
 
 Prices use the source's explicitly VAT-exclusive cost, multiplied by 1.15 and then the existing 30% markup. They are provisional until quote confirmation. Stock quantities are absent from this spreadsheet and remain unknown until feed activation. Product images are matched to exact supplier product-page URLs using Syntech's public product API; missing images use the existing unavailable-image fallback.
 
