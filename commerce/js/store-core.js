@@ -23,7 +23,22 @@ function formatSpecKey(key){return String(key).replace(/([a-z])([A-Z])/g,'$1 $2'
 function formatSpecValue(v){if(Array.isArray(v))return v.join(', ');if(v===true)return'Yes';if(v===false)return'No';if(v==null||v==='')return'—';return String(v)}
 function toast(message,tone='ok'){const el=document.getElementById('toast');if(!el)return;el.textContent=message;el.classList.toggle('error',tone==='error');el.classList.add('show');clearTimeout(el._vtTimer);el._vtTimer=setTimeout(()=>el.classList.remove('show'),3500)}
 function analytics(event,params={}){try{window.gtag?.('event',event,params)}catch{}}
-async function loadStore(){const client=getClient();const [settings,categories]=await Promise.all([client.from('store_settings').select('*').eq('id','store').single(),client.from('store_categories').select('*').eq('is_active',true).order('sort_order')]);if(settings.error)throw settings.error;if(categories.error)throw categories.error;const products=[];for(let start=0;;start+=500){const r=await client.from('store_products').select('*').eq('status','active').eq('visibility','public').neq('sale_mode','hidden').order('sort_priority',{ascending:false}).order('featured',{ascending:false}).order('name').order('id').range(start,start+499);if(r.error)throw r.error;products.push(...r.data||[]);if((r.data||[]).length<500)break;}return{settings:settings.data,categories:categories.data||[],products}}
+const LISTING_FIELDS='id,slug,type,category_slug,name,brand,model,status,visibility,sale_mode,is_demo,featured,sort_priority,retail_price,currency,stock_status,stock_qty,specs,compatibility,identifiers,highlights,primary_image:media->>primaryImage,direct_image:media->>directImage,stock_connected:metadata->stock_connected,connected_suppliers:metadata->connected_suppliers,media_review_required:metadata->media_review_required,supplier_data_required:metadata->supplier_data_required';
+function listingProduct(row){return {...row,media:row.media||{primaryImage:row.primary_image,directImage:row.direct_image},metadata:row.metadata||{stock_connected:row.stock_connected,connected_suppliers:row.connected_suppliers,media_review_required:row.media_review_required,supplier_data_required:row.supplier_data_required}}}
+async function loadStore(launchSettings){
+ const client=getClient(),batch=1000;
+ const page=(from,count=false)=>client.from('store_products').select(LISTING_FIELDS,count?{count:'exact'}:undefined).eq('status','active').eq('visibility','public').neq('sale_mode','hidden').order('sort_priority',{ascending:false}).order('featured',{ascending:false}).order('name').order('id').range(from,from+batch-1);
+ const [settings,categories,first]=await Promise.all([launchSettings?Promise.resolve({data:launchSettings}):client.from('store_settings').select('*').eq('id','store').single(),client.from('store_categories').select('*').eq('is_active',true).order('sort_order'),page(0,true)]);
+ for(const result of [settings,categories,first])if(result.error)throw result.error;
+ const products=[...(first.data||[])];
+ if(Number.isInteger(first.count)){
+  const requests=[];for(let from=batch;from<first.count;from+=batch)requests.push(page(from));
+  const pages=await Promise.all(requests);for(const r of pages){if(r.error)throw r.error;products.push(...r.data||[]);}
+ }else if(products.length===batch){
+  for(let from=batch;;from+=batch){const r=await page(from);if(r.error)throw r.error;products.push(...r.data||[]);if((r.data||[]).length<batch)break;}
+ }
+ return {settings:settings.data,categories:categories.data||[],products:products.map(listingProduct)};
+}
 async function getProductBySlug(slug){const r=await getClient().from('store_products').select('*').eq('slug',slug).eq('status','active').eq('visibility','public').neq('sale_mode','hidden').maybeSingle();if(r.error)throw r.error;return r.data}
 async function getProductsByIds(ids){if(!ids.length)return[];const r=await getClient().from('store_products').select('*').in('id',ids).eq('status','active').eq('visibility','public').neq('sale_mode','hidden');if(r.error)throw r.error;return r.data||[]}
 async function getProductExtras(productId){const client=getClient();const [docs,rels]=await Promise.all([client.from('store_product_documents').select('*').eq('product_id',productId).order('sort_order'),client.from('store_product_relations').select('*').eq('product_id',productId).order('weight',{ascending:false})]);if(docs.error)throw docs.error;if(rels.error)throw rels.error;const relatedIds=(rels.data||[]).map(x=>x.related_product_id);const related=await getProductsByIds(relatedIds);const byId=new Map(related.map(p=>[p.id,p]));return{documents:docs.data||[],relations:(rels.data||[]).map(r=>({...r,product:byId.get(r.related_product_id)})).filter(r=>r.product)}}

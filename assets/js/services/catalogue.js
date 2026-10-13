@@ -23,14 +23,15 @@ export async function getCommerceCore() {
     if (!config?.url || !config?.publishableKey) throw new Error('Catalogue connection unavailable.');
     const production = isProduction();
     window.volttechAuth ||= window.supabase.createClient(config.url, config.publishableKey, { auth: { persistSession: production, autoRefreshToken: production, detectSessionInUrl: production } });
-    await script('commerce/js/store-core.js?v=20261013-expanded');
-    await script('commerce/js/catalogue-architecture.js');
+    await script('commerce/js/catalogue-runtime.js?v=20261013-fast');
     return window.VoltTechStore;
   })();
   return ready;
 }
 export async function openCatalogue() {
   connectCart(); connectProductionServices();
+  const coreReady = getCommerceCore();
+  coreReady.catch(() => {});
   const settings = await readLaunchSettings(window.VOLTTECH_SUPABASE);
   let preview = false;
   const previewRequested = new URLSearchParams(location.search).get('preview') === '1';
@@ -46,7 +47,7 @@ export async function openCatalogue() {
     connectAccount(window.VOLTTECH_SUPABASE);
     return { open: false, reason: previewRequested ? 'preview' : 'closed' };
   }
-  const VT = await getCommerceCore();
+  const VT = await coreReady;
   document.body.classList.toggle('store-preview', preview);
   connectAccount(window.VOLTTECH_SUPABASE);
   return { open: true, preview, VT, settings };

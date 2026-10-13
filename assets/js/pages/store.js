@@ -1,5 +1,5 @@
-import { updateDepartmentImages } from '../services/store-departments.js?v=20261013-departments';
-import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261013-store';
+import { updateDepartmentImages } from '../services/store-departments.js?v=20261013-fast';
+import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261013-fast';
 import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261013-store';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js';
 import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261013-store';
@@ -136,7 +136,7 @@ async function init(){
     const access=await openCatalogue();
     if(!access.open){ showGate(access); return; }
     const { VT, preview }=access;
-    const data=await withTimeout(VT.loadStore(),30000);
+    const data=await withTimeout(VT.loadStore(access.settings),30000);
     if(data.settings?.catalogue_enabled!==true && !preview){ showGate({reason:'closed'}); return; }
     const products=publicProducts(data.products,preview);
     updateDepartmentImages(products);

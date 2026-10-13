@@ -1,4 +1,4 @@
-import { refreshHomeDepartments } from '../services/store-departments.js?v=20261013-departments';
+import { refreshHomeDepartments } from '../services/store-departments.js?v=20261013-fast';
 import { readLaunchSettings, freshLiveCreators, connectCart, connectAccount, connectProductionServices } from '../services/home-integrations.js';
 
 async function updateAvailability() {

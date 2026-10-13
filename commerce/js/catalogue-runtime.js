@@ -1,0 +1,194 @@
+(function(){
+'use strict';
+const CART_KEY='vt_store_quote_cart_v1';
+const TYPE_LABELS={cpu:'Processor',gpu:'Graphics Card',motherboard:'Motherboard',memory:'Memory',storage:'Storage',psu:'Power Supply',case:'Case',cooler:'CPU Cooler',fan:'Case Fan'};
+const TYPE_VISUALS={cpu:'vt-px-repair-cpu-install.webp',gpu:'vt-own-gpu-product.webp',motherboard:'vt-drive-motherboard.webp',memory:'vt-px-pc-components.webp',storage:'vt-px-hardware-detail.webp',psu:'vt-px-pc-hardware.webp',case:'vt-drive-premium-pc.webp',cooler:'vt-drive-rgb-cooling.webp',fan:'vt-drive-rgb-cooling.webp'};
+let sb=null;
+if(document.documentElement.dataset.vtShell!=='clean'&&'serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}),{once:true});}
+function esc(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function safeUrl(v){try{const u=new URL(String(v||''),location.href);return ['http:','https:'].includes(u.protocol)?u.href:''}catch{return''}}
+function getClient(){if(sb)return sb;if(document.documentElement.dataset.vtShell==='clean'&&window.volttechAuth){sb=window.volttechAuth;return sb;}if(!window.supabase?.createClient)throw new Error('Supabase library unavailable');const cfg=window.VOLTTECH_SUPABASE;if(!cfg?.url||!cfg?.publishableKey)throw new Error('VoltTech store configuration unavailable');sb=window.supabase.createClient(cfg.url,cfg.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});return sb}
+function readCart(){try{const x=JSON.parse(localStorage.getItem(CART_KEY)||'[]');return Array.isArray(x)?x.filter(i=>i&&i.productId&&Number(i.quantity)>0):[]}catch{return[]}}
+function saveCart(items){const clean=items.map(i=>({productId:String(i.productId),quantity:Math.max(1,Math.min(25,Number(i.quantity)||1))}));localStorage.setItem(CART_KEY,JSON.stringify(clean));window.dispatchEvent(new CustomEvent('vt-store-cart-change',{detail:clean}));return clean}
+function addToCart(productId,quantity=1){const items=readCart();const row=items.find(i=>i.productId===productId);if(row)row.quantity=Math.min(25,row.quantity+quantity);else items.push({productId,quantity:Math.max(1,quantity)});return saveCart(items)}
+function setCartQty(productId,quantity){let items=readCart();if(quantity<=0)items=items.filter(i=>i.productId!==productId);else{const row=items.find(i=>i.productId===productId);if(row)row.quantity=Math.min(25,quantity)}return saveCart(items)}
+function clearCart(){localStorage.removeItem(CART_KEY);window.dispatchEvent(new CustomEvent('vt-store-cart-change',{detail:[]}))}
+function cartCount(){return readCart().reduce((n,i)=>n+i.quantity,0)}
+function categoryLabel(type){return TYPE_LABELS[type]||String(type||'PC Part')}
+function mediaFor(product){const m=product?.media||{};const actual=safeUrl(m.primaryImage||m.primary_image||'');return{src:actual||TYPE_VISUALS[product?.type]||'vt-px-pc-components.webp',actual:!!actual}}
+function formatPrice(value,currency='ZAR'){if(value==null||value==='')return'Price confirmed before payment';try{return new Intl.NumberFormat('en-ZA',{style:'currency',currency:currency||'ZAR',maximumFractionDigits:0}).format(Number(value))}catch{return`R ${Number(value).toLocaleString('en-ZA')}`}}
+function stockLabel(product){const status=String(product?.stock_status||'unknown').toLowerCase().replace(/-/g,'_'),qty=product?.stock_qty!=null&&Number.isFinite(Number(product.stock_qty))?Number(product.stock_qty):null,connected=Array.isArray(product?.metadata?.connected_suppliers)?product.metadata.connected_suppliers:[];if(product?.metadata?.stock_connected&&qty!=null)return `${qty>0?'Supplier stock · '+qty+' available':'Supplier out of stock'}${connected.length>1?' · '+connected.length+' supplier feeds':''}`;if(status==='out_of_stock'||qty===0)return'Out of stock';if((status==='limited'||status==='low_stock')&&qty!=null)return qty===1?'Only 1 left':`Only ${qty} left`;if(status==='in_stock'&&qty!=null)return`In stock · ${qty} available`;if(status==='in_stock')return'In stock';if(status==='supplier_stock')return qty!=null?`Supplier stock · ${qty} available`:'In stock with supplier';if(status==='backorder')return'Available on backorder';return'Stock confirmed before payment'}
+function canAdd(product){const status=String(product?.stock_status||'unknown').toLowerCase().replace(/-/g,'_');return status!=='out_of_stock'&&(product?.stock_qty==null||Number(product.stock_qty)>0)}
+function formatSpecKey(key){return String(key).replace(/([a-z])([A-Z])/g,'$1 $2').replace(/_/g,' ').replace(/\b\w/g,m=>m.toUpperCase())}
+function formatSpecValue(v){if(Array.isArray(v))return v.join(', ');if(v===true)return'Yes';if(v===false)return'No';if(v==null||v==='')return'—';return String(v)}
+function toast(message,tone='ok'){const el=document.getElementById('toast');if(!el)return;el.textContent=message;el.classList.toggle('error',tone==='error');el.classList.add('show');clearTimeout(el._vtTimer);el._vtTimer=setTimeout(()=>el.classList.remove('show'),3500)}
+function analytics(event,params={}){try{window.gtag?.('event',event,params)}catch{}}
+const LISTING_FIELDS='id,slug,type,category_slug,name,brand,model,status,visibility,sale_mode,is_demo,featured,sort_priority,retail_price,currency,stock_status,stock_qty,specs,compatibility,identifiers,highlights,primary_image:media->>primaryImage,direct_image:media->>directImage,stock_connected:metadata->stock_connected,connected_suppliers:metadata->connected_suppliers,media_review_required:metadata->media_review_required,supplier_data_required:metadata->supplier_data_required';
+function listingProduct(row){return {...row,media:row.media||{primaryImage:row.primary_image,directImage:row.direct_image},metadata:row.metadata||{stock_connected:row.stock_connected,connected_suppliers:row.connected_suppliers,media_review_required:row.media_review_required,supplier_data_required:row.supplier_data_required}}}
+async function loadStore(launchSettings){
+ const client=getClient(),batch=1000;
+ const page=(from,count=false)=>client.from('store_products').select(LISTING_FIELDS,count?{count:'exact'}:undefined).eq('status','active').eq('visibility','public').neq('sale_mode','hidden').order('sort_priority',{ascending:false}).order('featured',{ascending:false}).order('name').order('id').range(from,from+batch-1);
+ const [settings,categories,first]=await Promise.all([launchSettings?Promise.resolve({data:launchSettings}):client.from('store_settings').select('*').eq('id','store').single(),client.from('store_categories').select('*').eq('is_active',true).order('sort_order'),page(0,true)]);
+ for(const result of [settings,categories,first])if(result.error)throw result.error;
+ const products=[...(first.data||[])];
+ if(Number.isInteger(first.count)){
+  const requests=[];for(let from=batch;from<first.count;from+=batch)requests.push(page(from));
+  const pages=await Promise.all(requests);for(const r of pages){if(r.error)throw r.error;products.push(...r.data||[]);}
+ }else if(products.length===batch){
+  for(let from=batch;;from+=batch){const r=await page(from);if(r.error)throw r.error;products.push(...r.data||[]);if((r.data||[]).length<batch)break;}
+ }
+ return {settings:settings.data,categories:categories.data||[],products:products.map(listingProduct)};
+}
+async function getProductBySlug(slug){const r=await getClient().from('store_products').select('*').eq('slug',slug).eq('status','active').eq('visibility','public').neq('sale_mode','hidden').maybeSingle();if(r.error)throw r.error;return r.data}
+async function getProductsByIds(ids){if(!ids.length)return[];const r=await getClient().from('store_products').select('*').in('id',ids).eq('status','active').eq('visibility','public').neq('sale_mode','hidden');if(r.error)throw r.error;return r.data||[]}
+async function getProductExtras(productId){const client=getClient();const [docs,rels]=await Promise.all([client.from('store_product_documents').select('*').eq('product_id',productId).order('sort_order'),client.from('store_product_relations').select('*').eq('product_id',productId).order('weight',{ascending:false})]);if(docs.error)throw docs.error;if(rels.error)throw rels.error;const relatedIds=(rels.data||[]).map(x=>x.related_product_id);const related=await getProductsByIds(relatedIds);const byId=new Map(related.map(p=>[p.id,p]));return{documents:docs.data||[],relations:(rels.data||[]).map(r=>({...r,product:byId.get(r.related_product_id)})).filter(r=>r.product)}}
+async function currentUser(){const r=await getClient().auth.getUser();return r.data?.user||null}
+async function loadCheckoutProfile(){const client=getClient(),user=await currentUser();if(!user)return{user:null,profile:null,address:null};const [profileRes,addressRes]=await Promise.all([client.from('profiles').select('*').eq('id',user.id).maybeSingle(),client.from('customer_addresses').select('*').eq('user_id',user.id).eq('is_default_shipping',true).limit(1).maybeSingle()]);return{user,profile:profileRes.data||null,address:addressRes.data||null}}
+async function submitCheckout(payload){const {data,error}=await getClient().functions.invoke('submit-store-checkout',{body:payload});if(error){let msg=error.message||'Could not place the order.';try{const body=await error.context?.json?.();if(body?.error)msg=body.error}catch{}const failure=new Error(msg);failure.status=Number(error.context?.status)||0;failure.uncertain=!failure.status||failure.status>=500;throw failure}if(data?.error)throw new Error(data.error);return data}
+async function getBobGoRates(items,deliveryAddress,customer={}){const {data,error}=await getClient().functions.invoke('bobgo-checkout-rates',{body:{items,delivery_address:deliveryAddress,customer}});if(error)throw error;return data}
+async function getOrderStatus(ref,token){const {data,error}=await getClient().functions.invoke('store-checkout-status',{body:{ref,token}});if(error)throw error;if(data?.error)throw new Error(data.error);return data?.order}
+async function createStorePayment(ref,token){const {data,error}=await getClient().functions.invoke('create-store-payment',{body:{ref,token}});if(error){let msg=error.message||'Could not start payment.';try{const body=await error.context?.json?.();if(body?.error)msg=body.error}catch{}throw new Error(msg)}if(data?.error)throw new Error(data.error);return data}
+function builderUrl(product){const id=product?.metadata?.builderId;return id?`builder/?add=${encodeURIComponent(id)}`:'builder/'}
+window.VoltTechStore={getClient,esc,safeUrl,readCart,saveCart,addToCart,setCartQty,clearCart,cartCount,categoryLabel,mediaFor,formatPrice,stockLabel,canAdd,formatSpecKey,formatSpecValue,toast,analytics,loadStore,getProductBySlug,getProductsByIds,getProductExtras,currentUser,loadCheckoutProfile,submitCheckout,getBobGoRates,getOrderStatus,createStorePayment,builderUrl};
+})();
+(function(){
+'use strict';
+
+const VT=window.VoltTechStore;
+if(!VT||window.__voltTechCatalogueArchitecture)return;
+window.__voltTechCatalogueArchitecture=true;
+
+const baseCanAdd=VT.canAdd;
+const baseStockLabel=VT.stockLabel;
+const baseMediaFor=VT.mediaFor;
+
+function isDemo(product){return !!product?.is_demo}
+function previewMode(){return document.body.classList.contains('store-preview')}
+function isMediaReviewRequired(product){return !!product?.metadata?.media_review_required}
+function isSupplierDataRequired(product){return !!product?.metadata?.supplier_data_required}
+
+function canAdd(product){
+  if(isDemo(product)) return false;
+  return baseCanAdd(product);
+}
+
+function stockLabel(product){
+  if(isDemo(product)) return 'Demo fixture · supplier stock not connected';
+  return baseStockLabel(product);
+}
+
+function mediaFor(product){
+  const m=baseMediaFor(product);
+  return {
+    ...m,
+    reviewRequired:isMediaReviewRequired(product),
+    demo:isDemo(product)
+  };
+}
+
+function productAvailability(product){
+  if(isDemo(product)){
+    return {
+      sellable:false,
+      label:'Demo catalogue fixture',
+      detail:'Reference data only. No supplier stock, price or purchase path is connected.'
+    };
+  }
+
+  return {
+    sellable:canAdd(product),
+    label:stockLabel(product),
+    detail:'Live supplier availability and delivery are confirmed before payment.'
+  };
+}
+
+function productIdentity(product){
+  const identifiers=product?.identifiers||{};
+  const first=(...keys)=>{
+    for(const k of keys){
+      if(identifiers[k]!=null && String(identifiers[k]).trim()) return String(identifiers[k]).trim();
+    }
+    return '';
+  };
+
+  return {
+    brand:product?.brand||'—',
+    model:product?.model||'—',
+    manufacturer:product?.manufacturer||product?.brand||'—',
+    mpn:first('mpn','manufacturerPartNumber','manufacturer_part_number','partNumber','part_number')||'Not assigned',
+    sku:first('sku','supplierSku','supplier_sku')||'Not assigned',
+    gtin:first('ean','gtin','upc')||'Not assigned',
+    condition:product?.condition||'new'
+  };
+}
+
+function fulfilmentInfo(product){
+  return {
+    warrantyMonths:product?.warranty_months,
+    leadTimeDays:product?.lead_time_days,
+    shippingWeightKg:product?.shipping_weight_kg,
+    shippingClass:product?.shipping_class,
+    dimensions:{
+      length:product?.shipping_length_cm,
+      width:product?.shipping_width_cm,
+      height:product?.shipping_height_cm
+    },
+    packagingVerified:!!product?.shipping_packaging_verified
+  };
+}
+
+const baseLoadStore=VT.loadStore;
+VT.loadStore=async function(){
+  const data=await baseLoadStore();
+  window.__vtPreviewProductMap=new Map((data.products||[]).map(p=>[p.id,p]));
+  return data;
+};
+
+
+function applyImageFallback(img,product){
+  if(!img||img.dataset.vtFallbackBound==="1") return;
+  img.dataset.vtFallbackBound="1";
+  img.addEventListener("error",()=>{
+    if(img.dataset.vtFallbackApplied==="1") return;
+    img.dataset.vtFallbackApplied="1";
+    const fallback=baseMediaFor({...product,media:{...(product?.media||{}),primaryImage:"",primary_image:""}});
+    if(fallback?.src && fallback.src!==img.src){
+      img.src=fallback.src;
+      img.alt=`${VT.categoryLabel(product?.type||"component")} category visual`;
+      img.closest(".product-media,.product-image-large,.qa-image")?.classList.add("vt-image-fallback");
+    }
+  });
+}
+async function probeImage(url,timeoutMs=6000){
+  const src=safeProbeUrl(url);
+  if(!src) return {ok:false,reason:"missing"};
+  return await new Promise(resolve=>{
+    const img=new Image();
+    let done=false;
+    const finish=result=>{if(done)return;done=true;clearTimeout(timer);resolve(result)};
+    const timer=setTimeout(()=>finish({ok:false,reason:"timeout"}),timeoutMs);
+    img.onload=()=>finish({ok:true,width:img.naturalWidth,height:img.naturalHeight,reason:"loaded"});
+    img.onerror=()=>finish({ok:false,reason:"error"});
+    img.src=src;
+  });
+}
+function safeProbeUrl(url){
+  try{
+    const u=new URL(String(url||""),location.href);
+    return /^https?:$/.test(u.protocol)?u.href:"";
+  }catch{return ""}
+}
+
+VT.isDemo=isDemo;
+VT.previewMode=previewMode;
+VT.mediaReviewRequired=isMediaReviewRequired;
+VT.supplierDataRequired=isSupplierDataRequired;
+VT.canAdd=canAdd;
+VT.stockLabel=stockLabel;
+VT.mediaFor=mediaFor;
+VT.productAvailability=productAvailability;
+VT.productIdentity=productIdentity;
+VT.fulfilmentInfo=fulfilmentInfo;
+VT.applyImageFallback=applyImageFallback;
+VT.probeImage=probeImage;
+})();
