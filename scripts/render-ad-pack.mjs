@@ -15,6 +15,7 @@ try{for(const preset of PRESETS){
  for(const story of [false,true]){
   const png=await page.evaluate(async ({product,preset,img,story})=>{const m=await import('/assets/js/marketing/ad-renderer.js');const cv=document.createElement('canvas');await m.render(cv,product,preset,{story,imageSource:img,logoSource:'/assets/brand/volttech-logo.webp',fontSource:'/assets/fonts/bender.otf'});if(cv.width!==1080||cv.height!==(story?1920:1350))throw Error('Wrong output size');if(!document.fonts.check('700 24px Bender'))throw Error('Bender failed to load');const small=document.createElement('canvas');small.width=360;small.height=story?640:450;small.getContext('2d').drawImage(cv,0,0,small.width,small.height);return {png:cv.toDataURL('image/png').split(',')[1],preview:small.toDataURL('image/webp',.8).split(',')[1]};},{product,preset,img,story});
   fs.writeFileSync(dir+'/'+preset.key+'-'+(story?'story':'feed')+'.png',Buffer.from(png.png,'base64'));
+  fs.writeFileSync(dir+'/'+preset.key+'-'+(story?'story':'feed')+'-preview.webp',Buffer.from(png.preview,'base64'));
  }
  captions.push(preset.key.toUpperCase()+'\n'+caption(product,preset));console.log('PASS: real supplier image, Bender font and both formats for '+preset.key);
 }}finally{await browser.close();}
