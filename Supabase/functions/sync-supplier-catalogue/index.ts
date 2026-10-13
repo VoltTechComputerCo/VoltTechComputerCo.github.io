@@ -94,7 +94,8 @@ async function persist(admin:any,supplier:any,items:any[],authScheme:string|null
  for(let i=0;i<productRows.length;i+=100){const {error}=await admin.from("store_products").upsert(productRows.slice(i,i+100),{onConflict:"id"});if(error)throw error}
  for(let i=0;i<offers.length;i+=100){const {error}=await admin.from("store_supplier_offers").upsert(offers.slice(i,i+100),{onConflict:"product_id,supplier_id,supplier_sku"});if(error)throw error}
  const ids=[...affected];for(let i=0;i<ids.length;i+=500){const {error}=await admin.rpc("vt_update_preferred_offer_products",{p_ids:ids.slice(i,i+500)});if(error)throw error;}
- await admin.from("store_suppliers").update({feed_status:"live",feed_last_synced_at:new Date().toISOString(),metadata:{...(supplier.metadata||{}),last_sync_rows:items.length,...(authScheme?{api_auth_scheme:authScheme}:{})},updated_at:new Date().toISOString()}).eq("id",supplier.id);
+ const {data:latestSupplier}=await admin.from("store_suppliers").select("metadata").eq("id",supplier.id).maybeSingle();
+ await admin.from("store_suppliers").update({feed_status:"live",feed_last_synced_at:new Date().toISOString(),metadata:{...(latestSupplier?.metadata||supplier.metadata||{}),last_error:null,sync_paused_until:null,last_sync_rows:items.length,...(authScheme?{api_auth_scheme:authScheme}:{})},updated_at:new Date().toISOString()}).eq("id",supplier.id);
  return{products:productRows.length,offers:offers.length}
 }
 
