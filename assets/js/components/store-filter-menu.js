@@ -201,8 +201,8 @@ export function facetDefinitions(category){
   return [...defs,{key:'useCase',label:'Gaming / office'},{key:'availability',label:'Availability'},{key:'priceBand',label:'Price range'}];
 }
 
-function categoryMatch(product,category){
-  return category==='all' || product?.category_slug===category || product?.type===category;
+export function categoryMatch(product,category){
+  return category==='all' || (product?.category_slug || product?.type)===category;
 }
 
 export function facetOptions(products,category,key,filters={}){

@@ -1,8 +1,9 @@
+import {systemKind} from '../Supabase/functions/sync-supplier-catalogue/system-classification.js';
 import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';import {stripTypeScriptTypes} from 'node:module';
 import {gamingProductAllowed} from '../Supabase/functions/sync-supplier-catalogue/gaming-policy.js';
 const source=fs.readFileSync('Supabase/functions/sync-supplier-catalogue/index.ts','utf8').replace(/^import .*;\n/gm,'');
 const code=stripTypeScriptTypes(source,{mode:'transform'});
-const context={gamingProductAllowed,URL,crypto,TextEncoder,console,Deno:{serve:()=>{}}};vm.createContext(context);vm.runInContext(code,context);
+const context={systemKind,gamingProductAllowed,URL,crypto,TextEncoder,console,Deno:{serve:()=>{}}};vm.createContext(context);vm.runInContext(code,context);
 const existing=new Map([['MIC-1',{type:'peripheral',name:'USB Gaming Microphone',brand:'Test',short_description:'Microphones',metadata:{product_url:'https://www.syntech.co.za/product/mic/'}}]]);
 const rows=context.normaliseSyntech({syntechstock:{products:[{sku:'MIC-1',price:100,promo_price:false,jhbstock:2,cptstock:3,dbnstock:0}]}},existing);
 assert.equal(rows.length,1);assert.equal(rows[0].cost,115);assert.equal(rows[0].qty,5);assert.equal(rows[0].name,'USB Gaming Microphone');assert.equal(rows[0].brand,'Test');
@@ -13,3 +14,14 @@ console.log('PASS: TS parsing, update feeds preserve product identity, correct V
 
 assert.equal(context.laptopProduct('Acer Nitro V 15 Gaming Laptop','Laptops'),true);
 for(const name of ['Laptop cable lock','Port Designs Notebook Case','OWC SSD for Macbook','Notebook 3 Leaf Clover Red','Laptop DDR5 Notebook Memory'])assert.equal(context.laptopProduct(name,'Laptops'),false,name);
+
+// Full specification strings must not turn systems into the parts inside them.
+const notebook='Dell Latitude 5350 Intel Core Ultra 7, 16GB DDR5, 512GB SSD, 13.3" FHD, Battery 3 Cell, 65W PSU, Windows 11 Pro';
+const desktop='Dell Tower ECT1250 Intel Core i5-14400, 16GB DDR5, 512GB SSD, Windows 11 Pro';
+assert.equal(context.typeOf(notebook,'',''),'laptop');
+assert.equal(context.typeOf(desktop,'',''),'peripheral');
+assert.equal(context.categoryOf('peripheral',desktop,''),'desktops');
+assert.equal(context.typeOf('ASUS CPU Cooler LGA1700','',''),'cooler');
+assert.equal(gamingProductAllowed('laptop',notebook),true);
+for(const name of ['Lenovo ThinkPad Bluetooth Silent Mouse','Acer Nitro VG240 Gaming Monitor','Dell AlienWare Wireless Gaming Headset','UGREEN enclosure for Macbook','Laptop cable lock'])assert.equal(systemKind(name),'',name);
+console.log('PASS: full computer specifications, cooler priority and accessory exclusions');

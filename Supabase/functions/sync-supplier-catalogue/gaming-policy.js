@@ -1,7 +1,9 @@
+import { systemKind } from './system-classification.js';
 // Curated PC store safety filter. Syntech syncing only touches already selected SKUs.
 export function gamingProductAllowed(type,name,description=''){
  const n=String(name||'').toLowerCase(),t=n+' '+String(description||'').toLowerCase();
- if(type==='laptop')return !/\b(bag|sleeve|battery|charger|adapter|adaptor|docking|stand|replacement|protector|sodimm)\b|memory module|notebook memory|laptop memory|backpack|briefcase|clamshell|privacy filter|cable lock|lock plate|notebook cooler|power supply|pwr adapt|ssd for|ssd.*macbook|3 leaf clover|laptop case|notebook case/.test(n);
+ if(type==='laptop')return systemKind(name,description)==='laptop';
+ if(systemKind(name,description)==='desktop')return type==='peripheral'&&!/server|poweredge/.test(n);
  if(/server|poweredge|enterprise|surveillance|skyhawk|ironwolf|western digital purple|cctv|whiteboard|ps\/?2|disney|zakumi|calculator|ipad|cabinet fan/.test(n))return false;
  if(type==='gpu')return /rtx[ -]*[3-9][0-9]{3}|rx[ -]*[6-9][0-9]{3}|arc[ -]*[ab][0-9]{3}/.test(n)&&!/quadro|rtx pro/.test(n);
  if(type==='cpu'){const m=n.match(/ryzen\s+[3579]\s+(\d{4,5})|core\s+i[3579][ -]*(\d{4,5})/);return /core ultra/.test(n)||!!(m&&Number(m[1]||m[2])>=(m[1]?5000:10000));}

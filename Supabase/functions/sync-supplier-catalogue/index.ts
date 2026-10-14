@@ -1,5 +1,6 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { systemKind } from "./system-classification.js";
 import { gamingProductAllowed } from "./gaming-policy.js";
 
 const VAT=1.15;
@@ -15,8 +16,7 @@ function cleanId(v:unknown){return String(v??"").trim().toUpperCase().replace(/\
 function stockStatus(q:number){return q<=0?"out-of-stock":q<=2?"low-stock":"in-stock"}
 
 function laptopProduct(name:string,category:string){
- const n=String(name||"").toLowerCase(),s=n+" "+String(category||"").toLowerCase();
- return /laptop|notebook|macbook|chromebook|vivobook|zenbook|thinkpad|thinkbook|elitebook|probook/.test(s)&&!/\b(bag|sleeve|battery|charger|adapter|adaptor|docking|stand|replacement|protector|sodimm)\b|memory module|notebook memory|laptop memory|desktop|tower|accessories|backpack|briefcase|clamshell|privacy filter|cable lock|lock plate|notebook cooler|power supply|pwr adapt|ssd for|ssd.*macbook|3 leaf clover|laptop case|notebook case/.test(n+" "+String(category||"").toLowerCase());
+ return systemKind(name,category)==="laptop";
 }
 function laptopSpecs(name:string,attrs:any={}){
  const text=String(name||""),gaming=/gaming|geforce|rtx\s*\d|rog|tuf gaming|legion|\bloq\b|katana|cyborg|predator|nitro|omen|victus|alienware|raider|stealth|pulse|sword/.test(text.toLowerCase()),specs:any={laptopPurpose:gaming?"Gaming":"Work & everyday",useCase:gaming?"Gaming & creator":"Office"};
@@ -30,7 +30,10 @@ function laptopSpecs(name:string,attrs:any={}){
  const gpu=pick("graphics","graphics-card","gpu")||text.match(/RTX\s*\d{4}(?:\s*Ti)?|Intel\s*(?:Iris\s*Xe|Arc\s*\w*)/i)?.[0];if(gpu)specs.laptopGraphics=txt(gpu);return specs;
 }
 
-function typeOf(name:string,category:string,productType:string){if(laptopProduct(name,category+" "+productType))return "laptop";const s=(name+" "+category+" "+productType).toLowerCase();
+function typeOf(name:string,category:string,productType:string){const system=systemKind(name,category+" "+productType);if(system)return system==="laptop"?"laptop":"peripheral";const s=(name+" "+category+" "+productType).toLowerCase();
+ if(/cpu cooler|liquid cooler|\baio\b|heatsink/.test(s))return"cooler";
+ if(/motherboard|mainboard/.test(s))return"motherboard";
+ if(/monitor/.test(s)&&!/arm|stand|mount|bracket/.test(s))return"peripheral";
  if(/graphics|gpu|geforce|radeon|rtx\s*\d|rx\s*\d/.test(s))return"gpu";
  if(/processor|\bcpu\b|ryzen|core i[3579]|core ultra/.test(s))return"cpu";
  if(/motherboard|mainboard/.test(s))return"motherboard";
@@ -45,7 +48,7 @@ function typeOf(name:string,category:string,productType:string){if(laptopProduct
  return null}
 
 function categoryOf(type:string,name:string,category:string){
- const n=(name+" "+category).toLowerCase();if(type==="laptop")return "laptops";if(!["peripheral","accessory"].includes(type))return type;
+ const n=(name+" "+category).toLowerCase();if(systemKind(name,category)==="desktop")return "desktops";if(type==="laptop")return "laptops";if(!["peripheral","accessory"].includes(type))return type;
  if(/monitor/.test(n)&&!/\b(arm|stand|mount|bracket)\b/.test(n))return "monitors";
  if(/keyboard/.test(n))return "keyboards";if(/mousepad|mouse pad|mouse mat|wrist/.test(n))return "desk-accessories";if(/\bmouse\b|\bmice\b/.test(n))return "mice";
  if(/headset|headphone/.test(n))return "headsets";if(/microphone|gaming mic|speaker|audio interface/.test(n))return "audio";if(/webcam|web camera/.test(n))return "webcams";
@@ -99,12 +102,12 @@ async function persist(admin:any,supplier:any,items:any[],authScheme:string|null
   const current=byId.get(id),meta=current?.metadata||{},mediaCurated=meta.media_curated===true||meta.media_curated==="true",descCurated=meta.description_curated===true||meta.description_curated==="true";
   const media=item.image&&!mediaCurated?{primaryImage:item.image,directImage:item.image,images:item.images||[item.image],sourceType:"supplier-feed",imageStrategy:supplier.id+"-feed"}:(current?.media||{});
   productRows.push({
-   id,slug:current?.slug||id,type:current?.type||item.type,brand:current?.brand&&current.brand!=="Unspecified"?current.brand:item.brand,manufacturer:current?.manufacturer&&current.manufacturer!=="Unspecified"?current.manufacturer:item.brand,name:current?.name||item.name,
+   id,slug:current?.slug||id,type:meta.identity_curated?current.type:item.type,brand:current?.brand&&current.brand!=="Unspecified"?current.brand:item.brand,manufacturer:current?.manufacturer&&current.manufacturer!=="Unspecified"?current.manufacturer:item.brand,name:current?.name||item.name,
    status:"active",visibility:current?.visibility||"public",sale_mode:current?.sale_mode||"quote",retail_price:current?.retail_price??Math.round(item.cost*1.20*100)/100,currency:"ZAR",
    stock_status:item.status,stock_qty:item.qty,price_checked_at:new Date().toISOString(),short_description:descCurated?current.short_description:item.desc,highlights:current?.highlights||[],
    identifiers:{...(current?.identifiers||{}),...ids},specs:{...(item.specs||{}),...(current?.specs||{})},compatibility:current?.compatibility||{},media,seo:current?.seo||{description:item.desc},
    metadata:{...meta,source:current?.metadata?.source||supplier.id+"-feed",supplier:current?.metadata?.supplier||supplier.id,connected_suppliers:Array.from(new Set([...(meta.connected_suppliers||[]),supplier.id])),stock_connected:true,pricing_state:"quote-first",auto_markup_disabled:meta.auto_markup_disabled??false,markup_percent:meta.markup_percent??20,last_supplier_sync:new Date().toISOString()},
-   featured:current?.featured||false,is_new:current?.is_new??true,sort_priority:current?.sort_priority||0,category_slug:current?.category_slug||categoryOf(item.type,item.name,item.category),condition:current?.condition||"new",is_demo:false,
+   featured:current?.featured||false,is_new:current?.is_new??true,sort_priority:current?.sort_priority||0,category_slug:meta.identity_curated?current.category_slug:categoryOf(item.type,item.name,item.category),condition:current?.condition||"new",is_demo:false,
    shipping_weight_kg:current?.shipping_weight_kg??(positive(item.meta?.dimensions?.weight)?Number(item.meta.dimensions.weight)/1000:null),
    shipping_length_cm:current?.shipping_length_cm??positive(item.meta?.dimensions?.length),shipping_width_cm:current?.shipping_width_cm??positive(item.meta?.dimensions?.width),shipping_height_cm:current?.shipping_height_cm??positive(item.meta?.dimensions?.height),shipping_packaging_verified:current?.shipping_packaging_verified||false,
    updated_at:new Date().toISOString()

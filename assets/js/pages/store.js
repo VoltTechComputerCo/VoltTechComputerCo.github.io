@@ -1,9 +1,9 @@
-import { updateDepartmentImages } from '../services/store-departments.js?v=20261013-laptops';
-import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261013-laptops';
-import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261013-laptops';
+import { updateDepartmentImages } from '../services/store-departments.js?v=20261014-category-fix';
+import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261014-category-fix';
+import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261014-category-fix';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js';
-import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261013-laptops';
-import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261013-laptops';
+import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261014-category-fix';
+import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261014-category-fix';
 
 const query=new URLSearchParams(location.search);
 const landingHash=location.hash;
