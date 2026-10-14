@@ -1,8 +1,8 @@
-import { groupedSpecifications, productKeyFacts, briefDescription, plainDescription } from '../components/product-summary.js?v=20261014-merch';
-import { productGallery, bindProductGallery } from '../components/product-gallery.js?v=20261014-merch';
-import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261014-merch';
-import { esc, safeLink, imageMarkup, bindImages, commerceState, priceMarkup, dataRows, productUrl } from '../components/catalogue-view.js?v=20261014-merch';
-import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261014-merch';
+import { groupedSpecifications, productKeyFacts, briefDescription, plainDescription } from '../components/product-summary.js?v=20261014-images';
+import { productGallery, bindProductGallery } from '../components/product-gallery.js?v=20261014-images';
+import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261014-images';
+import { esc, safeLink, imageMarkup, bindImages, commerceState, priceMarkup, dataRows, productUrl } from '../components/catalogue-view.js?v=20261014-images';
+import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261014-images';
 const host = document.getElementById('product-detail'), title = document.getElementById('component-title');
 async function init() {
   try {

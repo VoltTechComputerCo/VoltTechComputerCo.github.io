@@ -1,4 +1,3 @@
-import { refreshHomeDepartments } from '../services/store-departments.js?v=20261013-laptops';
 import { readLaunchSettings, freshLiveCreators, connectCart, connectAccount, connectProductionServices } from '../services/home-integrations.js';
 
 async function updateAvailability() {
@@ -46,7 +45,6 @@ function start() {
   connectCart();
   connectAccount(window.VOLTTECH_SUPABASE);
   updateAvailability();
-  refreshHomeDepartments(window.VOLTTECH_SUPABASE);
   updateCreators();
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });

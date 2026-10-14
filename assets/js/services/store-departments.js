@@ -1,3 +1,4 @@
+import { productImageUrl } from './product-images.js?v=20261014-images';
 const preferences={gpu:/9070\s*xt|5070|5080|5090/i,cpu:/9950x3d|9800x3d/i,monitors:/rog.*oled|gaming.*oled/i,cooler:/rog.*360|titan.*360/i,storage:/gen5.*ssd|ssd.*gen5/i,audio:/cast ultra/i,adapters:/ugreen.*14-in-1/i,cables:/usb4/i};
 export function departmentPicks(products){
  const result=new Map();
@@ -14,8 +15,8 @@ export function updateDepartmentImages(products){
  const picks=departmentPicks(products);
  document.querySelectorAll('[data-department-image]').forEach(img=>{
   const pick=picks.get(img.dataset.departmentImage);
-  if(!pick||img.alt===pick.product.name)return;
-  const fallback=img.getAttribute('src');img.onerror=()=>{img.onerror=null;img.src=fallback;};img.src=pick.image;img.alt=pick.product.name;
+  if(!pick||img.alt===pick.product.name||/assets\/categories\/store-.*\.webp/.test(img.getAttribute('src')||''))return;
+  const fallback=img.getAttribute('src');img.onerror=()=>{img.onerror=null;img.src=fallback;};img.src=productImageUrl(pick.image,480);img.alt=pick.product.name;
  });
 }
 export async function refreshHomeDepartments(config){

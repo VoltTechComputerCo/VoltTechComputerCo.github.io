@@ -1,3 +1,4 @@
+import { productImageUrl } from '../services/product-images.js?v=20261014-images';
 import { briefDescription } from './product-summary.js?v=20261014-merch';
 import { matchesFacetFilters, categoryMatch } from './store-filter-menu.js?v=20261014-merch';
 export const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -13,7 +14,7 @@ function imageSources(p) {
 export function imagePlaceholder(){return `<span class="product-image-placeholder"><img src="${new URL('../../brand/volttech-logo.webp',import.meta.url).href}" alt="VoltTech Computer Co." width="360" height="210"><span>Product image not available</span></span>`;}
 export function imageMarkup(p, large = false, eager = false) {
   const { src, fallback } = imageSources(p);
-  return `<figure class="catalogue-media ${large ? 'catalogue-media-large' : ''}">${src ? `<img data-product-image src="${esc(src)}" data-fallback="${esc(fallback)}" width="480" height="480" alt="${esc(p.name)} product image" loading="${large || eager ? 'eager' : 'lazy'}" fetchpriority="${large ? 'high' : 'auto'}" decoding="async" referrerpolicy="no-referrer">` : ''}<figcaption ${src?'hidden':''}>${imagePlaceholder()}</figcaption></figure>`;
+  return `<figure class="catalogue-media ${large ? 'catalogue-media-large' : ''}">${src ? `<img data-product-image src="${esc(productImageUrl(src,large?800:480))}" data-fallback="${esc(productImageUrl(src,large?800:480)!==src?src:fallback)}" width="480" height="480" alt="${esc(p.name)} product image" loading="${large || eager ? 'eager' : 'lazy'}" fetchpriority="${large ? 'high' : 'auto'}" decoding="async" referrerpolicy="no-referrer">` : ''}<figcaption ${src?'hidden':''}>${imagePlaceholder()}</figcaption></figure>`;
 }
 export function bindImages(root) {
   root.querySelectorAll('.catalogue-media img[data-product-image]').forEach(img => img.addEventListener('error', () => {
