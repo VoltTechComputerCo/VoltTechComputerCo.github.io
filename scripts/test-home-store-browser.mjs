@@ -5,7 +5,7 @@ const browser=await chromium.launch({headless:true,executablePath:process.env.VT
 for(const width of [320,390,768,1440]){
  const page=await browser.newPage({viewport:{width,height:900}});let errors=[];page.on('pageerror',e=>errors.push(e.message));await page.route('https://**/*',r=>r.abort());await page.goto('http://127.0.0.1:4173/index.html');
  assert.deepEqual(await page.locator('main>section').evaluateAll(s=>s.map(x=>x.id||x.className)),['home-hero','components','stream-support','services','home-explore home-section']);
- assert.equal(await page.locator('.stream-card-button').getAttribute('href'),'streaming-setup-south-africa.html');
+ assert.equal(await page.locator('#stream-support .button').first().getAttribute('href'),'streaming-setup-south-africa.html');
  assert.equal(await page.locator('.department-card').count(),6);assert.equal(await page.locator('.service-card').count(),6);
  for(const theme of ['light','dark']){
  await page.evaluate(t=>document.documentElement.dataset.theme=t,theme);

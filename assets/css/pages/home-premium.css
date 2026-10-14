@@ -1,10 +1,4 @@
 /* VoltTech commerce accents: teal for shopping, purple for Stream Support. */
-html body[data-page=home] .home-stream-card{display:flex;align-items:center;justify-content:space-between;gap:16px;width:calc(100% - 48px);max-width:1324px;margin:14px auto 0;padding:16px 22px;border:1px solid #a36aca44;border-left:3px solid #813bb1;border-radius:10px;background:var(--retail-surface);box-shadow:0 4px 18px #46206308}
-.home-stream-card strong{display:block;color:var(--retail-purple);font:700 15px/1.4 var(--font-ui)}
-.home-stream-card p{margin:3px 0 0;color:var(--retail-muted);font:400 12px/1.5 var(--font-ui)}
-html body[data-page=home] #main-content .home-stream-card .stream-card-button{flex-shrink:0;min-height:42px;padding:9px 16px;border:1px solid #8341b1;background:linear-gradient(115deg,#542078,#7733a5)!important;color:#fff!important;box-shadow:none;font-size:12px}
-html body[data-page=home] #main-content .home-stream-card .stream-card-button:hover{filter:brightness(1.12)}
-@media(max-width:700px){html body[data-page=home] .home-stream-card{width:calc(100% - 24px);margin-top:10px;padding:14px 16px;gap:12px}.home-stream-card strong{font-size:14px}.home-stream-card p{font-size:10px}html body[data-page=home] #main-content .home-stream-card .stream-card-button{padding:9px 12px;font-size:11px}}
 .home-shop .department-card{border-radius:10px;box-shadow:0 7px 22px #073a3210;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
 .home-shop .department-image{position:relative;background:radial-gradient(ellipse at 50% 85%,#e7f2ef 0,white 68%)}
 .home-shop .department-image img{transition:transform .3s ease}
