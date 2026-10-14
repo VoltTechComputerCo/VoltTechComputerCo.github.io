@@ -1,4 +1,4 @@
-import { matchesFacetFilters, categoryMatch } from './store-filter-menu.js?v=20261014-category-fix';
+import { matchesFacetFilters, categoryMatch } from './store-filter-menu.js?v=20261014-mobile';
 export const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function safeLink(value) { if (!value || typeof value !== 'string') return ''; try { const u = new URL(value, location.href); return ['http:', 'https:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } }
 export const productUrl = (p, preview) => `product.html?slug=${encodeURIComponent(p.slug)}${preview ? '&preview=1' : ''}`;
@@ -34,13 +34,15 @@ export function productCard(VT, p, preview, eager = false) {
   const state = commerceState(VT, p, preview), href = productUrl(p, preview);
   return `<article class="card catalogue-card"><a class="catalogue-image-link" href="${href}" aria-label="View ${esc(p.name)}">${imageMarkup(p,false,eager)}</a><div class="catalogue-card-body"><p class="eyebrow">${esc(p.brand)} / ${esc(VT.categoryLabel(p.type))}</p><h3><a href="${href}">${esc(p.name)}</a></h3><p class="catalogue-description">${esc(p.short_description || 'View component details and discuss your requirements.')}</p><ul class="spec-tags">${(Array.isArray(p.highlights) ? p.highlights : []).slice(0,3).map(v => `<li>${esc(v)}</li>`).join('')}</ul><div class="catalogue-price"><strong>${esc(state.price)}</strong><span>${esc(state.stock)}</span></div><div class="actions"><button class="button" type="button" data-add="${esc(p.id)}" ${state.canAdd ? '' : 'disabled'}>${state.canAdd ? 'Add to cart' : state.label === 'Add to cart' ? 'Unavailable' : state.label}</button><a class="button button-secondary" href="${href}" aria-label="Details for ${esc(p.name)}">Details →</a></div></div></article>`;
 }
+const coreCategories=['gpu','cpu','motherboard','memory','storage','psu','case','cooler','monitors','desktops','laptops'];
+const coreRank=p=>{const rank=coreCategories.indexOf(p.category_slug||p.type);return rank<0?coreCategories.length:rank;};
 export function filterProducts(products, state) {
   const filters = state.filters || (state.brand ? { brand:state.brand } : {});
   return products
     .filter(p => categoryMatch(p, state.category))
     .filter(p => matchesFacetFilters(p, filters))
     .filter(p => !state.search || [p.name,p.brand,p.model,p.identifiers?.sku,p.identifiers?.mpn,p.short_description,JSON.stringify(p.specs || {}),JSON.stringify(p.compatibility || {}),...(p.highlights || [])].join(' ').toLowerCase().includes(state.search.toLowerCase()))
-    .sort((a,b) => state.sort === 'name' ? a.name.localeCompare(b.name) : state.sort === 'price-low' ? (a.retail_price==null?Infinity:Number(a.retail_price))-(b.retail_price==null?Infinity:Number(b.retail_price)) : state.sort === 'price-high' ? (b.retail_price==null?-Infinity:Number(b.retail_price))-(a.retail_price==null?-Infinity:Number(a.retail_price)) : state.sort === 'brand' ? (a.brand || '').localeCompare(b.brand || '') || a.name.localeCompare(b.name) : Number(b.featured)-Number(a.featured) || Number(b.sort_priority || 0)-Number(a.sort_priority || 0) || a.name.localeCompare(b.name));
+    .sort((a,b) => state.sort === 'name' ? a.name.localeCompare(b.name) : state.sort === 'price-low' ? (a.retail_price==null?Infinity:Number(a.retail_price))-(b.retail_price==null?Infinity:Number(b.retail_price)) : state.sort === 'price-high' ? (b.retail_price==null?-Infinity:Number(b.retail_price))-(a.retail_price==null?-Infinity:Number(a.retail_price)) : state.sort === 'brand' ? (a.brand || '').localeCompare(b.brand || '') || a.name.localeCompare(b.name) : coreRank(a)-coreRank(b) || Number(b.featured)-Number(a.featured) || Number(b.sort_priority || 0)-Number(a.sort_priority || 0) || a.name.localeCompare(b.name));
 }
 export function dataRows(VT, rows) {
   return `<dl class="component-specs">${rows.map(([key,value]) => `<div><dt>${esc(VT.formatSpecKey(key))}</dt><dd>${esc(VT.formatSpecValue(value))}</dd></div>`).join('')}</dl>`;

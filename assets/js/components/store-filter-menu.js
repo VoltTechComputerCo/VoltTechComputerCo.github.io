@@ -167,7 +167,7 @@ export function facetValue(product,key){
   if(key==='brand') return product?.brand || '';
   if(key==='gpuVendor') return gpuVendor(product);
   if(key==='platform') return platformFor(product);
-  if(key==='availability')return product?.stock_qty==null?'Confirm availability':Number(product.stock_qty)>0?'Supplier stock':'Out of stock';
+  if(key==='availability')return product?.stock_qty==null?'Confirm availability':Number(product.stock_qty)>0?'In stock':'Out of stock';
   if(key==='priceBand'){if(product?.retail_price==null)return 'Request pricing';const p=Number(product.retail_price);return p<500?'Under R500':p<2000?'R500–R1,999':p<5000?'R2,000–R4,999':p<10000?'R5,000–R9,999':'R10,000+';}
   return product?.specs?.[key];
 }

@@ -1,9 +1,9 @@
-import { updateDepartmentImages } from '../services/store-departments.js?v=20261014-category-fix';
-import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261014-category-fix';
-import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261014-category-fix';
+import { updateDepartmentImages } from '../services/store-departments.js?v=20261014-mobile';
+import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261014-mobile';
+import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261014-mobile';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js';
-import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261014-category-fix';
-import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261014-category-fix';
+import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261014-mobile';
+import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261014-mobile';
 
 const query=new URLSearchParams(location.search);
 const landingHash=location.hash;
@@ -127,6 +127,7 @@ function bindFilterUI(products,render){
   });
 }
 
+if(matchMedia('(max-width:700px)').matches) document.querySelector('.smart-filter-shell').open=false;
 selectCategory();
 document.addEventListener('pointerdown',e=>document.querySelectorAll('.smart-filter[open],.shop-category-menu[open]').forEach(d=>{if(!d.contains(e.target))d.open=false;}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.smart-filter[open],.shop-category-menu[open]').forEach(d=>{d.open=false;d.querySelector('summary')?.focus();});});
@@ -141,8 +142,9 @@ async function init(){
     const products=publicProducts(data.products,preview);
     updateDepartmentImages(products);
     document.getElementById('departments').hidden=!!query.get('category')||!!query.get('q');
-    const featured=products.filter(p=>p.featured && Number(p.stock_qty)>0);
-    const picks=(featured.length ? featured : filterProducts(products,{category:'all',filters:{},sort:'featured'})).slice(0,4);
+    const core=new Set(['gpu','cpu','motherboard','memory','storage','psu','case','cooler']);
+    const featured=products.filter(p=>core.has(p.category_slug||p.type) && p.featured && Number(p.stock_qty)>0);
+    const picks=(featured.length ? featured : filterProducts(products.filter(p=>core.has(p.category_slug||p.type)),{category:'all',filters:{},sort:'featured'})).slice(0,4);
     const featuredGrid=document.getElementById('featured-grid');
     document.getElementById('shop-featured').hidden=!picks.length || !!query.get('category') || !!query.get('q');
     document.getElementById('featured-heading').textContent=featured.length ? 'Featured products' : 'Explore the catalogue';
@@ -174,7 +176,7 @@ async function init(){
       const visible=items.slice(window.start,window.end);
       const controls=`<label>Products per page<select data-page-size>${[10,25,50,100].map(n=>`<option ${n===state.pageSize?'selected':''}>${n}</option>`).join('')}</select></label><p role="status">${items.length?window.start+1:0}–${window.end} of ${items.length}</p><nav aria-label="Catalogue pages"><button type="button" data-page="${window.page-1}" ${window.page===1?'disabled':''}>← Previous</button><span>Page ${window.page} of ${window.pages}</span><button type="button" data-page="${window.page+1}" ${window.page===window.pages?'disabled':''}>Next →</button></nav>`;
       topPager.innerHTML=bottomPager.innerHTML=controls;
-      count.textContent=`${items.length} component${items.length===1?'':'s'}`;
+      count.textContent=`${items.length} product${items.length===1?'':'s'}`;
       grid.innerHTML=items.length ? visible.map((p,i)=>productCard(VT,p,preview,i<4)).join('') : '<div class="empty-state"><h3>No components match those filters.</h3><p>Remove a filter, try another category or ask VoltTech about the part you need.</p></div>';
       bindImages(grid);
       grid.querySelectorAll('[data-add]').forEach(button=>button.addEventListener('click',()=>addItem(VT,products.find(p=>p.id===button.dataset.add),preview)));

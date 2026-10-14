@@ -3,3 +3,53 @@
 .shop-category-menu>div{min-width:min(520px,85vw);grid-template-columns:repeat(2,minmax(0,1fr))}.catalogue-card .catalogue-description{display:none}.catalogue-card h3{font-size:17px;line-height:1.4}.catalogue-card .catalogue-card-body{padding:18px}.catalogue-card .catalogue-price strong{font-size:24px}.catalogue-card .actions{gap:8px}.catalogue-card .actions .button{padding:10px 12px;font-size:13px}.catalogue-grid{align-items:stretch}.catalogue-card{display:flex;flex-direction:column}.catalogue-card-body{flex:1;display:flex;flex-direction:column}.catalogue-card .catalogue-price{margin-top:auto}.shop-category-menu summary{min-width:170px}.smart-filter-options .smart-filter-option{color:inherit!important}@media(min-width:1100px){#product-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:400px){.shop-category-menu>div{min-width:260px;grid-template-columns:1fr}}
 
 @media(max-width:640px){.smart-filter[open]{flex-basis:100%}.smart-filter-options{position:static!important;width:100%;max-height:260px;box-shadow:none}}
+
+/* Keep hidden loading/error states hidden even when a component uses grid. */
+body[data-page="store"] [hidden]{display:none!important}
+.mobile-filter-toggle{display:none}
+body[data-page="store"] .shop-builder::before{display:none!important}
+body[data-page="store"] .shop-builder::after{background:linear-gradient(0deg,rgba(0,12,17,.88),rgba(0,12,17,.08) 85%)!important}
+body[data-page="store"] .shop-builder{background:#091a21!important;color:#fff!important}
+@media(min-width:701px){.smart-filter-shell>summary{display:none}}
+@media(max-width:700px){
+ body[data-page="store"] .shop-intro{padding-block:18px;gap:16px}
+ body[data-page="store"] .shop-intro h1{font-size:36px;margin:10px 0}
+ body[data-page="store"] .shop-intro .eyebrow,body[data-page="store"] #store-state{display:none}
+ body[data-page="store"] .shop-intro .actions{display:none}
+ body[data-page="store"] .department-search{margin:14px 0 0}
+ body[data-page="store"] .department-search>div{flex-direction:row;gap:6px}
+ body[data-page="store"] .department-search label{display:none}
+ body[data-page="store"] .department-search input{padding:12px;min-width:0;font-size:14px}
+ body[data-page="store"] .department-search .button{width:auto;font-size:12px;padding:12px}
+ body[data-page="store"] .shop-builder{min-height:170px}
+ body[data-page="store"] .shop-builder>div{padding:18px;max-width:none}
+ body[data-page="store"] .shop-builder h2{font-size:24px;margin:0 0 10px}
+ body[data-page="store"] .shop-builder p{display:none}
+ body[data-page="store"] .shop-builder h2 br{display:none}
+ body[data-page="store"] .store-departments{padding-block:20px 0}
+ body[data-page="store"] .department-heading h2{font-size:24px;margin:0}
+ body[data-page="store"] .department-heading .eyebrow,body[data-page="store"] .department-heading>a,body[data-page="store"] .department-group-heading p,body[data-page="store"] .department-copy p,body[data-page="store"] .department-stock{display:none}
+ body[data-page="store"] .department-image{aspect-ratio:1.65;padding:10px}
+ body[data-page="store"] .department-copy{padding:10px}
+ body[data-page="store"] .department-copy h3{margin:0;font-size:13px}
+ body[data-page="store"] .department-group{margin:18px 0 24px}
+ body[data-page="store"] .department-group-heading{padding-bottom:8px;margin-bottom:10px}
+ body[data-page="store"] .department-group-heading h2{font-size:18px}
+ body[data-page="store"] .shop-category-bar>a{display:none}
+ body[data-page="store"] .shop-category-bar{justify-content:space-between}
+ body[data-page="store"] .shop-featured{display:none!important}
+ body[data-page="store"] .store-catalogue-wrap{padding-block:24px}
+ body[data-page="store"] .store-catalogue-wrap>.section-heading .eyebrow{display:none}
+ .mobile-filter-toggle{display:list-item;cursor:pointer;font-weight:700;padding:4px;min-height:32px}
+ .smart-filter-shell:not([open])>*:not(summary){display:none!important}
+ .smart-filter-heading{display:none!important}
+ .smart-filter-grid{margin-top:12px}
+ .catalogue-page-controls:first-of-type{gap:8px}
+ .catalogue-page-controls:first-of-type>nav{display:none}
+ .catalogue-results-head>[data-open-cart]{display:none}
+ .catalogue-card .catalogue-media{min-height:150px}
+ .catalogue-card h3{font-size:14px;line-height:1.45}
+ .catalogue-card .eyebrow{font-size:10px;letter-spacing:0}
+ .catalogue-card .actions .button{font-size:12px;padding:10px}
+ .catalogue-card .catalogue-price span{font-size:12px}
+}
