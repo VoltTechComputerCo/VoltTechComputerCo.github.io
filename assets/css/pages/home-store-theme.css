@@ -1,0 +1,6 @@
+/* Explicit foregrounds follow the selected theme, including the hero. */
+html{--stream-accent:#7738aa;--stream-button-text:#fff}
+html[data-theme="dark"]{--stream-accent:#c29aeb;--stream-button-text:#160f20}
+html:not([data-theme="dark"]) .home-hero .hero-copy h1{color:var(--text)}
+html:not([data-theme="dark"]) .home-hero .hero-copy .hero-kicker{color:var(--teal)}
+html:not([data-theme="dark"]) .home-hero .hero-copy .hero-description{color:var(--text-secondary)}
