@@ -7,7 +7,8 @@
     "assets/css/notifications.css",
     "assets/css/pages/home.css?v=20261014-home-store2",
     "assets/css/pages/departments.css?v=20261013-laptops",
-    "assets/css/pages/home-store-theme.css?v=20261014-home-store3"
+    "assets/css/pages/home-store-theme.css?v=20261014-home-store3",
+    "assets/css/pages/home-premium.css?v=20261014-purple"
   ],
   "classic_scripts": [
     "supabase-config.js",
