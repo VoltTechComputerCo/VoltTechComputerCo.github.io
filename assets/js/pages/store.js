@@ -158,7 +158,7 @@ async function init(){
     document.getElementById('catalogue').hidden=false;
     document.getElementById('store-state').textContent=preview?'ADMIN PREVIEW / STORE REMAINS LOCKED':'COMPONENT CATALOGUE';
     document.getElementById('catalogue-preview').hidden=!preview;
-    document.getElementById('store-hero-copy').textContent='Shop gaming hardware, compare the specs that matter and build a PC around your next move.';
+    document.getElementById('store-hero-copy').textContent='Compare PC components, laptops and gaming peripherals. Filter by brand, price and specifications.';
     search.value=state.search;
     sort.value=state.sort;
     pruneFilters(products);
