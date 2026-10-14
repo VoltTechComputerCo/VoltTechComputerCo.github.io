@@ -1,21 +1,19 @@
 {
   "output": "index.html",
   "title": "Gaming PCs, PC Parts & Stream Support | VoltTech Pretoria",
-  "description": "Custom gaming PCs, PC parts, peripherals, upgrades and repair in Pretoria, plus specialist OBS, Streamlabs and streaming support across South Africa.",
+  "description": "Shop PC components, gaming gear and laptops at VoltTech Computer Co. PC repairs and upgrades in Pretoria, plus remote Stream Support across South Africa.",
   "robots": "index, follow, max-image-preview:large",
   "styles": [
     "assets/css/notifications.css",
-    "assets/css/pages/home.css?v=20261014-merch",
-    "assets/css/store-filters.css?v=1.2.0",
+    "assets/css/pages/home.css?v=20261014-home-store",
     "assets/css/pages/departments.css?v=20261013-laptops",
-    "assets/css/pages/home.light.css?v=20261014-merch"
+    "assets/css/pages/home.light.css?v=20261014-home-store"
   ],
   "classic_scripts": [
     "supabase-config.js",
-    "streamer-feed.js",
     "conversion-context.js"
   ],
   "scripts": [
-    "assets/js/pages/home.js?v=20261014-images"
+    "assets/js/pages/home.js?v=20261014-home-store"
   ]
 }
