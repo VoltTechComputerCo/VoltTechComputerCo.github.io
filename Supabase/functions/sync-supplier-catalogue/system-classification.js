@@ -1,6 +1,17 @@
 // Identify whole computers before looking for components mentioned in their specifications.
 export function systemKind(name, category = '') {
  const n=String(name||'').toLowerCase(), c=String(category||'').toLowerCase();
+ // A named notebook with installed memory and storage is a system, even when
+ // the supplier abbreviates CPU/OS names or includes SO-DIMM in its full spec.
+ const notebookModel=/^(?:hp\s+(?:omen|victus|elitebook|probook|zbook|200|255r)|lenovo\s+(?:thinkpad|ideapad|thinkbook)|microsoft\s+surface\s+laptop)\b/.test(n);
+ const installedHardware=/\b\d+\s*gb\b/.test(n)&&/\b\d+\s*tb\b|\b(?:ssd|nvme|pcie)\b/.test(n);
+ const oem=/^(?:hp|lenovo|dell|acer|asus|microsoft)\b/.test(n);
+ if(oem&&installedHardware&&/\b1[0-9](?:\.\d+)?\s*(?:inch|in\b|["″])/.test(n)&&/\b(?:intel|ryzen|core|ultra|celeron)\b/.test(n))return 'laptop';
+ if(installedHardware&&/^hp\s+(?:250r\w*|255r\w*)\b/.test(n))return 'laptop';
+ if(installedHardware&&/^lenovo\s+[xte][0-9]+\b/.test(n))return 'laptop';
+ if(oem&&/\b(?:thin ?client|eliteboard|elite t[0-9]|ids elite t[0-9])/.test(n))return 'desktop';
+ if(oem&&installedHardware&&/vesa mount/.test(n))return 'desktop';
+ if(notebookModel&&installedHardware&&!/^(?:.*\b)?(?:replacement|upgrade kit|memory for|battery for)\b/.test(n))return 'laptop';
  if(/^(?:hp\s+(?:zbook|250r)|acer\s+(?:lite|etbook)|lenovo\s+[xte][0-9])\b/.test(n)&&!/bag|sleeve|charger|adapter|battery replacement/.test(n))return 'laptop';
  if(/^dell pro precision/.test(n)&&/\b(?:14|16)\b/.test(n))return 'laptop';
  const accessory=/^(?:.{0,35}\b)?(?:laptop|notebook)\s+(?:bag|case|sleeve|battery|charger|adapter|stand|memory|cable|cooler)\b|\b(?:ssd for|ssd.*macbook|notebook memory|laptop memory|memory module|cable lock|lock plate|privacy filter|3 leaf clover|backpack|briefcase|clamshell)\b/;
@@ -12,7 +23,7 @@ export function systemKind(name, category = '') {
  if(configured&&/\b(?:omen|victus|elitebook|probook)\b|\bnb\s*1[0-9](?:in|\b)/.test(n)&&!/desktop|tower/.test(n))return 'laptop';
  if(/mini[- ]?pc|gaming pc|creator pc|prebuilt/.test(n)&&!/mount|bracket|stand/.test(n))return 'desktop';
  if(portable||(configured&&/^dell\s+(?:14|16)\s+premium\b/.test(n)))return 'laptop';
- if(!configured&&(accessory.test(n)||/\b(mouse|keyboard|headset|headphone|monitor|enclosure|hub|dock|docking|bag|sleeve|charger|adapter|adaptor|cable|stand|mount)\b/.test(n)))return '';
+ if(!configured&&(accessory.test(n)||/\b(mouse|keyboard|headset|headphone|monitor|enclosure|hub|dock|docking|lock|bag|sleeve|charger|adapter|adaptor|cable|stand|mount)\b/.test(n)))return '';
  const laptop=/\b(laptop|notebook|macbook|chromebook|vivobook|zenbook|thinkpad|thinkbook|elitebook|probook|latitude|alienware|extensa|travelmate|nitro|aspire|ideapad)\b|\bacer\s+(?:tmp|tmx|exo|al)\d|\bdell pro (?:14|16)\b/.test(n)||/laptop|notebook/.test(c);
  if(laptop && (configured||!/\b(bag|sleeve|battery|charger|adapter|adaptor|docking|stand|replacement|protector|sodimm|power supply)\b/.test(n)))return 'laptop';
  if(configured&&/battery|\b(?:fhd|hd)\/?ir cam|camera shutter/.test(n))return 'laptop';

@@ -21,7 +21,7 @@ begin
 end $$;
 -- Repair existing missing categories and notebook accessories before publishing eligible rows.
 update public.store_products set type='memory',category_slug='memory',specs=specs||jsonb_build_object('productKind','Notebook memory'),metadata=metadata||jsonb_build_object('identity_curated',false)
-where is_demo=false and name~*'(notebook|laptop).*(memory|ram)|so[- ]?dimm' and type='laptop';
+where is_demo=false and name~*'(notebook|laptop) (memory|ram)( kit)?$' and name!~*'windows|nvme|pcie|ssd' and type='laptop';
 update public.store_products set type='accessory',category_slug='laptop-accessories',metadata=metadata||jsonb_build_object('identity_curated',false)
 where is_demo=false and type='laptop' and name~*'cable lock|lock plate|backpack|laptop bag|notebook case|laptop sleeve';
 update public.store_products set type='laptop',category_slug='laptops',metadata=metadata||jsonb_build_object('identity_curated',false)

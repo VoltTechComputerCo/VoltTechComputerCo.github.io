@@ -41,3 +41,7 @@ for(const [name,type,category] of [
 ])assert.deepEqual(classifyProduct(name),{type,category},name);
 for(const name of ['Russell Hobbs Food Processor','Marlin Stand Up Sharpener','Alva Air 40cm Pedestal Fan','Casey Standing Dustpan','Unitherm Inverter Air Conditioner','Brainware A5 Notebook'])assert.equal(classifyProduct(name),null,name);
 console.log('PASS: expanded generations, systems, desktop RAM, notebook upgrades, category collisions and unrelated household products');
+
+for(const row of JSON.parse(fs.readFileSync('scripts/supplier-imports/system-classification-regressions.json','utf8')))assert.deepEqual(classifyProduct(row.name),{type:row.type,category:row.category},row.name);
+for(const name of ['Samsung A57 5G 256GB Octa-Core Processor 8GB RAM','HP LaserJet Pro 3003dw Printer Processor speed 800 MHz','Lexmark Laser Printer 1GB DDR4 memory'])assert.equal(classifyProduct(name),null,name);
+console.log('PASS: supplier notebook specifications and non-PC device exclusions');

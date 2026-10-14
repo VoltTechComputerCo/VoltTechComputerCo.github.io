@@ -3,16 +3,16 @@ import { systemKind } from './system-classification.js';
 // Product identity comes from the name/category, never parts mentioned in long descriptions.
 export function classifyProduct(name, category = '') {
  const n=String(name||'').toLowerCase(), c=String(category||'').toLowerCase();
- if(/food processor|microprocessor control|blender|kettle|toaster|air fryer|coffee maker|vacuum|heater|hair dryer|shaver|hair clipper|pedestal.*fan|alva air|pineware|desk(?:top)? fan|ceiling fan|floor fan|tower fan|tripod fan|fan fly repeller|hand mixer|microwave|air conditioner|water dispenser|braai|camping chair|dustpan|broom|paper towel|candle|sanitizer|sharpener|stapler|chalk board|solar panel|roof mount|solarix.*(?:rail|fuse|hybrid|off grid|off-grid|powerboard)|mellerware|russell hobbs|taurus |feelive|brainware a5|chairbag|iphone|smartphone|mobile phone|scanner|securnix|rack mount.*(?:nas|bracket)|\bdvr\b|vari.focal lens|yankee candle/.test(n)||/small appliances|kitchen|home appliances|stationery|security.*camera|point of sale/.test(c))return null;
+ if(/printer|print technology|laserjet|lexmark|toner|ink cartridge|samsung (?:galaxy )?[as][0-9]{2}\b|food processor|microprocessor control|blender|kettle|toaster|air fryer|coffee maker|vacuum|heater|hair dryer|shaver|hair clipper|pedestal.*fan|alva air|pineware|desk(?:top)? fan|ceiling fan|floor fan|tower fan|tripod fan|fan fly repeller|hand mixer|microwave|air conditioner|water dispenser|braai|camping chair|dustpan|broom|paper towel|candle|sanitizer|sharpener|stapler|chalk board|solar panel|roof mount|solarix.*(?:rail|fuse|hybrid|off grid|off-grid|powerboard)|mellerware|russell hobbs|taurus |feelive|brainware a5|chairbag|iphone|smartphone|mobile phone|scanner|securnix|rack mount.*(?:nas|bracket)|\bdvr\b|vari.focal lens|yankee candle/.test(n)||/small appliances|kitchen|home appliances|stationery|security.*camera|point of sale/.test(c))return null;
  const result=(type,category=type)=>({type,category});
+ const system=systemKind(name,category);
+ if(system)return {type:system==='laptop'?'laptop':'peripheral',category:system==='laptop'?'laptops':'desktops'};
+ if(/screws? for ssd/.test(n))return result('accessory','desk-accessories');
  if(/galaxy tab|\btablet\b/.test(n)&&!/case|stand|sleeve|cover|protector/.test(n))return result('peripheral','tablets');
  if(/(?:laptop|notebook).*(?:memory|ram)|so[- ]?dimm/.test(n))return result('memory');
  if(/(?:laptop|notebook|macbook).*(?:bag|case|sleeve|lock|stand|cooler|desk|trolley)|backpack|blackpack|lock plate|keyed lock/.test(n)||/notebook.*case|laptop.*bag/.test(c))return result('accessory','laptop-accessories');
  if(/^bti\b|travelmate\.mobi/.test(n)||/notebook.*(?:battery|adapter)|laptop.*(?:battery|adapter)/.test(c))return result('accessory','laptop-accessories');
  if(/\bmini[- ]?(?:pc|desktop)\b|\bdesktop\b|gaming pc|creator pc|^giada\s|nucbox/.test(n)&&!/switch|mount|bracket|clamp|processor|\bcpu\b|\bram\b|memory|dimm|fan|monitor|adapter|mouse|keyboard/.test(n))return result('peripheral','desktops');
- const system=systemKind(name,category);
- if(system==='laptop'&&!/\b(?:intel|core|ultra|ryzen|celeron|pentium|mediatek|kompanio|macbook|chromebook)\b/.test(n)&&!/notebook computers|laptops|notebook pc/.test(c))return null;
- if(system)return {type:system==='laptop'?'laptop':'peripheral',category:system==='laptop'?'laptops':'desktops'};
  if(/mousepad|mouse pad|mouse mat|wrist rest|desk mat/.test(n))return result('accessory','desk-accessories');
  if(/thermal.*(?:paste|compound)|heatsink compound/.test(n))return result('accessory','thermal-paste');
  if(/(?:laptop|notebook).*(?:memory|ram)|so[- ]?dimm/.test(n))return result('memory');
