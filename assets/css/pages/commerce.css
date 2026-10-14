@@ -118,3 +118,17 @@
   from the direct-image-overlay glass rule.
 */
 /* STEP 11.2G STORE IMAGE GLASS MAPPING END */
+
+.catalogue-image-link{position:relative;display:block}
+.product-badge{position:absolute;top:10px;left:10px;z-index:2;padding:6px 9px;border-radius:5px;background:#0b4a43;color:#fff;font:700 11px/1.2 var(--font-ui);letter-spacing:.025em}
+.product-badge-pick{background:#112c32;color:#8ff7e8}
+.catalogue-price .was-price{font-size:13px;color:var(--text-secondary)}
+.catalogue-price .deal-saving{color:var(--teal);font-weight:700;font-size:12px}
+.catalogue-card.has-deal{border-color:color-mix(in srgb,var(--teal) 55%,var(--border))}
+.product-image-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;background:#092127;color:#eafaf7;width:100%;height:100%;box-sizing:border-box}
+.product-image-placeholder img{position:static!important;width:min(150px,80%)!important;height:auto!important;max-height:95px!important;object-fit:contain!important;mix-blend-mode:normal!important}
+.product-image-placeholder>span{font:500 12px/1.5 var(--font-ui);color:#c9e1dd}
+.catalogue-media>figcaption:not([hidden]){position:absolute;inset:0;padding:0}
+.catalogue-media>img[hidden],.catalogue-media>figcaption[hidden]{display:none!important}
+.gallery-slide>figcaption:not([hidden]){position:absolute;inset:0;padding:0}
+@media(max-width:700px){.product-badge{font-size:9px;top:6px;left:6px;padding:5px 6px}.catalogue-price .was-price,.catalogue-price .deal-saving{font-size:11px}.catalogue-card .product-image-placeholder{padding:12px}.catalogue-card .product-image-placeholder>span{font-size:10px}}

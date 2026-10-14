@@ -5,16 +5,16 @@
   "robots": "index, follow",
   "styles": [
     "assets/css/notifications.css",
-    "assets/css/pages/commerce.css",
+    "assets/css/pages/commerce.css?v=20261014-merch",
     "assets/css/store-filters.css?v=1.2.0",
-    "assets/css/pages/shop.css?v=20261014-mobile",
-    "assets/css/pages/departments.css?v=20261014-mobile"
+    "assets/css/pages/shop.css?v=20261014-merch",
+    "assets/css/pages/departments.css?v=20261014-merch"
   ],
   "classic_scripts": [
     "supabase-config.js",
     "conversion-context.js"
   ],
   "scripts": [
-    "assets/js/pages/store.js?v=20261014-mobile"
+    "assets/js/pages/store.js?v=20261014-merch"
   ]
 }

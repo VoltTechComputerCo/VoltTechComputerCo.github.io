@@ -12,6 +12,7 @@ for(const width of [320,390,1440]){
  await page.route('**/assets/js/services/catalogue-cart.js*',r=>r.fulfill({contentType:'application/javascript',body:'export const connectCatalogueCart=()=>{};'}));
  await page.goto('http://127.0.0.1:4173/store.html?category=gpu#catalogue');
  await page.locator('#product-grid .catalogue-card').first().waitFor();
+ if(width<=700)await page.locator('.mobile-filter-toggle').click();
  assert.equal(await page.locator('#product-grid .catalogue-card').count(),10);
  assert.ok(await page.locator('.header-cart').isVisible());
  assert.equal(await page.locator('.category-filter-menu').count(),0);
@@ -20,7 +21,7 @@ for(const width of [320,390,1440]){
  await page.locator('details.smart-filter[open] summary').click();
  await page.locator('[data-page-size]').first().selectOption('25');
  assert.equal(await page.locator('#product-grid .catalogue-card').count(),25);
- await page.locator('[data-page="2"]').first().click();
+ await page.locator('[data-page="2"]').last().click();
  assert.equal(new URL(page.url()).searchParams.get('page'),'2');
  assert.equal(await page.locator('#product-grid .catalogue-card').count(),25);
  await page.locator('details.smart-filter').filter({has:page.locator('[data-filter-key=gpuVendor]')}).locator('summary').click();

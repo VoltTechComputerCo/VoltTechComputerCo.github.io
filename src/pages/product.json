@@ -5,15 +5,15 @@
   "robots": "noindex, follow",
   "styles": [
     "assets/css/notifications.css",
-    "assets/css/pages/commerce.css",
-    "assets/css/pages/product-gallery.css?v=20261013-gallery",
-    "assets/css/pages/product-compact.css?v=20261013-compact"
+    "assets/css/pages/commerce.css?v=20261014-merch",
+    "assets/css/pages/product-gallery.css?v=20261014-merch",
+    "assets/css/pages/product-compact.css?v=20261014-merch"
   ],
   "classic_scripts": [
     "supabase-config.js",
     "conversion-context.js"
   ],
   "scripts": [
-    "assets/js/pages/product.js?v=20261013-compact"
+    "assets/js/pages/product.js?v=20261014-merch"
   ]
 }

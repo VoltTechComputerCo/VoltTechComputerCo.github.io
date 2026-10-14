@@ -1,17 +1,20 @@
-// Feed selection, not a stock reservation or a compatibility guarantee.
+import { systemKind } from './system-classification.js';
+// Broad PC catalogue, including previous generations and laptop upgrades.
 export function gamingProductAllowed(type,name,description=''){
- const n=String(name||'').toLowerCase(),text=n+' '+String(description||'').toLowerCase();
- if(/server|poweredge|xeon|enterprise|enterprice|surveillance|skyhawk|ironwolf|\bnas\b|\bn[3]00\b|\bs300\b|western digital purple|cctv|whiteboard|ps\/?2|disney|zakumi|calculator|ipad|professional desktop|cabinet fan|rack/.test(n))return false;
- if(type==='gpu')return /\brtx[ -]*[3-9][0-9]{3}(?:ti|super)?\b|\brx[ -]*[6-9][0-9]{3}(?:xt|xtx)?\b|\barc[ -]*[ab][0-9]{3}\b/.test(n)&&!/quadro|workstation|rtx pro/.test(n);
- if(type==='cpu'){const ryzen=n.match(/ryzen\s+[3579]\s+([0-9]{4,5})/),intel=n.match(/core\s+i[3579][ -]*([0-9]{4,5})/);return !!(ryzen&&Number(ryzen[1])>=5000||intel&&Number(intel[1])>=10000||/core ultra/.test(n));}
- if(type==='motherboard')return /\bam[45]\b|lga[ -]*(1200|1700|1851)|\b[abxh][56789][0-9]{2}/.test(text);
- if(type==='memory')return /\bddr[ -]?[45]\b/.test(text)&&!/so[ -]?dimm|\becc\b|registered/.test(n)&&!(/\b4gb\b/.test(n)&&!/\b(8|16|24|32|48|64|96|128)gb\b/.test(n));
- if(type==='storage')return /ssd|solid state|nvme/.test(text)&&!/external|portable|usb|bracket/.test(n);
- if(type==='psu'){const watts=text.match(/([0-9]{3,4})\s*w(?:att)?/);return !!(watts&&Number(watts[1])>=500&&/80[ -]*(plus|\+)|bronze|silver|gold|platinum|titanium/.test(text));}
- if(type==='case')return /case|chassis/.test(n);
- if(type==='cooler')return !/p4|freezer a30/.test(n)&&/\bam[45]\b|lga[ -]*(1200|1700|1851)|liquid|aio|crater m1|[1234][0-9]0mm/.test(text);
- if(type==='fan')return /120|140|gemini m1|pacelight/.test(text);
- if(type==='accessory')return /thermal.*(paste|compound)|heatsink compound/.test(n);
- if(type==='peripheral')return /gaming|gamer|trust.*gxt|ultragear|odyssey|hyperx|roccat kain|logitech.*(\bg[0-9]|pro x|c92[02]|z[0-9])|mechanical.*keyboard|thronmax|wrist rest|sharkoon.*(mat|purewriter|pacelight)|kwg orion/.test(n)||(/monitor/.test(n)&&/\b(1[2-9][0-9]|[2-9][0-9]{2})\s*hz/.test(text));
+ const n=String(name||'').toLowerCase(),t=n+' '+String(description||'').toLowerCase();
+ if(type==='laptop')return systemKind(name,description)==='laptop';
+ if(systemKind(name,description)==='desktop'||/mini[- ]?pc|mini desktop|desktop\s+pc|professional desktop|^giada\s|gaming pc|creator pc/.test(n))return type==='peripheral'&&!/server|poweredge/.test(n);
+ if(/server|poweredge|enterprise|enterprice|surveillance|skyhawk|western digital purple|cctv|whiteboard|ps\/?2|disney|zakumi|calculator|ipad|cabinet fan|food processor|microprocessor control|blender|kettle|toaster|air fryer|coffee maker|vacuum|heater|hair dryer|shaver|hair clipper|pedestal fan|desk fan|ceiling fan|mellerware|russell hobbs|taurus |feelive/.test(n))return false;
+ if(type==='gpu')return /geforce|\b(?:rtx|gtx|gt)[ -]*\d{3,4}|radeon|\brx[ -]*\d{3,4}|arc[ -]*[ab]\d{3}/.test(n)&&!/quadro|rtx pro|tesla/.test(n);
+ if(type==='cpu')return /ryzen|core\s+(?:i[3579]|ultra)|athlon|pentium|celeron|processor/.test(n);
+ if(type==='motherboard')return /motherboard|mainboard|am[345]|lga[ -]*\d{3,4}|[abxh][1-9][0-9]{2}/.test(t);
+ if(type==='memory')return /ddr[ -]?[2345]\b|memory module/.test(t)&&!/ecc|registered/.test(n);
+ if(type==='storage')return /ssd|solid state|nvme|hard (disk|drive)|hdd/.test(t)&&!/bracket/.test(n);
+ if(type==='psu')return /([3-9][0-9]{2}|[1-9][0-9]{3})\s*w/.test(t);
+ if(type==='case')return /case|chassis|tower/.test(t);
+ if(type==='cooler')return /cooler|cooling|heatsink|liquid|aio/.test(t);
+ if(type==='fan')return /fan/.test(t);
+ if(type==='accessory')return /thermal|heatsink compound|cable|adapter|adaptor|hub|docking|enclosure|mount|arm|stand|chair|mousepad|mouse pad|mouse mat|wrist|desk|lighting|controller|bracket|keyboard|bag|sleeve|backpack|lock|charger|router|network|wi.fi|access point|\bups\b|surge|power strip|power bank|power station|inverter|card reader/.test(t);
+ if(type==='peripheral')return /galaxy tab|tablet|keyboard|mouse|mice|monitor|headset|headphone|earphone|earbud|microphone|gaming mic|speaker|soundbar|pop filter|shock mount|webcam|controller|racing|wheel|pedal|flight|joystick|audio interface|capture/.test(t);
  return false;
 }

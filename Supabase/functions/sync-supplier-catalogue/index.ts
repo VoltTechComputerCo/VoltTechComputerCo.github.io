@@ -1,6 +1,7 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { systemKind } from "./system-classification.js";
+import { classifyProduct } from "./catalogue-classification.js";
 import { gamingProductAllowed } from "./gaming-policy.js";
 
 const VAT=1.15;
@@ -30,31 +31,8 @@ function laptopSpecs(name:string,attrs:any={}){
  const gpu=pick("graphics","graphics-card","gpu")||text.match(/RTX\s*\d{4}(?:\s*Ti)?|Intel\s*(?:Iris\s*Xe|Arc\s*\w*)/i)?.[0];if(gpu)specs.laptopGraphics=txt(gpu);return specs;
 }
 
-function typeOf(name:string,category:string,productType:string){const system=systemKind(name,category+" "+productType);if(system)return system==="laptop"?"laptop":"peripheral";const s=(name+" "+category+" "+productType).toLowerCase();
- if(/cpu cooler|liquid cooler|\baio\b|heatsink/.test(s))return"cooler";
- if(/motherboard|mainboard/.test(s))return"motherboard";
- if(/monitor/.test(s)&&!/arm|stand|mount|bracket/.test(s))return"peripheral";
- if(/graphics|gpu|geforce|radeon|rtx\s*\d|rx\s*\d/.test(s))return"gpu";
- if(/processor|\bcpu\b|ryzen|core i[3579]|core ultra/.test(s))return"cpu";
- if(/motherboard|mainboard/.test(s))return"motherboard";
- if(/ddr[45]|desktop memory|dimm/.test(s))return"memory";
- if(/nvme|solid state|\bssd\b/.test(s))return"storage";
- if(/power supply|\bpsu\b/.test(s))return"psu";
- if(/computer case|pc case|chassis|mid[- ]?tower|full[- ]?tower/.test(s))return"case";
- if(/cpu cooler|liquid cooler|\baio\b|heatsink/.test(s))return"cooler";
- if(/case fan|cooling fan|120mm fan|140mm fan/.test(s))return"fan";
- if(/keyboard|mouse|headset|monitor|webcam|microphone|speaker|mousepad|mouse mat/.test(s))return"peripheral";
- if(/thermal paste|thermal compound/.test(s))return"accessory";
- return null}
-
-function categoryOf(type:string,name:string,category:string){
- const n=(name+" "+category).toLowerCase();if(systemKind(name,category)==="desktop")return "desktops";if(type==="laptop")return "laptops";if(!["peripheral","accessory"].includes(type))return type;
- if(/monitor/.test(n)&&!/\b(arm|stand|mount|bracket)\b/.test(n))return "monitors";
- if(/keyboard/.test(n))return "keyboards";if(/mousepad|mouse pad|mouse mat|wrist/.test(n))return "desk-accessories";if(/\bmouse\b|\bmice\b/.test(n))return "mice";
- if(/headset|headphone/.test(n))return "headsets";if(/microphone|gaming mic|speaker|audio interface/.test(n))return "audio";if(/webcam|web camera/.test(n))return "webcams";
- if(/controller|racing|wheel|pedal|joystick|flight/.test(n))return "controllers";if(/thermal paste|thermal compound/.test(n))return "thermal-paste";
- if(/adapter|adaptor|hub|docking/.test(n))return "adapters";if(/cable/.test(n))return "cables";return "desk-accessories";
-}
+function typeOf(name:string,category:string,productType:string){return classifyProduct(name,category+" "+productType)?.type||null;}
+function categoryOf(type:string,name:string,category:string){return classifyProduct(name,category)?.category||type;}
 
 async function stableId(supplier:string,sku:string){const d=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(supplier+":"+sku));return supplier+"-"+[...new Uint8Array(d)].map(b=>b.toString(16).padStart(2,"0")).join("").slice(0,16)}
 function activePromo(row:any){const p=num(row.promo_price);if(p===null||p<0||!row.promo_starts||!row.promo_ends)return null;const day=(v:any,end:boolean)=>new Date(/^\d{4}-\d{2}-\d{2}$/.test(String(v))?String(v)+(end?"T23:59:59.999+02:00":"T00:00:00+02:00"):String(v));const a=day(row.promo_starts,false),b=day(row.promo_ends,true),now=new Date();if(!Number.isFinite(a.getTime())||!Number.isFinite(b.getTime())||now<a||now>b)return null;return p;}
@@ -85,8 +63,8 @@ function normaliseTarsus(payload:any){
 function normaliseSyntech(payload:any,existing:Map<string,any>){
  const root=payload?.syntechstock||payload||{},rows=Array.isArray(root.products)?root.products:Array.isArray(root.stock)?root.stock:[];
  return rows.map((r:any)=>{
-  const sku=String(r.sku??"").trim();let current=existing.get(sku);if(!current){const category=txt(r.categorytree||r.categories||"");if(!r.name||!laptopProduct(txt(r.name),category))return null;current={type:"laptop",name:txt(r.name),brand:txt(r.attributes?.brand)||"Unspecified",short_description:txt(r.shortdesc||r.description||""),metadata:{supplier_category:category}};}if(!["jhbstock","cptstock","dbnstock"].every(k=>num(r[k])!==null&&Number.isInteger(num(r[k]))&&Number(r[k])>=0))throw new Error("Incomplete branch stock; catalogue unchanged");const attrs=r.attributes||{},mpn=String(attrs["manufacturer-part-number"]||attrs.mpn||"").trim(),ean=String(attrs.ean||"").trim();
-  const name=txt(r.name||current.name),desc=txt(r.shortdesc||r.description||current.short_description),category=txt(r.categorytree||r.categories||current.metadata?.supplier_category||current.short_description),type=current.type,normal=num(r.price),promo=activePromo(r),ex=promo??normal;
+  const sku=String(r.sku??"").trim();let current=existing.get(sku);if(!current){const category=txt(r.categorytree||r.categories||""),identity=classifyProduct(txt(r.name),category);if(!r.name||!identity)return null;current={type:identity.type,name:txt(r.name),brand:txt(r.attributes?.brand)||"Unspecified",short_description:txt(r.shortdesc||r.description||""),metadata:{supplier_category:category}};}if(!["jhbstock","cptstock","dbnstock"].every(k=>num(r[k])!==null&&Number.isInteger(num(r[k]))&&Number(r[k])>=0))throw new Error("Incomplete branch stock; catalogue unchanged");const attrs=r.attributes||{},mpn=String(attrs["manufacturer-part-number"]||attrs.mpn||"").trim(),ean=String(attrs.ean||"").trim();
+  const name=txt(r.name||current.name),desc=txt(r.shortdesc||r.description||current.short_description),category=txt(r.categorytree||r.categories||current.metadata?.supplier_category||current.short_description),type=classifyProduct(name,category)?.type||current.type,normal=num(r.price),promo=activePromo(r),ex=promo??normal;
   const j=Math.max(0,Math.trunc(num(r.jhbstock)??0)),c=Math.max(0,Math.trunc(num(r.cptstock)??0)),d=Math.max(0,Math.trunc(num(r.dbnstock)??0)),q=j+c+d;
   if(!sku||!name||ex===null||ex<0||!type||!gamingProductAllowed(type,name,desc))return null;
   const images=[r.featured_image,...(Array.isArray(r.additional_images)?r.additional_images:[])].filter(Boolean);
@@ -103,11 +81,11 @@ async function persist(admin:any,supplier:any,items:any[],authScheme:string|null
   const media=item.image&&!mediaCurated?{primaryImage:item.image,directImage:item.image,images:item.images||[item.image],sourceType:"supplier-feed",imageStrategy:supplier.id+"-feed"}:(current?.media||{});
   productRows.push({
    id,slug:current?.slug||id,type:meta.identity_curated?current.type:item.type,brand:current?.brand&&current.brand!=="Unspecified"?current.brand:item.brand,manufacturer:current?.manufacturer&&current.manufacturer!=="Unspecified"?current.manufacturer:item.brand,name:current?.name||item.name,
-   status:"active",visibility:current?.visibility||"public",sale_mode:current?.sale_mode||"quote",retail_price:current?.retail_price??Math.round(item.cost*1.20*100)/100,currency:"ZAR",
+   status:"active",visibility:meta.public_store_eligible===false?"private":"public",sale_mode:meta.public_store_eligible===false?"hidden":current?.sale_mode==="checkout"?"checkout":"quote",retail_price:current?.retail_price??Math.round(item.cost*1.20*100)/100,currency:"ZAR",
    stock_status:item.status,stock_qty:item.qty,price_checked_at:new Date().toISOString(),short_description:descCurated?current.short_description:item.desc,highlights:current?.highlights||[],
    identifiers:{...(current?.identifiers||{}),...ids},specs:{...(item.specs||{}),...(current?.specs||{})},compatibility:current?.compatibility||{},media,seo:current?.seo||{description:item.desc},
-   metadata:{...meta,source:current?.metadata?.source||supplier.id+"-feed",supplier:current?.metadata?.supplier||supplier.id,connected_suppliers:Array.from(new Set([...(meta.connected_suppliers||[]),supplier.id])),stock_connected:true,pricing_state:"quote-first",auto_markup_disabled:meta.auto_markup_disabled??false,markup_percent:meta.markup_percent??20,last_supplier_sync:new Date().toISOString()},
-   featured:current?.featured||false,is_new:current?.is_new??true,sort_priority:current?.sort_priority||0,category_slug:meta.identity_curated?current.category_slug:categoryOf(item.type,item.name,item.category),condition:current?.condition||"new",is_demo:false,
+   metadata:{...meta,source:current?.metadata?.source||supplier.id+"-feed",supplier:current?.metadata?.supplier||supplier.id,connected_suppliers:Array.from(new Set([...(meta.connected_suppliers||[]),supplier.id])),supplier_category:item.category,stock_connected:true,pricing_state:"quote-first",auto_markup_disabled:meta.auto_markup_disabled??false,markup_percent:meta.markup_percent??20,last_supplier_sync:new Date().toISOString()},
+   featured:current?.featured||false,is_new:current?.is_new??true,sort_priority:current?.sort_priority||0,category_slug:meta.identity_curated?current.category_slug:classifyProduct(item.name,item.category)?.category||current?.category_slug||categoryOf(item.type,item.name,item.category),condition:current?.condition||"new",is_demo:false,
    shipping_weight_kg:current?.shipping_weight_kg??(positive(item.meta?.dimensions?.weight)?Number(item.meta.dimensions.weight)/1000:null),
    shipping_length_cm:current?.shipping_length_cm??positive(item.meta?.dimensions?.length),shipping_width_cm:current?.shipping_width_cm??positive(item.meta?.dimensions?.width),shipping_height_cm:current?.shipping_height_cm??positive(item.meta?.dimensions?.height),shipping_packaging_verified:current?.shipping_packaging_verified||false,
    updated_at:new Date().toISOString()
@@ -120,6 +98,7 @@ async function persist(admin:any,supplier:any,items:any[],authScheme:string|null
  for(let i=0;i<mergedProducts.length;i+=100){const {error}=await admin.from("store_products").upsert(mergedProducts.slice(i,i+100),{onConflict:"id"});if(error)throw error}
  for(let i=0;i<uniqueOffers.length;i+=100){const {error}=await admin.from("store_supplier_offers").upsert(uniqueOffers.slice(i,i+100),{onConflict:"product_id,supplier_id,supplier_sku"});if(error)throw error}
  const ids=[...affected];for(let i=0;i<ids.length;i+=500){const {error}=await admin.rpc("vt_update_preferred_offer_products",{p_ids:ids.slice(i,i+500)});if(error)throw error;}
+ const {error:merchError}=await admin.rpc("vt_refresh_store_merchandising");if(merchError)throw merchError;
  const {data:latestSupplier}=await admin.from("store_suppliers").select("metadata").eq("id",supplier.id).maybeSingle();
  await admin.from("store_suppliers").update({feed_status:"live",feed_last_synced_at:new Date().toISOString(),metadata:{...(latestSupplier?.metadata||supplier.metadata||{}),last_error:null,sync_paused_until:null,last_sync_rows:items.length,...(authScheme?{api_auth_scheme:authScheme}:{})},updated_at:new Date().toISOString()}).eq("id",supplier.id);
  return{products:mergedProducts.length,offers:uniqueOffers.length}

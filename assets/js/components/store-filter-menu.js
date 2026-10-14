@@ -97,6 +97,7 @@ export const FACETS = {
     {key:'memoryType',label:'Memory'}
   ],
   memory:[
+    {key:'productKind',label:'Desktop / notebook'},
     {key:'brand',label:'Brand'},
     {key:'memoryType',label:'Generation'},
     {key:'capacityGB',label:'Capacity'},
@@ -194,7 +195,7 @@ export function facetDefinitions(category){
    monitors:['refreshRateHz','screenSize','resolution','panelType'],
    keyboards:['connection'],mice:['connection'],headsets:['connection'],audio:['productKind','connection'],
    webcams:['resolution','connection'],controllers:['productKind','connection'],cables:['productKind','interface','lengthM'],
-   adapters:['productKind','interface'], 'thermal-paste':['productKind'],'desk-accessories':['productKind']
+   adapters:['productKind','interface'],networking:['productKind','connection'],'power-protection':['productKind','wattage'],'laptop-accessories':['productKind'], 'thermal-paste':['productKind'],'desk-accessories':['productKind']
   };
   const labels={laptopPurpose:'Laptop type',laptopProcessor:'Processor',laptopGraphics:'Graphics',ramGB:'RAM (GB)',storageCapacity:'Storage',operatingSystem:'Operating system',refreshRateHz:'Refresh rate (Hz)',screenSize:'Screen size (inches)',resolution:'Resolution',panelType:'Panel',connection:'Connection',lengthM:'Length (m)',productKind:'Product type',interface:'Connector'};
   const defs=specific[category]?['brand',...specific[category]].map(key=>({key,label:labels[key]||'Brand'})):(FACETS[category]||FACETS.all);

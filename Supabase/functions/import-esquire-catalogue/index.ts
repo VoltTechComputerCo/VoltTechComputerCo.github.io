@@ -2,6 +2,7 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 import { gamingProductAllowed } from "./gaming-policy.js";
+import { classifyProduct } from "./catalogue-classification.js";
 
 const ORIGINS = new Set([
   "https://volttechcomputerco.co.za",
@@ -97,6 +98,7 @@ function existingUpdate(existing:any,item:any,feedDate:string){
   const inferredBrand=brandOf(item.name);
   return {
     id:existing.id,
+    type:identityCurated?existing.type:classifyProduct(item.name,item.category)?.type||existing.type,
     brand:identityCurated ? existing.brand : ((!existing.brand || ["unknown","unspecified"].includes(String(existing.brand).toLowerCase())) && inferredBrand ? inferredBrand : existing.brand),
     manufacturer:identityCurated ? existing.manufacturer : ((!existing.manufacturer || ["unknown","unspecified"].includes(String(existing.manufacturer).toLowerCase())) && inferredBrand ? inferredBrand : existing.manufacturer),
     stock_status:item.stockStatus,
@@ -106,7 +108,8 @@ function existingUpdate(existing:any,item:any,feedDate:string){
     media:mediaCurated || !item.image ? existing.media : {
       primaryImage:item.image,directImage:item.image,images:[item.image],sourceType:"supplier-csv",imageStrategy:"supplier-feed"
     },
-    metadata:{...meta,feed_date:feedDate,supplier_category:item.category,supplier:"esquire",import_version:"esquire-csv-v1",stock_connected:true,pricing_state:"quote-first",auto_markup_disabled:false,markup_percent:20},
+    metadata:{...meta,feed_date:feedDate,supplier_category:item.category,supplier:"esquire",import_version:"esquire-csv-v1",stock_connected:true,pricing_state:"quote-first",auto_markup_disabled:meta.auto_markup_disabled??false,markup_percent:meta.markup_percent??20},
+    category_slug:identityCurated?existing.category_slug:classifyProduct(item.name,item.category)?.category||existing.type,
     updated_at:new Date().toISOString()
   };
 }
@@ -162,10 +165,8 @@ Deno.serve(async(req:Request)=>{
     let ignored=0;
     for(const item of items){
       const current=bySku.get(item.sku);
-      let type=current?.type||coreCategoryMap.get(item.category)||null;
-      if(!type && /case fan|gemini m1|pacelight/i.test(item.name)) type="fan";
-      if(!type && /thermal.*(paste|compound)|heatsink compound/i.test(item.name)) type="accessory";
-      if(!type && /monitor|keyboard|mouse|headset|webcam|microphone|speaker|earphone|gaming|wrist rest|kwg orion|thronmax/i.test(item.name)) type="peripheral";
+      const identity=classifyProduct(item.name,item.category);
+      let type=identity?.type||current?.type||coreCategoryMap.get(item.category)||null;
       if(!type || !gamingProductAllowed(type,item.name,item.shortDescription)){ignored++;continue;}
       if(current){
         updates.push(existingUpdate(current,item,feedDate));
@@ -179,7 +180,7 @@ Deno.serve(async(req:Request)=>{
         short_description:item.shortDescription,highlights:[],identifiers:{supplier:"esquire",supplierSku:item.sku,sku:item.sku},
         specs:{},compatibility:{},media:item.image?{primaryImage:item.image,directImage:item.image,images:[item.image],sourceType:"supplier-csv",imageStrategy:"supplier-feed"}:{},
         seo:{description:item.shortDescription},metadata:{source:"esquire-csv",supplier:"esquire",supplier_category:item.category,feed_date:feedDate,public_store_eligible:true,media_review_required:false,supplier_data_required:false,import_version:"esquire-csv-v1",stock_connected:true,pricing_state:"quote-first",auto_markup_disabled:false,markup_percent:20},
-        featured:false,is_new:true,sort_priority:0,category_slug:type,condition:"new",is_demo:false
+        featured:false,is_new:true,sort_priority:0,category_slug:identity?.category||type,condition:"new",is_demo:false
       });
       offers.push({product_id:id,supplier_id:"esquire",supplier_name:"Esquire Technologies",supplier_sku:item.sku,cost_price:item.cost,currency:"ZAR",stock_qty:item.qty,stock_status:item.stockStatus,last_checked:feedDate+"T00:00:00Z",source_url:null,metadata:{feed_date:feedDate,supplier_category:item.category,image:item.image,import_version:"esquire-csv-v1"}});
     }
@@ -199,6 +200,7 @@ Deno.serve(async(req:Request)=>{
     const productIds=[...new Set(offers.map(o=>o.product_id))];
     for(let i=0;i<productIds.length;i+=500){const {error}=await admin.rpc("vt_update_preferred_offer_products",{p_ids:productIds.slice(i,i+500)});if(error)throw error;}
     await admin.from("store_settings").update({catalogue_synced_at:new Date().toISOString(),catalogue_generated_at:feedDate}).eq("id","store");
+    const {error:merchError}=await admin.rpc("vt_refresh_store_merchandising");if(merchError)throw merchError;
     return reply({ok:true,feedRows:parsed.length,validRows:items.length,updated:updates.length,added:inserts.length,offers:offers.length,ignoredNewRows:ignored,feedDate},200,origin);
   }catch(error){
     console.error("import-esquire-catalogue fatal",error);

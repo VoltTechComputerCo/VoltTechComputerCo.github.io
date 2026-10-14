@@ -1,9 +1,9 @@
-import { updateDepartmentImages } from '../services/store-departments.js?v=20261014-mobile';
-import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261014-mobile';
-import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261014-mobile';
+import { updateDepartmentImages } from '../services/store-departments.js?v=20261014-merch';
+import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261014-merch';
+import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261014-merch';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js';
-import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261014-mobile';
-import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261014-mobile';
+import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261014-merch';
+import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261014-merch';
 
 const query=new URLSearchParams(location.search);
 const landingHash=location.hash;
@@ -146,8 +146,9 @@ async function init(){
     const featured=products.filter(p=>core.has(p.category_slug||p.type) && p.featured && Number(p.stock_qty)>0);
     const picks=(featured.length ? featured : filterProducts(products.filter(p=>core.has(p.category_slug||p.type)),{category:'all',filters:{},sort:'featured'})).slice(0,4);
     const featuredGrid=document.getElementById('featured-grid');
+    document.getElementById('departments').before(document.getElementById('shop-featured'));
     document.getElementById('shop-featured').hidden=!picks.length || !!query.get('category') || !!query.get('q');
-    document.getElementById('featured-heading').textContent=featured.length ? 'Featured products' : 'Explore the catalogue';
+    document.getElementById('featured-heading').textContent=featured.length ? 'Featured upgrades' : 'Explore the catalogue';
     featuredGrid.innerHTML=picks.map(p=>productCard(VT,p,preview)).join('');
     bindImages(featuredGrid);
     featuredGrid.addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(b)addItem(VT,products.find(p=>p.id===b.dataset.add),preview);});
@@ -163,7 +164,7 @@ async function init(){
     pruneFilters(products);
 
     const topPager=document.createElement('div'),bottomPager=document.createElement('div');
-    topPager.className=bottomPager.className='catalogue-page-controls';
+    topPager.className='catalogue-page-controls catalogue-page-controls-top';bottomPager.className='catalogue-page-controls';
     grid.before(topPager);grid.after(bottomPager);
     let previousSignature;
     function render(){
@@ -174,7 +175,7 @@ async function init(){
       const items=filterProducts(products,state);
       const window=pageWindow(items.length,state.page,state.pageSize);state.page=window.page;
       const visible=items.slice(window.start,window.end);
-      const controls=`<label>Products per page<select data-page-size>${[10,25,50,100].map(n=>`<option ${n===state.pageSize?'selected':''}>${n}</option>`).join('')}</select></label><p role="status">${items.length?window.start+1:0}–${window.end} of ${items.length}</p><nav aria-label="Catalogue pages"><button type="button" data-page="${window.page-1}" ${window.page===1?'disabled':''}>← Previous</button><span>Page ${window.page} of ${window.pages}</span><button type="button" data-page="${window.page+1}" ${window.page===window.pages?'disabled':''}>Next →</button></nav>`;
+      const controls=`<label>Show<select data-page-size>${[10,25,50,100].map(n=>`<option ${n===state.pageSize?'selected':''}>${n}</option>`).join('')}</select></label><p role="status">${items.length?window.start+1:0}–${window.end} of ${items.length}</p><nav aria-label="Catalogue pages"><button type="button" data-page="${window.page-1}" ${window.page===1?'disabled':''}>← Previous</button><span>Page ${window.page} of ${window.pages}</span><button type="button" data-page="${window.page+1}" ${window.page===window.pages?'disabled':''}>Next →</button></nav>`;
       topPager.innerHTML=bottomPager.innerHTML=controls;
       count.textContent=`${items.length} product${items.length===1?'':'s'}`;
       grid.innerHTML=items.length ? visible.map((p,i)=>productCard(VT,p,preview,i<4)).join('') : '<div class="empty-state"><h3>No components match those filters.</h3><p>Remove a filter, try another category or ask VoltTech about the part you need.</p></div>';

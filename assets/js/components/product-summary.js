@@ -26,5 +26,5 @@ export function productKeyFacts(product){
 export function briefDescription(product){
  const intro=plainDescription(product).split(/(?:FEATURES|SPECIFICATIONS|WHAT['’]S IN THE BOX)\s*:/i)[0];
  const sentence=intro.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim()||intro;
- return sentence.length<=180?sentence:'';
+ if(sentence.length<=180)return sentence;const head=sentence.slice(0,177),breakAt=head.lastIndexOf(' ');return head.slice(0,breakAt>100?breakAt:177)+'…';
 }

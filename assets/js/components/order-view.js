@@ -12,7 +12,7 @@ export function stageInfo(order) {
   if (order.checkout_stage==='awaiting_approval') return {title:order.workflow?.approval==='accepted'?'Quote accepted — awaiting payment release':'Your confirmed quote is ready',copy:'Review the final items and delivery charge. Accept the confirmed total and continue to secure payment.',tone:'normal'};
   if (order.checkout_stage==='quote_ready') return {title:'Stock confirmed — quote being prepared',copy:'Your final quote will be sent for approval before payment.',tone:'normal'};
   if (order.checkout_stage==='awaiting_payment') return {title:'Stock reserved — ready for payment',copy:'Sellable stock, the final order amount and delivery have been confirmed. Payment availability is checked separately.',tone:'normal'};
-  if (order.checkout_stage==='pending_stock_confirmation' || order.checkout_stage==='submitted') return {title:'Order received',copy:'VoltTech is reserving supplier stock and confirming final pricing and courier delivery before payment.',tone:'normal'};
+  if (order.checkout_stage==='pending_stock_confirmation' || order.checkout_stage==='submitted') return {title:'Order received',copy:'VoltTech is reserving stock and confirming final pricing and courier delivery before payment.',tone:'normal'};
   return {title:'Order update',copy:'Your latest recorded order details are below. Contact VoltTech if you need clarification.',tone:'normal'};
 }
 export function timeline(order) {

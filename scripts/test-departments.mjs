@@ -6,7 +6,7 @@ const picks=departmentPicks([{...base,name:'RTX 3070 Ti',retail_price:99999},{..
 assert.equal(picks.get('gpu').product.name,'RTX 5070');
 const home=fs.readFileSync('index.html','utf8'),store=fs.readFileSync('store.html','utf8');
 assert.equal((home.match(/data-department-image=/g)||[]).length,8);
-assert.equal((store.match(/data-department-image=/g)||[]).length,22);
+assert.equal((store.match(/data-department-image=/g)||[]).length,26);
 for(const category of Object.keys(JSON.parse(fs.readFileSync('assets/categories/store-departments.json'))))assert.ok(fs.existsSync(`assets/categories/store-${category}.webp`));
 assert.ok(home.includes('name="q"')&&home.includes('Shop all products →'));
 console.log('PASS: available public products selected, newer gaming GPU preferred, all 20 local category images and direct home search');

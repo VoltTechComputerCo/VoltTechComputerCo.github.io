@@ -1,5 +1,5 @@
 /* Light-mode colour adaptation; original layout and dark theme remain in the source stylesheet. */
-html:not([data-theme="dark"]) .home-hero::after{background:linear-gradient(90deg, rgba(248,251,251,0.48), transparent 70%)}
+html:not([data-theme="dark"]) .home-hero::after{background:linear-gradient(90deg, rgba(2,9,10,0.48), transparent 70%)}
 html:not([data-theme="dark"]) .component-card{background:radial-gradient(circle at 50% 16%, rgba(var(--component-accent), .08), transparent 44%),
     rgba(248,251,251,0.76);box-shadow:0 4px 18px rgba(18,56,51,.055)}
 html:not([data-theme="dark"]) .component-card::before{background:linear-gradient(
@@ -60,3 +60,7 @@ html:not([data-theme="dark"]) .component-card:hover,html:not([data-theme="dark"]
       rgba(248,251,251,0) 100%
     )}
 }
+
+/* Keep photo contrast consistent across themes without a white wash. */
+html:not([data-theme="dark"]) .home-hero .hero-copy h1{color:#f4fbfa}
+html:not([data-theme="dark"]) .home-hero :is(.hero-kicker,.hero-strap,.hero-description,.hero-note,.hero-facts>span){color:#d1e6e2}

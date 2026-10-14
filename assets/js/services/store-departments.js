@@ -5,7 +5,7 @@ export function departmentPicks(products){
   const category=p.category_slug||p.type,image=p.media?.primaryImage||p.media?.directImage;
   if(p.is_demo||p.visibility!=='public'||p.status!=='active'||p.sale_mode==='hidden'||!(Number(p.stock_qty)>0)||!/^https:\/\//.test(image||''))continue;
   const keys=[category];if(category==='laptops')keys.push(p.specs?.laptopPurpose==='Gaming'?'gaming-laptops':'work-laptops');
-  const score=(preferences[category]?.test(p.name)?1e9:0)+Number(p.retail_price||0);
+  const score=(p.featured?2e9:0)+Number(p.sort_priority||0)*1e6+(preferences[category]?.test(p.name)?1e9:0)+Number(p.retail_price||0);
   for(const key of keys)if(!result.has(key)||score>result.get(key).score)result.set(key,{product:p,image,score});
  }
  return result;
