@@ -208,7 +208,7 @@ async function init(){
     connectCatalogueCart(VT,products,preview);
     VT.analytics('view_item_list',{item_list_name:'VoltTech PC Parts',items:products.slice(0,20).map(p=>({item_id:p.id,item_name:p.name}))});
   }catch(error){
-    console.error('VoltTech Store filters:',error);
+    console.error('VoltTech Store filters:',error?.message||String(error));
     showGate({reason:'connection'});
   }
 }
