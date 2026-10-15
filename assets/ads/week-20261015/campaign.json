@@ -1,0 +1,62 @@
+[
+  {
+    "key": "rtx5060",
+    "id": "syntech-43244b41bbe0e930",
+    "title": "RTX 5060. FOR LESS.",
+    "slug": "syntech-43244b41bbe0e930",
+    "name": "MSI Nvidia GeForce RTX 5060 VENTUS 2X OC 8GB Graphics Card",
+    "retail_price": 10281.92,
+    "compare_at_price": 11216.64,
+    "stock_qty": 49,
+    "status": "active",
+    "visibility": "public",
+    "sale_mode": "quote",
+    "is_demo": false,
+    "ends": "2026-10-18T23:59:59+02:00"
+  },
+  {
+    "key": "fizz-magnetic",
+    "id": "syntech-67b846df867b5681",
+    "title": "FIZZ MAGNETIC.",
+    "slug": "syntech-67b846df867b5681",
+    "name": "Redragon FIZZ Magnetic plus Wired Keyboard - Black",
+    "retail_price": 490.82,
+    "compare_at_price": 535.44,
+    "stock_qty": 10,
+    "status": "active",
+    "visibility": "public",
+    "sale_mode": "quote",
+    "is_demo": false,
+    "ends": "2026-10-18T23:59:59+02:00"
+  },
+  {
+    "key": "storm-mouse",
+    "id": "syntech-43580d274eaac5a1",
+    "title": "STORM. ON SPECIAL.",
+    "slug": "syntech-43580d274eaac5a1",
+    "name": "REDRAGON STORM 12400DPI 7 Buttons|Ergonomic Design|P3327 Optical Sensor|Lightweight Body|RGB Backlit gaming Mouse - Black",
+    "retail_price": 296.01,
+    "compare_at_price": 322.92,
+    "stock_qty": 164,
+    "status": "active",
+    "visibility": "public",
+    "sale_mode": "quote",
+    "is_demo": false,
+    "ends": "2026-10-18T23:59:59+02:00"
+  },
+  {
+    "key": "zeus-pro",
+    "id": "syntech-afa96ab08bfb2c20",
+    "title": "ZEUS PRO. FOR LESS.",
+    "slug": "syntech-afa96ab08bfb2c20",
+    "name": "REDRAGON Over-Ear ZEUS Pro USB Wireless Gaming Headset - Black",
+    "retail_price": 771.65,
+    "compare_at_price": 841.8,
+    "stock_qty": 91,
+    "status": "active",
+    "visibility": "public",
+    "sale_mode": "quote",
+    "is_demo": false,
+    "ends": "2026-10-18T23:59:59+02:00"
+  }
+]
