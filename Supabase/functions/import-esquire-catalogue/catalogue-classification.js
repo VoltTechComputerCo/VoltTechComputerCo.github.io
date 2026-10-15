@@ -29,11 +29,12 @@ export function classifyProduct(name, category = '') {
  const system=systemKind(name,category);if(system)return r(system==='laptop'?'laptop':'peripheral',system==='laptop'?'laptops':'desktops');
 
 
+ if(/keyboard/.test(h)&&/mouse|combo/.test(h)&&!/mousepad|mouse pad|mouse mat/.test(h))return r('peripheral','keyboards');
  if(/mousepad|mouse pad|mouse mat|wrist rest|palm rest|wrist\s?pad|kwg orion/.test(h))return r('accessory','desk-accessories');
  if(/gpu.*(?:holder|support|bracket)|graphics.*support bracket|ssd.*(?:heatsink|cooler)|mounting bracket|bracket with screws|cable manager/.test(h))return r('accessory','desk-accessories');
  if(/(?:nas|asustor).*enclosure/.test(h))return r('storage');
  if(/enclosure|hard drive docking|hard drive box/.test(h))return r('accessory','adapters');
- if(/keyboard/.test(h)&&/mouse|combo/.test(h))return r('peripheral','keyboards');
+ if(/keyboard/.test(h)&&/mouse|combo/.test(h)&&!/mousepad|mouse pad|mouse mat/.test(h))return r('peripheral','keyboards');
  if(/earbuds?|earphones?|heatset/.test(h))return r('peripheral','headsets');
  if(/(?:headphone|headset).*adapter|mouse adapter|keyboard.*adapter/.test(h))return r('accessory','adapters');
  if(/\b(?:power strip|surge|powerbank|ups)\b/.test(h)&&!/\bcable\b/.test(h))return r('accessory','power-protection');

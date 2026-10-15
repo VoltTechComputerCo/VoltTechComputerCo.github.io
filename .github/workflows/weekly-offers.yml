@@ -18,6 +18,10 @@ jobs:
         with:
           node-version: '24'
       - run: npm install --no-save --package-lock=false playwright@1.56.1
+      - name: Install video encoder
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
       - name: Render feed images, Stories and Reel
         env:
           VT_CHROMIUM_PATH: /usr/bin/google-chrome

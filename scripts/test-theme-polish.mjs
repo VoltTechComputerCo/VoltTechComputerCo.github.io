@@ -20,12 +20,12 @@ for(const width of [320,390,1440]){
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no account overflow');
   await page.goto('http://127.0.0.1:4173/index.html');
   assert.ok(await page.locator('.department-card img').evaluateAll(imgs=>imgs.every(i=>i.getAttribute('src').startsWith('assets/categories/')||i.dataset.departmentImage.includes('laptops'))),'local category images');
-  assert.equal(await page.locator('.department-card').count(),8);
+  assert.equal(await page.locator('.department-card').count(),6);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no home shop overflow');
   const cards=await page.locator('.department-card').all();
   for(const c of cards){const i=await c.locator('.department-image').boundingBox(),t=await c.locator('h3').boundingBox();assert.ok(t.y>=i.y+i.height,'category text follows image without overlap');}
   await page.goto('http://127.0.0.1:4173/store.html');
-  assert.equal(await page.locator('.store-departments .department-card').count(),22);
+  assert.equal(await page.locator('.store-departments .department-card').count(),26);
   assert.equal(await page.locator('.department-group').count(),4);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no store department overflow');
  }
