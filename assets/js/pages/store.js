@@ -149,6 +149,8 @@ async function init(){
     document.getElementById('departments').before(document.getElementById('shop-featured'));
     document.getElementById('shop-featured').hidden=!picks.length || !!query.get('category') || !!query.get('q');
     document.getElementById('featured-heading').textContent=featured.length ? 'Featured upgrades' : 'Explore the catalogue';
+    const weekly=products.filter(p=>p.metadata?.compare_at_verified===true&&Number(p.compare_at_price)>Number(p.retail_price)&&Number(p.stock_qty)>0&&Date.parse(p.metadata?.deal_ends_at)>Date.now());
+    if(weekly.length){const section=document.createElement('section');section.className='container shop-featured';section.id='weekly-specials';section.innerHTML='<div class="section-heading"><div><p class="eyebrow">LIMITED-TIME OFFERS</p><h2>This week’s specials</h2><p>Ends Sunday, 18 October at 23:59 SAST. While supplier stock lasts.</p></div></div><div class="catalogue-grid"></div>';const host=section.querySelector('.catalogue-grid');host.innerHTML=weekly.map(p=>productCard(VT,p,preview)).join('');document.querySelector('.shop-intro').after(section);bindImages(host);host.addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(b)addItem(VT,products.find(p=>p.id===b.dataset.add),preview);});}
     featuredGrid.innerHTML=picks.map(p=>productCard(VT,p,preview)).join('');
     bindImages(featuredGrid);
     featuredGrid.addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(b)addItem(VT,products.find(p=>p.id===b.dataset.add),preview);});

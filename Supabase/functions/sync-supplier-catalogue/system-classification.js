@@ -1,6 +1,20 @@
 // Identify whole computers before looking for components mentioned in their specifications.
 export function systemKind(name, category = '') {
- const n=String(name||'').toLowerCase(), c=String(category||'').toLowerCase();
+ const n=String(name||'').toLowerCase().replace(/[®™]/g,''), c=String(category||'').toLowerCase();
+ // Accessory identity must win over model names and hardware listed as compatibility.
+ if(/handheld|gaming console|galaxy tab|\btablet\b/.test(n))return '';
+ if(/^bti\b|travelmate\.mobi|backpack|blackpack|briefcase|dashpack|clamshell|folio|privacy filter|screen protector|luggage|cable lock|lock plate|charging station|charging trolley|conversion kit|laptop desk|notebook desk|foldable laptop|hardware support|onsite hw support|ssd for|ssd.*macbook|(?:laptop|notebook)\s+(?:bag|case|sleeve|battery|charger|adapter|stand|memory|cable|cooler)/.test(n.split("|")[0].slice(0,90)))return '';
+ const systemHardware=/\b\d+\s*gb\b/.test(n)&&/\b(?:ssd|nvme|emmc)\b|\b\d+\s*tb\b|\b(?:256|512)\s*gb\b/.test(n);
+ const systemOS=/windows?\s*11|win\s*11|w11[ph]|thinpro|freedos|chromeos|macos/.test(n);
+ const systemOEM=/^(?:hp|lenovo|dell|acer|acerlite|asus|microsoft|pcbuilder|giada)\b/.test(n);
+ if(systemOEM&&systemHardware&&/^lenovo\s+(?:tb\s|v1[45]|ideapad)/.test(n))return 'laptop';
+
+ if(/^(?:asus\s+nuc|giada\s|dell\s+pro\s+slim)/.test(n)||(/\b(?:desktop|gaming|creator)\s+pc\b|\bmini\s+desktop\s+pc\b/.test(n)&&!/charger|power supply|adapter|memory|cpu|processor/.test(n)))return 'desktop';
+ if(systemHardware&&systemOEM&&(/\b(?:home|gaming|desktop)\s+pc\b|\brog\s+g\d{3}\b/.test(n)||/computers?\s*>\s*desktop/.test(c)))return 'desktop';
+ if(systemOEM&&/^hp\s+(?:250r\w*|255r\w*|15s)\b/.test(n))return 'laptop';
+ if(systemOEM&&/^acer(?:lite|\s+(?:go|spin|swift|lite|etbook))\b/.test(n)&&systemOS)return 'laptop';
+ if(systemOEM&&/^dell\s+(?:pro\s+)?(?:13|14|15|16|intel)\b/.test(n)&&systemHardware&&systemOS)return 'laptop';
+ if(systemOEM&&systemHardware&&systemOS&&/\b(?:1[0-9](?:\.\d+)?\s*(?:inch|in\b|["″])|laptop|notebook)\b/.test(n))return 'laptop';
  // A named notebook with installed memory and storage is a system, even when
  // the supplier abbreviates CPU/OS names or includes SO-DIMM in its full spec.
  const notebookModel=/^(?:hp\s+(?:omen|victus|elitebook|probook|zbook|200|255r)|lenovo\s+(?:thinkpad|ideapad|thinkbook)|microsoft\s+surface\s+laptop)\b/.test(n);
@@ -28,5 +42,8 @@ export function systemKind(name, category = '') {
  if(laptop && (configured||!/\b(bag|sleeve|battery|charger|adapter|adaptor|docking|stand|replacement|protector|sodimm|power supply)\b/.test(n)))return 'laptop';
  if(configured&&/battery|\b(?:fhd|hd)\/?ir cam|camera shutter/.test(n))return 'laptop';
  if(configured&&/\b(desktop|tower|twr|micro|sff|tiny|thinkcentre|prodesk|elitedesk|proone|prostudio|precision|all-in-one|aio)\b|\blenovo (?:neo|tc)|\bacer vs\d/.test(n))return 'desktop';
+ if(/^(?:minisforum|giada)\b.*barebone/.test(n))return 'desktop';
+ if(/^lenovo\s+(?:intel core|amd ryzen)/.test(n)&&systemHardware)return /battery|\b1[0-9](?:\.\d+)?[\"″]/.test(n)?'laptop':'desktop';
  return '';
 }
+

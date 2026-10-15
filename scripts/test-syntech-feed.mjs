@@ -45,3 +45,6 @@ console.log('PASS: expanded generations, systems, desktop RAM, notebook upgrades
 for(const row of JSON.parse(fs.readFileSync('scripts/supplier-imports/system-classification-regressions.json','utf8')))assert.deepEqual(classifyProduct(row.name),{type:row.type,category:row.category},row.name);
 for(const name of ['Samsung A57 5G 256GB Octa-Core Processor 8GB RAM','HP LaserJet Pro 3003dw Printer Processor speed 800 MHz','Lexmark Laser Printer 1GB DDR4 memory'])assert.equal(classifyProduct(name),null,name);
 console.log('PASS: supplier notebook specifications and non-PC device exclusions');
+
+for(const row of JSON.parse(fs.readFileSync('scripts/supplier-imports/category-identity-regressions.json','utf8')))assert.equal(classifyProduct(row.name,row.supplier_category)?.category,row.category,row.name);
+console.log('PASS: handhelds, prebuilt PCs, monitor hubs, cable accessories and peripheral identity');

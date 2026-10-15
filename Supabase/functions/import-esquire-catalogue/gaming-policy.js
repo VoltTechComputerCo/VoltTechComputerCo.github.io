@@ -1,6 +1,10 @@
+import { classifyProduct } from './catalogue-classification.js';
 import { systemKind } from './system-classification.js';
 // Broad PC catalogue, including previous generations and laptop upgrades.
 export function gamingProductAllowed(type,name,description=''){
+ const canonical=classifyProduct(name,description);
+ if(canonical&&['handhelds','upgrade-kits'].includes(canonical.category))return type===canonical.type;
+ if(type==='gpu'&&canonical?.category!=='gpu')return false;
  const n=String(name||'').toLowerCase(),t=n+' '+String(description||'').toLowerCase();
  if(type==='laptop')return systemKind(name,description)==='laptop';
  if(systemKind(name,description)==='desktop'||/mini[- ]?pc|mini desktop|desktop\s+pc|professional desktop|^giada\s|gaming pc|creator pc/.test(n))return type==='peripheral'&&!/server|poweredge/.test(n);

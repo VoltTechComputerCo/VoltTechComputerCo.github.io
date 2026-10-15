@@ -1,0 +1,33 @@
+name: Render VoltTech weekly offers
+on:
+  push:
+    branches: [main]
+    paths: ['scripts/render-weekly-offers.mjs', '.github/workflows/weekly-offers.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: volttech-weekly-offers
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --package-lock=false playwright@1.56.1
+      - name: Render feed images, Stories and Reel
+        env:
+          VT_CHROMIUM_PATH: /usr/bin/google-chrome
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 -m http.server 4173 > /tmp/weekly-http.log 2>&1 &
+          node scripts/render-weekly-offers.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: volttech-weekly-offers-20261015
+          path: assets/ads/week-20261015
+

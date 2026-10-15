@@ -3,7 +3,7 @@ create or replace function public.vt_refresh_store_merchandising() returns void 
 begin
  -- Expired reductions return to their recorded normal markup.
  update public.store_products set compare_at_price=null,
- metadata=(metadata-'compare_at_verified'-'deal_ends_at')||jsonb_build_object('markup_percent',coalesce((metadata->>'regular_markup_percent')::numeric,20),'deal_managed',false)
+ metadata=(metadata-'compare_at_verified'-'deal_ends_at')||jsonb_build_object('markup_percent',coalesce((metadata->>'regular_markup_percent')::numeric,30),'deal_managed',false)
  where metadata->>'deal_managed'='true' and (metadata->>'deal_ends_at')::timestamptz<=now();
  with scored as(
   select p.id,p.category_slug,
@@ -18,17 +18,7 @@ begin
  update public.store_products p set featured=(r.position<=4 and r.stock_qty>0),sort_priority=r.score,
  metadata=p.metadata||jsonb_build_object('merchandising','editorial-category-picks','merchandising_updated_at',now())
  from ranked r where p.id=r.id and (p.featured is distinct from (r.position<=4 and r.stock_qty>0) or p.sort_priority is distinct from r.score);
- -- Old prices are actual public selling prices captured before a reduction; never generated anchors.
- with ranked as(
- select p.*,row_number() over(partition by category_slug order by sort_priority desc,id) as position,
- (select o.cost_price from public.store_supplier_offers o left join public.store_suppliers s on s.id=o.supplier_id
-  where o.product_id=p.id and o.stock_qty>0 and o.cost_price>0 order by coalesce(s.priority,100),o.cost_price limit 1) as cost
- from public.store_products p where visibility='public' and status='active' and is_demo=false and stock_qty>0 and featured
- ), candidates as(select *,round(cost*1.15,2) as reduced from ranked where position<=2 and cost>0 and coalesce((metadata->>'auto_markup_disabled')::boolean,false)=false)
- update public.store_products p set compare_at_price=p.retail_price,retail_price=c.reduced,
- metadata=p.metadata||jsonb_build_object('regular_markup_percent',coalesce((p.metadata->>'markup_percent')::numeric,20),'markup_percent',15,
- 'deal_managed',true,'compare_at_verified',true,'compare_at_basis','previous-public-selling-price','previous_price_observed_at',now(),'deal_started_at',now(),'deal_ends_at',now()+interval '30 days'),updated_at=now()
- from candidates c where p.id=c.id and p.retail_price>c.reduced and p.retail_price>=c.cost and p.metadata->>'deal_started_at' is null;
+ -- Weekly offers are selected explicitly; merchandising must not create or extend discounts.
  -- Do not keep a crossed-out reference if a cost refresh has exceeded it.
  update public.store_products set compare_at_price=null,metadata=metadata-'compare_at_verified'
  where compare_at_price is not null and compare_at_price<=retail_price;
