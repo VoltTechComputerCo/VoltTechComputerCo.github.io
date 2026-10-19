@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#f3f0e7">
+<title>VoltTech V5 Store Prototype</title>
+<meta name="description" content="VoltTech V5 store prototype.">
+<link rel="stylesheet" href="assets/v5.css">
+</head>
+<body>
+<div class="topline"><div class="wrap"><span>VoltTech Computer Co.</span><span>Pretoria / South Africa</span><span>V5 prototype</span></div></div>
+<header class="header">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="VoltTech home">
+      <img src="../brand/VoltTech_Emblem_Transparent.png" alt="">
+      <span class="brand-copy"><strong>VOLTTECH</strong><span>COMPUTER CO.</span></span>
+    </a>
+    <nav class="nav" id="site-nav" aria-label="Primary">
+      <div class="nav-head"><span>VOLTTECH / MENU</span><strong>Choose a direction.</strong></div>
+      <ul>
+        <li><a href="index.html"><b>Home</b><span>Start here</span></a></li>
+        <li><a href="store.html"><b>Store</b><span>Hardware</span></a></li>
+        <li><a href="builder.html"><b>Builder</b><span>Configure</span></a></li>
+        <li><a href="index.html#services"><b>Services</b><span>Repair + tune</span></a></li>
+      </ul>
+      <div class="menu-meta"><a href="../static.html">STATIC ↗</a><a href="../account.html">Account ↗</a></div>
+    </nav>
+    <div class="desktop-actions"><a href="index.html">Home</a><a href="builder.html">Start build</a></div>
+    <button class="menu" type="button" data-menu aria-controls="site-nav" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<main>
+<section class="store-hero">
+  <div class="wrap store-hero-grid">
+    <div>
+      <p class="kicker">V5 STORE / HARDWARE BROWSER</p>
+      <h1>BUY THE<br>PART.<br><span>KNOW WHY.</span></h1>
+      <p class="lead">This prototype is intentionally not connected to live stock or pricing yet. It is only testing the new browsing experience, hierarchy and product presentation.</p>
+      <div class="actions"><a class="btn" href="builder.html">Build the whole PC ↗</a><a class="btn alt" href="#catalogue">Browse parts ↓</a></div>
+    </div>
+    <figure>
+      <img src="../vt-drive-rtx-interior.webp" alt="Graphics card installed inside a desktop PC" width="1067" height="1600" fetchpriority="high">
+      <figcaption>LAYOUT PROTOTYPE / NO LIVE STOCK CONNECTED</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="category-zone">
+  <div class="wrap">
+    <p class="kicker">CATEGORY INDEX</p>
+    <h2 class="category-title">Pick the part.</h2>
+    <div class="category-rail" role="group" aria-label="Prototype categories">
+      <button class="category-btn active" type="button" data-cat="all"><small>00</small><b>All</b></button>
+      <button class="category-btn" type="button" data-cat="gpu" id="gpu"><small>01</small><b>GPU</b></button>
+      <button class="category-btn" type="button" data-cat="cpu" id="cpu"><small>02</small><b>CPU</b></button>
+      <button class="category-btn" type="button" data-cat="board" id="board"><small>03</small><b>Board</b></button>
+      <button class="category-btn" type="button" data-cat="memory" id="memory"><small>04</small><b>Memory</b></button>
+      <button class="category-btn" type="button" data-cat="storage" id="storage"><small>05</small><b>Storage</b></button>
+      <button class="category-btn" type="button" data-cat="cooling" id="cooling"><small>06</small><b>Cooling</b></button>
+      <button class="category-btn" type="button" data-cat="all"><small>07</small><b>More</b></button>
+    </div>
+  </div>
+</section>
+
+<section class="catalogue" id="catalogue">
+  <div class="wrap">
+    <div class="catalogue-head">
+      <div><p class="kicker">PROTOTYPE CATALOGUE</p><h2>Hardware without the wall of noise.</h2></div>
+      <p class="lead">Search and category interactions are live in the prototype. Products and descriptions below are placeholders for layout testing—not VoltTech inventory claims.</p>
+    </div>
+
+    <div class="store-tools">
+      <input class="search" id="product-search" type="search" placeholder="Search prototype hardware…" aria-label="Search prototype hardware">
+      <div class="filter-row" aria-label="Quick filters">
+        <button class="filter active" type="button">Featured</button>
+        <button class="filter" type="button">Gaming</button>
+        <button class="filter" type="button">Creator</button>
+        <button class="filter" type="button">Value</button>
+      </div>
+    </div>
+
+    <div class="result-line"><span id="result-count">8 prototype items</span><span>Prototype only</span></div>
+    <div class="product-grid" id="product-grid"></div>
+
+    <p class="store-note"><strong>Why this page is intentionally disconnected:</strong> V5 is testing the new customer journey first. If you approve the design, we then wire the real Supabase catalogue, stock states, pricing, filters, cart and checkout into this interface.</p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer-ticker">VOLTTECH STORE PROTOTYPE · HARDWARE BROWSER · NO LIVE STOCK · V5 CLEAN REBUILD ·</div>
+  <div class="footer-inner">
+    <h2 class="footer-title">VOLTTECH<br><span>STORE.</span></h2>
+    <div class="footer-links">
+      <div><span>V5 PROTOTYPE</span><a href="index.html">Home</a><a href="store.html">Store</a><a href="builder.html">Builder</a></div>
+      <div><span>SUPPORT</span><a href="../pc-repair-pretoria.html">Repair</a><a href="../signal-scan.html">Signal Scan</a></div>
+      <div><span>CREATOR</span><a href="../streaming-setup-south-africa.html">Stream Support</a><a href="../creator-hub-south-africa.html">Creator Hub</a></div>
+      <div><span>VOLTTECH</span><a href="../static.html">STATIC</a><a href="../account.html">Account</a></div>
+    </div>
+    <div class="footer-base"><span>VISUAL PROTOTYPE ONLY</span><span>NO LIVE COMMERCE CONNECTED</span><span>V5 CLEAN REBUILD</span></div>
+  </div>
+</footer>
+<script src="assets/v5.js" defer></script>
+</body>
+</html>
