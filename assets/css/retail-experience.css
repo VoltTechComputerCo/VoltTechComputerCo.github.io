@@ -258,3 +258,31 @@ html[data-theme=dark] .theme-icon-moon,html[data-theme=dark] .theme-label-dark{d
 html[data-theme=dark] .theme-icon-sun,html[data-theme=dark] .theme-label-light{display:block}
 .cta-brand-icon{display:block;flex:0 0 20px;width:20px;height:20px;object-fit:contain}
 @media(max-width:896px){.site-header #primary-navigation:not(.is-floating-open){display:none}.site-header .menu-toggle{display:inline-flex}}
+
+/* The drawer is edge anchored; it must never inherit the old centred transform. */
+@media(max-width:896px){
+ html body[data-page] .site-header #primary-navigation:not([hidden]){
+  left:12px;right:12px;width:auto;max-width:none;min-width:0;margin:0;
+  transform:none;animation:vt-menu-edge-in 160ms ease-out both;
+  top:72px;max-height:calc(100dvh - 84px);box-sizing:border-box;
+ }
+ html body[data-page] .site-header #primary-navigation>ul{min-width:0}
+ html body[data-page] .site-header #primary-navigation .nav-copy{width:100%;min-width:0;overflow-wrap:anywhere}
+ html body[data-page] .site-header #primary-navigation .nav-tile{min-width:0}
+}
+@keyframes vt-menu-edge-in{from{opacity:0;translate:0 -6px}to{opacity:1;translate:0 0}}
+@media(prefers-reduced-motion:reduce){html body[data-page] .site-header #primary-navigation{animation:none!important}}
+/* The official white wordmark keeps its intended contrast on a branded dark badge. */
+html:not([data-theme=dark]) body[data-page] .site-brand-logo{
+ background:#07171a!important;border:1px solid #176f69;border-radius:10px;
+ padding:6px;box-shadow:0 3px 10px #123a3012;
+}
+html:not([data-theme=dark]) body[data-page] .footer-brand .site-brand-logo{
+ padding:12px;width:180px;height:auto;border-radius:12px;
+}
+@media(max-width:700px){
+ html:not([data-theme=dark]) body[data-page] .footer-brand{grid-template-columns:120px minmax(0,1fr)}
+ html:not([data-theme=dark]) body[data-page] .footer-brand .site-brand-logo{width:120px;padding:8px}
+ html body[data-page] .footer-grid>*{min-width:0}
+ html body[data-page] .footer-brand p,html body[data-page] .footer-links a{overflow-wrap:anywhere}
+}
