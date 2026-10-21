@@ -110,7 +110,7 @@
     if(scrim)scrim.hidden=!opened;
     if(button)button.setAttribute("aria-expanded",String(opened));
     document.documentElement.classList.toggle("vt-notify-open",opened);
-    if(opened)requestAnimationFrame(positionPanel);
+    if(opened)positionPanel();
     if(document.documentElement.dataset.vtShell==="clean"){
       if(opened)q("#vtNotifyClose")?.focus();
       else if(panel?.contains(document.activeElement))button?.focus();

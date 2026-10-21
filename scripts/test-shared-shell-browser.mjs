@@ -28,10 +28,11 @@ for(const width of [320,390,1440]){
   for(const href of await page.locator('[data-service-email],[data-stream-contact=email]').evaluateAll(links=>links.map(a=>a.href)))assert.ok(href.startsWith('mailto:info@volttechcomputerco.co.za'),'correct email alias');
   await page.locator('#vtNotifyButton').click();
   await page.locator('#vtNotifyPanel').waitFor({state:'visible'});
-  assert.ok(await page.locator('#vtNotifyPanel').evaluate(panel=>{
+  const panelState=await page.locator('#vtNotifyPanel').evaluate(panel=>{
    const r=panel.getBoundingClientRect(),hit=document.elementFromPoint(r.x+20,r.y+20);
-   return r.top>=0&&r.bottom<=innerHeight&&panel.contains(hit);
-  }),'notification panel is on top and within viewport');
+   return {top:r.top,bottom:r.bottom,left:r.left,width:r.width,height:r.height,viewport:innerHeight,onTop:panel.contains(hit),hit:hit?.className};
+  });
+  assert.ok(panelState.top>=0&&panelState.bottom<=panelState.viewport+1&&panelState.onTop,'notification panel above header: '+path+' '+JSON.stringify(panelState));
   await page.locator('#vtNotifyClose').click();
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no header overflow');
  }
