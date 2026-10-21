@@ -1,5 +1,4 @@
 import { buildLiveCatalogue, PART_TYPES } from './live-catalogue.js?v=20261022.1';
-import { readPublicCatalogue } from '../../assets/js/services/public-catalogue.js?v=20261022.1';
 import {
   buildProductIdentityIndexes,
   normalizeCatalogueProducts,
@@ -197,9 +196,8 @@ async function getJson(path) {
 }
 
 async function loadLiveCatalogue() {
- const snapshot=await readPublicCatalogue();
- let rows=snapshot?.products;
- if(!rows){
+ let rows=[];
+ {
   const client=window.volttechAuth;
   if(!client)throw new Error('Store connection unavailable');
   rows=[];
