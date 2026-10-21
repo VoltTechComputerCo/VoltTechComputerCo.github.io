@@ -1,4 +1,4 @@
-import { isProduction, sdkUrl } from './site-config.js';
+import { isProduction, sdkUrl } from './site-config.js?v=20261021';
 const base = new URL('../../../', import.meta.url);
 const cartKey = 'vt_store_quote_cart_v1';
 
@@ -93,7 +93,7 @@ async function initialiseAccount(config) {
     update(data.session);
     client.auth.onAuthStateChange((_event, session) => update(session));
     await loadScript('notifications.js?v=20261021-shell');
-  } catch { /* Account link remains usable if the optional enhancement fails. */ }
+  } catch(error) { console.warn('VoltTech account controls:',error?.message||String(error)); }
 }
 
 let productionConnected=false;

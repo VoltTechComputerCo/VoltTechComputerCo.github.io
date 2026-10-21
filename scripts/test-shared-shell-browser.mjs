@@ -4,9 +4,9 @@ const {chromium}=createRequire(import.meta.url)('playwright');
 const browser=await chromium.launch({headless:true,executablePath:process.env.VT_CHROMIUM_PATH});
 for(const width of [320,390,1440]){
  const page=await browser.newPage({viewport:{width,height:900}});
- const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const errors=[];page.on('pageerror',e=>{errors.push(e.message);console.log('PAGE ERROR',e.message);});page.on('console',m=>{if(m.type()==='warning')console.log('PAGE WARNING',m.text());});
  await page.route('https://**/*',route=>route.abort());
- await page.route('**/assets/js/services/site-config.js',route=>route.fulfill({contentType:'application/javascript',body:`export const isProduction=()=>true;export const sdkUrl='/assets/vendor/supabase-2.116.0.js';export const canonicalOrigin=location.origin;export const canTransactHere=()=>true;export const transactionOrigin=location.origin;`}));
+ await page.route('**/assets/js/services/site-config.js*',route=>route.fulfill({contentType:'application/javascript',body:`export const isProduction=()=>true;export const sdkUrl='/assets/vendor/supabase-2.116.0.js';export const canonicalOrigin=location.origin;export const canTransactHere=()=>true;export const transactionOrigin=location.origin;`}));
  await page.addInitScript(()=>{
   localStorage.setItem('sb-fixture-auth-token','fixture');
   window.authDatabaseCalls=0;
@@ -21,7 +21,7 @@ for(const width of [320,390,1440]){
  });
  for(const path of ['index.html#services','pc-repair-pretoria.html','pc-upgrades-pretoria.html','pc-performance-optimisation.html','virus-malware-removal-pretoria.html','windows-installation-pretoria.html','streaming-setup-south-africa.html']){
   await page.goto('http://127.0.0.1:4173/'+path);
-  await page.locator('#vtNotifyButton').waitFor();
+  await page.locator('#vtNotifyButton').waitFor({timeout:5000}).catch(async error=>{console.log('NOTIFICATION DEBUG',path,errors,await page.evaluate(()=>({config:!!window.VOLTTECH_SUPABASE,sdk:!!window.supabase,auth:!!window.volttechAuth,boot:window.__voltTechNotificationsV5,scripts:[...document.scripts].map(s=>s.src).filter(s=>s.includes('notification')),keys:Object.keys(localStorage)})));throw error;});
   assert.equal(await page.locator('.retail-category-nav').count(),0,'Store category navigation is absent outside Store');
   assert.equal(await page.locator('[data-theme-toggle]').count(),1,'one stable theme control');
   assert.equal(await page.locator('[data-notifications-host]').count(),1);

@@ -1,5 +1,5 @@
 import { connectAccount, connectCart, connectProductionServices, readLaunchSettings } from './home-integrations.js?v=20261021';
-import { isProduction, productionOrigins, sdkUrl } from './site-config.js';
+import { isProduction, productionOrigins, sdkUrl } from './site-config.js?v=20261021';
 
 const base = new URL('../../../', import.meta.url);
 let clientPromise;

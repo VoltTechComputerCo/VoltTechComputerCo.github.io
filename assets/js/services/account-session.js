@@ -1,4 +1,4 @@
-import { isProduction, sdkUrl } from './site-config.js';
+import { isProduction, sdkUrl } from './site-config.js?v=20261021';
 
 const canonicalAccountOrigin = 'https://volttechcomputerco.co.za';
 const legacyPreviewHost = 'volttechcomputerco.github.io';
