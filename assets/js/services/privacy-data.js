@@ -1,4 +1,4 @@
-import { getAccountClient, loadAccountNotifications } from './account-session.js';
+import { getAccountClient, loadAccountNotifications } from './account-session.js?v=20261021.2';
 
 const safe = async (name, promise) => {
   try {

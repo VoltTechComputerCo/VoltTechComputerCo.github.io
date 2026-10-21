@@ -1,4 +1,4 @@
-import { getAccountClient } from './account-session.js';
+import { getAccountClient } from './account-session.js?v=20261021.2';
 
 const SUPABASE_URL = 'https://qdqhfnvwqvgesfdmocir.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_f6rl6o43iQcwlSGDh9kqWw_mrHlxcN1';

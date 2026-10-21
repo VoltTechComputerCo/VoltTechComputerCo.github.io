@@ -1,4 +1,4 @@
-import { loadCreatorDirectory, creatorFeedAgeLabel } from '../services/creator-feed.js';
+import { loadCreatorDirectory, creatorFeedAgeLabel } from '../services/creator-feed.js?v=20261021.2';
 
 const q = selector => document.querySelector(selector);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;' }[char]));

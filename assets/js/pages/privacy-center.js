@@ -1,5 +1,5 @@
-import { isAccountInspection } from '../services/account-session.js';
-import { requirePrivacyCustomer, loadDeletionRequest, requestAccountDeletion, cancelAccountDeletion, collectPersonalData } from '../services/privacy-data.js';
+import { isAccountInspection } from '../services/account-session.js?v=20261021.2';
+import { requirePrivacyCustomer, loadDeletionRequest, requestAccountDeletion, cancelAccountDeletion, collectPersonalData } from '../services/privacy-data.js?v=20261021.2';
 
 const q=selector=>document.querySelector(selector);let client=null,user=null,request=null,pendingAction='';
 function status(message='',type=''){const el=q('#privacyStatus');el.textContent=message;el.dataset.type=type}

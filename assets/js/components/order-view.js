@@ -1,4 +1,4 @@
-import { esc } from './catalogue-view.js?v=20261013-store';
+import { esc } from './catalogue-view.js?v=20261021.2';
 export function money(value, fallback='To be confirmed') {
   return value !== null && value !== undefined && value !== '' && Number.isFinite(Number(value)) && Number(value)>=0 ? new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR',minimumFractionDigits:2}).format(Number(value)) : fallback;
 }

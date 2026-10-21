@@ -1,5 +1,5 @@
-import { productImageUrl } from '../services/product-images.js?v=20261014-images';
-import { esc, safeLink, imageMarkup, imagePlaceholder } from './catalogue-view.js?v=20261014-images';
+import { productImageUrl } from '../services/product-images.js?v=20261021.2';
+import { esc, safeLink, imageMarkup, imagePlaceholder } from './catalogue-view.js?v=20261021.2';
 export function galleryImages(product){
  if(product.metadata?.media_review_required)return [];
  const media=product.media||{};

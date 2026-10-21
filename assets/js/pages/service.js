@@ -1,5 +1,5 @@
-import { connectCart, connectProductionServices } from '../services/home-integrations.js?v=20261021';
-import { syncServiceContact, trackServiceClick } from '../services/service-contact.js';
+import { connectCart, connectProductionServices } from '../services/home-integrations.js?v=20261021.2';
+import { syncServiceContact, trackServiceClick } from '../services/service-contact.js?v=20261021.2';
 
 const root=document.querySelector('[data-service-key]');
 const rail=document.getElementById('symptomRail');

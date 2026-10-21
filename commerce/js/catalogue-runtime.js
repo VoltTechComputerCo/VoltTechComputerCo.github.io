@@ -36,7 +36,7 @@ function listingProduct(row){return {...row,media:row.media||{primaryImage:row.p
 async function loadStore(launchSettings){
  const snapshot=window.__vtPublicCatalogueSnapshot;
  if(snapshot&&snapshot.schemaVersion===1&&Array.isArray(snapshot.products)&&Date.now()-Date.parse(snapshot.generatedAt)<45*60000){
-  return {settings:launchSettings||snapshot.settings,categories:snapshot.categories||[],products:snapshot.products.map(listingProduct)};
+  return {source:'snapshot',settings:launchSettings||snapshot.settings,categories:snapshot.categories||[],products:snapshot.products.map(listingProduct)};
  }
  const client=getCatalogueClient(),batch=1000;
  const page=(from,count=false)=>client.from('store_products').select(LISTING_FIELDS,count?{count:'exact'}:undefined).eq('status','active').eq('visibility','public').neq('sale_mode','hidden').order('sort_priority',{ascending:false}).order('featured',{ascending:false}).order('name').order('id').range(from,from+batch-1);

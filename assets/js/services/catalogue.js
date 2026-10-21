@@ -1,6 +1,6 @@
-import { readPublicCatalogue } from './public-catalogue.js?v=20261021';
-import { readLaunchSettings, connectCart, connectAccount, connectProductionServices, loadScript } from './home-integrations.js?v=20261021';
-import { isProduction, sdkUrl } from './site-config.js?v=20261021';
+import { readPublicCatalogue } from './public-catalogue.js?v=20261021.2';
+import { readLaunchSettings, connectCart, connectAccount, connectProductionServices, loadScript } from './home-integrations.js?v=20261021.2';
+import { isProduction, sdkUrl } from './site-config.js?v=20261021.2';
 const base = new URL('../../../', import.meta.url);
 let ready;
 export async function withTimeout(promise, ms = 10000) {

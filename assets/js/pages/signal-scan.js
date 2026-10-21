@@ -1,5 +1,5 @@
-import { connectCart, connectProductionServices } from '../services/home-integrations.js?v=20261021';
-import { readSignalJourney, saveSignalResult, trackSignalEvent } from '../services/signal-scan-handoff.js';
+import { connectCart, connectProductionServices } from '../services/home-integrations.js?v=20261021.2';
+import { readSignalJourney, saveSignalResult, trackSignalEvent } from '../services/signal-scan-handoff.js?v=20261021.2';
 import {
   ages,
   allowedSources,
@@ -16,7 +16,7 @@ import {
   sourceInfo,
   urgencyScore,
   uses
-} from '../services/signal-scan-model.js';
+} from '../services/signal-scan-model.js?v=20261021.2';
 
 connectProductionServices();
 connectCart();

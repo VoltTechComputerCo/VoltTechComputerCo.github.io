@@ -1,5 +1,5 @@
-import { isAccountInspection } from '../services/account-session.js';
-import { requireCustomer, loadActivity, loadBuilds, deleteBuild, loadQuotes, customerQuoteAction, loadDocuments, money, money0, date, dateTime, buildRef, tone, isExpiredQuote, effectiveQuoteStatus, originLabel, sourceBuildLink } from '../services/customer-records.js';
+import { isAccountInspection } from '../services/account-session.js?v=20261021.2';
+import { requireCustomer, loadActivity, loadBuilds, deleteBuild, loadQuotes, customerQuoteAction, loadDocuments, money, money0, date, dateTime, buildRef, tone, isExpiredQuote, effectiveQuoteStatus, originLabel, sourceBuildLink } from '../services/customer-records.js?v=20261021.2';
 
 const q=s=>document.querySelector(s);const qa=s=>[...document.querySelectorAll(s)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));

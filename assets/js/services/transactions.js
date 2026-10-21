@@ -1,6 +1,6 @@
-import { getCommerceCore, withTimeout, publicProducts } from './catalogue.js';
-import { readLaunchSettings, connectCart } from './home-integrations.js?v=20261021';
-import { canTransactHere } from './site-config.js?v=20261021';
+import { getCommerceCore, withTimeout, publicProducts } from './catalogue.js?v=20261021.2';
+import { readLaunchSettings, connectCart } from './home-integrations.js?v=20261021.2';
+import { canTransactHere } from './site-config.js?v=20261021.2';
 export { getCommerceCore, withTimeout, readLaunchSettings, canTransactHere };
 export function checkoutCart(raw) {
   if (!Array.isArray(raw) || raw.length > 30) return null;

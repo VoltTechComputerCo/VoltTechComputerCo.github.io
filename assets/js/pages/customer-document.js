@@ -1,7 +1,7 @@
-import { paymentDestination, readLaunchSettings } from '../services/transactions.js';
-import { isAccountInspection } from '../services/account-session.js';
-import { requireDocumentCustomer,loadDocument,customerQuoteAction,money,money0,date,cap,safeFile,buildRef,orderRef,proformaRef,serviceRef,quoteExpired } from '../services/customer-documents.js';
-import { setDocumentPrintName, printDocument } from '../services/document-print.js';
+import { paymentDestination, readLaunchSettings } from '../services/transactions.js?v=20261021.2';
+import { isAccountInspection } from '../services/account-session.js?v=20261021.2';
+import { requireDocumentCustomer,loadDocument,customerQuoteAction,money,money0,date,cap,safeFile,buildRef,orderRef,proformaRef,serviceRef,quoteExpired } from '../services/customer-documents.js?v=20261021.2';
+import { setDocumentPrintName, printDocument } from '../services/document-print.js?v=20261021.2';
 
 const q=s=>document.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));

@@ -1,10 +1,10 @@
-import { connectCart, connectProductionServices } from '../services/home-integrations.js?v=20261021';
-import { readStreamJourney, saveStreamResult, trackStreamEvent } from '../services/stream-scan-handoff.js';
+import { connectCart, connectProductionServices } from '../services/home-integrations.js?v=20261021.2';
+import { readStreamJourney, saveStreamResult, trackStreamEvent } from '../services/stream-scan-handoff.js?v=20261021.2';
 import {
   connections, contextNote, createStreamAnswers, gpus, label, platforms,
   recommendationFor, resolutions, resultRows, setupTypes, streamQuestions,
   symptoms, uploads, urgencyScore
-} from '../services/stream-scan-model.js';
+} from '../services/stream-scan-model.js?v=20261021.2';
 
 connectProductionServices();
 connectCart();

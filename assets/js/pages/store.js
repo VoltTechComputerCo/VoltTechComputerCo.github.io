@@ -1,9 +1,9 @@
-import { updateDepartmentImages } from '../services/store-departments.js?v=20261014-images';
-import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261021-fast';
-import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261014-images';
-import { pageWindow, pageSize } from '../services/catalogue-pagination.js';
-import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261014-images';
-import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261014-images';
+import { updateDepartmentImages } from '../services/store-departments.js?v=20261021.2';
+import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261021.2';
+import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261021.2';
+import { pageWindow, pageSize } from '../services/catalogue-pagination.js?v=20261021.2';
+import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261021.2';
+import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261021.2';
 
 const query=new URLSearchParams(location.search);
 const landingHash=location.hash;
@@ -178,6 +178,8 @@ async function init(){
     document.getElementById('store-gate').hidden=true;
     document.getElementById('catalogue-loading')?.remove();
     document.getElementById('catalogue').hidden=false;
+    document.getElementById('catalogue').dataset.source=data.source||'live';
+    document.getElementById('catalogue').dataset.readyMs=String(Math.round(performance.now()));
     document.getElementById('store-state').textContent=preview?'ADMIN PREVIEW / STORE REMAINS LOCKED':`${products.length.toLocaleString('en-ZA')} products to explore`;
     document.getElementById('catalogue-preview').hidden=!preview;
     document.getElementById('store-hero-copy').textContent='PC parts, laptops and gear for work and play.';

@@ -1,5 +1,5 @@
-import { getAccountClient, loadAccountNotifications } from './account-session.js';
-import { collectPersonalData } from './privacy-data.js';
+import { getAccountClient, loadAccountNotifications } from './account-session.js?v=20261021.2';
+import { collectPersonalData } from './privacy-data.js?v=20261021.2';
 
 export const money=value=>new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR'}).format(Number(value||0));
 export const money0=value=>new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR',maximumFractionDigits:0}).format(Number(value||0));

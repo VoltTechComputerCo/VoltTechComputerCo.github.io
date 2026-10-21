@@ -1,4 +1,4 @@
-import { REQUIRED_CATEGORIES, getBestOffer } from '../../../builder/js/build-engine.js?v=0.7.9';
+import { REQUIRED_CATEGORIES, getBestOffer } from '../../../builder/js/build-engine.js?v=20261021.2';
 
 const VT_ACCOUNT_VERSION = '3.3.0';
 const PENDING_KEY = 'volttech-builder-account-pending-v3';

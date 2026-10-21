@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 const {chromium}=createRequire(import.meta.url)('playwright');
 const browser=await chromium.launch({headless:true,executablePath:process.env.VT_CHROMIUM_PATH});
 for(const width of [320,390,1440]){
- const page=await browser.newPage({viewport:{width,height:900}});
+ const page=await browser.newPage({serviceWorkers:'block',viewport:{width,height:900}});
  const errors=[];page.on('pageerror',e=>{errors.push(e.message);console.log('PAGE ERROR',e.message);});page.on('console',m=>{if(m.type()==='warning')console.log('PAGE WARNING',m.text());});
  await page.route('https://**/*',route=>route.abort());
  await page.route('**/assets/js/services/site-config.js*',route=>route.fulfill({contentType:'application/javascript',body:`export const isProduction=()=>true;export const sdkUrl='/assets/vendor/supabase-2.116.0.js';export const canonicalOrigin=location.origin;export const canTransactHere=()=>true;export const transactionOrigin=location.origin;`}));
@@ -37,7 +37,7 @@ for(const width of [320,390,1440]){
  }
  assert.deepEqual(errors,[]);
  await page.close();
- const store=await browser.newPage({viewport:{width,height:900}});
+ const store=await browser.newPage({serviceWorkers:'block',viewport:{width,height:900}});
  await store.route('https://**/*',route=>route.abort());
  await store.addInitScript(()=>{
   localStorage.setItem('sb-fixture-auth-token','fixture');

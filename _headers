@@ -2,3 +2,8 @@
   Cache-Control: public, max-age=60, stale-while-revalidate=120
 /assets/vendor/*
   Cache-Control: public, max-age=31536000, immutable
+
+/assets/js/*
+  Cache-Control: no-cache
+/commerce/js/*
+  Cache-Control: no-cache

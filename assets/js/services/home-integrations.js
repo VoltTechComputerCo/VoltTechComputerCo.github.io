@@ -1,4 +1,4 @@
-import { isProduction, sdkUrl } from './site-config.js?v=20261021';
+import { isProduction, sdkUrl } from './site-config.js?v=20261021.2';
 const base = new URL('../../../', import.meta.url);
 const cartKey = 'vt_store_quote_cart_v1';
 
