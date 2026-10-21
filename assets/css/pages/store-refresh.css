@@ -1,0 +1,85 @@
+
+/* A category-first storefront. Scoped to the Store so the shared home cards stay intact. */
+html body[data-page=store] #main-content .shop-intro{display:flex;justify-content:space-between;gap:24px;padding-block:24px 20px;align-items:center}
+html body[data-page=store] #main-content .shop-intro h1{font-size:clamp(26px,3vw,42px);font-style:normal;line-height:1.15;margin:8px 0;letter-spacing:-.045em;text-transform:none}
+html body[data-page=store] #main-content .shop-intro .commerce-crumbs,html body[data-page=store] #main-content .shop-intro .eyebrow{display:none}
+html body[data-page=store] #main-content .shop-intro #store-hero-copy{font-size:15px;margin:0;max-width:none}
+html body[data-page=store] #main-content #store-state{display:block;font-size:11px;margin:6px 0 0;color:var(--text-secondary)}
+html body[data-page=store] #main-content .store-entry-actions{display:flex;align-items:center;gap:22px;flex-shrink:0}
+html body[data-page=store] #main-content .store-entry-actions .button{border-radius:8px}
+html body[data-page=store] #main-content .store-departments{padding:20px 24px 24px;border:1px solid var(--border-strong);border-radius:16px;background:var(--surface);scroll-margin-top:120px}
+html body[data-page=store] #main-content .store-departments>.department-heading{display:flex;margin-bottom:16px;gap:12px;align-items:center;flex-direction:row}
+html body[data-page=store] #main-content .department-heading h2{font-size:26px;margin:0;letter-spacing:-.035em;font-style:normal;text-transform:none}
+html body[data-page=store] #main-content .department-heading .eyebrow{display:none}
+html body[data-page=store] #main-content .department-heading>a{display:block;font-size:13px;white-space:nowrap}
+html body[data-page=store] #main-content .store-department-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:18px;border-bottom:1px solid var(--border);padding-bottom:14px}
+html body[data-page=store] #main-content .store-department-tabs a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-size:14px;font-weight:600;text-decoration:none;line-height:1.35}
+html body[data-page=store] #main-content .store-department-tabs a:hover{border-color:var(--teal);color:var(--teal)}
+html body[data-page=store] #main-content .store-department-tabs a[aria-current]{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 3px 10px #008b831a}
+html body[data-page=store] #main-content .store-department-tabs a:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+html body[data-page=store] #main-content .retail-departments-content{padding:0}
+html body[data-page=store] #main-content .department-group{margin:0;scroll-margin-top:120px}
+html body[data-page=store] #main-content .department-group-heading{display:none}
+html body[data-page=store] #main-content .department-grid,html body[data-page=store] #main-content #laptops .department-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+html body[data-page=store] #main-content .department-card{flex-direction:row;align-items:center;border-radius:10px;min-height:90px;box-shadow:none;background:var(--bg);border:1px solid var(--border)}
+html body[data-page=store] #main-content .department-card:hover{transform:translateY(-2px);background:var(--surface)}
+html body[data-page=store] #main-content .department-card[aria-current]{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+html body[data-page=store] #main-content .department-image{aspect-ratio:1;flex:0 0 66px;width:66px;height:66px;min-height:0;padding:8px;margin:8px 0 8px 8px;border-radius:7px}
+html body[data-page=store] #main-content .department-image img{max-height:100%;height:100%;width:100%;object-fit:contain}
+html body[data-page=store] #main-content .department-copy{border:0;padding:10px;min-width:0}
+html body[data-page=store] #main-content .department-copy h3{font-size:13px;line-height:1.4;margin:0;font-weight:600;letter-spacing:0;text-transform:none}
+html body[data-page=store] #main-content .department-copy h3 span,html body[data-page=store] #main-content .department-copy p,html body[data-page=store] #main-content .department-stock{display:none}
+html body[data-page=store] #main-content .department-card-symbol .department-image{background:linear-gradient(140deg,#0b343b,#007f79);color:#7effe6;font:500 34px/1 var(--font-ui)}
+html body[data-page=store] #main-content .shop-category-bar{margin-top:20px;padding-block:12px;gap:10px;position:sticky;top:0;z-index:35;background:var(--bg);border-color:var(--border)}
+html body[data-page=store] #main-content .shop-category-bar>a,html body[data-page=store] #main-content .shop-category-bar>button,html body[data-page=store] #main-content .shop-category-menu>summary{font-size:13px;min-height:44px;border-radius:8px;display:flex;align-items:center}
+html body[data-page=store] #main-content .shop-category-bar>.browse-category-return{display:flex;margin-left:auto}
+html body[data-page=store] #main-content .shop-category-menu>div{max-width:calc(100vw - 48px)}
+html body[data-page=store] #main-content .store-catalogue-wrap{padding-block:24px}
+html body[data-page=store] #main-content .store-catalogue-wrap>.section-heading{margin-bottom:16px}
+html body[data-page=store] #main-content .store-catalogue-wrap>.section-heading .eyebrow{display:none}
+html body[data-page=store] #main-content #category-name{font-size:30px;letter-spacing:-.035em;font-style:normal;text-transform:none}
+html body[data-page=store] #main-content .catalogue-toolbar{background:var(--surface);border-radius:12px;padding:16px;grid-template-columns:minmax(0,1fr) 220px;gap:16px}
+html body[data-page=store] #main-content .smart-filter-shell{border-radius:10px;background:var(--surface);box-shadow:none}
+html body[data-page=store] #main-content .smart-filter-heading{display:none}
+html body[data-page=store] #main-content .catalogue-card{border-radius:12px;overflow:hidden;transition:border-color .15s,box-shadow .15s}
+html body[data-page=store] #main-content .catalogue-card:hover{border-color:var(--teal);box-shadow:0 5px 18px #007f790d}
+html body[data-page=store] #main-content .catalogue-card h3{font-size:15px;line-height:1.5;font-style:normal;text-transform:none}
+html body[data-page=store] #main-content .shop-featured{padding-block:24px}
+@media(max-width:1100px){
+html body[data-page=store] #main-content .department-grid,html body[data-page=store] #main-content #laptops .department-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+html body[data-page=store] #main-content .department-card{flex-direction:column;min-height:0;text-align:center}
+html body[data-page=store] #main-content .department-image{margin:8px 0 0;width:100%;height:66px;flex-basis:auto;aspect-ratio:auto}
+html body[data-page=store] #main-content .department-copy{padding:8px}
+html body[data-page=store] #main-content .department-copy h3{justify-content:center;font-size:12px}
+}
+@media(max-width:700px){
+html body[data-page=store] #main-content .shop-intro{display:block;padding-block:18px}
+html body[data-page=store] #main-content .shop-intro h1{font-size:28px;margin:0 0 8px}
+html body[data-page=store] #main-content .shop-intro h1 span{display:block}
+html body[data-page=store] #main-content .shop-intro #store-hero-copy{font-size:13px;line-height:1.5}
+html body[data-page=store] #main-content .store-entry-actions{display:none}
+html body[data-page=store] #main-content #store-state{font-size:10px}
+html body[data-page=store] #main-content .store-departments{padding:16px 12px;border-radius:12px}
+html body[data-page=store] #main-content .store-departments>.department-heading{display:flex;gap:6px;margin-bottom:14px}
+html body[data-page=store] #main-content .department-heading h2{font-size:22px}
+html body[data-page=store] #main-content .department-heading>a{display:none}
+html body[data-page=store] #main-content .store-department-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-bottom:12px;padding-bottom:12px}
+html body[data-page=store] #main-content .store-department-tabs a{padding:8px 6px;font-size:12px;min-height:44px}
+html body[data-page=store] #main-content .department-grid,html body[data-page=store] #main-content #laptops .department-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+html body[data-page=store] #main-content .department-image{height:58px;padding:6px;margin:6px 0 0}
+html body[data-page=store] #main-content .department-copy{padding:6px;min-height:39px;display:flex;align-items:center;justify-content:center}
+html body[data-page=store] #main-content .department-copy h3{font-size:11px;line-height:1.3}
+html body[data-page=store] #main-content .department-group{margin:0}
+html body[data-page=store] #main-content .shop-category-bar{gap:6px;margin-top:14px;padding-block:8px;flex-wrap:nowrap}
+html body[data-page=store] #main-content .shop-category-bar>.browse-category-return{display:flex;margin-left:auto;padding:8px;font-size:11px}
+html body[data-page=store] #main-content .shop-category-bar>a:not(.browse-category-return){display:none}
+html body[data-page=store] #main-content .shop-category-menu>summary{min-width:0;padding:8px;font-size:11px}
+html body[data-page=store] #main-content .shop-category-bar>button{padding:8px;font-size:12px}
+html body[data-page=store] #main-content .shop-category-menu>div{min-width:240px}
+html body[data-page=store] #main-content .store-catalogue-wrap{padding-block:20px}
+html body[data-page=store] #main-content #category-name{font-size:25px}
+html body[data-page=store] #main-content .catalogue-toolbar{display:contents}
+html body[data-page=store] #main-content .catalogue-card h3{font-size:12px;line-height:1.5}
+html body[data-page=store] #main-content .catalogue-card .catalogue-price strong{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){.department-card,.catalogue-card{transition:none}}

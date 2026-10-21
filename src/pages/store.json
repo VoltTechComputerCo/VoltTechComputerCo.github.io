@@ -1,6 +1,6 @@
 {
   "output": "store.html",
-  "title": "PC Components & Upgrade Advice South Africa | VoltTech",
+  "title": "PC Parts, Laptops & Gaming Gear | VoltTech Store",
   "description": "Browse PC components from VoltTech Computer Co. Add parts to your cart and submit an order request. Stock, final pricing and delivery are confirmed before payment.",
   "robots": "index, follow",
   "styles": [
@@ -8,13 +8,14 @@
     "assets/css/pages/commerce.css?v=20261014-merch",
     "assets/css/store-filters.css?v=1.2.0",
     "assets/css/pages/shop.css?v=20261014-merch",
-    "assets/css/pages/departments.css?v=20261014-merch"
+    "assets/css/pages/departments.css?v=20261014-merch",
+    "assets/css/pages/store-refresh.css?v=20261021"
   ],
   "classic_scripts": [
     "supabase-config.js",
     "conversion-context.js"
   ],
   "scripts": [
-    "assets/js/pages/store.js?v=20261014-retail1"
+    "assets/js/pages/store.js?v=20261021-navigation"
   ]
 }

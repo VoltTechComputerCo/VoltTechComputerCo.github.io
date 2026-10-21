@@ -38,6 +38,7 @@ function selectCategory(){
     if(a.dataset.categoryLink===state.category) a.setAttribute('aria-current','page');
     else a.removeAttribute('aria-current');
   });
+  document.querySelectorAll('.department-card').forEach(card=>{const url=new URL(card.href);const active=card.dataset.category===state.category&&(!url.searchParams.has('laptopPurpose')||url.searchParams.get('laptopPurpose')===state.filters.laptopPurpose);if(active)card.setAttribute('aria-current','page');else card.removeAttribute('aria-current');});
   document.getElementById('category-name').textContent=state.category==='all' ? 'Shop all products' : categoryLabel();
   const contact=document.getElementById('category-enquiry');
   contact.href=`https://wa.me/27618435775?text=${encodeURIComponent('Hi VoltTech, I would like help choosing '+(state.category==='all'?'PC components':categoryLabel().toLowerCase())+' for my setup.')}`;
@@ -127,6 +128,24 @@ function bindFilterUI(products,render){
   });
 }
 
+const groupLinks=[...document.querySelectorAll('[data-department-group]')];
+const departmentGroups=[...document.querySelectorAll('.department-group')];
+function showDepartmentGroup(id){
+  departmentGroups.forEach(group=>{group.hidden=group.id!==id;});
+  groupLinks.forEach(link=>{
+    const active=link.dataset.departmentGroup===id;
+    if(active)link.setAttribute('aria-current','true');else link.removeAttribute('aria-current');
+  });
+}
+const currentCard=[...document.querySelectorAll('.department-card')].find(card=>card.dataset.category===state.category);
+showDepartmentGroup(departmentGroups.some(group=>'#'+group.id===landingHash)?landingHash.slice(1):currentCard?.closest('.department-group').id||'pc-components');
+groupLinks.forEach(link=>link.addEventListener('click',event=>{event.preventDefault();showDepartmentGroup(link.dataset.departmentGroup);}));
+// Header shortcuts should open their matching group even when it is currently hidden.
+document.querySelectorAll('a[href*="#gaming-streaming"],a[href*="#laptops"],a[href*="#pc-components"],a[href*="#desk-essentials"]').forEach(link=>{
+  if(link.hasAttribute('data-department-group'))return;
+  link.addEventListener('click',event=>{const id=new URL(link.href).hash.slice(1);if(!departmentGroups.some(group=>group.id===id))return;event.preventDefault();showDepartmentGroup(id);document.getElementById('departments').scrollIntoView({block:'start'});});
+});
+
 if(matchMedia('(max-width:700px)').matches) document.querySelector('.smart-filter-shell').open=false;
 selectCategory();
 document.addEventListener('pointerdown',e=>document.querySelectorAll('.smart-filter[open],.shop-category-menu[open]').forEach(d=>{if(!d.contains(e.target))d.open=false;}));
@@ -141,16 +160,16 @@ async function init(){
     if(data.settings?.catalogue_enabled!==true && !preview){ showGate({reason:'closed'}); return; }
     const products=publicProducts(data.products,preview);
     updateDepartmentImages(products);
-    document.getElementById('departments').hidden=!!query.get('category')||!!query.get('q');
+
     const core=new Set(['gpu','cpu','motherboard','memory','storage','psu','case','cooler']);
     const featured=products.filter(p=>core.has(p.category_slug||p.type) && p.featured && Number(p.stock_qty)>0);
     const picks=(featured.length ? featured : filterProducts(products.filter(p=>core.has(p.category_slug||p.type)),{category:'all',filters:{},sort:'featured'})).slice(0,4);
     const featuredGrid=document.getElementById('featured-grid');
-    document.getElementById('departments').before(document.getElementById('shop-featured'));
+
     document.getElementById('shop-featured').hidden=!picks.length || !!query.get('category') || !!query.get('q');
     document.getElementById('featured-heading').textContent=featured.length ? 'Featured upgrades' : 'Explore the catalogue';
     const weekly=products.filter(p=>p.metadata?.compare_at_verified===true&&Number(p.compare_at_price)>Number(p.retail_price)&&Number(p.stock_qty)>0&&Date.parse(p.metadata?.deal_ends_at)>Date.now());
-    if(weekly.length){const section=document.createElement('section');section.className='container shop-featured';section.id='weekly-specials';section.innerHTML='<div class="section-heading"><div><p class="eyebrow">LIMITED-TIME OFFERS</p><h2>This week’s specials</h2><p>Ends Sunday, 18 October at 23:59 SAST. While supplier stock lasts.</p></div></div><div class="catalogue-grid"></div>';const host=section.querySelector('.catalogue-grid');host.innerHTML=weekly.map(p=>productCard(VT,p,preview)).join('');document.querySelector('.shop-intro').after(section);bindImages(host);host.addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(b)addItem(VT,products.find(p=>p.id===b.dataset.add),preview);});}
+    if(weekly.length){const section=document.createElement('section');section.className='container shop-featured';section.id='weekly-specials';section.innerHTML='<div class="section-heading"><div><p class="eyebrow">LIMITED-TIME OFFERS</p><h2>This week’s specials</h2><p>Limited offers, subject to availability. See each product for its offer end date.</p></div></div><div class="catalogue-grid"></div>';const host=section.querySelector('.catalogue-grid');host.innerHTML=weekly.map(p=>productCard(VT,p,preview)).join('');document.querySelector('.store-catalogue-wrap').after(section);bindImages(host);host.addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(b)addItem(VT,products.find(p=>p.id===b.dataset.add),preview);});}
     featuredGrid.innerHTML=picks.map(p=>productCard(VT,p,preview)).join('');
     bindImages(featuredGrid);
     featuredGrid.addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(b)addItem(VT,products.find(p=>p.id===b.dataset.add),preview);});
@@ -158,9 +177,9 @@ async function init(){
 
     document.getElementById('store-gate').hidden=true;
     document.getElementById('catalogue').hidden=false;
-    document.getElementById('store-state').textContent=preview?'ADMIN PREVIEW / STORE REMAINS LOCKED':'COMPONENT CATALOGUE';
+    document.getElementById('store-state').textContent=preview?'ADMIN PREVIEW / STORE REMAINS LOCKED':`${products.length.toLocaleString('en-ZA')} products to explore`;
     document.getElementById('catalogue-preview').hidden=!preview;
-    document.getElementById('store-hero-copy').textContent='Compare PC components, laptops and gaming peripherals. Filter by brand, price and specifications.';
+    document.getElementById('store-hero-copy').textContent='PC parts, laptops and gear for work and play.';
     search.value=state.search;
     sort.value=state.sort;
     pruneFilters(products);
@@ -197,12 +216,20 @@ async function init(){
       state.category='all'; state.filters={}; state.search=''; state.sort='featured'; state.page=1;
       search.value=''; sort.value='featured'; selectCategory(); render(); search.focus();
     });
-    document.querySelector('[data-category-link="all"]')?.addEventListener('click',event=>{
-      event.preventDefault(); state.category='all'; state.filters={}; state.page=1; selectCategory(); render(); document.getElementById('catalogue').scrollIntoView({block:'start'});
-    });
+    document.querySelectorAll('[data-category-link],.department-card').forEach(link=>link.addEventListener('click',event=>{
+      if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+      event.preventDefault();
+      const url=new URL(link.href);
+      state.category=url.searchParams.get('category')||'all';state.filters={};state.search='';state.page=1;
+      FILTER_KEYS.forEach(key=>{if(url.searchParams.has(key))state.filters[key]=url.searchParams.get(key);});
+      search.value='';
+      const card=[...document.querySelectorAll('.department-card')].find(card=>card.dataset.category===state.category);
+      if(card)showDepartmentGroup(card.closest('.department-group').id);
+      document.querySelector('.shop-category-menu').open=false;
+      selectCategory();render();
+      document.getElementById('catalogue').scrollIntoView({block:'start'});
+    }));
 
-    categories.filter(a=>a.dataset.categoryLink!=='all').forEach(a=>{a.href=`store.html?category=${encodeURIComponent(a.dataset.categoryLink)}#catalogue`;});
-    document.querySelectorAll('.shop-category-menu a').forEach(a=>a.addEventListener('click',()=>a.closest('details').open=false));
     filterHost?.addEventListener('toggle',e=>{if(e.target.open)filterHost.querySelectorAll('details').forEach(d=>{if(d!==e.target)d.open=false;});},true);
     bindFilterUI(products,render);
     render();

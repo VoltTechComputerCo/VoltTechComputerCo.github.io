@@ -30,6 +30,7 @@ jobs:
           python3 -m http.server 4173 > /tmp/theme-http.log 2>&1 &
           node scripts/test-theme-browser.mjs
           node scripts/test-store-selection-browser.mjs
+          node scripts/test-store-navigation-browser.mjs
           node scripts/test-theme-polish.mjs
           node scripts/test-product-gallery-browser.mjs
           node scripts/test-expanded-store-browser.mjs
