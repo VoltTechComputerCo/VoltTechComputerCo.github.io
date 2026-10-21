@@ -18,7 +18,7 @@ for(const width of [320,360,390,430,768,896]){
   const box=await menu.boundingBox();
   assert.ok(box.x>=0&&box.x+box.width<=width,'entire menu is within viewport at '+width+' '+theme+' '+JSON.stringify(box));
   assert.ok(box.y>=0&&box.y+box.height<=height+1,'menu height fits viewport');
-  for(const link of await menu.locator('a').all()){
+  for(const link of await menu.locator('a:visible').all()){
    const b=await link.boundingBox();
    assert.ok(b.x>=box.x&&b.x+b.width<=box.x+box.width+1,'every menu tile is horizontally accessible');
   }
