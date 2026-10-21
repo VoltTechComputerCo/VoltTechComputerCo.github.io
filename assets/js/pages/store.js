@@ -30,7 +30,7 @@ const filterHost=document.getElementById('catalogue-smart-filters');
 const chipHost=document.getElementById('active-filter-chips');
 
 function categoryLabel(){
-  return categories.find(a=>a.dataset.categoryLink===state.category)?.dataset.label || 'All components';
+  return categories.find(a=>a.dataset.categoryLink===state.category)?.dataset.label || 'All products';
 }
 
 function selectCategory(){
@@ -216,7 +216,7 @@ async function init(){
       state.category='all'; state.filters={}; state.search=''; state.sort='featured'; state.page=1;
       search.value=''; sort.value='featured'; selectCategory(); render(); search.focus();
     });
-    document.querySelectorAll('[data-category-link],.department-card').forEach(link=>link.addEventListener('click',event=>{
+    document.querySelectorAll('[data-category-link],.department-card,[data-store-all]').forEach(link=>link.addEventListener('click',event=>{
       if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
       event.preventDefault();
       const url=new URL(link.href);

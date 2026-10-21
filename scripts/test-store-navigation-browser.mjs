@@ -37,6 +37,8 @@ for(const width of [320,390,1440]){
  await page.locator('[data-department-group=desk-essentials]').click();
  await page.locator('#desk-essentials [data-category=cables]').click();
  assert.match(await page.locator('#product-grid').innerText(),/HDMI cable/);
+ await page.locator('.shop-category-bar [data-store-all]').click();
+ assert.equal(await page.locator('#product-grid .catalogue-card').count(),3,'All products clears the category');
  assert.equal(await page.evaluate(()=>window.catalogueLoads),1,'category switching does not reload catalogue');
  await page.locator('#catalogue-search').fill('missing item');
  assert.equal(await page.locator('#product-grid .catalogue-card').count(),0);
