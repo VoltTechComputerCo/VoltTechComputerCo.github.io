@@ -7,3 +7,6 @@
   Cache-Control: no-cache
 /commerce/js/*
   Cache-Control: no-cache
+
+/notifications.js
+  Cache-Control: no-cache

@@ -92,7 +92,7 @@ async function initialiseAccount(config) {
     const { data } = await client.auth.getSession();
     update(data.session);
     client.auth.onAuthStateChange((_event, session) => update(session));
-    await loadScript('notifications.js?v=20261021-shell');
+    await loadScript('notifications.js?v=20261021.2');
   } catch(error) { console.warn('VoltTech account controls:',error?.message||String(error)); }
 }
 
