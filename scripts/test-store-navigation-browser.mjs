@@ -21,6 +21,15 @@ for(const width of [320,390,1440]){
  assert.ok((await page.locator('.department-heading').boundingBox()).y<350,'category heading is immediately visible');
  assert.ok(await page.locator('.department-card[data-category=gpu]').isVisible());
  assert.equal(await page.locator('.store-department-tabs a').count(),4);
+ for(const card of await page.locator('.department-group:not([hidden]) .department-card').all()){
+  const box=await card.locator('.department-image').boundingBox();
+  const label=await card.locator('h3').boundingBox();
+  if(width<=1100)assert.ok(label.y>=box.y+box.height,'category labels stay below image');
+  if(await card.locator('img').count()){
+   const image=await card.locator('img').boundingBox();
+   assert.ok(image.y>=box.y&&image.y+image.height<=box.y+box.height+1,'image stays inside thumbnail');
+  }
+ }
  for(const theme of ['light','dark']){
   await page.evaluate(theme=>document.documentElement.dataset.theme=theme,theme);
   await page.screenshot({path:`qa-results/theme/store-navigation-${width}-${theme}.png`,fullPage:true});

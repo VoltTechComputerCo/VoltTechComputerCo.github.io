@@ -9,7 +9,7 @@
     "assets/css/store-filters.css?v=1.2.0",
     "assets/css/pages/shop.css?v=20261014-merch",
     "assets/css/pages/departments.css?v=20261014-merch",
-    "assets/css/pages/store-refresh.css?v=20261021-polish"
+    "assets/css/pages/store-refresh.css?v=20261021-images"
   ],
   "classic_scripts": [
     "supabase-config.js",

@@ -21,11 +21,11 @@ html body[data-page=store] #main-content .retail-departments-content{padding:0}
 html body[data-page=store] #main-content .department-group{margin:0;scroll-margin-top:120px}
 html body[data-page=store] #main-content .department-group-heading{display:none}
 html body[data-page=store] #main-content .department-grid,html body[data-page=store] #main-content #laptops .department-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-html body[data-page=store] #main-content .department-card{flex-direction:row;align-items:center;border-radius:10px;min-height:80px;box-shadow:none;background:var(--bg);border:1px solid var(--border)}
+html body[data-page=store] #main-content .department-card{flex-direction:row;align-items:center;border-radius:10px;min-height:80px;box-shadow:none;background:var(--bg);border:1px solid var(--retail-line)}
 html body[data-page=store] #main-content .department-card:hover{transform:translateY(-2px);background:var(--surface)}
 html body[data-page=store] #main-content .department-card[aria-current]{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
-html body[data-page=store] #main-content .department-image{aspect-ratio:1;flex:0 0 58px;width:58px;height:58px;min-height:0;padding:8px;margin:8px 0 8px 8px;border-radius:7px}
-html body[data-page=store] #main-content .department-image img{max-height:100%;height:100%;width:100%;object-fit:contain}
+html body[data-page=store] #main-content .department-image{aspect-ratio:1;flex:0 0 58px;width:58px;height:58px;min-height:0;padding:8px;margin:8px 0 8px 8px;border-radius:7px;position:relative;overflow:hidden;flex-shrink:0}
+html body[data-page=store] #main-content .department-image img{position:absolute;inset:6px;width:calc(100% - 12px);height:calc(100% - 12px);max-height:calc(100% - 12px);max-width:calc(100% - 12px);object-fit:contain}
 html body[data-page=store] #main-content .department-copy{border:0;padding:10px;min-width:0}
 html body[data-page=store] #main-content .department-copy h3{font-size:13px;line-height:1.4;margin:0;font-weight:600;letter-spacing:0;text-transform:none}
 html body[data-page=store] #main-content .department-copy h3 span,html body[data-page=store] #main-content .department-copy p,html body[data-page=store] #main-content .department-stock{display:none}
@@ -66,8 +66,8 @@ html body[data-page=store] #main-content .department-heading>a{display:none}
 html body[data-page=store] #main-content .store-department-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-bottom:12px;padding-bottom:12px}
 html body[data-page=store] #main-content .store-department-tabs a{padding:8px 6px;font-size:12px;min-height:44px}
 html body[data-page=store] #main-content .department-grid,html body[data-page=store] #main-content #laptops .department-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
-html body[data-page=store] #main-content .department-image{height:58px;padding:6px;margin:6px 0 0}
-html body[data-page=store] #main-content .department-copy{padding:6px;min-height:39px;display:flex;align-items:center;justify-content:center}
+html body[data-page=store] #main-content .department-image{height:44px;padding:6px;margin:6px 0 0;flex-basis:44px}
+html body[data-page=store] #main-content .department-copy{padding:6px;min-height:34px;display:flex;align-items:center;justify-content:center}
 html body[data-page=store] #main-content .department-copy h3{font-size:11px;line-height:1.3}
 html body[data-page=store] #main-content .department-group{margin:0}
 html body[data-page=store] #main-content .shop-category-bar{gap:6px;margin-top:14px;padding-block:8px;flex-wrap:nowrap}
@@ -83,3 +83,5 @@ html body[data-page=store] #main-content .catalogue-card h3{font-size:12px;line-
 html body[data-page=store] #main-content .catalogue-card .catalogue-price strong{font-size:16px}
 }
 @media(prefers-reduced-motion:reduce){.department-card,.catalogue-card{transition:none}}
+
+html[data-theme=dark] body[data-page=store] #main-content .store-department-tabs a[aria-current]{color:#052a2c}
