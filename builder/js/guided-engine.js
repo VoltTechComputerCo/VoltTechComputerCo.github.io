@@ -360,7 +360,7 @@ function rebalanceIfOverBudget(catalogue,initial,profile,budget,optimizer){
     let choice=cheaper.find(x=>currentPrice-x.price>=gap) || cheaper.at(-1);
     if(!choice)continue;
 
-    build=selectProduct(build,choice.p);
+    build=selectProduct(withoutCategory(build,type),choice.p);
     const saving=currentPrice-choice.price;
     total-=saving;
     optimizer.applied.push({

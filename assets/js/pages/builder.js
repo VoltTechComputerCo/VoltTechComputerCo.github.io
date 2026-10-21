@@ -1,7 +1,7 @@
 import { builderAccess } from '../services/builder-access.js?v=20261021.3';
 import { installBuilderDialog } from '../components/builder-dialog.js?v=20261021.3';
 import { enhanceBuilderExperience } from './builder-experience.js?v=20261021.3';
-import { applyBuilderHandoff } from '../services/builder-handoff.js?v=20261022.3';
+import { applyBuilderHandoff } from '../services/builder-handoff.js?v=20261022.4';
 
 const body = document.body;
 const gate = document.getElementById('builderGate');
@@ -48,12 +48,12 @@ async function openBuilder(access) {
   }
 
   installBuilderDialog();
-  await import(new URL('../../../builder/js/app.js?v=20261022.3', import.meta.url));
+  await import(new URL('../../../builder/js/app.js?v=20261022.4', import.meta.url));
   enhanceBuilderExperience();
   applyBuilderHandoff();
 
   if (access.live) {
-    const { initBuilderAccount } = await import('../services/builder-account.js?v=20261022.3');
+    const { initBuilderAccount } = await import('../services/builder-account.js?v=20261022.4');
     await initBuilderAccount();
   }
 }
