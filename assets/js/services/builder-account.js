@@ -1,4 +1,4 @@
-import { REQUIRED_CATEGORIES, getBestOffer } from '../../../builder/js/build-engine.js?v=20261021.3';
+import { REQUIRED_CATEGORIES, getBestOffer } from '../../../builder/js/build-engine.js?v=20261022.1';
 
 const VT_ACCOUNT_VERSION = '3.3.0';
 const PENDING_KEY = 'volttech-builder-account-pending-v3';
@@ -113,7 +113,7 @@ export function snapshotOffer(product) {
     price_checked_at: offer?.lastChecked || null,
     offer_freshness: offer?.freshness || 'unknown',
     offer_stale: offer?.stale === true,
-    pricing_basis: offer ? 'supplier_estimate' : 'unpriced'
+    pricing_basis: offer?.source==='live-store'?'store_retail_estimate':offer?'supplier_estimate':'unpriced'
   };
 }
 
@@ -233,7 +233,7 @@ async function saveSnapshot(snapshot, { silent = false } = {}) {
       serialized: snapshot.serialized,
       items: snapshot.items,
       builder_version: `clean-v3.3+account-v${VT_ACCOUNT_VERSION}`,
-      pricing_basis: 'supplier_estimate',
+      pricing_basis: 'store_retail_estimate',
       captured_at: now
     },
     estimated_total: snapshot.estimated_total,

@@ -1,13 +1,14 @@
 export function applyBuilderHandoff() {
   const params = new URLSearchParams(location.search);
   const id = params.get('add');
-  if (!id || !/^vt-[a-z0-9-]+$/i.test(id)) return;
+  if (!id || ! /^[a-z0-9-]+$/i.test(id)) return;
 
-  const type = inferType(id);
+  let type = inferType(id);
   let tries = 0;
 
   const attempt = () => {
     tries++;
+    type ||= window.__VT_BUILDER_CATALOGUE?.find(p=>p.id===id)?.type;
     const manual = document.getElementById('hero-advanced') || document.getElementById('choose-advanced');
     const layout = document.getElementById('builder-layout');
     if (layout?.hidden && manual) manual.click();

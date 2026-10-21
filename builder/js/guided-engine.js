@@ -1,10 +1,11 @@
+import { psuPlanningTarget } from './psu-planning.js?v=20261022.1';
 import {
   createEmptyBuild, selectProduct, getProductsByCategory, getProductPrice,
   calculateBuildTotal, getBestOffer, getSelections
-} from "./build-engine.js?v=0.7.7";
+} from "./build-engine.js?v=20261022.1";
 import {
   getCompatibility, validateBuild, estimatePower
-} from "./compatibility-engine.js?v=0.7.8.1";
+} from "./compatibility-engine.js?v=20261022.1";
 import {
   cpuIntelligence, gpuIntelligence, cpuWorkloadScore, gpuWorkloadScore,
   INTELLIGENCE_META
@@ -37,7 +38,7 @@ export function buildGuidedRecommendation(profile,catalogue,currency="ZAR"){
   const memory=choose(catalogue,"memory",build,plan.memory,p=>memoryScore(p,profile));
   if(!memory)return fail("No compatible matched memory kit was found.");
   build=selectProduct(build,memory);
-  reasons.memory=`${memory.specs?.capacityGB||"?"}GB matched retail kit. Guided builds never mix separate RAM kits.`;
+  reasons.memory=`${memory.specs?.capacityGB||"?"}GB retail memory selection. This builder does not mix separate RAM kits.`;
 
   if(profile.useCase!=="office"){
     const gpu=choose(catalogue,"gpu",build,plan.gpu,p=>gpuScore(p,profile));
@@ -55,19 +56,19 @@ export function buildGuidedRecommendation(profile,catalogue,currency="ZAR"){
   const pcCase=choose(catalogue,"case",build,plan.case,p=>caseScore(p,profile));
   if(!pcCase)return fail("No compatible case was found.");
   build=selectProduct(build,pcCase);
-  reasons.case="Chosen to physically fit the selected motherboard, graphics card and cooling setup.";
+  reasons.case="A case option within budget. Check the fit notes; missing measurements require VoltTech review.";
 
   const selectedCpu=getSelections(build,"cpu")[0];
   const cooler=choose(catalogue,"cooler",build,plan.cooler,p=>coolerScore(p,selectedCpu,profile));
   if(!cooler)return fail("No compatible CPU cooler was found.");
   build=selectProduct(build,cooler);
-  reasons.cooler="Sized for the selected CPU while remaining compatible with the case.";
+  reasons.cooler="A cooling option within budget. Socket support and case clearance require verification where supplier data is missing.";
 
   const prePsu=estimatePower({...build,psu:null});
   const psu=choosePsu(catalogue,build,plan.psu,prePsu,profile);
   if(!psu)return fail("No compatible PSU met the calculated power target.");
   build=selectProduct(build,psu);
-  reasons.psu=`Chosen after the main hardware: about ${prePsu.estimated} W estimated load and ${prePsu.preferred} W preferred headroom.`;
+  reasons.psu=prePsu.missingPower?.length?"PSU selected against a CPU/GPU-family planning floor. Exact card connectors and full system load still require VoltTech verification.":`About ${prePsu.estimated} W estimated load and ${prePsu.preferred} W preferred headroom.`;
 
   const storage=chooseStorage(catalogue,build,plan.storage,profile);
   if(!storage)return fail("No compatible storage option was found.");
@@ -75,7 +76,7 @@ export function buildGuidedRecommendation(profile,catalogue,currency="ZAR"){
   reasons.storage="A fast starting drive sized around your selected storage requirement. You can add more drives afterwards.";
   reasons.fans="Optional. The guided build does not force extra case fans unless you choose to add them.";
 
-  // Conservative final rebalance: if temporary pricing pushed the build past
+  // Conservative final rebalance: if current pricing pushed the build past
   // the selected ceiling, reclaim money from low-performance-impact categories.
   const rebalanced=rebalanceIfOverBudget(catalogue,build,profile,budget,optimizer);
   build=rebalanced.build;
@@ -89,11 +90,11 @@ export function buildGuidedRecommendation(profile,catalogue,currency="ZAR"){
   if(optimizer.applied.length){
     notes.push(`Build optimizer made ${optimizer.applied.length} value/performance adjustment${optimizer.applied.length===1?"":"s"} while keeping compatibility checks active.`);
   }else{
-    notes.push("The optimizer found no clearly better compatible swap inside the current budget and test catalogue.");
+    notes.push("The optimizer found no clearly better compatible swap inside the current budget and catalogue.");
   }
-  if(budgetState==="over")notes.push("Temporary catalogue pricing could not fit this profile fully inside the selected budget.");
-  if(budgetState==="under")notes.push("The preview came in well below budget, leaving room for later upgrades.");
-  if((report.unknowns||[]).length)notes.push("Some compatibility details still depend on incomplete temporary product data.");
+  if(budgetState==="over")notes.push("Current catalogue pricing could not fit this profile fully inside the selected budget.");
+  if(budgetState==="under")notes.push("The selection came in well below budget, leaving room for later upgrades.");
+  if((report.unknowns||[]).length)notes.push("Some compatibility details still depend on incomplete supplier specifications.");
   if((report.warnings||[]).length)notes.push("Review the attention items before treating this as a final quotation.");
 
   const intelligence=buildIntelligenceSummary(build,profile,optimizer);
@@ -157,6 +158,12 @@ function choose(catalogue,type,build,target,pref=()=>0){
 }
 
 function candidateCompatible(product,build){
+  if(product.metadata?.liveStore){
+    if(product.type==='cpu'&&!product.specs?.socket)return false;
+    if(product.type==='motherboard'&&(!product.specs?.socket||!product.specs?.memoryType))return false;
+    if(product.type==='memory'&&!product.specs?.memoryType)return false;
+  }
+  if(product.metadata?.liveStore && product.type==='psu' && build.gpu && (!psuPlanningTarget(build)||Number(product.specs?.wattage||0)<psuPlanningTarget(build)))return false;
   const r=getCompatibility(product,build);
   const relevant=d=>d&&(d.category===product.type||d.alternateCategory===product.type);
   return !(r.issues||[]).some(relevant);
@@ -369,7 +376,7 @@ function rebalanceIfOverBudget(catalogue,initial,profile,budget,optimizer){
 }
 
 function choosePsu(catalogue,build,target,power,profile){
-  const need=Number(power.preferred||power.minimum||0);
+  const need=Math.max(Number(power.preferred||power.minimum||0),psuPlanningTarget(build));
   const list=getProductsByCategory(catalogue,"psu")
     .map(p=>({p,price:getProductPrice(p),w:Number(p.specs?.wattage||0)}))
     .filter(x=>x.price>0&&x.w>=need&&candidateCompatible(x.p,withoutCategory(build,"psu")));

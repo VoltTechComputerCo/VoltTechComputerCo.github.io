@@ -39,7 +39,7 @@ export function getBestOffer(product){
 }
 export function getProductPrice(product){return Number(getBestOffer(product)?.price||0)}
 export function calculateBuildTotal(build){return CATEGORY_ORDER.flatMap(c=>getSelections(build,c)).reduce((t,p)=>t+getProductPrice(p),0)}
-export function formatMoney(value,currency="ZAR"){return new Intl.NumberFormat("en-ZA",{style:"currency",currency,maximumFractionDigits:0}).format(Number(value||0))}
+export function formatMoney(value,currency="ZAR"){return new Intl.NumberFormat("en-ZA",{style:"currency",currency,minimumFractionDigits:2,maximumFractionDigits:2}).format(Number(value||0))}
 export function getSelectedCount(build){return CATEGORY_ORDER.reduce((n,c)=>n+getSelections(build,c).length,0)}
 export function getCompletedCategoryCount(build){return REQUIRED_CATEGORIES.filter(c=>isCategorySatisfied(build,c)).length}
 export function getNextCategory(currentCategory,build){

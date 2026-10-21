@@ -18,6 +18,7 @@ def render(source):
         raise ValueError(f'Unsafe output path: {output}')
     prefix = '../' * (len(output.parts) - 1)
     glass_style = 'assets/css/glass-system.css'
+    script_version = config.get('script_version', '20261021.3')
     glass_version = config.get('glass_version', '20261003-site-neon1')
     if glass_version:
         glass_style += f"?v={glass_version}"
@@ -39,7 +40,7 @@ def render(source):
         'FOOTER': (ROOT / 'src/templates/footer.html').read_text().strip(),
         'CONTENT': source.with_suffix('.html').read_text().strip(),
         'STYLES': '\n'.join(f'  <link rel="stylesheet" href="{prefix}{path}">' for path in styles),
-        'SCRIPTS': '\n'.join(f'  <script defer src="{prefix}{path.split(chr(63))[0]}?v=20261021.3"></script>' for path in config.get('classic_scripts', []) if path != 'supabase-config.js') + '\n' + '\n'.join(f'  <script type="module" src="{prefix}{path.split(chr(63))[0]}?v=20261021.3"></script>' for path in config.get('scripts', [])),
+        'SCRIPTS': '\n'.join(f'  <script defer src="{prefix}{path.split(chr(63))[0]}?v={script_version}"></script>' for path in config.get('classic_scripts', []) if path != 'supabase-config.js') + '\n' + '\n'.join(f'  <script type="module" src="{prefix}{path.split(chr(63))[0]}?v={script_version}"></script>' for path in config.get('scripts', [])),
         'HEAD': source.with_suffix('.head.html').read_text().strip() if source.with_suffix('.head.html').exists() else '',
     }
     if source.stem != 'store':

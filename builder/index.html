@@ -41,7 +41,7 @@
   <link rel="stylesheet" href="../assets/css/notifications.css?v=20261021">
   <script type="module" src="../assets/js/site-shell.js?v=20261021.3"></script>
 
-  <script type="module" src="../assets/js/pages/builder.js?v=20261021.3"></script>
+  <script type="module" src="../assets/js/pages/builder.js?v=20261022.1"></script>
 <link rel="stylesheet" href="../assets/css/site-theme.css?v=20261008-polish">
 <script defer src="../assets/js/theme.js?v=20261021-stable"></script>
 <link rel="stylesheet" href="../assets/css/retail-experience.css?v=20261021-menu-logo">
@@ -115,7 +115,7 @@
           <span class="micro builder-state" id="builderState">BUILDER PAUSED</span>
         </div>
         <h2 class="builder-hero-title" id="builder-title">Build your next PC.<br><span>Without the guesswork.</span></h2>
-        <p>Tell us what you want the machine to do, set a budget, and get a compatible starting build you can customise component by component.</p>
+        <p>Tell us what you want the machine to do, set a budget, and get a starting parts selection you can customise component by component.</p>
         <div class="hero-actions">
           <button class="btn hero-primary" id="hero-guided" type="button">Help me build one <span>→</span></button>
           <button class="btn hero-secondary" id="hero-advanced" type="button">Choose my own parts <span>→</span></button>
@@ -143,7 +143,7 @@
           <button class="mode-card" type="button" id="choose-advanced">
             <span class="mode-kicker">Full control</span>
             <strong>Choose My Own Parts</strong>
-            <small>Pick every component yourself while VoltTech checks compatibility, power and physical limits as you go.</small>
+            <small>Pick every component yourself with compatibility checks and clear notes where fit or power needs verification.</small>
             <span class="mode-arrow">→</span>
           </button>
         </div>
@@ -239,7 +239,7 @@
           <div class="picker-profile" id="picker-profile" hidden></div>
           <div class="catalogue-toolbar">
             <label class="search-shell" for="search"><span aria-hidden="true">⌕</span><span class="visually-hidden">Search this category</span><input class="search" id="search" type="search" placeholder="Search this category…" autocomplete="off"></label>
-            <label class="toggle" for="compatible-only"><input id="compatible-only" type="checkbox" checked><span>Compatible only</span></label>
+            <label class="toggle" for="compatible-only"><input id="compatible-only" type="checkbox" checked><span>No known conflicts</span></label>
           </div>
           <div class="category-head"><div><span class="panel-kicker">PARTS CATALOGUE</span><h2 id="category-title">Processor</h2></div><span id="product-count" role="status"></span></div>
           <div class="products" id="products"><div class="empty">Loading catalogue…</div></div>

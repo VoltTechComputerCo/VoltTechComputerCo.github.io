@@ -1,3 +1,4 @@
+import { psuPlanningTarget } from './psu-planning.js?v=20261022.1';
 export function getCompatibility(product, build) {
     const issues = [];
     const warnings = [];
@@ -42,6 +43,8 @@ export function validateBuild(build) {
 }
 
 export function estimatePower(build) {
+    const missingPower = ['cpu','gpu'].filter(type=>build[type] && !Number(build[type].powerWatts));
+    if (missingPower.length) return { estimated:0, minimum:0, preferred:0, missingPower };
     const componentPower = Object.values(build)
         .flatMap(value => Array.isArray(value) ? value : value ? [value] : [])
         .reduce((total, product) => total + Number(product.powerWatts || 0), 0);
@@ -336,6 +339,7 @@ function checkCoolerCase(cooler, pcCase, issues, unknowns) {
 
     const coolerType = cooler.specs?.coolerType;
 
+    if (!coolerType) unknowns.push(makeDiagnostic("Cooler type and case clearance need verification.", "cooler", "case", "cooler-type-unknown"));
     if (coolerType === "air") {
         const height = Number(cooler.compatibility?.heightMm || cooler.specs?.heightMm || 0);
         const maxRaw = pcCase.compatibility?.maxCpuCoolerHeightMm ?? pcCase.specs?.maxCpuCoolerHeightMm;
@@ -521,6 +525,9 @@ function checkPsu(psu, gpu, build, issues, warnings, unknowns) {
     const psuWatts = Number(psu.compatibility?.wattage || psu.specs?.wattage || 0);
     const power = estimatePower({ ...build, psu: null });
 
+    if (power.missingPower?.length) unknowns.push(makeDiagnostic(
+        "CPU/GPU power data is incomplete. VoltTech must verify PSU capacity before assembly.", "psu", "gpu", "system-power-unknown"
+    ));
     if (!psuWatts) {
         unknowns.push(makeDiagnostic(
             "PSU wattage data is missing, so power-capacity compatibility cannot be confirmed.",
@@ -540,7 +547,7 @@ function checkPsu(psu, gpu, build, issues, warnings, unknowns) {
 
     if (!gpu) return;
 
-    const gpuRecommendation = Number(gpu.compatibility?.recommendedPsuWatts || gpu.specs?.recommendedPsuWatts || 0);
+    const gpuRecommendation = Math.max(psuPlanningTarget(build),Number(gpu.compatibility?.recommendedPsuWatts || gpu.specs?.recommendedPsuWatts || 0));
     if (gpuRecommendation && psuWatts && psuWatts < gpuRecommendation) {
         warnings.push(makeDiagnostic(
             `The GPU manufacturer-class recommendation is ${gpuRecommendation} W; the selected PSU is ${psuWatts} W.`,

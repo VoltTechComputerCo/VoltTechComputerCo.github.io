@@ -1,3 +1,5 @@
+import { buildLiveCatalogue, PART_TYPES } from './live-catalogue.js?v=20261022.1';
+import { readPublicCatalogue } from '../../assets/js/services/public-catalogue.js?v=20261022.1';
 import {
   buildProductIdentityIndexes,
   normalizeCatalogueProducts,
@@ -9,6 +11,7 @@ const CATALOGUE_PATH = './data/catalogue.json';
 const PRODUCT_MEDIA_PATH = './data/product-media.json';
 
 export async function loadCatalogue() {
+  if (window.__VT_BUILDER_INSPECT !== true) return loadLiveCatalogue();
   const manifest = await getJson(CATALOGUE_PATH);
   const categoryFiles = await Promise.all((manifest.categoryFiles || []).map(getJson));
   const rawProducts = categoryFiles.flatMap(file => file.products || []);
@@ -191,4 +194,25 @@ async function getJson(path) {
   const response = await fetch(path, { cache: 'no-store' });
   if (!response.ok) throw new Error(`Failed to load ${path}: ${response.status}`);
   return response.json();
+}
+
+async function loadLiveCatalogue() {
+ const snapshot=await readPublicCatalogue();
+ let rows=snapshot?.products;
+ if(!rows){
+  const client=window.volttechAuth;
+  if(!client)throw new Error('Store connection unavailable');
+  rows=[];
+  for(let offset=0;;offset+=400){
+   const {data,error}=await client.from('store_products').select('id,slug,name,type,category_slug,brand,model,status,visibility,sale_mode,is_demo,currency,retail_price,stock_qty,stock_status,price_checked_at,specs,compatibility,identifiers,media,power_watts').eq('status','active').eq('visibility','public').eq('is_demo',false).in('type',PART_TYPES).gt('stock_qty',0).order('id').range(offset,offset+399);
+   if(error)throw error;
+   rows.push(...data);if(data.length<400)break;
+  }
+ }
+ const result=buildLiveCatalogue(rows);
+ if(!result.products.length)throw new Error('No available gaming components');
+ window.__VT_BUILDER_CATALOGUE=result.products;
+ window.__VT_BUILDER_STORE_OVERLAY={matched:result.products.length,available:rows.length,source:'live-store'};
+ window.dispatchEvent(new CustomEvent('volttech:catalogue-ready',{detail:result}));
+ return result;
 }
