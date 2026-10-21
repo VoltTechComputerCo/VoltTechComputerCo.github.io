@@ -8,6 +8,14 @@ if(document.documentElement.dataset.vtShell!=='clean'&&'serviceWorker' in naviga
 function esc(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function safeUrl(v){try{const u=new URL(String(v||''),location.href);return ['http:','https:'].includes(u.protocol)?u.href:''}catch{return''}}
 function getClient(){if(sb)return sb;if(document.documentElement.dataset.vtShell==='clean'&&window.volttechAuth){sb=window.volttechAuth;return sb;}if(!window.supabase?.createClient)throw new Error('Supabase library unavailable');const cfg=window.VOLTTECH_SUPABASE;if(!cfg?.url||!cfg?.publishableKey)throw new Error('VoltTech store configuration unavailable');sb=window.supabase.createClient(cfg.url,cfg.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});return sb}
+let catalogueClient;
+function getCatalogueClient(){
+ if(catalogueClient)return catalogueClient;
+ const cfg=window.VOLTTECH_SUPABASE;
+ // Product browsing never waits for sign-in token refresh or the auth lock.
+ catalogueClient=window.supabase.createClient(cfg.url,cfg.publishableKey,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:'vt-public-catalogue'}});
+ return catalogueClient;
+}
 function readCart(){try{const x=JSON.parse(localStorage.getItem(CART_KEY)||'[]');return Array.isArray(x)?x.filter(i=>i&&i.productId&&Number(i.quantity)>0):[]}catch{return[]}}
 function saveCart(items){const clean=items.map(i=>({productId:String(i.productId),quantity:Math.max(1,Math.min(25,Number(i.quantity)||1))}));localStorage.setItem(CART_KEY,JSON.stringify(clean));window.dispatchEvent(new CustomEvent('vt-store-cart-change',{detail:clean}));return clean}
 function addToCart(productId,quantity=1){const items=readCart();const row=items.find(i=>i.productId===productId);if(row)row.quantity=Math.min(25,row.quantity+quantity);else items.push({productId,quantity:Math.max(1,quantity)});return saveCart(items)}
@@ -23,10 +31,14 @@ function formatSpecKey(key){return String(key).replace(/([a-z])([A-Z])/g,'$1 $2'
 function formatSpecValue(v){if(Array.isArray(v))return v.join(', ');if(v===true)return'Yes';if(v===false)return'No';if(v==null||v==='')return'—';return String(v)}
 function toast(message,tone='ok'){const el=document.getElementById('toast');if(!el)return;el.textContent=message;el.classList.toggle('error',tone==='error');el.classList.add('show');clearTimeout(el._vtTimer);el._vtTimer=setTimeout(()=>el.classList.remove('show'),3500)}
 function analytics(event,params={}){try{window.gtag?.('event',event,params)}catch{}}
-const LISTING_FIELDS='id,slug,type,category_slug,name,brand,model,status,visibility,sale_mode,is_demo,featured,sort_priority,retail_price,compare_at_price,short_description,currency,stock_status,stock_qty,specs,compatibility,identifiers,highlights,primary_image:media->>primaryImage,direct_image:media->>directImage,stock_connected:metadata->stock_connected,connected_suppliers:metadata->connected_suppliers,media_review_required:metadata->media_review_required,supplier_data_required:metadata->supplier_data_required,compare_at_verified:metadata->compare_at_verified,deal_ends_at:metadata->>deal_ends_at';
+const LISTING_FIELDS='id,slug,type,category_slug,name,brand,model,status,visibility,sale_mode,is_demo,featured,sort_priority,retail_price,compare_at_price,currency,stock_status,stock_qty,specs,compatibility,identifiers,highlights,primary_image:media->>primaryImage,direct_image:media->>directImage,stock_connected:metadata->stock_connected,connected_suppliers:metadata->connected_suppliers,media_review_required:metadata->media_review_required,supplier_data_required:metadata->supplier_data_required,compare_at_verified:metadata->compare_at_verified,deal_ends_at:metadata->>deal_ends_at';
 function listingProduct(row){return {...row,media:row.media||{primaryImage:row.primary_image,directImage:row.direct_image},metadata:row.metadata||{stock_connected:row.stock_connected,connected_suppliers:row.connected_suppliers,media_review_required:row.media_review_required,supplier_data_required:row.supplier_data_required,compare_at_verified:row.compare_at_verified,deal_ends_at:row.deal_ends_at}}}
 async function loadStore(launchSettings){
- const client=getClient(),batch=1000;
+ const snapshot=window.__vtPublicCatalogueSnapshot;
+ if(snapshot&&snapshot.schemaVersion===1&&Array.isArray(snapshot.products)&&Date.now()-Date.parse(snapshot.generatedAt)<45*60000){
+  return {settings:launchSettings||snapshot.settings,categories:snapshot.categories||[],products:snapshot.products.map(listingProduct)};
+ }
+ const client=getCatalogueClient(),batch=1000;
  const page=(from,count=false)=>client.from('store_products').select(LISTING_FIELDS,count?{count:'exact'}:undefined).eq('status','active').eq('visibility','public').neq('sale_mode','hidden').order('sort_priority',{ascending:false}).order('featured',{ascending:false}).order('name').order('id').range(from,from+batch-1);
  const [settings,categories,first]=await Promise.all([launchSettings?Promise.resolve({data:launchSettings}):client.from('store_settings').select('*').eq('id','store').single(),client.from('store_categories').select('*').eq('is_active',true).order('sort_order'),page(0,true)]);
  for(const result of [settings,categories,first])if(result.error)throw result.error;
@@ -39,9 +51,9 @@ async function loadStore(launchSettings){
  }
  return {settings:settings.data,categories:categories.data||[],products:products.map(listingProduct)};
 }
-async function getProductBySlug(slug){const r=await getClient().from('store_products').select('*').eq('slug',slug).eq('status','active').eq('visibility','public').neq('sale_mode','hidden').maybeSingle();if(r.error)throw r.error;return r.data}
-async function getProductsByIds(ids){if(!ids.length)return[];const r=await getClient().from('store_products').select('*').in('id',ids).eq('status','active').eq('visibility','public').neq('sale_mode','hidden');if(r.error)throw r.error;return r.data||[]}
-async function getProductExtras(productId){const client=getClient();const [docs,rels]=await Promise.all([client.from('store_product_documents').select('*').eq('product_id',productId).order('sort_order'),client.from('store_product_relations').select('*').eq('product_id',productId).order('weight',{ascending:false})]);if(docs.error)throw docs.error;if(rels.error)throw rels.error;const relatedIds=(rels.data||[]).map(x=>x.related_product_id);const related=await getProductsByIds(relatedIds);const byId=new Map(related.map(p=>[p.id,p]));return{documents:docs.data||[],relations:(rels.data||[]).map(r=>({...r,product:byId.get(r.related_product_id)})).filter(r=>r.product)}}
+async function getProductBySlug(slug){const r=await getCatalogueClient().from('store_products').select('*').eq('slug',slug).eq('status','active').eq('visibility','public').neq('sale_mode','hidden').maybeSingle();if(r.error)throw r.error;return r.data}
+async function getProductsByIds(ids){if(!ids.length)return[];const r=await getCatalogueClient().from('store_products').select('*').in('id',ids).eq('status','active').eq('visibility','public').neq('sale_mode','hidden');if(r.error)throw r.error;return r.data||[]}
+async function getProductExtras(productId){const client=getCatalogueClient();const [docs,rels]=await Promise.all([client.from('store_product_documents').select('*').eq('product_id',productId).order('sort_order'),client.from('store_product_relations').select('*').eq('product_id',productId).order('weight',{ascending:false})]);if(docs.error)throw docs.error;if(rels.error)throw rels.error;const relatedIds=(rels.data||[]).map(x=>x.related_product_id);const related=await getProductsByIds(relatedIds);const byId=new Map(related.map(p=>[p.id,p]));return{documents:docs.data||[],relations:(rels.data||[]).map(r=>({...r,product:byId.get(r.related_product_id)})).filter(r=>r.product)}}
 async function currentUser(){const r=await getClient().auth.getUser();return r.data?.user||null}
 async function loadCheckoutProfile(){const client=getClient(),user=await currentUser();if(!user)return{user:null,profile:null,address:null};const [profileRes,addressRes]=await Promise.all([client.from('profiles').select('*').eq('id',user.id).maybeSingle(),client.from('customer_addresses').select('*').eq('user_id',user.id).eq('is_default_shipping',true).limit(1).maybeSingle()]);return{user,profile:profileRes.data||null,address:addressRes.data||null}}
 async function submitCheckout(payload){const {data,error}=await getClient().functions.invoke('submit-store-checkout',{body:payload});if(error){let msg=error.message||'Could not place the order.';try{const body=await error.context?.json?.();if(body?.error)msg=body.error}catch{}const failure=new Error(msg);failure.status=Number(error.context?.status)||0;failure.uncertain=!failure.status||failure.status>=500;throw failure}if(data?.error)throw new Error(data.error);return data}
@@ -138,8 +150,8 @@ function fulfilmentInfo(product){
 }
 
 const baseLoadStore=VT.loadStore;
-VT.loadStore=async function(){
-  const data=await baseLoadStore();
+VT.loadStore=async function(...args){
+  const data=await baseLoadStore(...args);
   window.__vtPreviewProductMap=new Map((data.products||[]).map(p=>[p.id,p]));
   return data;
 };

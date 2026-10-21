@@ -10,7 +10,7 @@ const surface=q('#documentSurface'),status=q('#documentStatus'),pageTitle=q('#do
 let client=null,user=null,current=null,personalExport=null,pendingAction='';
 
 function brand(title,ref,state,body){
-  return `<article class="document-sheet"><div class="document-top"><div class="document-brand"><img src="logo-badge.png" alt="" width="512" height="512"><div><p class="document-brand-name">VoltTech Computer Co.</p><p>PC &amp; technology services · Pretoria, Gauteng<br>volttechcomputerco@gmail.com · +27 61 843 5775</p></div></div><div class="document-title"><h2>${esc(title)}</h2><div class="document-ref">${esc(ref||'')}</div>${state?`<p class="document-state">${esc(state)}</p>`:''}</div></div>${body}</article>`;
+  return `<article class="document-sheet"><div class="document-top"><div class="document-brand"><img src="logo-badge.png" alt="" width="512" height="512"><div><p class="document-brand-name">VoltTech Computer Co.</p><p>PC &amp; technology services · Pretoria, Gauteng<br>info@volttechcomputerco.co.za · +27 61 843 5775</p></div></div><div class="document-title"><h2>${esc(title)}</h2><div class="document-ref">${esc(ref||'')}</div>${state?`<p class="document-state">${esc(state)}</p>`:''}</div></div>${body}</article>`;
 }
 const block=(title,html)=>`<div class="document-block"><strong>${esc(title)}</strong><p>${html}</p></div>`;
 const row=(label,value,grand=false)=>`<div class="document-row${grand?' document-grand':''}"><span>${esc(label)}</span><b>${esc(value)}</b></div>`;

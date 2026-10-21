@@ -1,4 +1,5 @@
-import { readLaunchSettings, connectCart, connectAccount, connectProductionServices } from './home-integrations.js';
+import { readPublicCatalogue } from './public-catalogue.js?v=20261021';
+import { readLaunchSettings, connectCart, connectAccount, connectProductionServices, loadScript } from './home-integrations.js?v=20261021';
 import { isProduction, sdkUrl } from './site-config.js';
 const base = new URL('../../../', import.meta.url);
 let ready;
@@ -7,12 +8,7 @@ export async function withTimeout(promise, ms = 10000) {
   try { return await Promise.race([promise, new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Connection timed out. Please try again.')), ms); })]); }
   finally { clearTimeout(timer); }
 }
-function script(path) {
-  return withTimeout(new Promise((resolve, reject) => {
-    const el = document.createElement('script'); el.src = new URL(path, base).href;
-    el.onload = resolve; el.onerror = () => reject(new Error('The catalogue could not connect.')); document.head.append(el);
-  }));
-}
+const script=loadScript;
 export function publicProducts(products, preview = false) {
   return (products || []).filter(p => p && typeof p.id === 'string' && p.status === 'active' && p.visibility === 'public' && p.sale_mode !== 'hidden' && (preview || p.is_demo === false));
 }
@@ -23,7 +19,7 @@ export async function getCommerceCore() {
     if (!config?.url || !config?.publishableKey) throw new Error('Catalogue connection unavailable.');
     const production = isProduction();
     window.volttechAuth ||= window.supabase.createClient(config.url, config.publishableKey, { auth: { persistSession: production, autoRefreshToken: production, detectSessionInUrl: production } });
-    await script('commerce/js/catalogue-runtime.js?v=20261014-merch');
+    await script('commerce/js/catalogue-runtime.js?v=20261021-fast');
     return window.VoltTechStore;
   })();
   return ready;
@@ -32,9 +28,13 @@ export async function openCatalogue() {
   connectCart(); connectProductionServices();
   const coreReady = getCommerceCore();
   coreReady.catch(() => {});
-  const settings = await readLaunchSettings(window.VOLTTECH_SUPABASE);
   let preview = false;
   const previewRequested = new URLSearchParams(location.search).get('preview') === '1';
+  const snapshot=previewRequested?null:await readPublicCatalogue();
+  if(snapshot)window.__vtPublicCatalogueSnapshot=snapshot;
+  const settings=snapshot?.settings||await readLaunchSettings(window.VOLTTECH_SUPABASE);
+  // Re-check the live launch switch without holding up CDN-backed browsing.
+  if(snapshot)readLaunchSettings(window.VOLTTECH_SUPABASE).then(fresh=>{if(fresh?.catalogue_enabled===false)showGate({reason:'closed'});});
   if (!settings) return { open: false, reason: 'connection' };
   if (previewRequested && isProduction()) {
     try {
@@ -53,6 +53,7 @@ export async function openCatalogue() {
   return { open: true, preview, VT, settings };
 }
 export function showGate(access) {
+  document.getElementById('catalogue-loading')?.remove();
   const gate = document.getElementById('store-gate');
   gate.hidden = false; gate.dataset.state = access.reason || 'closed';
   document.getElementById('catalogue')?.setAttribute('hidden','');

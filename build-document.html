@@ -31,12 +31,14 @@
   <link rel="stylesheet" href="assets/css/persistent-header.css?v=20261007">
   <link rel="stylesheet" href="assets/css/persistent-header.light.css?v=20261007-white">
 
-  <script type="module" src="assets/js/site-shell.js"></script>
   <script defer src="supabase-config.js"></script>
+  <link rel="stylesheet" href="assets/css/notifications.css?v=20261021">
+  <script type="module" src="assets/js/site-shell.js?v=20261021"></script>
+
   <script type="module" src="assets/js/pages/customer-document.js?v=20261007-customer-workflow"></script>
 <link rel="stylesheet" href="assets/css/site-theme.css?v=20261008-polish">
-<script defer src="assets/js/theme.js?v=20261007-white"></script>
-<link rel="stylesheet" href="assets/css/retail-experience.css?v=20261014-footer2">
+<script defer src="assets/js/theme.js?v=20261021-stable"></script>
+<link rel="stylesheet" href="assets/css/retail-experience.css?v=20261021-shell">
 <script defer src="assets/js/retail-experience.js?v=20261014-retail1"></script>
 </head>
 <body data-page="build-document">
@@ -66,12 +68,13 @@
     <div class="header-tools">
       <button class="icon-button" type="button" data-dialog-open="site-search" aria-label="Search VoltTech" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
       <a class="header-account" href="account.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M5 21v-3a7 7 0 0 1 14 0v3Z"/></svg><span data-account-label>Account</span></a>
-      <span data-notifications-host></span>
+      <span data-notifications-host><a class="vt-notify-placeholder" href="account.html" aria-label="Sign in to view notifications"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg></a></span>
       <a class="icon-button header-cart" href="store.html?cart=1" data-cart-link aria-label="Open cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="cart-count" data-cart-count hidden></span></a>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch colour theme" aria-pressed="false"><svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A9 9 0 0 1 9 4a9 9 0 1 0 11 11Z"/></svg><svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10l2 2M5 19l2-2M17 7l2-2"/></svg><span class="theme-label-light">Light mode</span><span class="theme-label-dark">Dark mode</span></button>
     </div>
-    <button class="button button-secondary menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation" hidden>Menu</button>
+    <button class="button button-secondary menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation">Menu</button>
   </div>
-  <nav class="retail-category-nav" aria-label="Popular store categories"><div class="container"><a class="retail-all" href="store.html">Shop all <span aria-hidden="true">↗</span></a><a href="store.html?category=gpu#catalogue">Graphics cards</a><a href="store.html?category=cpu#catalogue">Processors</a><a href="store.html?category=laptops#catalogue">Laptops</a><a href="store.html?category=monitors#catalogue">Monitors</a><a href="store.html#gaming-streaming">Peripherals</a><a class="retail-stream" href="streaming-setup-south-africa.html">Stream Support</a></div></nav>
+
 </header>
 <dialog class="dialog search-dialog" id="site-search" aria-labelledby="site-search-title">
   <button class="button button-secondary dialog-close" type="button" data-dialog-close aria-label="Close search">×</button>
@@ -91,7 +94,7 @@
     </div>
     <div id="documentPreview" class="document-preview" hidden></div>
     <p id="documentStatus" class="document-status" role="status" aria-live="polite"></p>
-    
+
     <section id="documentSurface" class="document-surface" aria-live="polite"><p class="micro">Loading document…</p></section>
   </div>
 </main>

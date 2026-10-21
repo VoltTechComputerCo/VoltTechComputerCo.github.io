@@ -1,4 +1,4 @@
-import { connectCart, connectProductionServices } from '../services/home-integrations.js';
+import { connectCart, connectProductionServices } from '../services/home-integrations.js?v=20261021';
 import { syncServiceContact, trackServiceClick } from '../services/service-contact.js';
 
 const root=document.querySelector('[data-service-key]');

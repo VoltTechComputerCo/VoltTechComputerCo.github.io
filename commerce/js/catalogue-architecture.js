@@ -85,8 +85,8 @@ function fulfilmentInfo(product){
 }
 
 const baseLoadStore=VT.loadStore;
-VT.loadStore=async function(){
-  const data=await baseLoadStore();
+VT.loadStore=async function(...args){
+  const data=await baseLoadStore(...args);
   window.__vtPreviewProductMap=new Map((data.products||[]).map(p=>[p.id,p]));
   return data;
 };

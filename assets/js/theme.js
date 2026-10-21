@@ -13,10 +13,10 @@
  apply(theme);
  const mount=()=>{
   if(window.self!==window.top){apply(read());return;}
-  const b=document.createElement('button');b.type='button';b.className='theme-toggle';b.dataset.themeToggle='';
+  const b=document.querySelector('[data-theme-toggle]')||document.createElement('button');b.type='button';b.className='theme-toggle';b.dataset.themeToggle='';
   b.addEventListener('click',()=>{const value=theme==='dark'?'light':'dark';try{localStorage.setItem(key,value);}catch{}apply(value);});
   const host=document.querySelector('.header-tools,.static-topbar-inner,.store-nav .nav-in,main>.top');
-  if(host)host.append(b);else{b.classList.add('is-floating');document.body.append(b);}apply(read());
+  if(host){if(!b.isConnected)host.append(b);}else{b.classList.add('is-floating');document.body.append(b);}apply(read());
  };
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
  window.addEventListener('storage',e=>{if(e.key===key)apply(read());});

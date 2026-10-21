@@ -1,5 +1,5 @@
 import { getCommerceCore, withTimeout, publicProducts } from './catalogue.js';
-import { readLaunchSettings, connectCart } from './home-integrations.js';
+import { readLaunchSettings, connectCart } from './home-integrations.js?v=20261021';
 import { canTransactHere } from './site-config.js';
 export { getCommerceCore, withTimeout, readLaunchSettings, canTransactHere };
 export function checkoutCart(raw) {

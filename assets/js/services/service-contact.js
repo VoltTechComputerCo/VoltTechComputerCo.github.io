@@ -21,7 +21,7 @@ export function syncServiceContact(root, issueButton){
   const message=buildServiceMessage(key,issueLabel);
   const subject=issueLabel?`${cfg.subject} · ${issueLabel}`:cfg.subject;
   root.querySelectorAll('[data-service-whatsapp]').forEach(link=>{link.href=`https://wa.me/27618435775?text=${encodeURIComponent(message)}`});
-  root.querySelectorAll('[data-service-email]').forEach(link=>{link.href=`mailto:volttechcomputerco@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`});
+  root.querySelectorAll('[data-service-email]').forEach(link=>{link.href=`mailto:info@volttechcomputerco.co.za?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`});
   root.querySelectorAll('[data-signal-link]').forEach(link=>{
     const u=new URL(link.getAttribute('href')||'signal-scan.html',location.href);
     u.searchParams.set('source',key);

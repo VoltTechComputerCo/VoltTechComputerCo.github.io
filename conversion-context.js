@@ -104,7 +104,7 @@
   };
 
   const enhanceEmail = () => {
-    document.querySelectorAll('a[href^="mailto:volttechcomputerco@gmail.com"]').forEach(a => {
+    document.querySelectorAll('a[href^="mailto:info@volttechcomputerco.co.za"]').forEach(a => {
       try {
         const raw = a.getAttribute('href') || '';
         const [address, query = ''] = raw.replace(/^mailto:/, '').split('?');

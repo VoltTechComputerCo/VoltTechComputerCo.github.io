@@ -41,12 +41,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Streaming & Creator Technical Support","serviceType":"OBS and Streamlabs Setup, Streaming Diagnostics, Encoder Tuning, Audio, Capture Cards and Creator PC Optimisation","provider":{"@id":"https://volttechcomputerco.co.za/#organisation"},"areaServed":{"@type":"Country","name":"South Africa"},"url":"https://volttechcomputerco.co.za/streaming-setup-south-africa","description":"Specialist remote streaming and creator technical support including OBS and Streamlabs setup, stream diagnostics, encoder and bitrate tuning, audio optimisation, capture cards, dual-PC workflows and creator PC performance support across South Africa.","offers":[{"@type":"Offer","name":"Stream Check","priceCurrency":"ZAR","price":"299"},{"@type":"Offer","name":"Stream Tune","priceCurrency":"ZAR","price":"449"},{"@type":"Offer","name":"Stream Setup","priceCurrency":"ZAR","price":"649"}],"image":"https://volttechcomputerco.co.za/vt-service-stream-support-showcase-build.webp"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"VoltTech Computer Co.","item":"https://volttechcomputerco.co.za/"},{"@type":"ListItem","position":2,"name":"Creator Hub","item":"https://volttechcomputerco.co.za/creator-hub-south-africa"},{"@type":"ListItem","position":3,"name":"Streaming Support","item":"https://volttechcomputerco.co.za/streaming-setup-south-africa"}]}</script>
-  <script type="module" src="assets/js/site-shell.js"></script>
+  <script defer src="supabase-config.js"></script>
+  <link rel="stylesheet" href="assets/css/notifications.css?v=20261021">
+  <script type="module" src="assets/js/site-shell.js?v=20261021"></script>
 
   <script type="module" src="assets/js/pages/streaming-support.js"></script>
 <link rel="stylesheet" href="assets/css/site-theme.css?v=20261008-polish">
-<script defer src="assets/js/theme.js?v=20261007-white"></script>
-<link rel="stylesheet" href="assets/css/retail-experience.css?v=20261014-footer2">
+<script defer src="assets/js/theme.js?v=20261021-stable"></script>
+<link rel="stylesheet" href="assets/css/retail-experience.css?v=20261021-shell">
 <script defer src="assets/js/retail-experience.js?v=20261014-retail1"></script>
 </head>
 <body data-page="streaming-support">
@@ -76,12 +78,13 @@
     <div class="header-tools">
       <button class="icon-button" type="button" data-dialog-open="site-search" aria-label="Search VoltTech" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
       <a class="header-account" href="account.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M5 21v-3a7 7 0 0 1 14 0v3Z"/></svg><span data-account-label>Account</span></a>
-      <span data-notifications-host></span>
+      <span data-notifications-host><a class="vt-notify-placeholder" href="account.html" aria-label="Sign in to view notifications"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg></a></span>
       <a class="icon-button header-cart" href="store.html?cart=1" data-cart-link aria-label="Open cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="cart-count" data-cart-count hidden></span></a>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch colour theme" aria-pressed="false"><svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A9 9 0 0 1 9 4a9 9 0 1 0 11 11Z"/></svg><svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10l2 2M5 19l2-2M17 7l2-2"/></svg><span class="theme-label-light">Light mode</span><span class="theme-label-dark">Dark mode</span></button>
     </div>
-    <button class="button button-secondary menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation" hidden>Menu</button>
+    <button class="button button-secondary menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation">Menu</button>
   </div>
-  <nav class="retail-category-nav" aria-label="Popular store categories"><div class="container"><a class="retail-all" href="store.html">Shop all <span aria-hidden="true">↗</span></a><a href="store.html?category=gpu#catalogue">Graphics cards</a><a href="store.html?category=cpu#catalogue">Processors</a><a href="store.html?category=laptops#catalogue">Laptops</a><a href="store.html?category=monitors#catalogue">Monitors</a><a href="store.html#gaming-streaming">Peripherals</a><a class="retail-stream" href="streaming-setup-south-africa.html">Stream Support</a></div></nav>
+
 </header>
 <dialog class="dialog search-dialog" id="site-search" aria-labelledby="site-search-title">
   <button class="button button-secondary dialog-close" type="button" data-dialog-close aria-label="Close search">×</button>
@@ -105,7 +108,7 @@
           <p class="eyebrow">VOLTTECH SERVICE / CREATOR TECH · SOUTH AFRICA</p>
           <h1>Stream Support<span>OBS, Streamlabs, audio and performance.</span></h1>
           <p class="service-lead">Specialist remote support for OBS and Streamlabs, encoder overload, dropped frames, blurry output, audio routing, capture cards, dual-PC workflows and creator-PC performance. Describe the problem and we will help identify the cause and suitable settings.</p>
-          <div class="service-actions"><a class="button" data-stream-contact="whatsapp" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%20need%20help%20with%20my%20streaming%20setup.">WhatsApp VoltTech</a><a class="button button-secondary" data-stream-contact="email" href="mailto:volttechcomputerco@gmail.com?subject=Streaming%20Support%20Enquiry">Email VoltTech</a></div>
+          <div class="service-actions"><a class="button" data-stream-contact="whatsapp" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%20need%20help%20with%20my%20streaming%20setup."><img class="cta-brand-icon" src="whatsapp-logo.svg" width="20" height="20" alt="" aria-hidden="true">WhatsApp VoltTech</a><a class="button button-secondary" data-stream-contact="email" href="mailto:info@volttechcomputerco.co.za?subject=Streaming%20Support%20Enquiry"><img class="cta-brand-icon" src="email-icon.svg" width="20" height="20" alt="" aria-hidden="true">Email VoltTech</a></div>
           <p class="micro service-location">REMOTE SUPPORT · SOUTH AFRICA</p>
         </div>
         <figure class="service-hero-media"><img src="vt-service-stream-support-showcase-build.webp" alt="VoltTech streaming and creator technical support" width="1200" height="800"><figcaption><span>CREATOR TECH</span><strong>REMOTE · SOUTH AFRICA</strong></figcaption></figure>
@@ -136,9 +139,9 @@
       <h2>Choose the level of help you actually need.</h2>
       <p class="service-section-copy">These are service starting points, not a promise that every problem needs the most expensive option.</p>
       <div class="streaming-package-grid">
-        <article class="streaming-package"><span>DIAGNOSE</span><h3>Stream Check</h3><strong>R299</strong><ul><li>Review symptoms and setup</li><li>Identify the likely bottleneck</li><li>Clear next-step recommendation</li></ul><a class="button button-secondary" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%27d%20like%20to%20ask%20about%20Stream%20Check.">Ask about Stream Check</a></article>
-        <article class="streaming-package featured"><span>MOST COMMON</span><h3>Stream Tune</h3><strong>R449</strong><ul><li>OBS / Streamlabs and output tuning</li><li>Encoder, quality and stability work</li><li>Audio and performance checks</li></ul><a class="button" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%27d%20like%20to%20ask%20about%20Stream%20Tune.">Ask about Stream Tune</a></article>
-        <article class="streaming-package"><span>FROM SCRATCH</span><h3>Stream Setup</h3><strong>R649</strong><ul><li>First-time creator setup</li><li>OBS / Streamlabs configuration</li><li>Core audio/capture workflow</li></ul><a class="button button-secondary" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%27d%20like%20to%20ask%20about%20Stream%20Setup.">Ask about Stream Setup</a></article>
+        <article class="streaming-package"><span>DIAGNOSE</span><h3>Stream Check</h3><strong>R299</strong><ul><li>Review symptoms and setup</li><li>Identify the likely bottleneck</li><li>Clear next-step recommendation</li></ul><a class="button button-secondary" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%27d%20like%20to%20ask%20about%20Stream%20Check."><img class="cta-brand-icon" src="whatsapp-logo.svg" width="20" height="20" alt="" aria-hidden="true">Ask about Stream Check</a></article>
+        <article class="streaming-package featured"><span>MOST COMMON</span><h3>Stream Tune</h3><strong>R449</strong><ul><li>OBS / Streamlabs and output tuning</li><li>Encoder, quality and stability work</li><li>Audio and performance checks</li></ul><a class="button" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%27d%20like%20to%20ask%20about%20Stream%20Tune."><img class="cta-brand-icon" src="whatsapp-logo.svg" width="20" height="20" alt="" aria-hidden="true">Ask about Stream Tune</a></article>
+        <article class="streaming-package"><span>FROM SCRATCH</span><h3>Stream Setup</h3><strong>R649</strong><ul><li>First-time creator setup</li><li>OBS / Streamlabs configuration</li><li>Core audio/capture workflow</li></ul><a class="button button-secondary" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%27d%20like%20to%20ask%20about%20Stream%20Setup."><img class="cta-brand-icon" src="whatsapp-logo.svg" width="20" height="20" alt="" aria-hidden="true">Ask about Stream Setup</a></article>
       </div>
       <p class="streaming-scope-note">Complex dual-PC or capture-card builds can require a broader Creator System Tune and are quoted after assessment.</p>
     </div>
@@ -168,7 +171,7 @@
   </section>
 
   <section class="section service-section" id="contact">
-    <div class="container service-shell"><div class="service-final"><p class="eyebrow">NEXT STEP</p><h2>Start with the problem, not a package.</h2><p>If you are not sure what you need, send a short description of what happens when you go live—or run Stream Scan first.</p><div class="service-actions"><a class="button" data-stream-contact="whatsapp" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%20need%20help%20with%20my%20streaming%20setup.">WhatsApp VoltTech</a><a class="button button-secondary" data-stream-contact="email" href="mailto:volttechcomputerco@gmail.com?subject=Streaming%20Support%20Enquiry">Email VoltTech</a></div><p class="service-helper">Prefer to narrow it down first? <a href="stream-scan.html">Try Stream Scan →</a></p><div class="service-related"><a href="creator-hub-south-africa.html">Creator Hub</a><a href="stream-scan.html">Stream Scan</a><a href="pc-performance-optimisation.html">PC Performance</a></div></div></div>
+    <div class="container service-shell"><div class="service-final"><p class="eyebrow">NEXT STEP</p><h2>Start with the problem, not a package.</h2><p>If you are not sure what you need, send a short description of what happens when you go live—or run Stream Scan first.</p><div class="service-actions"><a class="button" data-stream-contact="whatsapp" target="_blank" rel="noopener" href="https://wa.me/27618435775?text=Hi%20VoltTech%2C%20I%20need%20help%20with%20my%20streaming%20setup."><img class="cta-brand-icon" src="whatsapp-logo.svg" width="20" height="20" alt="" aria-hidden="true">WhatsApp VoltTech</a><a class="button button-secondary" data-stream-contact="email" href="mailto:info@volttechcomputerco.co.za?subject=Streaming%20Support%20Enquiry"><img class="cta-brand-icon" src="email-icon.svg" width="20" height="20" alt="" aria-hidden="true">Email VoltTech</a></div><p class="service-helper">Prefer to narrow it down first? <a href="stream-scan.html">Try Stream Scan →</a></p><div class="service-related"><a href="creator-hub-south-africa.html">Creator Hub</a><a href="stream-scan.html">Stream Scan</a><a href="pc-performance-optimisation.html">PC Performance</a></div></div></div>
   </section>
 </main>
 <footer class="site-footer">

@@ -1,6 +1,6 @@
 import { getCommerceCore, withTimeout, validOrderAccess, readLaunchSettings, canPay, paymentDestination, canTransactHere } from '../services/transactions.js';
 import { getAccountClient } from '../services/account-session.js';
-import { connectCart } from '../services/home-integrations.js';
+import { connectCart } from '../services/home-integrations.js?v=20261021';
 import { esc } from '../components/catalogue-view.js?v=20261013-store';
 import { money, stageInfo, timeline, orderItems, trackingLink } from '../components/order-view.js?v=20261013-short-flow';
 const params=new URLSearchParams(location.search), initialAccess=validOrderAccess(params);

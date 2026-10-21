@@ -100,6 +100,7 @@
       return;
     }
 
+    host.querySelector(".vt-notify-placeholder")?.setAttribute("hidden","");
     host.append(button);
   }
 
@@ -123,11 +124,8 @@
     const width=Math.min(360,window.innerWidth-(edge*2));
     let left=r.right-width;
     left=Math.max(edge,Math.min(left,window.innerWidth-width-edge));
-    let top=r.bottom+gap;
-    const estimated=Math.min(window.innerHeight*.68,620);
-    if(top+estimated>window.innerHeight-edge){
-      top=Math.max(edge,r.top-gap-Math.min(estimated,r.top-gap-edge));
-    }
+    const top=Math.max(edge,Math.min(r.bottom+gap,window.innerHeight-edge-160));
+    panel.style.maxHeight=`${Math.max(120,window.innerHeight-top-edge)}px`;
     panel.style.width=`${width}px`;
     panel.style.left=`${Math.round(left)}px`;
     panel.style.top=`${Math.round(top)}px`;
@@ -216,6 +214,7 @@
   function unmount(){
     if(channel){client.removeChannel(channel);channel=null}
     q("#vtNotifyButton")?.remove();
+    q(".vt-notify-placeholder")?.removeAttribute("hidden");
     q("#vtNotifyPanel")?.remove();
     q("#vtNotifyScrim")?.remove();
     q("#vtNotifyToast")?.remove();
@@ -423,6 +422,7 @@
 
     user=session.user;
     initialisedFor=user.id;
+    if(!adminContext)mount();
     isAdmin=(adminContext||context==="site")?await detectAdmin():false;
     if(adminContext&&!isAdmin){unmount();return}
 
@@ -445,7 +445,7 @@
   else boot();
 
   client.auth.onAuthStateChange((event,session)=>{
-    if(event==="SIGNED_IN"||event==="TOKEN_REFRESHED"||event==="INITIAL_SESSION")initialise(session);
+    if(event==="SIGNED_IN"||event==="TOKEN_REFRESHED"||event==="INITIAL_SESSION")setTimeout(()=>initialise(session),0);
     if(event==="SIGNED_OUT")unmount();
   });
 

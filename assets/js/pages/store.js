@@ -1,5 +1,5 @@
 import { updateDepartmentImages } from '../services/store-departments.js?v=20261014-images';
-import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261014-images';
+import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261021-fast';
 import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261014-images';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js';
 import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261014-images';
@@ -176,6 +176,7 @@ async function init(){
 
 
     document.getElementById('store-gate').hidden=true;
+    document.getElementById('catalogue-loading')?.remove();
     document.getElementById('catalogue').hidden=false;
     document.getElementById('store-state').textContent=preview?'ADMIN PREVIEW / STORE REMAINS LOCKED':`${products.length.toLocaleString('en-ZA')} products to explore`;
     document.getElementById('catalogue-preview').hidden=!preview;

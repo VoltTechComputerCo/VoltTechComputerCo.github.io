@@ -55,15 +55,29 @@ export function connectCart() {
   window.addEventListener('vt-store-cart-change', update);
 }
 
-function loadScript(path) {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = new URL(path, base).href;
-    script.onload = resolve; script.onerror = reject; document.head.append(script);
+const scriptLoads=new Map();
+export function loadScript(path) {
+  const url=new URL(path,base).href;
+  if(scriptLoads.has(url))return scriptLoads.get(url);
+  const promise=new Promise((resolve,reject)=>{
+    const existing=[...document.scripts].find(script=>script.src===url);
+    if(existing?.dataset.vtLoaded==='true')return resolve();
+    const script=existing||document.createElement('script');
+    const timeout=setTimeout(()=>reject(new Error('Script load timed out')),10000);
+    script.addEventListener('load',()=>{clearTimeout(timeout);script.dataset.vtLoaded='true';resolve();},{once:true});
+    script.addEventListener('error',()=>{clearTimeout(timeout);reject(new Error('Script unavailable'));},{once:true});
+    if(!existing){script.src=url;document.head.append(script);}
   });
+  scriptLoads.set(url,promise);promise.catch(()=>scriptLoads.delete(url));return promise;
 }
+let accountReady;
+export function connectAccount(config){
+  if(!config)return Promise.resolve();
+  if(!accountReady)accountReady=initialiseAccount(config);
+  return accountReady;
+}
+async function initialiseAccount(config) {
 
-export async function connectAccount(config) {
   // GitHack cannot share the site's authenticated session. Keep it public-only.
   if (!isProduction() || !config) return;
   let cached = false;
@@ -78,12 +92,14 @@ export async function connectAccount(config) {
     const { data } = await client.auth.getSession();
     update(data.session);
     client.auth.onAuthStateChange((_event, session) => update(session));
-    await loadScript('notifications.js?v=5.2.1-read');
+    await loadScript('notifications.js?v=20261021-shell');
   } catch { /* Account link remains usable if the optional enhancement fails. */ }
 }
 
+let productionConnected=false;
 export function connectProductionServices() {
-  if (!isProduction()) return;
+  if (!isProduction()||productionConnected) return;
+  productionConnected=true;
   window.dataLayer ||= [];
   window.gtag ||= function () { window.dataLayer.push(arguments); };
   window.gtag('js', new Date());

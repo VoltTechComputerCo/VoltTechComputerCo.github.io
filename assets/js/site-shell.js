@@ -1,11 +1,12 @@
+import { connectCart, connectAccount } from './services/home-integrations.js?v=20261021';
 import { enhanceNavigation } from './navigation.js';
 import { enhanceDialogs } from './components/dialog.js';
 import { enhanceSearch } from './components/search.js';
 
 const CTA_BRANDS = [
   { selector: '#googleSignIn', asset: 'google-logo.svg', alt: 'Google' },
-  { selector: '.button[data-email-auth]', asset: 'gmail-logo.svg', alt: 'Gmail' },
-  { selector: 'a.button[href^="mailto:"], a.text-link[href^="mailto:"], [data-service-email], [data-stream-contact="email"], [data-scan-route="email"]', asset: 'gmail-logo.svg', alt: 'Gmail' },
+  { selector: '.button[data-email-auth]', asset: 'email-icon.svg', alt: 'Email' },
+  { selector: 'a.button[href^="mailto:"], a.text-link[href^="mailto:"], [data-service-email], [data-stream-contact="email"], [data-scan-route="email"]', asset: 'email-icon.svg', alt: 'Email' },
   { selector: 'a.button[href*="wa.me/"], a.text-link[href*="wa.me/"], [data-service-whatsapp], [data-stream-contact="whatsapp"], [data-scan-route="whatsapp"]', asset: 'whatsapp-logo.svg', alt: 'WhatsApp' }
 ];
 
@@ -44,3 +45,6 @@ const ctaObserver = new MutationObserver((records) => {
   }
 });
 ctaObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] });
+
+connectCart();
+connectAccount(window.VOLTTECH_SUPABASE);

@@ -24,10 +24,11 @@
     <div class="header-tools">
       <button class="icon-button" type="button" data-dialog-open="site-search" aria-label="Search VoltTech" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
       <a class="header-account" href="{{ROOT}}account.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M5 21v-3a7 7 0 0 1 14 0v3Z"/></svg><span data-account-label>Account</span></a>
-      <span data-notifications-host></span>
+      <span data-notifications-host><a class="vt-notify-placeholder" href="{{ROOT}}account.html" aria-label="Sign in to view notifications"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg></a></span>
       <a class="icon-button header-cart" href="{{ROOT}}store.html?cart=1" data-cart-link aria-label="Open cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="cart-count" data-cart-count hidden></span></a>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch colour theme" aria-pressed="false"><svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A9 9 0 0 1 9 4a9 9 0 1 0 11 11Z"/></svg><svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10l2 2M5 19l2-2M17 7l2-2"/></svg><span class="theme-label-light">Light mode</span><span class="theme-label-dark">Dark mode</span></button>
     </div>
-    <button class="button button-secondary menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation" hidden>Menu</button>
+    <button class="button button-secondary menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation">Menu</button>
   </div>
   <nav class="retail-category-nav" aria-label="Popular store categories"><div class="container"><a class="retail-all" href="{{ROOT}}store.html">Shop all <span aria-hidden="true">↗</span></a><a href="{{ROOT}}store.html?category=gpu#catalogue">Graphics cards</a><a href="{{ROOT}}store.html?category=cpu#catalogue">Processors</a><a href="{{ROOT}}store.html?category=laptops#catalogue">Laptops</a><a href="{{ROOT}}store.html?category=monitors#catalogue">Monitors</a><a href="{{ROOT}}store.html#gaming-streaming">Peripherals</a><a class="retail-stream" href="{{ROOT}}streaming-setup-south-africa.html">Stream Support</a></div></nav>
 </header>

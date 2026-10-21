@@ -85,3 +85,7 @@ html body[data-page=store] #main-content .catalogue-card .catalogue-price strong
 @media(prefers-reduced-motion:reduce){.department-card,.catalogue-card{transition:none}}
 
 html[data-theme=dark] body[data-page=store] #main-content .store-department-tabs a[aria-current]{color:#052a2c}
+
+.catalogue-loading{min-height:480px;padding-block:16px}.catalogue-loading-label{display:block;margin-bottom:20px;color:var(--text-secondary);font-size:14px}
+.catalogue-loading-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.catalogue-loading-grid>div{height:320px;border:1px solid var(--retail-line);border-radius:12px;padding:16px}.catalogue-loading-grid span,.catalogue-loading-grid i{display:block;background:var(--retail-soft);border-radius:8px}.catalogue-loading-grid span{height:190px;margin-bottom:18px}.catalogue-loading-grid i{height:15px;margin-block:10px}.catalogue-loading-grid i:last-child{width:60%}
+@media(max-width:700px){.catalogue-loading-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.catalogue-loading-grid>div{height:240px}.catalogue-loading-grid span{height:140px}.catalogue-loading-grid>div:nth-child(n+3){display:none}}

@@ -39,13 +39,26 @@ def render(source):
         'FOOTER': (ROOT / 'src/templates/footer.html').read_text().strip(),
         'CONTENT': source.with_suffix('.html').read_text().strip(),
         'STYLES': '\n'.join(f'  <link rel="stylesheet" href="{prefix}{path}">' for path in styles),
-        'SCRIPTS': '\n'.join(f'  <script defer src="{prefix}{path}"></script>' for path in config.get('classic_scripts', [])) + '\n' + '\n'.join(f'  <script type="module" src="{prefix}{path}"></script>' for path in config.get('scripts', [])),
+        'SCRIPTS': '\n'.join(f'  <script defer src="{prefix}{path}"></script>' for path in config.get('classic_scripts', []) if path != 'supabase-config.js') + '\n' + '\n'.join(f'  <script type="module" src="{prefix}{path}"></script>' for path in config.get('scripts', [])),
         'HEAD': source.with_suffix('.head.html').read_text().strip() if source.with_suffix('.head.html').exists() else '',
     }
+    if source.stem != 'store':
+        values['HEADER'] = re.sub(r'<nav class="retail-category-nav".*?</nav>', '', values['HEADER'], flags=re.S)
+    # Render contact icons in the HTML so they never expand the buttons after paint.
+    def contact_icon(match):
+        opening, content = match.groups()
+        if not any(marker in opening for marker in ['class="button', 'class="text-link', 'data-service-', 'data-stream-contact']):
+            return match.group(0)
+        if 'cta-brand-icon' in content:
+            return match.group(0)
+        asset = 'whatsapp-logo.svg' if 'wa.me/' in opening or 'data-service-whatsapp' in opening else 'email-icon.svg'
+        return opening + f'<img class="cta-brand-icon" src="{prefix}{asset}" width="20" height="20" alt="" aria-hidden="true">' + content + '</a>'
+    values['CONTENT'] = re.sub(r'(<a\b(?=[^>]*(?:mailto:|wa\.me/|data-service-email|data-service-whatsapp))[^>]*>)(.*?)</a>', contact_icon, values['CONTENT'], flags=re.S)
     page = (ROOT / 'src/templates/page.html').read_text()
     for key, value in values.items():
         page = page.replace('{{' + key + '}}', value)
     page = page.replace('{{ROOT}}', prefix)
+    page = '\n'.join(line.rstrip() for line in page.split('\n'))
     if re.search(r'\{\{[A-Z_]+\}\}', page):
         raise ValueError(f'Unresolved template token in {source}')
     return ROOT / output, page
