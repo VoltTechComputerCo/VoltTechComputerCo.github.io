@@ -1,11 +1,11 @@
-import { renderCustomerWorkflow } from '../components/customer-workflow.js?v=20261021.2';
+import { renderCustomerWorkflow } from '../components/customer-workflow.js?v=20261021.3';
 import {
   isAccountInspection, getAccountClient, safeReturnPath, accountCallbackUrl,
   continueAfterAuth, loadAccountNotifications, accountIsAdmin
-} from '../services/account-session.js?v=20261021.2';
+} from '../services/account-session.js?v=20261021.3';
 import {
   loadProfile, saveProfile, listAddresses, saveAddress, deleteAddress, loadOverview
-} from '../services/account-data.js?v=20261021.2';
+} from '../services/account-data.js?v=20261021.3';
 
 const q = selector => document.querySelector(selector);
 const qa = selector => [...document.querySelectorAll(selector)];

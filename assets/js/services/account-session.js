@@ -1,4 +1,4 @@
-import { isProduction, sdkUrl } from './site-config.js?v=20261021.2';
+import { isProduction, sdkUrl } from './site-config.js?v=20261021.3';
 
 const canonicalAccountOrigin = 'https://volttechcomputerco.co.za';
 const legacyPreviewHost = 'volttechcomputerco.github.io';
@@ -94,7 +94,7 @@ export async function loadAccountNotifications(client) {
   if (!isProduction() || !client) return;
   const { data: { session } } = await client.auth.getSession();
   if (!session?.user) return;
-  notificationModulePromise ||= import('./customer-notifications.js?v=20261021.2');
+  notificationModulePromise ||= import('./customer-notifications.js?v=20261021.3');
   try { const module = await notificationModulePromise; await module.initialiseCustomerNotifications(client); } catch {}
 }
 

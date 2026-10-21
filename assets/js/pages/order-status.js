@@ -1,8 +1,8 @@
-import { getCommerceCore, withTimeout, validOrderAccess, readLaunchSettings, canPay, paymentDestination, canTransactHere } from '../services/transactions.js?v=20261021.2';
-import { getAccountClient } from '../services/account-session.js?v=20261021.2';
-import { connectCart } from '../services/home-integrations.js?v=20261021.2';
-import { esc } from '../components/catalogue-view.js?v=20261021.2';
-import { money, stageInfo, timeline, orderItems, trackingLink } from '../components/order-view.js?v=20261021.2';
+import { getCommerceCore, withTimeout, validOrderAccess, readLaunchSettings, canPay, paymentDestination, canTransactHere } from '../services/transactions.js?v=20261021.3';
+import { getAccountClient } from '../services/account-session.js?v=20261021.3';
+import { connectCart } from '../services/home-integrations.js?v=20261021.3';
+import { esc } from '../components/catalogue-view.js?v=20261021.3';
+import { money, stageInfo, timeline, orderItems, trackingLink } from '../components/order-view.js?v=20261021.3';
 const params=new URLSearchParams(location.search), initialAccess=validOrderAccess(params);
 let access=initialAccess;
 const state=document.getElementById('order-state'), detail=document.getElementById('order-detail'), refresh=document.getElementById('refresh-order'), error=document.getElementById('order-error');

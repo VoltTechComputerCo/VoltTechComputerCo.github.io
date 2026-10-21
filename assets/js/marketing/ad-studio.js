@@ -1,5 +1,5 @@
 
-import {PRESETS,ready,render,caption} from './ad-renderer.js?v=20261021.2';
+import {PRESETS,ready,render,caption} from './ad-renderer.js?v=20261021.3';
 const $=s=>document.querySelector(s);let products=[],revision=0;
 const config=window.VOLTTECH_SUPABASE,client=window.supabase.createClient(config.url,config.publishableKey);
 function selected(){const p=products.find(p=>p.id===$('#product').value),base=PRESETS[Number($('#preset').value)];return{p,preset:{...base,title:$('#headline').value||base.title}};}

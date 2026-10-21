@@ -1,7 +1,7 @@
-import { connectCart, connectAccount } from './services/home-integrations.js?v=20261021.2';
-import { enhanceNavigation } from './navigation.js?v=20261021.2';
-import { enhanceDialogs } from './components/dialog.js?v=20261021.2';
-import { enhanceSearch } from './components/search.js?v=20261021.2';
+import { connectCart, connectAccount } from './services/home-integrations.js?v=20261021.3';
+import { enhanceNavigation } from './navigation.js?v=20261021.3';
+import { enhanceDialogs } from './components/dialog.js?v=20261021.3';
+import { enhanceSearch } from './components/search.js?v=20261021.3';
 
 const CTA_BRANDS = [
   { selector: '#googleSignIn', asset: 'google-logo.svg', alt: 'Google' },

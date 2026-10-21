@@ -1,5 +1,5 @@
-import { esc, commerceState, imageMarkup, bindImages } from '../components/catalogue-view.js?v=20261021.2';
-import { withTimeout, publicProducts, notify } from './catalogue.js?v=20261021.2';
+import { esc, commerceState, imageMarkup, bindImages } from '../components/catalogue-view.js?v=20261021.3';
+import { withTimeout, publicProducts, notify } from './catalogue.js?v=20261021.3';
 export function connectCatalogueCart(VT, products, preview) {
   const dialog = document.getElementById('catalogue-cart'), host = document.getElementById('cart-items'), checkout = document.getElementById('cart-checkout');
   const map = new Map(products.map(p => [p.id,p]));

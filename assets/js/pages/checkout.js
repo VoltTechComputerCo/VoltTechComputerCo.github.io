@@ -1,6 +1,6 @@
-import { checkoutAccess, checkoutCart, cartFingerprint, eligibleCart, readLaunchSettings, withTimeout, statusDestination, canTransactHere } from '../services/transactions.js?v=20261021.2';
-import { esc, imageMarkup, bindImages } from '../components/catalogue-view.js?v=20261021.2';
-import { money } from '../components/order-view.js?v=20261021.2';
+import { checkoutAccess, checkoutCart, cartFingerprint, eligibleCart, readLaunchSettings, withTimeout, statusDestination, canTransactHere } from '../services/transactions.js?v=20261021.3';
+import { esc, imageMarkup, bindImages } from '../components/catalogue-view.js?v=20261021.3';
+import { money } from '../components/order-view.js?v=20261021.3';
 const form=document.getElementById('checkout-form'), fieldset=document.getElementById('checkout-fields'), state=document.getElementById('checkout-state'), error=document.getElementById('checkout-error'), button=document.getElementById('place-order');
 let VT, cart=[], fingerprint='', sending=false, received=false, cartStale=false;
 const input=name=>form.elements.namedItem(name);

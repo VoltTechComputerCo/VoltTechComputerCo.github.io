@@ -1,9 +1,9 @@
-import { updateDepartmentImages } from '../services/store-departments.js?v=20261021.2';
-import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261021.2';
-import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261021.2';
-import { pageWindow, pageSize } from '../services/catalogue-pagination.js?v=20261021.2';
-import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261021.2';
-import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261021.2';
+import { updateDepartmentImages } from '../services/store-departments.js?v=20261021.3';
+import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261021.3';
+import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261021.3';
+import { pageWindow, pageSize } from '../services/catalogue-pagination.js?v=20261021.3';
+import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261021.3';
+import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261021.3';
 
 const query=new URLSearchParams(location.search);
 const landingHash=location.hash;

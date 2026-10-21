@@ -1,7 +1,7 @@
 import {
   beginTwitchCreatorRegistration,
   completeTwitchCreatorRegistrationFromLocation
-} from '../services/creator-registration.js?v=20261021.2';
+} from '../services/creator-registration.js?v=20261021.3';
 
 const q = selector => document.querySelector(selector);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({

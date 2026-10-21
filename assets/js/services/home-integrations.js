@@ -1,4 +1,4 @@
-import { isProduction, sdkUrl } from './site-config.js?v=20261021.2';
+import { isProduction, sdkUrl } from './site-config.js?v=20261021.3';
 const base = new URL('../../../', import.meta.url);
 const cartKey = 'vt_store_quote_cart_v1';
 
@@ -92,7 +92,7 @@ async function initialiseAccount(config) {
     const { data } = await client.auth.getSession();
     update(data.session);
     client.auth.onAuthStateChange((_event, session) => update(session));
-    await loadScript('notifications.js?v=20261021.2');
+    await loadScript('notifications.js?v=20261021.3');
   } catch(error) { console.warn('VoltTech account controls:',error?.message||String(error)); }
 }
 

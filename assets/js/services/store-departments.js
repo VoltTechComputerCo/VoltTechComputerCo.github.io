@@ -1,4 +1,4 @@
-import { productImageUrl } from './product-images.js?v=20261021.2';
+import { productImageUrl } from './product-images.js?v=20261021.3';
 const preferences={gpu:/9070\s*xt|5070|5080|5090/i,cpu:/9950x3d|9800x3d/i,monitors:/rog.*oled|gaming.*oled/i,cooler:/rog.*360|titan.*360/i,storage:/gen5.*ssd|ssd.*gen5/i,audio:/cast ultra/i,adapters:/ugreen.*14-in-1/i,cables:/usb4/i};
 export function departmentPicks(products){
  const result=new Map();

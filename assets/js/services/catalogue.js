@@ -1,6 +1,6 @@
-import { readPublicCatalogue } from './public-catalogue.js?v=20261021.2';
-import { readLaunchSettings, connectCart, connectAccount, connectProductionServices, loadScript } from './home-integrations.js?v=20261021.2';
-import { isProduction, sdkUrl } from './site-config.js?v=20261021.2';
+import { readPublicCatalogue } from './public-catalogue.js?v=20261021.3';
+import { readLaunchSettings, connectCart, connectAccount, connectProductionServices, loadScript } from './home-integrations.js?v=20261021.3';
+import { isProduction, sdkUrl } from './site-config.js?v=20261021.3';
 const base = new URL('../../../', import.meta.url);
 let ready;
 export async function withTimeout(promise, ms = 10000) {
@@ -19,7 +19,7 @@ export async function getCommerceCore() {
     if (!config?.url || !config?.publishableKey) throw new Error('Catalogue connection unavailable.');
     const production = isProduction();
     window.volttechAuth ||= window.supabase.createClient(config.url, config.publishableKey, { auth: { persistSession: production, autoRefreshToken: production, detectSessionInUrl: production } });
-    await script('commerce/js/catalogue-runtime.js?v=20261021.2');
+    await script('commerce/js/catalogue-runtime.js?v=20261021.3');
     return window.VoltTechStore;
   })();
   return ready;
