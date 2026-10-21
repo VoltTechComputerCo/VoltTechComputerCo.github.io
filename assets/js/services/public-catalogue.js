@@ -1,5 +1,7 @@
 // Only anonymous, public product fields are present in this CDN snapshot.
 const snapshotUrl=new URL('../../data/catalogue.json.gz',import.meta.url);
+// Rotate the CDN cache key with the catalogue refresh interval.
+snapshotUrl.searchParams.set('v',String(Math.floor(Date.now()/900000)));
 const fresh=payload=>payload?.schemaVersion===1&&Array.isArray(payload.products)&&payload.settings&&Number.isFinite(Date.parse(payload.generatedAt))&&Date.now()-Date.parse(payload.generatedAt)>=-60000&&Date.now()-Date.parse(payload.generatedAt)<45*60000;
 let pending;
 export function readPublicCatalogue(request=fetch){
