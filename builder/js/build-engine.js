@@ -72,12 +72,12 @@ export function getCategorySummary(value,type=null){
     }
     const p=list[0],s=p.specs||{};
     switch(t){
-        case"cpu":return[s.socket,s.cores?`${s.cores}C/${s.threads}T`:null].filter(Boolean).join(" · ");
+        case"cpu":return[s.socket,s.cores?`${s.cores} cores${s.threads ? ` / ${s.threads} threads` : ""}`:null].filter(Boolean).join(" · ");
         case"motherboard":return[s.chipset,s.formFactor,s.memoryType].filter(Boolean).join(" · ");
         case"gpu":return[s.vramGB?`${s.vramGB}GB VRAM`:null,s.lengthMm?`${s.lengthMm}mm`:null].filter(Boolean).join(" · ");
         case"psu":return[s.wattage?`${s.wattage}W`:null,s.efficiency].filter(Boolean).join(" · ");
         case"case":return[s.supportedMotherboardSizes?.join("/"),s.maxGpuLengthMm?`${s.maxGpuLengthMm}mm GPU`:null].filter(Boolean).join(" · ");
-        case"cooler":return s.coolerType==="aio"?`${s.radiatorSizeMm}mm AIO`:s.heightMm?`${s.heightMm}mm air cooler`:"CPU cooler";
+        case"cooler":return s.coolerType==="aio"?s.radiatorSizeMm ? `${s.radiatorSizeMm}mm AIO` : "AIO cooler":s.heightMm?`${s.heightMm}mm air cooler`:"CPU cooler";
         default:return"";
     }
 }

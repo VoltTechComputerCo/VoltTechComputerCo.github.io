@@ -2,10 +2,10 @@ import {
   CATEGORY_ORDER,REQUIRED_CATEGORIES,CATEGORY_LABELS,createEmptyBuild,selectProduct,removeProduct,clearBuild,
   getProductsByCategory,searchProducts,getBestOffer,getProductPrice,calculateBuildTotal,formatMoney,getSelectedCount,
   getCompletedCategoryCount,getNextCategory,getCategorySummary,getStockLabel,getSelections,isMultiCategory
-} from "./build-engine.js?v=20261022.2";
-import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=20261022.2";
-import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=20261022.2";
-import {loadCatalogue} from "./data-loader.js?v=20261022.2";
+} from "./build-engine.js?v=20261022.3";
+import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=20261022.3";
+import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=20261022.3";
+import {loadCatalogue} from "./data-loader.js?v=20261022.3";
 
 const e={
   steps:document.getElementById("steps"), search:document.getElementById("search"), compatibleOnly:document.getElementById("compatible-only"),

@@ -1,11 +1,11 @@
-import { psuPlanningTarget } from './psu-planning.js?v=20261022.1';
+import { psuPlanningTarget } from './psu-planning.js?v=20261022.3';
 import {
   createEmptyBuild, selectProduct, getProductsByCategory, getProductPrice,
   calculateBuildTotal, getBestOffer, getSelections
-} from "./build-engine.js?v=20261022.1";
+} from "./build-engine.js?v=20261022.3";
 import {
   getCompatibility, validateBuild, estimatePower
-} from "./compatibility-engine.js?v=20261022.1";
+} from "./compatibility-engine.js?v=20261022.3";
 import {
   cpuIntelligence, gpuIntelligence, cpuWorkloadScore, gpuWorkloadScore,
   INTELLIGENCE_META
@@ -343,7 +343,7 @@ function rebalanceIfOverBudget(catalogue,initial,profile,budget,optimizer){
   if(total<=budget.max)return{build,reasons};
 
   // Save money first where the performance impact is usually smallest.
-  const order=["motherboard","case","cooler","storage","memory"];
+  const order=["motherboard","case","cooler","storage","memory","gpu"];
   for(const type of order){
     if(total<=budget.max)break;
     const current=getSelections(build,type)[0];
@@ -357,7 +357,7 @@ function rebalanceIfOverBudget(catalogue,initial,profile,budget,optimizer){
 
     // Prefer the smallest downgrade that is enough to close the gap.
     const gap=total-budget.max;
-    let choice=cheaper.find(x=>currentPrice-x.price>=gap) || cheaper[0];
+    let choice=cheaper.find(x=>currentPrice-x.price>=gap) || cheaper.at(-1);
     if(!choice)continue;
 
     build=selectProduct(build,choice.p);
@@ -367,7 +367,7 @@ function rebalanceIfOverBudget(catalogue,initial,profile,budget,optimizer){
       kind:"rebalance",category:type,from:current.name,to:choice.p.name,costDelta:-Math.round(saving)
     });
 
-    if(type==="memory")reasons.memory=`Rebalanced to a lower-cost compatible matched kit to protect the overall budget. Separate RAM kits are still never mixed.`;
+    if(type==="memory")reasons.memory=`Rebalanced to a lower-cost memory selection to protect the overall budget. Separate RAM kits are still never mixed.`;
     else if(type==="storage")reasons.storage=`Rebalanced to a less expensive compatible starting drive so more of the budget remains with performance-critical hardware.`;
     else reasons[type]=`Rebalanced to a lower-cost compatible option because this change has less performance impact than cutting CPU or GPU performance.`;
   }
