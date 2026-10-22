@@ -2,7 +2,7 @@
 export const CARD_PAYMENTS_AVAILABLE = false;
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function eftEligible(order) {
-  return order?.checkout_stage === 'awaiting_payment' && order.workflow?.approval === 'accepted' && !!order.workflow?.payment_released_at && !['paid','refunded','partially_refunded','cancelled'].includes(order.payment_status) && Number.isFinite(Number(order.total)) && Number(order.total)>0;
+  return order?.checkout_stage === 'awaiting_payment' && order.workflow?.approval === 'accepted' && order.can_pay === true && !['paid','refunded','partially_refunded','cancelled'].includes(order.payment_status) && Number.isFinite(Number(order.total)) && Number(order.total)>0;
 }
 export function eftText(reference,total) {
   return ['VOLTTECH EFT PAYMENT DETAILS','Account holder: VOLTTECH COMPUTER CO (PTY)LTD','Bank: Capitec Business','Account type: Capitec Business Account','Account number: 1055896791','Branch code: 450105','Amount: '+new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR'}).format(Number(total)),'Payment reference: '+reference,'Proof of payment: info@volttechcomputerco.co.za'].join('\n');
