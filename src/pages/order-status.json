@@ -11,6 +11,6 @@
     "supabase-config.js"
   ],
   "scripts": [
-    "assets/js/pages/order-status.js?v=20261013-short-flow"
+    "assets/js/pages/order-status.js?v=20261022-eft"
   ]
 }

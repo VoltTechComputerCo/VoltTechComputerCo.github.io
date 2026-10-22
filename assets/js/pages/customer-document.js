@@ -1,3 +1,4 @@
+import { CARD_PAYMENTS_AVAILABLE, mountEft } from '../components/eft-payment.js?v=20261022-eft';
 import { paymentDestination, readLaunchSettings } from '../services/transactions.js?v=20261021.3';
 import { isAccountInspection } from '../services/account-session.js?v=20261021.3';
 import { requireDocumentCustomer,loadDocument,customerQuoteAction,money,money0,date,cap,safeFile,buildRef,orderRef,proformaRef,serviceRef,quoteExpired } from '../services/customer-documents.js?v=20261021.3';
@@ -81,7 +82,7 @@ async function loadProduction(){
   if(kind==='service')renderService(result.data);
   if(kind==='personal-data')renderPersonal(result.data);
   if(kind==='invoice')await mountPayment(result.data.record);
-  if(kind==='quote'&&result.data.record.status==='accepted'){const invoice=await client.from('invoices').select('id,quote_id,status').eq('quote_id',result.data.record.id).order('issued_at',{ascending:false}).limit(1).maybeSingle();if(invoice.data)await mountPayment(invoice.data);}
+  if(kind==='quote'&&result.data.record.status==='accepted'){const invoice=await client.from('invoices').select('id,quote_id,status,invoice_number,total').eq('quote_id',result.data.record.id).order('issued_at',{ascending:false}).limit(1).maybeSingle();if(invoice.data)await mountPayment(invoice.data);}
   const quoteId=kind==='quote'?result.data.record?.id:kind==='invoice'?result.data.record?.quote_id:null;
   if(quoteId){const progress=await client.rpc('customer_operations_progress',{p_quote_id:quoteId});if(!progress.error&&progress.data){const p=progress.data;surface.insertAdjacentHTML('beforeend','<section class="document-sheet"><h2>Your order progress</h2>'+[['Request received',true],['Stock confirmed',p.stock_confirmed],['Quote confirmed',p.quote_confirmed],['Quote accepted',p.approval],['Payment received',p.payment_received],['Preparing order',p.preparing],['Courier booked',p.courier_booked],['Waybill confirmed',p.waybill_confirmed],['In transit',p.in_transit],['Delivered',p.delivered]].map(([label,done])=>'<p>'+(done?'✅':'⏳')+' '+label+'</p>').join('')+(p.tracking_number?'<p>Tracking: '+esc(p.tracking_number)+'</p>':'')+(paymentTracking(p.tracking_url)?'<a class="button" href="'+esc(paymentTracking(p.tracking_url))+'" target="_blank" rel="noopener">Track delivery →</a>':'')+(p.updates?.length?'<h3>Latest updates</h3>'+p.updates.map(u=>'<p>'+esc(u.message)+'</p>').join(''):'')+'</section>');}}
 
@@ -93,6 +94,7 @@ async function mountPayment(invoice){
  const box=document.createElement('section');box.className='document-sheet';surface.append(box);
  const ready=!progress.error&&progress.data?.can_pay===true&&settings?.direct_payment_enabled===true;
  box.innerHTML='<p class="eyebrow">NEXT ACTION</p><h2>'+(ready?'⚡ Complete payment':'⏳ Awaiting payment release')+'</h2><p>'+(ready?'Your quote is approved and payment has been released.':'We will notify you when your confirmed order is ready for payment.')+'</p>'+(ready?'<button class="button" type="button">Open payment portal →</button>':'')+'<p role="status"></p><a class="text-link" href="account.html#orders">My orders &amp; quotes →</a>';
+ if(!CARD_PAYMENTS_AVAILABLE){const approved=!progress.error&&progress.data?.approval===true&&progress.data?.payment_released===true;if(approved){const record=current?.record;mountEft(box,invoice.invoice_number||record?.quote_number||invoice.id,invoice.total??record?.total);}else box.innerHTML='<h2>Awaiting payment release</h2><p>We will notify you when your quote is ready for EFT payment.</p>';return;}
  if(ready)box.querySelector('button').onclick=async()=>{const button=box.querySelector('button');button.disabled=true;button.textContent='Opening payment portal…';try{const result=await client.functions.invoke('create-yoco-checkout',{body:{invoice_id:invoice.id}});if(result.error){let message='The payment portal could not open. Please retry.';try{const body=await result.error.context.json();message=body.error||body.message||message}catch{}throw new Error(message)}const url=paymentDestination(result.data?.redirect_url);if(!url)throw new Error('The payment link could not be verified.');location.assign(url);}catch(e){box.querySelector('[role=status]').textContent=e.message;button.disabled=false;button.textContent='Open payment portal →';}};
 }
 function setAccessibleDocumentTitle(){
