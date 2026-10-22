@@ -1,4 +1,4 @@
-import { CARD_PAYMENTS_AVAILABLE, mountEft } from '../components/eft-payment.js?v=20261022-eft';
+import { CARD_PAYMENTS_AVAILABLE, mountEft } from '../components/eft-payment.js?v=20261022-eft2';
 import { paymentDestination, readLaunchSettings } from '../services/transactions.js?v=20261021.3';
 import { isAccountInspection } from '../services/account-session.js?v=20261021.3';
 import { requireDocumentCustomer,loadDocument,customerQuoteAction,money,money0,date,cap,safeFile,buildRef,orderRef,proformaRef,serviceRef,quoteExpired } from '../services/customer-documents.js?v=20261021.3';

@@ -1,4 +1,4 @@
-import { CARD_PAYMENTS_AVAILABLE, eftEligible, mountEft } from '../components/eft-payment.js?v=20261022-eft';
+import { CARD_PAYMENTS_AVAILABLE, eftEligible, mountEft } from '../components/eft-payment.js?v=20261022-eft2';
 import { getCommerceCore, withTimeout, validOrderAccess, readLaunchSettings, canPay, paymentDestination, canTransactHere } from '../services/transactions.js?v=20261021.3';
 import { getAccountClient } from '../services/account-session.js?v=20261021.3';
 import { connectCart } from '../services/home-integrations.js?v=20261021.3';
