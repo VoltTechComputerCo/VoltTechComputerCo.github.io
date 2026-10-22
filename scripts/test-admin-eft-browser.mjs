@@ -1,0 +1,31 @@
+import {createRequire} from 'node:module';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const {chromium}=createRequire(import.meta.url)('playwright');
+const id='00000000-0000-4000-8000-000000000001';
+const fixture={stores:[{id,request_number:'VT-EFT-TEST',guest_name:'EFT Test Customer',guest_email:'qa@example.test',checkout_stage:'awaiting_payment',payment_status:'pending',status:'submitted',final_total:10713.38,submitted_at:'2026-10-22',items:[{id:'item1',product_id:'part1',product_name:'QA RAM',quantity:2,displayed_price:5307.19}]}],operations:[{entity_key:'store:'+id,stock_confirmed_at:'2026-10-22',pricing_confirmed_at:'2026-10-22',quote_sent_at:'2026-10-22',approval:'accepted',approved_total:10713.38,payment_released_at:'2026-10-22'}],quotes:[],invoices:[],services:[],builds:[],orders:[],emails:[]};
+const mock=`window.supabase={createClient:()=>({auth:{getUser:async()=>({data:{user:{id:'admin'}}}),getSession:async()=>({data:{session:{user:{id:'admin'}}}}),onAuthStateChange:()=>({data:{subscription:{unsubscribe(){}}}})},channel:()=>{const channel={on:()=>channel,subscribe:()=>channel};return channel;},removeChannel(){},rpc:async(name,args)=>{if(name==='admin_confirm_eft_payment'){window.__eftArgs=args;window.__eftPaid=true;return {data:{ok:true}};}const data=${JSON.stringify(fixture)};if(window.__eftPaid)data.stores[0].payment_status='paid';return {data:name==='is_volttech_admin'?true:name==='admin_operations_data'?data:[],error:null};},from:()=>{const chain={};for(const method of ['select','order','range','limit','eq','in'])chain[method]=()=>chain;chain.then=resolve=>Promise.resolve({data:[],error:null}).then(resolve);return chain;}})};`;
+fs.mkdirSync('qa-results/operations',{recursive:true});
+for(const width of [390,1440]){
+ const browser=await chromium.launch({headless:true,executablePath:process.env.VT_CHROMIUM_PATH,args:['--no-sandbox','--disable-gpu']});
+ const page=await browser.newPage({viewport:{width,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.route('https://**/*',route=>route.request().url().includes('supabase-js')?route.fulfill({contentType:'application/javascript',body:mock}):route.abort());
+ await page.goto('http://127.0.0.1:4173/admin.html');
+ await page.locator('[data-job]').first().click();
+ await page.getByRole('button',{name:'CONFIRM EFT RECEIVED',exact:true}).click();
+ assert.equal(await page.locator('#opsEftAmount').inputValue(),'10713.38');
+ assert.equal(await page.locator('#opsEftReference').inputValue(),'VT-EFT-TEST');
+ await page.getByRole('button',{name:'Confirm EFT received & continue',exact:true}).click();
+ assert.equal(await page.evaluate(()=>!!window.__eftPaid),false);
+ await page.locator('#opsEftVerified').check();
+ await page.screenshot({path:'qa-results/operations/eft-confirm-'+width+'.png',fullPage:true});
+ await page.getByRole('button',{name:'Confirm EFT received & continue',exact:true}).click();
+ await page.getByRole('button',{name:'SUPPLIER ORDER →',exact:true}).waitFor();
+ assert.deepEqual(await page.evaluate(()=>window.__eftArgs),{p_key:'store:'+id,p_amount:10713.38,p_reference:'VT-EFT-TEST',p_bank_verified:true});
+ assert.ok((await page.locator('#opsWorkspace').innerText()).includes('Verified paid'));
+ assert.equal(await page.getByRole('button',{name:'CONFIRM EFT RECEIVED',exact:true}).count(),0);
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ assert.deepEqual(errors,[]);
+ console.log('PASS: EFT full amount and reference prefilled, bank check required, authenticated RPC payload, paid status and next supplier action at '+width);
+ await browser.close();
+}

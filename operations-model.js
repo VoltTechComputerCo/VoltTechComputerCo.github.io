@@ -13,7 +13,7 @@ export function nextAction(j){
  if(!j.paid&&!o.quote_sent_at&&!['sent','viewed','accepted'].includes(r.status))return {label:'Preview and send the customer quote',action:'send_quote',stage:2,tone:'action'};
  if(!accepted&&!j.paid)return {label:'Waiting for customer approval',stage:3,tone:'waiting'};
  if(!j.paid&&!o.payment_released_at)return {label:'Release payment for the accepted quote',action:'release_payment',stage:4,tone:'action'};
- if(!j.paid)return {label:r.payment_status==='failed'?'Payment failed — follow up with customer':'Waiting for verified customer payment',stage:4,tone:r.payment_status==='failed'?'problem':'waiting'};
+ if(!j.paid)return {label:'Confirm EFT received after checking the bank account',action:'confirm_eft',stage:4,tone:'action'};
  if(j.kind==='quote'&&!j.items.some(i=>['part','product'].includes(i.item_type))){if(!o.delivered_at)return {label:'Payment received. Complete the service job',action:'service_complete',stage:7,tone:'action'};return {label:'Review the completed service and archive',action:'close',stage:8,tone:'action'};}
  if(!o.supplier_order_at)return {label:'Customer paid. Confirm supplier order',action:'supplier_order',stage:5,tone:'action'};
  if(!o.courier_booked_at)return {label:'Book Bob Go manually and record shipment',action:'courier',stage:6,tone:'action'};

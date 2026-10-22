@@ -2,7 +2,7 @@ name: Theme appearance QA
 on:
   push:
     branches: [main]
-    paths: ['assets/js/components/eft-payment.js', 'assets/js/pages/order-status.js', 'assets/js/pages/customer-document.js', 'operations-hub.js', 'operations-customers.js', 'scripts/test-customer-payment-browser.mjs', 'scripts/test-invoice-payment-browser.mjs', 'assets/css/**', 'assets/js/theme.js', '**/*.html', 'scripts/test-theme*', 'scripts/test-mobile-menu-brand.mjs', 'scripts/test-operations*', 'scripts/test-expanded-store-browser.mjs', 'scripts/test-store-selection-browser.mjs', 'scripts/test-store-navigation-browser.mjs', 'scripts/test-shared-shell-browser.mjs', 'notifications.js', 'assets/js/services/**', 'commerce/js/**', 'assets/js/pages/store.js', 'assets/js/pages/home.js', 'assets/js/components/catalogue-view.js', 'assets/js/components/product-gallery.js', 'assets/js/components/product-summary.js', 'assets/js/pages/product.js', 'scripts/test-product-gallery-browser.mjs', 'assets/js/services/catalogue-pagination.js', '.github/workflows/theme-qa.yml']
+    paths: ['assets/js/components/eft-payment.js', 'assets/js/pages/order-status.js', 'assets/js/pages/customer-document.js', 'operations-hub.js', 'operations-customers.js', 'scripts/test-customer-payment-browser.mjs', 'scripts/test-invoice-payment-browser.mjs', 'assets/css/**', 'assets/js/theme.js', '**/*.html', 'scripts/test-theme*', 'scripts/test-mobile-menu-brand.mjs', 'scripts/test-operations*', 'scripts/test-admin-eft-browser.mjs', 'scripts/test-expanded-store-browser.mjs', 'scripts/test-store-selection-browser.mjs', 'scripts/test-store-navigation-browser.mjs', 'scripts/test-shared-shell-browser.mjs', 'notifications.js', 'assets/js/services/**', 'commerce/js/**', 'assets/js/pages/store.js', 'assets/js/pages/home.js', 'assets/js/components/catalogue-view.js', 'assets/js/components/product-gallery.js', 'assets/js/components/product-summary.js', 'assets/js/pages/product.js', 'scripts/test-product-gallery-browser.mjs', 'assets/js/services/catalogue-pagination.js', '.github/workflows/theme-qa.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -34,6 +34,7 @@ jobs:
         env:
           VT_CHROMIUM_PATH: /usr/bin/google-chrome
         run: |
+          node scripts/test-admin-eft-browser.mjs
           node scripts/test-operations-browser.mjs
           node scripts/test-operations-customer-browser.mjs
       - name: Check mobile and desktop themes
