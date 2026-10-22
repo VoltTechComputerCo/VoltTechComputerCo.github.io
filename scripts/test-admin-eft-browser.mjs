@@ -12,7 +12,7 @@ for(const width of [390,1440]){
  await page.route('https://**/*',route=>route.request().url().includes('supabase-js')?route.fulfill({contentType:'application/javascript',body:mock}):route.abort());
  await page.goto('http://127.0.0.1:4173/admin.html');
  await page.locator('[data-job]').first().click();
- await page.getByRole('button',{name:'CONFIRM EFT RECEIVED',exact:true}).click();
+ await page.getByRole('button',{name:'CONFIRM EFT RECEIVED →',exact:true}).click();
  assert.equal(await page.locator('#opsEftAmount').inputValue(),'10713.38');
  assert.equal(await page.locator('#opsEftReference').inputValue(),'VT-EFT-TEST');
  await page.getByRole('button',{name:'Confirm EFT received & continue',exact:true}).click();
@@ -23,7 +23,7 @@ for(const width of [390,1440]){
  await page.getByRole('button',{name:'SUPPLIER ORDER →',exact:true}).waitFor();
  assert.deepEqual(await page.evaluate(()=>window.__eftArgs),{p_key:'store:'+id,p_amount:10713.38,p_reference:'VT-EFT-TEST',p_bank_verified:true});
  assert.ok((await page.locator('#opsWorkspace').innerText()).includes('Verified paid'));
- assert.equal(await page.getByRole('button',{name:'CONFIRM EFT RECEIVED',exact:true}).count(),0);
+ assert.equal(await page.getByRole('button',{name:'CONFIRM EFT RECEIVED →',exact:true}).count(),0);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  assert.deepEqual(errors,[]);
  console.log('PASS: EFT full amount and reference prefilled, bank check required, authenticated RPC payload, paid status and next supplier action at '+width);
