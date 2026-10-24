@@ -50,6 +50,7 @@ for(const width of [320,390,1440]){
  else await page.locator('.shop-category-bar [data-store-all]').click();
  assert.equal(await page.locator('#product-grid .catalogue-card').count(),3,'All products clears the category');
  assert.equal(await page.evaluate(()=>window.catalogueLoads),1,'category switching does not reload catalogue');
+ if(width>1100){assert.ok((await page.locator('#desk-essentials .department-image').first().boundingBox()).height>=150,'desktop category images are large');}
  await page.locator('#catalogue-search').fill('missing item');
  assert.equal(await page.locator('#product-grid .catalogue-card').count(),0);
  await page.locator('#reset-filters').click();

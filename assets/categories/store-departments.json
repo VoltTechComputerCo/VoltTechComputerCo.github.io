@@ -20,8 +20,9 @@
     "image": "assets/categories/store-controllers.webp"
   },
   "cooler": {
-    "name": "ASUS ROG STRIX SLC IV 360MM LCD ARGB AIO Liquid CPU Cooler",
-    "image": "assets/categories/store-cooler.webp"
+    "name": "DeepCool LT360 VISION ARGB Liquid Cooler Black",
+    "image": "assets/categories/store-cooler.webp",
+    "supplier_image": "https://www.syntech.co.za/wp-content/uploads/2026/03/R-LT360VISIONBKAMMC-G-1_DeepCool-LT360-Vision-ARGB-4.5-inch-LCD-All-in-one-CPU-Liquid-Cooler-Black_wr_01a.jpg"
   },
   "cpu": {
     "name": "AMD RYZEN 9 9950X3D2 16-Core 4.3GHz AM5 CPU",
