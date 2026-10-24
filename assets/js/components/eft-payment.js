@@ -1,16 +1,17 @@
-// Bank details verified against Capitec Account Confirmation Letter, 1 October 2026.
-export const CARD_PAYMENTS_AVAILABLE = false;
-const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export function eftEligible(order) {
-  return order?.checkout_stage === 'awaiting_payment' && order.workflow?.approval === 'accepted' && order.can_pay === true && !['paid','refunded','partially_refunded','cancelled'].includes(order.payment_status) && Number.isFinite(Number(order.total)) && Number(order.total)>0;
+// Details verified against Capitec confirmation letter dated 1 October 2026.
+export const CARD_PAYMENTS_AVAILABLE = true;
+const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=value=>new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR'}).format(Number(value));
+export function eftAmounts(total){const cents=Math.round(Number(total)*100),discount=Math.round(cents*0.02);return {total:cents/100,discount:discount/100,payable:(cents-discount)/100};}
+export function eftEligible(order){return order?.checkout_stage==='awaiting_payment'&&order.workflow?.approval==='accepted'&&order.can_pay===true&&!['paid','refunded','partially_refunded','cancelled'].includes(order.payment_status)&&Number.isFinite(Number(order.total))&&Number(order.total)>0;}
+export function eftText(reference,total){return ['VOLTTECH IMMEDIATE EFT PAYMENT DETAILS','Account holder: VOLTTECH COMPUTER CO (PTY)LTD','Bank: Capitec Business','Account type: Capitec Business Account','Account number: 1055896791','Branch code: 450105','Amount: '+money(eftAmounts(total).payable),'Payment reference: '+reference,'Proof of payment: info@volttechcomputerco.co.za'].join('\n');}
+export function mountEft(container,reference,total){
+ container.replaceChildren();const amounts=eftAmounts(total),section=document.createElement('section');section.className='transaction-panel';section.id='eft-payment';
+ section.innerHTML='<h2>Pay via Immediate EFT</h2><p>Full quote: '+escape(money(amounts.total))+'<br>Immediate EFT discount (2%): −'+escape(money(amounts.discount))+'<br><strong>Amount to pay: '+escape(money(amounts.payable))+'</strong></p><p>Choose your bank’s immediate payment option. The 2% discount applies only to immediate EFT, once cleared funds are verified. Card payments use the full quote total.</p><pre style="white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;line-height:1.7">'+escape(eftText(reference,total))+'</pre><button class="button button-secondary" type="button">Copy bank details</button><p><a class="text-link" href="mailto:info@volttechcomputerco.co.za?subject='+encodeURIComponent('Immediate EFT proof of payment — '+reference)+'">Email proof of payment →</a></p><p class="micro">Use the exact reference shown. Payment remains awaiting confirmation until VoltTech verifies cleared funds in our account.</p><p role="status"></p>';
+ section.querySelector('button').onclick=async()=>{try{await navigator.clipboard.writeText(eftText(reference,total));section.querySelector('[role=status]').textContent='Bank details copied.';}catch{section.querySelector('[role=status]').textContent='Select and copy the details above.';}};container.append(section);
 }
-export function eftText(reference,total) {
-  return ['VOLTTECH EFT PAYMENT DETAILS','Account holder: VOLTTECH COMPUTER CO (PTY)LTD','Bank: Capitec Business','Account type: Capitec Business Account','Account number: 1055896791','Branch code: 450105','Amount: '+new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR'}).format(Number(total)),'Payment reference: '+reference,'Proof of payment: info@volttechcomputerco.co.za'].join('\n');
-}
-export function mountEft(container, reference, total) {
-  container.replaceChildren();
-  const section=document.createElement('section');section.className='transaction-panel';section.id='eft-payment';
-  section.innerHTML='<p class="eyebrow">BANK TRANSFER / EFT</p><h2>Pay by EFT</h2><p>Card payments are temporarily unavailable while approval is pending. Pay the full confirmed total by EFT. No additional discount applies.</p><pre style="white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;line-height:1.7">'+escape(eftText(reference,total))+'</pre><button class="button button-secondary" type="button">Copy bank details</button><p><a class="text-link" href="mailto:info@volttechcomputerco.co.za?subject='+encodeURIComponent('Proof of payment — '+reference)+'">Email proof of payment →</a></p><p class="micro">Use your order or invoice reference exactly as shown. Payment remains awaiting confirmation until VoltTech verifies receipt in our bank account. Sending proof of payment does not mark the order as paid.</p><p role="status"></p>';
-  section.querySelector('button').onclick=async()=>{try{await navigator.clipboard.writeText(eftText(reference,total));section.querySelector('[role=status]').textContent='Bank details copied.';}catch{section.querySelector('[role=status]').textContent='Please select and copy the bank details above.';}};
-  container.append(section);
+export function mountPaymentChoices(container,reference,total,onCard){
+ container.replaceChildren();const choices=document.createElement('div');choices.className='actions';choices.id='payment-method-choices';choices.style.cssText='display:grid;gap:12px;margin-block:16px';
+ for(const [method,label] of [['card','Pay via Card'],['eft','Pay Via Immediate EFT (-2% Discount)']]){const button=document.createElement('button');button.type='button';button.className='button '+(method==='eft'?'button-secondary':'');button.dataset.paymentMethod=method;button.textContent=label;button.style.cssText='white-space:normal;min-height:48px;text-align:center';button.onclick=async()=>{if(method==='eft'){container.dataset.paymentMethod='eft';mountEft(details,reference,total);details.scrollIntoView({behavior:'smooth',block:'nearest'});}else{container.dataset.paymentMethod='card';details.replaceChildren();button.disabled=true;try{await onCard();}finally{button.disabled=false;}}};choices.append(button);}
+ const details=document.createElement('div');details.id='selected-payment-details';container.append(choices,details);if(container.dataset.paymentMethod==='eft')mountEft(details,reference,total);
 }
