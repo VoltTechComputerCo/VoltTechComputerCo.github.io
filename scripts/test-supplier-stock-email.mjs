@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {supplierStockEmail} from '../Supabase/functions/process-email-outbox/supplier-stock-email.js';
+const payload={request_number:'VT-SR-2026-ABC123',supplier_name:'Syntech',account_reference:'VOL007',lines:[{sku:'GPU-1',name:'Graphics card <OC>',quantity:2},{sku:'RAM-2',name:'Memory',quantity:1}],guest_email:'private@example.com',customer_note:'private note',shipping_address:'private address',retail_price:99999,action_url:'/private-token'};
+const email=supplierStockEmail(payload);
+assert.match(email.text,/GPU-1.*Quantity: 2/);
+assert.match(email.text,/RAM-2.*Quantity: 1/);
+assert.match(email.text,/account VOL007/);
+assert.match(email.text,/not a purchase order/);
+assert.match(email.body,/&lt;OC&gt;/);
+for(const privateValue of ['private@example.com','private note','private address','99999','private-token'])assert.ok(!JSON.stringify(email).includes(privateValue));
+assert.throws(()=>supplierStockEmail({...payload,lines:[{name:'X',quantity:1}]}));
+assert.throws(()=>supplierStockEmail({...payload,request_number:'Hello\r\nBcc: x@example.com'}));
+assert.throws(()=>supplierStockEmail({...payload,lines:[{sku:'X',name:'Y',quantity:0}]}));
+console.log('PASS: grouped stock enquiry content, private-data exclusion, escaping and validation');

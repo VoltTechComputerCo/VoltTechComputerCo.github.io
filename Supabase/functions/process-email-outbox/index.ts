@@ -1,5 +1,6 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { supplierStockEmail } from "./supplier-stock-email.js";
 
 const SITE = "https://volttechcomputerco.co.za";
 
@@ -212,6 +213,23 @@ Deno.serve(async (req: Request) => {
         const path=String(row.payload?.action_url||"/account.html");
         href=path.startsWith("/")&&!path.startsWith("//")?SITE+path:SITE+"/account.html";
       }
+      let supplierText: string | null = null;
+      if (row.message_kind === "supplier_stock_request") {
+        // Resolve only a server-configured, verified recipient. Never accept a cart email address.
+        const { data: supplier, error } = await admin.from("store_suppliers")
+          .select("status,metadata").eq("id", row.payload?.supplier_id).single();
+        if (error || supplier?.status !== "active" || supplier?.metadata?.stock_request_enabled !== true ||
+            String(supplier?.metadata?.stock_request_email || "").toLowerCase() !== String(row.recipient_email).toLowerCase()) {
+          throw new Error("Supplier stock enquiry contact is not enabled or has changed; review in Operations");
+        }
+        const enquiry = supplierStockEmail(row.payload);
+        from = "VoltTech Supplier Desk <info@volttechcomputerco.co.za>";
+        eyebrow = "VOLTTECH / SUPPLIER STOCK ENQUIRY";
+        headline = "Stock confirmation requested";
+        subject = enquiry.subject; body = enquiry.body; supplierText = enquiry.text;
+        cta = "Reply to VoltTech";
+        href = "mailto:info@volttechcomputerco.co.za?subject=" + encodeURIComponent("Re: " + subject);
+      }
       const content = layout(eyebrow, headline, body, cta, href);
       const response = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -226,7 +244,7 @@ Deno.serve(async (req: Request) => {
           to: [row.recipient_email],
           subject,
           html: content.html,
-          text: content.text,
+          text: supplierText || content.text,
           tags: [
             { name: "kind", value: String(row.message_kind).replace(/[^a-zA-Z0-9_-]/g, "_").slice(0, 256) },
             { name: "source", value: String(row.source_type || "system").replace(/[^a-zA-Z0-9_-]/g, "_").slice(0, 256) }
