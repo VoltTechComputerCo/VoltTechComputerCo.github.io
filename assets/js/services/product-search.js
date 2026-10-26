@@ -76,7 +76,7 @@ export function attachSearchSuggestions(input){
  input.addEventListener('input',()=>{version++;clearTimeout(timer);close();timer=setTimeout(suggest,180);});
  input.addEventListener('focus',()=>{if(input.value.trim())suggest();});
  input.addEventListener('keydown',event=>{
-  if(event.key==='Escape'){version++;clearTimeout(timer);close();return;}
+  if(event.key==='Escape'){event.preventDefault();event.stopPropagation();version++;clearTimeout(timer);close();return;}
   if(list.hidden)return;const options=[...list.querySelectorAll('[role="option"]')];
   if(event.key==='ArrowDown'||event.key==='ArrowUp'){event.preventDefault();select((active+(event.key==='ArrowDown'?1:-1)+options.length)%options.length);}
   if(event.key==='Enter'&&active>=0){event.preventDefault();event.stopPropagation();options[active].click();}
