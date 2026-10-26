@@ -1,4 +1,4 @@
-import { searchCatalogue } from '../services/product-search.js?v=20261026-search';
+import { searchCatalogue } from '../services/product-search.js?v=20261026-search2';
 import { updateDepartmentImages } from '../services/store-departments.js?v=20261021.3';
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261021.3';
 import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261026-search';

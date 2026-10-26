@@ -52,6 +52,8 @@ export async function searchCatalogue(query,request=fetch){
 let serial=0;
 export function attachSearchSuggestions(input){
  if(input.dataset.suggestionsReady)return;input.dataset.suggestionsReady='true';
+ // A text combobox avoids native search-field Escape behavior clearing the query.
+ input.type='text';input.inputMode='search';
  const host=input.parentElement;host.classList.add('product-search-host');
  const list=document.createElement('div');list.id=`product-search-options-${++serial}`;list.className='product-search-options';list.setAttribute('role','listbox');list.setAttribute('aria-label','Product search suggestions');list.hidden=true;host.append(list);
  input.setAttribute('role','combobox');input.setAttribute('aria-autocomplete','list');input.setAttribute('aria-controls',list.id);input.setAttribute('aria-expanded','false');input.setAttribute('autocomplete','off');
