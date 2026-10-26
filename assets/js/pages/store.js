@@ -1,6 +1,7 @@
+import { searchCatalogue } from '../services/product-search.js?v=20261026-search';
 import { updateDepartmentImages } from '../services/store-departments.js?v=20261021.3';
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261021.3';
-import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261021.3';
+import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261026-search';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js?v=20261021.3';
 import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261021.3';
 import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261021.3';
@@ -201,7 +202,7 @@ async function init(){
       const visible=items.slice(window.start,window.end);
       const controls=`<label>Show<select data-page-size>${[10,25,50,100].map(n=>`<option ${n===state.pageSize?'selected':''}>${n}</option>`).join('')}</select></label><p role="status">${items.length?window.start+1:0}–${window.end} of ${items.length}</p><nav aria-label="Catalogue pages"><button type="button" data-page="${window.page-1}" ${window.page===1?'disabled':''}>← Previous</button><span>Page ${window.page} of ${window.pages}</span><button type="button" data-page="${window.page+1}" ${window.page===window.pages?'disabled':''}>Next →</button></nav>`;
       topPager.innerHTML=bottomPager.innerHTML=controls;
-      count.textContent=`${items.length} product${items.length===1?'':'s'}`;
+      count.textContent=`${items.length} product${items.length===1?'':'s'}${state.searchKey===state.search&&state.searchBrand?' · Results for '+state.searchBrand:''}`;
       grid.innerHTML=items.length ? visible.map((p,i)=>productCard(VT,p,preview,i<4)).join('') : '<div class="empty-state"><h3>No components match those filters.</h3><p>Remove a filter, try another category or ask VoltTech about the part you need.</p></div>';
       bindImages(grid);
       grid.querySelectorAll('[data-add]').forEach(button=>button.addEventListener('click',()=>addItem(VT,products.find(p=>p.id===button.dataset.add),preview)));
@@ -213,7 +214,20 @@ async function init(){
       pager.addEventListener('click',e=>{const b=e.target.closest('[data-page]');if(!b||b.disabled)return;state.page=Number(b.dataset.page);render();topPager.scrollIntoView({block:'start'});});
       pager.addEventListener('change',e=>{if(!e.target.matches('[data-page-size]'))return;state.pageSize=pageSize(e.target.value);state.page=1;try{localStorage.setItem('volttech-catalogue-page-size',state.pageSize);}catch{}render();});
     }
-    search.addEventListener('input',()=>{ state.search=search.value.trim(); render(); });
+    let searchTimer,searchVersion=0;
+    async function refreshSearch(){
+      const text=state.search,token=++searchVersion;if(text.length<2)return;
+      try{
+        const result=await searchCatalogue(text);
+        if(token!==searchVersion||state.search!==text)return;
+        state.searchKey=text;state.searchMatches=new Map(result.matches.map(r=>[r.id,Number(r.score)||0]));state.searchBrand=result.brand;render();
+      }catch{/* Local typo-tolerant catalogue search remains usable during an outage. */}
+    }
+    search.addEventListener('input',()=>{
+      searchVersion++;clearTimeout(searchTimer);state.search=search.value.trim();state.searchKey=null;state.searchMatches=null;state.searchBrand=null;
+      if(state.search){state.category='all';state.filters={};selectCategory();}
+      render();searchTimer=setTimeout(refreshSearch,180);
+    });
     sort.addEventListener('change',()=>{ state.sort=sort.value; render(); });
     document.getElementById('reset-filters').addEventListener('click',()=>{
       state.category='all'; state.filters={}; state.search=''; state.sort='featured'; state.page=1;
@@ -236,6 +250,7 @@ async function init(){
     filterHost?.addEventListener('toggle',e=>{if(e.target.open)filterHost.querySelectorAll('details').forEach(d=>{if(d!==e.target)d.open=false;});},true);
     bindFilterUI(products,render);
     render();
+    if(state.search)refreshSearch();
     if(landingHash==='#catalogue'||query.get('category')||query.get('q')) requestAnimationFrame(()=>document.getElementById('catalogue')?.scrollIntoView({block:'start'}));
     connectCatalogueCart(VT,products,preview);
     VT.analytics('view_item_list',{item_list_name:'VoltTech PC Parts',items:products.slice(0,20).map(p=>({item_id:p.id,item_name:p.name}))});

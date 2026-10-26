@@ -1,6 +1,7 @@
 import { productImageUrl } from '../services/product-images.js?v=20261021.3';
 import { briefDescription } from './product-summary.js?v=20261021.3';
 import { matchesFacetFilters, categoryMatch } from './store-filter-menu.js?v=20261021.3';
+import { localSearch } from '../services/product-search.js?v=20261026-search';
 export const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function safeLink(value) { if (!value || typeof value !== 'string') return ''; try { const u = new URL(value, location.href); return ['http:', 'https:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } }
 export const productUrl = (p, preview) => `product.html?slug=${encodeURIComponent(p.slug)}${preview ? '&preview=1' : ''}`;
@@ -52,11 +53,12 @@ const coreCategories=['gpu','cpu','motherboard','memory','storage','psu','case',
 const coreRank=p=>{const rank=coreCategories.indexOf(p.category_slug||p.type);return rank<0?coreCategories.length:rank;};
 export function filterProducts(products, state) {
   const filters = state.filters || (state.brand ? { brand:state.brand } : {});
+  const matches=state.search ? (state.searchKey===state.search && state.searchMatches instanceof Map ? state.searchMatches : localSearch(products,state.search)) : null;
   return products
     .filter(p => categoryMatch(p, state.category))
     .filter(p => matchesFacetFilters(p, filters))
-    .filter(p => !state.search || [p.name,p.brand,p.model,p.identifiers?.sku,p.identifiers?.mpn,p.short_description,JSON.stringify(p.specs || {}),JSON.stringify(p.compatibility || {}),...(p.highlights || [])].join(' ').toLowerCase().includes(state.search.toLowerCase()))
-    .sort((a,b) => state.sort === 'name' ? a.name.localeCompare(b.name) : state.sort === 'price-low' ? (a.retail_price==null?Infinity:Number(a.retail_price))-(b.retail_price==null?Infinity:Number(b.retail_price)) : state.sort === 'price-high' ? (b.retail_price==null?-Infinity:Number(b.retail_price))-(a.retail_price==null?-Infinity:Number(a.retail_price)) : state.sort === 'brand' ? (a.brand || '').localeCompare(b.brand || '') || a.name.localeCompare(b.name) : Number(Number(b.stock_qty)>0)-Number(Number(a.stock_qty)>0) || (state.category==='all'?coreRank(a)-coreRank(b):0) || Number(b.featured)-Number(a.featured) || Number(b.sort_priority || 0)-Number(a.sort_priority || 0) || a.name.localeCompare(b.name));
+    .filter(p => !matches || matches.has(p.id))
+    .sort((a,b) => state.sort === 'name' ? a.name.localeCompare(b.name) : state.sort === 'price-low' ? (a.retail_price==null?Infinity:Number(a.retail_price))-(b.retail_price==null?Infinity:Number(b.retail_price)) : state.sort === 'price-high' ? (b.retail_price==null?-Infinity:Number(b.retail_price))-(a.retail_price==null?-Infinity:Number(a.retail_price)) : state.sort === 'brand' ? (a.brand || '').localeCompare(b.brand || '') || a.name.localeCompare(b.name) : (matches?(matches.get(b.id)||0)-(matches.get(a.id)||0):0) || Number(Number(b.stock_qty)>0)-Number(Number(a.stock_qty)>0) || (state.category==='all'?coreRank(a)-coreRank(b):0) || Number(b.featured)-Number(a.featured) || Number(b.sort_priority || 0)-Number(a.sort_priority || 0) || a.name.localeCompare(b.name));
 }
 export function dataRows(VT, rows) {
   return `<dl class="component-specs">${rows.map(([key,value]) => `<div><dt>${esc(VT.formatSpecKey(key))}</dt><dd>${esc(VT.formatSpecValue(value))}</dd></div>`).join('')}</dl>`;
