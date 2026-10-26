@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {invoiceProfit} from '../assets/js/services/billing-profit.js';
+import {billingDocumentHtml} from '../assets/js/services/billing-document.js';
+const items=[{position:1,product_id:'part',description:'Product',quantity:2,unit_price:150}];
+const doc={subtotal:300,discount_total:10,delivery_fee:30,total:320,kind:'invoice',status:'issued'};
+const financials={items:[{position:1,product_id:'part',cost_incl:100,supplier_id:'SECRET_SUPPLIER'}],shipping_cost:20,payment_fees:5,other_costs:10};
+let p=invoiceProfit(doc,items,financials);assert.equal(p.cost,200);assert.equal(p.gross,90);assert.equal(p.net,85);assert.equal(p.rows[0].markup,50);assert.ok(Math.abs(p.markup-45)<1e-8);
+assert.equal(invoiceProfit(doc,items,{...financials,shipping_cost:null}).net,null);assert.equal(invoiceProfit(doc,items,{...financials,items:[]}).gross,null);assert.equal(invoiceProfit(doc,items,{...financials,items:[{position:1,product_id:'different',cost_incl:0}]}).gross,null);
+p=invoiceProfit({...doc,subtotal:100,total:100,discount_total:0},[{...items[0],quantity:1,unit_price:100}],{...financials,items:[{position:1,product_id:'part',cost_incl:120}]});assert.equal(p.gross,-20);assert.equal(p.net,-55);
+p=invoiceProfit({subtotal:0.3,total:0.3},[{...items[0],quantity:3,unit_price:0.1}],{items:[{position:1,product_id:'part',cost_incl:0.03}],shipping_cost:0});assert.equal(p.gross,0.21);assert.equal(p.net,0.21);
+const html=billingDocumentHtml({...doc,internal_financials:financials,financials,markup:50,gross_profit:90,net_profit:85},items);assert.ok(!/SECRET_SUPPLIER|supplier|markup|gross.profit|net.profit|cost_incl|financials/i.test(html));
+console.log('PASS: profit after discount, courier/fee/overhead deductions, unknown costs, negative margins, rounding, item matching and customer document exclusion');
