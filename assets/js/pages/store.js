@@ -1,7 +1,7 @@
 import { searchCatalogue } from '../services/product-search.js?v=20261026-search2';
 import { updateDepartmentImages } from '../services/store-departments.js?v=20261021.3';
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261021.3';
-import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261026-search';
+import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261026-search2';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js?v=20261021.3';
 import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261021.3';
 import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261021.3';
@@ -211,7 +211,7 @@ async function init(){
     }
 
     for(const pager of [topPager,bottomPager]){
-      pager.addEventListener('click',e=>{const b=e.target.closest('[data-page]');if(!b||b.disabled)return;state.page=Number(b.dataset.page);render();topPager.scrollIntoView({block:'start'});});
+      pager.addEventListener('click',e=>{const b=e.target.closest('button[data-page]');if(!b||!pager.contains(b)||b.disabled)return;state.page=Number(b.dataset.page);render();topPager.scrollIntoView({block:'start'});});
       pager.addEventListener('change',e=>{if(!e.target.matches('[data-page-size]'))return;state.pageSize=pageSize(e.target.value);state.page=1;try{localStorage.setItem('volttech-catalogue-page-size',state.pageSize);}catch{}render();});
     }
     let searchTimer,searchVersion=0;

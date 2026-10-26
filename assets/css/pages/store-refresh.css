@@ -101,3 +101,13 @@ html body[data-page=store] #main-content .catalogue-card .catalogue-media{aspect
 html body[data-page=store] #main-content .catalogue-card .catalogue-media img{max-height:240px;object-fit:contain}
 }
 @media(min-width:701px) and (max-width:1100px){html body[data-page=store] #main-content .department-image{height:130px}}
+
+/* Give products breathing room without reducing the useful mobile width. */
+html body[data-page=store] #main-content .catalogue-grid{gap:24px;padding-block:22px}
+html body[data-page=store] #main-content .catalogue-card-body{padding:20px}
+html body[data-page=store] #main-content .catalogue-card .catalogue-media{padding:22px}
+@media(max-width:700px){
+html body[data-page=store] #main-content .catalogue-grid{gap:14px;padding-block:16px}
+html body[data-page=store] #main-content .catalogue-card-body{padding:16px}
+html body[data-page=store] #main-content .catalogue-card .catalogue-media{padding:12px}
+}
