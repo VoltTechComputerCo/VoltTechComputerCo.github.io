@@ -1,0 +1,16 @@
+.cooling-partners{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:16px;margin-block:32px;isolation:isolate}
+.cooling-partner-main{display:grid;grid-template-columns:minmax(180px,.9fr) minmax(0,1.2fr);align-items:center;gap:28px;padding:28px;background:radial-gradient(ellipse at 0 100%,#fa3d141c,transparent 65%),#11191e;color:#f4f8fa;border:1px solid #ffffff1a;border-radius:18px;overflow:hidden}
+.cooling-partner-logo{padding:12px 0;min-width:0}
+.cooling-partner-logo img{display:block;width:100%;height:auto;object-fit:contain}
+.cooling-partner-copy{min-width:0}
+.cooling-partners .cooling-partner-label{font-size:10px;font-weight:750;letter-spacing:.15em;color:#71e5d8;margin:0 0 10px}
+.cooling-partners h2{font-size:clamp(20px,2vw,27px);line-height:1.16;letter-spacing:-.025em;color:#fff;margin:0 0 10px}
+.cooling-partner-copy>p:not(.cooling-partner-label){font-size:13px;line-height:1.65;color:#c0cbd1;margin:0 0 14px;max-width:46ch}
+.cooling-partner-copy>a{display:inline-flex;align-items:center;gap:14px;min-height:44px;color:#78eadc;font-size:13px;font-weight:700;text-decoration:none}
+.cooling-partner-arctic{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:24px;background:linear-gradient(135deg,#123e59,#0a2537);color:#fff;border:1px solid #ffffff1a;border-radius:18px;text-decoration:none;min-width:0}
+.cooling-partner-arctic img{width:135px;max-width:100%;height:auto;object-fit:contain}
+.cooling-partner-arctic>span{font-size:12px;text-align:center;line-height:1.5;color:#e6f2f8}
+.cooling-partners a:focus-visible{outline:3px solid #00b8a9;outline-offset:5px}
+@media(hover:hover){.cooling-partner-copy>a:hover{text-decoration:underline;text-underline-offset:5px}.cooling-partner-arctic:hover{border-color:#68d8de}}
+@media(max-width:900px){.cooling-partners{grid-template-columns:minmax(0,1fr)}.cooling-partner-arctic{flex-direction:row;justify-content:space-between;gap:20px;padding:20px 24px}.cooling-partner-arctic img{width:110px}}
+@media(max-width:560px){.cooling-partners{gap:10px;margin-block:22px}.cooling-partner-main{grid-template-columns:minmax(0,1fr);padding:22px;gap:18px;border-radius:14px}.cooling-partner-logo{padding:0;max-width:240px}.cooling-partners h2{font-size:22px}.cooling-partner-arctic{border-radius:14px;padding:18px 22px}.cooling-partner-arctic img{width:96px}}
