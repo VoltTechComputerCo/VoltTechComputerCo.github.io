@@ -6,3 +6,11 @@ groups=deliveryGroups([{product_id:'syntech-cooler',quantity:2}],offers);assert.
 assert.equal(deliveryGroups([{product_id:'syntech-cooler',quantity:1}],[{...offers[0],cost_excl:2500}])[0].free,true,'exact threshold');
 assert.equal(deliveryGroups([{product_id:'syntech-cooler',quantity:1}],[{...offers[0],cost_excl:2499.99}])[0].free,false);
 console.log('PASS: supplier-separated subtotals, inclusive delivery sum, unknown-fee rejection and exact Syntech threshold');
+const {lunatechDeliveryQuote}=await import('../assets/js/services/billing-delivery.js');
+const quote=(service,subtotalExcl=1000,billableKg=1)=>lunatechDeliveryQuote({service,subtotalExcl,billableKg});
+assert.equal(quote('local').amount,109.25);assert.equal(quote('major').amount,138);assert.equal(quote('same-day').amount,115);
+assert.equal(quote('local',3000).amount,0);assert.equal(quote('local',2999.99).amount,109.25);assert.equal(quote('same-day',5000).amount,115,'same-day must not silently become free');
+assert.equal(quote('regional').amount,null);assert.equal(quote('major',1000,3.01).amount,null);assert.equal(quote('major',1000,3).amount,138);assert.equal(quote('collection').amount,0);
+assert.equal(quote('local',1000,'').amount,null);assert.equal(lunatechDeliveryQuote({service:'local',subtotalExcl:3000,known:false,billableKg:1}).amount,109.25);
+const mixed=deliveryGroups([{product_id:'syntech-cooler',quantity:1},{product_id:'lunatech-putty',quantity:5}],offers);assert.equal(mixed.find(g=>g.id==='syntech').free,false);assert.equal(mixed.find(g=>g.id==='lunatech').free,true);
+console.log('PASS: LunaTech VAT-inclusive tariffs, independent free-delivery threshold, same-day exception, billable weight and quote-only routes');
