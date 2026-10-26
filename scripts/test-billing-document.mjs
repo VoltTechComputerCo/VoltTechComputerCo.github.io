@@ -7,3 +7,5 @@ const html=billingDocumentHtml(doc,items);assert.ok(html.includes('R-AK620-WHNNM
 const malicious=billingDocumentHtml({...doc,customer_details:{full_name:'<img src=x onerror=alert(1)>'}},[]);assert.ok(malicious.includes('&lt;img'));assert.ok(!malicious.includes('<img src=x'));
 assert.ok(billingDocumentHtml({...doc,status:'draft'},[]).includes('Draft for review'));assert.ok(billingDocumentHtml({...doc,status:'draft'},[]).includes('1055896791'));assert.ok(billingDocumentHtml({...doc,status:'draft'},[]).includes('do not pay until'));assert.ok(billingDocumentHtml({...doc,kind:'quote'},[]).includes('1055896791'));
 console.log('PASS: currency rounding, automatic SKU rendering, explicit customer-only fields, HTML escaping and draft payment safeguards');
+
+assert.ok(billingDocumentHtml({...doc,revision:2,updated_at:'2026-10-26T14:00:00Z'},items).includes('Revision 2'));
