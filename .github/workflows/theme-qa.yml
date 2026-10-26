@@ -21,6 +21,7 @@ jobs:
       - run: node scripts/test-departments.mjs
       - run: node scripts/test-theme.mjs
       - run: node scripts/test-catalogue-pagination.mjs
+      - run: node scripts/test-billing-document.mjs
       - run: npm install --no-save --package-lock=false playwright
       - name: Use runner Chrome
         run: test -x /usr/bin/google-chrome
@@ -35,6 +36,7 @@ jobs:
         env:
           VT_CHROMIUM_PATH: /usr/bin/google-chrome
         run: |
+          node scripts/test-admin-billing-browser.mjs
           node scripts/test-admin-eft-browser.mjs
           node scripts/test-operations-browser.mjs
           node scripts/test-operations-customer-browser.mjs
@@ -54,4 +56,6 @@ jobs:
         if: always()
         with:
           name: theme-screenshots
-          path: qa-results/theme
+          path: |
+            qa-results/theme
+            qa-results/billing

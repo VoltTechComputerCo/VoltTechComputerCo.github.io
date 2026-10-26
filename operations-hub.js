@@ -6,7 +6,7 @@ const esc=v=>String(v??'').replace(/[&<>"']/g,a=>({'&':'&amp;','<':'&lt;','>':'&
 const money=n=>n==null?'Unconfirmed':new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR'}).format(Number(n));
 const stamp=v=>v?new Date(v).toLocaleString('en-ZA'):'Not recorded';
 const icons={done:'✅',action:'⚡',waiting:'⏳',problem:'⚠',blocked:'🚫'};
-const tabs=['Inbox / Needs action','Orders','Quotes','Suppliers','Delivery','Payments','Customers','Marketing','Catalogue','Completed'];
+const tabs=['Inbox / Needs action','Orders','Quotes','Quotes & invoices','Suppliers','Delivery','Payments','Customers','Marketing','Catalogue','Completed'];
 let data={},customers=[],offers=[],suppliers=[],jobs=[],selected=new URLSearchParams(location.search).get('job'),tab=new URLSearchParams(location.search).get('section')||'Inbox / Needs action',busy=false;
 const input=(id,label,value='',type='text')=>`<label>${esc(label)}<input id="${esc(id)}" type="${type}" value="${esc(value)}" ${type==='number'?'min="0" step="0.01"':''}></label>`;
 function active(){return jobs.find(j=>j.key===selected)}
@@ -46,7 +46,7 @@ function matches(j){const n=nextAction(j),closed=!!j.ops.archived_at;
 function render(){
  q('#opsTabs').innerHTML=tabs.map(t=>`<button type="button" data-tab="${esc(t)}" aria-selected="${t===tab}">${esc(t)}</button>`).join('');
  q('#opsTabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
- const tool=['Catalogue','Suppliers','Customers','Marketing'].includes(tab);q('#opsTool').hidden=!tool;q('#opsLayout').hidden=tool;
+ const tool=['Catalogue','Suppliers','Customers','Marketing','Quotes & invoices'].includes(tab);q('#opsTool').hidden=!tool;q('#opsLayout').hidden=tool;
  if(tool){renderTool();return;}
  const term=q('#opsSearch').value.trim().toLowerCase(),rows=jobs.filter(matches).filter(j=>[j.ref,j.customer,j.email,j.title,...j.items.map(i=>i.product_name||i.description)].join(' ').toLowerCase().includes(term));
  q('#opsList').innerHTML=rows.map(j=>{const n=nextAction(j);return `<button class="ops-card ${j.key===selected?'selected':''}" data-job="${esc(j.key)}"><small>${esc(j.ref)} · ${esc(j.kind)}</small><strong>${esc(j.customer)}</strong><span>${icons[n.tone]} ${esc(n.label)}</span><small>${money(j.total)} · ${stamp(j.date)}</small></button>`}).join('')||'<p class="muted">No jobs in this view. Use Orders or Quotes to see waiting work.</p>';
@@ -54,6 +54,8 @@ function render(){
  workspace();
 }
 function renderTool(){const el=q('#opsTool');
+ if(tab==='Quotes & invoices'){el.innerHTML='<div class="ops-panel"><div class="ops-top"><h2>Quotes &amp; invoices</h2><a class="btn" href="admin-invoices.html">Open full invoice workspace ↗</a></div><iframe class="ops-embed" style="min-height:1100px" title="Customer quotes and invoices" src="admin-invoices.html"></iframe></div>';return;}
+
  if(tab==='Marketing'){el.innerHTML='<div class="ops-panel"><h2>Marketing Studio</h2><iframe class="ops-embed" title="VoltTech Marketing Studio" src="admin-ad-studio.html"></iframe></div>';return;}
  if(tab==='Catalogue'){el.innerHTML='<div class="ops-panel"><h2>Catalogue management</h2><iframe class="ops-embed" title="Catalogue editor" src="admin-store.html?embedded=catalogue"></iframe></div>';return;}
  if(tab==='Suppliers'){el.innerHTML=`<div class="ops-panel"><div class="ops-top"><div><span class="ops-kicker">SUPPLIER NETWORK</span><h2>Supplier desk</h2><p>Syntech is preferred when sellable stock is available, followed by Tarsus and Esquire.</p></div><button type="button" id="supplierRefresh">Refresh</button></div><p class="ops-notice">Feed availability is NOT reserved stock. Costs shown here are normalized to VAT-inclusive for internal comparison. Never expose supplier costs or invoices to customers.</p><div id="supplierCards" class="ops-summary"></div><p id="supplierSyncStatus" role="status"></p><label>Search supplier / SKU / product<input id="offerSearch" type="search"></label><div id="offerRows"></div></div>`;
@@ -114,7 +116,7 @@ async function perform(j,action,payload){if(busy)return;busy=true;q('#opsActionF
 function openQuote(uid,source){quoteSource=source||null;q('#opsTool').hidden=true;q('#opsLayout').hidden=false;const panel=q('#quoteForm').parentElement;panel.hidden=false;if(uid){const cust=customers.find(x=>x.id===uid);q('#customer').value=uid;q('#selectedCustomer').textContent=cust?.full_name||cust?.billing_email||uid;}panel.scrollIntoView({behavior:'smooth'});}
 const incomingNotice=document.createElement('div');incomingNotice.id='opsIncoming';incomingNotice.className='ops-notice';incomingNotice.hidden=true;incomingNotice.setAttribute('role','status');incomingNotice.innerHTML='<span></span> <button type="button">Review new orders</button>';q('#opsStatus').before(incomingNotice);
 incomingNotice.querySelector('button').onclick=()=>{tab='Orders';load();};
-q('#opsRefresh').onclick=load;q('#opsSearch').oninput=render;q('#opsNew').onclick=()=>openQuote();
+q('#opsRefresh').onclick=load;q('#opsSearch').oninput=render;q('#opsNew').onclick=()=>{location.href='admin-invoices.html?kind=quote';};
 for(const panel of document.querySelectorAll('#app > .panel'))panel.hidden=true;
 document.addEventListener('volttech:quote-created',async e=>{if(quoteSource){const link=await c.rpc('admin_link_quote_source',{p_quote_id:e.detail.id,p_source_type:quoteSource.kind,p_source_id:quoteSource.record.id,p_metadata:{}});if(link.error){q('#opsStatus').textContent='Quote created; linking failed: '+link.error.message;return;}quoteSource=null;}selected='quote:'+e.detail.id;tab='Quotes';q('#quoteForm').parentElement.hidden=true;await load();});
 load();

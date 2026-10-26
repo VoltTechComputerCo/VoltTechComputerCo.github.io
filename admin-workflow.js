@@ -44,9 +44,7 @@ async function load(){
  if(quotes.length && !Object.prototype.hasOwnProperty.call(quotes[0],"source_type")){
    const ids=quotes.map(x=>x.id).filter(Boolean);
    if(ids.length){
-     const extra=await c.from("quotes")
-       .select("id,source_type,source_id,source_metadata")
-       .in("id",ids);
+     const extra=await c.rpc("admin_quote_provenance",{p_ids:ids});
      if(!extra.error){
        const map=new Map((extra.data||[]).map(x=>[x.id,x]));
        quotes=quotes.map(row=>({...row,...(map.get(row.id)||{})}));
