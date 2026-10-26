@@ -1,7 +1,8 @@
+import {hasDailyPricedItems} from '../services/daily-pricing.js?v=20261026';
 import {invoiceProfit} from '../services/billing-profit.js?v=20261026';
 import {deliveryGroups,deliveryTotal,lunatechDeliveryQuote} from '../services/billing-delivery.js?v=20261026-lunatech';
 import {localSearch,searchCatalogue,normalizeSearch} from '../services/product-search.js?v=20261026-search2';
-import {billingDocumentHtml,totals,money,escapeHtml as esc} from '../services/billing-document.js?v=20261026-edit';
+import {billingDocumentHtml,totals,money,escapeHtml as esc} from '../services/billing-document.js?v=20261026-daily';
 const q=s=>document.querySelector(s),client=supabase.createClient(VOLTTECH_SUPABASE.url,VOLTTECH_SUPABASE.publishableKey);
 let contacts=[],accounts=[],products=[],documents=[],customer=null,lines=[],current=null,busy=false,requestKey=crypto.randomUUID(),searchVersion=0,searchTimer,productMatches=[],shown=12,activeOption=-1;
 let sourcing=[],sourcingKey='',sourcingVersion=0,autoFree=new Set(),deliverySelections={},deliveryFees={},deliveryPlan=null,deliveryApplied=false,lunatechService='',lunatechWeight='';
@@ -25,6 +26,7 @@ function customerPicker(clearSelection=true){
 function selectCustomer(row){customer=row;q('#billingCustomerSearch').value=row.full_name||row.billing_email;q('#billingSelectedCustomer').textContent=[row.full_name,row.billing_email,row.phone,row.address].filter(Boolean).join(' · ');q('#billingCustomerResults').hidden=true;preview();}
 function inputs(){return {internal_financials:financePayload(),internal_delivery:deliveryApplied?deliveryPlan:{},kind:q('#billingKind').value,title:q('#billingTitle').value,customer_details:customer||{},valid_until:q('#billingValid').value,due_date:q('#billingDue').value,customer_note:q('#billingNote').value,...totals(lines,q('#billingDelivery').value,q('#billingDiscount').value)};}
 function preview(){
+ const sensitive=hasDailyPricedItems(lines.map(i=>({...i,type:products.find(p=>p.id===i.product_id)?.type})));if(sensitive&&q('#billingKind').value==='quote'&&(!q('#billingValid').value||q('#billingValid').value>dateAfter(1)))q('#billingValid').value=dateAfter(1);
  const values=inputs();q('#billingTotal').textContent=money(values.total);
  const doc=lockedIssued()?current:{...current,...values,status:editingIssued?'issued':'draft',revision:editingIssued?Number(current.revision||1)+1:current?.revision,updated_at:editingIssued?new Date().toISOString():current?.updated_at,created_at:current?.created_at,document_number:current?.document_number};
  q('#billingDocument').innerHTML=billingDocumentHtml(doc,lines);
