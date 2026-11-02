@@ -1,3 +1,4 @@
+import { excludedCatalogueIds } from './catalogue-exclusions.js?v=20261102-focus1';
 // Only anonymous, public product fields are present in this CDN snapshot.
 // Accept a snapshot for up to 10 hours: publisher runs several hours apart.
 // Checkout still confirms stock and current prices before payment.
@@ -19,6 +20,7 @@ export function readPublicCatalogue(request=fetch,allowStale=false){
    const magic=new Uint8Array(bytes,0,Math.min(2,bytes.byteLength));
    const decoded=magic[0]===31&&magic[1]===139?new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))):new Response(bytes);
    const payload=await decoded.json();
+   if(valid(payload))payload.products=payload.products.filter(product=>!excludedCatalogueIds.has(product?.id));
    return valid(payload)?payload:null;
   }catch{return null;}finally{clearTimeout(timer);}
  })();
