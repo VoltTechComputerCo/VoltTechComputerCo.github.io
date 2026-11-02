@@ -1,5 +1,6 @@
 import { esc, commerceState, imageMarkup, bindImages } from '../components/catalogue-view.js?v=20261021.3';
-import { withTimeout, publicProducts, notify } from './catalogue.js?v=20261021.3';
+import { withTimeout, publicProducts, notify } from './catalogue.js?v=20261102-failover1';
+import { readLaunchSettings } from './home-integrations.js?v=20261102-failover1';
 export function connectCatalogueCart(VT, products, preview) {
   const dialog = document.getElementById('catalogue-cart'), host = document.getElementById('cart-items'), checkout = document.getElementById('cart-checkout');
   const map = new Map(products.map(p => [p.id,p]));
@@ -28,6 +29,24 @@ export function connectCatalogueCart(VT, products, preview) {
   document.querySelectorAll('[data-cart-link], [data-open-cart]').forEach(a => a.addEventListener('click', open));
   window.addEventListener('vt-store-cart-change', () => { if (dialog.open) render(); });
   window.addEventListener('storage', event => { if (dialog.open && (!event.key || event.key === 'vt_store_quote_cart_v1')) render(); });
-  checkout.addEventListener('click', event => { if (!allowed) event.preventDefault(); else VT.analytics('begin_checkout', { items:VT.readCart().map(i => ({item_id:i.productId,quantity:i.quantity})) }); });
+  checkout.addEventListener('click', async event => {
+    if (!allowed) { event.preventDefault(); return; }
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault();
+    if (checkout.dataset.checking === '1') return;
+    checkout.dataset.checking = '1';
+    const label=checkout.textContent;
+    checkout.textContent='CHECKING CHECKOUT AVAILABILITY…';
+    try {
+      const settings=await readLaunchSettings(window.VOLTTECH_SUPABASE,fetch,3500);
+      if (settings?.catalogue_enabled === true) {
+        VT.analytics('begin_checkout', { items:VT.readCart().map(i=>({item_id:i.productId,quantity:i.quantity})) });
+        location.assign(checkout.href); return;
+      }
+      const details=VT.readCart().map(i=>{const p=map.get(i.productId);return (p?.name||'Item '+i.productId)+' × '+i.quantity;}).join('; ');
+      const message='Hi VoltTech, online checkout is currently unavailable. Please assist with this cart: '+details+'. Please confirm current prices, availability and delivery. I have not submitted this as an online order.';
+      location.assign('https://wa.me/27618435775?text='+encodeURIComponent(message));
+    } finally {checkout.dataset.checking='';checkout.textContent=label;}
+  });
   if (new URLSearchParams(location.search).get('cart') === '1') open();
 }
