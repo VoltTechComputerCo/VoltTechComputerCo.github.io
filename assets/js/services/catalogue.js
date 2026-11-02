@@ -1,4 +1,4 @@
-import { readPublicCatalogue } from './public-catalogue.js?v=20261102-focus1';
+import { readPublicCatalogue } from './public-catalogue.js?v=20261102-specialist2';
 import { readLaunchSettings, connectCart, connectAccount, connectProductionServices, loadScript } from './home-integrations.js?v=20261021.3';
 import { isProduction, sdkUrl } from './site-config.js?v=20261021.3';
 const base = new URL('../../../', import.meta.url);
