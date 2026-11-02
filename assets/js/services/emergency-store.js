@@ -115,7 +115,7 @@ export async function showEmergencyStore(state){
 
 export async function showEmergencyProduct(slug){
  const products=await snapshotProducts().catch(()=>[]);
- const product=products.find(row=>row.slug===slug);
+ const product=products.find(row=>(row.slug||row.id)===slug);
  emergencyNotice('Online ordering is temporarily unavailable.',
  'VoltTech is still accepting enquiries. Prices, availability and delivery are confirmed directly on WhatsApp.',product);
  const host=document.getElementById('product-detail');
