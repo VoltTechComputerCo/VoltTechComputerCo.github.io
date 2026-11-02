@@ -3,7 +3,7 @@ import { updateDepartmentImages } from '../services/store-departments.js?v=20261
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261102-focus1';
 import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261026-search2';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js?v=20261021.3';
-import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261102-failover1';
+import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261102-focus1';
 import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261021.3';
 import { showEmergencyStore, monitorStoreConnection } from '../services/emergency-store.js?v=20261102-focus1';
 
