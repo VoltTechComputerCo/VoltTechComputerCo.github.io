@@ -1,8 +1,10 @@
 // Only anonymous, public product fields are present in this CDN snapshot.
+// Accept a snapshot for up to 10 hours: publisher runs several hours apart.
+// Checkout still confirms stock and current prices before payment.
 const snapshotUrl=new URL('../../data/catalogue.json.gz',import.meta.url);
 // Rotate the CDN cache key with the catalogue refresh interval.
 snapshotUrl.searchParams.set('v',String(Math.floor(Date.now()/900000)));
-const fresh=payload=>payload?.schemaVersion===1&&Array.isArray(payload.products)&&payload.settings&&Number.isFinite(Date.parse(payload.generatedAt))&&Date.now()-Date.parse(payload.generatedAt)>=-60000&&Date.now()-Date.parse(payload.generatedAt)<45*60000;
+const fresh=payload=>payload?.schemaVersion===1&&Array.isArray(payload.products)&&payload.settings&&Number.isFinite(Date.parse(payload.generatedAt))&&Date.now()-Date.parse(payload.generatedAt)>=-60000&&Date.now()-Date.parse(payload.generatedAt)<10*60*60*1000;
 let pending;
 export function readPublicCatalogue(request=fetch){
  if(!pending)pending=(async()=>{

@@ -35,7 +35,7 @@ const LISTING_FIELDS='id,slug,type,category_slug,name,brand,model,status,visibil
 function listingProduct(row){return {...row,media:row.media||{primaryImage:row.primary_image,directImage:row.direct_image},metadata:row.metadata||{stock_connected:row.stock_connected,connected_suppliers:row.connected_suppliers,media_review_required:row.media_review_required,supplier_data_required:row.supplier_data_required,compare_at_verified:row.compare_at_verified,deal_ends_at:row.deal_ends_at}}}
 async function loadStore(launchSettings){
  const snapshot=window.__vtPublicCatalogueSnapshot;
- if(snapshot&&snapshot.schemaVersion===1&&Array.isArray(snapshot.products)&&Date.now()-Date.parse(snapshot.generatedAt)<45*60000){
+ if(snapshot&&snapshot.schemaVersion===1&&Array.isArray(snapshot.products)&&Date.now()-Date.parse(snapshot.generatedAt)<10*60*60*1000){
   return {source:'snapshot',settings:launchSettings||snapshot.settings,categories:snapshot.categories||[],products:snapshot.products.map(listingProduct)};
  }
  const client=getCatalogueClient(),batch=1000;
