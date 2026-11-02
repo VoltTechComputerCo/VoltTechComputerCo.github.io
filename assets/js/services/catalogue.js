@@ -1,4 +1,4 @@
-import { readPublicCatalogue } from './public-catalogue.js?v=20261101-egress1';
+import { readPublicCatalogue } from './public-catalogue.js?v=20261102-failover1';
 import { readLaunchSettings, connectCart, connectAccount, connectProductionServices, loadScript } from './home-integrations.js?v=20261021.3';
 import { isProduction, sdkUrl } from './site-config.js?v=20261021.3';
 const base = new URL('../../../', import.meta.url);
@@ -26,16 +26,14 @@ export async function getCommerceCore() {
 }
 export async function openCatalogue() {
   connectCart(); connectProductionServices();
-  const coreReady = getCommerceCore();
-  coreReady.catch(() => {});
   let preview = false;
   const previewRequested = new URLSearchParams(location.search).get('preview') === '1';
   const snapshot=previewRequested?null:await readPublicCatalogue();
   if(snapshot)window.__vtPublicCatalogueSnapshot=snapshot;
-  const settings=snapshot?.settings||await readLaunchSettings(window.VOLTTECH_SUPABASE);
-  // Re-check the live launch switch without holding up CDN-backed browsing.
-  if(snapshot)readLaunchSettings(window.VOLTTECH_SUPABASE).then(fresh=>{if(fresh?.catalogue_enabled===false)showGate({reason:'closed'});});
-  if (!settings) return { open: false, reason: 'connection' };
+  // A cached catalogue is not evidence that orders can still be submitted.
+  // Fail closed on API errors and let the independent static enquiry mode take over.
+  const settings=await readLaunchSettings(window.VOLTTECH_SUPABASE,fetch,3500);
+  if (!settings) return { open: false, reason: 'offline' };
   if (previewRequested && isProduction()) {
     try {
       const VT = await getCommerceCore();
@@ -47,7 +45,7 @@ export async function openCatalogue() {
     connectAccount(window.VOLTTECH_SUPABASE);
     return { open: false, reason: previewRequested ? 'preview' : 'closed' };
   }
-  const VT = await coreReady;
+  const VT = await getCommerceCore();
   document.body.classList.toggle('store-preview', preview);
   connectAccount(window.VOLTTECH_SUPABASE);
   return { open: true, preview, VT, settings };
@@ -60,9 +58,9 @@ export function showGate(access) {
   document.getElementById('product-detail')?.setAttribute('hidden','');
   const title = document.querySelector('[data-gate-title]');
   const copy = document.querySelector('[data-gate-copy]');
-  if (access.reason === 'connection') {
-    title.textContent = 'Catalogue connection unavailable.';
-    copy.textContent = 'We could not check Store availability. Please reload the page or contact VoltTech about the component you need.';
+  if (access.reason === 'offline' || access.reason === 'connection') {
+    title.textContent = 'Online ordering is temporarily unavailable.';
+    copy.textContent = 'VoltTech is still accepting orders and quote requests directly. Ask us about any component and we will confirm pricing, stock and delivery.';
   } else if (access.reason === 'preview') {
     copy.textContent = 'The catalogue is not open for shopping. Admin preview requires an authorised account on the VoltTech website; a preview link alone does not unlock it.';
   }
