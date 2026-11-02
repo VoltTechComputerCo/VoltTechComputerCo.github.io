@@ -156,7 +156,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelect
 async function init(){
   try{
     const access=await openCatalogue();
-    if(!access.open){ if(access.reason==='offline') await showEmergencyStore(state); else showGate(access); return; }
+    if(!access.open){ if(access.reason==='offline'){try{await showEmergencyStore(state);}catch{showGate({reason:'connection'});}} else showGate(access); return; }
     const { VT, preview }=access;
     const data=await withTimeout(VT.loadStore(access.settings),30000);
     if(data.settings?.catalogue_enabled!==true && !preview){ showGate({reason:'closed'}); return; }
@@ -258,7 +258,7 @@ async function init(){
     monitorStoreConnection();
   }catch(error){
     console.error('VoltTech Store filters:',error?.message||String(error));
-    await showEmergencyStore(state);
+    try{await showEmergencyStore(state);}catch{showGate({reason:'connection'});}
   }
 }
 init();
