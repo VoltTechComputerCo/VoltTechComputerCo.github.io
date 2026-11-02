@@ -6,10 +6,10 @@ export function normaliseLaunchSettings(row) {
   return { catalogue_enabled: row?.catalogue_enabled === true, builder_enabled: row?.builder_enabled === true, direct_payment_enabled: row?.direct_payment_enabled === true };
 }
 
-export async function readLaunchSettings(config, request = fetch) {
+export async function readLaunchSettings(config, request = fetch, timeoutMs = 8000) {
   if (!config?.url || !config?.publishableKey) return null;
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 8000);
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const response = await request(`${config.url}/rest/v1/store_settings?id=eq.store&select=catalogue_enabled,builder_enabled,direct_payment_enabled`, {
       headers: { apikey: config.publishableKey, Accept: 'application/json' }, cache: 'no-store', signal: controller.signal
