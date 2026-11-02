@@ -3,7 +3,7 @@ import { groupedSpecifications, productKeyFacts, briefDescription, plainDescript
 import { productGallery, bindProductGallery } from '../components/product-gallery.js?v=20261021.3';
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261102-focus1';
 import { esc, safeLink, imageMarkup, bindImages, commerceState, priceMarkup, dataRows, productUrl } from '../components/catalogue-view.js?v=20261021.3';
-import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261102-failover1';
+import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261102-focus1';
 import { showEmergencyProduct, monitorStoreConnection } from '../services/emergency-store.js?v=20261102-focus1';
 const host = document.getElementById('product-detail'), title = document.getElementById('component-title');
 async function init() {
