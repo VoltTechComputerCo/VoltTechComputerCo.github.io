@@ -1,4 +1,4 @@
-import { excludedCatalogueIds } from './catalogue-exclusions.js?v=20261102-focus1';
+import { excludedCatalogueIds } from './catalogue-exclusions.js?v=20261102-specialist2';
 // Only anonymous, public product fields are present in this CDN snapshot.
 // Accept a snapshot for up to 10 hours: publisher runs several hours apart.
 // Checkout still confirms stock and current prices before payment.
