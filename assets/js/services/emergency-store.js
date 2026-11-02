@@ -1,6 +1,6 @@
 // Independent, read-only fallback. No Supabase SDK or customer account is required.
 // Public catalogue snapshots can be stale: never present their price/stock as current.
-import { readPublicCatalogue } from './public-catalogue.js?v=20261102-specialist2';
+import { readPublicCatalogue } from './public-catalogue.js?v=20261102-gpu3';
 import { readLaunchSettings } from './home-integrations.js?v=20261102-failover1';
 import { esc, imageMarkup, bindImages, filterProducts } from '../components/catalogue-view.js?v=20261026-search2';
 

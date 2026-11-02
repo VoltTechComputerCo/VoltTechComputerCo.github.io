@@ -11,6 +11,7 @@ CREATE OR REPLACE FUNCTION public.vt_store_focus2_group(p_category text, p_type 
 AS $function$
 SELECT CASE
  WHEN p_category='gpu' AND p_type IS DISTINCT FROM 'gpu' THEN 'discard'
+ WHEN p_category='gpu' AND coalesce(p_name,'') ~* '(^|[^[:alnum:]])(GT[[:space:]-]*(710|730|1030)|GTX[[:space:]-]*[0-9]{3,4}|RTX[[:space:]-]*20[0-9]{2})([^[:digit:]]|$)' THEN 'discard'
  WHEN p_category IN ('gpu','cpu','motherboard','memory','storage','case','psu','cooler','fan','thermal-paste','upgrade-kits') THEN 'core'
  WHEN p_category='handhelds' THEN 'discard'
  WHEN p_category='monitors' AND (p_name||' '||p_brand) ~* '(Dahua|Hikvision|CCTV|surveillance)' THEN 'discard'

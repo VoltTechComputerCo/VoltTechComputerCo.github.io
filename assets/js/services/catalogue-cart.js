@@ -1,5 +1,5 @@
 import { esc, commerceState, imageMarkup, bindImages } from '../components/catalogue-view.js?v=20261021.3';
-import { withTimeout, publicProducts, notify } from './catalogue.js?v=20261102-specialist2';
+import { withTimeout, publicProducts, notify } from './catalogue.js?v=20261102-gpu3';
 import { readLaunchSettings } from './home-integrations.js?v=20261102-failover1';
 export function connectCatalogueCart(VT, products, preview) {
   const dialog = document.getElementById('catalogue-cart'), host = document.getElementById('cart-items'), checkout = document.getElementById('cart-checkout');
