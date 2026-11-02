@@ -21,6 +21,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - run: node scripts/test-supabase-egress-budget.mjs
       - run: node scripts/build-public-catalogue.mjs
       - name: Publish public catalogue snapshot
         run: |
