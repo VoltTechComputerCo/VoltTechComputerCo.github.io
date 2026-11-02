@@ -3,8 +3,8 @@ import { excludedCatalogueIds } from './catalogue-exclusions.js?v=20261102-speci
 // Accept a snapshot for up to 10 hours: publisher runs several hours apart.
 // Checkout still confirms stock and current prices before payment.
 const snapshotUrl=new URL('../../data/catalogue.json.gz',import.meta.url);
-// Rotate the CDN cache key with the catalogue refresh interval.
-snapshotUrl.searchParams.set('v',String(Math.floor(Date.now()/900000)));
+// Rotate the CDN cache key every two hours, in line with the snapshot publishing cadence.
+snapshotUrl.searchParams.set('v',String(Math.floor(Date.now()/7200000)));
 const valid=payload=>payload?.schemaVersion===1&&Array.isArray(payload.products)&&payload.settings&&Number.isFinite(Date.parse(payload.generatedAt))&&Date.now()-Date.parse(payload.generatedAt)>=-60000;
 // The normal store only accepts reasonably fresh pricing and stock.
 // Emergency browsing may use an older public snapshot, with all prices and stock hidden.
