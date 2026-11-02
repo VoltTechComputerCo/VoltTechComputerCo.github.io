@@ -3,7 +3,8 @@ import { excludedCatalogueIds } from './catalogue-exclusions.js?v=20261102-speci
 // Accept a snapshot for up to 10 hours: publisher runs several hours apart.
 // Checkout still confirms stock and current prices before payment.
 const snapshotUrl=new URL('../../data/catalogue.json.gz',import.meta.url);
-// Rotate the CDN cache key with the catalogue refresh interval.
+// CDN cache key refreshes every 15 minutes independently of the 2-hour publisher;
+// this avoids stale CDN hits when GitHub Actions publishes a delayed snapshot.
 snapshotUrl.searchParams.set('v',String(Math.floor(Date.now()/900000)));
 const valid=payload=>payload?.schemaVersion===1&&Array.isArray(payload.products)&&payload.settings&&Number.isFinite(Date.parse(payload.generatedAt))&&Date.now()-Date.parse(payload.generatedAt)>=-60000;
 // The normal store only accepts reasonably fresh pricing and stock.

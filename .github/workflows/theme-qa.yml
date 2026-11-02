@@ -17,6 +17,7 @@ jobs:
       - run: node scripts/test-supplier-stock-email.mjs
       - run: node scripts/test-syntech-feed.mjs
       - run: node scripts/test-product-summary.mjs
+      - run: node scripts/test-supabase-egress-budget.mjs
       - run: node scripts/test-catalogue-load.mjs
       - run: node scripts/test-departments.mjs
       - run: node scripts/test-theme.mjs
