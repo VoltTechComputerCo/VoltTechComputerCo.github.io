@@ -4,8 +4,15 @@ import { money } from '../components/order-view.js?v=20261021.3';
 const form=document.getElementById('checkout-form'), fieldset=document.getElementById('checkout-fields'), state=document.getElementById('checkout-state'), error=document.getElementById('checkout-error'), button=document.getElementById('place-order');
 let VT, cart=[], fingerprint='', sending=false, received=false, cartStale=false;
 const input=name=>form.elements.namedItem(name);
-function showState(title,copy){state.hidden=false;state.querySelector('h2').textContent=title;state.querySelector('p').textContent=copy;form.hidden=true;}
-function showError(message){error.textContent=message;error.hidden=false;error.focus();}
+const supportLink=()=>{
+ const a=document.createElement('a');
+ a.className='button button-secondary';
+ a.href='https://wa.me/27618435775?text='+encodeURIComponent('Hi VoltTech, online checkout is unavailable or my order request could not be confirmed. Please check whether an order was received before we proceed.');
+ a.target='_blank';a.rel='noopener noreferrer';a.textContent='CONTACT VOLTTECH ON WHATSAPP →';
+ return a;
+};
+function showState(title,copy){state.hidden=false;state.querySelector('h2').textContent=title;state.querySelector('p').textContent=copy;form.hidden=true;if(!state.querySelector('[data-offline-support]')){const link=supportLink();link.dataset.offlineSupport='1';state.appendChild(link);}}
+function showError(message){error.textContent=message;error.append(' ',supportLink());error.hidden=false;error.focus();}
 function address(){return Object.fromEntries(['address_line1','address_line2','suburb','city','province','postal_code'].map(name=>[name,input(name).value.trim()]));}
 function customer(){return {name:input('name').value.trim(),email:input('email').value.trim(),phone:input('phone').value.trim()};}
 function resetDeliveryCopy(){

@@ -1,10 +1,11 @@
 import { searchCatalogue } from '../services/product-search.js?v=20261026-search2';
 import { updateDepartmentImages } from '../services/store-departments.js?v=20261021.3';
-import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261101-egress1';
+import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261102-failover1';
 import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261026-search2';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js?v=20261021.3';
-import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261021.3';
+import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261102-failover1';
 import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261021.3';
+import { showEmergencyStore, monitorStoreConnection } from '../services/emergency-store.js?v=20261102-failover1';
 
 const query=new URLSearchParams(location.search);
 const landingHash=location.hash;
@@ -155,7 +156,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelect
 async function init(){
   try{
     const access=await openCatalogue();
-    if(!access.open){ showGate(access); return; }
+    if(!access.open){ if(access.reason==='offline'){try{await showEmergencyStore(state);}catch{showGate({reason:'connection'});}} else showGate(access); return; }
     const { VT, preview }=access;
     const data=await withTimeout(VT.loadStore(access.settings),30000);
     if(data.settings?.catalogue_enabled!==true && !preview){ showGate({reason:'closed'}); return; }
@@ -254,9 +255,10 @@ async function init(){
     if(landingHash==='#catalogue'||query.get('category')||query.get('q')) requestAnimationFrame(()=>document.getElementById('catalogue')?.scrollIntoView({block:'start'}));
     connectCatalogueCart(VT,products,preview);
     VT.analytics('view_item_list',{item_list_name:'VoltTech PC Parts',items:products.slice(0,20).map(p=>({item_id:p.id,item_name:p.name}))});
+    monitorStoreConnection();
   }catch(error){
     console.error('VoltTech Store filters:',error?.message||String(error));
-    showGate({reason:'connection'});
+    try{await showEmergencyStore(state);}catch{showGate({reason:'connection'});}
   }
 }
 init();

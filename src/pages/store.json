@@ -3,7 +3,7 @@
   "title": "PC Parts, Laptops & Gaming Gear | VoltTech Store",
   "description": "Browse PC components from VoltTech Computer Co. Add parts to your cart and submit an order request. Stock, final pricing and delivery are confirmed before payment.",
   "robots": "index, follow",
-  "script_version": "20261102-egress2",
+  "script_version": "20261102-failover1",
   "styles": [
     "assets/css/notifications.css",
     "assets/css/pages/commerce.css?v=20261014-merch",
