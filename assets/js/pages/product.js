@@ -8,7 +8,7 @@ import { showEmergencyProduct, monitorStoreConnection } from '../services/emerge
 const host = document.getElementById('product-detail'), title = document.getElementById('component-title');
 async function init() {
   try {
-    const access = await openCatalogue(); if (!access.open) { if(access.reason==='offline')await showEmergencyProduct(new URLSearchParams(location.search).get('slug')); else showGate(access); return; }
+    const access = await openCatalogue(); if (!access.open) { if(access.reason==='offline'){try{await showEmergencyProduct(new URLSearchParams(location.search).get('slug'));}catch{showGate({reason:'connection'});}} else showGate(access); return; }
     const {VT,preview} = access, slug = new URLSearchParams(location.search).get('slug');
     if (!slug) { title.textContent = 'Find your next component.'; document.querySelector('[data-gate-title]').textContent = 'Choose a component from the Store.'; document.querySelector('[data-gate-copy]').textContent = 'Open a product to see its specifications, compatibility and availability.'; document.getElementById('store-gate').hidden = false; return; }
     const p = await withTimeout(VT.getProductBySlug(slug));
@@ -38,6 +38,6 @@ async function init() {
     bindImages(host);bindProductGallery(host);document.getElementById('add-component').addEventListener('click',()=>addItem(VT,p,preview));
     extrasReady.then(extra=>{const el=document.getElementById('product-extras');if(extra.failed){el.textContent='Additional product information could not load.';return;}const docs=(extra.documents||[]).filter(d=>safeLink(d.url)),related=(extra.relations||[]).filter(r=>publicProducts([r.product],preview).length);if(docs.length)el.insertAdjacentHTML('beforeend',section('product-documents','Manuals & source documents',`<div class="component-links">${docs.map(d=>`<a href="${esc(safeLink(d.url))}" target="_blank" rel="noopener noreferrer">${esc(d.title)} ↗</a>`).join('')}</div>`));if(related.length)el.insertAdjacentHTML('beforeend',`<section class="component-data"><h2>Related products</h2><div class="component-links">${related.map(r=>`<a href="${productUrl(r.product,preview)}">${esc(r.product.name)} →</a>`).join('')}</div></section>`);});
     connectCatalogueCart(VT,[p],preview);VT.analytics('view_item',{currency:p.currency||'ZAR',items:[{item_id:p.id,item_name:p.name}]});monitorStoreConnection();
-  }catch{await showEmergencyProduct(new URLSearchParams(location.search).get('slug'));}
+  }catch{try{await showEmergencyProduct(new URLSearchParams(location.search).get('slug'));}catch{showGate({reason:'connection'});}}
 }
 init();
