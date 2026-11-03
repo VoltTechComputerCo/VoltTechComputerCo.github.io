@@ -1,10 +1,11 @@
+import { publicProductSlug } from '../services/product-permalinks.js?v=20261103-slugs1';
 import { productImageUrl } from '../services/product-images.js?v=20261021.3';
 import { briefDescription } from './product-summary.js?v=20261021.3';
 import { matchesFacetFilters, categoryMatch } from './store-filter-menu.js?v=20261021.3';
 import { localSearch } from '../services/product-search.js?v=20261026-search2';
 export const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function safeLink(value) { if (!value || typeof value !== 'string') return ''; try { const u = new URL(value, location.href); return ['http:', 'https:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } }
-export const productUrl = (p, preview) => `product.html?slug=${encodeURIComponent(p.slug)}${preview ? '&preview=1' : ''}`;
+export const productUrl = (p, preview) => `product.html?slug=${encodeURIComponent(publicProductSlug(p))}${preview ? '&preview=1' : ''}`;
 function imageSources(p) {
   if (p.metadata?.media_review_required) return { src:'', fallback:'' };
   const primary = safeLink(p.media?.primaryImage || p.media?.primary_image);

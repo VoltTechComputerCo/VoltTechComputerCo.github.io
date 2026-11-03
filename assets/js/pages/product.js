@@ -1,10 +1,11 @@
 import {dailyPriceNotice,hasDailyPricedItems} from '../services/daily-pricing.js?v=20261026';
 import { groupedSpecifications, productKeyFacts, briefDescription, plainDescription } from '../components/product-summary.js?v=20261021.3';
 import { productGallery, bindProductGallery } from '../components/product-gallery.js?v=20261021.3';
-import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261102-gpu3';
-import { esc, safeLink, imageMarkup, bindImages, commerceState, priceMarkup, dataRows, productUrl } from '../components/catalogue-view.js?v=20261021.3';
+import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261103-slugs1';
+import { esc, safeLink, imageMarkup, bindImages, commerceState, priceMarkup, dataRows, productUrl } from '../components/catalogue-view.js?v=20261103-slugs1';
 import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261102-gpu3';
-import { showEmergencyProduct, monitorStoreConnection } from '../services/emergency-store.js?v=20261102-gpu3';
+import { showEmergencyProduct, monitorStoreConnection } from '../services/emergency-store.js?v=20261103-slugs1';
+import { normalizeProductAddress } from '../services/product-permalinks.js?v=20261103-slugs1';
 const host = document.getElementById('product-detail'), title = document.getElementById('component-title');
 async function init() {
   try {
@@ -22,9 +23,7 @@ async function init() {
     document.querySelector('meta[property="og:title"]').content = document.title;
     document.querySelector('meta[property="og:description"]').content = desc;
     document.getElementById('component-label').textContent = `${p.brand} / ${VT.categoryLabel(p.type)}`;
-    const canonical = 'https://volttechcomputerco.co.za/product.html?slug=' + encodeURIComponent(p.slug);
-    document.querySelector('link[rel="canonical"]').href=canonical;
-    document.querySelector('meta[property="og:url"]').content=canonical;
+    normalizeProductAddress(p);
     host.hidden = false;
 
     const warranty=p.warranty_months!=null?p.warranty_months+' months':p.specs?.warranty;

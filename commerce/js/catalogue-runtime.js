@@ -31,7 +31,7 @@ function formatSpecKey(key){return String(key).replace(/([a-z])([A-Z])/g,'$1 $2'
 function formatSpecValue(v){if(Array.isArray(v))return v.join(', ');if(v===true)return'Yes';if(v===false)return'No';if(v==null||v==='')return'—';return String(v)}
 function toast(message,tone='ok'){const el=document.getElementById('toast');if(!el)return;el.textContent=message;el.classList.toggle('error',tone==='error');el.classList.add('show');clearTimeout(el._vtTimer);el._vtTimer=setTimeout(()=>el.classList.remove('show'),3500)}
 function analytics(event,params={}){try{window.gtag?.('event',event,params)}catch{}}
-const LISTING_FIELDS='id,slug,type,category_slug,name,brand,model,status,visibility,sale_mode,is_demo,featured,sort_priority,retail_price,compare_at_price,currency,stock_status,stock_qty,specs,compatibility,identifiers,highlights,primary_image:media->>primaryImage,direct_image:media->>directImage,stock_connected:metadata->stock_connected,connected_suppliers:metadata->connected_suppliers,media_review_required:metadata->media_review_required,supplier_data_required:metadata->supplier_data_required,compare_at_verified:metadata->compare_at_verified,deal_ends_at:metadata->>deal_ends_at';
+const LISTING_FIELDS='id,slug,public_slug,type,category_slug,name,brand,model,status,visibility,sale_mode,is_demo,featured,sort_priority,retail_price,compare_at_price,currency,stock_status,stock_qty,specs,compatibility,identifiers,highlights,primary_image:media->>primaryImage,direct_image:media->>directImage,stock_connected:metadata->stock_connected,connected_suppliers:metadata->connected_suppliers,media_review_required:metadata->media_review_required,supplier_data_required:metadata->supplier_data_required,compare_at_verified:metadata->compare_at_verified,deal_ends_at:metadata->>deal_ends_at';
 function listingProduct(row){return {...row,media:row.media||{primaryImage:row.primary_image,directImage:row.direct_image},metadata:row.metadata||{stock_connected:row.stock_connected,connected_suppliers:row.connected_suppliers,media_review_required:row.media_review_required,supplier_data_required:row.supplier_data_required,compare_at_verified:row.compare_at_verified,deal_ends_at:row.deal_ends_at}}}
 async function loadStore(launchSettings){
  const snapshot=window.__vtPublicCatalogueSnapshot;
@@ -51,7 +51,17 @@ async function loadStore(launchSettings){
  }
  return {settings:settings.data,categories:categories.data||[],products:products.map(listingProduct)};
 }
-async function getProductBySlug(slug){const r=await getCatalogueClient().from('store_products').select('*').eq('slug',slug).eq('status','active').eq('visibility','public').neq('sale_mode','hidden').maybeSingle();if(r.error)throw r.error;return r.data}
+async function getProductBySlug(slug){
+  const columns = /^(syntech|tarsus|esquire|lunatech)-[a-f0-9]{16}$/i.test(String(slug))
+    ? ['slug', 'public_slug'] : ['public_slug', 'slug'];
+  for(const column of columns){
+    const r=await getCatalogueClient().from('store_products').select('*').eq(column,slug)
+      .eq('status','active').eq('visibility','public').neq('sale_mode','hidden').maybeSingle();
+    if(r.error)throw r.error;
+    if(r.data)return r.data;
+  }
+  return null;
+}
 async function getProductsByIds(ids){if(!ids.length)return[];const r=await getCatalogueClient().from('store_products').select('*').in('id',ids).eq('status','active').eq('visibility','public').neq('sale_mode','hidden');if(r.error)throw r.error;return r.data||[]}
 async function getProductExtras(productId){const client=getCatalogueClient();const [docs,rels]=await Promise.all([client.from('store_product_documents').select('*').eq('product_id',productId).order('sort_order'),client.from('store_product_relations').select('*').eq('product_id',productId).order('weight',{ascending:false})]);if(docs.error)throw docs.error;if(rels.error)throw rels.error;const relatedIds=(rels.data||[]).map(x=>x.related_product_id);const related=await getProductsByIds(relatedIds);const byId=new Map(related.map(p=>[p.id,p]));return{documents:docs.data||[],relations:(rels.data||[]).map(r=>({...r,product:byId.get(r.related_product_id)})).filter(r=>r.product)}}
 async function currentUser(){const r=await getClient().auth.getUser();return r.data?.user||null}
