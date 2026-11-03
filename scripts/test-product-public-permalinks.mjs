@@ -18,7 +18,7 @@ check({ id: 'syntech-e892913aa39d64f8', name: 'DeepCool ASSASSIN VC ELITE CPU Ai
   'deepcool-assassin-vc-elite-cpu-air-cooler-white-913aa39d64f8');
 // Supplier names that happen to appear in source catalogue product names are stripped.
 check({ id: 'esquire-0d80517e64b90a02', name: 'Esquire 256MB DDR400' },
-  '256mb-ddr400-17e64b90a02');
+  '256mb-ddr400-517e64b90a02');
 // The database permalink is authoritative when provided.
 check({ id: 'syntech-e892913aa39d64f8', public_slug: 'custom-friendly-slug', name: 'Other' },
   'custom-friendly-slug');
