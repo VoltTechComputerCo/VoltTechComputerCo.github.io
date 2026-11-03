@@ -1,3 +1,4 @@
+import { publicProductSlug } from './product-permalinks.js?v=20261103-slugs1';
 export const normalizeSearch=value=>String(value||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 const compact=value=>normalizeSearch(value).replaceAll(' ','');
 export function editDistance(a,b){
@@ -70,7 +71,7 @@ export function attachSearchSuggestions(input){
    const data=await searchCatalogue(query);if(token!==version||input.value.trim()!==query||document.activeElement!==input)return;
    list.replaceChildren();active=-1;
    if(data.brand)option(`Shop all ${data.brand}`,`store.html?q=${encodeURIComponent(data.brand)}#catalogue`,'Browse the full brand range');
-   for(const p of data.suggestions)option(p.name,`product.html?slug=${encodeURIComponent(p.slug)}`,p.retail_price==null?p.brand:new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR'}).format(p.retail_price));
+   for(const p of data.suggestions)option(p.name,`product.html?slug=${encodeURIComponent(publicProductSlug(p))}`,p.retail_price==null?p.brand:new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR'}).format(p.retail_price));
    option(`View all ${data.matches.length} results`,`store.html?q=${encodeURIComponent(query)}#catalogue`,data.matches.length?'Search the full catalogue':'Try a brand, model or product type');
    list.hidden=false;input.setAttribute('aria-expanded','true');
   }catch{if(token===version)close();}
