@@ -73,6 +73,7 @@
       target.removeAttribute("srcset");
       target.removeAttribute("sizes");
       target.src = url;
+      target.dataset.vtPhoto = config.hero[0];
       target.alt = config.hero[1];
       target.decoding = "async";
     });
@@ -116,7 +117,7 @@
     inner.append(head, grid);
     region.append(inner);
     if (home) {
-      const anchor = document.querySelector(".home-services .service-grid");
+      const anchor = document.querySelector(".home-services .service-help") || document.querySelector(".home-services .service-grid");
       anchor?.insertAdjacentElement("afterend", region);
       if (anchor) region.classList.add("vt-photo-story-home");
     } else {
