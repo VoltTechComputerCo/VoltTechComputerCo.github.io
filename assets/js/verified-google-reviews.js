@@ -53,12 +53,12 @@
   }
 
   function render() {
-    const page = location.pathname.split('/').pop().toLowerCase() || 'index.html';
-    const homepage = page === 'index.html';
+    const page = (location.pathname.split('/').pop().toLowerCase() || 'index.html').replace(/\.html$/, '');
+    const homepage = page === 'index';
     const relevantServices = new Set([
-      'pc-repair-pretoria.html', 'pc-performance-optimisation.html',
-      'pc-upgrades-pretoria.html', 'windows-installation-pretoria.html',
-      'virus-malware-removal-pretoria.html'
+      'pc-repair-pretoria', 'pc-performance-optimisation',
+      'pc-upgrades-pretoria', 'windows-installation-pretoria',
+      'virus-malware-removal-pretoria'
     ]);
     if (!homepage && !relevantServices.has(page)) return;
     const anchor = homepage
