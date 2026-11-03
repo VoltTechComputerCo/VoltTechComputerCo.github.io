@@ -1,8 +1,9 @@
+import { publicProductSlug, normalizeProductAddress } from './product-permalinks.js?v=20261103-slugs1';
 // Independent, read-only fallback. No Supabase SDK or customer account is required.
 // Public catalogue snapshots can be stale: never present their price/stock as current.
 import { readPublicCatalogue } from './public-catalogue.js?v=20261102-gpu3';
 import { readLaunchSettings } from './home-integrations.js?v=20261102-failover1';
-import { esc, imageMarkup, bindImages, filterProducts } from '../components/catalogue-view.js?v=20261026-search2';
+import { esc, imageMarkup, bindImages, filterProducts } from '../components/catalogue-view.js?v=20261103-slugs1';
 
 const WA='https://wa.me/27618435775?text=';
 const ENQUIRY='Hi VoltTech, I would like to place an order or request a quote. Please help me with current pricing, stock and delivery.';
@@ -59,7 +60,7 @@ function monitorRecovery(){
 
 function card(product){
  const message=enquiryLink(product);
- const detail='product.html?slug='+encodeURIComponent(product.slug||product.id);
+ const detail='product.html?slug='+encodeURIComponent(publicProductSlug(product));
  return `<article class="card catalogue-card">
  <a class="catalogue-image-link" href="${esc(detail)}" aria-label="View details for ${esc(product.name)}">${imageMarkup(product)}</a>
  <div class="catalogue-card-body">
@@ -115,7 +116,7 @@ export async function showEmergencyStore(state){
 
 export async function showEmergencyProduct(slug){
  const products=await snapshotProducts().catch(()=>[]);
- const product=products.find(row=>(row.slug||row.id)===slug);
+ const product=products.find(row=>(row.slug||row.id)===slug || publicProductSlug(row)===slug);
  emergencyNotice('Online ordering is temporarily unavailable.',
  'VoltTech is still accepting enquiries. Prices, availability and delivery are confirmed directly on WhatsApp.',product);
  const host=document.getElementById('product-detail');
