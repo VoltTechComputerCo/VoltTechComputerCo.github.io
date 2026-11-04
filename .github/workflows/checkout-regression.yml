@@ -4,17 +4,21 @@ on:
     branches: [main]
     paths:
       - 'Supabase/functions/submit-store-checkout/index.ts'
+      - 'Supabase/functions/yoco-webhook/index.ts'
       - 'assets/js/pages/checkout.js'
       - 'assets/js/services/checkout-intent.js'
       - 'scripts/test-checkout-idempotency.mjs'
+      - 'scripts/test-yoco-webhook-recovery.mjs'
       - '.github/workflows/checkout-regression.yml'
   push:
-    branches: [main, 'fix/checkout-*']
+    branches: [main, 'fix/checkout-*', 'fix/yoco-*']
     paths:
       - 'Supabase/functions/submit-store-checkout/index.ts'
+      - 'Supabase/functions/yoco-webhook/index.ts'
       - 'assets/js/pages/checkout.js'
       - 'assets/js/services/checkout-intent.js'
       - 'scripts/test-checkout-idempotency.mjs'
+      - 'scripts/test-yoco-webhook-recovery.mjs'
       - '.github/workflows/checkout-regression.yml'
   workflow_dispatch:
 permissions:
@@ -30,5 +34,7 @@ jobs:
           node-version: '24'
       - name: Simulate order retries and failures without real orders or charges
         run: node scripts/test-checkout-idempotency.mjs
+      - name: Simulate signed Yoco events, duplicates and error recovery
+        run: node scripts/test-yoco-webhook-recovery.mjs
       - name: Check existing payment and billing guards
         run: node scripts/test-billing-payments.mjs
