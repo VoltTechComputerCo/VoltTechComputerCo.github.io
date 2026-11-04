@@ -3,7 +3,7 @@
   "title": "Checkout | VoltTech Computer Co.",
   "description": "Review your PC component order and delivery details. VoltTech confirms availability, final pricing and delivery before payment.",
   "robots": "noindex, nofollow",
-  "script_version": "20261102-failover1",
+  "script_version": "20261104-order1",
   "styles": [
     "assets/css/pages/commerce.css",
     "assets/css/pages/transactions.css"

@@ -27,6 +27,7 @@ jobs:
       - run: node scripts/test-billing-profit.mjs
       - run: node scripts/test-daily-pricing.mjs
       - run: node scripts/test-billing-payments.mjs
+      - run: node scripts/test-checkout-idempotency.mjs
       - run: npm install --no-save --package-lock=false playwright
       - name: Use runner Chrome
         run: test -x /usr/bin/google-chrome

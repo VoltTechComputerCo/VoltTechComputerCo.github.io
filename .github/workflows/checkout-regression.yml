@@ -1,0 +1,34 @@
+name: Checkout request idempotency QA
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Supabase/functions/submit-store-checkout/index.ts'
+      - 'assets/js/pages/checkout.js'
+      - 'assets/js/services/checkout-intent.js'
+      - 'scripts/test-checkout-idempotency.mjs'
+      - '.github/workflows/checkout-regression.yml'
+  push:
+    branches: [main, 'fix/checkout-*']
+    paths:
+      - 'Supabase/functions/submit-store-checkout/index.ts'
+      - 'assets/js/pages/checkout.js'
+      - 'assets/js/services/checkout-intent.js'
+      - 'scripts/test-checkout-idempotency.mjs'
+      - '.github/workflows/checkout-regression.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checkout-fixtures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Simulate order retries and failures without real orders or charges
+        run: node scripts/test-checkout-idempotency.mjs
+      - name: Check existing payment and billing guards
+        run: node scripts/test-billing-payments.mjs
