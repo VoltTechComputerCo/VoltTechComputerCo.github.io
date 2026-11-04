@@ -11,7 +11,7 @@ on:
       - 'scripts/test-yoco-webhook-recovery.mjs'
       - '.github/workflows/checkout-regression.yml'
   push:
-    branches: [main, 'fix/checkout-*']
+    branches: [main, 'fix/checkout-*', 'fix/yoco-*']
     paths:
       - 'Supabase/functions/submit-store-checkout/index.ts'
       - 'Supabase/functions/yoco-webhook/index.ts'
