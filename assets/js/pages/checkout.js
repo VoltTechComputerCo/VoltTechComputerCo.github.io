@@ -1,6 +1,7 @@
 import { checkoutAccess, checkoutCart, cartFingerprint, eligibleCart, readLaunchSettings, withTimeout, statusDestination, canTransactHere } from '../services/transactions.js?v=20261021.3';
 import { esc, imageMarkup, bindImages } from '../components/catalogue-view.js?v=20261021.3';
 import { money } from '../components/order-view.js?v=20261021.3';
+import { checkoutIntentToken,clearCheckoutIntent } from '../services/checkout-intent.js?v=20261104-order1';
 const form=document.getElementById('checkout-form'), fieldset=document.getElementById('checkout-fields'), state=document.getElementById('checkout-state'), error=document.getElementById('checkout-error'), button=document.getElementById('place-order');
 let VT, cart=[], fingerprint='', sending=false, received=false, cartStale=false;
 const input=name=>form.elements.namedItem(name);
@@ -65,13 +66,14 @@ async function submit(event){
     const products=await withTimeout(VT.getProductsByIds(cart.map(i=>i.productId)));
     if(!eligibleCart(VT,cart,products))throw new Error('A component or quantity is no longer available. Review your cart.');
     markCartChanged();if(cartStale)throw new Error('Your cart changed. Review it and reload checkout.');
-    const payload={items:cart,customer:customer(),delivery:{method:'door',address:address()},customerNote:input('customerNote').value.trim(),shippingSelection:null,website:input('website').value};
+    const payload={items:cart,customer:customer(),delivery:{method:'door',address:address()},customerNote:input('customerNote').value.trim(),shippingSelection:null,website:input('website').value,checkout_token:checkoutIntentToken(fingerprint)};
     fieldset.disabled=true;button.textContent='SENDING YOUR ORDER…';dispatched=true;
     waitTimer=setTimeout(()=>showError('We are still waiting for confirmation. Please keep this page open and avoid placing the order again.'),20000);
     const result=await VT.submitCheckout(payload);
     clearTimeout(waitTimer);
     if(result?.ok!==true||typeof result.request?.request_number!=='string'||!result.request.request_number||result.request.request_number.length>80){const e=new Error('We could not confirm whether your order was received. Contact VoltTech before trying again.');e.uncertain=true;throw e;}
     received=true;
+    clearCheckoutIntent();
     if(cartFingerprint(VT.readCart())===fingerprint){try{VT.clearCart();}catch{/* Success must not be lost if browser storage becomes blocked. */}}
     const destination=statusDestination(result);
     const confirmation=document.getElementById('checkout-confirmation');
