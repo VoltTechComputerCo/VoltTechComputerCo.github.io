@@ -11,7 +11,7 @@
     "supabase-config.js"
   ],
   "scripts": [
-    "assets/js/pages/builder.js?v=3.5.0"
+    "assets/js/pages/builder.js?v=20261106-cdn"
   ],
   "glass_version": "20261003-neon3",
   "script_version": "20261022.4"

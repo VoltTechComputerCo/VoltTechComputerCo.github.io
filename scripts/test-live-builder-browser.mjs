@@ -1,13 +1,14 @@
 import {createRequire} from 'node:module';import assert from 'node:assert/strict';import fs from 'node:fs';import path from 'node:path';import {gunzipSync,gzipSync} from 'node:zlib';
 const {chromium}=createRequire(import.meta.url)('playwright');
 const snapshot=JSON.parse(gunzipSync(fs.readFileSync('assets/data/catalogue.json.gz')));snapshot.generatedAt=new Date().toISOString();snapshot.settings.builder_enabled=true;
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,executablePath:process.env.VT_CHROMIUM_PATH});
 for(const width of [390,1440]){
- const page=await browser.newPage({viewport:{width,height:900}}),errors=[];
+ const page=await browser.newPage({viewport:{width,height:900}}),errors=[],productReads=[];
  page.on('pageerror',e=>errors.push(e.message));
  await page.route('**/*',async route=>{
   const u=new URL(route.request().url());
   if(u.hostname.endsWith('supabase.co')){
+   if(u.pathname.endsWith('/store_products'))productReads.push(u.pathname);
    if(u.pathname.includes('store_settings'))return route.fulfill({json:[snapshot.settings]});
    return route.fulfill({json:[]});
   }
@@ -32,6 +33,7 @@ for(const width of [390,1440]){
  await page.goto('https://volttechcomputerco.co.za/builder/?add='+part.id);
  await page.waitForFunction(id=>document.querySelector('#build-list')?.textContent.includes(window.__VT_BUILDER_CATALOGUE?.find(p=>p.id===id)?.name),part.id);
  assert.equal(new URL(page.url()).searchParams.has('add'),false);
+ assert.deepEqual(productReads,[],'Builder must not download product rows from Supabase');
  assert.deepEqual(errors,[]);
  console.log('PASS browser',width,'live load, selection, store handoff, account controls and no overflow');
  await page.close();

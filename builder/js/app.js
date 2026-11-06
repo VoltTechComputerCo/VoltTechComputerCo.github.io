@@ -5,7 +5,7 @@ import {
 } from "./build-engine.js?v=20261022.4";
 import {getCompatibility,validateBuild,estimatePower} from "./compatibility-engine.js?v=20261022.4";
 import {buildGuidedRecommendation,profileLabel} from "./guided-engine.js?v=20261022.4";
-import {loadCatalogue} from "./data-loader.js?v=20261022.4";
+import {loadCatalogue} from "./data-loader.js?v=20261106-cdn";
 
 const e={
   steps:document.getElementById("steps"), search:document.getElementById("search"), compatibleOnly:document.getElementById("compatible-only"),
@@ -32,11 +32,11 @@ async function init(){
     catalogue=d.products||[];
     currency=d.currency||"ZAR";
     const imageCount=catalogue.filter(p=>p.media?.primaryImage).length;
-    e.catalogueNote.textContent=`${catalogue.length} components loaded · ${imageCount} product images mapped · Current store prices · assembly, delivery and final compatibility confirmed in your VoltTech quote.`;
+    e.catalogueNote.textContent=`${catalogue.length} components loaded · ${imageCount} product images mapped · Prices from the latest store update · assembly, delivery and final compatibility confirmed in your VoltTech quote.`;
     render();
   }catch(error){
     console.error("VoltTech catalogue load error",error);
-    e.catalogueNote.textContent="The component catalogue could not be loaded. Refresh once; if it persists, VoltTech needs to repair the builder data connection.";
+    e.catalogueNote.textContent="The component catalogue could not be loaded. Please try again later or contact VoltTech for help planning a build.";
     e.products.innerHTML='<div class="empty">The parts catalogue did not load. No build data has been submitted.</div>';
   }
 }

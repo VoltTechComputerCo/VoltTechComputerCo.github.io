@@ -31,13 +31,16 @@ function formatSpecKey(key){return String(key).replace(/([a-z])([A-Z])/g,'$1 $2'
 function formatSpecValue(v){if(Array.isArray(v))return v.join(', ');if(v===true)return'Yes';if(v===false)return'No';if(v==null||v==='')return'—';return String(v)}
 function toast(message,tone='ok'){const el=document.getElementById('toast');if(!el)return;el.textContent=message;el.classList.toggle('error',tone==='error');el.classList.add('show');clearTimeout(el._vtTimer);el._vtTimer=setTimeout(()=>el.classList.remove('show'),3500)}
 function analytics(event,params={}){try{window.gtag?.('event',event,params)}catch{}}
-const LISTING_FIELDS='id,slug,public_slug,type,category_slug,name,brand,model,status,visibility,sale_mode,is_demo,featured,sort_priority,retail_price,compare_at_price,currency,stock_status,stock_qty,specs,compatibility,identifiers,highlights,primary_image:media->>primaryImage,direct_image:media->>directImage,stock_connected:metadata->stock_connected,connected_suppliers:metadata->connected_suppliers,media_review_required:metadata->media_review_required,supplier_data_required:metadata->supplier_data_required,compare_at_verified:metadata->compare_at_verified,deal_ends_at:metadata->>deal_ends_at';
+const LISTING_FIELDS='id,slug,public_slug,type,category_slug,name,brand,model,status,visibility,sale_mode,is_demo,featured,sort_priority,retail_price,compare_at_price,currency,stock_status,stock_qty,price_checked_at,power_watts,specs,compatibility,identifiers,highlights,primary_image:media->>primaryImage,direct_image:media->>directImage,stock_connected:metadata->stock_connected,connected_suppliers:metadata->connected_suppliers,media_review_required:metadata->media_review_required,supplier_data_required:metadata->supplier_data_required,compare_at_verified:metadata->compare_at_verified,deal_ends_at:metadata->>deal_ends_at';
 function listingProduct(row){return {...row,media:row.media||{primaryImage:row.primary_image,directImage:row.direct_image},metadata:row.metadata||{stock_connected:row.stock_connected,connected_suppliers:row.connected_suppliers,media_review_required:row.media_review_required,supplier_data_required:row.supplier_data_required,compare_at_verified:row.compare_at_verified,deal_ends_at:row.deal_ends_at}}}
-async function loadStore(launchSettings){
+async function loadStore(launchSettings,{preview=false}={}){
  const snapshot=window.__vtPublicCatalogueSnapshot;
  if(snapshot&&snapshot.schemaVersion===1&&Array.isArray(snapshot.products)&&Date.now()-Date.parse(snapshot.generatedAt)<10*60*60*1000){
   return {source:'snapshot',settings:launchSettings||snapshot.settings,categories:snapshot.categories||[],products:snapshot.products.map(listingProduct)};
  }
+ // The public storefront uses enquiry mode on a cache miss. A stale or missing
+ // file must never cause a full database download for each visitor.
+ if(!preview)throw new Error("Public catalogue snapshot is unavailable");
  const client=getCatalogueClient(),batch=1000;
  const page=(from,count=false)=>client.from('store_products').select(LISTING_FIELDS,count?{count:'exact'}:undefined).eq('status','active').eq('visibility','public').neq('sale_mode','hidden').order('sort_priority',{ascending:false}).order('featured',{ascending:false}).order('name').order('id').range(from,from+batch-1);
  const [settings,categories,first]=await Promise.all([launchSettings?Promise.resolve({data:launchSettings}):client.from('store_settings').select('*').eq('id','store').single(),client.from('store_categories').select('*').eq('is_active',true).order('sort_order'),page(0,true)]);

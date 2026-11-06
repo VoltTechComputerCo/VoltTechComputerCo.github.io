@@ -19,6 +19,7 @@ jobs:
       - run: node scripts/test-product-summary.mjs
       - run: node scripts/test-supabase-egress-budget.mjs
       - run: node scripts/test-catalogue-load.mjs
+      - run: node scripts/test-live-builder.mjs
       - run: node scripts/test-departments.mjs
       - run: node scripts/test-theme.mjs
       - run: node scripts/test-catalogue-pagination.mjs

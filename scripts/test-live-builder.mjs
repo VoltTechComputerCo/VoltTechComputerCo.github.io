@@ -25,3 +25,20 @@ for(const budget of [15000,25000,40000]){
  assert.ok(r.total<=budget,`Budget ${budget}`);
 }
 console.log(`PASS: ${live.products.length} current parts, retail prices, exclusions, socket/DDR conflicts, honest missing power and three guided budgets`);
+
+const payload=JSON.parse(gunzipSync(fs.readFileSync('assets/data/catalogue.json.gz')));
+payload.generatedAt=new Date().toISOString();
+payload.settings.catalogue_enabled=true;
+let catalogueFetches=0;
+globalThis.window={volttechAuth:{from(){throw new Error('Builder must not query product tables');}},dispatchEvent(){}};
+globalThis.fetch=async url=>{
+ assert.match(String(url),/\/assets\/data\/catalogue\.json\.gz\?/);
+ catalogueFetches++;
+ return new Response(JSON.stringify(payload));
+};
+const {loadCatalogue}=await import('../builder/js/data-loader.js');
+const cachedBuilder=await loadCatalogue();
+assert.equal(cachedBuilder.products.length,live.products.length);
+assert.equal(window.__VT_BUILDER_STORE_OVERLAY.source,'public-snapshot');
+assert.equal(catalogueFetches,1);
+console.log('PASS: Builder loads the public CDN snapshot without querying Supabase products');

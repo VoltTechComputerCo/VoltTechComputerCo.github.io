@@ -7,7 +7,14 @@ const client={from(table){const q={select(columns){if(table==='store_products')f
 const options=[];
 const context={Date,window:{volttechAuth:{from(){throw Error('Browsing used the account client')}},VOLTTECH_SUPABASE:{url:'https://example.supabase.co',publishableKey:'public'},supabase:{createClient:(url,key,option)=>{options.push(option);return client;}}},document:{documentElement:{dataset:{vtShell:'clean'}}},navigator:{},location:{href:'https://volttechcomputerco.co.za/store'},URL,Intl,setTimeout,clearTimeout};
 vm.runInNewContext(fs.readFileSync('commerce/js/store-core.js','utf8'),context);
-const result=await context.window.VoltTechStore.loadStore({catalogue_enabled:true});
+const store=context.window.VoltTechStore;
+await assert.rejects(store.loadStore({catalogue_enabled:true}),/snapshot is unavailable/);
+assert.equal(fields.length,0,'public cache miss must never fetch product rows');
+context.window.__vtPublicCatalogueSnapshot={schemaVersion:1,generatedAt:new Date(Date.now()-11*3600*1000).toISOString(),products:[]};
+await assert.rejects(store.loadStore({catalogue_enabled:true}),/snapshot is unavailable/);
+assert.equal(fields.length,0,'stale public cache must never fetch product rows');
+delete context.window.__vtPublicCatalogueSnapshot;
+const result=await store.loadStore({catalogue_enabled:true},{preview:true});
 assert.equal(result.products.length,2500);
 assert.equal(new Set(result.products.map(p=>p.id)).size,2500);
 assert.equal(options[0].auth.persistSession,false);

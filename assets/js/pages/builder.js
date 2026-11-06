@@ -48,7 +48,7 @@ async function openBuilder(access) {
   }
 
   installBuilderDialog();
-  await import(new URL('../../../builder/js/app.js?v=20261022.4', import.meta.url));
+  await import(new URL('../../../builder/js/app.js?v=20261106-cdn', import.meta.url));
   enhanceBuilderExperience();
   applyBuilderHandoff();
 
