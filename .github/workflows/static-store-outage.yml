@@ -1,0 +1,44 @@
+name: Independent public Store outage QA
+on:
+  push:
+    branches: [main, 'fix/static-*']
+    paths:
+      - 'assets/js/pages/store.js'
+      - 'assets/js/pages/product.js'
+      - 'assets/js/services/emergency-store.js'
+      - 'assets/js/services/storefront-mode.js'
+      - 'assets/js/site-shell.js'
+      - 'scripts/test-static-store-browser.mjs'
+      - '.github/workflows/static-store-outage.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'assets/js/pages/store.js'
+      - 'assets/js/pages/product.js'
+      - 'assets/js/services/emergency-store.js'
+      - 'assets/js/services/storefront-mode.js'
+      - 'assets/js/site-shell.js'
+      - 'scripts/test-static-store-browser.mjs'
+      - '.github/workflows/static-store-outage.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-store-without-supabase:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify browser test tools
+        run: |
+          npm install --no-save --package-lock=false playwright
+          test -x /usr/bin/google-chrome
+      - name: Browse real public snapshot with all Supabase API calls blocked
+        env:
+          VT_CHROMIUM_PATH: /usr/bin/google-chrome
+        run: |
+          python3 -m http.server 4173 > /tmp/static-store-http.log 2>&1 &
+          node scripts/test-static-store-browser.mjs
