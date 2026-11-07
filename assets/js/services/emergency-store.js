@@ -70,7 +70,7 @@ function card(product){
  <p class="eyebrow">${esc(product.brand||'VoltTech')} / ${esc(product.category_slug||product.type||'PC components')}</p>
  <h3><a href="${esc(detail)}">${esc(product.name)}</a></h3>
  <p class="micro">Current price and availability confirmed personally.</p>
- <div class="actions"><a class="button" href="${esc(message)}" target="_blank" rel="noopener noreferrer">ENQUIRE ON WHATSAPP →</a><a class="button button-secondary" href="${esc(detail)}">Details</a></div>
+ <div class="actions"><a class="button" href="${esc(message)}" target="_blank" rel="noopener noreferrer">WHATSAPP QUOTE →</a><a class="button button-secondary" href="${esc(detail)}">Details</a></div>
  </div></article>`;
 }
 export async function showEmergencyStore(state){
