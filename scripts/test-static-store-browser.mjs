@@ -28,6 +28,7 @@ for(const width of [390,1440]){
  const detail=await card.locator('a[href*="product.html?slug="]').first().getAttribute('href');
  assert.ok(detail,'product detail uses supplier-free public slug');
  await page.locator('#catalogue-search').fill('nonsense-zzzz');
+ await page.waitForTimeout(420); // Exercise deferred autocomplete's remote-RPC path as well.
  assert.equal(await page.locator('#product-grid .catalogue-card').count(),0,'search respects query');
  await page.goto(new URL(detail,'http://127.0.0.1:4173/store.html').href,{waitUntil:'domcontentloaded'});
  await page.locator('#product-detail .component-overview').waitFor({timeout:15000});
