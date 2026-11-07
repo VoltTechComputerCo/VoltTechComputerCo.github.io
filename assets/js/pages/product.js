@@ -1,3 +1,4 @@
+import { STATIC_ENQUIRY_MODE } from '../services/storefront-mode.js?v=20261107-independent1';
 import {dailyPriceNotice,hasDailyPricedItems} from '../services/daily-pricing.js?v=20261026';
 import { groupedSpecifications, productKeyFacts, briefDescription, plainDescription } from '../components/product-summary.js?v=20261021.3';
 import { productGallery, bindProductGallery } from '../components/product-gallery.js?v=20261021.3';
@@ -9,6 +10,7 @@ import { normalizeProductAddress } from '../services/product-permalinks.js?v=202
 const host = document.getElementById('product-detail'), title = document.getElementById('component-title');
 async function init() {
   try {
+    if(STATIC_ENQUIRY_MODE){await showEmergencyProduct(new URLSearchParams(location.search).get('slug'));return;}
     const access = await openCatalogue(); if (!access.open) { if(access.reason==='offline'){try{await showEmergencyProduct(new URLSearchParams(location.search).get('slug'));}catch{showGate({reason:'connection'});}} else showGate(access); return; }
     const {VT,preview} = access, slug = new URLSearchParams(location.search).get('slug');
     if (!slug) { title.textContent = 'Find your next component.'; document.querySelector('[data-gate-title]').textContent = 'Choose a component from the Store.'; document.querySelector('[data-gate-copy]').textContent = 'Open a product to see its specifications, compatibility and availability.'; document.getElementById('store-gate').hidden = false; return; }
