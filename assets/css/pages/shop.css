@@ -87,3 +87,21 @@ body[data-page="store"] .shop-builder{background:#091a21!important;color:#fff!im
  body[data-page="store"] .shop-featured .section-heading .eyebrow{display:none}
  body[data-page="store"] .shop-featured .section-heading h2{font-size:22px}
 }
+
+/* The regular mobile Store intentionally hides secondary card links. In static
+   enquiry mode the primary WhatsApp quote link is the only safe order action:
+   never hide it when Supabase is restricted. */
+@media (max-width:700px) {
+  body[data-page="store"][data-store-mode="enquiry"] .catalogue-card .actions a.button:first-of-type {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    min-height:44px;
+    text-align:center;
+    white-space:normal;
+  }
+  body[data-page="store"][data-store-mode="enquiry"] .catalogue-card .actions a.button:not(:first-of-type) {
+    display:none;
+  }
+}
