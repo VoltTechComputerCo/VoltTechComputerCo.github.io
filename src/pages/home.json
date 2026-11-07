@@ -3,6 +3,7 @@
   "title": "Gaming PCs, PC Parts & Stream Support | VoltTech Pretoria",
   "description": "Shop PC components, gaming gear and laptops at VoltTech Computer Co. PC repairs and upgrades in Pretoria, plus remote Stream Support across South Africa.",
   "robots": "index, follow, max-image-preview:large",
+  "script_version": "20261107-static1",
   "styles": [
     "assets/css/notifications.css",
     "assets/css/pages/home.css?v=20261014-home-store2",
@@ -15,6 +16,6 @@
     "conversion-context.js"
   ],
   "scripts": [
-    "assets/js/pages/home.js?v=20261014-home-store2"
+    "assets/js/pages/home.js?v=20261107-static1"
   ]
 }
