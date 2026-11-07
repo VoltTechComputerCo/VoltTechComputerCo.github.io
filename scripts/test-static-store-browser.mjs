@@ -34,11 +34,11 @@ for(const width of [390,1440]){
  assert.ok(await page.locator('#product-detail').isVisible(),'product specs stay viewable');
  assert.ok(await page.locator('#store-gate').isHidden(),'product page is not covered by outage notice');
  assert.ok(await page.locator('#product-detail a[href*="wa.me/27618435775"]').isVisible(),'product can be quoted via WhatsApp');
- assert.equal(backend.length,0,'Store and product must make zero Supabase calls');
+ assert.equal(backend.length,0,'Store and product must make zero Supabase calls: '+JSON.stringify(backend));
  await page.goto('http://127.0.0.1:4173/index.html',{waitUntil:'domcontentloaded'});
  await page.locator('main h1').first().waitFor({timeout:15000});
  assert.ok(await page.locator('main').isVisible(),'homepage remains browsable without backend');
- assert.equal(backend.length,0,'homepage also makes zero Supabase calls');
+ assert.equal(backend.length,0,'homepage also makes zero Supabase calls: '+JSON.stringify(backend));
  assert.deepEqual(errors,[],'no uncaught browser errors');
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no horizontal overflow');
  console.log('PASS: independent static Store and product browsing at '+width+'px, zero Supabase calls');
