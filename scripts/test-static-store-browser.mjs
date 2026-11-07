@@ -17,6 +17,7 @@ for(const width of [390,1440]){
  await page.goto('http://127.0.0.1:4173/store.html',{waitUntil:'domcontentloaded'});
  await page.locator('#product-grid .catalogue-card').first().waitFor({timeout:15000});
  assert.ok(await page.locator('#catalogue').isVisible(),'static catalogue is visible');
+ assert.equal(await page.locator('[data-cart-link]:visible').count(),0,'unusable checkout cart is hidden');
  assert.ok(await page.locator('#store-gate').isHidden(),'large outage warning does not block browsing');
  assert.ok((await page.locator('#store-state').innerText()).includes('WhatsApp'),'availability disclaimer is visible');
  const card=page.locator('#product-grid .catalogue-card').first();
