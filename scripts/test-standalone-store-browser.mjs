@@ -1,0 +1,43 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
+import {createRequire} from 'node:module';
+
+const snapshot=JSON.parse(gunzipSync(readFileSync('assets/data/catalogue.json.gz')).toString('utf8'));
+assert.equal(snapshot.schemaVersion,1);
+assert.ok(snapshot.settings?.catalogue_enabled===true,'last public snapshot must be sellable/visible as a reference');
+assert.ok(snapshot.products.length>100,'static snapshot must contain the existing VoltTech product range');
+assert.ok(snapshot.products.every(p=>p.status==='active'&&p.visibility==='public'&&p.is_demo===false&&p.sale_mode!=='hidden'));
+console.log('PASS existing compressed public catalogue:',snapshot.products.length,'products, generated',snapshot.generatedAt);
+
+const {chromium}=createRequire(import.meta.url)('playwright');
+const browser=await chromium.launch({headless:true,executablePath:process.env.VT_CHROMIUM_PATH||'/usr/bin/google-chrome'});
+try{
+ for(const width of [390,1440]){
+  const page=await browser.newPage({viewport:{width,height:960}});
+  const supabaseRequests=[],errors=[];
+  page.on('request',request=>{if(/\.supabase\.co\b/i.test(request.url()))supabaseRequests.push(request.url());});
+  page.on('pageerror',err=>errors.push(err.message));
+  await page.route('https://**/*',r=>r.abort()); // prevent network calls and live APIs
+  await page.goto('http://127.0.0.1:4173/store.html',{waitUntil:'domcontentloaded'});
+  await page.locator('#product-grid .catalogue-card').first().waitFor({timeout:18000});
+  assert.equal(await page.locator('#catalogue').isVisible(),true,'public catalogue renders without Supabase');
+  assert.equal(await page.locator('body').getAttribute('data-store-mode'),'enquiry');
+  assert.match(await page.locator('#store-gate').innerText(),/Shop gaming PC parts.*request a quote/);
+  const count=await page.locator('#product-grid .catalogue-card').count();
+  assert.ok(count>0,'actual product cards must be visible');
+  assert.ok((await page.locator('#product-grid').innerText()).includes('Current price and availability confirmed personally.'));
+  assert.ok((await page.locator('#product-grid').innerText()).includes('ENQUIRE ON WHATSAPP'));
+  assert.equal(supabaseRequests.length,0,'public Store browsing must have zero Supabase API traffic');
+  const first=await page.locator('#product-grid .catalogue-card .catalogue-image-link').first().getAttribute('href');
+  assert.match(first,/^product\.html\?slug=/);
+  await page.goto('http://127.0.0.1:4173/'+first,{waitUntil:'domcontentloaded'});
+  await page.locator('#product-detail .component-summary h2').waitFor({timeout:18000});
+  assert.equal(await page.locator('#product-detail').isVisible(),true);
+  assert.match(await page.locator('#product-detail').innerText(),/price and supplier availability are confirmed on enquiry/i);
+  assert.equal(supabaseRequests.length,0,'product details must load without Supabase');
+  assert.deepEqual(errors,[],'no client script errors');
+  console.log('PASS',width+'px','Store and product details load offline from static catalogue, zero Supabase requests');
+  await page.close();
+ }
+}finally{await browser.close();}
