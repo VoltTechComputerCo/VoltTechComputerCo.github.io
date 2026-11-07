@@ -3,6 +3,7 @@ import { publicProductSlug, normalizeProductAddress } from './product-permalinks
 // Public catalogue snapshots can be stale: never present their price/stock as current.
 import { readPublicCatalogue } from './public-catalogue.js?v=20261102-gpu3';
 import { readLaunchSettings } from './home-integrations.js?v=20261102-failover1';
+import { publicCatalogueOnly } from './site-config.js?v=20261107-static1';
 import { esc, imageMarkup, bindImages, filterProducts } from '../components/catalogue-view.js?v=20261103-slugs1';
 
 const WA='https://wa.me/27618435775?text=';
@@ -19,7 +20,7 @@ function emergencyNotice(title,description,product=null){
  const gate=document.getElementById('store-gate');
  if(gate){
   gate.hidden=false;
-  gate.dataset.state='offline';
+  gate.dataset.state=publicCatalogueOnly?'enquiry':'offline';
   gate.querySelector('[data-gate-title]').textContent=title;
   gate.querySelector('[data-gate-copy]').textContent=description;
   const contact=gate.querySelector('#category-enquiry');
@@ -34,6 +35,7 @@ async function snapshotProducts(){
  return snapshot.products.filter(publicProduct);
 }
 export function monitorStoreConnection(){
+ if(publicCatalogueOnly)return;
  let misses=0;
  const check=async()=>{
   if(document.visibilityState==='hidden')return;
@@ -46,6 +48,7 @@ export function monitorStoreConnection(){
  // Do not force a reload during a customer interaction after a single timeout.
 }
 function monitorRecovery(){
+ if(publicCatalogueOnly)return;
  if(recovering)return;
  recovering=true;
  const check=async()=>{
@@ -72,8 +75,8 @@ function card(product){
 }
 export async function showEmergencyStore(state){
  const products=await snapshotProducts().catch(()=>[]);
- emergencyNotice('Online checkout is temporarily unavailable.',
- 'VoltTech is still open! Browse our product range and send us a WhatsApp enquiry. Current pricing, stock and delivery will be confirmed before any order is placed.');
+ emergencyNotice('Shop gaming PC parts — request a quote.',
+ 'Browse our components and gaming gear. VoltTech confirms current supplier stock, final pricing and delivery directly on WhatsApp before you pay.');
  document.getElementById('shop-featured')?.setAttribute('hidden','');
  const catalogue=document.getElementById('catalogue'),grid=document.getElementById('product-grid');
  const count=document.getElementById('result-count'),search=document.getElementById('catalogue-search');
@@ -117,8 +120,8 @@ export async function showEmergencyStore(state){
 export async function showEmergencyProduct(slug){
  const products=await snapshotProducts().catch(()=>[]);
  const product=products.find(row=>(row.slug||row.id)===slug || publicProductSlug(row)===slug);
- emergencyNotice('Online ordering is temporarily unavailable.',
- 'VoltTech is still accepting enquiries. Prices, availability and delivery are confirmed directly on WhatsApp.',product);
+ emergencyNotice('Request a quote for this component.',
+ 'VoltTech confirms current price, availability and delivery before accepting payment.',product);
  const host=document.getElementById('product-detail');
  if(!product){monitorRecovery();return;}
  if(host){

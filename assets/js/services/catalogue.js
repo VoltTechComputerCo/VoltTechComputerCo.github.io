@@ -1,6 +1,6 @@
 import { readPublicCatalogue } from './public-catalogue.js?v=20261102-gpu3';
 import { readLaunchSettings, connectCart, connectAccount, connectProductionServices, loadScript } from './home-integrations.js?v=20261021.3';
-import { isProduction, sdkUrl } from './site-config.js?v=20261021.3';
+import { isProduction, sdkUrl, publicCatalogueOnly } from './site-config.js?v=20261107-static1';
 const base = new URL('../../../', import.meta.url);
 let ready;
 export async function withTimeout(promise, ms = 10000) {
@@ -26,6 +26,10 @@ export async function getCommerceCore() {
 }
 export async function openCatalogue() {
   connectCart(); connectProductionServices();
+  // Store and product detail pages remain browsable from GitHub-hosted
+  // snapshots even when Supabase is restricted (HTTP 402 or read-only).
+  // Do not query Supabase just to discover that checkout is unavailable.
+  if (publicCatalogueOnly) return { open: false, reason: 'offline' };
   let preview = false;
   const previewRequested = new URLSearchParams(location.search).get('preview') === '1';
   const snapshot=previewRequested?null:await readPublicCatalogue();

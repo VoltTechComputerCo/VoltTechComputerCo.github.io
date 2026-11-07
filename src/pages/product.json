@@ -3,7 +3,7 @@
   "title": "PC Component Details | VoltTech Computer Co.",
   "description": "Explore PC component specifications, compatibility information and availability with VoltTech Computer Co. Contact us about your next upgrade.",
   "robots": "noindex, follow",
-  "script_version": "20261102-gpu3",
+  "script_version": "20261107-static1",
   "styles": [
     "assets/css/notifications.css",
     "assets/css/pages/commerce.css?v=20261014-merch",
@@ -15,6 +15,6 @@
     "conversion-context.js"
   ],
   "scripts": [
-    "assets/js/pages/product.js?v=20261021-loading"
+    "assets/js/pages/product.js?v=20261107-static1"
   ]
 }

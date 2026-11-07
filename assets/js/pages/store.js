@@ -1,11 +1,11 @@
 import { searchCatalogue } from '../services/product-search.js?v=20261103-slugs1';
 import { updateDepartmentImages } from '../services/store-departments.js?v=20261021.3';
-import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261106-cdn';
+import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261107-static1';
 import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261103-slugs1';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js?v=20261021.3';
 import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261102-gpu3';
 import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261021.3';
-import { showEmergencyStore, monitorStoreConnection } from '../services/emergency-store.js?v=20261103-slugs1';
+import { showEmergencyStore, monitorStoreConnection } from '../services/emergency-store.js?v=20261107-static1';
 
 const query=new URLSearchParams(location.search);
 const landingHash=location.hash;

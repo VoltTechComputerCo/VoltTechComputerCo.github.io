@@ -1,4 +1,4 @@
-import { isProduction, sdkUrl } from './site-config.js?v=20261021.3';
+import { isProduction, sdkUrl, publicCatalogueOnly } from './site-config.js?v=20261107-static1';
 const base = new URL('../../../', import.meta.url);
 const cartKey = 'vt_store_quote_cart_v1';
 
@@ -80,6 +80,9 @@ async function initialiseAccount(config) {
 
   // GitHack cannot share the site's authenticated session. Keep it public-only.
   if (!isProduction() || !config) return;
+  // Marketing/home/Store/product pages need no auth refresh while the
+  // public catalogue is independent. Leave account/admin paths unchanged.
+  if (publicCatalogueOnly && ['/', '/index.html', '/store.html', '/product.html'].includes(location.pathname)) return;
   let cached = false;
   try { cached = Object.keys(localStorage).some(key => /^sb-.*-auth-token$/.test(key)); } catch { return; }
   if (!cached) return;

@@ -87,3 +87,12 @@ body[data-page="store"] .shop-builder{background:#091a21!important;color:#fff!im
  body[data-page="store"] .shop-featured .section-heading .eyebrow{display:none}
  body[data-page="store"] .shop-featured .section-heading h2{font-size:22px}
 }
+
+/* Independent quote-first Store: do not hide the only ordering action on phones.
+   The standard e-commerce card still hides secondary anchors as before. */
+@media(max-width:700px){
+ body[data-page="store"][data-store-mode="enquiry"] #catalogue .catalogue-card .actions a[href^="https://wa.me/"]{
+  display:inline-flex; min-height:42px; padding:10px 8px; font-size:11px;
+  line-height:1.35; white-space:normal; text-align:center; overflow-wrap:anywhere;
+ }
+}
