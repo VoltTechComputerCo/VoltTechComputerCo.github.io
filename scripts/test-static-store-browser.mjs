@@ -36,6 +36,7 @@ for(const width of [390,1440]){
  await page.goto('http://127.0.0.1:4173/index.html',{waitUntil:'domcontentloaded'});
  await page.locator('main h1').first().waitFor({timeout:15000});
  assert.ok(await page.locator('main').isVisible(),'homepage remains browsable without backend');
+ console.log('HOME API DEBUG',JSON.stringify(backend));
  assert.equal(backend.length,0,'no Supabase calls on homepage, Store or product detail pages');
  assert.deepEqual(errors,[],'no uncaught browser errors');
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no horizontal overflow');
