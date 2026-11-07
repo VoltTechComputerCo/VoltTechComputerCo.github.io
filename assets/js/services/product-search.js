@@ -1,3 +1,5 @@
+import { STATIC_ENQUIRY_MODE } from './storefront-mode.js?v=20261107-independent1';
+import { readPublicCatalogue } from './public-catalogue.js?v=20261102-gpu3';
 import { publicProductSlug } from './product-permalinks.js?v=20261103-slugs1';
 export const normalizeSearch=value=>String(value||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 const compact=value=>normalizeSearch(value).replaceAll(' ','');
@@ -39,6 +41,18 @@ export async function searchCatalogue(query,request=fetch){
  const key=normalizeSearch(query);if(key.length<2)return {matches:[],suggestions:[],brand:null};
  const existing=cache.get(key);if(existing&&Date.now()-existing.time<60000)return existing.promise;
  const promise=(async()=>{
+  // When Supabase is restricted, both autocomplete and product searching must
+  // use only the public CDN snapshot. Never query the Supabase search RPC.
+  if(STATIC_ENQUIRY_MODE){
+   const snapshot=await readPublicCatalogue(fetch,true);
+   const products=Array.isArray(snapshot?.products)?snapshot.products:[];
+   const matches=localSearch(products,key);
+   const ranked=[...matches.entries()].sort((a,b)=>b[1]-a[1]);
+   const byId=new Map(products.map(p=>[p.id,p]));
+   return {matches:ranked.map(([id,score])=>({id,score})),
+     suggestions:ranked.slice(0,6).map(([id])=>byId.get(id)).filter(Boolean),
+     brand:null};
+  }
   const config=globalThis.window?.VOLTTECH_SUPABASE;if(!config)throw Error('Search connection unavailable');
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),4000);
   try{
@@ -71,7 +85,7 @@ export function attachSearchSuggestions(input){
    const data=await searchCatalogue(query);if(token!==version||input.value.trim()!==query||document.activeElement!==input)return;
    list.replaceChildren();active=-1;
    if(data.brand)option(`Shop all ${data.brand}`,`store.html?q=${encodeURIComponent(data.brand)}#catalogue`,'Browse the full brand range');
-   for(const p of data.suggestions)option(p.name,`product.html?slug=${encodeURIComponent(publicProductSlug(p))}`,p.retail_price==null?p.brand:new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR'}).format(p.retail_price));
+   for(const p of data.suggestions)option(p.name,`product.html?slug=${encodeURIComponent(publicProductSlug(p))}`,STATIC_ENQUIRY_MODE?'Price and availability confirmed on enquiry':p.retail_price==null?p.brand:new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR'}).format(p.retail_price));
    option(`View all ${data.matches.length} results`,`store.html?q=${encodeURIComponent(query)}#catalogue`,data.matches.length?'Search the full catalogue':'Try a brand, model or product type');
    list.hidden=false;input.setAttribute('aria-expanded','true');
   }catch{if(token===version)close();}
