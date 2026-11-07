@@ -1,3 +1,4 @@
+import { STATIC_ENQUIRY_MODE } from './storefront-mode.js?v=20261107-independent1';
 import { publicProductSlug, normalizeProductAddress } from './product-permalinks.js?v=20261103-slugs1';
 // Independent, read-only fallback. No Supabase SDK or customer account is required.
 // Public catalogue snapshots can be stale: never present their price/stock as current.
@@ -34,6 +35,7 @@ async function snapshotProducts(){
  return snapshot.products.filter(publicProduct);
 }
 export function monitorStoreConnection(){
+ if(STATIC_ENQUIRY_MODE)return; // No background Supabase polling on public static Store pages.
  let misses=0;
  const check=async()=>{
   if(document.visibilityState==='hidden')return;
@@ -46,6 +48,7 @@ export function monitorStoreConnection(){
  // Do not force a reload during a customer interaction after a single timeout.
 }
 function monitorRecovery(){
+ if(STATIC_ENQUIRY_MODE)return; // Restore live checkout only after a reviewed release, not an automatic probe.
  if(recovering)return;
  recovering=true;
  const check=async()=>{
@@ -79,10 +82,13 @@ export async function showEmergencyStore(state){
  const count=document.getElementById('result-count'),search=document.getElementById('catalogue-search');
  const sort=document.getElementById('catalogue-sort');
  const status=document.getElementById('store-state');
- if(status)status.textContent=products.length?'Manual ordering available · catalogue is for reference':'Manual ordering available · contact VoltTech';
+ if(status)status.textContent=products.length?'Browse PC gear · Prices, stock and delivery confirmed by WhatsApp':'Contact VoltTech for current stock and quotes';
  const hero=document.getElementById('store-hero-copy');
- if(hero)hero.textContent='We are still accepting PC parts and gaming gear enquiries directly on WhatsApp.';
+ if(hero)hero.textContent='Browse gaming PC parts and peripherals. Ask us for a current quote and delivery options via WhatsApp.';
  if(!products.length||!catalogue||!grid){if(catalogue)catalogue.hidden=true;monitorRecovery();return;}
+ // Product browsing is available: don't cover it with a large outage banner.
+ // Current prices, stock and payment remain intentionally unavailable here.
+ document.getElementById('store-gate')?.setAttribute('hidden','');
  catalogue.hidden=false;catalogue.dataset.source='offline-snapshot';catalogue.dataset.mode='enquiry';
  document.getElementById('catalogue-preview')?.setAttribute('hidden','');
  document.querySelector('.smart-filter-shell')?.setAttribute('hidden','');
@@ -121,6 +127,7 @@ export async function showEmergencyProduct(slug){
  'VoltTech is still accepting enquiries. Prices, availability and delivery are confirmed directly on WhatsApp.',product);
  const host=document.getElementById('product-detail');
  if(!product){monitorRecovery();return;}
+ document.getElementById('store-gate')?.setAttribute('hidden','');
  if(host){
   host.hidden=false;host.dataset.mode='enquiry';
   const specs=Object.entries(product.specs||{}).filter(([key,value])=>typeof value==='string'||typeof value==='number').filter(([,value])=>String(value).length<160).slice(0,8);
