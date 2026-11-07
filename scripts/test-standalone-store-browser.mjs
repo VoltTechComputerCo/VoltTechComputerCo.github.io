@@ -31,6 +31,8 @@ try{
   await page.locator('#product-grid .catalogue-card').first().waitFor({timeout:18000});
   assert.equal(await page.locator('#catalogue').isVisible(),true,'public catalogue renders without Supabase');
   assert.equal(await page.locator('body').getAttribute('data-store-mode'),'enquiry');
+  assert.match(await page.locator('.mobile-nav-cart a').first().getAttribute('href'),/^https:\/\/wa\.me\/27618435775/,'cart nav becomes a working enquiry link');
+  assert.equal(await page.locator('[data-open-cart]').first().isVisible(),false,'inactive checkout buttons hidden');
   assert.match(await page.locator('#store-gate').innerText(),/Shop gaming PC parts.*request a quote/);
   const count=await page.locator('#product-grid .catalogue-card').count();
   assert.ok(count>0,'actual product cards must be visible');
@@ -47,6 +49,9 @@ try{
   assert.equal(await page.locator('#product-detail').isVisible(),true);
   assert.match(await page.locator('#product-detail').innerText(),/price and supplier availability are confirmed on enquiry/i);
   assert.equal(supabaseRequests.length,0,'product details must load without Supabase');
+  await page.goto('https://volttechcomputerco.co.za/',{waitUntil:'domcontentloaded'});
+  assert.equal(await page.locator('.mobile-nav-cart a').first().getAttribute('href')?.then(h=>h.startsWith('https://wa.me/27618435775')),true,'homepage links to manual ordering');
+  assert.equal(supabaseRequests.length,0,'public homepage must not contact Supabase, even with a saved auth session');
   assert.deepEqual(errors,[],'no client script errors');
   console.log('PASS',width+'px','Store and product details load offline from static catalogue, zero Supabase requests');
   await page.close();
