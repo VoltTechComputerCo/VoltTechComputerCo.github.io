@@ -54,6 +54,9 @@ try{
   assert.equal(supabaseRequests.length,0,'public homepage must not contact Supabase, even with a saved auth session');
   assert.deepEqual(errors,[],'no client script errors');
   console.log('PASS',width+'px','Store and product details load offline from static catalogue, zero Supabase requests');
+  // Wait for production-hostname route fixtures to finish before disposing
+  // the page; otherwise late images can throw TargetClosedError in CI.
+  await page.unrouteAll({behavior:'wait'});
   await page.close();
  }
 }finally{await browser.close();}
