@@ -1,3 +1,4 @@
+import { STATIC_ENQUIRY_MODE } from '../services/storefront-mode.js?v=20261107-independent1';
 import { searchCatalogue } from '../services/product-search.js?v=20261103-slugs1';
 import { updateDepartmentImages } from '../services/store-departments.js?v=20261021.3';
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261106-cdn';
@@ -155,6 +156,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelect
 
 async function init(){
   try{
+    // Public browsing must keep working even when Supabase REST/Auth is HTTP 402.
+    if(STATIC_ENQUIRY_MODE){await showEmergencyStore(state);return;}
     const access=await openCatalogue();
     if(!access.open){ if(access.reason==='offline'){try{await showEmergencyStore(state);}catch{showGate({reason:'connection'});}} else showGate(access); return; }
     const { VT, preview }=access;
