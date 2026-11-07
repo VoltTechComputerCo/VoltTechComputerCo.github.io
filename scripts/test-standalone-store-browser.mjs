@@ -27,7 +27,10 @@ try{
   const count=await page.locator('#product-grid .catalogue-card').count();
   assert.ok(count>0,'actual product cards must be visible');
   assert.ok((await page.locator('#product-grid').innerText()).includes('Current price and availability confirmed personally.'));
-  assert.ok((await page.locator('#product-grid').innerText()).includes('ENQUIRE ON WHATSAPP'));
+  const enquiry=page.locator('#product-grid .catalogue-card a[href^="https://wa.me/"]').first();
+  console.log('CHECK',width,'WhatsApp link count:',await enquiry.count(),'visible:',await enquiry.isVisible());
+  assert.ok(await enquiry.count()>0,'each static product requires a WhatsApp enquiry link');
+  assert.equal(await enquiry.isVisible(),true,'customers must see the enquiry button');
   assert.equal(supabaseRequests.length,0,'public Store browsing must have zero Supabase API traffic');
   const first=await page.locator('#product-grid .catalogue-card .catalogue-image-link').first().getAttribute('href');
   assert.match(first,/^product\.html\?slug=/);
