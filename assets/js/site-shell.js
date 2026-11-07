@@ -51,4 +51,8 @@ connectCart();
 // Login cannot work on restricted Supabase. Avoid even refreshing an old auth
 // session during public browsing; account/admin pages retain their own flow.
 const publicPage=new Set(['','index.html','store.html','product.html']).has(location.pathname.split('/').pop());
-if(!(STATIC_ENQUIRY_MODE&&publicPage))connectAccount(window.VOLTTECH_SUPABASE);
+if(STATIC_ENQUIRY_MODE&&publicPage){
+  // An existing cart cannot be checked out while the transactional backend is
+  // restricted. Keep its local data intact but avoid a misleading active cart.
+  document.querySelectorAll('[data-cart-link]').forEach(link=>{link.hidden=true;});
+}else connectAccount(window.VOLTTECH_SUPABASE);
