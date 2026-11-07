@@ -9,6 +9,11 @@ on:
       - 'assets/js/services/home-integrations.js'
       - 'assets/js/pages/store.js'
       - 'assets/js/pages/product.js'
+      - 'assets/css/pages/shop.css'
+      - 'store.html'
+      - 'product.html'
+      - 'src/pages/store.json'
+      - 'src/pages/product.json'
       - 'scripts/test-standalone-store-browser.mjs'
       - '.github/workflows/independent-storefront-qa.yml'
   push:
@@ -20,6 +25,11 @@ on:
       - 'assets/js/services/home-integrations.js'
       - 'assets/js/pages/store.js'
       - 'assets/js/pages/product.js'
+      - 'assets/css/pages/shop.css'
+      - 'store.html'
+      - 'product.html'
+      - 'src/pages/store.json'
+      - 'src/pages/product.json'
       - 'scripts/test-standalone-store-browser.mjs'
       - '.github/workflows/independent-storefront-qa.yml'
   workflow_dispatch:
