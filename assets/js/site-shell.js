@@ -1,4 +1,4 @@
-import { connectCart, connectAccount } from './services/home-integrations.js?v=20261021.3';
+import { connectCart, connectAccount } from './services/home-integrations.js?v=20261107-static1';
 import { enhanceNavigation } from './navigation.js?v=20261021.3';
 import { enhanceDialogs } from './components/dialog.js?v=20261021.3';
 import { enhanceSearch } from './components/search.js?v=20261021.3';
