@@ -14,12 +14,20 @@ const {chromium}=createRequire(import.meta.url)('playwright');
 const browser=await chromium.launch({headless:true,executablePath:process.env.VT_CHROMIUM_PATH||'/usr/bin/google-chrome'});
 try{
  for(const width of [390,1440]){
-  const page=await browser.newPage({viewport:{width,height:960}});
+  const page=await browser.newPage({viewport:{width,height:960},serviceWorkers:'block'});
   const supabaseRequests=[],errors=[];
-  page.on('request',request=>{if(/\.supabase\.co\b/i.test(request.url()))supabaseRequests.push(request.url());});
+  page.on('request',request=>{if(request.url().includes('.supabase.co'))supabaseRequests.push(request.url());});
   page.on('pageerror',err=>errors.push(err.message));
-  await page.route('https://**/*',r=>r.abort()); // prevent network calls and live APIs
-  await page.goto('http://127.0.0.1:4173/store.html',{waitUntil:'domcontentloaded'});
+  // Simulate production hostname and existing customer sessions while keeping
+  // all resources local; a missed API bypass would become a recorded request.
+  await page.addInitScript(() => localStorage.setItem('sb-qdqhfnvwqvgesfdmocir-auth-token','{"access_token":"fixture-old-session"}'));
+  await page.route('https://**/*',r=>r.abort());
+  await page.route('https://volttechcomputerco.co.za/**',async route=>{
+   const u=new URL(route.request().url());
+   const response=await route.fetch({url:'http://127.0.0.1:4173'+u.pathname+u.search});
+   return route.fulfill({response});
+  });
+  await page.goto('https://volttechcomputerco.co.za/store.html',{waitUntil:'domcontentloaded'});
   await page.locator('#product-grid .catalogue-card').first().waitFor({timeout:18000});
   assert.equal(await page.locator('#catalogue').isVisible(),true,'public catalogue renders without Supabase');
   assert.equal(await page.locator('body').getAttribute('data-store-mode'),'enquiry');
@@ -34,7 +42,7 @@ try{
   assert.equal(supabaseRequests.length,0,'public Store browsing must have zero Supabase API traffic');
   const first=await page.locator('#product-grid .catalogue-card .catalogue-image-link').first().getAttribute('href');
   assert.match(first,/^product\.html\?slug=/);
-  await page.goto('http://127.0.0.1:4173/'+first,{waitUntil:'domcontentloaded'});
+  await page.goto('https://volttechcomputerco.co.za/'+first,{waitUntil:'domcontentloaded'});
   await page.locator('#product-detail .component-summary h2').waitFor({timeout:18000});
   assert.equal(await page.locator('#product-detail').isVisible(),true);
   assert.match(await page.locator('#product-detail').innerText(),/price and supplier availability are confirmed on enquiry/i);
