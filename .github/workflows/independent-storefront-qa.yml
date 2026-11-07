@@ -1,0 +1,45 @@
+name: Independent Storefront QA
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'assets/js/services/site-config.js'
+      - 'assets/js/services/catalogue.js'
+      - 'assets/js/services/emergency-store.js'
+      - 'assets/js/services/home-integrations.js'
+      - 'assets/js/pages/store.js'
+      - 'assets/js/pages/product.js'
+      - 'scripts/test-standalone-store-browser.mjs'
+      - '.github/workflows/independent-storefront-qa.yml'
+  push:
+    branches: [main, 'fix/independent-*']
+    paths:
+      - 'assets/js/services/site-config.js'
+      - 'assets/js/services/catalogue.js'
+      - 'assets/js/services/emergency-store.js'
+      - 'assets/js/services/home-integrations.js'
+      - 'assets/js/pages/store.js'
+      - 'assets/js/pages/product.js'
+      - 'scripts/test-standalone-store-browser.mjs'
+      - '.github/workflows/independent-storefront-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-store:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --package-lock=false playwright
+      - name: Verify bundled Chrome
+        run: test -x /usr/bin/google-chrome
+      - name: Serve independent Store from local site
+        run: python3 -m http.server 4173 >/tmp/volttech-static-http.log 2>&1 &
+      - name: Verify browsing, product detail and zero Supabase calls
+        env:
+          VT_CHROMIUM_PATH: /usr/bin/google-chrome
+        run: node scripts/test-standalone-store-browser.mjs
