@@ -1,3 +1,4 @@
+import { STATIC_ENQUIRY_MODE } from './services/storefront-mode.js?v=20261107-independent1';
 import { connectCart, connectAccount } from './services/home-integrations.js?v=20261021.3';
 import { enhanceNavigation } from './navigation.js?v=20261021.3';
 import { enhanceDialogs } from './components/dialog.js?v=20261021.3';
@@ -47,4 +48,7 @@ const ctaObserver = new MutationObserver((records) => {
 ctaObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] });
 
 connectCart();
-connectAccount(window.VOLTTECH_SUPABASE);
+// Login cannot work on restricted Supabase. Avoid even refreshing an old auth
+// session during public browsing; account/admin pages retain their own flow.
+const publicPage=new Set(['','index.html','store.html','product.html']).has(location.pathname.split('/').pop());
+if(!(STATIC_ENQUIRY_MODE&&publicPage))connectAccount(window.VOLTTECH_SUPABASE);
