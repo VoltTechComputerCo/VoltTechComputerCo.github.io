@@ -196,6 +196,74 @@ function productPicks(products, rotation) {
   }).filter(Boolean);
 }
 
+
+const christmasKits = [
+  ['Desk Refresh', 'A mechanical keyboard, wireless gaming mouse and extra-large desk mat.', ['syntech-00b4b8251587347e', 'syntech-64a68bf1a9adf4aa', 'syntech-448febf6bd4459e2']],
+  ['Stream Starter', 'A USB microphone and Full HD webcam for your first stream.', ['syntech-b1990d0606ff693f', 'syntech-db2d5bd00fe74e5b']],
+  ['Cooling Refresh', 'Three 120 mm ARGB case fans and thermal paste for a cooler refresh. Check your case and headers for fit.', ['syntech-3fa91f64815d00b9', 'lunatech-actcp00002b']]
+];
+
+function showChristmasKits(shelf, products) {
+  const byId = new Map(products.map(product => [product.id, product]));
+  const kits = christmasKits.map(([name, description, ids]) => ({name, description, ids, items:ids.map(id => byId.get(id))}))
+    .filter(kit => kit.items.every(product => product && (product.primary_image || product.direct_image)));
+  if (!kits.length) return;
+  const section = document.createElement('section');
+  section.className = 'container christmas-kits';
+  section.setAttribute('aria-labelledby', 'season-title');
+  section.innerHTML = '<div class="rail-heading"><div><p class="eyebrow">CHRISTMAS AT VOLTTECH</p><h2 id="season-title">Christmas hardware bundles</h2></div></div>' +
+    '<p>Pick a kit and add every item to your cart together. We confirm stock and delivery before payment.</p>' +
+    '<div class="christmas-kit-grid">' + kits.map(({name, description, items}, index) =>
+      '<article class="christmas-kit"><div class="christmas-kit-images">' + items.map(product =>
+        '<a href="' + esc(productUrl(product, false)) + '" title="' + esc(product.name) + '">' + imageMarkup(product) + '</a>').join('') +
+      '</div><div class="christmas-kit-copy"><h3>' + esc(name) + '</h3><p>' + esc(description) + '</p><ul>' +
+      items.map(product => '<li>' + esc(product.name) + '</li>').join('') +
+      '</ul><button class="button" type="button" data-add-kit="' + index + '" aria-label="Add ' + esc(name) + ' bundle to cart">Add bundle to cart</button></div></article>').join('') +
+    '</div><p class="christmas-kit-status" role="status"></p><div class="actions" data-kit-cart hidden><a class="button button-secondary" href="' +
+    siteUrl('store.html?cart=1') + '">View cart</a><a class="button" href="' + siteUrl('checkout.html') + '">Go to checkout →</a></div>';
+  const status = section.querySelector('[role="status"]');
+  const actions = section.querySelector('[data-kit-cart]');
+  const buttons = [...section.querySelectorAll('[data-add-kit]')];
+  const key = 'vt_store_quote_cart_v1';
+  const updateCartLinks = () => {
+    try { actions.hidden = !JSON.parse(localStorage.getItem(key) || '[]').length; }
+    catch { actions.hidden = true; }
+  };
+  updateCartLinks();
+  window.addEventListener('vt-store-cart-change', updateCartLinks);
+  window.addEventListener('storage', updateCartLinks);
+  for (const button of buttons) button.addEventListener('click', async () => {
+    const kit = kits[Number(button.dataset.addKit)];
+    buttons.forEach(item => { item.disabled = true; });
+    status.textContent = 'Checking ' + kit.name + '…';
+    try {
+      const { checkoutAccess, checkoutCart, eligibleCart, withTimeout } = await import('./services/transactions.js?v=20261021.3');
+      const { VT } = await checkoutAccess();
+      if (!VT) { status.textContent = 'Online checkout is currently unavailable. Please try again later.'; return; }
+      const fresh = await withTimeout(VT.getProductsByIds(kit.ids), 5000);
+      // Read the cart after the network request and commit the complete bundle in one write.
+      const cart = checkoutCart(VT.readCart());
+      const quantities = new Map((cart || []).map(item => [item.productId, item.quantity]));
+      for (const id of kit.ids) quantities.set(id, (quantities.get(id) || 0) + 1);
+      const next = [...quantities].map(([productId, quantity]) => ({productId, quantity}));
+      if (!cart || !checkoutCart(next)) { status.textContent = 'Your cart is at its limit. Review the items in your cart before adding this bundle.'; return; }
+      const bundleQuantities = next.filter(item => kit.ids.includes(item.productId));
+      if (!eligibleCart(VT, bundleQuantities, fresh) || fresh.some(product => product.stock_qty == null || !(Number(product.retail_price) > 0) || product.currency !== 'ZAR')) {
+        status.textContent = 'This bundle is currently unavailable in the requested quantity.';
+        return;
+      }
+      VT.saveCart(next);
+      status.textContent = kit.name + ' added to your cart.';
+    } catch {
+      status.textContent = 'We couldn’t check the bundle right now. Please try again.';
+    } finally {
+      buttons.forEach(item => { item.disabled = false; });
+    }
+  });
+  shelf.after(section);
+  bindImages(section);
+}
+
 function showShowcase(hero, products, generatedAt) {
   // South African shoppers see the same selection for each two-day window.
   const rotation = Math.floor((Date.now() + 2 * 3600000) / (2 * 86400000));
@@ -231,6 +299,7 @@ function showShowcase(hero, products, generatedAt) {
   side.insertAdjacentHTML('beforeend', `<div class="retail-shortcuts"><a href="${siteUrl('creator-hub-south-africa.html')}"><strong>Creator Hub ↗</strong><small>Discover South African streamers</small></a><a href="${siteUrl('streaming-setup-south-africa.html')}"><strong>Stream Support ↗</strong><small>Get your setup running smoothly</small></a></div>`);
   shelf.append(side);
   hero.after(shelf);
+  showChristmasKits(shelf, products);
 }
 
 export async function mountRetailRails() {
