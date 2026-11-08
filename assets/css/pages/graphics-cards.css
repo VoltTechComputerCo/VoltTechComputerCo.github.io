@@ -1,0 +1,30 @@
+.gpu-page { max-width: 76rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
+.gpu-breadcrumbs { display: flex; flex-wrap: wrap; gap: .6rem; margin-block: 1.25rem; font-size: .875rem; }
+.gpu-breadcrumbs a { text-decoration: underline; text-underline-offset: .2em; }
+.gpu-hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: clamp(1.25rem, 4vw, 3.5rem); align-items: center; padding: clamp(1.2rem, 4vw, 3rem); border: 1px solid var(--border); border-radius: .85rem; background: var(--panel); }
+.gpu-hero h1 { margin: .3em 0 .2em; font-size: clamp(2.5rem, 7vw, 5.25rem); line-height: .98; letter-spacing: -.045em; }
+.gpu-lead { max-width: 38rem; font-size: clamp(1rem, 2.2vw, 1.2rem); line-height: 1.6; }
+.gpu-hero .micro { margin: 1.25rem 0 0; }
+.gpu-hero figure { margin: 0; border-radius: .65rem; background: #fff; overflow: hidden; }
+.gpu-hero img { display: block; width: 100%; height: auto; }
+.gpu-section { margin-top: clamp(2.25rem, 6vw, 4.5rem); scroll-margin-top: 8rem; }
+.gpu-section h2 { font-size: clamp(1.55rem, 4vw, 2.45rem); line-height: 1.1; margin: .35rem 0 .8rem; }
+.gpu-section-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .25rem 1rem; margin-bottom: 1rem; }
+.gpu-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; list-style: none; padding: 0; margin: 0; }
+.gpu-list a { display: flex; justify-content: space-between; align-items: center; gap: .75rem; min-height: 100%; padding: 1rem; color: var(--text); font-weight: 600; line-height: 1.35; border: 1px solid var(--border); border-radius: .6rem; background: var(--panel); overflow-wrap: anywhere; }
+.gpu-list a:hover { border-color: var(--border-strong); text-decoration: underline; text-underline-offset: .2em; }
+.gpu-guide-grid, .gpu-fit { display: grid; gap: .8rem; margin-top: 1.2rem; }
+.gpu-guide-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gpu-fit { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.gpu-guide-grid article, .gpu-fit > div { padding: 1.25rem; border: 1px solid var(--border); background: var(--panel); border-radius: .6rem; }
+.gpu-guide-grid h3, .gpu-fit h3 { margin: 0 0 .5rem; }
+.gpu-guide-grid p, .gpu-fit p { line-height: 1.6; margin: 0 0 .5rem; }
+.gpu-page a:focus-visible { outline-offset: .2rem; }
+@media (max-width: 790px) {
+  .gpu-hero { grid-template-columns: 1fr; }
+  .gpu-hero figure { max-width: 24rem; }
+  .gpu-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 540px) {
+  .gpu-list, .gpu-guide-grid, .gpu-fit { grid-template-columns: 1fr; }
+}

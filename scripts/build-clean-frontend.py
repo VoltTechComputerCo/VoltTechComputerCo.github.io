@@ -43,6 +43,9 @@ def render(source):
         'SCRIPTS': '\n'.join(f'  <script defer src="{prefix}{path.split(chr(63))[0]}?v={script_version}"></script>' for path in config.get('classic_scripts', []) if path != 'supabase-config.js') + '\n' + '\n'.join(f'  <script type="module" src="{prefix}{path.split(chr(63))[0]}?v={script_version}"></script>' for path in config.get('scripts', [])),
         'HEAD': source.with_suffix('.head.html').read_text().strip() if source.with_suffix('.head.html').exists() else '',
     }
+    if '{{PRODUCT_LINKS}}' in values['CONTENT']:
+        products = source.with_suffix('.products.html').read_text(encoding='utf-8').strip()
+        values['CONTENT'] = values['CONTENT'].replace('{{PRODUCT_LINKS}}', products)
     if source.stem != 'store':
         values['HEADER'] = re.sub(r'<nav class="retail-category-nav".*?</nav>', '', values['HEADER'], flags=re.S)
     # Render contact icons in the HTML so they never expand the buttons after paint.
@@ -68,9 +71,12 @@ def render(source):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true', help='Fail if committed HTML differs from source')
+    parser.add_argument('--page', choices=[path.stem for path in (ROOT / 'src/pages').glob('*.json')],
+                        help='Generate or check only one page')
     args = parser.parse_args()
     stale = []
-    for source in sorted((ROOT / 'src/pages').glob('*.json')):
+    sources = [ROOT / 'src/pages' / f'{args.page}.json'] if args.page else sorted((ROOT / 'src/pages').glob('*.json'))
+    for source in sources:
         target, content = render(source)
         if args.check:
             if not target.exists() or target.read_text() != content:
