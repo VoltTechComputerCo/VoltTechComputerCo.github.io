@@ -205,14 +205,16 @@ function showShowcase(hero, products, generatedAt) {
   const picks = productPicks(products, rotation).map(p =>
     `<a class="rail-product" href="${esc(productUrl(p, false))}">${imageMarkup(p)}<span class="rail-product-copy"><small>${esc(p.brand)}</small><strong>${esc(p.name)}</strong><span>View product ↗</span></span></a>`);
   if (picks.length) {
-    const selection = rail('Hardware spotlight', 'VOLTTECH PICKS', picks, 'products');
+    const selection = document.createElement('section');
+    selection.className = 'retail-rail retail-rail-products';
+    selection.setAttribute('aria-labelledby', 'hardware-spotlight');
+    selection.innerHTML = `<div class="rail-heading"><div><p class="eyebrow">VOLTTECH PICKS</p><h2 id="hardware-spotlight">Hardware spotlight</h2></div><a class="spotlight-shop" href="${siteUrl('store.html#catalogue')}">Shop all gear ↗</a></div><div class="spotlight-grid">${picks.join('')}</div>`;
     shelf.append(selection);
     bindImages(selection);
   }
   const campaigns = themes.map((_, index) => themes[(rotation + index) % themes.length]);
   const offers = campaigns.slice(0, 4).map(([label, category, text]) =>
     `<a class="rail-campaign" href="${esc(storeLink('category', category))}"><strong>${esc(label)} ↗</strong><span>${esc(text)}</span></a>`);
-  if (document.getElementById('season-title')) offers.splice(1, 0, '<a class="rail-campaign rail-season" href="#season-title"><strong>Christmas bundles ↗</strong><span>Three setups available by quote.</span></a>');
   const now = Date.now();
   const snapshotAge = now - Date.parse(generatedAt || '');
   const specials = snapshotAge >= 0 && snapshotAge < 10 * 3600000 ? products.filter(p => {
