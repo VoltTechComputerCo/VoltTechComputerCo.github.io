@@ -33,7 +33,10 @@ const brands = [
   ['Dato', 'https://api.esquire.co.za/Resources/Images/PageImage/dato-logo-e1.png'],
   ['Acer', 'https://api.esquire.co.za/Resources/Images/PageImage/acer-v1.png'],
   ['ASUSTOR', 'https://api.esquire.co.za/Resources/Images/PageImage/Asustor-v1.png'],
-  ['Trust', 'https://api.esquire.co.za/Resources/Images/PageImage/Trust-v2.png']
+  ['Trust', 'https://api.esquire.co.za/Resources/Images/PageImage/Trust-v2.png'],
+  ['Kingston', 'https://www.tarsus.co.za/wp-content/uploads/Kingston-Logo-640x131.webp'],
+  ['Apacer', 'https://api.esquire.co.za/Resources/Images/PageImage/apacer-v1.png'],
+  ['Kioxia', 'https://europe.kioxia.com/content/dam/kioxia/en-europe/about/news/2019/img/KIOXIA-branding.png']
 ];
 const themes = [
   ['Graphics cards', 'gpu', 'Give your games more room to run.'],
