@@ -20,3 +20,58 @@
 .creator-hero-actions{display:flex;flex-wrap:wrap;gap:.65rem;align-items:center}
 .creator-hero-actions .button{font-size:.7rem}
 @media(max-width:520px){.creator-hero-actions{display:grid;grid-template-columns:1fr 1fr}.creator-hero-actions .button{padding-inline:.65rem;font-size:.625rem}}
+
+
+/* A violet stage for the spotlight and directory. */
+.creator-hub-page {
+  --creator-accent: #7946c1;
+  --creator-glow: #aa70ff;
+  background: radial-gradient(ellipse at 78% 3%, color-mix(in srgb, var(--creator-glow) 17%, transparent), transparent 44%), var(--black);
+}
+html[data-theme="dark"] .creator-hub-page { --creator-accent: #d3b3ff; }
+.creator-hub-page .creator-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  max-width: none;
+  padding: clamp(1.25rem, 4vw, 3.5rem);
+  border: 1px solid color-mix(in srgb, var(--creator-glow) 45%, var(--border));
+  border-radius: 1.25rem;
+  background: linear-gradient(115deg, var(--panel), color-mix(in srgb, var(--creator-glow) 15%, var(--panel)));
+}
+.creator-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -30% -20% -30% 40%;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, color-mix(in srgb, var(--creator-glow) 36%, transparent), transparent 64%);
+  animation: creator-aurora 12s ease-in-out infinite alternate;
+}
+@keyframes creator-aurora { to { transform: translate(-12%, 12%) scale(1.18); } }
+.creator-hub-page :is(.creator-hero, .creator-panel) .eyebrow { color: var(--creator-accent); }
+.creator-hub-page .creator-panel {
+  padding: clamp(1rem, 3vw, 2rem);
+  border-color: color-mix(in srgb, var(--creator-glow) 34%, var(--border));
+  border-radius: 1.25rem;
+  background: linear-gradient(150deg, color-mix(in srgb, var(--creator-glow) 12%, var(--panel)), var(--panel) 70%);
+}
+.creator-hub-page .creator-directory-card {
+  grid-template-columns: 3.75rem minmax(0, 1fr);
+  min-height: 5.5rem;
+  padding: .9rem;
+  border-color: color-mix(in srgb, var(--creator-glow) 32%, var(--border));
+  border-radius: .85rem;
+  text-decoration: none;
+  background: linear-gradient(125deg, color-mix(in srgb, var(--creator-glow) 13%, var(--panel-raised)), var(--panel-raised));
+  transition: border-color .18s, box-shadow .18s, transform .18s;
+}
+.creator-hub-page .creator-directory-card img { width: 3.75rem; height: 3.75rem; }
+.creator-hub-page .creator-directory-card:is(:hover,:focus-visible) { border-color: var(--creator-accent); box-shadow: 0 4px 22px color-mix(in srgb, var(--creator-glow) 24%, transparent); transform: translateY(-2px); }
+.creator-hub-page .creator-directory-card:focus-visible { outline: 2px solid var(--creator-accent); outline-offset: 3px; }
+.creator-hub-page .creator-directory-card.is-live { border-color: var(--creator-accent); }
+.creator-hub-page .creator-directory-card.is-live small { color: var(--creator-accent); }
+@media (prefers-reduced-motion: reduce) {
+  .creator-hero::after { animation: none; }
+  .creator-hub-page .creator-directory-card { transition: none; transform: none; }
+}
