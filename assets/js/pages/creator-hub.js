@@ -49,6 +49,21 @@ function setMeta() {
   q('#updatedAt').textContent = feed?.generatedAt ? new Date(feed.generatedAt).toLocaleString('en-ZA', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' }) : '—';
   q('#feedSource').textContent = feed?.source === 'supabase' ? 'Supabase directory' : feed?.source === 'fallback' ? 'repository fallback' : 'unavailable';
 }
+let twitchSdk;
+function loadTwitchPlayer() {
+  if (window.Twitch?.Player) return Promise.resolve(window.Twitch.Player);
+  if (!twitchSdk) {
+    twitchSdk = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://player.twitch.tv/js/embed/v1.js';
+      script.onload = () => window.Twitch?.Player ? resolve(window.Twitch.Player) : reject(new Error('Twitch player unavailable'));
+      script.onerror = () => reject(new Error('Twitch player unavailable'));
+      document.head.append(script);
+    }).catch(error => { twitchSdk = null; throw error; });
+  }
+  return twitchSdk;
+}
+
 function setPlayer(row) {
   selectedLogin = row?.login || '';
   q('#playerName').textContent = row?.displayName || 'Creator Hub';
@@ -65,14 +80,34 @@ function setPlayer(row) {
   } else profile.hidden = true;
 
   const video = q('#playerVideo');
+  const live = Boolean(row?.live && feed?.fresh);
+  const playerKey = live ? row.login : "";
+  if (playerKey && video.dataset.playerKey === playerKey) return;
+  video.dataset.playerKey = playerKey;
   video.replaceChildren();
-  if (row?.live && feed?.fresh) {
-    const iframe = document.createElement('iframe');
+  if (live) {
+    const mount = document.createElement('div');
+    mount.id = 'creatorTwitchPlayer';
+    mount.style.height = '100%';
+    video.append(mount);
+    loadTwitchPlayer().then(Player => {
+      if (!mount.isConnected) return;
+      const player = new Player(mount.id, { channel: row.login, parent: [location.hostname], width: '100%', height: '100%', autoplay: true, muted: true });
+      player.addEventListener(Player.READY, () => {
+        player.setVolume(0.5);
+        mount.querySelector('iframe')?.setAttribute('title', row.displayName + ' Twitch stream');
+      });
+    }).catch(() => {
+      if (!mount.isConnected) return;
+      mount.remove();
+      delete video.dataset.playerKey;
+      const iframe = document.createElement('iframe');
     iframe.title = `${row.displayName} Twitch stream`;
     iframe.src = `https://player.twitch.tv/?channel=${encodeURIComponent(row.login)}&parent=${encodeURIComponent(location.hostname)}&autoplay=true&muted=true`;
     iframe.allow = 'autoplay; fullscreen';
     iframe.allowFullscreen = true;
-    video.append(iframe);
+      video.append(iframe);
+    });
   } else {
     const placeholder = document.createElement('div');
     placeholder.className = 'creator-player-placeholder';

@@ -54,6 +54,28 @@ function prepareIndependentQuoteNavigation(){
   document.querySelectorAll('[data-open-cart]').forEach(button=>{button.hidden=true;});
 }
 
+function addServiceNavigation() {
+  const tools = document.querySelector('main .vt-tool-switcher');
+  if (!tools || document.querySelector('main .service-network')) return;
+  const routes = [
+    ['Repair', 'pc-repair-pretoria.html'], ['Performance', 'pc-performance-optimisation.html'],
+    ['Upgrades', 'pc-upgrades-pretoria.html'], ['Security', 'virus-malware-removal-pretoria.html'],
+    ['Windows', 'windows-installation-pretoria.html'], ['Streaming', 'streaming-setup-south-africa.html']
+  ];
+  const nav = document.createElement('nav');
+  nav.className = 'service-network tool-service-network';
+  nav.setAttribute('aria-label', 'VoltTech PC services');
+  for (const [label, path] of routes) {
+    const link = document.createElement('a');
+    link.href = new URL('../../' + path, import.meta.url).href;
+    link.textContent = label;
+    nav.append(link);
+  }
+  tools.before(nav);
+}
+
+addServiceNavigation();
+
 enhanceNavigation();
 enhanceDialogs();
 enhanceSearch();
