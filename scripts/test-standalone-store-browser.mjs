@@ -36,7 +36,8 @@ try{
   assert.match(await page.locator('#store-gate').innerText(),/Shop gaming PC parts.*request a quote/);
   const count=await page.locator('#product-grid .catalogue-card').count();
   assert.ok(count>0,'actual product cards must be visible');
-  assert.ok((await page.locator('#product-grid').innerText()).includes('Current price and availability confirmed personally.'));
+  const availability = /Out of stock\. Contact us for restock information\.|Supplier stock available\. Confirm availability when ordering\.|Contact us for current pricing and availability\./;
+  assert.match(await page.locator('#product-grid .catalogue-card .micro').first().innerText(),availability);
   const enquiry=page.locator('#product-grid .catalogue-card a[href^="https://wa.me/"]').first();
   console.log('CHECK',width,'WhatsApp link count:',await enquiry.count(),'visible:',await enquiry.isVisible());
   assert.ok(await enquiry.count()>0,'each static product requires a WhatsApp enquiry link');
@@ -47,7 +48,7 @@ try{
   await page.goto('https://volttechcomputerco.co.za/'+first,{waitUntil:'domcontentloaded'});
   await page.locator('#product-detail .component-summary h2').waitFor({timeout:18000});
   assert.equal(await page.locator('#product-detail').isVisible(),true);
-  assert.match(await page.locator('#product-detail').innerText(),/price and supplier availability are confirmed on enquiry/i);
+  assert.match(await page.locator('#product-detail').innerText(),availability);
   assert.equal(supabaseRequests.length,0,'product details must load without Supabase');
   await page.goto('https://volttechcomputerco.co.za/',{waitUntil:'domcontentloaded'});
   assert.equal(await page.locator('.mobile-nav-cart a').first().getAttribute('href')?.then(h=>h.startsWith('https://wa.me/27618435775')),true,'homepage links to manual ordering');
