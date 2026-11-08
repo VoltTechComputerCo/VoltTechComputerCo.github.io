@@ -10,3 +10,6 @@
 
 /notifications.js
   Cache-Control: no-cache
+
+/assets/css/site-theme.css
+  Cache-Control: no-cache
