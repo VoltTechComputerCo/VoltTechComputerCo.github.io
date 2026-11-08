@@ -11,7 +11,7 @@ for(const width of [320,390,1440]){
  // Isolate appearance from account, payment and notification side effects.
  await page.route('**/*.js*',r=>r.request().url().includes('/assets/js/theme.js')?r.continue():r.fulfill({contentType:'application/javascript',body:''}));
  await page.goto('http://127.0.0.1:4173/index.html');
- const season = page.getByLabel('Theme', {exact:true});
+ const season = page.getByRole('combobox', {name:'Theme',exact:true});
  const seasonValue = () => page.evaluate(() => document.documentElement.dataset.season);
  assert.equal(await season.inputValue(), 'christmas');
  assert.equal(await seasonValue(), 'christmas');
