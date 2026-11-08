@@ -39,6 +39,3 @@ p { margin-bottom: var(--space-4); }
 .muted { color: var(--text-secondary); }
 .micro { color: var(--text-muted); font: 400 var(--text-xs)/1.6 var(--font-mono); }
 .accent { color: var(--teal); }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
-}
