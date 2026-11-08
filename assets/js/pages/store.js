@@ -254,14 +254,14 @@ async function init(){
       if(card)showDepartmentGroup(card.closest('.department-group').id);
       document.querySelector('.shop-category-menu').open=false;
       selectCategory();render();
-      document.getElementById('catalogue').scrollIntoView({block:'start'});
+      grid.scrollIntoView({block:'start',behavior:'instant'});
     }));
 
     filterHost?.addEventListener('toggle',e=>{if(e.target.open)filterHost.querySelectorAll('details').forEach(d=>{if(d!==e.target)d.open=false;});},true);
     bindFilterUI(products,render);
     render();
     if(state.search)refreshSearch();
-    if(landingHash==='#catalogue'||query.get('category')||query.get('q')) requestAnimationFrame(()=>document.getElementById('catalogue')?.scrollIntoView({block:'start'}));
+    if(landingHash==='#catalogue'||query.get('category')||query.get('brand')||query.get('q')) requestAnimationFrame(()=>grid.scrollIntoView({block:'start',behavior:'instant'}));
     connectCatalogueCart(VT,products,preview);
     VT.analytics('view_item_list',{item_list_name:'VoltTech PC Parts',items:products.slice(0,20).map(p=>({item_id:p.id,item_name:p.name}))});
     monitorStoreConnection();
