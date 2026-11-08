@@ -85,3 +85,21 @@
 /* Primary actions remain solid and legible over shared glass treatments. */
 body .home-hero .actions>.button:not(.button-secondary){background:var(--teal)!important;color:var(--black)!important;border-color:var(--teal)!important}
 body .home-stream .stream-copy .actions>.button{background:var(--stream-accent)!important;color:var(--stream-button-text)!important;border-color:var(--stream-accent)!important}
+
+.home-season .container {
+  padding: clamp(1.15rem, 3vw, 2.25rem);
+  border: 1px solid color-mix(in srgb, #bd9851 45%, var(--retail-line));
+  border-radius: 16px;
+  background: radial-gradient(ellipse at top right, color-mix(in srgb, #bd9851 22%, transparent), transparent 64%), var(--retail-surface);
+}
+.season-grid, .workbench-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+.season-card { display: grid; align-content: start; gap: .55rem; padding: 1.1rem; border-radius: .85rem; }
+.season-card h3, .season-card p { margin: 0; }
+.season-card a { justify-self: start; margin-top: .25rem; }
+.workbench-card { display: grid; align-items: end; position: relative; isolation: isolate; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid var(--retail-line); border-radius: 1rem; color: white; text-decoration: none; }
+.workbench-card img { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.workbench-card::after { content: ''; position: absolute; z-index: -1; inset: 30% 0 0; background: linear-gradient(transparent,#031416 97%); }
+.workbench-card > span { display: grid; gap: .35rem; padding: 1.15rem; color: #f4fbfa; }
+.workbench-card small { color: #8ff0e4; font: .72rem var(--font-mono); }
+.workbench-card:hover { border-color: var(--teal); }
+@media (max-width: 700px) { .season-grid, .workbench-grid { grid-template-columns: 1fr; } }
