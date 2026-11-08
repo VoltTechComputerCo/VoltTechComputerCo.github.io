@@ -83,8 +83,8 @@
   // Browsers limit a single timeout to a signed 32-bit delay.
   else window.setTimeout(scheduleSeasonEnd, Math.min(remaining, 2_147_483_647));
  }
+ scheduleSeasonEnd();
  if (christmasActive()) {
-  scheduleSeasonEnd();
   window.addEventListener('pageshow', expireSeason);
   document.addEventListener('visibilitychange', expireSeason);
  }
