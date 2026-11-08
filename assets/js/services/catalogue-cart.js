@@ -1,7 +1,7 @@
 import { esc, commerceState, imageMarkup, bindImages } from '../components/catalogue-view.js?v=20261021.3';
 import { withTimeout, publicProducts, notify } from './catalogue.js?v=20261102-gpu3';
 import { readLaunchSettings } from './home-integrations.js?v=20261102-failover1';
-export function connectCatalogueCart(VT, products, preview) {
+export function connectCatalogueCart(VT, products, preview, { allowEnquiryFallback = true } = {}) {
   const dialog = document.getElementById('catalogue-cart'), host = document.getElementById('cart-items'), checkout = document.getElementById('cart-checkout');
   const map = new Map(products.map(p => [p.id,p]));
   let version = 0, allowed = false;
@@ -43,6 +43,7 @@ export function connectCatalogueCart(VT, products, preview) {
         VT.analytics('begin_checkout', { items:VT.readCart().map(i=>({item_id:i.productId,quantity:i.quantity})) });
         location.assign(checkout.href); return;
       }
+      if (!allowEnquiryFallback) { notify('Online checkout is currently unavailable. Your cart has been kept.'); return; }
       const details=VT.readCart().map(i=>{const p=map.get(i.productId);return (p?.name||'Item '+i.productId)+' × '+i.quantity;}).join('; ');
       const message='Hi VoltTech, online checkout is currently unavailable. Please assist with this cart: '+details+'. Please confirm current prices, availability and delivery. I have not submitted this as an online order.';
       location.assign('https://wa.me/27618435775?text='+encodeURIComponent(message));

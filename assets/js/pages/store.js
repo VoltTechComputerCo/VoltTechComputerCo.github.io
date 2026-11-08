@@ -153,10 +153,19 @@ selectCategory();
 document.addEventListener('pointerdown',e=>document.querySelectorAll('.smart-filter[open],.shop-category-menu[open]').forEach(d=>{if(!d.contains(e.target))d.open=false;}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.smart-filter[open],.shop-category-menu[open]').forEach(d=>{d.open=false;d.querySelector('summary')?.focus();});});
 
+async function openRequestedCart(){
+  if(query.get('cart')!=='1') return;
+  try{
+    const { checkoutAccess }=await import('../services/transactions.js?v=20261021.3');
+    const { VT }=await checkoutAccess();
+    if(VT) connectCatalogueCart(VT,[],false,{allowEnquiryFallback:false});
+  }catch{ /* Catalogue browsing remains available when checkout cannot connect. */ }
+}
+
 async function init(){
   try{
     const access=await openCatalogue();
-    if(!access.open){ if(access.reason==='offline'){try{await showEmergencyStore(state);}catch{showGate({reason:'connection'});}} else showGate(access); return; }
+    if(!access.open){ if(access.reason==='offline'){try{await showEmergencyStore(state);await openRequestedCart();}catch{showGate({reason:'connection'});}} else showGate(access); return; }
     const { VT, preview }=access;
     const data=await withTimeout(VT.loadStore(access.settings,{preview}),30000);
     if(data.settings?.catalogue_enabled!==true && !preview){ showGate({reason:'closed'}); return; }

@@ -170,13 +170,30 @@ html body[data-page="home"] .workbench-card small { color: var(--teal); }
 .retail-rail-brands .rail-track::-webkit-scrollbar { display: none; }
 .retail-rail-brands .rail-track.is-dragging, .retail-rail-brands .rail-track.is-dragging a { cursor: grabbing; }
 .spotlight-shop { color: var(--teal); font-weight: 700; font-size: .82rem; text-align: right; }
-.spotlight-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 175px), 1fr)); gap: clamp(8px, 1vw, 16px); }
+.spotlight-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 1vw, 16px); }
 .spotlight-grid .rail-product { width: auto; min-width: 0; text-decoration: none; }
 .spotlight-grid .rail-product:is(:hover,:focus-visible) { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal); }
 .spotlight-grid .catalogue-media { position: relative; aspect-ratio: 4 / 3; }
 .spotlight-grid .catalogue-media img { position: absolute; inset: 0; max-height: none; padding: clamp(8px, 1.2vw, 18px); }
 .spotlight-grid .rail-product-copy { flex: 1; grid-template-rows: auto 1fr auto; align-content: stretch; overflow-wrap: anywhere; }
-@media (max-width: 600px) {
+@media (max-width: 780px), (min-width: 941px) and (max-width: 1150px) {
   .spotlight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .retail-rail-brands .rail-controls { display: none; }
+.christmas-kits { display: none; }
+html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1.25rem 2.5rem; }
+.christmas-kits > p { margin: .5rem 0 1rem; }
+.christmas-kit-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,280px),1fr)); gap: clamp(.8rem,2vw,1.5rem); }
+.christmas-kit { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--retail-line); border-radius: 14px; background: var(--retail-surface); box-shadow: var(--retail-shadow); }
+.christmas-kit-images { display: flex; align-items: center; min-height: 120px; padding: .5rem; background: #fff; border-bottom: 1px solid var(--retail-line); }
+.christmas-kit-images a { flex: 1; min-width: 0; }
+.christmas-kit-images .catalogue-media { display: grid; place-items: center; margin: 0; }
+.christmas-kit-images .catalogue-media img { width: 100%; height: clamp(90px,10vw,155px); padding: .5rem; object-fit: contain; }
+.christmas-kit-images a:is(:hover,:focus-visible) { outline: 2px solid var(--teal); outline-offset: -2px; }
+.christmas-kit-copy { flex: 1; display: flex; flex-direction: column; align-items: start; gap: .5rem; padding: clamp(.8rem,2vw,1.5rem); }
+.christmas-kit-copy :is(h3,p,ul) { margin: 0; }
+.christmas-kit-copy ul { flex: 1; padding-left: 1.15rem; font-size: .85rem; }
+.christmas-kit-copy .button { margin-top: .4rem; }
+.christmas-kits [data-kit-cart][hidden] { display: none; }
+.retail-side { align-self: start; }
+#season-title { scroll-margin-top: 12rem; }
