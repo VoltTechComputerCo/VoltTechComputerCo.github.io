@@ -83,17 +83,24 @@ export async function loadOverview(client, userId) {
     return Number.isFinite(time) && time < now;
   });
 
+  const jobHref = job => job.href;
+  const quoteHref = quote => 'quote.html?id=' + encodeURIComponent(quote.id);
+  function attentionAction(archived = new Set()) {
+  const openQuotes = waiting.filter(quote => !archived.has(quoteHref(quote)));
   let action = { tone: 'clear', kicker: 'All clear', title: "You're all caught up.", body: 'No quotes or unpaid invoices currently need your attention.', href: '', label: '' };
   if (overdue) action = { tone: 'urgent', kicker: 'Payment overdue', title: `Invoice ${overdue.invoice_number} is overdue`, body: 'Please review the invoice and payment details as soon as possible.', href: `invoice.html?id=${encodeURIComponent(overdue.id)}`, label: 'Open overdue invoice' };
   else if (unpaid.length) action = { tone: 'attention', kicker: 'Payment required', title: `Invoice ${unpaid[0].invoice_number} is awaiting payment`, body: 'Open the invoice to review the amount and payment status.', href: `invoice.html?id=${encodeURIComponent(unpaid[0].id)}`, label: 'Open invoice' };
-  else if (waiting.length) action = { tone: 'attention', kicker: 'Decision required', title: `${waiting[0].quote_number} is waiting for your decision`, body: waiting[0].title || 'VoltTech quotation', href: `quote.html?id=${encodeURIComponent(waiting[0].id)}`, label: 'Review quote' };
+  else if (openQuotes.length) action = { tone: 'attention', kicker: 'Decision required', title: `${openQuotes[0].quote_number} is waiting for your decision`, body: openQuotes[0].title || 'VoltTech quotation', href: quoteHref(openQuotes[0]), label: 'Review quote', archivable: true };
 
-  const active=(workflow.data||[]).filter(job=>!job.delivered);
+  const active=(workflow.data||[]).filter(job=>!job.delivered && !archived.has(jobHref(job)));
   const next=active.find(job=>job.kind==='store'&&(job.stage==='awaiting_payment'||job.stage==='awaiting_approval'))||active.find(job=>job.kind==='store');
-  if(next){const decision=next.stage==='awaiting_approval'&&next.approval==='pending',payment=next.stage==='awaiting_payment'&&next.payment_status!=='paid';action={tone:decision||payment?'attention':'clear',kicker:decision?'Quote ready':payment?'Payment required':'Order update',title:next.reference,body:next.latest_update||(decision?'Your quote is ready for review.':payment?'Open your order workspace to complete payment.':'Your order is progressing. View its latest status.'),href:next.href,label:'Open order workspace'};}
+  if(next){const decision=next.stage==='awaiting_approval'&&next.approval==='pending',payment=next.stage==='awaiting_payment'&&next.payment_status!=='paid';action={tone:decision||payment?'attention':'clear',kicker:decision?'Quote ready':payment?'Payment required':'Order update',title:next.reference,body:next.latest_update||(decision?'Your quote is ready for review.':payment?'Open your order workspace to complete payment.':'Your order is progressing. View its latest status.'),href:jobHref(next),label:'Open order workspace',archivable:!payment};}
+    return action;
+  }
   return {
     counts: { builds, quotes, invoices, orders:orders==null?null:orders+(workflow.data||[]).filter(job=>job.kind==='store').length, jobs },
-    action,
+    action: attentionAction(),
+    attentionAction,
     deletion: !deletion.error && deletion.data?.status === 'requested' ? deletion.data : null
   };
 }
