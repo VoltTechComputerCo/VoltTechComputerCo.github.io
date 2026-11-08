@@ -1,6 +1,6 @@
 import { publicProductSlug, normalizeProductAddress } from './product-permalinks.js?v=20261103-slugs1';
 // Independent, read-only fallback. No Supabase SDK or customer account is required.
-// Show reference prices only when the public snapshot and supplier stock are fresh.
+// Show reference prices from the fresh public snapshot. Stock is confirmed separately.
 import { readPublicCatalogue } from './public-catalogue.js?v=20261102-gpu3';
 import { readLaunchSettings } from './home-integrations.js?v=20261102-failover1';
 import { publicCatalogueOnly } from './site-config.js?v=20261107-static1';
@@ -35,7 +35,7 @@ async function snapshotProducts(){
  const freshSnapshot=await readPublicCatalogue();
  return snapshot.products.filter(publicProduct).map(product=>{
   const price=Number(product.retail_price);
-  const listed=freshSnapshot && stockAgeIsFresh(product) && product.stock_qty>0 && !outOfStock(product) && product.currency==='ZAR' && Number.isFinite(price) && price>0;
+  const listed=freshSnapshot && product.stock_qty>0 && !outOfStock(product) && product.currency==='ZAR' && Number.isFinite(price) && price>0;
   return {...product,retail_price:listed?price:null};
  });
 }
@@ -76,7 +76,7 @@ const listedPrice=product=>product.retail_price===null?'':`<p class="catalogue-p
 function availabilityCopy(product){
  if(stockAgeIsFresh(product) && outOfStock(product))
   return 'Out of stock. Contact us for restock information.';
- if(product.retail_price!==null || (product.supplier_stock_checked_at && stockAgeIsFresh(product) && product.stock_qty>0))
+ if(stockAgeIsFresh(product) && product.stock_qty>0 && !outOfStock(product))
   return 'Supplier stock available. Confirm availability when ordering.';
  return 'Contact us for current pricing and availability.';
 }
