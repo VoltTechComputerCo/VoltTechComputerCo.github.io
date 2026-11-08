@@ -19,7 +19,7 @@
   const locations = {
     "index.html": {
       gallery: [
-        ["showcase", "PC upgrades", "VoltTech-branded gaming PC hardware and upgrade work", "pc-upgrades-pretoria.html"],
+        ["showcase", "PC upgrades", "VoltTech-branded gaming PC hardware and upgrade work", "pc-upgrades-pretoria"],
         ["cooler", "Cooling & repair", "Installing a white DeepCool CPU air cooler in an open PC", "pc-repair-pretoria.html"],
         ["completed", "Performance & cooling", "Completed white gaming PC with upgraded CPU cooler", "pc-performance-optimisation.html"]
       ]

@@ -37,7 +37,7 @@ function addServiceNavigation() {
   if (!tools || document.querySelector('main .service-network')) return;
   const routes = [
     ['Repair', 'pc-repair-pretoria.html'], ['Performance', 'pc-performance-optimisation.html'],
-    ['Upgrades', 'pc-upgrades-pretoria.html'], ['Security', 'virus-malware-removal-pretoria.html'],
+    ['Upgrades', 'pc-upgrades-pretoria'], ['Security', 'virus-malware-removal-pretoria.html'],
     ['Windows', 'windows-installation-pretoria.html'], ['Streaming', 'streaming-setup-south-africa.html']
   ];
   const nav = document.createElement('nav');

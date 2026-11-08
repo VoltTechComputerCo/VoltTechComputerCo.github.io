@@ -1,7 +1,7 @@
 // A small, explicit index. Product search remains inside the Store.
 const entries = [
   ['PC repair in Pretoria', 'Diagnostics and repairs', 'pc-repair-pretoria.html'],
-  ['PC upgrades in Pretoria', 'Components, memory, graphics and storage', 'pc-upgrades-pretoria.html'],
+  ['PC upgrades in Pretoria', 'Components, memory, graphics and storage', 'pc-upgrades-pretoria'],
   ['PC performance', 'Cooling, temperatures, FPS and stability', 'pc-performance-optimisation.html'],
   ['Windows support', 'Installation and software support', 'windows-installation-pretoria.html'],
   ['Malware and security', 'Virus removal and PC security', 'virus-malware-removal-pretoria.html'],

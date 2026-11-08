@@ -2,7 +2,7 @@ export const allowedSources = ['repair', 'performance', 'upgrades', 'security', 
 export const sourceInfo = {
   repair: { label: 'PC Repair', page: 'pc-repair-pretoria.html', question: "What's the PC doing?" },
   performance: { label: 'PC Performance', page: 'pc-performance-optimisation.html', question: 'Where does it feel slow?' },
-  upgrades: { label: 'PC Upgrades', page: 'pc-upgrades-pretoria.html', question: 'What do you want to improve?' },
+  upgrades: { label: 'PC Upgrades', page: 'pc-upgrades-pretoria', question: 'What do you want to improve?' },
   security: { label: 'PC Security', page: 'virus-malware-removal-pretoria.html', question: 'What are you seeing?' },
   windows: { label: 'Windows Installation', page: 'windows-installation-pretoria.html', question: 'Why are you considering Windows setup or reinstall?' }
 };
