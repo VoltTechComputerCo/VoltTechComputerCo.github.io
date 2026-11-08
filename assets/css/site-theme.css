@@ -189,9 +189,6 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
 
 /* Give wide displays a centered reading and shopping area. */
 @media screen {
-  html body[data-page] :is(.container,.static-shell) { max-width: 1380px; margin-inline: auto; }
-  html body[data-page=home] :is(.home-hero,.home-stream) { max-width: 1380px; }
-  html body[data-page] .retail-rail-brands { max-width: none; }
   html body[data-page=home] .home-retail-shelves { grid-template-columns: minmax(0,1fr) minmax(235px,25%); }
   @media(max-width:940px) { html body[data-page=home] .home-retail-shelves { grid-template-columns: minmax(0,1fr); } }
 }
