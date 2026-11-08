@@ -6,7 +6,7 @@
   background:radial-gradient(ellipse 80% 38% at 50% -8%,rgba(255,180,84,.10),transparent 60%),var(--bg);
 }
 .static-page a{color:inherit;text-decoration:none}
-.static-shell{width:min(78rem,100%);margin:auto;padding-inline:var(--gutter)}
+.static-shell{width:100%;margin:auto;padding-inline:clamp(14px,2.6vw,56px)}
 .static-topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--border);background:rgba(3,16,18,.92);backdrop-filter:blur(16px)}
 .static-topbar-inner{min-height:4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .static-mast{display:inline-flex;align-items:center;gap:.65rem;color:var(--text);font-size:1.15rem;font-weight:700;letter-spacing:-.03em}
