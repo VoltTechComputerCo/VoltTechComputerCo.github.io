@@ -163,7 +163,9 @@ html[data-season="original"] :is(.home-season,.rail-campaign[href="#season-title
   }
   html[data-season="christmas"] :is(.site-footer,.static-footer) :is(h2,a,.eyebrow,.muted,p),
   html[data-season="christmas"] .static-topbar :is(.static-mast,.static-nav a) { color: #fff7e8 !important; }
-  html[data-season="christmas"] .site-header .primary-nav .nav-copy b { color: var(--nav-accent-dark, #fff1d7) !important; }
+  html[data-season="christmas"][data-theme] body .site-header .primary-nav { background: transparent !important; }
+  html[data-season="christmas"][data-theme] body .site-header .primary-nav .nav-tile .nav-copy b { color: var(--nav-accent-dark, #fff1d7) !important; }
+  html[data-season="christmas"] .site-header .header-tools [data-notifications-toggle] { color: #fff4dc; }
   html[data-season="christmas"] .site-header .primary-nav a:is(:hover,[aria-current="page"]) { box-shadow: inset 0 -2px var(--xmas-gold); }
   html[data-season="christmas"] .site-header .primary-nav .nav-store > a { background: #214638 !important; }
   html[data-season="christmas"] .site-header .menu-toggle { background: #fff5e5 !important; color: #17372a !important; }
@@ -184,9 +186,11 @@ html[data-season="original"] :is(.home-season,.rail-campaign[href="#season-title
     box-shadow: 0 15px 32px #15291f38;
   }
   html[data-season="christmas"][data-theme] body[data-page="home"] .home-hero::after {
+    content: ""; display: block !important; position: absolute; inset: 0; z-index: 0; pointer-events: none;
     background: var(--xmas-ornaments) no-repeat right 2% top / min(29vw,410px) auto,
       linear-gradient(90deg,#082019 0%,#0d2f24 35%,#113a2adc 48%,transparent 72%) !important;
   }
+  html[data-season="christmas"] .home-hero .hero-inner { position: relative; z-index: 1; }
   html[data-season="christmas"][data-theme] body[data-page="home"] .hero-copy { background: transparent; color: #fff7e8; }
   html[data-season="christmas"][data-theme] body[data-page="home"] .hero-copy :is(h1,p) { color: #fff7e8 !important; }
   html[data-season="christmas"][data-theme] body[data-page="home"] .hero-copy :is(h1 span,.hero-kicker) { color: var(--xmas-glint) !important; }
@@ -220,8 +224,9 @@ html[data-season="original"] :is(.home-season,.rail-campaign[href="#season-title
   html[data-season="christmas"] .season-card p { color: var(--xmas-muted); }
   html[data-season="christmas"][data-theme] body main .season-card a.text-link { justify-self: start; margin-top: .3rem; border-color: var(--xmas-line); }
   @media (max-width: 896px) {
-    html[data-season="christmas"] .site-header .primary-nav .nav-copy b { color: var(--xmas-ink) !important; }
-    html[data-season="christmas"] .site-header .primary-nav .nav-store .nav-copy b { color: #fff4dc !important; }
+    html[data-season="christmas"][data-theme] body .site-header .primary-nav:not([hidden]) { background: var(--xmas-panel) !important; }
+    html[data-season="christmas"][data-theme] body .site-header .primary-nav .nav-tile .nav-copy b { color: var(--xmas-ink) !important; }
+    html[data-season="christmas"][data-theme] body .site-header .primary-nav .nav-store .nav-copy b { color: #fff4dc !important; }
   }
   @media (max-width: 700px) {
     html[data-season="christmas"][data-theme] body[data-page="home"] .home-hero::after {
