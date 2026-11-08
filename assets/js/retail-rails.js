@@ -235,6 +235,7 @@ function showChristmasKits(shelf, products) {
     buttons.forEach(item => { item.disabled = true; });
     status.textContent = 'Checking ' + kit.name + '…';
     try {
+      // Explicit cart actions can use live checkout while catalogue browsing stays static.
       const { checkoutAccess, checkoutCart, eligibleCart, withTimeout } = await import('./services/transactions.js?v=20261021.3');
       const { VT } = await checkoutAccess();
       if (!VT) { status.textContent = 'Online checkout is currently unavailable. Please try again later.'; return; }
@@ -246,7 +247,13 @@ function showChristmasKits(shelf, products) {
       const next = [...quantities].map(([productId, quantity]) => ({productId, quantity}));
       if (!cart || !checkoutCart(next)) { status.textContent = 'Your cart is at its limit. Review the items in your cart before adding this bundle.'; return; }
       const bundleQuantities = next.filter(item => kit.ids.includes(item.productId));
-      if (!eligibleCart(VT, bundleQuantities, fresh) || fresh.some(product => product.stock_qty == null || !(Number(product.retail_price) > 0) || product.currency !== 'ZAR')) {
+      const staleSupplierStock = bundleQuantities.some(({productId, quantity}) => {
+        if (!productId.startsWith('lunatech-')) return false;
+        const product = byId.get(productId);
+        const age = Date.now() - Date.parse(product.supplier_stock_checked_at || '');
+        return !(age >= 0 && age < 10 * 3600000 && product.stock_qty >= quantity);
+      });
+      if (staleSupplierStock || !eligibleCart(VT, bundleQuantities, fresh) || fresh.some(product => product.stock_qty == null || !(Number(product.retail_price) > 0) || product.currency !== 'ZAR')) {
         status.textContent = 'This bundle is currently unavailable in the requested quantity.';
         return;
       }
