@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://volttechcomputerco.co.za/sitemap.xml
+Sitemap: https://volttechcomputerco.co.za/sitemap-products.xml

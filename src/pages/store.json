@@ -1,8 +1,8 @@
 {
   "output": "store.html",
-  "title": "PC Parts, Laptops & Gaming Gear | VoltTech Store",
-  "description": "Browse gaming PC components and peripherals at VoltTech. Enquire on WhatsApp for confirmed pricing, supplier stock and nationwide delivery before payment.",
-  "robots": "index, follow",
+  "title": "PC Components, Gaming Laptops & Gear | VoltTech South Africa",
+  "description": "Shop graphics cards, processors, laptops, monitors and gaming gear. VoltTech confirms stock, final pricing and delivery across South Africa before payment.",
+  "robots": "index, follow, max-image-preview:large",
   "script_version": "20261107-static1",
   "styles": [
     "assets/css/notifications.css",

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['scripts/build-public-catalogue.mjs', 'scripts/supplier-imports/refresh-lunatech-snapshot.py', 'commerce/js/store-core.js', '.github/workflows/public-catalogue.yml']
+    paths: ['scripts/build-public-catalogue.mjs', 'scripts/build-product-seo.mjs', 'scripts/test-product-seo.mjs', 'functions/product.js', 'functions/sitemap-products.xml.js', 'assets/js/services/product-permalinks.js', 'scripts/supplier-imports/refresh-lunatech-snapshot.py', 'commerce/js/store-core.js', '.github/workflows/public-catalogue.yml']
 permissions:
   contents: write
 concurrency:
@@ -23,6 +23,8 @@ jobs:
           node-version: '24'
       - run: node scripts/test-supabase-egress-budget.mjs
       - run: node scripts/build-public-catalogue.mjs
+      - run: node scripts/build-product-seo.mjs
+      - run: node scripts/test-product-seo.mjs
       - name: Refresh LunaTech supplier stock and images
         env:
           LUNATECH_FEED_URL: ${{ secrets.LUNATECH_FEED_URL }}
@@ -32,7 +34,7 @@ jobs:
         run: |
           git config user.name 'VoltTech catalogue refresh'
           git config user.email 'volttechcomputerco@gmail.com'
-          git add assets/data/catalogue.json.gz
+          git add assets/data/catalogue.json.gz assets/data/product-seo
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Refresh public Store product snapshot"
           git pull --rebase origin main
