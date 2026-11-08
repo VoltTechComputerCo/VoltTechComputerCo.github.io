@@ -7,9 +7,9 @@ export const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'
 export function safeLink(value) { if (!value || typeof value !== 'string') return ''; try { const u = new URL(value, location.href); return ['http:', 'https:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } }
 export const productUrl = (p, preview) => `product.html?slug=${encodeURIComponent(publicProductSlug(p))}${preview ? '&preview=1' : ''}`;
 function imageSources(p) {
-  if (p.metadata?.media_review_required) return { src:'', fallback:'' };
-  const primary = safeLink(p.media?.primaryImage || p.media?.primary_image);
-  const direct = safeLink(p.media?.directImage || p.media?.direct_image);
+  if (p.metadata?.media_review_required || p.media_review_required) return { src:'', fallback:'' };
+  const primary = safeLink(p.media?.primaryImage || p.media?.primary_image || p.primary_image);
+  const direct = safeLink(p.media?.directImage || p.media?.direct_image || p.direct_image);
   const src = primary || direct;
   return { src, fallback: direct && direct !== src ? direct : '' };
 }
@@ -30,17 +30,19 @@ export function bindImages(root) {
     if (caption) { caption.hidden = false; caption.innerHTML = imagePlaceholder(); }
   }));
 }
+const outOfStock = p => String(p.stock_status || '').toLowerCase().replace(/-/g, '_') === 'out_of_stock' || (p.stock_qty != null && Number(p.stock_qty) === 0);
 export function commerceState(VT, p, preview = false) {
   const demo = p.is_demo !== false;
-  const priced = !demo && ['ZAR','USD','EUR','GBP'].includes(p.currency || 'ZAR') && p.retail_price !== null && p.retail_price !== '' && Number.isFinite(Number(p.retail_price)) && Number(p.retail_price) >= 0;
+  const priced = !demo && !outOfStock(p) && ['ZAR','USD','EUR','GBP'].includes(p.currency || 'ZAR') && p.retail_price !== null && p.retail_price !== '' && Number.isFinite(Number(p.retail_price)) && Number(p.retail_price) >= 0;
   return { canAdd: !preview && !demo && VT.canAdd(p), price: demo ? 'Not for sale' : priced ? new Intl.NumberFormat('en-ZA', { style:'currency', currency:p.currency || 'ZAR', minimumFractionDigits:2 }).format(Number(p.retail_price)) : 'Request pricing', stock: demo ? 'Demo fixture · no supplier stock' : (p.stock_qty == null && !['out_of_stock','in_stock','supplier_stock','backorder'].includes(p.stock_status) ? 'Availability to be confirmed' : VT.stockLabel(p)), label: preview ? 'Preview only' : demo ? 'Demo only' : 'Add to cart' };
 }
 export function productDeal(p){
  const old=Number(p.compare_at_price),price=Number(p.retail_price),verified=p.metadata?.compare_at_verified===true;
  const ends=p.metadata?.deal_ends_at;const active=!ends || (Number.isFinite(Date.parse(ends))&&Date.now()<Date.parse(ends));
- return verified&&active&&Number(p.stock_qty)>0&&price>0&&old>price?{old,saving:old-price,percent:Math.round((old-price)/old*100)}:null;
+ return !outOfStock(p)&&verified&&active&&Number(p.stock_qty)>0&&price>0&&old>price?{old,saving:old-price,percent:Math.round((old-price)/old*100)}:null;
 }
 export function priceMarkup(p,state){
+ if (p.is_demo === false && outOfStock(p)) return '<span class="stock-label">Out of stock</span>';
  const deal=productDeal(p),money=n=>new Intl.NumberFormat('en-ZA',{style:'currency',currency:p.currency||'ZAR',minimumFractionDigits:2}).format(n);
  return `${deal?`<span class="was-price">Was <s>${esc(money(deal.old))}</s></span>`:''}<strong>${deal?'Now ':''}${esc(state.price)}</strong>${deal?`<span class="deal-saving">Save ${esc(money(deal.saving))} · ${deal.percent}% off</span>`:''}<span class="stock-label">${esc(state.stock)}</span>`;
 }
@@ -48,7 +50,7 @@ export function productCard(VT, p, preview, eager = false) {
  const state=commerceState(VT,p,preview),href=productUrl(p,preview),deal=productDeal(p),description=briefDescription(p);
  const labels={handhelds:'Gaming handhelds','upgrade-kits':'Upgrade kits',gpu:'Graphics cards',cpu:'Processors',motherboard:'Motherboards',memory:'Memory',storage:'Storage',psu:'Power supplies',case:'Cases',cooler:'Cooling',fan:'Case fans',desktops:'Desktop PCs',laptops:'Laptops',monitors:'Monitors',audio:'Audio',networking:'Networking',tablets:'Tablets'};
  const label=labels[p.category_slug]||p.category_slug?.replaceAll('-',' ')||VT.categoryLabel(p.type);
- return `<article class="card catalogue-card ${deal?'has-deal':''}"><a class="catalogue-image-link" href="${href}" aria-label="View ${esc(p.name)}">${deal?`<span class="product-badge">SAVE ${deal.percent}%</span>`:p.featured&&Number(p.stock_qty)>0?'<span class="product-badge product-badge-pick">FEATURED PICK</span>':''}${imageMarkup(p,false,eager)}</a><div class="catalogue-card-body"><p class="eyebrow">${esc(p.brand)} / ${esc(label)}</p><h3><a href="${href}">${esc(p.name)}</a></h3>${description?`<p class="catalogue-description">${esc(description)}</p>`:''}<ul class="spec-tags">${(Array.isArray(p.highlights)?p.highlights:[]).slice(0,3).map(v=>`<li>${esc(v)}</li>`).join('')}</ul><div class="catalogue-price">${priceMarkup(p,state)}</div><div class="actions"><button class="button" type="button" data-add="${esc(p.id)}" ${state.canAdd?'':'disabled'}>${state.canAdd?'Add to cart':state.label==='Add to cart'?'Unavailable':state.label}</button><a class="button button-secondary" href="${href}" aria-label="Details for ${esc(p.name)}">Details →</a></div></div></article>`;
+ return `<article class="card catalogue-card ${deal?'has-deal':''}"><a class="catalogue-image-link" href="${href}" aria-label="View ${esc(p.name)}">${deal?`<span class="product-badge">SAVE ${deal.percent}%</span>`:p.featured&&Number(p.stock_qty)>0?'<span class="product-badge product-badge-pick">FEATURED PICK</span>':''}${imageMarkup(p,false,eager)}</a><div class="catalogue-card-body"><p class="eyebrow">${esc(p.brand)} / ${esc(label)}</p><h3><a href="${href}">${esc(p.name)}</a></h3>${description?`<p class="catalogue-description">${esc(description)}</p>`:''}<ul class="spec-tags">${(Array.isArray(p.highlights)?p.highlights:[]).slice(0,3).map(v=>`<li>${esc(v)}</li>`).join('')}</ul><div class="catalogue-price">${priceMarkup(p,state)}</div><div class="actions">${!preview && p.is_demo === false && outOfStock(p) ? `<a class="button" href="https://wa.me/27618435775?text=${encodeURIComponent('Hi VoltTech, please let me know when ' + p.name + ' is available again.')}">Ask about stock ↗</a>` : `<button class="button" type="button" data-add="${esc(p.id)}" ${state.canAdd?'':'disabled'}>${state.canAdd?'Add to cart':state.label==='Add to cart'?'Unavailable':state.label}</button>`}<a class="button button-secondary" href="${href}" aria-label="Details for ${esc(p.name)}">Details →</a></div></div></article>`;
 }
 const coreCategories=['gpu','cpu','motherboard','memory','storage','psu','case','cooler','monitors','desktops','laptops'];
 const coreRank=p=>{const rank=coreCategories.indexOf(p.category_slug||p.type);return rank<0?coreCategories.length:rank;};
