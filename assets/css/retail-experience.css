@@ -316,8 +316,9 @@ html body[data-page=home] .home-creator .stream-visual img { aspect-ratio: 16 / 
 /* Use the available browser width while retaining readable text measures. */
 @media screen {
   html body[data-page] { --gutter: clamp(14px, 2.6vw, 56px); }
-  html body[data-page] :is(.container,.static-shell) { width: 100%; max-width: none; }
-  html body[data-page=home] :is(.home-hero,.home-stream) { width: calc(100% - 2 * var(--gutter)); max-width: none; }
+  html body[data-page] :is(.container,.static-shell) { width: 100%; max-width: 1380px; margin-inline: auto; }
+  html body[data-page=home] :is(.home-hero,.home-stream) { width: calc(100% - 2 * var(--gutter)); max-width: 1380px; }
+  html body[data-page] .retail-rail-brands { max-width: none; }
 }
 .retail-rail { min-width: 0; color: var(--retail-ink); }
 .retail-rail-brands { padding-block: 16px 12px; border-bottom: 1px solid var(--retail-line); }
