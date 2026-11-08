@@ -125,7 +125,7 @@ function showShowcase(hero, products, generatedAt) {
   const picks = productPicks(products, rotation).map(p =>
     `<a class="rail-product" href="${esc(productUrl(p, false))}">${imageMarkup(p)}<span class="rail-product-copy"><small>${esc(p.brand)}</small><strong>${esc(p.name)}</strong><span>View product ↗</span></span></a>`);
   if (picks.length) {
-    const selection = rail('Hardware spotlight', 'A NEW LINEUP EVERY TWO DAYS', picks, 'products');
+    const selection = rail('Hardware spotlight', 'VOLTTECH PICKS', picks, 'products');
     shelf.append(selection);
     bindImages(selection);
   }
