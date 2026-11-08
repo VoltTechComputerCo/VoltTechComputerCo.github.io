@@ -8,7 +8,6 @@
   try { return validSeason(localStorage.getItem(seasonKey)); }
   catch { return defaultSeason; }
  };
- const scriptUrl = document.currentScript?.src;
  let season = readSeason();
  let seasonSelect;
  const setSeason = value => {
@@ -21,14 +20,10 @@
  function mountSeasonPicker() {
   const bar = document.createElement('div');
   bar.className = 'vt-season-bar';
-  const promo = document.createElement('a');
-  promo.className = 'vt-season-promo';
-  promo.href = new URL('../../index.html#season-title', scriptUrl || location.href).href;
-  promo.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19" stroke-width="1.6" stroke-linecap="round"/></svg>Christmas at VoltTech';
-  const label = document.createElement('label');
-  label.textContent = 'Theme';
   seasonSelect = document.createElement('select');
   seasonSelect.dataset.seasonSelect = '';
+  seasonSelect.setAttribute('aria-label', 'Theme');
+  seasonSelect.title = 'Theme';
   for (const [value, name] of seasons) {
    const option = document.createElement('option');
    option.value = value;
@@ -41,11 +36,10 @@
    try { localStorage.setItem(seasonKey, season); } catch {}
    apply(theme);
   });
-  label.append(seasonSelect);
-  bar.append(promo, label);
+  bar.append(seasonSelect);
   const header = document.querySelector('.site-header,.static-topbar,.store-nav,body > nav,main > .top');
-  if (header?.tagName === 'HEADER') header.append(bar);
-  else if (header) header.after(bar);
+  if (header?.tagName === 'HEADER') header.prepend(bar);
+  else if (header) header.before(bar);
   else document.body.prepend(bar);
  }
 
