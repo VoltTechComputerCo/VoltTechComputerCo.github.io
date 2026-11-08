@@ -141,7 +141,7 @@ function rail(title, kicker, cards, variant) {
   const track = region.querySelector('.rail-track');
   const pause = region.querySelector('[data-pause]');
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
-  let paused = preference.matches;
+  let paused = variant !== 'brands' && preference.matches;
   let onScreen = false;
   function updatePause() {
     const label = paused ? 'Play' : 'Pause';
@@ -161,7 +161,7 @@ function rail(title, kicker, cards, variant) {
   region.querySelector('[data-prev]').addEventListener('click', () => step(-1));
   region.querySelector('[data-next]').addEventListener('click', () => step(1));
   pause.addEventListener('click', () => { paused = !paused; updatePause(); });
-  preference.addEventListener('change', event => { paused = event.matches; updatePause(); });
+  if (variant !== 'brands') preference.addEventListener('change', event => { paused = event.matches; updatePause(); });
   updatePause();
   const observer = new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; });
   observer.observe(region);
