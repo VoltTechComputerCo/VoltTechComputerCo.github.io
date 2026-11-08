@@ -201,16 +201,19 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
     --winter-halo: #4fcfff55;
     --winter-night: #102f47;
   }
+  /* Paint snow behind all page content and soften it through the reading area. */
+  html[data-season="christmas"] body { isolation: isolate; }
   html[data-season="christmas"] body::before,
   html[data-season="christmas"] body::after {
-    content: ""; position: fixed; inset: 0; z-index: 2; pointer-events: none;
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    mask-image: linear-gradient(90deg, #000, #0008 18% 82%, #000);
     background: var(--winter-front) repeat 0 0 / 467px 307px;
-    opacity: .66; filter: drop-shadow(0 0 3px #72b9ee6b);
+    opacity: .34;
     animation: vt-snowfall 13s linear infinite;
   }
   html[data-season="christmas"] body::after {
     background: var(--winter-back) repeat 0 0 / 293px 223px;
-    opacity: .48; animation: vt-snow-drift 23s linear -11s infinite;
+    opacity: .22; animation: vt-snow-drift 23s linear -11s infinite;
   }
   @keyframes vt-snowfall { to { background-position: 467px 307px; } }
   @keyframes vt-snow-drift { to { background-position: -293px 223px; } }
@@ -238,8 +241,9 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
   html[data-season="christmas"] :is(.rail-product,.christmas-kit,.workbench-card,.department-card,.service-card,.catalogue-card) {
     position: relative; border-color: color-mix(in srgb,#7db8db 55%,var(--retail-line,#3b708e));
   }
-  html[data-season="christmas"] :is(.rail-product,.christmas-kit,.workbench-card,.department-card,.catalogue-card)::after {
-    content: ""; position: absolute; z-index: 1; inset: 0 0 auto; height: 17px;
+  html[data-season="christmas"] body[data-page=home] :is(.rail-product,.christmas-kit,.department-card) { isolation: isolate; }
+  html[data-season="christmas"] body[data-page=home] :is(.rail-product,.christmas-kit,.department-card)::after {
+    content: ""; position: absolute; z-index: -1; inset: 0 0 auto; height: 17px;
     border-radius: inherit; background: var(--winter-drift) repeat-x left top / 230px 24px;
     filter: drop-shadow(0 2px 2px #233e6638); pointer-events: none;
   }
@@ -251,8 +255,6 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
   html[data-season="christmas"] .retail-side .rail-heading { animation: vt-neon-glow 5s ease-in-out -2.4s infinite; }
   html[data-season="christmas"] body[data-page] .catalogue-card :is(.catalogue-image-link,.catalogue-media) { border-radius: inherit; }
   @media(max-width:650px) {
-    html[data-season="christmas"] body::before { opacity: .5; }
-    html[data-season="christmas"] body::after { opacity: .34; }
     html[data-season="christmas"] body[data-page=home] .home-hero .hero-inner::after { height: 25px; background-size: 168px 25px; }
   }
 }
@@ -282,9 +284,6 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
 }
 
 @media screen {
-  html[data-season="christmas"] body { isolation: isolate; }
-  html[data-season="christmas"] body::before,
-  html[data-season="christmas"] body::after { z-index: -1; }
   html[data-season="christmas"] .christmas-kits > .rail-heading {
     min-height: 104px; padding: 1.15rem 1.3rem 2.1rem;
     border: 1px solid #6aa5bd; border-radius: 16px;
