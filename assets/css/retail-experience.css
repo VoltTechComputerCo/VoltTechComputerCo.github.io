@@ -300,3 +300,15 @@ html body[data-page] .primary-nav .nav-static { --nav-accent: #a33126; --nav-acc
 html body[data-page] .primary-nav .nav-tile > a .nav-copy b { color: var(--nav-accent, var(--retail-ink)) !important; }
 html[data-theme="dark"] body[data-page] .primary-nav .nav-tile > a .nav-copy b { color: var(--nav-accent-dark, var(--retail-ink)) !important; }
 html body[data-page] .primary-nav .nav-tile > a[aria-current="page"] { box-shadow: inset 0 -2px currentColor; }
+
+/* Match the support network to the storefront and creator features. */
+html body[data-page] .tool-service-network { display: flex; overflow-x: auto; padding-bottom: 4px; }
+html body[data-page] .tool-service-network > a { flex: 1 0 auto; white-space: nowrap; text-decoration: none; font-family: var(--font-mono); text-transform: uppercase; }
+html body[data-page] .tool-service-network > a:is(:hover,:focus-visible) { border-color: var(--teal); }
+html body[data-page=home] .home-creator .stream-feature {
+  padding-block: clamp(1rem, 3vw, 2rem);
+  border: 1px solid color-mix(in srgb, var(--retail-purple) 28%, var(--retail-line));
+  border-radius: 16px;
+  background: linear-gradient(125deg, color-mix(in srgb, var(--retail-purple) 13%, var(--retail-surface)), var(--retail-surface) 65%);
+}
+html body[data-page=home] .home-creator .stream-visual img { aspect-ratio: 16 / 10; object-fit: cover; }
