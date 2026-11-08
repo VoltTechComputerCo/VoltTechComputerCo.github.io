@@ -135,12 +135,13 @@ function showShowcase(hero, products, generatedAt) {
   if (document.getElementById('season-title')) offers.splice(1, 0, '<a class="rail-campaign rail-season" href="#season-title"><strong>Christmas bundles ↗</strong><span>Three setups available by quote.</span></a>');
   const now = Date.now();
   const snapshotAge = now - Date.parse(generatedAt || '');
-  const special = snapshotAge >= 0 && snapshotAge < 10 * 3600000 && products.find(p => {
+  const specials = snapshotAge >= 0 && snapshotAge < 10 * 3600000 ? products.filter(p => {
     const priceAge = now - Date.parse(p.price_checked_at || '');
     return p.compare_at_verified === true && p.stock_qty > 0 && p.retail_price > 0 &&
       Number(p.compare_at_price) > Number(p.retail_price) && priceAge >= 0 && priceAge < 24 * 3600000 &&
       (!p.deal_ends_at || Date.parse(p.deal_ends_at) > now);
-  });
+  }) : [];
+  const special = specials.length ? specials[rotation % specials.length] : null;
   if (special) offers.unshift(`<a class="rail-campaign rail-season" href="${esc(productUrl(special, false))}"><strong>Current special ↗</strong><span>${esc(special.name)} · Enquire for a quote</span></a>`);
   const side = document.createElement('div');
   side.className = 'retail-side';
