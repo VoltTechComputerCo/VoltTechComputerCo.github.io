@@ -196,12 +196,19 @@ function productPicks(products, rotation) {
 
 
 const christmasKits = [
-  ['Desk Refresh', 'A mechanical keyboard, wireless gaming mouse and extra-large desk mat.', ['syntech-00b4b8251587347e', 'syntech-64a68bf1a9adf4aa', 'syntech-448febf6bd4459e2']],
-  ['Stream Starter', 'A USB microphone and Full HD webcam for your first stream.', ['syntech-b1990d0606ff693f', 'syntech-db2d5bd00fe74e5b']],
-  ['Cooling Refresh', 'Three 120 mm ARGB case fans and thermal paste for a cooler refresh. Check your case and headers for fit.', ['syntech-3fa91f64815d00b9', 'lunatech-actcp00002b']]
+  ['Arctic Desk', 'Hall-effect keys, a lightweight Logitech gaming mouse and an extended Corsair mat.', ['syntech-252efe48b53c9c4f', 'tarsus-b18cbebb1bde2907', 'syntech-24e598e0290b69f6']],
+  ['Studio Frost', 'A CAST ULTRA USB microphone and Logitech C922 webcam with 1080p at 30 fps or 720p at 60 fps.', ['syntech-1b93dd06f4a79d81', 'tarsus-c09b7875db17d09f']],
+  ['Glacier Cooling', 'Kryonaut Extreme thermal paste and three Antec ORBIT fans. Allow 120 × 28 mm clearance and use 4-pin PWM and 5 V 3-pin ARGB connections.', ['lunatech-tg-ke-002-r', 'syntech-6e87597e781ca2c6']],
+  ['Core i5 DDR4 Upgrade', 'A 14th-gen Core i5, MSI B760M and 16 GB dual-channel DDR4. Check the board BIOS before fitting the CPU.', ['syntech-bb274cec734ad3da', 'syntech-b40a9ba67dd2504e', 'syntech-084da181540b2f7c']],
+  ['Ryzen 5 AM5 Upgrade', 'A Ryzen 5 7600, MSI B650M with Wi-Fi and 16 GB DDR5 desktop memory.', ['syntech-7306642d77f7beb8', 'syntech-63672c8ba5f6d56f', 'syntech-d2a31defcde15b73']],
+  ['Ryzen X3D Gaming Upgrade', 'A Ryzen 7 9800X3D, ASRock B850 with Wi-Fi and 32 GB dual-channel DDR5. Pair it with an AM5 CPU cooler.', ['syntech-ea933c57bb51f01c', 'syntech-ae1dae62819c8aea', 'syntech-19638924107b4888']]
 ];
 
-function showChristmasKits(shelf, products) {
+function showChristmasKits(shelf, products, generatedAt) {
+  const snapshotAge = Date.now() - Date.parse(generatedAt || '');
+  const showTotals = snapshotAge >= 0 && snapshotAge < 10 * 3600000;
+  const formatRand = new Intl.NumberFormat('en-ZA', { style:'currency', currency:'ZAR' });
+  const customBundle = 'https://wa.me/27618435775?text=' + encodeURIComponent('Hi VoltTech, I’d like a custom Christmas hardware bundle. Can you help me choose parts for my setup and budget?');
   const byId = new Map(products.map(product => [product.id, product]));
   const kits = christmasKits.map(([name, description, ids]) => ({name, description, ids, items:ids.map(id => byId.get(id))}))
     .filter(kit => kit.items.every(product => product && (product.primary_image || product.direct_image)));
@@ -209,14 +216,17 @@ function showChristmasKits(shelf, products) {
   const section = document.createElement('section');
   section.className = 'container christmas-kits';
   section.setAttribute('aria-labelledby', 'season-title');
-  section.innerHTML = '<div class="rail-heading"><div><p class="eyebrow">CHRISTMAS AT VOLTTECH</p><h2 id="season-title">Christmas hardware bundles</h2></div></div>' +
-    '<p>Pick a kit and add every item to your cart together. We confirm stock and delivery before payment.</p>' +
+  section.innerHTML = '<div class="rail-heading"><div><p class="eyebrow">VOLTTECH HOLIDAY EDITION</p><h2 id="season-title">Frostline Christmas Bundles</h2></div></div>' +
+    '<p>From a better stream to a new platform, unwrap an upgrade built around real hardware. Stock and delivery are confirmed before payment.</p>' +
+    '<p><a class="text-link" href="' + esc(customBundle) + '" target="_blank" rel="noopener noreferrer">Request a custom bundle ↗</a></p>' +
     '<div class="christmas-kit-grid">' + kits.map(({name, description, items}, index) =>
       '<article class="christmas-kit"><div class="christmas-kit-images">' + items.map(product =>
         '<a href="' + esc(productUrl(product, false)) + '" title="' + esc(product.name) + '">' + imageMarkup(product) + '</a>').join('') +
       '</div><div class="christmas-kit-copy"><h3>' + esc(name) + '</h3><p>' + esc(description) + '</p><ul>' +
       items.map(product => '<li>' + esc(product.name) + '</li>').join('') +
-      '</ul><button class="button" type="button" data-add-kit="' + index + '" aria-label="Add ' + esc(name) + ' bundle to cart">Add bundle to cart</button></div></article>').join('') +
+      '</ul>' + (showTotals && items.every(product => product.stock_qty > 0 && product.currency === 'ZAR' && Number(product.retail_price) > 0)
+        ? '<p class="christmas-kit-total"><strong>' + esc(formatRand.format(items.reduce((sum, product) => sum + Number(product.retail_price), 0))) + '</strong> <span>Listed parts total</span></p>' : '') +
+      '<button class="button" type="button" data-add-kit="' + index + '" aria-label="Add ' + esc(name) + ' bundle to cart">Add bundle to cart</button></div></article>').join('') +
     '</div><p class="christmas-kit-status" role="status"></p><div class="actions" data-kit-cart hidden><a class="button button-secondary" href="' +
     siteUrl('store.html?cart=1') + '">View cart</a><a class="button" href="' + siteUrl('checkout.html') + '">Go to checkout →</a></div>';
   const status = section.querySelector('[role="status"]');
@@ -304,7 +314,7 @@ function showShowcase(hero, products, generatedAt) {
   side.insertAdjacentHTML('beforeend', `<div class="retail-shortcuts"><a href="${siteUrl('creator-hub-south-africa.html')}"><strong>Creator Hub ↗</strong><small>Discover South African streamers</small></a><a href="${siteUrl('streaming-setup-south-africa.html')}"><strong>Stream Support ↗</strong><small>Get your setup running smoothly</small></a></div>`);
   shelf.append(side);
   hero.after(shelf);
-  showChristmasKits(shelf, products);
+  showChristmasKits(shelf, products, generatedAt);
 }
 
 export async function mountRetailRails() {
