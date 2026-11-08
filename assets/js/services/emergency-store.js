@@ -4,7 +4,7 @@ import { publicProductSlug, normalizeProductAddress } from './product-permalinks
 import { readPublicCatalogue } from './public-catalogue.js?v=20261102-gpu3';
 import { readLaunchSettings } from './home-integrations.js?v=20261102-failover1';
 import { publicCatalogueOnly } from './site-config.js?v=20261107-static1';
-import { esc, imageMarkup, bindImages, filterProducts, jumpToCatalogueResults } from '../components/catalogue-view.js?v=20261103-slugs1';
+import { esc, imageMarkup, bindImages, filterProducts, jumpToCatalogueResults } from '../components/catalogue-view.js?v=20261108-winter2';
 
 const WA='https://wa.me/27618435775?text=';
 const ENQUIRY='Hi VoltTech, I would like to place an order or request a quote. Please help me with current pricing, stock and delivery.';
