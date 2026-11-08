@@ -1,3 +1,4 @@
+import { publicCatalogueOnly } from './services/site-config.js?v=20261107-static1';
 import { connectCart, connectAccount } from './services/home-integrations.js?v=20261107-static1';
 import { enhanceNavigation } from './navigation.js?v=20261021.3';
 import { enhanceDialogs } from './components/dialog.js?v=20261021.3';
@@ -69,7 +70,7 @@ const ctaObserver = new MutationObserver((records) => {
 ctaObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] });
 
 connectCart();
-if (!['home','store','product'].includes(document.body.dataset.page)) connectAccount(window.VOLTTECH_SUPABASE);
+if (!publicCatalogueOnly || !['home','store','product'].includes(document.body.dataset.page)) connectAccount(window.VOLTTECH_SUPABASE);
 if (['home', 'store'].includes(document.body.dataset.page)) {
   import('./retail-rails.js?v=20261108-frostline').then(({ mountRetailRails }) => mountRetailRails()).catch(() => {});
 }
