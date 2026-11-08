@@ -179,12 +179,54 @@ function renderCreatorProfile(row) {
     <a class="button button-secondary" href="https://www.twitch.tv/${encodeURIComponent(row.streamer_login)}" target="_blank" rel="noopener">Open Twitch ↗</a>`;
 }
 
+function renderAttention(overview) {
+  const action = q('#overviewAction');
+  const key = 'volttech.attention.archive.' + currentUser.id;
+  let archived = [];
+  try {
+    const rows = JSON.parse(localStorage.getItem(key) || '[]');
+    if (Array.isArray(rows)) archived = rows.filter(row => typeof row?.href === 'string' && typeof row?.title === 'string');
+  } catch { /* Unreadable preferences are treated as empty. */ }
+  const next = overview.attentionAction(new Set(archived.map(row => row.href)));
+  action.dataset.state = next.tone;
+  action.innerHTML = `<small>${esc(next.kicker)}</small><strong>${esc(next.title)}</strong><span>${esc(next.body)}</span>${next.href ? `<a class="button" href="${esc(next.href)}">${esc(next.label)}</a>` : ''}`;
+  function button(label, rows, message) {
+    const control = document.createElement('button');
+    control.type = 'button';
+    control.className = 'account-text-button';
+    control.textContent = label;
+    control.addEventListener('click', () => {
+      try { localStorage.setItem(key, JSON.stringify(rows)); }
+      catch { hubStatus('This browser could not save your archive preference.', 'error'); return; }
+      renderAttention(overview);
+      hubStatus(message, 'success');
+      action.setAttribute('tabindex', '-1');
+      action.focus();
+    });
+    return control;
+  }
+  if (next.archivable) action.append(button('Archive from attention', [...archived, { href: next.href, title: next.title }], 'Archived on this browser.'));
+  if (archived.length) {
+    const details = document.createElement('details');
+    const summary = document.createElement('summary');
+    summary.textContent = 'Archived on this browser (' + archived.length + ')';
+    const list = document.createElement('ul');
+    for (const row of archived) {
+      const item = document.createElement('li');
+      const restore = button('Restore', archived.filter(entry => entry.href !== row.href), 'Restored to attention.');
+      restore.setAttribute('aria-label', 'Restore ' + row.title);
+      item.append(row.title + ' ', restore);
+      list.append(item);
+    }
+    details.append(summary, list);
+    action.append(details);
+  }
+}
+
 function renderOverview(overview) {
   const ids = { builds:'#countBuilds', quotes:'#countQuotes', invoices:'#countInvoices', orders:'#countOrders', jobs:'#countJobs' };
   Object.entries(ids).forEach(([key, selector]) => { q(selector).textContent = overview.counts[key] == null ? '—' : String(overview.counts[key]); });
-  const action = q('#overviewAction');
-  action.dataset.state = overview.action.tone;
-  action.innerHTML = `<small>${esc(overview.action.kicker)}</small><strong>${esc(overview.action.title)}</strong><span>${esc(overview.action.body)}</span>${overview.action.href ? `<a class="button" href="${esc(overview.action.href)}">${esc(overview.action.label)}</a>` : ''}`;
+  renderAttention(overview);
   const notice = q('#deletionNotice');
   if (overview.deletion) {
     notice.hidden = false;
