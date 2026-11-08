@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['scripts/build-public-catalogue.mjs', 'commerce/js/store-core.js', '.github/workflows/public-catalogue.yml']
+    paths: ['scripts/build-public-catalogue.mjs', 'scripts/supplier-imports/refresh-lunatech-snapshot.py', 'commerce/js/store-core.js', '.github/workflows/public-catalogue.yml']
 permissions:
   contents: write
 concurrency:
@@ -23,7 +23,12 @@ jobs:
           node-version: '24'
       - run: node scripts/test-supabase-egress-budget.mjs
       - run: node scripts/build-public-catalogue.mjs
+      - name: Refresh LunaTech supplier stock and images
+        env:
+          LUNATECH_FEED_URL: ${{ secrets.LUNATECH_FEED_URL }}
+        run: python3 scripts/supplier-imports/refresh-lunatech-snapshot.py
       - name: Publish public catalogue snapshot
+        if: github.ref == 'refs/heads/main'
         run: |
           git config user.name 'VoltTech catalogue refresh'
           git config user.email 'volttechcomputerco@gmail.com'
