@@ -42,7 +42,7 @@ begin
 end $$;
 revoke all on function public.vt_run_syntech_sync(text) from public,anon,authenticated;
 grant execute on function public.vt_run_syntech_sync(text) to service_role;
-select cron.schedule('syntech-stock-hourly','13 */4 * * *','select public.vt_run_syntech_sync(''update'');');
+select cron.alter_job(jobid, active := false) from cron.job where jobname = 'syntech-stock-hourly' and active;
 select cron.schedule('syntech-catalogue-daily','43 1 * * *','select public.vt_run_syntech_sync(''full'');');
 
 create or replace function public.vt_update_preferred_offer_products(p_ids text[]) returns void language sql security invoker set search_path='' as $$
