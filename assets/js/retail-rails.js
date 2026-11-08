@@ -8,7 +8,7 @@ const brands = [
   ['Thermal Grizzly', '../brand/partners/thermal-grizzly.webp'],
   ['Redragon', '2017/04/2021-Logo_Redragon_wr.png'],
   ['MSI', '2020/01/MSI-logo-01.png'],
-  ['ARCTIC', '../brand/partners/arctic-blue.webp'],
+  ['ARCTIC', 'https://lunatechit.co.za/wp-content/uploads/2019/10/arctic_logo-scaled.png'],
   ['AMD', '2020/08/2021-Logo_AMD_wr.png'],
   ['Intel', '2020/04/Intel-Logo-01.jpg'],
   ['ASRock', '2021/11/Asrock_Logo.png'],
@@ -23,7 +23,17 @@ const brands = [
   ['Micron', '2020/05/Micron_Logo_Updated.jpg'],
   ['Keychron', '2021/02/Keychron_Brand-Update-01-400x400.jpg'],
   ['PCBuilder', '2022/06/PCB_logo_500x500-400x400.png'],
-  ['PXN', '2025/05/PXN_500x500px.jpg']
+  ['PXN', '2025/05/PXN_500x500px.jpg'],
+  ['Logitech', 'https://api.esquire.co.za/Resources/Images/PageImage/logitech-v2.png'],
+  ['Seagate', 'https://api.esquire.co.za/Resources/Images/PageImage/seagate-v1.png'],
+  ['Samsung', 'https://api.esquire.co.za/Resources/Images/PageImage/samsung-v1.png'],
+  ['ViewSonic', 'https://api.esquire.co.za/Resources/Images/PageImage/viewsonic-v1.png'],
+  ['Western Digital', 'https://api.esquire.co.za/Resources/Images/PageImage/western-digital-v1.png'],
+  ['Toshiba', 'https://api.esquire.co.za/Resources/Images/PageImage/toshiba-v1.png'],
+  ['Dato', 'https://api.esquire.co.za/Resources/Images/PageImage/dato-logo-e1.png'],
+  ['Acer', 'https://api.esquire.co.za/Resources/Images/PageImage/acer-v1.png'],
+  ['ASUSTOR', 'https://api.esquire.co.za/Resources/Images/PageImage/Asustor-v1.png'],
+  ['Trust', 'https://api.esquire.co.za/Resources/Images/PageImage/Trust-v2.png']
 ];
 const themes = [
   ['Graphics cards', 'gpu', 'Give your games more room to run.'],
@@ -103,7 +113,7 @@ function productPicks(products, rotation) {
   }).filter(Boolean);
 }
 
-function showShowcase(hero, products) {
+function showShowcase(hero, products, generatedAt) {
   // South African shoppers see the same selection for each two-day window.
   const rotation = Math.floor((Date.now() + 2 * 3600000) / (2 * 86400000));
   const shelf = document.createElement('div');
@@ -119,7 +129,16 @@ function showShowcase(hero, products) {
   const campaigns = themes.map((_, index) => themes[(rotation + index) % themes.length]);
   const offers = campaigns.slice(0, 4).map(([label, category, text]) =>
     `<a class="rail-campaign" href="${esc(storeLink('category', category))}"><strong>${esc(label)} ↗</strong><span>${esc(text)}</span></a>`);
-  offers.splice(1, 0, '<a class="rail-campaign rail-season" href="#season-title"><strong>Christmas bundles ↗</strong><span>Three setups available by quote.</span></a>');
+  if (document.getElementById('season-title')) offers.splice(1, 0, '<a class="rail-campaign rail-season" href="#season-title"><strong>Christmas bundles ↗</strong><span>Three setups available by quote.</span></a>');
+  const now = Date.now();
+  const snapshotAge = now - Date.parse(generatedAt || '');
+  const special = snapshotAge >= 0 && snapshotAge < 10 * 3600000 && products.find(p => {
+    const priceAge = now - Date.parse(p.price_checked_at || '');
+    return p.compare_at_verified === true && p.stock_qty > 0 && p.retail_price > 0 &&
+      Number(p.compare_at_price) > Number(p.retail_price) && priceAge >= 0 && priceAge < 24 * 3600000 &&
+      (!p.deal_ends_at || Date.parse(p.deal_ends_at) > now);
+  });
+  if (special) offers.unshift(`<a class="rail-campaign rail-season" href="${esc(productUrl(special, false))}"><strong>Current special ↗</strong><span>${esc(special.name)} · Enquire for a quote</span></a>`);
   const side = document.createElement('div');
   side.className = 'retail-side';
   side.append(rail('Upgrade ideas', 'FIND YOUR NEXT UPGRADE', offers, 'campaigns'));
@@ -135,5 +154,5 @@ export async function mountRetailRails() {
   const products = (catalogue?.products || []).filter(p => p.status === 'active' && p.visibility === 'public' && p.sale_mode !== 'hidden' && p.is_demo === false);
   showBrands(header, products);
   const hero = document.querySelector('main .home-hero');
-  if (hero) showShowcase(hero, products);
+  if (hero) showShowcase(hero, products, catalogue?.generatedAt);
 }
