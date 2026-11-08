@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['scripts/build-public-catalogue.mjs', 'scripts/build-product-seo.mjs', 'scripts/test-product-seo.mjs', 'functions/product.js', 'functions/sitemap-products.xml.js', 'assets/js/services/product-permalinks.js', 'scripts/supplier-imports/refresh-lunatech-snapshot.py', 'commerce/js/store-core.js', '.github/workflows/public-catalogue.yml']
+    paths: ['scripts/build-public-catalogue.mjs', 'scripts/build-product-seo.mjs', 'scripts/test-product-seo.mjs', 'functions/product.js', 'assets/js/services/product-permalinks.js', 'scripts/supplier-imports/refresh-lunatech-snapshot.py', 'commerce/js/store-core.js', '.github/workflows/public-catalogue.yml']
 permissions:
   contents: write
 concurrency:
@@ -34,7 +34,7 @@ jobs:
         run: |
           git config user.name 'VoltTech catalogue refresh'
           git config user.email 'volttechcomputerco@gmail.com'
-          git add assets/data/catalogue.json.gz assets/data/product-seo
+          git add assets/data/catalogue.json.gz assets/data/product-seo sitemap-products.xml
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Refresh public Store product snapshot"
           git pull --rebase origin main
