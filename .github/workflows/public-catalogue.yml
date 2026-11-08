@@ -25,6 +25,8 @@ jobs:
       - run: node scripts/build-public-catalogue.mjs
       - run: node scripts/build-product-seo.mjs
       - run: node scripts/test-product-seo.mjs
+      - run: node scripts/build-graphics-cards.mjs
+      - run: python3 -X utf8 scripts/build-clean-frontend.py --page graphics-cards
       - name: Refresh LunaTech supplier stock and images
         env:
           LUNATECH_FEED_URL: ${{ secrets.LUNATECH_FEED_URL }}
@@ -34,7 +36,7 @@ jobs:
         run: |
           git config user.name 'VoltTech catalogue refresh'
           git config user.email 'volttechcomputerco@gmail.com'
-          git add assets/data/catalogue.json.gz assets/data/product-seo sitemap-products.xml
+          git add assets/data/catalogue.json.gz assets/data/product-seo sitemap-products.xml graphics-cards.html src/pages/graphics-cards.products.html
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Refresh public Store product snapshot"
           git pull --rebase origin main

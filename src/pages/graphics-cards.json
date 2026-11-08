@@ -1,0 +1,7 @@
+{
+  "output": "graphics-cards.html",
+  "title": "Graphics Cards in South Africa | RTX & Radeon | VoltTech",
+  "description": "Browse NVIDIA GeForce and AMD Radeon graphics cards at VoltTech. Compare GPUs for 1080p, 1440p and 4K, and check fit, power and delivery before ordering.",
+  "robots": "index, follow, max-image-preview:large",
+  "styles": ["assets/css/pages/graphics-cards.css"]
+}
