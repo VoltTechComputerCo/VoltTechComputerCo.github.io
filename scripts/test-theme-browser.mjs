@@ -15,11 +15,11 @@ for(const width of [320,390,1440]){
  const seasonValue = () => page.evaluate(() => document.documentElement.dataset.season);
  assert.equal(await season.inputValue(), 'christmas');
  assert.equal(await seasonValue(), 'christmas');
- assert.equal(await page.locator('.home-season').isVisible(), true);
+ assert.equal(await page.evaluate(() => getComputedStyle(document.body, '::before').animationName), 'vt-snowfall');
  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Christmas homepage width '+width);
  await season.selectOption('original');
  assert.equal(await seasonValue(), 'original');
- assert.equal(await page.locator('.home-season').isVisible(), false);
+ assert.notEqual(await page.evaluate(() => getComputedStyle(document.body, '::before').animationName), 'vt-snowfall');
  await page.goto('http://127.0.0.1:4173/store.html');
  assert.equal(await season.inputValue(), 'original', 'Original preference persists across routes');
  await season.selectOption('christmas');
