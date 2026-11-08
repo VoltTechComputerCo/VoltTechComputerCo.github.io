@@ -316,7 +316,7 @@ html body[data-page=home] .home-creator .stream-visual img { aspect-ratio: 16 / 
 /* Use the available browser width while retaining readable text measures. */
 @media screen {
   html body[data-page] { --gutter: clamp(14px, 2.6vw, 56px); }
-  html body[data-page] .container { width: 100%; max-width: none; }
+  html body[data-page] :is(.container,.static-shell) { width: 100%; max-width: none; }
   html body[data-page=home] :is(.home-hero,.home-stream) { width: calc(100% - 2 * var(--gutter)); max-width: none; }
 }
 .retail-rail { min-width: 0; color: var(--retail-ink); }
@@ -355,4 +355,7 @@ html body[data-page=home] .home-creator .stream-visual img { aspect-ratio: 16 / 
 }
 @media (min-width: 1550px) {
   html body[data-page=store] #product-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+}
+@media screen and (min-width: 90rem) {
+  html body[data-page=builder] .builder-app > .wrap { width: calc(100% - 2 * var(--gutter)); }
 }
