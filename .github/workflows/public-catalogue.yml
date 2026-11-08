@@ -1,6 +1,6 @@
 name: Refresh public Store catalogue
 on:
-  # 12 CDN snapshots/day instead of 96. Syntech continues its hourly :13 sync.
+  # 12 CDN snapshots/day instead of 96. Supplier syncs run separately on a four-hour schedule.
   # Stock/price is confirmed before payment; fewer PostgREST reads protect Free egress.
   schedule:
     - cron: '22 */2 * * *'

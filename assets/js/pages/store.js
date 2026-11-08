@@ -1,7 +1,7 @@
 import { searchCatalogue } from '../services/product-search.js?v=20261103-slugs1';
 import { updateDepartmentImages } from '../services/store-departments.js?v=20261021.3';
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261107-static1';
-import { productCard, filterProducts, bindImages } from '../components/catalogue-view.js?v=20261103-slugs1';
+import { productCard, filterProducts, bindImages, jumpToCatalogueResults } from '../components/catalogue-view.js?v=20261103-slugs1';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js?v=20261021.3';
 import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261102-gpu3';
 import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261021.3';
@@ -254,14 +254,14 @@ async function init(){
       if(card)showDepartmentGroup(card.closest('.department-group').id);
       document.querySelector('.shop-category-menu').open=false;
       selectCategory();render();
-      document.getElementById('catalogue').scrollIntoView({block:'start'});
+      jumpToCatalogueResults(grid);
     }));
 
     filterHost?.addEventListener('toggle',e=>{if(e.target.open)filterHost.querySelectorAll('details').forEach(d=>{if(d!==e.target)d.open=false;});},true);
     bindFilterUI(products,render);
     render();
     if(state.search)refreshSearch();
-    if(landingHash==='#catalogue'||query.get('category')||query.get('q')) requestAnimationFrame(()=>document.getElementById('catalogue')?.scrollIntoView({block:'start'}));
+    if(landingHash==='#catalogue'||query.get('category')||query.get('brand')||query.get('q')) requestAnimationFrame(()=>jumpToCatalogueResults(grid));
     connectCatalogueCart(VT,products,preview);
     VT.analytics('view_item_list',{item_list_name:'VoltTech PC Parts',items:products.slice(0,20).map(p=>({item_id:p.id,item_name:p.name}))});
     monitorStoreConnection();

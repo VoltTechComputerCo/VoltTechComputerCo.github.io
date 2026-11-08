@@ -108,18 +108,7 @@ html body .vt-season-bar select {
 @media screen {
   html[data-season="christmas"] {
     --winter-lights: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20224%2034%22%20width%3D%22224%22%20height%3D%2234%22%3E%3Cdefs%3E%3Cfilter%20id%3D%22b%22%20x%3D%22-120%25%22%20y%3D%22-120%25%22%20width%3D%22340%25%22%20height%3D%22340%25%22%3E%3CfeGaussianBlur%20stdDeviation%3D%223.2%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cpath%20d%3D%22M0%204Q56%2023%20112%204q56%2019%20112%200%22%20fill%3D%22none%22%20stroke%3D%22%237ea3bc%22%20stroke-opacity%3D%22.8%22%2F%3E%3Cg%3E%3Cpath%20d%3D%22M24%209v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%2224%22%20cy%3D%2216%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23ff537e%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%2221.9%22%20y%3D%2213%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%23ff537e%22%2F%3E%3Cellipse%20cx%3D%2223.3%22%20cy%3D%2214.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M57%2014v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%2257%22%20cy%3D%2221%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%234aebff%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%2254.9%22%20y%3D%2218%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%234aebff%22%2F%3E%3Cellipse%20cx%3D%2256.3%22%20cy%3D%2219.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M94%209v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%2294%22%20cy%3D%2216%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%238dff81%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%2291.9%22%20y%3D%2213%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%238dff81%22%2F%3E%3Cellipse%20cx%3D%2293.3%22%20cy%3D%2214.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M132%209v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%22132%22%20cy%3D%2216%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23ffc65c%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%22129.9%22%20y%3D%2213%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%23ffc65c%22%2F%3E%3Cellipse%20cx%3D%22131.3%22%20cy%3D%2214.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M168%2014v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%22168%22%20cy%3D%2221%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23b18aff%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%22165.9%22%20y%3D%2218%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%23b18aff%22%2F%3E%3Cellipse%20cx%3D%22167.3%22%20cy%3D%2219.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M202%209v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%22202%22%20cy%3D%2216%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23ff537e%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%22199.9%22%20y%3D%2213%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%23ff537e%22%2F%3E%3Cellipse%20cx%3D%22201.3%22%20cy%3D%2214.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-    --winter-frost: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2058%20172%22%20width%3D%2258%22%20height%3D%22172%22%3E%3Cg%20fill%3D%22%237eb7dc%22%3E%3Ccircle%20cx%3D%224%22%20cy%3D%2210%22%20r%3D%221%22%20opacity%3D%22.46%22%2F%3E%3Ccircle%20cx%3D%2221%22%20cy%3D%2247%22%20r%3D%221.8%22%20opacity%3D%22.32%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2295%22%20r%3D%222.3%22%20opacity%3D%22.22%22%2F%3E%3Ccircle%20cx%3D%2236%22%20cy%3D%2271%22%20r%3D%22.9%22%20opacity%3D%22.31%22%2F%3E%3Ccircle%20cx%3D%228%22%20cy%3D%22139%22%20r%3D%221.4%22%20opacity%3D%22.54%22%2F%3E%3Ccircle%20cx%3D%2239%22%20cy%3D%22155%22%20r%3D%221.7%22%20opacity%3D%22.24%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%238ec8e6%22%20opacity%3D%22.44%22%20stroke-width%3D%22.8%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M15%2022v16m-6.93-12%2013.86%208m0-8-13.86%208m6.93-9-2-1m2%201%202-1m-2%2010-2%201m2-1%202%201%22%2F%3E%3Cpath%20d%3D%22M23%20110v12m-5.2-9%2010.4%206m0-6-10.4%206%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
   }
-  html[data-season="christmas"] body::before,
-  html[data-season="christmas"] body::after {
-    content: ""; position: fixed; top: 0; bottom: 0; z-index: 1;
-    width: clamp(12px, 2.5vw, 46px); pointer-events: none;
-    background: var(--winter-frost) repeat-y center 0 / 100% 172px;
-    animation: vt-snowfall 10s linear infinite;
-  }
-  html[data-season="christmas"] body::before { left: 0; }
-  html[data-season="christmas"] body::after { right: 0; animation-duration: 14s; animation-delay: -7s; }
-  @keyframes vt-snowfall { to { background-position-y: 172px; } }
   @keyframes vt-neon-glow { 50% { filter: brightness(1.32) saturate(1.2); } }
   html[data-season="christmas"] .vt-season-bar {
     background: linear-gradient(90deg,#07131e,#142739 62%,#0a1725);
@@ -197,3 +186,97 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
 .christmas-kits [data-kit-cart][hidden] { display: none; }
 .retail-side { align-self: start; }
 #season-title { scroll-margin-top: 12rem; }
+
+/* Give wide displays a centered reading and shopping area. */
+@media screen {
+  html body[data-page=home] .home-retail-shelves { grid-template-columns: minmax(0,1fr) minmax(235px,25%); }
+  @media(max-width:940px) { html body[data-page=home] .home-retail-shelves { grid-template-columns: minmax(0,1fr); } }
+}
+
+@media screen {
+  html[data-season="christmas"] {
+    --winter-front: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22467%22%20height%3D%22307%22%20viewBox%3D%220%200%20467%20307%22%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2225%22%20r%3D%222.5%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22142%22%20cy%3D%2271%22%20r%3D%221.4%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22228%22%20cy%3D%2233%22%20r%3D%222.1%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22344%22%20cy%3D%22108%22%20r%3D%222.3%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22434%22%20cy%3D%22166%22%20r%3D%221.6%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%2273%22%20cy%3D%22218%22%20r%3D%222.7%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22276%22%20cy%3D%22261%22%20r%3D%222%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22380%22%20cy%3D%22282%22%20r%3D%221.8%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22184%22%20cy%3D%22190%22%20r%3D%221.2%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%2231%22%20cy%3D%22290%22%20r%3D%221.3%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22411%22%20cy%3D%2214%22%20r%3D%222.2%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Cpath%20d%3D%22M307%2065v10m-5-5h10m-8.5-3.5%207%207m0-7-7%207%22%20stroke%3D%22%23eef9ff%22%20stroke-width%3D%221.3%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+    --winter-back: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22293%22%20height%3D%22223%22%20viewBox%3D%220%200%20293%20223%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%2232%22%20r%3D%221.2%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%2258%22%20cy%3D%2264%22%20r%3D%221.3%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22105%22%20cy%3D%2218%22%20r%3D%221.2%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22173%22%20cy%3D%2245%22%20r%3D%221%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22238%22%20cy%3D%2292%22%20r%3D%221.6%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%2228%22%20cy%3D%22140%22%20r%3D%221.3%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22102%22%20cy%3D%22153%22%20r%3D%221%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22194%22%20cy%3D%22184%22%20r%3D%221.7%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22266%22%20cy%3D%22196%22%20r%3D%221%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22155%22%20cy%3D%22111%22%20r%3D%221.2%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22280%22%20cy%3D%2227%22%20r%3D%221.2%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%2244%22%20cy%3D%22208%22%20r%3D%221.1%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3C%2Fsvg%3E");
+    --winter-drift: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22230%22%20height%3D%2224%22%20viewBox%3D%220%200%20230%2024%22%3E%3Cpath%20d%3D%22M0%200H230V11c-15%203-18-4-31-2s-25%2013-42%209-23-9-36-6-22%2011-39%206-20-8-33-7-28%207-49%203Z%22%20fill%3D%22%2383bad9%22%2F%3E%3Cpath%20d%3D%22M0%200H230V8c-15%203-18-4-31-2s-25%2013-42%209-23-9-36-6-22%2011-39%206-20-8-33-7-28%207-49%203Z%22%20fill%3D%22%23effaff%22%2F%3E%3Cpath%20d%3D%22M6%205c18%201%2025-4%2041-3m42%208c11%202%2018-1%2027-3m44%206c12%200%2021-4%2031-8%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+    --winter-halo: #4fcfff55;
+    --winter-night: #102f47;
+  }
+  html[data-season="christmas"] body::before,
+  html[data-season="christmas"] body::after {
+    content: ""; position: fixed; inset: 0; z-index: 2; pointer-events: none;
+    background: var(--winter-front) repeat 0 0 / 467px 307px;
+    opacity: .66; filter: drop-shadow(0 0 3px #72b9ee6b);
+    animation: vt-snowfall 13s linear infinite;
+  }
+  html[data-season="christmas"] body::after {
+    background: var(--winter-back) repeat 0 0 / 293px 223px;
+    opacity: .48; animation: vt-snow-drift 23s linear -11s infinite;
+  }
+  @keyframes vt-snowfall { to { background-position: 467px 307px; } }
+  @keyframes vt-snow-drift { to { background-position: -293px 223px; } }
+  @keyframes vt-ice-glow { 50% { box-shadow: 0 0 28px var(--winter-halo), inset 0 0 12px #65caff24; } }
+  html[data-season="christmas"] .vt-season-bar::before { animation: vt-neon-glow 4s ease-in-out infinite; }
+  html[data-season="christmas"] :is(.home-hero,.site-footer,.static-footer) {
+    border-color: #7fb4d5 !important;
+  }
+  html[data-season="christmas"] :is(.site-footer,.static-footer)::before {
+    content: ""; display: block; height: 32px; pointer-events: none;
+    background: var(--winter-lights) repeat-x center top / 205px 32px, #0b2033;
+    animation: vt-neon-glow 4s ease-in-out -1.4s infinite;
+  }
+  html[data-season="christmas"] body[data-page=home] .home-hero {
+    border-color: #82bbdd; box-shadow: 0 0 35px #45baff40;
+    background-color: var(--winter-night);
+  }
+  html[data-season="christmas"] body[data-page=home] .home-hero .hero-inner { position: relative; }
+  html[data-season="christmas"] body[data-page=home] .home-hero .hero-inner::after {
+    content: ""; position: absolute; inset: auto 0 0; height: 31px; pointer-events: none;
+    background: var(--winter-lights) repeat-x center / 205px 31px, #0c2337dc;
+    animation: vt-neon-glow 4.7s ease-in-out -1s infinite;
+  }
+  html[data-season="christmas"] .home-hero .hero-copy { padding-bottom: 2.7rem; }
+  html[data-season="christmas"] :is(.rail-product,.christmas-kit,.workbench-card,.department-card,.service-card,.catalogue-card) {
+    position: relative; border-color: color-mix(in srgb,#7db8db 55%,var(--retail-line,#3b708e));
+  }
+  html[data-season="christmas"] :is(.rail-product,.christmas-kit,.workbench-card,.department-card,.catalogue-card)::after {
+    content: ""; position: absolute; z-index: 1; inset: 0 0 auto; height: 17px;
+    border-radius: inherit; background: var(--winter-drift) repeat-x left top / 230px 24px;
+    filter: drop-shadow(0 2px 2px #233e6638); pointer-events: none;
+  }
+  html[data-season="christmas"] .service-card { box-shadow: inset 0 3px #c3e6f7, 0 0 15px #65b8ec23; }
+  html[data-season="christmas"] :is(.christmas-kit,.retail-side,.home-creator .stream-feature) { animation: vt-ice-glow 6.8s ease-in-out infinite; }
+  html[data-season="christmas"] .retail-side .rail-heading, html[data-season="christmas"] .christmas-kits > .rail-heading {
+    padding-bottom: 26px; background: var(--winter-lights) repeat-x left bottom / 170px 25px;
+  }
+  html[data-season="christmas"] .retail-side .rail-heading { animation: vt-neon-glow 5s ease-in-out -2.4s infinite; }
+  html[data-season="christmas"] body[data-page] .catalogue-card :is(.catalogue-image-link,.catalogue-media) { border-radius: inherit; }
+  @media(max-width:650px) {
+    html[data-season="christmas"] body::before { opacity: .5; }
+    html[data-season="christmas"] body::after { opacity: .34; }
+    html[data-season="christmas"] body[data-page=home] .home-hero .hero-inner::after { height: 25px; background-size: 168px 25px; }
+  }
+}
+.catalogue-price { margin: .25rem 0; color: var(--teal); }
+.catalogue-price strong { font-size: 1.14rem; }
+.listed-price-label { font-size: .75rem; color: var(--text-muted); }
+
+@media screen {
+  html[data-season="christmas"] body {
+    background-image: radial-gradient(ellipse at 6% 40%,#65bdeb24,transparent 32%),radial-gradient(ellipse at 96% 68%,#8778ec1b,transparent 35%) !important;
+    background-attachment: fixed !important;
+  }
+  html[data-season="christmas"] body[data-page=home] .home-hero::after {
+    background: linear-gradient(90deg,#091c30 4%,#0a1e31 30%,#0d2337ad 49%,#0d233700 76%) !important;
+  }
+  html[data-season="christmas"] body[data-page=home] .home-hero .hero-copy {
+    background: transparent !important; color: #edf9ff; border: 0; box-shadow: none;
+  }
+  html[data-season="christmas"] .home-hero :is(h1,.hero-description) { color: #edf9ff !important; }
+  html[data-season="christmas"] .home-hero :is(h1 span,.hero-kicker) { color: #77edff !important; }
+  html[data-season="christmas"] .home-hero .button-secondary { background: #152d44 !important; color: #edf9ff !important; border-color: #72abc9; }
+  @media(max-width:700px) {
+    html[data-season="christmas"] body[data-page=home] .home-hero::after {
+      background: linear-gradient(180deg,#0a1c30 25%,#0a1c30e8 55%,#0a1c3044 86%) !important;
+    }
+  }
+}

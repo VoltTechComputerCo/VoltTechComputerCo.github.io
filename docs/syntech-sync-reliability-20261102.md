@@ -22,7 +22,7 @@ The checked-in source under `supabase/functions/sync-supplier-catalogue/` mirror
 
 ## Automation schedule
 Existing cron jobs remain unchanged:
-- `syntech-stock-hourly`: `13 * * * *` UTC, invokes `vt_run_syntech_sync('update')`.
+- `syntech-stock-hourly`: `13 */4 * * *` UTC, invokes `vt_run_syntech_sync('update')`.
 - `syntech-catalogue-daily`: `43 1 * * *` UTC, invokes `vt_run_syntech_sync('full')`.
 
 The cron job's own `succeeded` result only confirms it dispatched the HTTP request. Actual success must be assessed using the `store_suppliers` row (`feed_status`, `feed_last_synced_at`, `metadata.last_error`) and Edge Function response codes.
@@ -36,3 +36,10 @@ The cron job's own `succeeded` result only confirms it dispatched the HTTP reque
 - If a later scheduled import is incomplete, preserve previous successful data; never invent supplier availability.
 
 **Deploy discipline:** The Supabase MCP deployment tool publishes directly, while the repository is version-controlled evidence of version 19. Future code changes must be deployed and verified explicitly; committing source alone does not deploy it.
+
+## Egress controls applied on 8 November 2026
+
+- `syntech-stock-hourly` keeps its existing job ID and runs at :13 every four hours UTC. Its daily full run is unchanged.
+- `tarsus-stock-hourly` runs at `43 3-23/4 * * *` UTC. This staggers it from Syntech. To roll back the schedules, use `cron.alter_job` with the existing job IDs and `13 * * * *` / `43 * * * *`.
+- The deployed supplier function is versioned under `supabase/functions/sync-supplier-catalogue/`. Its product scan reads the fields needed for matching and preserving curated values. The measured uncompressed product JSON was 38,051,613 bytes before projection and 22,330,998 after. These are payload sizes, not billed transfer.
+- Public browsing uses the CDN snapshot and the publisher still runs every two hours. Use the organization Usage dashboard for actual billed egress and look for a steady daily pace below 150 MB.
