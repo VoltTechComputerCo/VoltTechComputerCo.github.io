@@ -5,7 +5,7 @@ const supplierArt = 'https://www.syntech.co.za/wp-content/uploads/';
 const brands = [
   ['ASUS', '2025/06/Asus_500x500px-01.jpg'],
   ['Gigabyte', 'https://api.esquire.co.za/Resources/Images/PageImage/gigabyte-logo.png'],
-  ['Thermal Grizzly', '../brand/partners/thermal-grizzly.webp'],
+  ['Thermal Grizzly', 'https://www.thermal-grizzly.com/media/81/7a/d0/1700224744/ThermalGrizzly_Logo_Orange_EN.png'],
   ['Redragon', '2017/04/2021-Logo_Redragon_wr.png'],
   ['MSI', '2020/01/MSI-logo-01.png'],
   ['ARCTIC', 'https://lunatechit.co.za/wp-content/uploads/2019/10/arctic_logo-scaled.png'],
@@ -51,7 +51,7 @@ const themes = [
 const featuredCategories = new Set(themes.map(([, category]) => category).concat('fans', 'mice', 'headsets', 'thermal-paste', 'case', 'monitors'));
 const normalize = value => String(value || '').trim().toLowerCase();
 const siteUrl = path => new URL('../../' + path, import.meta.url);
-const logoUrl = path => path.startsWith('https:') ? path : path.startsWith('../') ? new URL(path, import.meta.url).href : supplierArt + path;
+const logoUrl = path => path.startsWith('https:') ? path : supplierArt + path;
 const storeLink = (key, value) => {
   const url = siteUrl('store.html#catalogue');
   url.searchParams.set(key, value);
