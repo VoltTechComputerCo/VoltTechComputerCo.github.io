@@ -203,7 +203,7 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
   }
   html[data-season="christmas"] body::before,
   html[data-season="christmas"] body::after {
-    inset: -42px 0 0; width: auto; z-index: 2;
+    content: ""; position: fixed; inset: 0; z-index: 2; pointer-events: none;
     background: var(--winter-front) repeat 0 0 / 467px 307px;
     opacity: .66; filter: drop-shadow(0 0 3px #72b9ee6b);
     animation: vt-snowfall 13s linear infinite;
