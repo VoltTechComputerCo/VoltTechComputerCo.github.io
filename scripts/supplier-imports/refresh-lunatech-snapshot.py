@@ -43,11 +43,12 @@ def parse_feed(content):
     for item in items:
         sku = item.findtext('Model', '').strip().lower()
         qty = item.findtext('Qty', '').strip()
-        if not re.fullmatch(r'[a-z0-9][a-z0-9._-]{0,99}', sku) or sku in rows or not re.fullmatch(r'[0-9]{1,9}', qty):
+        if not re.fullmatch(r'[a-z0-9][a-z0-9._-]{0,99}', sku) or sku in rows or not re.fullmatch(r'-?[0-9]{1,9}', qty):
             raise ValueError('Invalid or duplicate SKU or stock quantity')
         images = [url.strip() for url in item.findtext('image_link', '').split(',')]
         image = next((url for url in images if supplier_url(url)), None)
-        rows[sku] = (int(qty), image)
+        # A negative supplier balance means zero sellable units.
+        rows[sku] = (max(0, int(qty)), image)
     return rows
 
 
