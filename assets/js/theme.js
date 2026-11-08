@@ -2,17 +2,26 @@
  const key='volttech-appearance';
  const seasonKey = 'volttech-season';
  const seasons = new Map([['christmas', 'Christmas'], ['original', 'Original']]);
- const defaultSeason = 'christmas';
- const validSeason = value => seasons.has(value) ? value : defaultSeason;
+ // Christmas ends at midnight on 1 January 2027 in South Africa.
+ const christmasEndsAt = Date.parse('2027-01-01T00:00:00+02:00');
+ const christmasActive = () => Date.now() < christmasEndsAt;
+ const validSeason = value => {
+  if (!christmasActive()) return 'original';
+  return seasons.has(value) ? value : 'christmas';
+ };
  const readSeason = () => {
   try { return validSeason(localStorage.getItem(seasonKey)); }
-  catch { return defaultSeason; }
+  catch { return validSeason(null); }
  };
  let season = readSeason();
  let seasonSelect;
  const setSeason = value => {
   season = validSeason(value);
   document.documentElement.dataset.season = season;
+  if (seasonSelect && !christmasActive()) {
+   seasonSelect.parentElement.remove();
+   seasonSelect = undefined;
+  }
   if (seasonSelect) seasonSelect.value = season;
  };
  setSeason(season);
@@ -56,13 +65,29 @@
  apply(theme);
  const mount=()=>{
   if(window.self!==window.top){apply(read());return;}
-  mountSeasonPicker();
+  if (christmasActive()) mountSeasonPicker();
   const b=document.querySelector('[data-theme-toggle]')||document.createElement('button');b.type='button';b.className='theme-toggle';b.dataset.themeToggle='';
   b.addEventListener('click',()=>{const value=theme==='dark'?'light':'dark';try{localStorage.setItem(key,value);}catch{}apply(value);});
   const host=document.querySelector('.header-tools,.static-topbar-inner,.store-nav .nav-in,main>.top');
   if(host){if(!b.isConnected)host.append(b);}else{b.classList.add('is-floating');document.body.append(b);}apply(read());
  };
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
+ function expireSeason() {
+  if (christmasActive() || (season === 'original' && !seasonSelect)) return;
+  setSeason('original');
+  apply(theme);
+ }
+ function scheduleSeasonEnd() {
+  const remaining = christmasEndsAt - Date.now();
+  if (remaining <= 0) expireSeason();
+  // Browsers limit a single timeout to a signed 32-bit delay.
+  else window.setTimeout(scheduleSeasonEnd, Math.min(remaining, 2_147_483_647));
+ }
+ if (christmasActive()) {
+  scheduleSeasonEnd();
+  window.addEventListener('pageshow', expireSeason);
+  document.addEventListener('visibilitychange', expireSeason);
+ }
  window.addEventListener('storage', e => {
   if (e.key === seasonKey || e.key === null) setSeason(readSeason());
   if (e.key === key || e.key === seasonKey || e.key === null) apply(read());
