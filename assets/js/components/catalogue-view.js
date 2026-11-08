@@ -66,3 +66,8 @@ export function filterProducts(products, state) {
 export function dataRows(VT, rows) {
   return `<dl class="component-specs">${rows.map(([key,value]) => `<div><dt>${esc(VT.formatSpecKey(key))}</dt><dd>${esc(VT.formatSpecValue(value))}</dd></div>`).join('')}</dl>`;
 }
+export function jumpToCatalogueResults(grid){
+  const header=document.querySelector('.site-header');
+  const inset=(header?.getBoundingClientRect().height || 0)+12;
+  window.scrollTo({top:window.scrollY+grid.getBoundingClientRect().top-inset,behavior:'instant'});
+}
