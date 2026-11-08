@@ -58,6 +58,81 @@ const storeLink = (key, value) => {
   return url.href;
 };
 
+function glideBrands(track, canAdvance) {
+  const originals = [...track.children];
+  for (const anchor of originals) {
+    const copy = anchor.cloneNode(true);
+    copy.tabIndex = -1;
+    copy.setAttribute('aria-hidden', 'true');
+    track.append(copy);
+  }
+  let lap = 0;
+  const measure = () => {
+    const copy = track.querySelector('[aria-hidden="true"]');
+    const first = track.firstElementChild;
+    lap = copy && first ? copy.offsetLeft - first.offsetLeft : 0;
+  };
+  new ResizeObserver(measure).observe(track);
+  new MutationObserver(measure).observe(track, { childList:true });
+  let pointer;
+  let suppressClick = false;
+  let resumeAt = 0;
+  let previous = 0;
+  let position = 0;
+  function frame(now) {
+    const delta = Math.min(now - previous, 50);
+    previous = now;
+    if (canAdvance() && !pointer && now >= resumeAt && lap > track.clientWidth) {
+      if (Math.abs(position - track.scrollLeft) > 2) position = track.scrollLeft;
+      position = (position + delta * .036) % lap;
+      track.scrollLeft = position;
+    } else position = track.scrollLeft;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  track.addEventListener('wheel', event => {
+    if (event.ctrlKey || track.scrollWidth <= track.clientWidth) return;
+    event.preventDefault();
+    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    const pixels = delta * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? track.clientWidth : 1);
+    const next = track.scrollLeft + pixels;
+    track.scrollLeft = lap > track.clientWidth ? ((next % lap) + lap) % lap : next;
+    resumeAt = performance.now() + 700;
+  }, { passive:false });
+  track.addEventListener('dragstart', event => event.preventDefault());
+  track.addEventListener('pointerdown', event => {
+    if (!event.isPrimary || event.button !== 0) return;
+    suppressClick = false;
+    pointer = { id:event.pointerId, type:event.pointerType, x:event.clientX, start:track.scrollLeft, dragging:false };
+  });
+  track.addEventListener('pointermove', event => {
+    if (!pointer || pointer.id !== event.pointerId || pointer.type !== 'mouse') return;
+    const delta = event.clientX - pointer.x;
+    if (!pointer.dragging && Math.abs(delta) < 5) return;
+    if (!pointer.dragging) {
+      pointer.dragging = true;
+      track.setPointerCapture(event.pointerId);
+      track.classList.add('is-dragging');
+    }
+    track.scrollLeft = pointer.start - delta;
+  });
+  function finish(event) {
+    if (pointer?.id !== event.pointerId) return;
+    suppressClick = pointer.dragging;
+    pointer = null;
+    resumeAt = performance.now() + 1000;
+    track.classList.remove('is-dragging');
+  }
+  window.addEventListener('pointerup', finish);
+  track.addEventListener('pointercancel', finish);
+  track.addEventListener('click', event => {
+    if (!suppressClick || event.detail === 0) return;
+    suppressClick = false;
+    event.preventDefault();
+    event.stopPropagation();
+  }, true);
+}
+
 function rail(title, kicker, cards, variant) {
   const region = document.createElement('section');
   region.className = 'retail-rail retail-rail-' + variant;
@@ -90,9 +165,14 @@ function rail(title, kicker, cards, variant) {
   updatePause();
   const observer = new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; });
   observer.observe(region);
-  window.setInterval(() => {
-    if (onScreen && !document.hidden && !paused && !region.matches(':hover, :focus-within')) step(1);
-  }, variant === 'brands' ? 2600 : 4600);
+  const canAdvance = () => onScreen && !document.hidden && !paused && !region.matches(':hover, :focus-within');
+  if (variant === 'brands') {
+    region.querySelector('[data-prev]').hidden = true;
+    region.querySelector('[data-next]').hidden = true;
+    glideBrands(track, canAdvance);
+  } else {
+    window.setInterval(() => { if (canAdvance()) step(1); }, 4600);
+  }
   return region;
 }
 
