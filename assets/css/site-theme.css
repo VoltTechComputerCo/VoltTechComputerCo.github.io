@@ -259,3 +259,8 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
     html[data-season="christmas"] body[data-page=home] .home-hero .hero-inner::after { height: 25px; background-size: 168px 25px; }
   }
 }
+/* Direct category links land on the first results below the sticky header. */
+#product-grid { scroll-margin-top: 178px; }
+@media(max-width:700px) { #product-grid { scroll-margin-top: 112px; } }
+.catalogue-price { margin: .25rem 0; color: var(--teal); }
+.catalogue-price strong { font-size: 1.14rem; }
