@@ -11,7 +11,7 @@ const contact=await import(`${pathToFileURL(path.join(root,'assets/js/services/s
 const services={
   repair:{page:'pc-repair-pretoria.html',price:'R350–R650'},
   performance:{page:'pc-performance-optimisation.html',price:'R350–R550'},
-  upgrades:{page:'pc-upgrades-pretoria.html',price:'From R299'},
+  upgrades:{page:'pc-upgrades-pretoria.html',route:'pc-upgrades-pretoria',price:'From R299'},
   security:{page:'virus-malware-removal-pretoria.html',price:'R350–R550'},
   windows:{page:'windows-installation-pretoria.html',price:'R350–R650'}
 };
@@ -19,7 +19,7 @@ const services={
 for(const [key,cfg] of Object.entries(services)){
   const html=read(cfg.page);
   assert.ok(html.includes('data-vt-shell="clean"'),`${cfg.page} stays on clean shell`);
-  assert.equal(model.sourceInfo[key].page,cfg.page,`${key} result returns to the correct service page`);
+  assert.equal(model.sourceInfo[key].page,cfg.route ?? cfg.page,`${key} result returns to the correct service page`);
   const pageIssues=[...html.matchAll(/data-issue="([^"]+)"/g)].map(m=>m[1]);
   const scanIssues=model.issueSets[key].map(row=>row[0]);
   assert.deepEqual(pageIssues,scanIssues,`${key} service symptoms and Signal Scan issue keys stay aligned`);
