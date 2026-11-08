@@ -1,11 +1,11 @@
 import { searchCatalogue } from '../services/product-search.js?v=20261103-slugs1';
 import { updateDepartmentImages } from '../services/store-departments.js?v=20261021.3';
-import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261107-static1';
+import { openCatalogue, showGate, publicProducts, withTimeout, addItem, notify } from '../services/catalogue.js?v=20261107-static1';
 import { productCard, filterProducts, bindImages, jumpToCatalogueResults } from '../components/catalogue-view.js?v=20261108-winter2';
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js?v=20261021.3';
 import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261102-gpu3';
 import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261021.3';
-import { showEmergencyStore, monitorStoreConnection } from '../services/emergency-store.js?v=20261108-winter2';
+import { showEmergencyStore, monitorStoreConnection } from '../services/emergency-store.js?v=20261108-cart';
 
 const query=new URLSearchParams(location.search);
 const landingHash=location.hash;
@@ -42,8 +42,6 @@ function selectCategory(){
   });
   document.querySelectorAll('.department-card').forEach(card=>{const url=new URL(card.href);const active=card.dataset.category===state.category&&(!url.searchParams.has('laptopPurpose')||url.searchParams.get('laptopPurpose')===state.filters.laptopPurpose);if(active)card.setAttribute('aria-current','page');else card.removeAttribute('aria-current');});
   document.getElementById('category-name').textContent=state.category==='all' ? 'Shop all products' : categoryLabel();
-  const contact=document.getElementById('category-enquiry');
-  contact.href=`https://wa.me/27618435775?text=${encodeURIComponent('Hi VoltTech, I would like help choosing '+(state.category==='all'?'PC components':categoryLabel().toLowerCase())+' for my setup.')}`;
 }
 
 function updateUrl(){
@@ -158,8 +156,9 @@ async function openRequestedCart(){
   try{
     const { checkoutAccess }=await import('../services/transactions.js?v=20261021.3');
     const { VT }=await checkoutAccess();
-    if(VT) connectCatalogueCart(VT,[],false,{allowEnquiryFallback:false});
-  }catch{ /* Catalogue browsing remains available when checkout cannot connect. */ }
+    if(VT) { connectCatalogueCart(VT,[],false,{allowEnquiryFallback:false}); return; }
+  }catch{ /* Report the unavailable cart below. */ }
+  notify('Your cart is temporarily unavailable. Please try again shortly.');
 }
 
 async function init(){

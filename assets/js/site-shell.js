@@ -1,5 +1,5 @@
+import { publicCatalogueOnly } from './services/site-config.js?v=20261107-static1';
 import { connectCart, connectAccount } from './services/home-integrations.js?v=20261107-static1';
-import { isProduction, publicCatalogueOnly } from './services/site-config.js?v=20261107-static1';
 import { enhanceNavigation } from './navigation.js?v=20261021.3';
 import { enhanceDialogs } from './components/dialog.js?v=20261021.3';
 import { enhanceSearch } from './components/search.js?v=20261021.3';
@@ -32,28 +32,6 @@ function enhanceBrandedCtas(root = document) {
   });
 }
 
-function prepareIndependentQuoteNavigation(){
-  // Do not present a dead checkout/cart route while the commerce API is 402.
-  if (!publicCatalogueOnly || !isProduction() ||
-      !['/', '/index.html', '/store.html', '/product.html'].includes(location.pathname)) return;
-  const wa='https://wa.me/27618435775?text='+encodeURIComponent(
-    'Hi VoltTech, I would like a quotation for PC components. Please confirm price, stock and delivery.');
-  for (const link of document.querySelectorAll('a[data-cart-link]')){
-    link.href=wa;
-    link.removeAttribute('data-cart-link');
-    link.setAttribute('aria-label','Request a VoltTech quotation on WhatsApp');
-    const heading=link.querySelector('b');
-    if(heading)heading.textContent='Get a quote';
-    const caption=link.querySelector('small');
-    if(caption)caption.textContent='ENQUIRE';
-    const detail=link.querySelector('em');
-    if(detail)detail.textContent='Confirm stock and price';
-    const badge=link.querySelector('[data-cart-count]');
-    if(badge)badge.hidden=true;
-  }
-  document.querySelectorAll('[data-open-cart]').forEach(button=>{button.hidden=true;});
-}
-
 function addServiceNavigation() {
   const tools = document.querySelector('main .vt-tool-switcher');
   if (!tools || document.querySelector('main .service-network')) return;
@@ -79,7 +57,6 @@ addServiceNavigation();
 enhanceNavigation();
 enhanceDialogs();
 enhanceSearch();
-prepareIndependentQuoteNavigation();
 enhanceBrandedCtas();
 
 const ctaObserver = new MutationObserver((records) => {
@@ -93,7 +70,7 @@ const ctaObserver = new MutationObserver((records) => {
 ctaObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] });
 
 connectCart();
-connectAccount(window.VOLTTECH_SUPABASE);
+if (!publicCatalogueOnly || !['home','store','product'].includes(document.body.dataset.page)) connectAccount(window.VOLTTECH_SUPABASE);
 if (['home', 'store'].includes(document.body.dataset.page)) {
   import('./retail-rails.js?v=20261108-frostline').then(({ mountRetailRails }) => mountRetailRails()).catch(() => {});
 }
