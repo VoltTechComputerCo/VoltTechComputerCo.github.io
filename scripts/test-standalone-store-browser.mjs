@@ -20,7 +20,7 @@ try{
   page.on('pageerror',err=>errors.push(err.message));
   // Simulate production hostname and existing customer sessions while keeping
   // all resources local; a missed API bypass would become a recorded request.
-  await page.addInitScript(() => localStorage.setItem('sb-qdqhfnvwqvgesfdmocir-auth-token','{"access_token":"fixture-old-session"}'));
+  if (width === 1440) await page.addInitScript(() => localStorage.setItem('sb-qdqhfnvwqvgesfdmocir-auth-token','{"access_token":"fixture-old-session"}'));
   await page.route('https://**/*',r=>r.abort());
   await page.route('https://volttechcomputerco.co.za/**',async route=>{
    const u=new URL(route.request().url());
@@ -30,31 +30,50 @@ try{
   await page.goto('https://volttechcomputerco.co.za/store.html',{waitUntil:'domcontentloaded'});
   await page.locator('#product-grid .catalogue-card').first().waitFor({timeout:18000});
   assert.equal(await page.locator('#catalogue').isVisible(),true,'public catalogue renders without Supabase');
-  assert.equal(await page.locator('body').getAttribute('data-store-mode'),'enquiry');
-  assert.match(await page.locator('.mobile-nav-cart a').first().getAttribute('href'),/^https:\/\/wa\.me\/27618435775/,'cart nav becomes a working enquiry link');
-  assert.equal(await page.locator('[data-open-cart]').first().isVisible(),false,'inactive checkout buttons hidden');
-  assert.match(await page.locator('#store-gate').innerText(),/Shop gaming PC parts.*request a quote/);
+  assert.equal(await page.locator('body').getAttribute('data-store-mode'),'snapshot');
+  assert.match(await page.locator('.mobile-nav-cart a').first().getAttribute('href'),/store\.html\?cart=1/);
+  assert.equal(await page.locator('#store-gate').isVisible(),false);
   const count=await page.locator('#product-grid .catalogue-card').count();
   assert.ok(count>0,'actual product cards must be visible');
   const availability = /Out of stock\. Contact us for restock information\.|Supplier stock available\. Confirm availability when ordering\.|Contact us for current pricing and availability\./;
   assert.match(await page.locator('#product-grid .catalogue-card .micro').first().innerText(),availability);
-  const enquiry=page.locator('#product-grid .catalogue-card a[href^="https://wa.me/"]').first();
-  console.log('CHECK',width,'WhatsApp link count:',await enquiry.count(),'visible:',await enquiry.isVisible());
-  assert.ok(await enquiry.count()>0,'each static product requires a WhatsApp enquiry link');
-  assert.equal(await enquiry.isVisible(),true,'customers must see the enquiry button');
+  const add = page.locator('#product-grid button[data-add-snapshot]').first();
+  assert.equal(await add.isVisible(),true,'in-stock products can be added to the cart');
+  assert.equal(await page.locator('#product-grid a[href*="wa.me"]').count(),0);
   assert.equal(supabaseRequests.length,0,'public Store browsing must have zero Supabase API traffic');
-  const first=await page.locator('#product-grid .catalogue-card .catalogue-image-link').first().getAttribute('href');
+  const first=await page.locator('#product-grid .catalogue-card').filter({has:page.locator('[data-add-snapshot]')}).first().locator('.catalogue-image-link').getAttribute('href');
   assert.match(first,/^product\.html\?slug=/);
   await page.goto('https://volttechcomputerco.co.za/'+first,{waitUntil:'domcontentloaded'});
   await page.locator('#product-detail .component-summary h2').waitFor({timeout:18000});
   assert.equal(await page.locator('#product-detail').isVisible(),true);
   assert.match(await page.locator('#product-detail').innerText(),availability);
+  assert.equal(await page.locator('#product-detail button[data-add-snapshot]').isVisible(),true);
+  assert.equal(await page.locator('#product-detail a[href*="wa.me"]').count(),0);
   assert.equal(supabaseRequests.length,0,'product details must load without Supabase');
   await page.goto('https://volttechcomputerco.co.za/',{waitUntil:'domcontentloaded'});
-  assert.equal(await page.locator('.mobile-nav-cart a').first().getAttribute('href')?.then(h=>h.startsWith('https://wa.me/27618435775')),true,'homepage links to manual ordering');
+  assert.match(await page.locator('.mobile-nav-cart a').first().getAttribute('href'),/store\.html\?cart=1/);
   assert.equal(supabaseRequests.length,0,'public homepage must not contact Supabase, even with a saved auth session');
   assert.deepEqual(errors,[],'no client script errors');
   console.log('PASS',width+'px','Store and product details load offline from static catalogue, zero Supabase requests');
+  if (width === 390) {
+   const api = 'https://qdqhfnvwqvgesfdmocir.supabase.co';
+   const cors = {'access-control-allow-origin':'*','access-control-allow-headers':'*'};
+   await page.route(api + '/rest/v1/store_settings?*', route => route.fulfill({headers:cors,json:[snapshot.settings]}));
+   await page.route(api + '/rest/v1/store_products?*', route => {
+    const filter = new URL(route.request().url()).searchParams.get('id');
+    assert.ok(filter?.startsWith('in.('),'cart reads only the requested product IDs');
+    const ids = filter.slice(4,-1).split(',').map(id => id.replaceAll('"',''));
+    return route.fulfill({headers:cors,json:snapshot.products.filter(product => ids.includes(product.id))});
+   });
+   await page.goto('https://volttechcomputerco.co.za/store.html');
+   await page.locator('#product-grid button[data-add-snapshot]').first().click();
+   await page.getByText(/added to your cart/).waitFor();
+   await page.goto('https://volttechcomputerco.co.za/store.html?cart=1');
+   await page.locator('#cart-checkout').click();
+   await page.locator('#checkout-form').waitFor({state:'visible'});
+   assert.equal(await page.locator('#checkout-items .checkout-item').count(),1);
+   assert.match(await page.locator('#checkout-account').innerText(),/Guest checkout|Enter your contact details/);
+  }
   // Wait for production-hostname route fixtures to finish before disposing
   // the page; otherwise late images can throw TargetClosedError in CI.
   await page.unrouteAll({behavior:'wait'});
