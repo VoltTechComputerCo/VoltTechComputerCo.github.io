@@ -89,7 +89,23 @@ export async function showEmergencyStore(state){
  catalogue.hidden=false;catalogue.dataset.source='offline-snapshot';catalogue.dataset.mode='enquiry';
  document.getElementById('catalogue-preview')?.setAttribute('hidden','');
  document.querySelector('.smart-filter-shell')?.setAttribute('hidden','');
- const filterChips=document.getElementById('active-filter-chips');if(filterChips)filterChips.hidden=true;
+ const filterChips=document.getElementById('active-filter-chips');
+ if (filterChips) {
+  const brand = state.filters?.brand;
+  filterChips.hidden = !brand;
+  if (brand) {
+   const clearUrl = new URL(location.href);
+   clearUrl.searchParams.delete('brand');
+   clearUrl.searchParams.delete('page');
+   clearUrl.hash = 'catalogue';
+   const chip = document.createElement('a');
+   chip.className = 'text-link';
+   chip.href = clearUrl.href;
+   chip.textContent = brand + ' ×';
+   chip.setAttribute('aria-label', 'Clear ' + brand + ' brand filter');
+   filterChips.replaceChildren(chip);
+  }
+ }
  const searchInput=search;searchInput.value=state.search||'';
  for(const option of sort.options){if(option.value.startsWith('price-')){option.disabled=true;option.hidden=true;}}
  if(state.sort.startsWith('price-'))state.sort='featured';
@@ -109,7 +125,7 @@ export async function showEmergencyStore(state){
   pager.innerHTML=`<button type="button" data-offline-page="prev" ${state.page===1?'disabled':''}>← Previous</button><span>Page ${state.page} of ${pageCount}</span><button type="button" data-offline-page="next" ${state.page===pageCount?'disabled':''}>Next →</button>`;
   bindImages(grid);
  };
- searchInput.addEventListener('input',()=>{state.search=searchInput.value.trim();state.category='all';state.filters={};state.page=1;render();});
+ searchInput.addEventListener('input',()=>{state.search=searchInput.value.trim();state.page=1;render();});
  sort.addEventListener('change',()=>{state.sort=sort.value;state.page=1;render();});
  pager.addEventListener('click',event=>{const button=event.target.closest('[data-offline-page]');if(!button||button.disabled)return;state.page+=button.dataset.offlinePage==='next'?1:-1;render();catalogue.scrollIntoView({block:'start'});});
  document.getElementById('reset-filters')?.addEventListener('click',()=>{state.category='all';state.filters={};state.search='';state.sort='featured';state.page=1;searchInput.value='';sort.value='featured';render();});

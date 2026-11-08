@@ -94,3 +94,6 @@ ctaObserver.observe(document.body, { childList: true, subtree: true, attributes:
 
 connectCart();
 connectAccount(window.VOLTTECH_SUPABASE);
+if (['home', 'store'].includes(document.body.dataset.page)) {
+  import('./retail-rails.js?v=20261108.1').then(({ mountRetailRails }) => mountRetailRails()).catch(() => {});
+}
