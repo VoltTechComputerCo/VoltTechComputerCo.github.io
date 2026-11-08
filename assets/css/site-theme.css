@@ -208,12 +208,24 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
     content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
     mask-image: linear-gradient(90deg, #000, #0008 18% 82%, #000);
     background: var(--winter-front) repeat 0 0 / 467px 307px;
-    opacity: .34;
+    opacity: var(--winter-snow-opacity, .34);
     animation: vt-snowfall 13s linear infinite;
   }
   html[data-season="christmas"] body::after {
     background: var(--winter-back) repeat 0 0 / 293px 223px;
-    opacity: .22; animation: vt-snow-drift 23s linear -11s infinite;
+    opacity: var(--winter-drift-opacity, .22); animation: vt-snow-drift 23s linear -11s infinite;
+  }
+  /* Keep the service gradients while letting the snowfall show through from the body. */
+  html[data-season="christmas"] main:is(.service-page, .streaming-support-page, .signal-scan-page) {
+    background-color: transparent;
+  }
+  html[data-season="christmas"] body:is([data-page^="service-"], [data-page="streaming-support"], [data-page="signal-scan"], [data-page="stream-scan"]) {
+    --winter-snow-opacity: .48;
+    --winter-drift-opacity: .30;
+  }
+  html[data-season="christmas"]:not([data-theme="dark"]) body:is([data-page^="service-"], [data-page="streaming-support"], [data-page="signal-scan"], [data-page="stream-scan"])::before,
+  html[data-season="christmas"]:not([data-theme="dark"]) body:is([data-page^="service-"], [data-page="streaming-support"], [data-page="signal-scan"], [data-page="stream-scan"])::after {
+    filter: brightness(.76);
   }
   @keyframes vt-snowfall { to { background-position: 467px 307px; } }
   @keyframes vt-snow-drift { to { background-position: -293px 223px; } }
