@@ -1,12 +1,11 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {renderProductHtml, onRequestGet} from '../functions/product.js';
-import {onRequestGet as serveSitemap} from '../functions/sitemap-products.xml.js';
 
 const origin = 'https://volttechcomputerco.co.za';
 const read = path => fs.readFileSync(new URL('../' + path, import.meta.url), 'utf8');
 const shell = read('product.html');
-const sitemap = read('assets/data/product-seo/sitemap.xml');
+const sitemap = read('sitemap-products.xml');
 const listed = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
 const records = new Map();
 for (const key of '0123456789abcdef') {
@@ -34,7 +33,7 @@ for (const path of ['/product', '/product?slug=not-an-item', '/product?slug=' + 
   const response = await onRequestGet(request(path));
   assert((await response.text()).includes('content="noindex, follow"'));
 }
-assert.equal(await (await serveSitemap(request('/sitemap-products.xml'))).text(), sitemap);
+assert(!JSON.parse(read('_routes.json')).include.includes('/sitemap-products.xml'));
 const untrusted = renderProductHtml(shell, 'fixture', {name: '</script><img src=x onerror="bad()"> $&'});
 assert(untrusted.includes('&lt;/script&gt;'));
 assert(!untrusted.includes('<img src=x'));

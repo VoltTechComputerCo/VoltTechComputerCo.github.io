@@ -48,7 +48,7 @@ for (const [key, records] of Object.entries(shards)) {
   const sorted = Object.fromEntries(Object.entries(records).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0));
   await fs.writeFile(new URL(key + '.json', folder), JSON.stringify(sorted) + '\n');
 }
-await fs.writeFile(new URL('sitemap.xml', folder), '<?xml version="1.0" encoding="UTF-8"?>\n' +
+await fs.writeFile(new URL('../sitemap-products.xml', import.meta.url), '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   urls.sort().map(url => '  <url><loc>' + url + '</loc></url>\n').join('') + '</urlset>\n');
 console.log('Prepared search metadata for ' + urls.length + ' public products.');

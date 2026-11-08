@@ -1,5 +1,5 @@
 {
   "version": 1,
-  "include": ["/product", "/sitemap-products.xml"],
+  "include": ["/product"],
   "exclude": []
 }
