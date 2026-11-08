@@ -200,3 +200,4 @@ html body[data-page="home"] .workbench-card small { color: var(--teal); }
 @media (max-width: 600px) {
   .spotlight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+.retail-rail-brands .rail-controls { display: none; }
