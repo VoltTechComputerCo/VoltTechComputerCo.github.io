@@ -302,3 +302,5 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
   .christmas-kit-total strong { color: var(--teal); font-size: 1.2rem; }
   .christmas-kit-total span { color: var(--text-muted); font-size: .75rem; }
 }
+
+@media (min-width: 960px) { .christmas-kit-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
