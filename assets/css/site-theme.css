@@ -281,24 +281,4 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
   }
 }
 
-@media screen {
-  html[data-season="christmas"] body { isolation: isolate; }
-  html[data-season="christmas"] body::before,
-  html[data-season="christmas"] body::after { z-index: -1; }
-  html[data-season="christmas"] .christmas-kits > .rail-heading {
-    min-height: 104px; padding: 1.15rem 1.3rem 2.1rem;
-    border: 1px solid #6aa5bd; border-radius: 16px;
-    background: var(--winter-lights) repeat-x left bottom / 180px 28px,
-      radial-gradient(ellipse at 90% 0%, #5269a2a0, transparent 52%),
-      linear-gradient(112deg,#0a2235,#17384a 58%,#10263e);
-    box-shadow: 0 0 24px #52cdff35;
-  }
-  html[data-season="christmas"] .christmas-kits > .rail-heading h2 {
-    color: #eefaff; font-size: clamp(1.45rem,3.25vw,2.75rem);
-    text-shadow: 0 0 18px #71c9fd70;
-  }
-  html[data-season="christmas"] .christmas-kits > .rail-heading .eyebrow { color: #a3efff; }
-  .christmas-kit-total { display: flex; gap: .45rem; align-items: baseline; flex-wrap: wrap; }
-  .christmas-kit-total strong { color: var(--teal); font-size: 1.2rem; }
-  .christmas-kit-total span { color: var(--text-muted); font-size: .75rem; }
-}
+@media (min-width: 960px) { .christmas-kit-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
