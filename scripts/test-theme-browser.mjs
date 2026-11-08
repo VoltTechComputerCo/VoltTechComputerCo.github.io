@@ -10,6 +10,25 @@ for(const width of [320,390,1440]){
  await page.route('https://**/*',r=>r.abort());
  // Isolate appearance from account, payment and notification side effects.
  await page.route('**/*.js*',r=>r.request().url().includes('/assets/js/theme.js')?r.continue():r.fulfill({contentType:'application/javascript',body:''}));
+ await page.goto('http://127.0.0.1:4173/index.html');
+ const season = page.getByLabel('Theme', {exact:true});
+ const seasonValue = () => page.evaluate(() => document.documentElement.dataset.season);
+ assert.equal(await season.inputValue(), 'christmas');
+ assert.equal(await seasonValue(), 'christmas');
+ assert.equal(await page.locator('.home-season').isVisible(), true);
+ assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Christmas homepage width '+width);
+ await season.selectOption('original');
+ assert.equal(await seasonValue(), 'original');
+ assert.equal(await page.locator('.home-season').isVisible(), false);
+ await page.goto('http://127.0.0.1:4173/store.html');
+ assert.equal(await season.inputValue(), 'original', 'Original preference persists across routes');
+ await season.selectOption('christmas');
+ await page.locator('[data-theme-toggle]').click();
+ assert.equal(await seasonValue(), 'christmas', 'Dark mode keeps the chosen theme');
+ assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), 'dark');
+ await season.selectOption('original');
+ assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), 'dark', 'Original preserves dark mode');
+ await page.locator('[data-theme-toggle]').click();
  for(const [path,header] of pages){
   await page.goto('http://127.0.0.1:4173/'+path);
   await page.locator('[data-theme-toggle]').waitFor();
