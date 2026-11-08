@@ -83,19 +83,32 @@ export async function loadOverview(client, userId) {
     return Number.isFinite(time) && time < now;
   });
 
-  const jobHref = job => job.href;
   const quoteHref = quote => 'quote.html?id=' + encodeURIComponent(quote.id);
+  const paymentDue = job => job.stage === 'awaiting_payment' && job.payment_status !== 'paid';
   function attentionAction(archived = new Set()) {
-  const openQuotes = waiting.filter(quote => !archived.has(quoteHref(quote)));
-  let action = { tone: 'clear', kicker: 'All clear', title: "You're all caught up.", body: 'No quotes or unpaid invoices currently need your attention.', href: '', label: '' };
-  if (overdue) action = { tone: 'urgent', kicker: 'Payment overdue', title: `Invoice ${overdue.invoice_number} is overdue`, body: 'Please review the invoice and payment details as soon as possible.', href: `invoice.html?id=${encodeURIComponent(overdue.id)}`, label: 'Open overdue invoice' };
-  else if (unpaid.length) action = { tone: 'attention', kicker: 'Payment required', title: `Invoice ${unpaid[0].invoice_number} is awaiting payment`, body: 'Open the invoice to review the amount and payment status.', href: `invoice.html?id=${encodeURIComponent(unpaid[0].id)}`, label: 'Open invoice' };
-  else if (openQuotes.length) action = { tone: 'attention', kicker: 'Decision required', title: `${openQuotes[0].quote_number} is waiting for your decision`, body: openQuotes[0].title || 'VoltTech quotation', href: quoteHref(openQuotes[0]), label: 'Review quote', archivable: true };
+    if (overdue) return { tone: 'urgent', kicker: 'Payment overdue', title: `Invoice ${overdue.invoice_number} is overdue`, body: 'Please review the invoice and payment details as soon as possible.', href: `invoice.html?id=${encodeURIComponent(overdue.id)}`, label: 'Open overdue invoice' };
+    if (unpaid.length) return { tone: 'attention', kicker: 'Payment required', title: `Invoice ${unpaid[0].invoice_number} is awaiting payment`, body: 'Open the invoice to review the amount and payment status.', href: `invoice.html?id=${encodeURIComponent(unpaid[0].id)}`, label: 'Open invoice' };
 
-  const active=(workflow.data||[]).filter(job=>!job.delivered && !archived.has(jobHref(job)));
-  const next=active.find(job=>job.kind==='store'&&(job.stage==='awaiting_payment'||job.stage==='awaiting_approval'))||active.find(job=>job.kind==='store');
-  if(next){const decision=next.stage==='awaiting_approval'&&next.approval==='pending',payment=next.stage==='awaiting_payment'&&next.payment_status!=='paid';action={tone:decision||payment?'attention':'clear',kicker:decision?'Quote ready':payment?'Payment required':'Order update',title:next.reference,body:next.latest_update||(decision?'Your quote is ready for review.':payment?'Open your order workspace to complete payment.':'Your order is progressing. View its latest status.'),href:jobHref(next),label:'Open order workspace',archivable:!payment};}
-    return action;
+    const orders = (workflow.data || []).filter(job => job.kind === 'store' && !job.delivered);
+    const payable = orders.find(paymentDue);
+    const visible = orders.filter(job => !archived.has(job.href));
+    const next = payable || visible.find(job => job.stage === 'awaiting_approval') || visible[0];
+    if (next) {
+      const decision = next.stage === 'awaiting_approval' && next.approval === 'pending';
+      const payment = paymentDue(next);
+      return {
+        tone: decision || payment ? 'attention' : 'clear',
+        kicker: decision ? 'Quote ready' : payment ? 'Payment required' : 'Order update',
+        title: next.reference,
+        body: next.latest_update || (decision ? 'Your quote is ready for review.' : payment ? 'Open your order workspace to complete payment.' : 'Open your order workspace for the latest status.'),
+        href: next.href,
+        label: 'Open order workspace',
+        archivable: !payment
+      };
+    }
+    const quote = waiting.find(row => !archived.has(quoteHref(row)));
+    if (quote) return { tone: 'attention', kicker: 'Decision required', title: `${quote.quote_number} is waiting for your decision`, body: quote.title || 'VoltTech quotation', href: quoteHref(quote), label: 'Review quote', archivable: true };
+    return { tone: 'clear', kicker: 'All clear', title: "You're all caught up.", body: 'No quotes or unpaid invoices currently need your attention.', href: '', label: '' };
   }
   return {
     counts: { builds, quotes, invoices, orders:orders==null?null:orders+(workflow.data||[]).filter(job=>job.kind==='store').length, jobs },
