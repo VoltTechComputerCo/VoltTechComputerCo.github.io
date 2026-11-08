@@ -6,7 +6,31 @@
     <description>Breaking tech and gaming stories, PC hardware, performance, security and enthusiast culture from STATIC by VoltTech Computer Co.</description>
     <language>en</language>
     <atom:link href="https://volttechcomputerco.co.za/static-feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Thu, 08 Oct 2026 10:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 11:00:00 +0200</lastBuildDate>
+    <item>
+      <title>DLSS 5 Just Got Twice as Fast. Is It Better?</title>
+      <link>https://volttechcomputerco.co.za/static-nvidia-dlss-5-october-update-twice-as-fast.html</link>
+      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-nvidia-dlss-5-october-update-twice-as-fast.html</guid>
+      <pubDate>Wed, 14 Oct 2026 11:00:00 +0200</pubDate>
+      <description>NVIDIA says its October DLSS 5 model halves GPU overhead and uses 20% less 4K VRAM. Here is what is confirmed, when games get it, and the art-style debate.</description>
+      <media:content url="https://images.nvidia.com/aem-dam/Solutions/geforce/news/dlss-5-faster-ai-model-hogwarts-legacy-rtx-spark-laptops/dlss-5-faster-ai-model-hogwarts-legacy-rtx-spark-laptops-og.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Dragon's Dogma 2 Returns With a Frozen New Nightmare</title>
+      <link>https://volttechcomputerco.co.za/static-dragons-dogma-2-dark-arisen-norgan-dlc-2026.html</link>
+      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-dragons-dogma-2-dark-arisen-norgan-dlc-2026.html</guid>
+      <pubDate>Mon, 12 Oct 2026 10:55:00 +0200</pubDate>
+      <description>Dragon's Dogma 2: Dark Arisen is out now. Explore Norgan, the Fallen Dragon, 12 Lost Rites dungeons, PC and console availability, and what the expansion changes.</description>
+      <media:content url="https://image.api.playstation.com/vulcan/ap/rnd/202606/1204/2a0b4062ceb638943301e853cbcaeda55c964a810c18262b.jpg" medium="image" />
+    </item>
+    <item>
+      <title>AMD Says FSR 4 Is Coming to Handhelds. Which Ones?</title>
+      <link>https://volttechcomputerco.co.za/static-amd-fsr-4-handhelds-apu-support-2026.html</link>
+      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-amd-fsr-4-handhelds-apu-support-2026.html</guid>
+      <pubDate>Sat, 10 Oct 2026 10:00:00 +0200</pubDate>
+      <description>AMD says FSR 4 will expand to handhelds and APUs before 2027. What is confirmed, which devices are not confirmed, and why image quality per watt matters.</description>
+      <media:content url="https://press.asus.com/assets/w_1024%2Ch_1024/b5e77f8e-14a0-4a89-9b16-d331c2f374e9/ROG%20Xbox%20Ally%20X%20%283%29.jpg" medium="image" />
+    </item>
     <item>
       <title>NVIDIA Just Entered the Windows CPU War</title>
       <link>https://volttechcomputerco.co.za/static-nvidia-rtx-spark-surface-laptop-ultra-price-gaming.html</link>
@@ -143,30 +167,5 @@
       <description>Valheim 1.0 arrives September 9 with the Deep North, achievements, PS5 and Switch 2 support, full crossplay and a new $29.99 price.</description>
       <media:content url="https://a.storyblok.com/f/157036/2560x1440/ed87ecf070/news-1.jpg" medium="image" />
     </item>
-    <item>
-      <title>Zelda Turns 40 Today — Nintendo Has 30 Minutes to Define Its Next Era</title>
-      <link>https://volttechcomputerco.co.za/static-zelda-40th-anniversary-direct-today</link>
-      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-zelda-40th-anniversary-direct-today</guid>
-      <pubDate>Tue, 08 Sep 2026 09:00:00 +0200</pubDate>
-      <description>Nintendo marks The Legend of Zelda's 40th anniversary with a dedicated 30-minute Direct today. Here is what is confirmed, what is not, and why the timing matters.</description>
-      <media:content url="https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000063714/ca80e4d9f7ddc2971daea8d9b9144c42dbdf2245c3546f41b94a740067bd42a0" medium="image" />
-    </item>
-    <item>
-      <title>DLSS 5 Is Here — And It Is Starting to Change What ‘Rendering’ Means</title>
-      <link>https://volttechcomputerco.co.za/static-dlss-5-nba-2k27-neural-rendering</link>
-      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-dlss-5-nba-2k27-neural-rendering</guid>
-      <pubDate>Mon, 07 Sep 2026 09:00:00 +0200</pubDate>
-      <description>NBA 2K27 is the first shipping game with Nvidia's DLSS 5 3D-Guided Neural Rendering. Instead of only reconstructing pixels, the model can alter lighting and material appearance under developer control.</description>
-      <media:content url="https://www.nvidia.com/content/dam/en-zz/nvidiaweb/geforce/news/dlss-5-3d-guided-neural-rendering/nba-2k27-nvidia-dlss-5-comparison-001-on.jpg" medium="image" />
-    </item>
-    <item>
-      <title>The LEGO PlayStation Is 1,911 Pieces of Weaponised Nostalgia</title>
-      <link>https://volttechcomputerco.co.za/static-lego-playstation-1911-piece</link>
-      <guid isPermaLink="true">https://volttechcomputerco.co.za/static-lego-playstation-1911-piece</guid>
-      <pubDate>Mon, 07 Sep 2026 09:00:00 +0200</pubDate>
-      <description>Sony and LEGO have turned the original PlayStation into a near-1:1-scale 1,911-piece display set, complete with a wired controller, working buttons and tiny Ape Escape and Gran Turismo dioramas.</description>
-      <media:content url="https://blog.playstation.com/uploads/2026/09/0a31c1fe4b3c9833dd02bb034112a5d9f0312720.jpg" medium="image" />
-    </item>
-      <item><title>Dragon's Dogma 2 Returns With a Frozen New Nightmare</title><link>https://volttechcomputerco.co.za/static-dragons-dogma-2-dark-arisen-norgan-dlc-2026.html</link><guid isPermaLink="true">https://volttechcomputerco.co.za/static-dragons-dogma-2-dark-arisen-norgan-dlc-2026.html</guid><pubDate>Mon, 12 Oct 2026 08:55:00 GMT</pubDate><description>Dark Arisen launches with Norgan, the Fallen Dragon and twelve Lost Rites dungeons. STATIC breaks down the new expansion.</description></item>
-  <item><title>NVIDIA DLSS 5 Is Twice as Fast: October 2026 Update Explained</title><link>https://volttechcomputerco.co.za/static-nvidia-dlss-5-october-update-twice-as-fast.html</link><guid isPermaLink="true">https://volttechcomputerco.co.za/static-nvidia-dlss-5-october-update-twice-as-fast.html</guid><pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate><description>NVIDIA says its updated DLSS 5 model halves GPU overhead and cuts 4K VRAM use by 20%. STATIC examines performance claims and artistic intent.</description></item></channel>
+  </channel>
 </rss>
