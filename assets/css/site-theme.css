@@ -190,3 +190,13 @@ html body[data-page="home"] .workbench-card small { color: var(--teal); }
 }
 .retail-rail-brands .rail-track::-webkit-scrollbar { display: none; }
 .retail-rail-brands .rail-track.is-dragging, .retail-rail-brands .rail-track.is-dragging a { cursor: grabbing; }
+.spotlight-shop { color: var(--teal); font-weight: 700; font-size: .82rem; text-align: right; }
+.spotlight-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 175px), 1fr)); gap: clamp(8px, 1vw, 16px); }
+.spotlight-grid .rail-product { width: auto; min-width: 0; text-decoration: none; }
+.spotlight-grid .rail-product:is(:hover,:focus-visible) { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal); }
+.spotlight-grid .catalogue-media { position: relative; aspect-ratio: 4 / 3; }
+.spotlight-grid .catalogue-media img { position: absolute; inset: 0; max-height: none; padding: clamp(8px, 1.2vw, 18px); }
+.spotlight-grid .rail-product-copy { flex: 1; grid-template-rows: auto 1fr auto; align-content: stretch; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .spotlight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
