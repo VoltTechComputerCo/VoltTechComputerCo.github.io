@@ -4,7 +4,7 @@ import { publicProductSlug, normalizeProductAddress } from './product-permalinks
 import { readPublicCatalogue } from './public-catalogue.js?v=20261102-gpu3';
 import { readLaunchSettings } from './home-integrations.js?v=20261102-failover1';
 import { publicCatalogueOnly } from './site-config.js?v=20261107-static1';
-import { esc, imageMarkup, bindImages, filterProducts } from '../components/catalogue-view.js?v=20261103-slugs1';
+import { esc, imageMarkup, bindImages, filterProducts, jumpToCatalogueResults } from '../components/catalogue-view.js?v=20261103-slugs1';
 
 const WA='https://wa.me/27618435775?text=';
 const ENQUIRY='Hi VoltTech, I would like to place an order or request a quote. Please help me with current pricing, stock and delivery.';
@@ -72,7 +72,7 @@ function stockAgeIsFresh(product){
  return age>=0 && age<10*3600000;
 }
 const zar=new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR'});
-const listedPrice=product=>product.retail_price===null?'':`<p class="catalogue-price"><strong>${esc(zar.format(product.retail_price))}</strong> <span class="micro">Listed price</span></p>`;
+const listedPrice=product=>product.retail_price===null?'':`<p class="catalogue-price"><strong>${esc(zar.format(product.retail_price))}</strong> <span class="listed-price-label">Listed price</span></p>`;
 function availabilityCopy(product){
  if(stockAgeIsFresh(product) && outOfStock(product))
   return 'Out of stock. Contact us for restock information.';
@@ -149,7 +149,7 @@ export async function showEmergencyStore(state){
  document.getElementById('reset-filters')?.addEventListener('click',()=>{state.category='all';state.filters={};state.search='';state.sort='featured';state.page=1;searchInput.value='';sort.value='featured';render();});
  render();
  if(location.hash==='#catalogue' || ['category','brand','q'].some(key=>new URLSearchParams(location.search).get(key)))
-  requestAnimationFrame(()=>grid.scrollIntoView({block:'start',behavior:'instant'}));
+  requestAnimationFrame(()=>jumpToCatalogueResults(grid));
  monitorRecovery();
 }
 
