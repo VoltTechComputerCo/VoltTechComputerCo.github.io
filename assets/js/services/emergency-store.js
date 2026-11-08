@@ -61,6 +61,16 @@ function monitorRecovery(){
  window.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')check();});
 }
 
+function availabilityCopy(product){
+ const age=Date.now()-Date.parse(product.supplier_stock_checked_at || product.price_checked_at || '');
+ const status=String(product.stock_status || '').replaceAll('_','-').toLowerCase();
+ if(age>=0 && age<10*3600000 && (status==='out-of-stock' || product.stock_qty===0))
+  return 'Out of stock. Contact us for restock information.';
+ if(product.supplier_stock_checked_at && age>=0 && age<10*3600000 && product.stock_qty>0)
+  return 'Supplier stock available. Confirm availability when ordering.';
+ return 'Contact us for current pricing and availability.';
+}
+
 function card(product){
  const message=enquiryLink(product);
  const detail='product.html?slug='+encodeURIComponent(publicProductSlug(product));
@@ -69,7 +79,7 @@ function card(product){
  <div class="catalogue-card-body">
  <p class="eyebrow">${esc(product.brand||'VoltTech')} / ${esc(product.category_slug||product.type||'PC components')}</p>
  <h3><a href="${esc(detail)}">${esc(product.name)}</a></h3>
- <p class="micro">Current price and availability confirmed personally.</p>
+ <p class="micro">${esc(availabilityCopy(product))}</p>
  <div class="actions"><a class="button" href="${esc(message)}" target="_blank" rel="noopener noreferrer">ENQUIRE ON WHATSAPP →</a><a class="button button-secondary" href="${esc(detail)}">Details</a></div>
  </div></article>`;
 }
@@ -143,7 +153,7 @@ export async function showEmergencyProduct(slug){
  if(host){
   host.hidden=false;host.dataset.mode='enquiry';
   const specs=Object.entries(product.specs||{}).filter(([key,value])=>typeof value==='string'||typeof value==='number').filter(([,value])=>String(value).length<160).slice(0,8);
-  host.innerHTML=`<div class="component-overview"><div class="component-showcase">${imageMarkup(product,true)}</div><div class="component-summary"><p class="eyebrow">${esc(product.brand||'VoltTech')}</p><h2>${esc(product.name)}</h2><p>Current price and supplier availability are confirmed on enquiry. No payment is being taken through this page.</p>${specs.length?`<dl class="component-specs">${specs.map(([key,value])=>`<div><dt>${esc(key.replace(/_/g,' '))}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`:''}<a class="button" href="${esc(enquiryLink(product))}" target="_blank" rel="noopener noreferrer">ENQUIRE ABOUT THIS PRODUCT ON WHATSAPP →</a></div></div>`;
+  host.innerHTML=`<div class="component-overview"><div class="component-showcase">${imageMarkup(product,true)}</div><div class="component-summary"><p class="eyebrow">${esc(product.brand||'VoltTech')}</p><h2>${esc(product.name)}</h2><p>${esc(availabilityCopy(product))}</p>${specs.length?`<dl class="component-specs">${specs.map(([key,value])=>`<div><dt>${esc(key.replace(/_/g,' '))}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`:''}<a class="button" href="${esc(enquiryLink(product))}" target="_blank" rel="noopener noreferrer">ENQUIRE ABOUT THIS PRODUCT ON WHATSAPP →</a></div></div>`;
   bindImages(host);
  }
  const label=document.getElementById('component-label'),title=document.getElementById('component-title');
