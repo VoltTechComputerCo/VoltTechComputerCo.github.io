@@ -164,7 +164,7 @@ html[data-season="original"] :is(.home-season,.rail-campaign[href="#season-title
 
 /* Keep the subject in frame as the homepage expands on larger screens. */
 html body[data-page="home"] .hero-art { object-fit: contain; object-position: right center; }
-html body[data-page="home"] :is(.home-stream,.home-creator) .stream-visual img {
+html body[data-page="home"] .home-stream .stream-feature .stream-visual img {
   width: 100%; height: auto; min-height: 0; max-height: 480px;
   aspect-ratio: auto; object-fit: contain; object-position: center;
 }
@@ -185,3 +185,8 @@ html body[data-page="home"] .workbench-card small { color: var(--teal); }
   html body[data-page="home"] .hero-art { object-position: center bottom; }
   html body[data-page="home"] .workbench-grid { grid-template-columns: 1fr; }
 }
+.retail-rail-brands .rail-track {
+  scroll-snap-type: none; scrollbar-width: none; cursor: grab; user-select: none;
+}
+.retail-rail-brands .rail-track::-webkit-scrollbar { display: none; }
+.retail-rail-brands .rail-track.is-dragging, .retail-rail-brands .rail-track.is-dragging a { cursor: grabbing; }
