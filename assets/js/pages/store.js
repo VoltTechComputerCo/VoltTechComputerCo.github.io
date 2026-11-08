@@ -157,7 +157,8 @@ async function openRequestedCart(){
     const { checkoutAccess }=await import('../services/transactions.js?v=20261021.3');
     const { VT }=await checkoutAccess();
     if(VT) { connectCatalogueCart(VT,[],false,{allowEnquiryFallback:false}); return; }
-  }catch{ /* Catalogue browsing remains available when checkout cannot connect. */ }
+  }catch{ /* Report the unavailable cart below. */ }
+  notify('Your cart is temporarily unavailable. Please try again shortly.');
 }
 
 async function init(){
