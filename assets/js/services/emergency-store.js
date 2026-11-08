@@ -1,6 +1,6 @@
 import { publicProductSlug, normalizeProductAddress } from './product-permalinks.js?v=20261103-slugs1';
 // Independent, read-only fallback. No Supabase SDK or customer account is required.
-// Public catalogue snapshots can be stale: never present their price/stock as current.
+// Show reference prices only when the public snapshot and supplier stock are fresh.
 import { readPublicCatalogue } from './public-catalogue.js?v=20261102-gpu3';
 import { readLaunchSettings } from './home-integrations.js?v=20261102-failover1';
 import { publicCatalogueOnly } from './site-config.js?v=20261107-static1';
@@ -32,7 +32,12 @@ function emergencyNotice(title,description,product=null){
 async function snapshotProducts(){
  const snapshot=await readPublicCatalogue(fetch,true);
  if(!snapshot||snapshot.settings?.catalogue_enabled===false)return [];
- return snapshot.products.filter(publicProduct);
+ const freshSnapshot=await readPublicCatalogue();
+ return snapshot.products.filter(publicProduct).map(product=>{
+  const price=Number(product.retail_price);
+  const listed=freshSnapshot && stockAgeIsFresh(product) && product.stock_qty>0 && !outOfStock(product) && product.currency==='ZAR' && Number.isFinite(price) && price>0;
+  return {...product,retail_price:listed?price:null};
+ });
 }
 export function monitorStoreConnection(){
  if(publicCatalogueOnly)return;
@@ -61,12 +66,17 @@ function monitorRecovery(){
  window.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')check();});
 }
 
-function availabilityCopy(product){
+const outOfStock=product=>String(product.stock_status || '').replaceAll('_','-').toLowerCase()==='out-of-stock' || product.stock_qty===0;
+function stockAgeIsFresh(product){
  const age=Date.now()-Date.parse(product.supplier_stock_checked_at || product.price_checked_at || '');
- const status=String(product.stock_status || '').replaceAll('_','-').toLowerCase();
- if(age>=0 && age<10*3600000 && (status==='out-of-stock' || product.stock_qty===0))
+ return age>=0 && age<10*3600000;
+}
+const zar=new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR'});
+const listedPrice=product=>product.retail_price===null?'':`<p class="catalogue-price"><strong>${esc(zar.format(product.retail_price))}</strong> <span class="micro">Listed price</span></p>`;
+function availabilityCopy(product){
+ if(stockAgeIsFresh(product) && outOfStock(product))
   return 'Out of stock. Contact us for restock information.';
- if(product.supplier_stock_checked_at && age>=0 && age<10*3600000 && product.stock_qty>0)
+ if(product.retail_price!==null || (product.supplier_stock_checked_at && stockAgeIsFresh(product) && product.stock_qty>0))
   return 'Supplier stock available. Confirm availability when ordering.';
  return 'Contact us for current pricing and availability.';
 }
@@ -79,7 +89,7 @@ function card(product){
  <div class="catalogue-card-body">
  <p class="eyebrow">${esc(product.brand||'VoltTech')} / ${esc(product.category_slug||product.type||'PC components')}</p>
  <h3><a href="${esc(detail)}">${esc(product.name)}</a></h3>
- <p class="micro">${esc(availabilityCopy(product))}</p>
+ ${listedPrice(product)}<p class="micro">${esc(availabilityCopy(product))}</p>
  <div class="actions"><a class="button" href="${esc(message)}" target="_blank" rel="noopener noreferrer">ENQUIRE ON WHATSAPP →</a><a class="button button-secondary" href="${esc(detail)}">Details</a></div>
  </div></article>`;
 }
@@ -117,8 +127,6 @@ export async function showEmergencyStore(state){
   }
  }
  const searchInput=search;searchInput.value=state.search||'';
- for(const option of sort.options){if(option.value.startsWith('price-')){option.disabled=true;option.hidden=true;}}
- if(state.sort.startsWith('price-'))state.sort='featured';
  sort.value=state.sort;
  const pager=document.createElement('nav');
  pager.className='catalogue-page-controls';
@@ -140,6 +148,8 @@ export async function showEmergencyStore(state){
  pager.addEventListener('click',event=>{const button=event.target.closest('[data-offline-page]');if(!button||button.disabled)return;state.page+=button.dataset.offlinePage==='next'?1:-1;render();catalogue.scrollIntoView({block:'start'});});
  document.getElementById('reset-filters')?.addEventListener('click',()=>{state.category='all';state.filters={};state.search='';state.sort='featured';state.page=1;searchInput.value='';sort.value='featured';render();});
  render();
+ if(location.hash==='#catalogue' || ['category','brand','q'].some(key=>new URLSearchParams(location.search).get(key)))
+  requestAnimationFrame(()=>grid.scrollIntoView({block:'start',behavior:'instant'}));
  monitorRecovery();
 }
 
@@ -153,7 +163,7 @@ export async function showEmergencyProduct(slug){
  if(host){
   host.hidden=false;host.dataset.mode='enquiry';
   const specs=Object.entries(product.specs||{}).filter(([key,value])=>typeof value==='string'||typeof value==='number').filter(([,value])=>String(value).length<160).slice(0,8);
-  host.innerHTML=`<div class="component-overview"><div class="component-showcase">${imageMarkup(product,true)}</div><div class="component-summary"><p class="eyebrow">${esc(product.brand||'VoltTech')}</p><h2>${esc(product.name)}</h2><p>${esc(availabilityCopy(product))}</p>${specs.length?`<dl class="component-specs">${specs.map(([key,value])=>`<div><dt>${esc(key.replace(/_/g,' '))}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`:''}<a class="button" href="${esc(enquiryLink(product))}" target="_blank" rel="noopener noreferrer">ENQUIRE ABOUT THIS PRODUCT ON WHATSAPP →</a></div></div>`;
+  host.innerHTML=`<div class="component-overview"><div class="component-showcase">${imageMarkup(product,true)}</div><div class="component-summary"><p class="eyebrow">${esc(product.brand||'VoltTech')}</p><h2>${esc(product.name)}</h2>${listedPrice(product)}<p>${esc(availabilityCopy(product))}</p>${specs.length?`<dl class="component-specs">${specs.map(([key,value])=>`<div><dt>${esc(key.replace(/_/g,' '))}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`:''}<a class="button" href="${esc(enquiryLink(product))}" target="_blank" rel="noopener noreferrer">ENQUIRE ABOUT THIS PRODUCT ON WHATSAPP →</a></div></div>`;
   bindImages(host);
  }
  const label=document.getElementById('component-label'),title=document.getElementById('component-title');
