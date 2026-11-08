@@ -140,8 +140,7 @@ function rail(title, kicker, cards, variant) {
   region.innerHTML = `<div class="rail-heading"><div><p class="eyebrow">${esc(kicker)}</p><h2>${esc(title)}</h2></div><div class="rail-controls"><button type="button" data-prev aria-label="Previous ${esc(title)}">←</button><button type="button" data-next aria-label="Next ${esc(title)}">→</button><button type="button" data-pause aria-label="Pause ${esc(title)}">Pause</button></div></div><div class="rail-track">${cards.join('')}</div>`;
   const track = region.querySelector('.rail-track');
   const pause = region.querySelector('[data-pause]');
-  const preference = matchMedia('(prefers-reduced-motion: reduce)');
-  let paused = variant !== 'brands' && preference.matches;
+  let paused = false;
   let onScreen = false;
   function updatePause() {
     const label = paused ? 'Play' : 'Pause';
@@ -156,12 +155,11 @@ function rail(title, kicker, cards, variant) {
     const position = direction > 0 && track.scrollLeft >= end - 2 ? 0
       : direction < 0 && track.scrollLeft <= 2 ? end
       : track.scrollLeft + direction * (first.getBoundingClientRect().width + gap);
-    track.scrollTo({ left: position, behavior: preference.matches ? 'instant' : 'smooth' });
+    track.scrollTo({ left: position, behavior: 'smooth' });
   }
   region.querySelector('[data-prev]').addEventListener('click', () => step(-1));
   region.querySelector('[data-next]').addEventListener('click', () => step(1));
   pause.addEventListener('click', () => { paused = !paused; updatePause(); });
-  if (variant !== 'brands') preference.addEventListener('change', event => { paused = event.matches; updatePause(); });
   updatePause();
   const observer = new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; });
   observer.observe(region);
