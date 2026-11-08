@@ -312,3 +312,47 @@ html body[data-page=home] .home-creator .stream-feature {
   background: linear-gradient(125deg, color-mix(in srgb, var(--retail-purple) 13%, var(--retail-surface)), var(--retail-surface) 65%);
 }
 html body[data-page=home] .home-creator .stream-visual img { aspect-ratio: 16 / 10; object-fit: cover; }
+
+/* Use the available browser width while retaining readable text measures. */
+@media screen {
+  html body[data-page] { --gutter: clamp(14px, 2.6vw, 56px); }
+  html body[data-page] .container { width: 100%; max-width: none; }
+  html body[data-page=home] :is(.home-hero,.home-stream) { width: calc(100% - 2 * var(--gutter)); max-width: none; }
+}
+.retail-rail { min-width: 0; color: var(--retail-ink); }
+.retail-rail-brands { padding-block: 16px 12px; border-bottom: 1px solid var(--retail-line); }
+.rail-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.rail-heading h2 { margin: 0; font-size: clamp(1.05rem, 2vw, 1.5rem); }
+.rail-heading .eyebrow { margin: 0 0 4px; color: var(--teal); }
+.rail-controls { display: flex; gap: 5px; flex-shrink: 0; }
+.rail-controls button { min-width: 42px; min-height: 40px; padding-inline: 8px; border: 1px solid var(--retail-line); border-radius: 7px; background: var(--retail-soft); color: var(--retail-ink); font-size: 12px; cursor: pointer; }
+.rail-controls button:is(:hover,:focus-visible) { border-color: var(--teal); }
+.rail-track { display: flex; gap: 12px; min-width: 0; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; padding: 5px 5px 10px; }
+.rail-track > a { flex: 0 0 auto; scroll-snap-align: start; scroll-margin-inline-start: 5px; text-decoration: none; }
+.rail-brand { display: grid; place-items: center; width: clamp(144px, 13vw, 190px); min-height: 76px; padding: 5px 10px; border: 1px solid var(--retail-line); border-radius: 9px; background: #fff; }
+.rail-brand img { width: min(100%,148px); height: 62px; object-fit: contain; }
+.rail-track > a:hover { border-color: var(--teal); }
+.home-retail-shelves { display: grid; grid-template-columns: minmax(0, 1fr) minmax(290px, 25%); gap: clamp(14px, 2vw, 32px); padding-block: clamp(18px, 3vw, 38px); }
+.home-retail-shelves > :only-child { grid-column: 1 / -1; }
+.retail-rail-products, .retail-side { padding: clamp(12px, 1.5vw, 24px); border: 1px solid var(--retail-line); border-radius: 14px; background: var(--retail-surface); box-shadow: var(--retail-shadow); min-width: 0; }
+.rail-product { display: flex; flex-direction: column; width: clamp(175px, 15vw, 270px); overflow: hidden; color: var(--retail-ink); border: 1px solid var(--retail-line); border-radius: 10px; background: var(--retail-soft); }
+.rail-product .catalogue-media { display: grid; place-items: center; margin: 0; aspect-ratio: 4 / 3; background: #fff; }
+.rail-product .catalogue-media img { width: 100%; height: 100%; object-fit: contain; max-height: 178px; padding: 9px; }
+.rail-product-copy { display: grid; align-content: start; gap: 7px; padding: 12px; font-size: 13px; line-height: 1.4; }
+.rail-product-copy small { color: var(--retail-muted); }
+.rail-product-copy > span { color: var(--teal); }
+.retail-side { display: grid; align-content: start; gap: 13px; }
+.rail-campaign { display: grid; align-content: center; gap: 4px; width: 100%; min-height: 92px; padding: 14px; border: 1px solid var(--retail-line); border-radius: 10px; background: var(--retail-soft); color: var(--retail-ink); }
+.rail-season { background: color-mix(in srgb, #bd9851 18%, var(--retail-surface)); }
+.rail-campaign span, .retail-shortcuts small { font-size: 12px; color: var(--retail-muted); }
+.retail-shortcuts { display: grid; gap: 8px; }
+.retail-shortcuts a { display: grid; gap: 2px; padding: 10px 13px; border: 1px solid var(--retail-line); border-radius: 9px; color: var(--retail-purple); background: color-mix(in srgb, var(--retail-purple) 8%, var(--retail-surface)); text-decoration: none; }
+.retail-shortcuts a:hover { border-color: var(--retail-purple); }
+@media (max-width: 940px) {
+  .home-retail-shelves { grid-template-columns: minmax(0, 1fr); }
+  .retail-shortcuts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rail-campaign { width: min(240px, 78%); }
+}
+@media (min-width: 1550px) {
+  html body[data-page=store] #product-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+}
