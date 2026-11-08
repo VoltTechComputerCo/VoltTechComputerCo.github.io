@@ -103,7 +103,6 @@ html body .vt-season-bar select {
   padding: 0 .25rem; border: 1px solid var(--border-strong); border-radius: 6px;
   font: 600 .72rem/1.1 var(--font-ui,system-ui); cursor: pointer;
 }
-html[data-season="original"] :is(.home-season,.rail-campaign[href="#season-title"]) { display: none !important; }
 @media print { .vt-season-bar { display: none !important; } }
 
 @media screen {
@@ -111,12 +110,17 @@ html[data-season="original"] :is(.home-season,.rail-campaign[href="#season-title
     --winter-lights: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20224%2034%22%20width%3D%22224%22%20height%3D%2234%22%3E%3Cdefs%3E%3Cfilter%20id%3D%22b%22%20x%3D%22-120%25%22%20y%3D%22-120%25%22%20width%3D%22340%25%22%20height%3D%22340%25%22%3E%3CfeGaussianBlur%20stdDeviation%3D%223.2%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cpath%20d%3D%22M0%204Q56%2023%20112%204q56%2019%20112%200%22%20fill%3D%22none%22%20stroke%3D%22%237ea3bc%22%20stroke-opacity%3D%22.8%22%2F%3E%3Cg%3E%3Cpath%20d%3D%22M24%209v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%2224%22%20cy%3D%2216%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23ff537e%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%2221.9%22%20y%3D%2213%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%23ff537e%22%2F%3E%3Cellipse%20cx%3D%2223.3%22%20cy%3D%2214.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M57%2014v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%2257%22%20cy%3D%2221%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%234aebff%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%2254.9%22%20y%3D%2218%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%234aebff%22%2F%3E%3Cellipse%20cx%3D%2256.3%22%20cy%3D%2219.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M94%209v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%2294%22%20cy%3D%2216%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%238dff81%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%2291.9%22%20y%3D%2213%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%238dff81%22%2F%3E%3Cellipse%20cx%3D%2293.3%22%20cy%3D%2214.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M132%209v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%22132%22%20cy%3D%2216%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23ffc65c%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%22129.9%22%20y%3D%2213%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%23ffc65c%22%2F%3E%3Cellipse%20cx%3D%22131.3%22%20cy%3D%2214.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M168%2014v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%22168%22%20cy%3D%2221%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23b18aff%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%22165.9%22%20y%3D%2218%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%23b18aff%22%2F%3E%3Cellipse%20cx%3D%22167.3%22%20cy%3D%2219.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M202%209v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%22202%22%20cy%3D%2216%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23ff537e%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%22199.9%22%20y%3D%2213%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%23ff537e%22%2F%3E%3Cellipse%20cx%3D%22201.3%22%20cy%3D%2214.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
     --winter-frost: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2058%20172%22%20width%3D%2258%22%20height%3D%22172%22%3E%3Cg%20fill%3D%22%237eb7dc%22%3E%3Ccircle%20cx%3D%224%22%20cy%3D%2210%22%20r%3D%221%22%20opacity%3D%22.46%22%2F%3E%3Ccircle%20cx%3D%2221%22%20cy%3D%2247%22%20r%3D%221.8%22%20opacity%3D%22.32%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2295%22%20r%3D%222.3%22%20opacity%3D%22.22%22%2F%3E%3Ccircle%20cx%3D%2236%22%20cy%3D%2271%22%20r%3D%22.9%22%20opacity%3D%22.31%22%2F%3E%3Ccircle%20cx%3D%228%22%20cy%3D%22139%22%20r%3D%221.4%22%20opacity%3D%22.54%22%2F%3E%3Ccircle%20cx%3D%2239%22%20cy%3D%22155%22%20r%3D%221.7%22%20opacity%3D%22.24%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%238ec8e6%22%20opacity%3D%22.44%22%20stroke-width%3D%22.8%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M15%2022v16m-6.93-12%2013.86%208m0-8-13.86%208m6.93-9-2-1m2%201%202-1m-2%2010-2%201m2-1%202%201%22%2F%3E%3Cpath%20d%3D%22M23%20110v12m-5.2-9%2010.4%206m0-6-10.4%206%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
   }
-  html[data-season="christmas"][data-theme] body {
-    background-image: var(--winter-frost), var(--winter-frost) !important;
-    background-position: left top, right 68px !important;
-    background-repeat: repeat-y !important;
-    background-size: clamp(10px,2.4vw,46px) auto !important;
+  html[data-season="christmas"] body::before,
+  html[data-season="christmas"] body::after {
+    content: ""; position: fixed; top: 0; bottom: 0; z-index: 1;
+    width: clamp(12px, 2.5vw, 46px); pointer-events: none;
+    background: var(--winter-frost) repeat-y center 0 / 100% 172px;
+    animation: vt-snowfall 10s linear infinite;
   }
+  html[data-season="christmas"] body::before { left: 0; }
+  html[data-season="christmas"] body::after { right: 0; animation-duration: 14s; animation-delay: -7s; }
+  @keyframes vt-snowfall { to { background-position-y: 172px; } }
+  @keyframes vt-neon-glow { 50% { filter: brightness(1.32) saturate(1.2); } }
   html[data-season="christmas"] .vt-season-bar {
     background: linear-gradient(90deg,#07131e,#142739 62%,#0a1725);
     border-bottom: 1px solid #28465b;
@@ -124,6 +128,7 @@ html[data-season="original"] :is(.home-season,.rail-campaign[href="#season-title
   html[data-season="christmas"] .vt-season-bar::before {
     content: ""; flex: 1; align-self: stretch; min-width: 0;
     background: var(--winter-lights) repeat-x left center / 190px 29px;
+    animation: vt-neon-glow 6s ease-in-out infinite;
   }
   html[data-season="christmas"][data-theme] body .vt-season-bar select {
     background: #152b3d !important; color: #ecf8ff !important; border-color: #53768d !important;
@@ -133,33 +138,7 @@ html[data-season="original"] :is(.home-season,.rail-campaign[href="#season-title
     border-top-color: #507c9b !important;
     box-shadow: inset 0 2px #9edaff4d !important;
   }
-  html[data-season="christmas"] #season-title { scroll-margin-top: 2rem; }
-  html[data-season="christmas"] .home-season > .container {
-    position: relative; overflow: hidden;
-    width: calc(100% - 2 * var(--gutter)); padding: clamp(1rem,3vw,2.5rem);
-    padding-top: calc(36px + clamp(1rem,2vw,1.6rem));
-    border: 1px solid #b4d0e2; border-radius: 16px;
-    background: linear-gradient(140deg,#eff8ff,#f8fcff 60%,#e6f2ff);
-    box-shadow: 0 13px 34px #17334b17;
-  }
-  html[data-season="christmas"][data-theme="dark"] .home-season > .container {
-    background: linear-gradient(140deg,#132538,#0c1927 60%,#142c3c); border-color: #315771;
-  }
-  html[data-season="christmas"] .home-season > .container::before {
-    content: ""; position: absolute; inset: 0 0 auto; height: 34px; pointer-events: none;
-    background: var(--winter-lights) repeat-x left top / 224px 34px, #081725;
-    border-bottom: 1px solid #34586f;
-  }
-  html[data-season="christmas"] .season-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(.75rem,2vw,1.4rem); }
-  html[data-season="christmas"] .home-season .season-card {
-    display: grid; grid-template-rows: auto 1fr auto; gap: .6rem; padding: clamp(1rem,2vw,1.5rem);
-    border: 1px solid var(--border); border-top: 3px solid #63b4d8; border-radius: 10px;
-  }
-  html[data-season="christmas"] .season-card :is(h3,p) { margin: 0; }
-  html[data-season="christmas"] .season-card a { justify-self: start; }
-  @media (max-width: 700px) {
-    html[data-season="christmas"] .season-grid { grid-template-columns: 1fr; }
-  }
+
 }
 
 /* Keep the subject in frame as the homepage expands on larger screens. */
