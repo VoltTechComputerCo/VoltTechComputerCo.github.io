@@ -158,7 +158,7 @@ async function openRequestedCart(){
   try{
     const { checkoutAccess }=await import('../services/transactions.js?v=20261021.3');
     const { VT }=await checkoutAccess();
-    if(VT) connectCatalogueCart(VT,[],false);
+    if(VT) connectCatalogueCart(VT,[],false,{allowEnquiryFallback:false});
   }catch{ /* Catalogue browsing remains available when checkout cannot connect. */ }
 }
 
