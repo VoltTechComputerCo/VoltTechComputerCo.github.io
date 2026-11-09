@@ -1,0 +1,141 @@
+@font-face {
+  font-family: "Chakra Petch";
+  src: url("../../fonts/chakra-petch-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+:is(.static-zine, .static-timeline-article) {
+  --timeline-display: "Chakra Petch", "Space Grotesk", system-ui, sans-serif;
+}
+.static-zine :is(.zine-headline, .static-lead h2, .static-cluster-head h2, .static-card h3, .static-mailer-copy h2),
+.static-timeline-article :is(h1, h2, h3) {
+  font-family: var(--timeline-display);
+  font-weight: 700;
+  letter-spacing: -.025em;
+}
+.static-zine .zine-headline { line-height: 1; }
+.static-zine .zine-sticker { font-family: var(--timeline-display); }
+
+.static-zine.timeline-ready .zine-rail {
+  position: static;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.static-zine.timeline-ready .zine-rail-link { margin-block: .5rem; }
+.zine-rail > .timeline-strip { flex: 1; }
+.timeline-strip {
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 3px solid #eee1ca;
+  background: #211a24;
+  box-shadow: 4px 5px 0 #0005;
+}
+.timeline-chapter {
+  --paper: #ff76bd;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-rows: minmax(0, 1.3fr) minmax(0, .82fr) minmax(0, 1fr);
+  min-height: 0;
+  background:
+    radial-gradient(circle, #1b182970 1px, transparent 1.6px) 0 0 / 6px 6px,
+    var(--paper);
+}
+.timeline-chapter-1 { --paper: #c6acff; }
+.timeline-chapter-2 { --paper: #a6d8d9; }
+.timeline-strip-tech .timeline-chapter-0 { --paper: #d6ff39; }
+.timeline-scrap {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  margin-block: -.36rem;
+  clip-path: polygon(0 2%, 13% 0, 29% 2.5%, 44% 1%, 65% 3%, 82% 0, 100% 2%, 100% 97%, 89% 99%, 68% 97%, 52% 100%, 38% 98%, 17% 100%, 0 98%);
+}
+.timeline-scrap:nth-child(even) {
+  margin-inline: .3rem -.2rem;
+  transform: rotate(-2deg);
+  z-index: 1;
+}
+.timeline-scrap:first-child { margin-top: 0; }
+.timeline-scrap img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.timeline-scrap-crop:nth-child(2) img { transform: scale(1.48); transform-origin: 48% 18%; }
+.timeline-scrap-crop:nth-child(3) img { transform: scale(1.38); transform-origin: 62% 95%; }
+.timeline-chapter-2 .timeline-scrap img { filter: saturate(.76) contrast(.96); }
+.timeline-strip-gaming .timeline-chapter-2 .timeline-scrap:first-child img { object-position: 74% center; }
+.timeline-era, .timeline-sticker {
+  position: absolute;
+  z-index: 2;
+  color: #18141c;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  box-shadow: 2px 3px 0 #151018a8;
+}
+.timeline-era {
+  top: .8rem;
+  left: .55rem;
+  right: .6rem;
+  margin: 0;
+  padding: .48rem .55rem;
+  background: #f9efda;
+  transform: rotate(-3deg);
+  font-size: .62rem;
+  line-height: 1.32;
+}
+.timeline-era strong { display: block; font-size: .86rem; }
+.timeline-sticker {
+  top: 56%;
+  right: .55rem;
+  max-width: 86%;
+  padding: .42rem .45rem;
+  background: var(--paper);
+  border: 1px solid #211629;
+  transform: rotate(7deg);
+  font-size: .66rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.timeline-strip-tech :is(.timeline-era, .timeline-sticker) { transform: rotate(3deg); }
+.timeline-strip-tech .timeline-sticker { left: .5rem; right: auto; transform: rotate(-7deg); }
+
+.static-timeline-article { position: relative; }
+.timeline-article-strips {
+  position: absolute;
+  inset: 4.7rem 0 0;
+  pointer-events: none;
+}
+.timeline-article-strips .timeline-strip {
+  position: absolute;
+  inset-block: 0;
+  width: clamp(.55rem, calc((100% - 54rem) / 2 - 1.25rem), 16.5rem);
+}
+.timeline-article-strips .timeline-strip-gaming { left: .55rem; }
+.timeline-article-strips .timeline-strip-tech { right: .55rem; }
+html body.static-timeline-article.static-article-page .static-article-nav {
+  background: #17141c !important;
+  color: #f9efda !important;
+  border-color: #d6ff39 !important;
+}
+
+@media (max-width: 65rem) {
+  .static-zine.timeline-ready .zine-layout {
+    grid-template-columns: clamp(.55rem, 3vw, 2.25rem) minmax(0, 1fr) clamp(.55rem, 3vw, 2.25rem);
+    gap: clamp(.23rem, 1vw, .65rem);
+    padding-inline: clamp(.18rem, .8vw, .5rem);
+  }
+  .static-zine.timeline-ready .zine-rail { padding-top: 0; }
+  .static-zine.timeline-ready .zine-rail :is(.zine-rail-title, .zine-rail-link, .timeline-era, .timeline-sticker),
+  .timeline-article-strips :is(.timeline-era, .timeline-sticker) { display: none; }
+  .timeline-strip { border-width: 1px; box-shadow: none; }
+  .timeline-article-strips .timeline-strip { width: clamp(.4rem, 2.1vw, .9rem); }
+  .timeline-article-strips .timeline-strip-gaming { left: 0; }
+  .timeline-article-strips .timeline-strip-tech { right: 0; }
+}
+@media print {
+  .timeline-article-strips, .static-zine.timeline-ready .zine-rail { display: none; }
+  .static-zine.timeline-ready .zine-layout { display: block; }
+}
