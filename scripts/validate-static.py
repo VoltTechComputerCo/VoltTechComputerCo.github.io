@@ -56,6 +56,8 @@ class Parser(HTMLParser):
         self.h1_count=0
         self.hrefs=[]
         self.stylesheets=[]
+        self.scripts=[]
+        self.body_classes=set()
         self.style_blocks=0
         self.style_attrs=0
     def handle_starttag(self, tag, attrs):
@@ -68,6 +70,8 @@ class Parser(HTMLParser):
             rel={p.lower() for p in data.get("rel","").split()}
             if "canonical" in rel and data.get("href"): self.canonical=data["href"].strip()
             if "stylesheet" in rel and data.get("href"): self.stylesheets.append(data["href"].strip())
+        elif tag=="script" and data.get("src"): self.scripts.append(data["src"].strip())
+        elif tag=="body": self.body_classes.update(data.get("class","").split())
         elif tag=="title": self.title_count += 1
         elif tag=="h1": self.h1_count += 1
         elif tag=="a" and data.get("href"): self.hrefs.append(data["href"].strip())
@@ -120,6 +124,9 @@ def main():
         if not any(Path(urlparse(h).path).name=="static.html" for h in p.hrefs): errors.append(f"{rel}: no STATIC home link")
 
         names={Path(urlparse(h).path).as_posix().lstrip("/") for h in p.stylesheets}
+        if "assets/css/pages/static-timeline.css" not in names: errors.append(f"{rel}: STATIC timeline stylesheet missing")
+        if "assets/js/pages/static-timeline.js" not in p.scripts: errors.append(f"{rel}: STATIC timeline script missing")
+        if "static-timeline-article" not in p.body_classes: errors.append(f"{rel}: STATIC timeline body class missing")
         if "assets/css/base.css" not in names: errors.append(f"{rel}: base.css missing")
         if historical:
             css=f"assets/css/static-legacy/{path.stem}.css"

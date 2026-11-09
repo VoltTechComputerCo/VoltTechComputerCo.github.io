@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" fill="none">
+  <defs>
+    <linearGradient id="field" x1="78" y1="0" x2="890" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#281637"/><stop offset=".55" stop-color="#191832"/><stop offset="1" stop-color="#103241"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="138" y1="384" x2="830" y2="149" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f78ad6"/><stop offset=".52" stop-color="#9f80ff"/><stop offset="1" stop-color="#74efff"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" stroke="#a9a3d0" opacity=".18"/>
+    </pattern>
+    <pattern id="pixels" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M3 3h16v16H3z" fill="#cfb9ff" opacity=".23"/>
+    </pattern>
+  </defs>
+  <path fill="url(#field)" d="M0 0h960v600H0z"/>
+  <path fill="url(#grid)" d="M0 0h960v600H0z"/>
+  <path fill="url(#pixels)" d="M109 172h263v270H109z"/>
+  <path d="M110 216v-44h44m174 0h44v44m0 182v44h-44m-174 0h-44v-44M532 185v-65h65m168 0h65v65m0 236v65h-65m-168 0h-65v-65" stroke="url(#beam)" stroke-width="3"/>
+  <path d="M140 358l110-88 65 29 111-87 73 24 121-91 85 47 86-37M140 384l110-88 65 29 111-87 73 24 121-91 85 47 86-37" stroke="url(#beam)" stroke-width="2" opacity=".65"/>
+  <path d="M140 371l110-88 65 29 111-87 73 24 121-91 85 47 86-37" stroke="url(#beam)" stroke-width="5"/>
+  <path d="M553 406h256M553 424h206M553 442h143" stroke="#81eaff" stroke-opacity=".45"/>
+  <text x="109" y="126" fill="#f2bfe7" font-family="monospace" font-size="17" letter-spacing="4">PC GRAPHICS</text>
+  <text x="540" y="355" fill="#edf3ff" font-family="system-ui,sans-serif" font-size="74" font-weight="700" letter-spacing="-4">DLSS 5</text>
+</svg>

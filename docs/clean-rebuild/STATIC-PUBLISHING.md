@@ -16,7 +16,7 @@ Article requirements:
 
 New articles use `assets/css/pages/static-article.css`.
 
-The 30 historical articles preserve their original visual design through one extracted stylesheet each under `assets/css/static-legacy/`.
+The 30 historical articles use their extracted layouts under `assets/css/static-legacy/`. All STATIC articles, including historical pages, use `static-timeline.css` and `static-timeline.js` for the full-length gaming and tech collages and the headline font. Keep both tags and the `static-timeline-article` body class from the article template when creating new stories. The publishing guard checks for these on every article.
 
 RSS, sitemap, publishing guard and Discord automation all use `.co.za`.
 
