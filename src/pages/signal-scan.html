@@ -1,50 +1,42 @@
 <main id="main-content" class="signal-scan-page">
-  <section class="section scan-hero">
-    <div class="container scan-shell">
-      <nav class="vt-tool-switcher" aria-label="VoltTech tools"><a class="active" data-tool="signal" href="signal-scan.html" aria-current="page"><span>PC TRIAGE</span><strong>Signal Scan</strong><b aria-hidden="true">↗</b></a><a data-tool="stream-scan" href="stream-scan.html"><span>STREAM TRIAGE</span><strong>Stream Scan</strong><b aria-hidden="true">↗</b></a><a data-tool="stream-support" href="streaming-setup-south-africa.html"><span>CREATOR TECH</span><strong>Stream Support</strong><b aria-hidden="true">↗</b></a><a data-tool="creator" href="creator-hub-south-africa.html"><span>DISCOVER</span><strong>Creator Hub</strong><b aria-hidden="true">↗</b></a></nav>
-      <a class="button button-secondary scan-back" id="scan-back" href="index.html">← BACK TO VOLTTECH</a>
-      <div class="scan-heading">
-        <p class="eyebrow">VOLTTECH / SIGNAL SCAN</p>
-        <h1>Find the right<br><span class="accent">next move.</span></h1>
-        <p class="scan-lead">Tell us what the PC is doing. Signal Scan uses your answers to narrow the likely service path and give you a useful starting estimate. It does <strong>not</strong> remotely scan, inspect or measure your computer.</p>
+  <div class="container signal-shell">
+    <a class="signal-back" id="scan-back" href="index.html">← Back to VoltTech</a>
+    <header class="signal-intro">
+      <div>
+        <p class="eyebrow">VOLTTECH PC SUPPORT</p>
+        <h1>Signal <span>Scan</span></h1>
       </div>
+      <p>Tell us what your PC is doing. Get a recommended service and a starting estimate in a few questions.</p>
+    </header>
 
-      <div class="scan-layout">
-        <aside class="scan-status-card" aria-labelledby="scan-priority-title">
-          <div class="scan-scope">
-            <div class="scan-scope-head"><span>TRIAGE SIGNAL</span><strong id="reading">LOW</strong></div>
-            <canvas id="scope" aria-hidden="true"></canvas>
-          </div>
-          <div class="scan-priority" id="scan-priority">
-            <p class="micro" id="scan-priority-title">ANSWER-BASED PRIORITY</p>
-            <strong id="status">LOW PRIORITY</strong>
-            <span>Priority changes only from the answers you choose. It is not a hardware-health measurement.</span>
-          </div>
-          <div class="scan-truth">
-            <span class="eyebrow">WHAT THIS TOOL DOES</span>
-            <ul>
-              <li>Narrows the likely support path.</li>
-              <li>Shows a practical starting service range.</li>
-              <li>Builds a useful message you can send to VoltTech.</li>
-            </ul>
-          </div>
-        </aside>
+    <div class="signal-layout">
+      <section class="signal-workspace" aria-labelledby="scan-workspace-title">
+        <div class="signal-progress">
+          <h2 id="scan-workspace-title">PC assessment</h2>
+          <span id="progress-label">Getting started</span>
+        </div>
+        <div class="signal-meter" id="meter" role="progressbar" aria-label="Assessment progress" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"></div>
+        <div class="signal-panel" id="panel"></div>
+        <noscript><p>Enable JavaScript to use Signal Scan, or <a href="pc-repair-pretoria.html">view PC repair and diagnostics</a>.</p></noscript>
+      </section>
 
-        <section class="scan-workspace" aria-labelledby="scan-workspace-title">
-          <div class="scan-progress-head">
-            <div><p class="eyebrow">ANSWER-BASED TRIAGE</p><h2 id="scan-workspace-title">A few quick questions.</h2></div>
-            <span class="micro" id="progress-label">START</span>
-          </div>
-          <div class="scan-meter" id="meter" aria-hidden="true"></div>
-          <div class="scan-panel" id="panel" aria-live="polite"></div>
-        </section>
-      </div>
-
-      <div class="scan-assurance">
-        <p><span>01</span><strong>NO REMOTE SCANNING</strong>Your device is not inspected by this page.</p>
-        <p><span>02</span><strong>NO AUTOMATIC DIAGNOSIS</strong>Results are guidance, not proof of a fault.</p>
-        <p><span>03</span><strong>YOU CHOOSE WHAT TO SEND</strong>Your answers stay in the browser until you choose WhatsApp or email.</p>
-      </div>
+      <aside class="signal-status" id="scan-priority" aria-labelledby="scan-priority-title">
+        <div class="signal-status-head">
+          <h2 id="scan-priority-title">Triage priority</h2>
+          <span class="signal-indicator" id="reading" aria-hidden="true">READY</span>
+        </div>
+        <div class="signal-scope">
+          <canvas id="scope" aria-hidden="true"></canvas>
+        </div>
+        <div class="signal-status-copy">
+          <strong id="status" role="status">Awaiting your first answer</strong>
+          <p>Priority reflects your answers. Signal Scan does <strong>not</strong> remotely scan your PC.</p>
+        </div>
+      </aside>
     </div>
-  </section>
+
+    <div class="signal-related" aria-label="More VoltTech tools">
+      <nav class="vt-tool-switcher" aria-label="VoltTech tools"><a class="active" data-tool="signal" href="signal-scan.html" aria-current="page"><span>PC TRIAGE</span><strong>Signal Scan</strong><b aria-hidden="true">↗</b></a><a data-tool="stream-scan" href="stream-scan.html"><span>STREAM TRIAGE</span><strong>Stream Scan</strong><b aria-hidden="true">↗</b></a><a data-tool="stream-support" href="streaming-setup-south-africa.html"><span>CREATOR TECH</span><strong>Stream Support</strong><b aria-hidden="true">↗</b></a><a data-tool="creator" href="creator-hub-south-africa.html"><span>DISCOVER</span><strong>Creator Hub</strong><b aria-hidden="true">↗</b></a></nav>
+    </div>
+  </div>
 </main>

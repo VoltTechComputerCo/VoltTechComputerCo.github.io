@@ -18,19 +18,24 @@
 }
 .streaming-support-page .stream-support-hero::after { display: none; }
 .stream-support-hero .service-hero-copy { width: auto; }
-.stream-support-hero-photos { grid-template-rows: repeat(2, minmax(0, 1fr)); min-height: 0; }
-.stream-support-hero-photos > img:nth-child(2) { object-position: 35% 65%; }
-.stream-support-hero-photos > img:last-child { grid-column: 2; grid-row: 1 / span 2; }
+.stream-support-hero-photos { position: relative; min-height: 0; overflow: hidden; }
+.stream-support-hero-photos img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
 .stream-showcase {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   gap: clamp(1rem, 2vw, 1.6rem);
   margin-top: 1.5rem;
 }
 .stream-showcase h3 { margin: 0 0 .65rem; font-size: clamp(1rem, 1.8vw, 1.2rem); }
 .stream-showcase-photos { display: grid; gap: .75rem; }
-.stream-showcase-studio { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.stream-showcase-feature { grid-column: 1 / -1; }
+.stream-showcase-creator { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .stream-showcase-featured {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   row-gap: .45rem;
@@ -46,19 +51,18 @@
 .stream-showcase img {
   display: block;
   width: 100%;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
 }
 .stream-showcase .stream-showcase-featured img { aspect-ratio: auto; border-radius: .65rem; }
 .stream-showcase figcaption { padding: .6rem .8rem; color: var(--text-secondary); font-size: .82rem; }
-.stream-photo-credits { margin: .6rem 0 0; color: var(--text-muted); font-size: .76rem; }
 @media (max-width: 56rem) {
-  .stream-showcase { grid-template-columns: 1fr; }
-  .stream-showcase-creator, .stream-showcase-featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stream-showcase-featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stream-showcase-featured { row-gap: .75rem; }
   .stream-showcase-featured > img:first-child { grid-row: auto; }
 }
 @media (max-width: 44rem) {
   .streaming-support-page .stream-support-hero { grid-template-columns: 1fr; }
-  .stream-support-hero-photos { aspect-ratio: 2 / 1; }
+  .stream-support-hero-photos { aspect-ratio: 16 / 9; }
+  .stream-showcase-creator { grid-template-columns: 1fr; }
 }
