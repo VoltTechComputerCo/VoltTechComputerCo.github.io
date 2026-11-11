@@ -1,0 +1,140 @@
+.signal-scan-page {
+  --signal-accent: var(--teal);
+  --signal-surface: var(--panel);
+  --signal-line: var(--border);
+  background: radial-gradient(ellipse at 75% 0, color-mix(in srgb, var(--signal-accent) 9%, transparent), transparent 52%), var(--bg);
+}
+.signal-shell { max-width: 75rem; padding-block: clamp(1.5rem, 4vw, 3.25rem); }
+.signal-back { display: inline-flex; align-items: center; min-height: 44px; color: var(--text-secondary); font-size: .86rem; }
+.signal-intro {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: end;
+  gap: 1rem 3rem;
+  margin: 1.25rem 0 1.8rem;
+}
+.signal-intro .eyebrow { margin: 0 0 .55rem; }
+.signal-intro h1 { margin: 0; font-size: clamp(3.1rem, 8vw, 6.8rem); line-height: .91; letter-spacing: -.075em; }
+.signal-intro h1 span { color: var(--signal-accent); }
+.signal-intro > p { max-width: 34ch; margin: 0; color: var(--text-secondary); font-size: clamp(.95rem, 1.55vw, 1.12rem); line-height: 1.65; }
+
+.signal-layout { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(15rem, 1fr); gap: 1rem; align-items: start; }
+.signal-workspace, .signal-status {
+  overflow: hidden;
+  border: 1px solid var(--signal-line);
+  border-radius: 16px;
+  background: var(--signal-surface);
+  box-shadow: var(--retail-shadow);
+}
+.signal-workspace { min-height: 26rem; padding: clamp(1rem, 3vw, 2rem); }
+.signal-progress { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .35rem 1rem; }
+.signal-progress h2, .signal-status-head h2 { margin: 0; font-size: .9rem; }
+.signal-progress span { color: var(--text-secondary); font: 600 .75rem/1.4 var(--font-mono); }
+.signal-meter { display: flex; gap: 5px; margin: .85rem 0 clamp(1.3rem, 4vw, 2.2rem); }
+.signal-meter i { flex: 1; height: 4px; border-radius: 8px; background: var(--signal-line); }
+.signal-meter .done { background: var(--signal-accent); }
+.signal-meter .current { background: color-mix(in srgb, var(--signal-accent) 60%, var(--signal-line)); }
+.signal-panel h3 {
+  margin: 0 0 1rem;
+  color: var(--text);
+  font-size: clamp(1.45rem, 3.4vw, 2.35rem);
+  line-height: 1.12;
+  letter-spacing: -.04em;
+  scroll-margin-top: 10rem;
+}
+.signal-panel h3:focus { outline: none; }
+.signal-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+.signal-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  min-height: 64px;
+  padding: .85rem 1rem;
+  border: 1px solid var(--signal-line);
+  border-radius: 9px;
+  background: var(--bg-secondary);
+  color: var(--text);
+  font: 650 .92rem/1.4 var(--font-ui);
+  text-align: left;
+  cursor: pointer;
+}
+.signal-option::after { content: "→" / ""; color: var(--signal-accent); }
+.signal-option:hover, .signal-option:focus-visible { border-color: var(--signal-accent); background: var(--panel-raised); }
+.signal-option:focus-visible { outline: 2px solid var(--signal-accent); outline-offset: 2px; }
+.signal-panel .scan-nav { margin-top: 0; padding-top: 1rem; }
+
+.signal-status {
+  --priority-ink: #63efdf;
+  background: #0a1b20;
+  color: #edf8f9;
+  border-color: #31535b;
+}
+.signal-status[data-level="elevated"] { --priority-ink: #ffbc70; }
+.signal-status[data-level="high"] { --priority-ink: #ff838d; }
+.signal-status-head, .signal-status-copy { padding: 1rem 1.15rem; }
+.signal-status-head { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
+.signal-status-head h2 { color: #edf8f9; }
+.signal-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .25rem .5rem;
+  border: 1px solid color-mix(in srgb, var(--priority-ink) 50%, transparent);
+  border-radius: 999px;
+  color: var(--priority-ink);
+  font: 700 .67rem/1.3 var(--font-mono);
+}
+.signal-indicator::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.signal-scope {
+  position: relative;
+  height: clamp(7rem, 15vw, 11rem);
+  border-block: 1px solid #24464c;
+  background:
+    linear-gradient(#2a545a55 1px, transparent 1px) center / 20px 20px,
+    linear-gradient(90deg, #2a545a55 1px, transparent 1px) center / 20px 20px,
+    radial-gradient(ellipse at center, #123b42, #081b20 76%);
+}
+.signal-scope canvas { display: block; width: 100%; height: 100%; }
+.signal-status-copy strong { display: block; color: var(--priority-ink); font-size: .94rem; }
+.signal-status-copy p { margin: .35rem 0 0; color: #b4ccce; font-size: .79rem; line-height: 1.5; }
+.signal-status-copy p strong { display: inline; color: inherit; font-size: inherit; }
+
+.signal-estimate {
+  display: grid;
+  gap: .4rem;
+  margin: 1.15rem 0 .7rem;
+  padding: 1rem;
+  border: 1px solid var(--signal-line);
+  border-left: 3px solid var(--signal-accent);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+}
+.signal-estimate span { color: var(--text-secondary); font-size: .8rem; }
+.signal-estimate strong { color: var(--signal-accent); font: 700 clamp(1.5rem, 3vw, 2rem)/1.1 var(--font-ui); }
+.signal-result-note { color: var(--text-secondary); font-size: .83rem; line-height: 1.55; }
+.signal-actions, .signal-result-links { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; margin-top: 1rem; }
+.signal-actions .button, .signal-result-links .button { text-decoration: none; }
+.signal-summary { margin-top: 1.15rem; padding: .7rem 0; border-block: 1px solid var(--signal-line); }
+.signal-summary summary { cursor: pointer; font-weight: 650; }
+.signal-summary dl { margin: .75rem 0 0; font-size: .86rem; }
+.signal-summary dl > div { display: grid; grid-template-columns: 1fr 1.15fr; gap: .4rem 1rem; padding: .35rem 0; }
+.signal-summary dt { color: var(--text-secondary); }
+.signal-summary dd { margin: 0; overflow-wrap: anywhere; }
+.signal-related { margin-top: clamp(1.4rem, 3vw, 2.5rem); }
+
+@media (max-width: 48rem) {
+  .signal-intro, .signal-layout { grid-template-columns: 1fr; }
+  .signal-intro { margin-top: .7rem; }
+  .signal-intro > p { max-width: 48ch; }
+  .signal-status { grid-row: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(6.5rem, .65fr); }
+  .signal-status-head, .signal-status-copy { padding: .65rem .8rem; }
+  .signal-status-head { justify-content: start; flex-wrap: wrap; }
+  .signal-status-copy { padding-top: 0; }
+  .signal-scope { grid-column: 2; grid-row: 1 / 3; height: auto; min-height: 100%; border-block: 0; border-left: 1px solid #24464c; }
+  .signal-scope canvas { position: absolute; inset: 0; }
+  .signal-workspace { min-height: 0; }
+}
+@media (max-width: 33rem) {
+  .signal-option { min-height: 58px; padding: .65rem; font-size: .82rem; }
+}

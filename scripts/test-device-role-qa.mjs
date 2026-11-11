@@ -165,12 +165,12 @@ try {
     try {
       await open(page, 'signal-scan.html?source=repair&issue=boot');
       for (let i = 0; i < 10; i += 1) {
-        const option = page.locator('.scan-option').first();
+        const option = page.locator('#panel .signal-option').first();
         if (!await option.count()) break;
         await option.click();
         await page.waitForTimeout(30);
       }
-      const result = page.locator('.scan-badge');
+      const result = page.locator('#panel .signal-estimate');
       assert(await result.isVisible(), 'Signal Scan did not reach a result');
       const whatsapp = page.locator('[data-scan-route="whatsapp"]');
       const email = page.locator('[data-scan-route="email"]');
