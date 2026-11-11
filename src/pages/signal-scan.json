@@ -3,7 +3,7 @@
   "title": "Free PC Diagnostic Tool South Africa | Signal Scan | VoltTech",
   "description": "Run VoltTech Signal Scan for common PC faults, performance problems, overheating, crashes, malware and upgrade needs, with answer-based triage and practical service estimates.",
   "robots": "index, follow, max-image-preview:large",
-  "script_version": "20261111-sweep",
-  "styles": ["assets/css/pages/signal-scan.css", "assets/css/pages/signal-overhaul.css?v=20261111-sweep"],
+  "script_version": "20261111-auto-sweep",
+  "styles": ["assets/css/pages/signal-scan.css", "assets/css/pages/signal-overhaul.css?v=20261111-auto-sweep"],
   "scripts": ["assets/js/pages/signal-scan.js"]
 }
