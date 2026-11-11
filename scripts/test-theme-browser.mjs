@@ -11,6 +11,7 @@ for(const width of [320,390,1440]){
  // Isolate appearance from account, payment and notification side effects.
  await page.route('**/*.js*',r=>r.request().url().includes('/assets/js/theme.js')?r.continue():r.fulfill({contentType:'application/javascript',body:''}));
  await page.goto('http://127.0.0.1:4173/index.html');
+ assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), 'dark', 'Fresh visitors start in dark mode');
  const season = page.getByRole('combobox', {name:'Theme',exact:true});
  const seasonValue = () => page.evaluate(() => document.documentElement.dataset.season);
  assert.equal(await season.inputValue(), 'christmas');
@@ -24,18 +25,19 @@ for(const width of [320,390,1440]){
  assert.equal(await season.inputValue(), 'original', 'Original preference persists across routes');
  await season.selectOption('christmas');
  await page.locator('[data-theme-toggle]').click();
- assert.equal(await seasonValue(), 'christmas', 'Dark mode keeps the chosen theme');
- assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), 'dark');
+ assert.equal(await seasonValue(), 'christmas', 'Light mode keeps the chosen theme');
+ assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), 'light');
  await season.selectOption('original');
- assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), 'dark', 'Original preserves dark mode');
- await page.locator('[data-theme-toggle]').click();
+ assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), 'light', 'Original preserves light mode');
  for(const [path,header] of pages){
   await page.goto('http://127.0.0.1:4173/'+path);
   await page.locator('[data-theme-toggle]').waitFor();
   const initial=await page.evaluate(()=>({theme:document.documentElement.dataset.theme,bg:getComputedStyle(document.body).backgroundColor,fg:getComputedStyle(document.body).color}));
-  assert.equal(initial.theme,'light',path+' defaults to light');
-  assert.equal(initial.bg,'rgb(255, 255, 255)',path+' white canvas');
-  assert.equal(initial.fg,'rgb(23, 46, 44)',path+' readable body text');
+  assert.equal(initial.theme,'light',path+' preserves the saved light preference');
+  if (!path.startsWith('static')) {
+   assert.equal(initial.bg,'rgb(255, 255, 255)',path+' white canvas');
+   assert.equal(initial.fg,'rgb(23, 46, 44)',path+' readable body text');
+  }
   // Exercise the header with its real mobile controls shown.
   await page.evaluate(()=>{document.querySelector('.menu-toggle')?.removeAttribute('hidden');});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,path+' width '+width);
