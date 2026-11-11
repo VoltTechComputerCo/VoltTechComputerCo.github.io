@@ -27,7 +27,7 @@
 }
 .home-hero-repairs { --photo-position: center top; }
 .home-hero-store { --panel-ink: #081c20; --panel-accent: #55eadd; --photo-position: right center; }
-.home-hero-stream { --panel-ink: #18172b; --panel-accent: #dcc1ff; --photo-position: 37% 65%; }
+.home-hero-stream { --panel-ink: #18172b; --panel-accent: #dcc1ff; --photo-position: right 30%; }
 .home-hero-panel + .home-hero-panel { border-inline-start: 1px solid #7295aa60; }
 .home-hero-panel > img {
   position: absolute;

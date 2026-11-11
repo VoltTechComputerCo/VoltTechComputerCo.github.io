@@ -72,5 +72,5 @@ ctaObserver.observe(document.body, { childList: true, subtree: true, attributes:
 connectCart();
 if (!publicCatalogueOnly || !['home','store','product'].includes(document.body.dataset.page)) connectAccount(window.VOLTTECH_SUPABASE);
 if (['home', 'store'].includes(document.body.dataset.page)) {
-  import('./retail-rails.js?v=20261108-frostline').then(({ mountRetailRails }) => mountRetailRails()).catch(() => {});
+  import('./retail-rails.js?v=20261111-bundle-cards').then(({ mountRetailRails }) => mountRetailRails()).catch(() => {});
 }

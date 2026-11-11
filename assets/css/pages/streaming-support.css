@@ -30,6 +30,12 @@
 .stream-showcase h3 { margin: 0 0 .65rem; font-size: clamp(1rem, 1.8vw, 1.2rem); }
 .stream-showcase-photos { display: grid; gap: .75rem; }
 .stream-showcase-studio { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.stream-showcase-feature { grid-column: 1 / -1; }
+.stream-showcase-featured {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  row-gap: .45rem;
+}
+.stream-showcase-featured > img:first-child { grid-area: span 2 / span 2; }
 .stream-showcase figure {
   margin: 0;
   overflow: hidden;
@@ -43,11 +49,14 @@
   aspect-ratio: 2 / 1;
   object-fit: cover;
 }
+.stream-showcase .stream-showcase-featured img { aspect-ratio: auto; border-radius: .65rem; }
 .stream-showcase figcaption { padding: .6rem .8rem; color: var(--text-secondary); font-size: .82rem; }
 .stream-photo-credits { margin: .6rem 0 0; color: var(--text-muted); font-size: .76rem; }
 @media (max-width: 56rem) {
   .stream-showcase { grid-template-columns: 1fr; }
-  .stream-showcase-creator { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stream-showcase-creator, .stream-showcase-featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stream-showcase-featured { row-gap: .75rem; }
+  .stream-showcase-featured > img:first-child { grid-row: auto; }
 }
 @media (max-width: 44rem) {
   .streaming-support-page .stream-support-hero { grid-template-columns: 1fr; }

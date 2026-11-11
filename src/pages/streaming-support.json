@@ -5,7 +5,7 @@
   "robots": "index, follow, max-image-preview:large",
   "styles": [
     "assets/css/pages/services.css",
-    "assets/css/pages/streaming-support.css?v=20261111-studio"
+    "assets/css/pages/streaming-support.css?v=20261111-studio-gallery"
   ],
   "scripts": [
     "assets/js/pages/streaming-support.js"
