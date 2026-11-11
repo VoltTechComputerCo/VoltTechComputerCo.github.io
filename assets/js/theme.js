@@ -29,6 +29,10 @@
  function mountSeasonPicker() {
   const bar = document.createElement('div');
   bar.className = 'vt-season-bar';
+  const ornament = document.createElement('span');
+  ornament.className = 'vt-season-ornament';
+  ornament.setAttribute('aria-hidden', 'true');
+  bar.append(ornament);
   seasonSelect = document.createElement('select');
   seasonSelect.dataset.seasonSelect = '';
   seasonSelect.setAttribute('aria-label', 'Theme');

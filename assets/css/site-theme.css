@@ -138,6 +138,9 @@ html body .vt-season-bar select {
   }
   html[data-season="christmas"] .vt-season-bar::after {
     content: "";
+  }
+  html[data-season="christmas"] .vt-season-bar::after,
+  html[data-season="christmas"] .vt-season-ornament {
     position: absolute;
     right: calc(clamp(.55rem, 2.5vw, 2.5rem) + 6.65rem);
     top: 0;
@@ -147,6 +150,29 @@ html body .vt-season-bar select {
     animation: vt-ornament-sway 6.4s ease-in-out -1s infinite;
     transform-origin: center top;
     pointer-events: none;
+  }
+  html[data-season="christmas"] .vt-season-ornament { display: none; }
+  @media (min-width: 64rem) {
+    html[data-season="christmas"] .vt-season-bar {
+      min-height: 92px;
+      padding-inline-start: calc(clamp(.55rem, 2.5vw, 2.5rem) + 3.5rem);
+    }
+    html[data-season="christmas"] .vt-season-bar::before {
+      background-position: left top;
+    }
+    html[data-season="christmas"] .vt-season-ornament {
+      display: block;
+      left: clamp(.75rem, 2.3vw, 2.3rem);
+      right: auto;
+      width: 3.8rem;
+      height: 92px;
+    }
+    html[data-season="christmas"] .vt-season-bar::after {
+      width: 2.9rem;
+      height: 80px;
+      scale: -1 1;
+      animation-delay: -3.4s;
+    }
   }
   @media (max-width: 50rem) {
     html[data-season="christmas"] {
@@ -408,13 +434,21 @@ html body[data-page] :is(.retail-shortcuts .stream-support-shortcut, .vt-tool-sw
 
 
 @media screen and (prefers-reduced-motion: reduce) {
-  html[data-season="christmas"] body::before,
-  html[data-season="christmas"] body::after,
+  @keyframes vt-ornament-sway-soft {
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
+  }
+  html[data-season="christmas"] body::before { animation-duration: 36s; }
+  html[data-season="christmas"] body::after { animation-duration: 50s; }
   html[data-season="christmas"] .vt-season-bar::before,
-  html[data-season="christmas"] .vt-season-bar::after,
   html[data-season="christmas"] :is(.site-footer,.static-footer)::before,
   html[data-season="christmas"] body[data-page=home] .home-hero::after,
   html[data-season="christmas"] :is(.christmas-kit,.retail-side,.home-creator .stream-feature) {
-    animation: none;
+    animation-duration: 14s;
+  }
+  html[data-season="christmas"] .vt-season-bar::after,
+  html[data-season="christmas"] .vt-season-ornament {
+    animation-name: vt-ornament-sway-soft;
+    animation-duration: 12s;
   }
 }
