@@ -31,14 +31,11 @@ const progressLabel = document.getElementById('progress-label');
 const backLink = document.getElementById('scan-back');
 const canvas = document.getElementById('scope');
 const context = canvas?.getContext('2d');
-const scopeToggle = document.getElementById('scope-toggle');
 const reading = document.getElementById('reading');
 const status = document.getElementById('status');
 const priority = document.getElementById('scan-priority');
 const motion = matchMedia('(prefers-reduced-motion: reduce)');
 let scopeVisible = true;
-let scopeMotionOverride = null;
-const scopeAnimated = () => scopeMotionOverride ?? !motion.matches;
 let lastPaint = 0;
 let rafId = 0;
 
@@ -62,7 +59,7 @@ function updateUrgency() {
     priority.dataset.level = level;
     [reading.textContent, status.textContent] = labels[level];
   }
-  if (!scopeAnimated()) { tension = target; drawScope(); }
+  if (motion.matches) { tension = target; drawScope(); }
 }
 function servicePage() { return sourceInfo[currentMode()]?.page || 'pc-repair-pretoria.html'; }
 function serviceLabel() { return sourceInfo[currentMode()]?.label || 'PC Support'; }
@@ -251,7 +248,7 @@ function resizeScope() {
 
 function paint(time) {
   rafId = 0;
-  if (!scopeVisible || document.hidden || !scopeAnimated()) return;
+  if (!scopeVisible || document.hidden || motion.matches) return;
   if (time - lastPaint >= 30) {
     tension += (target - tension) * .13;
     drawScope(time);
@@ -261,7 +258,7 @@ function paint(time) {
 }
 
 function startScope() {
-  if (context && !rafId && scopeVisible && !document.hidden && scopeAnimated()) {
+  if (context && !rafId && scopeVisible && !document.hidden && !motion.matches) {
     rafId = requestAnimationFrame(paint);
   }
 }
@@ -272,24 +269,13 @@ new IntersectionObserver(([entry]) => {
   startScope();
 }).observe(canvas);
 document.addEventListener('visibilitychange', startScope);
-function applyScopeMotion() {
-  scopeToggle.textContent = scopeAnimated() ? 'Pause sweep' : 'Animate sweep';
-  if (!scopeAnimated()) {
+motion.addEventListener('change', () => {
+  if (motion.matches) {
     tension = target;
     drawScope();
   }
   startScope();
-}
-
-if (context) {
-  scopeToggle.hidden = false;
-  scopeToggle.addEventListener('click', () => {
-    scopeMotionOverride = !scopeAnimated();
-    applyScopeMotion();
-  });
-  motion.addEventListener('change', applyScopeMotion);
-  applyScopeMotion();
-}
+});
 updateUrgency();
 render();
 startScope();
