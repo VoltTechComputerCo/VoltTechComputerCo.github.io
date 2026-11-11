@@ -1,12 +1,12 @@
 {
   "output": "index.html",
-  "title": "PC Parts, Gaming PCs & PC Repairs in Pretoria | VoltTech",
+  "title": "PC Repairs in Pretoria, PC Parts & Livestream Support | VoltTech",
   "description": "Shop PC components, gaming laptops and peripherals. Get PC repairs and upgrades in Pretoria or remote streaming setup support across South Africa.",
   "robots": "index, follow, max-image-preview:large",
   "script_version": "20261107-static1",
   "styles": [
     "assets/css/notifications.css",
-    "assets/css/pages/home.css?v=20261014-home-store2",
+    "assets/css/pages/home.css?v=20261111-services",
     "assets/css/pages/departments.css?v=20261013-laptops",
     "assets/css/pages/home-store-theme.css?v=20261014-home-store3",
     "assets/css/pages/home-premium.css?v=20261014-stream-card"

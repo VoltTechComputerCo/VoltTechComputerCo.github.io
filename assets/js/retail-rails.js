@@ -174,7 +174,7 @@ function rail(title, kicker, cards, variant) {
   return region;
 }
 
-function showBrands(header, products) {
+function showBrands(anchor, products) {
   const stocked = new Set(products.map(product => normalize(product.brand)));
   const cards = brands.filter(([name]) => stocked.has(normalize(name))).map(([name, src]) =>
     `<a class="rail-brand" href="${esc(storeLink('brand', name))}" title="Shop ${esc(name)}"><img src="${esc(logoUrl(src))}" alt="${esc(name)}" width="148" height="62" decoding="async" referrerpolicy="no-referrer"></a>`);
@@ -182,7 +182,7 @@ function showBrands(header, products) {
   const region = rail('Shop by brand', 'PC HARDWARE & GEAR', cards, 'brands');
   region.classList.add('container');
   for (const logo of region.querySelectorAll('img')) logo.addEventListener('error', () => logo.closest('a').remove(), { once: true });
-  header.after(region);
+  anchor.after(region);
 }
 
 function productPicks(products, rotation) {
@@ -311,7 +311,7 @@ function showShowcase(hero, products, generatedAt) {
   const side = document.createElement('div');
   side.className = 'retail-side';
   side.append(rail('Upgrade ideas', 'FIND YOUR NEXT UPGRADE', offers, 'campaigns'));
-  side.insertAdjacentHTML('beforeend', `<div class="retail-shortcuts"><a href="${siteUrl('creator-hub-south-africa.html')}"><strong>Creator Hub ↗</strong><small>Discover South African streamers</small></a><a href="${siteUrl('streaming-setup-south-africa.html')}"><strong>Stream Support ↗</strong><small>Get your setup running smoothly</small></a></div>`);
+  side.insertAdjacentHTML('beforeend', `<div class="retail-shortcuts"><a href="${siteUrl('creator-hub-south-africa.html')}"><strong>Creator Hub ↗</strong><small>Discover South African streamers</small></a><a class="stream-support-shortcut" href="${siteUrl('streaming-setup-south-africa.html')}"><strong>Stream Support ↗</strong><small>Get your setup running smoothly</small></a></div>`);
   shelf.append(side);
   hero.after(shelf);
   showChristmasKits(shelf, products, generatedAt);
@@ -322,7 +322,7 @@ export async function mountRetailRails() {
   if (!header) return;
   const catalogue = await readPublicCatalogue(fetch, true);
   const products = (catalogue?.products || []).filter(p => p.status === 'active' && p.visibility === 'public' && p.sale_mode !== 'hidden' && p.is_demo === false);
-  showBrands(header, products);
+  showBrands(document.querySelector('main .home-shop') || header, products);
   const hero = document.querySelector('main .home-hero');
   if (hero) showShowcase(hero, products, catalogue?.generatedAt);
 }
