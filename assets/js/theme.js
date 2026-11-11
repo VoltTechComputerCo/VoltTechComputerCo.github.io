@@ -52,7 +52,7 @@
   else document.body.prepend(bar);
  }
 
- const read=()=>{try{return localStorage.getItem(key)==='dark'?'dark':'light';}catch{return 'light';}};
+ const read=()=>{try{return localStorage.getItem(key)==='light'?'light':'dark';}catch{return 'dark';}};
  let theme=read();
  const apply=value=>{
   theme=value==='dark'?'dark':'light';
