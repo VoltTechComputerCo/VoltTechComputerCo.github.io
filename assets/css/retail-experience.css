@@ -39,18 +39,12 @@ html body[data-page] .button:focus-visible,html body[data-page] a:focus-visible{
 html body[data-page] :is(input,select,textarea){border-radius:6px;min-height:44px;font:400 14px/1.5 var(--font-ui)}
 /* Hero art gets its own space and a deliberate frame, rather than a long white banner. */
 html body[data-page=home] .home-hero{margin:22px auto 0;width:calc(100% - 48px);max-width:1324px;border:1px solid var(--retail-line);border-radius:14px;background:var(--retail-surface);box-shadow:var(--retail-shadow)}
-html body[data-page=home] .hero-inner{min-height:440px;padding:32px;align-items:center}
-html body[data-page=home] .hero-copy{padding:12px 18px 12px 0;background:var(--retail-surface);width:49%}
-html body[data-page=home] .hero-copy h1{font-size:clamp(40px,4.4vw,64px);margin:16px 0}
-html body[data-page=home] .hero-description{font-size:15px;line-height:1.65;max-width:40ch}
-html body[data-page=home] .hero-art{width:61%;object-position:72% center}
-html body[data-page=home] .hero-stream-entry{max-width:390px}
 html body[data-page=home] .home-section{padding-block:40px}
 html body[data-page=home] .home-shop .department-heading{margin-bottom:18px}
 html body[data-page=home] .home-shop .department-image{aspect-ratio:1.2}
 html body[data-page=home] .home-stream{margin:0 auto;width:calc(100% - 48px);max-width:1324px;border:1px solid #a36aca55;border-radius:14px;padding:34px 0;overflow:hidden;box-shadow:var(--retail-shadow)}
 html body[data-page=home] .stream-feature{gap:32px;padding-inline:32px}
-html body[data-page=home] .stream-visual img{height:400px;min-height:0}
+html body[data-page=home] .stream-visual:not(.stream-photo-pair) img{height:400px;min-height:0}
 html body[data-page=home] .stream-copy h2{font-size:clamp(28px,3vw,42px)}
 /* Catalogue density, image sizing, prices and action placement use the same rhythm. */
 html body[data-page=store] .shop-intro{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;padding-block:28px}
@@ -166,16 +160,11 @@ html body[data-page] .footer-bottom{margin-top:24px;padding-top:16px}
 }
 @media(max-width:700px){
  html body[data-page=home] .home-hero{width:calc(100% - 24px);margin-top:12px;border-radius:12px}
- html body[data-page=home] .hero-inner{min-height:0;padding:22px 18px 195px}
- html body[data-page=home] .hero-copy{width:100%;padding:0;background:transparent}
- html body[data-page=home] .hero-copy h1{font-size:clamp(36px,10vw,46px);line-height:1.02}
- html body[data-page=home] .hero-description{font-size:14px;line-height:1.6;margin-bottom:16px}
- html body[data-page=home] .hero-art{width:100%;height:185px;object-position:75% center}
  html body[data-page=home] .home-section{padding-block:28px}
  html body[data-page=home] .home-stream{width:calc(100% - 24px);padding-block:24px}
  html body[data-page=home] .stream-feature{padding-inline:18px;gap:20px}
  html body[data-page=home] .stream-copy h2{font-size:29px}
- html body[data-page=home] .stream-visual img{height:220px}
+ html body[data-page=home] .stream-visual:not(.stream-photo-pair) img{height:220px}
  html body[data-page=home] .home-shop .department-image{aspect-ratio:1.35}
  html body[data-page] .department-heading h2{font-size:27px}
  html body[data-page] .department-heading p:not(.eyebrow){font-size:14px}
