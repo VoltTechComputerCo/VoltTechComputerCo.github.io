@@ -59,7 +59,7 @@ function updateUrgency() {
     priority.dataset.level = level;
     [reading.textContent, status.textContent] = labels[level];
   }
-  if (motion.matches) { tension = target; drawScope(); }
+  if (motion.matches) tension = target;
 }
 function servicePage() { return sourceInfo[currentMode()]?.page || 'pc-repair-pretoria.html'; }
 function serviceLabel() { return sourceInfo[currentMode()]?.label || 'PC Support'; }
@@ -204,7 +204,8 @@ function drawScope(time) {
   if (time === undefined) return;
 
   // Sweep across a faint stored trace and fade the illuminated section behind the cursor.
-  const sweep = ((time % 2350) / 2350 * 1.32 - .06) * width;
+  const period = motion.matches ? 4400 : 2350;
+  const sweep = ((time % period) / period * 1.32 - .06) * width;
   const tail = sweep - width * .26;
   const phosphor = context.createLinearGradient(tail, 0, sweep, 0);
   phosphor.addColorStop(0, colour + '00');
@@ -220,7 +221,7 @@ function drawScope(time) {
     context.strokeStyle = phosphor;
     context.lineWidth = 2.5 * ratio;
     context.shadowColor = colour;
-    context.shadowBlur = 7 * ratio;
+    context.shadowBlur = (motion.matches ? 3 : 7) * ratio;
     context.stroke();
     context.shadowBlur = 0;
   }
@@ -248,7 +249,7 @@ function resizeScope() {
 
 function paint(time) {
   rafId = 0;
-  if (!scopeVisible || document.hidden || motion.matches) return;
+  if (!scopeVisible || document.hidden) return;
   if (time - lastPaint >= 30) {
     tension += (target - tension) * .13;
     drawScope(time);
@@ -258,7 +259,7 @@ function paint(time) {
 }
 
 function startScope() {
-  if (context && !rafId && scopeVisible && !document.hidden && !motion.matches) {
+  if (context && !rafId && scopeVisible && !document.hidden) {
     rafId = requestAnimationFrame(paint);
   }
 }
@@ -269,13 +270,6 @@ new IntersectionObserver(([entry]) => {
   startScope();
 }).observe(canvas);
 document.addEventListener('visibilitychange', startScope);
-motion.addEventListener('change', () => {
-  if (motion.matches) {
-    tension = target;
-    drawScope();
-  }
-  startScope();
-});
 updateUrgency();
 render();
 startScope();
