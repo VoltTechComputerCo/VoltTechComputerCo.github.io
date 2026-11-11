@@ -106,17 +106,54 @@ html body .vt-season-bar select {
 
 @media screen {
   html[data-season="christmas"] {
-    --winter-lights: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20224%2034%22%20width%3D%22224%22%20height%3D%2234%22%3E%3Cdefs%3E%3Cfilter%20id%3D%22b%22%20x%3D%22-120%25%22%20y%3D%22-120%25%22%20width%3D%22340%25%22%20height%3D%22340%25%22%3E%3CfeGaussianBlur%20stdDeviation%3D%223.2%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cpath%20d%3D%22M0%204Q56%2023%20112%204q56%2019%20112%200%22%20fill%3D%22none%22%20stroke%3D%22%237ea3bc%22%20stroke-opacity%3D%22.8%22%2F%3E%3Cg%3E%3Cpath%20d%3D%22M24%209v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%2224%22%20cy%3D%2216%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23ff537e%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%2221.9%22%20y%3D%2213%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%23ff537e%22%2F%3E%3Cellipse%20cx%3D%2223.3%22%20cy%3D%2214.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M57%2014v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%2257%22%20cy%3D%2221%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%234aebff%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%2254.9%22%20y%3D%2218%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%234aebff%22%2F%3E%3Cellipse%20cx%3D%2256.3%22%20cy%3D%2219.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M94%209v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%2294%22%20cy%3D%2216%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%238dff81%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%2291.9%22%20y%3D%2213%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%238dff81%22%2F%3E%3Cellipse%20cx%3D%2293.3%22%20cy%3D%2214.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M132%209v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%22132%22%20cy%3D%2216%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23ffc65c%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%22129.9%22%20y%3D%2213%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%23ffc65c%22%2F%3E%3Cellipse%20cx%3D%22131.3%22%20cy%3D%2214.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M168%2014v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%22168%22%20cy%3D%2221%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23b18aff%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%22165.9%22%20y%3D%2218%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%23b18aff%22%2F%3E%3Cellipse%20cx%3D%22167.3%22%20cy%3D%2219.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3Cpath%20d%3D%22M202%209v4%22%20stroke%3D%22%23b6d2e1%22%2F%3E%3Cellipse%20cx%3D%22202%22%20cy%3D%2216%22%20rx%3D%225%22%20ry%3D%227%22%20fill%3D%22%23ff537e%22%20filter%3D%22url(%23b)%22%2F%3E%3Crect%20x%3D%22199.9%22%20y%3D%2213%22%20width%3D%224.2%22%20height%3D%226%22%20rx%3D%222.1%22%20fill%3D%22%23ff537e%22%2F%3E%3Cellipse%20cx%3D%22201.3%22%20cy%3D%2214.8%22%20rx%3D%22.85%22%20ry%3D%221.5%22%20fill%3D%22white%22%20opacity%3D%22.85%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    --winter-lights: url("../brand/christmas-string-lights.webp");
+    --winter-ornament: url("../brand/christmas-glass-ornament.webp");
+    --winter-strand-width: clamp(300px, 33vw, 416px);
+    --winter-strand-height: clamp(42px, 4.58vw, 58px);
   }
-  @keyframes vt-neon-glow { 50% { filter: brightness(1.32) saturate(1.2); } }
+  @keyframes vt-lights-shimmer {
+    0%, 100% { filter: brightness(.94) saturate(1.02); }
+    45% { filter: brightness(1.18) saturate(1.12) drop-shadow(0 0 4px #ffc68230); }
+    72% { filter: brightness(1.03) saturate(1.06); }
+  }
+  @keyframes vt-ornament-sway {
+    0%, 100% { transform: rotate(-4deg); }
+    50% { transform: rotate(5deg); }
+  }
   html[data-season="christmas"] .vt-season-bar {
-    background: linear-gradient(90deg,#07131e,#142739 62%,#0a1725);
-    border-bottom: 1px solid #28465b;
+    position: relative;
+    min-height: calc(var(--winter-strand-height) + 2px);
+    gap: .8rem;
+    background: transparent;
+    border: 0;
   }
   html[data-season="christmas"] .vt-season-bar::before {
-    content: ""; flex: 1; align-self: stretch; min-width: 0;
-    background: var(--winter-lights) repeat-x left center / 190px 29px;
-    animation: vt-neon-glow 6s ease-in-out infinite;
+    content: "";
+    flex: 1;
+    align-self: stretch;
+    min-width: 0;
+    background: var(--winter-lights) repeat-x left center / var(--winter-strand-width) auto;
+    animation: vt-lights-shimmer 5.8s ease-in-out infinite;
+    pointer-events: none;
+  }
+  html[data-season="christmas"] .vt-season-bar::after {
+    content: "";
+    position: absolute;
+    right: calc(clamp(.55rem, 2.5vw, 2.5rem) + 6.65rem);
+    top: 0;
+    width: 2.05rem;
+    height: calc(var(--winter-strand-height) + 4px);
+    background: var(--winter-ornament) no-repeat center top / contain;
+    animation: vt-ornament-sway 6.4s ease-in-out -1s infinite;
+    transform-origin: center top;
+    pointer-events: none;
+  }
+  @media (max-width: 50rem) {
+    html[data-season="christmas"] {
+      --winter-strand-width: 278px;
+      --winter-strand-height: 39px;
+    }
+    html[data-season="christmas"] .vt-season-bar::after { width: 1.65rem; }
   }
   html[data-season="christmas"][data-theme] body .vt-season-bar select {
     background: #152b3d !important; color: #ecf8ff !important; border-color: #53768d !important;
@@ -196,7 +233,6 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
     --winter-back: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22293%22%20height%3D%22223%22%20viewBox%3D%220%200%20293%20223%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%2232%22%20r%3D%221.2%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%2258%22%20cy%3D%2264%22%20r%3D%221.3%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22105%22%20cy%3D%2218%22%20r%3D%221.2%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22173%22%20cy%3D%2245%22%20r%3D%221%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22238%22%20cy%3D%2292%22%20r%3D%221.6%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%2228%22%20cy%3D%22140%22%20r%3D%221.3%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22102%22%20cy%3D%22153%22%20r%3D%221%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22194%22%20cy%3D%22184%22%20r%3D%221.7%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22266%22%20cy%3D%22196%22%20r%3D%221%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22155%22%20cy%3D%22111%22%20r%3D%221.2%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%22280%22%20cy%3D%2227%22%20r%3D%221.2%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3Ccircle%20cx%3D%2244%22%20cy%3D%22208%22%20r%3D%221.1%22%20fill%3D%22%23f4fcff%22%20stroke%3D%22%239fc8e6%22%20stroke-width%3D%22.65%22%2F%3E%3C%2Fsvg%3E");
     --winter-drift: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22230%22%20height%3D%2224%22%20viewBox%3D%220%200%20230%2024%22%3E%3Cpath%20d%3D%22M0%200H230V11c-15%203-18-4-31-2s-25%2013-42%209-23-9-36-6-22%2011-39%206-20-8-33-7-28%207-49%203Z%22%20fill%3D%22%2383bad9%22%2F%3E%3Cpath%20d%3D%22M0%200H230V8c-15%203-18-4-31-2s-25%2013-42%209-23-9-36-6-22%2011-39%206-20-8-33-7-28%207-49%203Z%22%20fill%3D%22%23effaff%22%2F%3E%3Cpath%20d%3D%22M6%205c18%201%2025-4%2041-3m42%208c11%202%2018-1%2027-3m44%206c12%200%2021-4%2031-8%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E");
     --winter-halo: #4fcfff55;
-    --winter-night: #102f47;
   }
   /* Paint snow behind all page content and soften it through the reading area. */
   html[data-season="christmas"] body { isolation: isolate; }
@@ -227,25 +263,31 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
   @keyframes vt-snowfall { to { background-position: 467px 307px; } }
   @keyframes vt-snow-drift { to { background-position: -293px 223px; } }
   @keyframes vt-ice-glow { 50% { box-shadow: 0 0 28px var(--winter-halo), inset 0 0 12px #65caff24; } }
-  html[data-season="christmas"] .vt-season-bar::before { animation: vt-neon-glow 4s ease-in-out infinite; }
   html[data-season="christmas"] :is(.home-hero,.site-footer,.static-footer) {
     border-color: #7fb4d5 !important;
   }
   html[data-season="christmas"] :is(.site-footer,.static-footer)::before {
-    content: ""; display: block; height: 32px; pointer-events: none;
-    background: var(--winter-lights) repeat-x center top / 205px 32px, #0b2033;
-    animation: vt-neon-glow 4s ease-in-out -1.4s infinite;
+    content: "";
+    display: block;
+    height: var(--winter-strand-height);
+    pointer-events: none;
+    background: var(--winter-lights) repeat-x center top / var(--winter-strand-width) auto;
+    animation: vt-lights-shimmer 7.4s ease-in-out -2.5s infinite;
   }
   html[data-season="christmas"] body[data-page=home] .home-hero {
     border-color: #82bbdd; box-shadow: 0 0 35px #45baff40;
-    background-color: var(--winter-night);
   }
-  html[data-season="christmas"] body[data-page=home] .home-hero-grid { min-height: 409px; }
+  html[data-season="christmas"] body[data-page=home] .home-hero-panel {
+    padding-bottom: calc(var(--winter-strand-height) + .75rem);
+  }
   html[data-season="christmas"] body[data-page=home] .home-hero::after {
     content: "";
-    display: block;
-    height: 31px;
-    background: var(--winter-lights) repeat-x center / 205px 31px, #0c2337dc;
+    position: absolute;
+    inset: auto 0 0;
+    height: var(--winter-strand-height);
+    background: var(--winter-lights) repeat-x center bottom / var(--winter-strand-width) auto;
+    animation: vt-lights-shimmer 6.6s ease-in-out -1.2s infinite;
+    pointer-events: none;
   }
   html[data-season="christmas"] :is(.rail-product,.christmas-kit,.workbench-card,.department-card,.service-card,.catalogue-card) {
     position: relative; border-color: color-mix(in srgb,#7db8db 55%,var(--retail-line,#3b708e));
@@ -258,13 +300,9 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
   }
   html[data-season="christmas"] .service-card { box-shadow: inset 0 3px #c3e6f7, 0 0 15px #65b8ec23; }
   html[data-season="christmas"] :is(.christmas-kit,.retail-side,.home-creator .stream-feature) { animation: vt-ice-glow 6.8s ease-in-out infinite; }
-  html[data-season="christmas"] .retail-side .rail-heading, html[data-season="christmas"] .christmas-kits > .rail-heading {
-    padding-bottom: 26px; background: var(--winter-lights) repeat-x left bottom / 170px 25px;
-  }
-  html[data-season="christmas"] .retail-side .rail-heading { animation: vt-neon-glow 5s ease-in-out -2.4s infinite; }
   html[data-season="christmas"] body[data-page] .catalogue-card :is(.catalogue-image-link,.catalogue-media) { border-radius: inherit; }
-  @media(max-width:50rem) {
-    html[data-season="christmas"] body[data-page=home] .home-hero::after { height: 25px; background-size: 168px 25px; }
+  @media (max-width: 50rem) {
+    html[data-season="christmas"] body[data-page=home] .home-hero-panel:not(:last-child) { padding-bottom: .8rem; }
   }
 }
 .catalogue-price { margin: .25rem 0; color: var(--teal); }
@@ -280,9 +318,9 @@ html[data-season="christmas"] .christmas-kits { display: block; padding-block: 1
 
 @media screen {
   html[data-season="christmas"] .christmas-kits > .rail-heading {
-    min-height: 104px; padding: 1.15rem 1.3rem 2.1rem;
+    min-height: 104px; padding: 1.15rem 1.3rem 2.7rem;
     border: 1px solid #6aa5bd; border-radius: 16px;
-    background: var(--winter-lights) repeat-x left bottom / 180px 28px,
+    background: var(--winter-lights) repeat-x left bottom / 255px auto,
       radial-gradient(ellipse at 90% 0%, #5269a2a0, transparent 52%),
       linear-gradient(112deg,#0a2235,#17384a 58%,#10263e);
     box-shadow: 0 0 24px #52cdff35;
@@ -367,3 +405,16 @@ html body[data-page] :is(.retail-shortcuts .stream-support-shortcut, .vt-tool-sw
 }
 
 #christmas-bundles { scroll-margin-top: 12rem; }
+
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html[data-season="christmas"] body::before,
+  html[data-season="christmas"] body::after,
+  html[data-season="christmas"] .vt-season-bar::before,
+  html[data-season="christmas"] .vt-season-bar::after,
+  html[data-season="christmas"] :is(.site-footer,.static-footer)::before,
+  html[data-season="christmas"] body[data-page=home] .home-hero::after,
+  html[data-season="christmas"] :is(.christmas-kit,.retail-side,.home-creator .stream-feature) {
+    animation: none;
+  }
+}

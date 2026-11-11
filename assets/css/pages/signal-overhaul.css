@@ -138,3 +138,19 @@
 @media (max-width: 33rem) {
   .signal-option { min-height: 58px; padding: .65rem; font-size: .82rem; }
 }
+
+.signal-scope-toggle {
+  position: absolute;
+  right: .45rem;
+  bottom: .4rem;
+  min-height: 32px;
+  padding: .35rem .55rem;
+  border: 1px solid #52757b;
+  border-radius: 6px;
+  background: #091c21;
+  color: #e6faf7;
+  font: 650 .7rem/1.2 var(--font-ui);
+  cursor: pointer;
+}
+.signal-scope-toggle:hover { border-color: #63efdf; }
+.signal-scope-toggle:focus-visible { outline: 2px solid #63efdf; outline-offset: 2px; }

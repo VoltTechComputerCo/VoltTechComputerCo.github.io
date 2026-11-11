@@ -31,11 +31,14 @@ const progressLabel = document.getElementById('progress-label');
 const backLink = document.getElementById('scan-back');
 const canvas = document.getElementById('scope');
 const context = canvas?.getContext('2d');
+const scopeToggle = document.getElementById('scope-toggle');
 const reading = document.getElementById('reading');
 const status = document.getElementById('status');
 const priority = document.getElementById('scan-priority');
 const motion = matchMedia('(prefers-reduced-motion: reduce)');
 let scopeVisible = true;
+let scopeMotionOverride = null;
+const scopeAnimated = () => scopeMotionOverride ?? !motion.matches;
 let lastPaint = 0;
 let rafId = 0;
 
@@ -59,7 +62,7 @@ function updateUrgency() {
     priority.dataset.level = level;
     [reading.textContent, status.textContent] = labels[level];
   }
-  if (motion.matches) { tension = target; drawScope(0); }
+  if (!scopeAnimated()) { tension = target; drawScope(); }
 }
 function servicePage() { return sourceInfo[currentMode()]?.page || 'pc-repair-pretoria.html'; }
 function serviceLabel() { return sourceInfo[currentMode()]?.label || 'PC Support'; }
@@ -183,33 +186,59 @@ function drawScope(time) {
   if (!context) return;
   const { width, height } = canvas;
   const colour = signalColours[priority.dataset.level] || signalColours.ready;
-  const amplitude = height * (.11 + tension * .23);
-  const phase = time / 470;
+  const ratio = Math.min(devicePixelRatio || 1, 2);
+  const amplitude = height * (.12 + tension * .26);
+  const yAt = x => {
+    const position = x / width;
+    const wave = Math.sin(position * (20 + tension * 16));
+    const harmonic = Math.sin(position * (45 + tension * 20)) * .26;
+    return height * .47 + (wave + harmonic) * amplitude * (.68 + .32 * Math.sin(Math.PI * position));
+  };
+
   context.clearRect(0, 0, width, height);
-
-  const glow = context.createLinearGradient(0, 0, width, 0);
-  glow.addColorStop(0, colour + '00');
-  glow.addColorStop(.22, colour);
-  glow.addColorStop(.78, colour);
-  glow.addColorStop(1, colour + '00');
-
-  for (const [opacity, offset, thickness] of [[.17, 1.7, 1], [.33, .8, 1], [1, 0, 2]]) {
-    context.beginPath();
-    context.globalAlpha = opacity;
-    context.strokeStyle = glow;
-    context.lineWidth = thickness * Math.min(devicePixelRatio || 1, 2);
-    for (let x = 0; x <= width; x += 2) {
-      const position = x / width;
-      const envelope = Math.sin(Math.PI * position) ** 1.5;
-      const wave = Math.sin(position * (15 + tension * 20) - phase + offset);
-      const harmonic = Math.sin(position * 35 - phase * 1.6 + offset) * .26;
-      const y = height / 2 + (wave + harmonic) * amplitude * envelope;
-      if (x === 0) context.moveTo(x, y);
-      else context.lineTo(x, y);
-    }
-    context.stroke();
+  context.beginPath();
+  for (let x = 0; x <= width; x += 2) {
+    if (x === 0) context.moveTo(x, yAt(x));
+    else context.lineTo(x, yAt(x));
   }
-  context.globalAlpha = 1;
+  context.strokeStyle = colour + (time === undefined ? 'e0' : '52');
+  context.lineWidth = 1.6 * ratio;
+  context.stroke();
+  if (time === undefined) return;
+
+  // Sweep across a faint stored trace and fade the illuminated section behind the cursor.
+  const sweep = ((time % 2350) / 2350 * 1.32 - .06) * width;
+  const tail = sweep - width * .26;
+  const phosphor = context.createLinearGradient(tail, 0, sweep, 0);
+  phosphor.addColorStop(0, colour + '00');
+  phosphor.addColorStop(.72, colour + 'bb');
+  phosphor.addColorStop(1, colour);
+  const end = Math.min(sweep, width);
+  const start = Math.max(0, tail);
+  if (end > start) {
+    context.beginPath();
+    context.moveTo(start, yAt(start));
+    for (let x = start + 2; x < end; x += 2) context.lineTo(x, yAt(x));
+    context.lineTo(end, yAt(end));
+    context.strokeStyle = phosphor;
+    context.lineWidth = 2.5 * ratio;
+    context.shadowColor = colour;
+    context.shadowBlur = 7 * ratio;
+    context.stroke();
+    context.shadowBlur = 0;
+  }
+  if (sweep < 0 || sweep > width) return;
+
+  context.beginPath();
+  context.moveTo(sweep, 0);
+  context.lineTo(sweep, height);
+  context.strokeStyle = colour + '66';
+  context.lineWidth = ratio;
+  context.stroke();
+  context.beginPath();
+  context.arc(sweep, yAt(sweep), 3 * ratio, 0, Math.PI * 2);
+  context.fillStyle = '#e4fff9';
+  context.fill();
 }
 
 function resizeScope() {
@@ -217,12 +246,12 @@ function resizeScope() {
   const rect = canvas.getBoundingClientRect();
   canvas.width = Math.max(1, Math.round(rect.width * ratio));
   canvas.height = Math.max(1, Math.round(rect.height * ratio));
-  drawScope(0);
+  drawScope();
 }
 
 function paint(time) {
   rafId = 0;
-  if (!scopeVisible || document.hidden || motion.matches) return;
+  if (!scopeVisible || document.hidden || !scopeAnimated()) return;
   if (time - lastPaint >= 30) {
     tension += (target - tension) * .13;
     drawScope(time);
@@ -232,7 +261,7 @@ function paint(time) {
 }
 
 function startScope() {
-  if (context && !rafId && scopeVisible && !document.hidden && !motion.matches) {
+  if (context && !rafId && scopeVisible && !document.hidden && scopeAnimated()) {
     rafId = requestAnimationFrame(paint);
   }
 }
@@ -243,11 +272,24 @@ new IntersectionObserver(([entry]) => {
   startScope();
 }).observe(canvas);
 document.addEventListener('visibilitychange', startScope);
-motion.addEventListener('change', () => {
-  tension = target;
-  drawScope(0);
+function applyScopeMotion() {
+  scopeToggle.textContent = scopeAnimated() ? 'Pause sweep' : 'Animate sweep';
+  if (!scopeAnimated()) {
+    tension = target;
+    drawScope();
+  }
   startScope();
-});
+}
+
+if (context) {
+  scopeToggle.hidden = false;
+  scopeToggle.addEventListener('click', () => {
+    scopeMotionOverride = !scopeAnimated();
+    applyScopeMotion();
+  });
+  motion.addEventListener('change', applyScopeMotion);
+  applyScopeMotion();
+}
 updateUrgency();
 render();
 startScope();
