@@ -195,7 +195,7 @@ const christmasKits = [
   ['Ryzen X3D Gaming Upgrade', 'Ryzen 7 9800X3D, B850 Wi-Fi motherboard and 32 GB DDR5.', ['syntech-ea933c57bb51f01c', 'syntech-ae1dae62819c8aea', 'syntech-19638924107b4888']]
 ];
 
-function showChristmasKits(shelf, products, generatedAt) {
+function showChristmasKits(anchor, products, generatedAt, preview = false) {
   const snapshotAge = Date.now() - Date.parse(generatedAt || '');
   const showTotals = snapshotAge >= 0 && snapshotAge < 10 * 3600000;
   const formatRand = new Intl.NumberFormat('en-ZA', { style:'currency', currency:'ZAR' });
@@ -204,6 +204,17 @@ function showChristmasKits(shelf, products, generatedAt) {
   const kits = christmasKits.map(([name, description, ids]) => ({name, description, ids, items:ids.map(id => byId.get(id))}))
     .filter(kit => kit.items.every(product => product && (product.primary_image || product.direct_image)));
   if (!kits.length) return;
+  if (preview) {
+    const feature = document.createElement('section');
+    feature.className = 'christmas-kits home-bundle-preview';
+    feature.setAttribute('aria-labelledby', 'season-title');
+    feature.innerHTML = '<h3 id="season-title">Christmas bundles</h3>' +
+      '<ul>' + kits.slice(0, 3).map(({name, description}) =>
+        '<li><strong>' + esc(name) + '</strong><span>' + esc(description) + '</span></li>').join('') +
+      '</ul><a class="text-link" href="' + siteUrl('store.html#christmas-bundles') + '">See all Christmas bundles →</a>';
+    anchor.append(feature);
+    return;
+  }
   const section = document.createElement('section');
   section.className = 'container christmas-kits';
   section.setAttribute('aria-labelledby', 'season-title');
@@ -265,11 +276,11 @@ function showChristmasKits(shelf, products, generatedAt) {
       buttons.forEach(item => { item.disabled = false; });
     }
   });
-  shelf.after(section);
+  anchor.append(section);
   bindImages(section);
 }
 
-function showShowcase(hero, products, generatedAt) {
+function showShowcase(anchor, products) {
   // South African shoppers see the same selection for each two-day window.
   const rotation = Math.floor((Date.now() + 2 * 3600000) / (2 * 86400000));
   const shelf = document.createElement('div');
@@ -285,20 +296,21 @@ function showShowcase(hero, products, generatedAt) {
     shelf.append(selection);
     bindImages(selection);
   }
-  const side = document.createElement('div');
-  side.className = 'retail-side';
-  side.insertAdjacentHTML('beforeend', `<div class="retail-shortcuts"><a href="${siteUrl('creator-hub-south-africa.html')}"><strong>Creator Hub ↗</strong><small>Discover South African streamers</small></a><a class="stream-support-shortcut" href="${siteUrl('streaming-setup-south-africa.html')}"><strong>Stream Support ↗</strong><small>Get your setup running smoothly</small></a></div>`);
-  shelf.append(side);
-  hero.after(shelf);
-  showChristmasKits(shelf, products, generatedAt);
+  if (picks.length) anchor.after(shelf);
 }
 
 export async function mountRetailRails() {
-  const header = document.querySelector('.site-header');
-  if (!header) return;
+  const homeShop = document.querySelector('.home-shop > .container');
+  const storeBundles = document.getElementById('christmas-bundles');
+  if (!homeShop && !storeBundles) return;
   const catalogue = await readPublicCatalogue(fetch, true);
   const products = (catalogue?.products || []).filter(p => p.status === 'active' && p.visibility === 'public' && p.sale_mode !== 'hidden' && p.is_demo === false);
-  showBrands(document.querySelector('main .home-shop') || header, products);
-  const hero = document.querySelector('main .home-hero');
-  if (hero) showShowcase(hero, products, catalogue?.generatedAt);
+  if (homeShop) {
+    showChristmasKits(homeShop, products, catalogue?.generatedAt, true);
+    return;
+  }
+  const departments = document.querySelector('.store-departments');
+  if (departments) showBrands(departments, products);
+  showChristmasKits(storeBundles, products, catalogue?.generatedAt);
+  showShowcase(storeBundles, products);
 }

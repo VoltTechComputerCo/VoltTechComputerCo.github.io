@@ -365,3 +365,5 @@ html body[data-page] :is(.retail-shortcuts .stream-support-shortcut, .vt-tool-sw
     background: var(--stream-tile-background) !important;
   }
 }
+
+#christmas-bundles { scroll-margin-top: 12rem; }

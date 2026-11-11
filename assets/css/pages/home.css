@@ -95,7 +95,6 @@
 }
 .home-shop .department-heading h2,.home-services h2{font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-.04em;line-height:1.15}
 .home-shop .department-heading p,.home-services .department-heading p{max-width:48ch}
-.home-shop .department-search{max-width:100%;margin:1.5rem 0}
 .home-shop .home-department-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
 .home-shop .department-image{aspect-ratio:1.15;padding:16px}
 .home-shop .department-copy h3{font-size:.9rem}
@@ -134,9 +133,6 @@
 @media(max-width:700px){
  .home-section{padding-block:2.2rem}
  .home-shop .department-heading,.home-services .department-heading{gap:.65rem}
- .home-shop .department-search>div{flex-direction:row;gap:.5rem}
- .home-shop .department-search .button{width:auto;padding-inline:.8rem;font-size:.75rem}
- .home-shop .department-search input{min-width:0;font-size:.85rem}
  .home-shop .home-department-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
  .home-shop .department-image{aspect-ratio:1.45;padding:12px}
  .home-shop .department-copy{padding:12px}.home-shop .department-copy h3{font-size:.85rem}
@@ -174,3 +170,52 @@ body .home-stream .stream-copy .actions>.button{background:var(--stream-accent)!
 .workbench-card small { color: #8ff0e4; font: .72rem var(--font-mono); }
 .workbench-card:hover { border-color: var(--teal); }
 @media (max-width: 700px) { .season-grid, .workbench-grid { grid-template-columns: 1fr; } }
+
+.repair-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  margin-top: 1.25rem;
+}
+.home-services .repair-overview .service-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 0;
+}
+.repair-workbench { margin: 0; }
+.repair-workbench img {
+  display: block;
+  width: 100%;
+  max-height: 285px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #081620;
+}
+.repair-workbench figcaption { margin-top: .4rem; color: var(--text-muted); font-size: .8rem; }
+.home-cooling-links { display: flex; flex-wrap: wrap; gap: .45rem 1rem; }
+.home-cooling-links span { color: var(--text-muted); }
+.home-shop .home-bundle-preview {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--panel);
+}
+.home-bundle-preview h3 { margin: 0; font-size: 1.15rem; }
+.home-bundle-preview ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .65rem 1.25rem;
+  list-style: none;
+  margin: .75rem 0 1rem;
+  padding: 0;
+}
+.home-bundle-preview li { display: grid; gap: .15rem; }
+.home-bundle-preview li span { color: var(--text-secondary); font-size: .85rem; }
+.stream-copy .stream-creator-link { margin-top: 1rem; }
+@media (max-width: 700px) {
+  .repair-overview, .home-bundle-preview ul { grid-template-columns: 1fr; }
+  .home-services .repair-overview .service-card { min-height: 0; }
+  .repair-workbench img { max-height: 180px; }
+  .home-shop .department-image { max-height: 120px; }
+}
