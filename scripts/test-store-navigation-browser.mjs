@@ -17,13 +17,15 @@ for(const width of [320,390,1440]){
  await page.route('**/assets/js/services/catalogue.js*',r=>r.fulfill({contentType:'application/javascript',body:service}));
  await page.route('**/assets/js/services/catalogue-cart.js*',r=>r.fulfill({contentType:'application/javascript',body:'export const connectCatalogueCart=()=>{};'}));
  await page.goto('http://127.0.0.1:4173/store.html');
- await page.locator('#product-grid .catalogue-card').first().waitFor();
+ await page.locator('#catalogue[data-source]').waitFor({state:'attached'});
+ assert.equal(await page.locator('#catalogue').isVisible(),false);
  const heading = await page.locator('.department-heading').boundingBox();
  const header = await page.locator('.site-header').boundingBox();
  assert.ok(heading.y >= header.y + header.height && heading.y + heading.height <= page.viewportSize().height,
   'category heading is in the first viewport below the sticky header');
  assert.ok(await page.locator('.department-card[data-category=gpu]').isVisible());
- assert.equal(await page.locator('.store-department-tabs a').count(),4);
+ assert.equal(await page.locator('.department-group:visible').count(),4);
+ assert.equal(await page.locator('.store-department-tabs [data-department-group]').count(),5);
  for(const card of await page.locator('.department-group:not([hidden]) .department-card').all()){
   const box=await card.locator('.department-image').boundingBox();
   const label=await card.locator('h3').boundingBox();

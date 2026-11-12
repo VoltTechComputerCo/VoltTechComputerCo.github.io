@@ -151,7 +151,9 @@ export async function showEmergencyStore(state){
  const hero=document.getElementById('store-hero-copy');
  if(hero)hero.textContent='Shop PC parts and gaming gear. You can check out as a guest or sign in to your account.';
  if(!products.length||!catalogue||!grid){if(catalogue)catalogue.hidden=true;monitorRecovery();return;}
- catalogue.hidden=false;catalogue.dataset.source='offline-snapshot';catalogue.dataset.mode='snapshot';
+ const catalogueWrap = catalogue.closest('.store-catalogue-wrap');
+ if (catalogueWrap) catalogueWrap.hidden = state.browseCategories;
+ catalogue.hidden=state.browseCategories;catalogue.dataset.source='offline-snapshot';catalogue.dataset.mode='snapshot';
  document.getElementById('catalogue-preview')?.setAttribute('hidden','');
  document.querySelector('.smart-filter-shell')?.setAttribute('hidden','');
  const filterChips=document.getElementById('active-filter-chips');
@@ -199,6 +201,14 @@ export async function showEmergencyStore(state){
  pager.addEventListener('click',event=>{const button=event.target.closest('[data-offline-page]');if(!button||button.disabled)return;state.page+=button.dataset.offlinePage==='next'?1:-1;render();catalogue.scrollIntoView({block:'start'});});
  document.getElementById('reset-filters')?.addEventListener('click',()=>{state.category='all';state.filters={};state.search='';state.sort='featured';state.page=1;searchInput.value='';sort.value='featured';render();});
  render();
+ document.querySelectorAll('[data-store-all]').forEach(link=>link.addEventListener('click',event=>{
+  if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||!catalogue.hidden)return;
+  event.preventDefault();
+  catalogue.hidden=false;
+  if (catalogueWrap) catalogueWrap.hidden=false;
+  history.replaceState(null,'','#catalogue');
+  jumpToCatalogueResults(grid);
+ }));
  if(location.hash==='#catalogue' || ['category','brand','q'].some(key=>new URLSearchParams(location.search).get(key)))
   requestAnimationFrame(()=>jumpToCatalogueResults(grid));
  monitorRecovery();
@@ -212,14 +222,29 @@ export async function showEmergencyProduct(slug){
  if(!product){monitorRecovery();return;}
  if(host){
   host.hidden=false;host.dataset.mode='snapshot';
-  const specs=Object.entries(product.specs||{}).filter(([key,value])=>typeof value==='string'||typeof value==='number').filter(([,value])=>String(value).length<160).slice(0,8);
-  host.innerHTML=`<div class="component-overview"><div class="component-showcase">${imageMarkup(product,true)}</div><div class="component-summary"><p class="eyebrow">${esc(product.brand||'VoltTech')}</p><h2>${esc(product.name)}</h2>${listedPrice(product)}<p>${esc(availabilityCopy(product))}</p>${specs.length?`<dl class="component-specs">${specs.map(([key,value])=>`<div><dt>${esc(key.replace(/_/g,' '))}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`:''}<div class="actions">${addButton(product)}<a class="button button-secondary" href="store.html?cart=1">View cart →</a></div></div></div>`;
+  const specs = Object.entries(product.specs || {}).filter(([,value]) =>
+    (typeof value === 'string' || typeof value === 'number') && String(value).length < 160).slice(0,8);
+  host.innerHTML = `<div class="component-overview">
+    <div class="component-showcase">${imageMarkup(product,true)}</div>
+    <header class="snapshot-product-heading"><p class="eyebrow">${esc(product.brand || 'VoltTech')}</p><div class="product-title-slot"></div></header>
+    <div class="component-summary snapshot-product-buy">${listedPrice(product)}<p>${esc(availabilityCopy(product))}</p>
+      <div class="actions">${addButton(product)}<a class="button button-secondary" href="store.html?cart=1">View cart →</a></div>
+    </div>
+    ${specs.length ? `<details class="snapshot-product-specs"><summary>Specifications</summary>
+      <dl class="component-specs">${specs.map(([key,value]) => `<div><dt>${esc(key.replace(/_/g,' '))}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl></details>` : ''}
+  </div>`;
+  const heading = document.querySelector('.component-heading');
+  const title = document.getElementById('component-title');
+  if (title) {
+   title.textContent = product.name;
+   host.querySelector('.product-title-slot').append(title);
+  }
+  if (heading) heading.hidden = true;
+  const crumb = document.querySelector('.commerce-crumbs [aria-current="page"]');
+  if (crumb) crumb.textContent = product.name;
   bindImages(host);
   connectSnapshotButtons(host, [product]);
  }
- const label=document.getElementById('component-label'),title=document.getElementById('component-title');
- if(label)label.textContent=(product.brand||'VOLTTECH')+' / PRODUCT DETAILS';
- if(title)title.textContent=product.name;
  document.title=product.name+' | VoltTech Computer Co.';
  monitorRecovery();
 }

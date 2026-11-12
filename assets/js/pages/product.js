@@ -4,7 +4,7 @@ import { productGallery, bindProductGallery } from '../components/product-galler
 import { openCatalogue, showGate, publicProducts, withTimeout, addItem } from '../services/catalogue.js?v=20261107-static1';
 import { esc, safeLink, imageMarkup, bindImages, commerceState, priceMarkup, dataRows, productUrl } from '../components/catalogue-view.js?v=20261103-slugs1';
 import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261102-gpu3';
-import { showEmergencyProduct, monitorStoreConnection } from '../services/emergency-store.js?v=20261112-arctic-cdn';
+import { showEmergencyProduct, monitorStoreConnection } from '../services/emergency-store.js?v=20261112-product-layout';
 import { normalizeProductAddress } from '../services/product-permalinks.js?v=20261103-slugs1';
 const host = document.getElementById('product-detail'), title = document.getElementById('component-title');
 async function init() {

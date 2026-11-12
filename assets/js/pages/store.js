@@ -5,7 +5,7 @@ import { productCard, filterProducts, bindImages, jumpToCatalogueResults } from 
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js?v=20261021.3';
 import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261102-gpu3';
 import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261021.3';
-import { showEmergencyStore, monitorStoreConnection } from '../services/emergency-store.js?v=20261112-arctic-cdn';
+import { showEmergencyStore, monitorStoreConnection } from '../services/emergency-store.js?v=20261112-category-landing';
 
 const query=new URLSearchParams(location.search);
 const landingHash=location.hash;
@@ -16,6 +16,7 @@ FILTER_KEYS.forEach(key=>{ const value=query.get(key); if(value!==null && value!
 
 let savedSize;try{savedSize=localStorage.getItem('volttech-catalogue-page-size');}catch{}
 const state={
+  browseCategories:landingHash!=='#catalogue' && !['category','q','sort','page'].some(key=>query.has(key)) && !Object.keys(filters).length,
   category:selected?.dataset.categoryLink || 'all',
   page:Math.max(1,Number(query.get('page'))||1),
   pageSize:pageSize(query.get('pageSize')||savedSize),
@@ -131,14 +132,14 @@ function bindFilterUI(products,render){
 const groupLinks=[...document.querySelectorAll('[data-department-group]')];
 const departmentGroups=[...document.querySelectorAll('.department-group')];
 function showDepartmentGroup(id){
-  departmentGroups.forEach(group=>{group.hidden=group.id!==id;});
+  departmentGroups.forEach(group=>{group.hidden=id!=='all' && group.id!==id;});
   groupLinks.forEach(link=>{
     const active=link.dataset.departmentGroup===id;
     if(active)link.setAttribute('aria-current','true');else link.removeAttribute('aria-current');
   });
 }
 const currentCard=[...document.querySelectorAll('.department-card')].find(card=>card.dataset.category===state.category);
-showDepartmentGroup(departmentGroups.some(group=>'#'+group.id===landingHash)?landingHash.slice(1):currentCard?.closest('.department-group').id||'pc-components');
+showDepartmentGroup(departmentGroups.some(group=>'#'+group.id===landingHash)?landingHash.slice(1):currentCard?.closest('.department-group').id||'all');
 groupLinks.forEach(link=>link.addEventListener('click',event=>{event.preventDefault();showDepartmentGroup(link.dataset.departmentGroup);}));
 // Header shortcuts should open their matching group even when it is currently hidden.
 document.querySelectorAll('a[href*="#gaming-streaming"],a[href*="#laptops"],a[href*="#pc-components"],a[href*="#desk-essentials"]').forEach(link=>{
@@ -187,7 +188,8 @@ async function init(){
 
     document.getElementById('store-gate').hidden=true;
     document.getElementById('catalogue-loading')?.remove();
-    document.getElementById('catalogue').hidden=false;
+    document.getElementById('catalogue').hidden=state.browseCategories && !preview;
+    document.querySelector('.store-catalogue-wrap').hidden=state.browseCategories && !preview;
     document.getElementById('catalogue').dataset.source=data.source||'live';
     document.getElementById('catalogue').dataset.readyMs=String(Math.round(performance.now()));
     document.getElementById('store-state').textContent=preview?'ADMIN PREVIEW / STORE REMAINS LOCKED':`${products.length.toLocaleString('en-ZA')} products to explore`;
@@ -252,6 +254,8 @@ async function init(){
       const card=[...document.querySelectorAll('.department-card')].find(card=>card.dataset.category===state.category);
       if(card)showDepartmentGroup(card.closest('.department-group').id);
       document.querySelector('.shop-category-menu').open=false;
+      document.getElementById('catalogue').hidden=false;
+      document.querySelector('.store-catalogue-wrap').hidden=false;
       selectCategory();render();
       jumpToCatalogueResults(grid);
     }));

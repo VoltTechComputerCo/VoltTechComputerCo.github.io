@@ -8,13 +8,13 @@
     "assets/css/notifications.css",
     "assets/css/pages/commerce.css?v=20261014-merch",
     "assets/css/pages/product-gallery.css?v=20261014-merch",
-    "assets/css/pages/product-compact.css?v=20261014-merch"
+    "assets/css/pages/product-compact.css?v=20261112-product-layout"
   ],
   "classic_scripts": [
     "supabase-config.js",
     "conversion-context.js"
   ],
   "scripts": [
-    "assets/js/pages/product.js?v=20261112-arctic-cdn"
+    "assets/js/pages/product.js?v=20261112-product-layout"
   ]
 }
