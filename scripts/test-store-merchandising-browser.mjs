@@ -27,7 +27,8 @@ for(const width of [320,390,1440]){
  if(width<=700)await page.locator('.mobile-filter-toggle').click();
  const availability=page.locator('details.smart-filter').filter({has:page.locator('[data-filter-key=availability]')});await availability.locator('summary').click();await page.locator('[data-filter-key=availability][data-filter-value="In stock"]').click();
  assert.equal(await page.locator('#product-grid .catalogue-card').count(),2);assert.deepEqual(errors,[]);
- await page.goto('http://127.0.0.1:4173/store.html');await page.locator('#product-grid .catalogue-card').first().waitFor();
+ await page.goto('http://127.0.0.1:4173/store.html');await page.locator('#catalogue[data-source]').waitFor({state:'attached'});
+ assert.equal(await page.locator('#catalogue').isVisible(),false);
  assert.equal(await page.evaluate(()=>[...document.querySelectorAll('.department-card')].every(a=>a.parentElement.classList.contains('department-grid'))),true);
  assert.equal(await page.locator('#shop-featured').isVisible(),true);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);

@@ -56,7 +56,7 @@ for(const width of [320,390,1440]){
   window.supabase={createClient:()=>({auth:{getSession:()=>new Promise(()=>{}),onAuthStateChange:()=>{}},from:()=>{throw Error('Snapshot rendering should not request product rows')}})};
  });
  await store.route('**/assets/data/catalogue.json.gz',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({schemaVersion:1,generatedAt:new Date().toISOString(),settings:{catalogue_enabled:true},categories:[],products:[{id:'gpu1',slug:'gpu1',name:'MSI RTX 5060',brand:'MSI',type:'gpu',category_slug:'gpu',status:'active',visibility:'public',is_demo:false,sale_mode:'quote',retail_price:6000,stock_qty:10,stock_status:'in_stock'}]})}));
- const started=Date.now();await store.goto('http://127.0.0.1:4173/store.html');
+ const started=Date.now();await store.goto('http://127.0.0.1:4173/store.html#catalogue');
  await store.locator('#product-grid .catalogue-card').first().waitFor({timeout:5000});
  assert.ok(Date.now()-started<5000,'products appear while the account session is still blocked');
  assert.equal(await store.locator('#catalogue-loading').count(),0);
