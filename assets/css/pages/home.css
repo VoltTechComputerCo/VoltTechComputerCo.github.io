@@ -219,3 +219,25 @@ body .home-stream .stream-copy .actions>.button{background:var(--stream-accent)!
   .repair-workbench img { max-height: 180px; }
   .home-shop .department-image { max-height: 120px; }
 }
+
+.home-arctic-banner {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: .75rem 1.5rem; margin-top: 1.25rem; padding: 1rem 1.4rem;
+  border: 1px solid #417c9f; border-radius: 12px; text-decoration: none; color: #fff;
+  background: linear-gradient(115deg, #0b2940, #144c69);
+}
+.home-arctic-banner img { width: 9rem; height: auto; }
+.home-arctic-banner:hover { border-color: #72d9ff; color: #fff; }
+.home-arctic-offers {
+  margin-top: .75rem; padding: clamp(.8rem, 2vw, 1.5rem);
+  border: 1px solid var(--border-strong); border-radius: 12px; background: var(--panel);
+}
+.home-arctic-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
+.home-arctic-grid .home-arctic-product { width: auto; min-width: 0; text-decoration: none; }
+.home-arctic-grid .catalogue-media { position: relative; aspect-ratio: 4 / 3; margin: 0; }
+.home-arctic-grid .catalogue-media > img[data-product-image] {
+  position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; padding: .75rem; object-fit: contain;
+}
+.home-arctic-grid .rail-product-copy { overflow-wrap: anywhere; }
+.home-arctic-grid .rail-product-copy > span { color: var(--teal); font-weight: 700; }
+@media (max-width: 700px) { .home-arctic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
