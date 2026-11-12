@@ -5,7 +5,7 @@ import { productCard, filterProducts, bindImages, jumpToCatalogueResults } from 
 import { pageWindow, pageSize } from '../services/catalogue-pagination.js?v=20261021.3';
 import { connectCatalogueCart } from '../services/catalogue-cart.js?v=20261102-gpu3';
 import { FILTER_KEYS, accentFor, facetDefinitions, facetOptions, formatFacetValue } from '../components/store-filter-menu.js?v=20261021.3';
-import { showEmergencyStore, monitorStoreConnection } from '../services/emergency-store.js?v=20261108-cart';
+import { showEmergencyStore, monitorStoreConnection } from '../services/emergency-store.js?v=20261112-arctic-offer';
 
 const query=new URLSearchParams(location.search);
 const landingHash=location.hash;

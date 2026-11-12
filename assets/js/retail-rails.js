@@ -1,6 +1,8 @@
 import { readPublicCatalogue } from './services/public-catalogue.js?v=20261102-gpu3';
 import { bindImages, esc, imageMarkup, productUrl } from './components/catalogue-view.js?v=20261103-slugs1';
 
+import { arcticOfferEnd, arcticOfferIds, isArcticOffer } from './services/arctic-christmas.js';
+
 const supplierArt = 'https://www.syntech.co.za/wp-content/uploads/';
 const brands = [
   ['ASUS', '2025/06/Asus_500x500px-01.jpg'],
@@ -299,6 +301,33 @@ function showShowcase(anchor, products) {
   if (picks.length) anchor.after(shelf);
 }
 
+function showArcticOffers(products, generatedAt) {
+  const section = document.querySelector('[data-arctic-offers]');
+  const now = Date.now();
+  const age = now - Date.parse(generatedAt);
+  if (!section || now >= arcticOfferEnd || !(age >= 0 && age < 10 * 3600000)) return;
+  const byId = new Map(products.filter(isArcticOffer).map(product => [product.id, product]));
+  const items = arcticOfferIds.map(id => byId.get(id)).filter(Boolean);
+  if (!items.length) return;
+  const money = new Intl.NumberFormat('en-ZA', {style:'currency', currency:'ZAR'});
+  section.querySelector('[data-arctic-grid]').innerHTML = items.map(product => {
+    const available = Number(product.stock_qty) > 0 && !/^out[-_]of[-_]stock$/i.test(product.stock_status || '');
+    return `<a class="rail-product home-arctic-product" href="${esc(productUrl(product, false))}">
+      ${imageMarkup(product)}
+      <span class="rail-product-copy"><strong>${esc(product.name)}</strong>
+        <span>${available ? esc(money.format(Number(product.retail_price))) : "Out of stock"}</span>
+      </span></a>`;
+  }).join('');
+  bindImages(section);
+  section.hidden = false;
+  function hideExpiredOffer() {
+    const remaining = arcticOfferEnd - Date.now();
+    if (remaining <= 0) section.hidden = true;
+    else window.setTimeout(hideExpiredOffer, Math.min(remaining, 2_147_483_647));
+  }
+  hideExpiredOffer();
+}
+
 export async function mountRetailRails() {
   const homeShop = document.querySelector('.home-shop > .container');
   const storeBundles = document.getElementById('christmas-bundles');
@@ -306,6 +335,7 @@ export async function mountRetailRails() {
   const catalogue = await readPublicCatalogue(fetch, true);
   const products = (catalogue?.products || []).filter(p => p.status === 'active' && p.visibility === 'public' && p.sale_mode !== 'hidden' && p.is_demo === false);
   if (homeShop) {
+    showArcticOffers(products, catalogue?.generatedAt);
     showChristmasKits(homeShop, products, catalogue?.generatedAt, true);
     return;
   }

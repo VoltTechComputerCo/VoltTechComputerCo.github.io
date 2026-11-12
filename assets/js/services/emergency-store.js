@@ -7,6 +7,8 @@ import { publicCatalogueOnly } from './site-config.js?v=20261107-static1';
 import { addItem, notify } from './catalogue.js?v=20261107-static1';
 import { esc, imageMarkup, bindImages, filterProducts, jumpToCatalogueResults } from '../components/catalogue-view.js?v=20261108-winter2';
 
+import { arcticOfferEnd, isArcticOffer } from './arctic-christmas.js';
+
 const publicProduct=p=>p&&typeof p.id==='string'&&p.status==='active'&&p.visibility==='public'&&p.sale_mode!=='hidden'&&p.is_demo===false;
 const normalConfig=()=>window.VOLTTECH_SUPABASE;
 let recovering=false;
@@ -32,7 +34,8 @@ async function snapshotProducts(){
  if(!snapshot||snapshot.settings?.catalogue_enabled===false)return [];
  const freshSnapshot=await readPublicCatalogue();
  return snapshot.products.filter(publicProduct).map(product=>{
-  const price=Number(product.retail_price);
+  const expiredArcticOffer = Date.now() >= arcticOfferEnd && isArcticOffer(product);
+  const price = Number(expiredArcticOffer ? product.compare_at_price : product.retail_price);
   const listed=freshSnapshot && product.stock_qty>0 && !outOfStock(product) && product.currency==='ZAR' && Number.isFinite(price) && price>0;
   return {...product,retail_price:listed?price:null};
  });
