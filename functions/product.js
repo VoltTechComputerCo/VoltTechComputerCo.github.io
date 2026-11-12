@@ -33,9 +33,10 @@ export function renderProductHtml(shell, slug, product) {
     [/<meta property="og:url" content="[^"]*">/, '<meta property="og:url" content="' + escape(canonical) + '">'],
     [/<span aria-current="page">Component details<\/span>/, '<span aria-current="page">' + escape(product.name) + '</span>'],
     [/<h1 id="component-title">PRODUCT DETAILS<\/h1><p>Specifications, pricing and availability\.<\/p>/,
-      '<h1 id="component-title">' + escape(product.name) + '</h1><p>' + escape(description) + '</p>' +
-      (details.length ? '<dl>' + details.map(([label, value]) => '<dt>' + label + '</dt><dd>' + escape(value) + '</dd>').join('') + '</dl>' : '') +
-      (product.image ? '<noscript><img src="' + escape(product.image) + '" alt="' + escape(product.name) + '" width="360"></noscript>' : '')],
+      '<h1 id="component-title">' + escape(product.name) + '</h1><noscript><div class="product-static-details">' +
+      (product.image ? '<img src="' + escape(product.image) + '" alt="' + escape(product.name) + '" width="360">' : '') +
+      (details.length ? '<dl>' + details.map(([label, value]) => '<dt>' + escape(label) + '</dt><dd>' + escape(value) + '</dd>').join('') + '</dl>' : '') +
+      '</div></noscript>'],
     [/<\/head>/, '<script type="application/ld+json">' + JSON.stringify(structured).replace(/</g, '\\u003c') + '</script>\n</head>']
   ];
   if (tags.some(([pattern]) => !pattern.test(shell))) return null;

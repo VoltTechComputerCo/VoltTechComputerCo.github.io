@@ -70,6 +70,7 @@ const ctaObserver = new MutationObserver((records) => {
 ctaObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] });
 
 connectCart();
+import('./services/cart-drawer.js?v=20261112-cart-drawer').then(({mountCartDrawer}) => mountCartDrawer()).catch(() => {});
 if (!publicCatalogueOnly || !['home','store','product'].includes(document.body.dataset.page)) connectAccount(window.VOLTTECH_SUPABASE);
 if (['home', 'store'].includes(document.body.dataset.page)) {
   import('./retail-rails.js?v=20261112-arctic-lights').then(({ mountRetailRails }) => mountRetailRails()).catch(() => {});

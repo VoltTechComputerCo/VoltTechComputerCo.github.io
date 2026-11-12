@@ -1,8 +1,8 @@
 import { esc, commerceState, imageMarkup, bindImages } from '../components/catalogue-view.js?v=20261021.3';
 import { withTimeout, publicProducts, notify } from './catalogue.js?v=20261102-gpu3';
 import { readLaunchSettings } from './home-integrations.js?v=20261102-failover1';
-export function connectCatalogueCart(VT, products, preview, { allowEnquiryFallback = true } = {}) {
-  const dialog = document.getElementById('catalogue-cart'), host = document.getElementById('cart-items'), checkout = document.getElementById('cart-checkout');
+export function connectCatalogueCart(VT, products, preview, { allowEnquiryFallback = true, elements, bindLinks = true } = {}) {
+  const {dialog, host, checkout} = elements || {dialog: document.getElementById('catalogue-cart'), host: document.getElementById('cart-items'), checkout: document.getElementById('cart-checkout')};
   const map = new Map(products.map(p => [p.id,p]));
   let version = 0, allowed = false;
   async function render() {
@@ -26,7 +26,7 @@ export function connectCatalogueCart(VT, products, preview, { allowEnquiryFallba
     host.querySelectorAll('[data-qty]').forEach(b => b.addEventListener('click', () => { try { VT.setCartQty(b.dataset.qty, Number(b.dataset.value)); } catch { notify('Your browser could not update the cart.'); } }));
   }
   async function open(event) { event?.preventDefault(); if (!dialog.open) dialog.showModal(); await render(); }
-  document.querySelectorAll('[data-cart-link], [data-open-cart]').forEach(a => a.addEventListener('click', open));
+  if (bindLinks) document.querySelectorAll('[data-cart-link], [data-open-cart]').forEach(a => a.addEventListener('click', open));
   window.addEventListener('vt-store-cart-change', () => { if (dialog.open) render(); });
   window.addEventListener('storage', event => { if (dialog.open && (!event.key || event.key === 'vt_store_quote_cart_v1')) render(); });
   checkout.addEventListener('click', async event => {
@@ -49,5 +49,6 @@ export function connectCatalogueCart(VT, products, preview, { allowEnquiryFallba
       location.assign('https://wa.me/27618435775?text='+encodeURIComponent(message));
     } finally {checkout.dataset.checking='';checkout.textContent=label;}
   });
-  if (new URLSearchParams(location.search).get('cart') === '1') open();
+  if (bindLinks && new URLSearchParams(location.search).get('cart') === '1') open();
+  return {open};
 }

@@ -212,14 +212,29 @@ export async function showEmergencyProduct(slug){
  if(!product){monitorRecovery();return;}
  if(host){
   host.hidden=false;host.dataset.mode='snapshot';
-  const specs=Object.entries(product.specs||{}).filter(([key,value])=>typeof value==='string'||typeof value==='number').filter(([,value])=>String(value).length<160).slice(0,8);
-  host.innerHTML=`<div class="component-overview"><div class="component-showcase">${imageMarkup(product,true)}</div><div class="component-summary"><p class="eyebrow">${esc(product.brand||'VoltTech')}</p><h2>${esc(product.name)}</h2>${listedPrice(product)}<p>${esc(availabilityCopy(product))}</p>${specs.length?`<dl class="component-specs">${specs.map(([key,value])=>`<div><dt>${esc(key.replace(/_/g,' '))}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`:''}<div class="actions">${addButton(product)}<a class="button button-secondary" href="store.html?cart=1">View cart →</a></div></div></div>`;
+  const specs = Object.entries(product.specs || {}).filter(([,value]) =>
+    (typeof value === 'string' || typeof value === 'number') && String(value).length < 160).slice(0,8);
+  host.innerHTML = `<div class="component-overview">
+    <div class="component-showcase">${imageMarkup(product,true)}</div>
+    <header class="snapshot-product-heading"><p class="eyebrow">${esc(product.brand || 'VoltTech')}</p><div class="product-title-slot"></div></header>
+    <div class="component-summary snapshot-product-buy">${listedPrice(product)}<p>${esc(availabilityCopy(product))}</p>
+      <div class="actions">${addButton(product)}<a class="button button-secondary" href="store.html?cart=1">View cart →</a></div>
+    </div>
+    ${specs.length ? `<details class="snapshot-product-specs"><summary>Specifications</summary>
+      <dl class="component-specs">${specs.map(([key,value]) => `<div><dt>${esc(key.replace(/_/g,' '))}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl></details>` : ''}
+  </div>`;
+  const heading = document.querySelector('.component-heading');
+  const title = document.getElementById('component-title');
+  if (title) {
+   title.textContent = product.name;
+   host.querySelector('.product-title-slot').append(title);
+  }
+  if (heading) heading.hidden = true;
+  const crumb = document.querySelector('.commerce-crumbs [aria-current="page"]');
+  if (crumb) crumb.textContent = product.name;
   bindImages(host);
   connectSnapshotButtons(host, [product]);
  }
- const label=document.getElementById('component-label'),title=document.getElementById('component-title');
- if(label)label.textContent=(product.brand||'VOLTTECH')+' / PRODUCT DETAILS';
- if(title)title.textContent=product.name;
  document.title=product.name+' | VoltTech Computer Co.';
  monitorRecovery();
 }
