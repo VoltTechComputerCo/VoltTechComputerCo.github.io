@@ -189,6 +189,7 @@ async function init(){
     document.getElementById('store-gate').hidden=true;
     document.getElementById('catalogue-loading')?.remove();
     document.getElementById('catalogue').hidden=state.browseCategories && !preview;
+    document.querySelector('.store-catalogue-wrap').hidden=state.browseCategories && !preview;
     document.getElementById('catalogue').dataset.source=data.source||'live';
     document.getElementById('catalogue').dataset.readyMs=String(Math.round(performance.now()));
     document.getElementById('store-state').textContent=preview?'ADMIN PREVIEW / STORE REMAINS LOCKED':`${products.length.toLocaleString('en-ZA')} products to explore`;
@@ -254,6 +255,7 @@ async function init(){
       if(card)showDepartmentGroup(card.closest('.department-group').id);
       document.querySelector('.shop-category-menu').open=false;
       document.getElementById('catalogue').hidden=false;
+      document.querySelector('.store-catalogue-wrap').hidden=false;
       selectCategory();render();
       jumpToCatalogueResults(grid);
     }));
