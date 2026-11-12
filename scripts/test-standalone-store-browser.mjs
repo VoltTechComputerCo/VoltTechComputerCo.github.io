@@ -21,7 +21,8 @@ try{
   // Simulate production hostname and existing customer sessions while keeping
   // all resources local; a missed API bypass would become a recorded request.
   if (width === 1440) await page.addInitScript(() => localStorage.setItem('sb-qdqhfnvwqvgesfdmocir-auth-token',JSON.stringify({access_token:'fixture-session', user:{id:'fixture-user'}, expires_at:Math.floor(Date.now()/1000)+3600})));
-  await page.route('https://**/*',r=>r.abort());
+  await page.route('https://**/*',r=>r.request().resourceType()==='image'
+   ? r.fulfill({contentType:'image/webp',body:readFileSync('assets/categories/store-gpu.webp')}) : r.abort());
   await page.route('https://volttechcomputerco.co.za/**',async route=>{
    const u=new URL(route.request().url());
    const response=await route.fetch({url:'http://127.0.0.1:4173'+u.pathname+u.search});
@@ -51,9 +52,10 @@ try{
   await page.locator('#product-detail h1#component-title').waitFor({timeout:18000});
   assert.equal(await page.locator('main h1').count(),1,'product renders a single heading');
   assert.equal(await page.locator('.component-heading').isVisible(),false,'static fallback is hidden after the product loads');
-  const photo = await page.locator('#product-detail .catalogue-media').first().evaluate(figure => {
+  const photo = await page.locator('#product-detail .catalogue-media').first().evaluate(async figure => {
    const img=figure.querySelector('img[data-product-image]');
    if (!img) return null;
+   await img.decode();
    const box=figure.getBoundingClientRect(), picture=img.getBoundingClientRect();
    return {fit:getComputedStyle(img).objectFit, contained:picture.top>=box.top-1 && picture.bottom<=box.bottom+1 && picture.left>=box.left-1 && picture.right<=box.right+1};
   });
