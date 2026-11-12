@@ -151,7 +151,7 @@ export async function showEmergencyStore(state){
  const hero=document.getElementById('store-hero-copy');
  if(hero)hero.textContent='Shop PC parts and gaming gear. You can check out as a guest or sign in to your account.';
  if(!products.length||!catalogue||!grid){if(catalogue)catalogue.hidden=true;monitorRecovery();return;}
- catalogue.hidden=false;catalogue.dataset.source='offline-snapshot';catalogue.dataset.mode='snapshot';
+ catalogue.hidden=state.browseCategories;catalogue.dataset.source='offline-snapshot';catalogue.dataset.mode='snapshot';
  document.getElementById('catalogue-preview')?.setAttribute('hidden','');
  document.querySelector('.smart-filter-shell')?.setAttribute('hidden','');
  const filterChips=document.getElementById('active-filter-chips');
@@ -199,6 +199,13 @@ export async function showEmergencyStore(state){
  pager.addEventListener('click',event=>{const button=event.target.closest('[data-offline-page]');if(!button||button.disabled)return;state.page+=button.dataset.offlinePage==='next'?1:-1;render();catalogue.scrollIntoView({block:'start'});});
  document.getElementById('reset-filters')?.addEventListener('click',()=>{state.category='all';state.filters={};state.search='';state.sort='featured';state.page=1;searchInput.value='';sort.value='featured';render();});
  render();
+ document.querySelectorAll('[data-store-all]').forEach(link=>link.addEventListener('click',event=>{
+  if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||!catalogue.hidden)return;
+  event.preventDefault();
+  catalogue.hidden=false;
+  history.replaceState(null,'','#catalogue');
+  jumpToCatalogueResults(grid);
+ }));
  if(location.hash==='#catalogue' || ['category','brand','q'].some(key=>new URLSearchParams(location.search).get(key)))
   requestAnimationFrame(()=>jumpToCatalogueResults(grid));
  monitorRecovery();

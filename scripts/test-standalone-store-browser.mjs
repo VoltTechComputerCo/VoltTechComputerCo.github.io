@@ -28,6 +28,10 @@ try{
    return route.fulfill({response});
   });
   await page.goto('https://volttechcomputerco.co.za/store.html',{waitUntil:'domcontentloaded'});
+  await page.locator('body[data-store-mode="snapshot"]').waitFor({timeout:18000});
+  assert.equal(await page.locator('.department-group:visible').count(),4,'default Store displays the category groups');
+  assert.equal(await page.locator('#catalogue').isVisible(),false,'default Store waits for a category or explicit browse-all action');
+  await page.getByRole('link',{name:'Browse every product →'}).click();
   await page.locator('#product-grid .catalogue-card').first().waitFor({timeout:18000});
   assert.equal(await page.locator('#catalogue').isVisible(),true,'public catalogue renders without Supabase');
   assert.equal(await page.locator('body').getAttribute('data-store-mode'),'snapshot');
@@ -75,11 +79,12 @@ try{
     const ids = filter.slice(4,-1).split(',').map(id => id.replaceAll('"',''));
     return route.fulfill({headers:cors,json:snapshot.products.filter(product => ids.includes(product.id))});
    });
-   await page.goto('https://volttechcomputerco.co.za/store.html');
+   await page.goto('https://volttechcomputerco.co.za/store.html#catalogue');
    await page.locator('#product-grid button[data-add-snapshot]').first().click();
    await page.getByText(/added to your cart/).waitFor();
    const drawer=page.getByRole('dialog',{name:'Your cart',exact:true});
    await drawer.waitFor({state:'visible'});
+   await drawer.getByRole('link',{name:'Continue to checkout →'}).waitFor({state:'visible'});
    const drawerBox=await drawer.boundingBox();
    assert.ok(Math.abs(drawerBox.x+drawerBox.width-width)<=1,'cart opens against the right side');
    await drawer.getByRole('button',{name:'Close side cart'}).click();
