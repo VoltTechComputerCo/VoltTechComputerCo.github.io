@@ -315,7 +315,8 @@ function showArcticOffers(products, generatedAt) {
     return `<a class="rail-product home-arctic-product" href="${esc(productUrl(product, false))}">
       ${imageMarkup(product)}
       <span class="rail-product-copy"><strong>${esc(product.name)}</strong>
-        <span>${available ? esc(money.format(Number(product.retail_price))) : "Out of stock"}</span>
+        ${available ? `<span class="home-arctic-prices"><span>Was <s>${esc(money.format(Number(product.compare_at_price)))}</s></span><b>${esc(money.format(Number(product.retail_price)))}</b></span>` : '<span class="home-arctic-stock">Out of stock</span>'}
+        <span class="home-arctic-card-link">View product <span aria-hidden="true">↗</span></span>
       </span></a>`;
   }).join('');
   bindImages(section);
