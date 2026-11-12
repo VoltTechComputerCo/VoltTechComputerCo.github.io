@@ -321,6 +321,9 @@ function showArcticOffers(products, generatedAt) {
   }).join('');
   bindImages(section);
   section.hidden = false;
+  const destination = location.hash === '#arctic-christmas-title' ? section :
+    location.hash === '#arctic-cooling-offers' ? section.querySelector('[data-arctic-grid]') : null;
+  destination?.scrollIntoView({block:'start', behavior:'instant'});
   function hideExpiredOffer() {
     const remaining = arcticOfferEnd - Date.now();
     if (remaining <= 0) section.hidden = true;

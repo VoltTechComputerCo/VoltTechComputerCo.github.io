@@ -230,6 +230,7 @@ body .home-stream .stream-copy .actions>.button{background:var(--stream-accent)!
 .home-arctic-banner:hover { border-color: #72d9ff; color: #fff; }
 .home-arctic-offers {
   margin-top: .75rem;
+  scroll-margin-top: 9rem;
   padding: 0 0 clamp(.7rem, 2vw, 1.4rem);
   border: 1px solid var(--border-strong);
   border-radius: 18px;
@@ -267,8 +268,12 @@ body .home-stream .stream-copy .actions>.button{background:var(--stream-accent)!
   color: #e1f2ff;
 }
 .home-arctic-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem 1.25rem; }
-.home-arctic-actions .button { background: #def8ff; border-color: #def8ff; color: #102a3a; }
-.home-arctic-actions .button:is(:hover,:focus-visible) { background: #fff; color: #102a3a; }
+.home-arctic-actions .home-arctic-cta {
+  display: inline-flex; align-items: center; min-height: 44px; padding: .65rem 1rem;
+  border-radius: 8px; background: #def8ff; color: #102a3a;
+  font-weight: 750; text-decoration: none;
+}
+.home-arctic-actions .home-arctic-cta:is(:hover,:focus-visible) { background: #fff; color: #102a3a; }
 .home-arctic-actions > span { color: #e1f2ff; font-size: .9rem; }
 .home-arctic-lights { display: none; }
 html[data-season="christmas"] .home-arctic-hero {
