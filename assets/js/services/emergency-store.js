@@ -1,7 +1,7 @@
 import { publicProductSlug } from './product-permalinks.js?v=20261103-slugs1';
 // Independent, read-only fallback. No Supabase SDK or customer account is required.
 // Show reference prices from the fresh public snapshot. Stock is confirmed separately.
-import { readPublicCatalogue } from './public-catalogue.js?v=20261102-gpu3';
+import { readPublicCatalogue } from './public-catalogue.js?v=20261112-arctic-cdn';
 import { readLaunchSettings } from './home-integrations.js?v=20261102-failover1';
 import { publicCatalogueOnly } from './site-config.js?v=20261107-static1';
 import { addItem, notify } from './catalogue.js?v=20261107-static1';

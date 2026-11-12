@@ -1,4 +1,4 @@
-import { readPublicCatalogue } from './services/public-catalogue.js?v=20261102-gpu3';
+import { readPublicCatalogue } from './services/public-catalogue.js?v=20261112-arctic-cdn';
 import { bindImages, esc, imageMarkup, productUrl } from './components/catalogue-view.js?v=20261103-slugs1';
 
 import { arcticOfferEnd, arcticOfferIds, isArcticOffer } from './services/arctic-christmas.js';
